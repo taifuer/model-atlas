@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "retrievedAt": "2026-10-01",
+  "source": "https://artificialanalysis.ai/leaderboards/models",
+  "sourceSha256": "d20c2c165850833ddf8a59d9dcea006ca11d05016e34a5c2e96d8c08b62be4e5",
+  "metric": {
+    "name": "Artificial Analysis Intelligence Index",
+    "version": "4.3.2",
+    "source": "https://artificialanalysis.ai/leaderboards/models",
+    "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking"
+  },
+  "selection": "Explicit reviewed model mapping; one configuration per release and metric. Missing or ambiguous versions omitted.",
+  "records": [
+    {
+      "releaseId": "claude-opus-5-5",
+      "model": "Claude Opus 5.5 (max with fallback)",
+      "score": 58,
+      "source": "https://artificialanalysis.ai/models/claude-opus-5-5"
+    },
+    {
+      "releaseId": "claude-sonnet-5-5",
+      "model": "Claude Sonnet 5.5 (max with fallback)",
+      "score": 56,
+      "source": "https://artificialanalysis.ai/models/claude-sonnet-5-5"
+    },
+    {
+      "releaseId": "claude-fable-5-1",
+      "model": "Claude Fable 5.1 (max with fallback)",
+      "score": 53,
+      "source": "https://artificialanalysis.ai/models/claude-fable-5-1"
+    },
+    {
+      "releaseId": "gpt-6-astra",
+      "model": "GPT-6 Astra (max)",
+      "score": 53,
+      "source": "https://artificialanalysis.ai/models/gpt-6-astra"
+    },
+    {
+      "releaseId": "gpt-6-1-sol",
+      "model": "GPT-6.1 Sol (max)",
+      "score": 52,
+      "source": "https://artificialanalysis.ai/models/gpt-6-1-sol"
+    },
+    {
+      "releaseId": "gemini-4-argon",
+      "model": "Gemini 4 Argon (high)",
+      "score": 53,
+      "source": "https://artificialanalysis.ai/models/gemini-4-argon"
+    },
+    {
+      "releaseId": "muse-spark-1-3",
+      "model": "Muse Spark 1.3 (max)",
+      "score": 48,
+      "source": "https://artificialanalysis.ai/models/muse-spark-1-3"
+    },
+    {
+      "releaseId": "grok-4-7",
+      "model": "Grok 4.7 (xhigh)",
+      "score": 46,
+      "source": "https://artificialanalysis.ai/models/grok-4-7"
+    },
+    {
+      "releaseId": "mimo-v2-6",
+      "model": "MiMo-V2.6-Pro",
+      "score": 46,
+      "source": "https://artificialanalysis.ai/models/mimo-v2-6-pro"
+    },
+    {
+      "releaseId": "qwen-3-8-max-0902",
+      "model": "Qwen3.8 Max (0902)",
+      "score": 45,
+      "source": "https://artificialanalysis.ai/models/qwen3-8-max"
+    },
+    {
+      "releaseId": "glm-5-3",
+      "model": "GLM-5.3 (max)",
+      "score": 45,
+      "source": "https://artificialanalysis.ai/models/glm-5-3"
+    },
+    {
+      "releaseId": "step-5-preview",
+      "model": "Step 5 Preview",
+      "score": 44,
+      "source": "https://artificialanalysis.ai/models/step-5"
+    },
+    {
+      "releaseId": "kimi-k3",
+      "model": "Kimi K3 (max)",
+      "score": 44,
+      "source": "https://artificialanalysis.ai/models/kimi-k3"
+    },
+    {
+      "releaseId": "glm-5-3-flash",
+      "model": "GLM-5.3-Flash",
+      "score": 42,
+      "source": "https://artificialanalysis.ai/models/glm-5-3-flash"
+    },
+    {
+      "releaseId": "gemini-3-8-flash",
+      "model": "Gemini 3.8 Flash (high)",
+      "score": 41,
+      "source": "https://artificialanalysis.ai/models/gemini-3-8-flash"
+    },
+    {
+      "releaseId": "deepseek-v4-1-flash",
+      "model": "DeepSeek V4.1 Flash (max)",
+      "score": 39,
+      "source": "https://artificialanalysis.ai/models/deepseek-v4-1-flash"
+    },
+    {
+      "releaseId": "deepseek-v4-pro-0813",
+      "model": "DeepSeek V4 Pro 0813 (max)",
+      "score": 36,
+      "source": "https://artificialanalysis.ai/models/deepseek-v4-pro"
+    },
+    {
+      "releaseId": "minimax-m3",
+      "model": "MiniMax-M3",
+      "score": 29,
+      "source": "https://artificialanalysis.ai/models/minimax-m3"
+    },
+    {
+      "releaseId": "hunyuan-hy3",
+      "model": "Hy3",
+      "score": 25,
+      "source": "https://artificialanalysis.ai/models/hy3"
+    },
+    {
+      "releaseId": "mistral-medium-3-5",
+      "model": "Mistral Medium 3.5",
+      "score": 14,
+      "source": "https://artificialanalysis.ai/models/mistral-medium-3-5"
+    },
+    {
+      "releaseId": "gpt-6-sol-luna",
+      "model": "GPT-6 Sol (max)",
+      "score": 48,
+      "source": "https://artificialanalysis.ai/models/gpt-6-sol"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "model-atlas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A curated, bilingual timeline of AI models, agents, hardware, and key technologies.",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "start": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.cjs",
+    "check": "node --check src/app.js && node --check src/filters.js && node --check src/site.js && node --check src/icons.js && node --check src/data.js && node --check src/data-en.js && node --check src/data-agents.js && node --check src/data-access.js && node --check src/data-specs.js && node --check src/data-prices.js && node --check scripts/dev.mjs && node --check scripts/build.mjs && node --check src/data-hardware.js && node --check src/data-technology.js && node --check src/data-model-types.js && node --check src/data-scores.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taifuer/model-atlas.git"
+  },
+  "homepage": "https://ai.taifua.com",
+  "bugs": {
+    "url": "https://github.com/taifuer/model-atlas/issues"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff"><meta name="description" content="Model Atlas：AI 算法、计算框架与推理部署工具的技术演进，按日期、机构和分类浏览。">
+  <title>AI 技术演进 · Model Atlas</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="assets/noto-sans-sc.css"><link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script><script src="data-en.js" defer></script><script src="data-agents.js" defer></script>
+  <script src="data-access.js" defer></script><script src="data-technology.js" defer></script><script src="filters.js" defer></script>
+  <script src="site.js" defer></script><script src="icons.js" defer></script><script src="app.js" defer></script>
+</head>
+<body data-page="technology">
+  <a class="skip-link" href="#main" data-zh="跳到主要内容" data-en="Skip to content">跳到主要内容</a>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="index.html" data-local aria-label="Model Atlas"><svg class="brand-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 7v10M12 3v18M19 9v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Model Atlas</span></a>
+      <div id="header-menu" class="header-menu">
+        <nav class="header-nav" aria-label="主导航" data-aria-zh="主导航" data-aria-en="Main navigation">
+        <a href="index.html" data-local><span data-zh="大模型" data-en="LLM">大模型</span></a>
+        <a href="agents.html" data-local><span data-zh="智能体" data-en="Agent">智能体</span></a>
+        <a href="hardware.html" data-local><span data-zh="算力" data-en="Hardware">算力</span></a>
+        <a href="technology.html" data-local aria-current="page"><span data-zh="技术" data-en="Technology">技术</span></a>
+        <a href="about.html" data-local><span data-zh="关于" data-en="About">关于</span></a>
+      </nav>
+        <div class="mobile-language"><span data-zh="语言" data-en="Language">语言</span><div class="language-inline"><a href="?lang=zh" data-language="zh" lang="zh-CN" hreflang="zh-CN">简体中文</a><a href="?lang=en" data-language="en" lang="en" hreflang="en">English</a></div></div>
+      </div>
+      <div class="header-actions">
+        <button id="search-toggle" class="icon-button" type="button" aria-label="搜索" data-aria-zh="搜索" data-aria-en="Search" aria-haspopup="dialog" aria-controls="search-dialog"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+        <div class="language-control">
+          <button id="language-toggle" class="icon-button" type="button" aria-label="选择语言" data-aria-zh="选择语言" data-aria-en="Choose language" aria-expanded="false" aria-controls="language-options"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M4 12h16M12 4c2.4 2.3 3.6 5 3.6 8s-1.2 5.7-3.6 8c-2.4-2.3-3.6-5-3.6-8s1.2-5.7 3.6-8Z" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <div id="language-options" class="language-options" hidden><a href="?lang=zh" data-language="zh" lang="zh-CN" hreflang="zh-CN">简体中文</a><a href="?lang=en" data-language="en" lang="en" hreflang="en">English</a></div>
+        </div>
+        <button id="menu-toggle" class="icon-button menu-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="header-menu">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="menu-line-top" d="M5 8h14"/><path class="menu-line-bottom" d="M5 16h14"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <section class="page-intro" aria-labelledby="page-title">
+      <div class="intro-copy">
+        <h1 id="page-title" tabindex="-1" data-zh="AI 技术演进" data-en="AI technology timeline">AI 技术演进</h1>
+        <p class="intro-meta"><span id="release-total">—</span> <span data-zh="个节点" data-en="entries">个节点</span><span class="meta-divider" aria-hidden="true">·</span><span id="company-total">—</span> <span data-zh="机构 / 项目" data-en="organizations / projects">机构 / 项目</span></p>
+      </div>
+      <figure class="activity" id="activity" aria-labelledby="activity-title">
+        <div class="activity-heading"><h2 id="activity-title" data-zh="年度节点数量" data-en="Entries by year">年度节点数量</h2><div class="chart-actions"><span id="chart-scope"></span><button id="chart-back" class="text-button" type="button" hidden data-zh="← 全部年份" data-en="← All years">← 全部年份</button></div></div>
+        <div class="annual-chart" id="annual-chart" role="group" aria-label="选择年份查看月度发布数量" data-aria-zh="选择年份查看月度发布数量" data-aria-en="Select a year to view monthly releases"></div>
+        <figcaption id="chart-note"></figcaption>
+      </figure>
+    </section>
+    <section id="explore" class="explorer" aria-labelledby="explore-title">
+      <h2 class="sr-only" id="explore-title" data-zh="发布记录" data-en="Release history">发布记录</h2>
+      <div class="filter-panel">
+        <div class="filter-top">
+          <div class="filter-heading"><div class="company-heading-row"><span data-zh="机构 / 项目" data-en="Organizations / projects">机构 / 项目</span><label class="selection-toggle"><span data-zh="多选" data-en="Multi-select">多选</span><input id="company-multi" type="checkbox" role="switch" aria-controls="company-filters"><span class="selection-switch" aria-hidden="true"></span></label></div><a href="about.html#technology" data-local class="subtle-link"><span data-zh="收录说明" data-en="Selection criteria">收录说明</span></a></div>
+          <div class="filter-options">
+            <label class="sr-only" for="category-select" data-zh="分类" data-en="Category">分类</label><select id="category-select"><option value="all" data-zh="全部类型" data-en="All types">全部类型</option></select>
+            <label class="sr-only" for="year-select" data-zh="选择年份" data-en="Select year">选择年份</label><select id="year-select"><option value="all" data-zh="全部年份" data-en="All years">全部年份</option></select>
+            <label class="milestone-toggle"><input id="milestone-only" type="checkbox"><span class="switch" aria-hidden="true"></span><span data-zh="只看里程碑" data-en="Milestones" >只看里程碑</span></label>
+          </div>
+        </div>
+        <div class="company-filters" id="company-filters" role="group" aria-label="按机构或项目筛选" data-aria-zh="按机构或项目筛选" data-aria-en="Filter by organization"></div>
+        <button class="company-disclosure" id="company-disclosure" type="button" aria-expanded="false" aria-controls="company-filters" hidden></button>
+        <div class="active-filter-row" id="active-filter-row" hidden><div id="active-filters" class="active-filters" role="group" aria-label="已选条件" data-aria-zh="已选条件" data-aria-en="Active filters" hidden></div><button class="text-button reset-button" id="reset-filters" type="button" hidden data-zh="清除筛选" data-en="Clear filters">清除筛选</button></div>
+      </div>
+      <div class="results-toolbar"><div class="results-meta"><p id="results-count" role="status" aria-live="polite"></p></div><div class="results-actions"><div class="view-switch" role="group" aria-label="时间线视图" data-aria-zh="时间线视图" data-aria-en="Timeline view"><button type="button" data-view="detail" aria-pressed="true" data-zh="详细" data-en="Detail">详细</button><button type="button" data-view="compact" aria-pressed="false" data-zh="极简" data-en="Compact">极简</button></div><button class="outline-button button-small" id="sort-button">最新优先</button></div></div>
+      <div class="timeline-layout"><aside class="year-sidebar"><p class="sidebar-label" data-zh="年份" data-en="Years">年份</p><nav id="year-nav" aria-label="选择年份查看月度统计" data-aria-zh="选择年份查看月度统计" data-aria-en="Select a year for monthly counts"></nav></aside><div class="timeline" id="timeline"></div></div>
+      <noscript><p>请启用 JavaScript 浏览时间线。Enable JavaScript to explore the timeline.</p></noscript>
+    </section>
+  </main>
+  <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="dialog-title"><div class="dialog-controls"><button class="close-dialog" id="close-dialog" aria-label="关闭详情" data-aria-zh="关闭详情" data-aria-en="Close details">×</button></div><div id="dialog-content"></div></dialog>
+
+  <footer class="site-footer">
+    <div class="wrap footer-bottom"><p>© 2026 <a class="footer-project-link" href="https://github.com/taifuer/model-atlas" target="_blank" rel="noopener noreferrer" aria-label="Model Atlas on GitHub" data-aria-zh="Model Atlas 的 GitHub 仓库" data-aria-en="Model Atlas on GitHub">Model Atlas</a></p><p><span data-zh="最后更新于" data-en="Last updated" >最后更新于</span> <time data-updated datetime="2026-10-01">2026.10.01</time></p></div>
+  </footer>
+  <dialog id="search-dialog" class="search-dialog" aria-label="搜索" data-aria-zh="搜索" data-aria-en="Search">
+      <form class="search-box" id="search-form" action="technology.html" method="get" role="search">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <label class="sr-only" for="search" data-zh="搜索当前时间线" data-en="Search this timeline">搜索当前时间线</label>
+        <input id="search" name="q" type="search" placeholder="搜索名称、机构…" data-placeholder-zh="搜索名称、机构…" data-placeholder-en="Search names, teams…" autocomplete="off" maxlength="300">
+        <button class="search-dismiss" id="search-dismiss" type="button" aria-label="关闭搜索" data-aria-zh="关闭搜索" data-aria-en="Close search">Esc</button>
+      </form>
+    <div id="search-results" class="search-results"></div><p class="search-help" id="search-help" data-zh="输入名称或关键词，按 Enter 查看筛选结果。" data-en="Search by name or keyword. Press Enter to view filtered results.">输入名称或关键词，按 Enter 查看筛选结果。</p>
+  </dialog>
+  <button class="back-to-top icon-button" id="back-to-top" type="button" hidden aria-label="返回顶部" data-aria-zh="返回顶部" data-aria-en="Back to top" title="返回顶部"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body></html>

@@ -1,0 +1,14 @@
+dist/
+node_modules/
+.DS_Store
+test-results/
+.sync-backups/
+research/
+.env*
+!.env.example
+.aws/
+.codex/
+.agents/
+playwright-report/
+*.log
+__pycache__/
