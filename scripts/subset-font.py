@@ -17,7 +17,7 @@ def main():
     if len(sys.argv) != 2:
         raise SystemExit("Usage: python scripts/subset-font.py /path/to/NotoSansSC-VF.ttf")
     root = Path(__file__).resolve().parent.parent / "src"
-    text = "".join((root / name).read_text(encoding="utf-8") for name in ("index.html", "agents.html", "hardware.html", "technology.html", "about.html", "site.js", "app.js", "data.js", "data-en.js", "data-agents.js", "data-hardware.js", "data-technology.js", "data-access.js", "data-specs.js", "data-prices.js", "data-scores.js", "data-model-types.js", "filters.js", "styles.css"))
+    text = "".join(path.read_text(encoding="utf-8") for path in sorted(root.iterdir()) if path.suffix in {".html", ".js", ".css"})
     characters = {ord(char) for char in text} | set(range(32, 256))
     font = TTFont(sys.argv[1])
     options = subset.Options()

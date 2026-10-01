@@ -622,3 +622,5 @@ body.modal-open .back-to-top { display: none; }
   .filter-heading { width: 100%; }
   .selection-toggle { min-height: 44px; }
 }
+
+.explore-entry { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }

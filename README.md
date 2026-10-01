@@ -36,13 +36,16 @@ Entries are selected for historical influence or technical significance. This is
 - Filter by organization, year, type, and keyword; share the resulting URL. Organization selection is single by default, with a multi-select switch for comparisons.
 - Switch between detailed cards and a compact list, with newest entries first.
 - Browse annual and monthly counts for the current selection.
+- Open [Explore](https://ai.taifua.com/explore.html?lang=en) to browse all four timelines side by side by year or month, with milestones selected by default. Mobile groups events by period.
 - Open an entry for its release scope, specifications, and sources.
-- Use Chinese or English. The initial language follows the browser; manual choices are remembered.
+- Use Chinese or English. The home page initially follows the browser language; manual choices are remembered, with dedicated URLs for each language.
 - Browse on desktop or mobile, with keyboard navigation and reduced-motion support.
 
 Switching multi-select off keeps the most recently selected organization. Existing links with several organizations open in multi-select mode. Paper entries prefer project or product marks, then official organization logos; arXiv or NeurIPS marks provide a fallback when no such logo is available.
 
 Mobile organization filters initially show six organizations plus the selected ones. Additional organizations are available through the disclosure control. Desktop shows all organizations. The Milestones filter hides organizations with no matching entries.
+
+Explore supports organization, section, and keyword filters with shareable URLs. The Transformer event appears once across timelines. Empty periods are omitted, so column spacing is not proportional to elapsed time. Evaluation references link to AA, Arena, SWE-bench, and MLPerf; model details retain reviewed scores and snapshot dates.
 
 The website uses local fonts and icons. There are no analytics, runtime API calls, or third-party scripts. Browser storage saves only language and view preferences.
 
@@ -70,7 +73,9 @@ npm test
 npm run build
 ```
 
-The build creates `dist/` with five pages and their local assets. Deploy that directory to any static host; no Node.js process or backend is needed in production. Asset URLs include content hashes for cache updates. CI runs the same checks on Node.js 22 and 24.
+The build creates `dist/` with six page types in Chinese and English, a sitemap, and local assets. Deploy that directory to any static host; no Node.js process or backend is needed in production. Asset URLs include content hashes for cache updates. CI runs the same checks on Node.js 22 and 24.
+
+Chinese pages are served from the site root, with English editions under `/en/`. Each static page includes localized titles, descriptions, keywords, canonical and hreflang links, and social metadata. The build also generates `sitemap.xml` and `robots.txt`. For another deployment domain, use `BASE_URL=https://example.com npm run build`. Existing `?lang=en` / `?lang=zh` links remain supported.
 
 ## Data and sources
 
@@ -84,7 +89,7 @@ The site's “open / closed” filter is an editorial classification of the list
 
 | Files | Purpose |
 | --- | --- |
-| `src/` | Website source: five HTML pages, frontend JavaScript, CSS, data, and favicon. |
+| `src/` | Website source: six page templates, frontend JavaScript, CSS, data, and favicon. |
 | `src/data*.js` | Bilingual entries, classifications, specifications, prices, and scores. |
 | `src/app.js`, `src/filters.js`, `src/site.js`, `src/icons.js`, `src/styles.css` | Rendering, filtering, navigation, language, and layout. |
 | `src/assets/` | Local font, icons, and their notices. |

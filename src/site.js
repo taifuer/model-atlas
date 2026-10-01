@@ -6,7 +6,9 @@
   const requested = params.get('lang');
   const supported = value => ['zh', 'en'].includes(value);
   const browserLanguage = (navigator.languages?.length ? navigator.languages : [navigator.language]).map(value => String(value).toLowerCase().split('-')[0]).find(supported);
-  const language = supported(requested) ? requested : supported(saved) ? saved : browserLanguage || 'en';
+  const englishPath = /\/en\/(?:[^/]+\.html)?$/.test(location.pathname);
+  const explicitPage = /\/[^/]+\.html$/.test(location.pathname);
+  const language = supported(requested) ? requested : englishPath ? 'en' : explicitPage ? 'zh' : supported(saved) ? saved : browserLanguage || 'en';
   const english = language === 'en';
   const L = (zh, en) => english ? en : zh;
   const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
@@ -17,9 +19,15 @@
     agents: { file: 'agents.html', zh: '智能体', en: 'Agent', title: ['智能体工具时间线', 'Agent tool timeline'], data: window.AGENT_ATLAS },
     hardware: { file: 'hardware.html', zh: '算力', en: 'Hardware', title: ['算力硬件时间线', 'AI hardware timeline'], data: window.HARDWARE_ATLAS },
     technology: { file: 'technology.html', zh: '技术', en: 'Technology', title: ['AI 技术演进', 'AI technology timeline'], data: window.TECHNOLOGY_ATLAS },
+    explore: { file: 'explore.html', zh: '探索', en: 'Explore', title: ['探索', 'Explore'], data: window.MODEL_ATLAS },
     about: { file: 'about.html', zh: '关于', en: 'About', title: ['关于', 'About'], data: window.MODEL_ATLAS },
   };
   const raw = pages[page].data;
+  const siteRoot = new URL('./', document.baseURI);
+  function localPage(file, targetLanguage = language) {
+    return new URL((targetLanguage === 'en' ? 'en/' : '') + file, siteRoot);
+  }
+  const seo = window.ATLAS_SEO?.[page]?.[language];
   const names = { qwen: 'Alibaba', moonshot: 'Moonshot AI', zhipu: 'Z.ai', xiaomi: 'Xiaomi', stepfun: 'StepFun', tencent: 'Tencent', bytedance: 'ByteDance' };
   const companyName = company => english ? company.nameEn || names[company.id] || company.name : company.name;
   const releaseText = release => english ? { ...release, ...(release.en || window.MODEL_ATLAS_EN?.[release.id]) } : release;
@@ -34,12 +42,35 @@
     toastTimer = setTimeout(() => element.classList.remove('is-visible'), 2600);
   }
   document.documentElement.lang = english ? 'en' : 'zh-CN';
-  document.title = `${L(...pages[page].title)} · Model Atlas`;
+  document.title = seo?.title || `${L(...pages[page].title)} · Model Atlas`;
+  if (seo) {
+    const declaredRoot = document.head.querySelector('link[hreflang="zh-CN"]')?.href || 'https://ai.taifua.com/';
+    const canonical = new URL((english ? 'en/' : '') + (page === 'models' ? '' : pages[page].file), new URL('./', declaredRoot)).href;
+    const values = { description: seo.description, keywords: seo.keywords.join(', '), 'og:title': seo.title, 'og:description': seo.description, 'og:url': canonical, 'og:locale': english ? 'en_US' : 'zh_CN', 'og:locale:alternate': english ? 'zh_CN' : 'en_US', 'twitter:title': seo.title, 'twitter:description': seo.description, 'twitter:url': canonical };
+    for (const [name, content] of Object.entries(values)) {
+      let meta = document.head.querySelector(`meta[${name.startsWith('og:') ? 'property' : 'name'}="${name}"]`);
+      if (!meta) { meta = document.createElement('meta'); meta.setAttribute(name.startsWith('og:') ? 'property' : 'name', name); document.head.append(meta); }
+      meta.content = content;
+    }
+    const link = document.head.querySelector('link[rel="canonical"]'); if (link) link.href = canonical;
+    const structured = document.getElementById('atlas-structured-data');
+    if (structured) {
+      try {
+        const data = JSON.parse(structured.textContent);
+        const record = data['@graph']?.find(item => ['CollectionPage', 'AboutPage'].includes(item['@type']));
+        if (record) Object.assign(record, { '@id': canonical + '#webpage', url: canonical, name: seo.title, description: seo.description, inLanguage: english ? 'en' : 'zh-CN' });
+        structured.textContent = JSON.stringify(data);
+      } catch { /* Keep the static metadata if a custom template uses another schema. */ }
+    }
+  }
   document.querySelectorAll('[data-zh][data-en]').forEach(element => { element.textContent = element.dataset[english ? 'en' : 'zh']; });
   document.querySelectorAll('[data-aria-zh]').forEach(element => element.setAttribute('aria-label', element.dataset[english ? 'ariaEn' : 'ariaZh']));
   document.querySelectorAll('[data-placeholder-zh]').forEach(element => { element.placeholder = element.dataset[english ? 'placeholderEn' : 'placeholderZh']; });
   document.querySelectorAll('[data-local]').forEach(link => {
-    const url = new URL(link.getAttribute('href'), location.href);
+    const existing = new URL(link.getAttribute('href'), document.baseURI);
+    const file = existing.pathname.split('/').pop();
+    const url = localPage(file);
+    url.search = existing.search; url.hash = existing.hash;
     url.searchParams.set('lang', language);
     link.href = url.href;
   });
@@ -63,7 +94,8 @@
   function refreshLanguageLinks() {
     languageLinks.forEach(link => {
       const next = link.dataset.language;
-      const url = new URL(location.href);
+      const url = localPage(pages[page].file, next);
+      url.search = location.search; url.hash = location.hash;
       url.searchParams.set('lang', next);
       link.href = url.href;
       if (next === language) link.setAttribute('aria-current', 'true');
@@ -122,6 +154,8 @@
     }
   });
   const form = document.querySelector('#search-form');
+  const searchFile = new URL(form.getAttribute('action'), document.baseURI).pathname.split('/').pop();
+  form.action = localPage(searchFile).href;
   const searchDialog = document.querySelector('#search-dialog');
   function openSearch() {
     setMenuOpen(false);
@@ -177,5 +211,5 @@
       event.preventDefault(); openSearch();
     }
   });
-  window.ATLAS_UI = { raw, page, pages, language, english, L, escape, formattedDate, companyName, releaseText, kinds, tag, toast };
+  window.ATLAS_UI = { raw, page, pages, language, english, L, escape, formattedDate, companyName, releaseText, kinds, tag, toast, localPage };
 })();
