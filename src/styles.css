@@ -623,4 +623,10 @@ body.modal-open .back-to-top { display: none; }
   .selection-toggle { min-height: 44px; }
 }
 
-.explore-entry { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.explore-launch { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; gap: 6px; min-height: 38px; padding: 0 10px; border-radius: 6px; color: var(--accent); font-size: 13px; font-weight: 500; white-space: nowrap; }
+.explore-launch svg { width: 20px; height: 20px; flex-shrink: 0; }
+.explore-launch:hover, .explore-launch[aria-current="page"] { background: var(--accent-soft); }
+@media (max-width: 760px) {
+  .explore-launch { width: 36px; height: 36px; min-height: 36px; padding: 0; }
+  .explore-launch > span { display: none; }
+}

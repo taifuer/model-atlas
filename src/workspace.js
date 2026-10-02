@@ -12,6 +12,7 @@
   function openEntry(key, update = true) {
     const record = catalog.get(key);
     if (!record) return;
+    document.dispatchEvent(new CustomEvent('atlas:entry-open', { detail: key }));
     activeEntry = record; previousFocus = searchDialog.open ? document.querySelector('#search-toggle') : document.activeElement;
     if (searchDialog.open) searchDialog.close();
     content.innerHTML = window.ATLAS_DETAILS.render(record.section, record.raw, record.release.id, language);

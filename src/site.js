@@ -65,6 +65,7 @@
   }
   document.querySelectorAll('[data-zh][data-en]').forEach(element => { element.textContent = element.dataset[english ? 'en' : 'zh']; });
   document.querySelectorAll('[data-aria-zh]').forEach(element => element.setAttribute('aria-label', element.dataset[english ? 'ariaEn' : 'ariaZh']));
+  document.querySelectorAll('[data-title-zh]').forEach(element => { element.title = element.dataset[english ? 'titleEn' : 'titleZh']; });
   document.querySelectorAll('[data-placeholder-zh]').forEach(element => { element.placeholder = element.dataset[english ? 'placeholderEn' : 'placeholderZh']; });
   document.querySelectorAll('[data-local]').forEach(link => {
     const existing = new URL(link.getAttribute('href'), document.baseURI);

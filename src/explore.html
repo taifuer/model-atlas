@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff"><meta name="description" content="在同一时间视图中浏览大模型、智能体、算力硬件与关键技术。按年份、月份、机构和板块筛选，展开事件详情，并查阅 Artificial Analysis、Arena 等公开评测与排行榜。">
-  <meta name="keywords" content="AI 时间线探索, AI 里程碑, 大模型, 智能体, 算力硬件, AI 技术">
+  <meta name="theme-color" content="#ffffff"><meta name="description" content="按时间从旧到新浏览大模型、智能体、算力硬件与关键技术的完整事件流。自动逐条高亮摘要，随时暂停、调整速度或跳转年份；搜索定位匹配事件，全部记录始终可见。">
+  <meta name="keywords" content="AI 时间线探索, AI 历史, 自动播放时间线, 大模型, 智能体, 算力硬件, AI 技术">
   <title>探索 AI 发布与技术进展 · Model Atlas</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="assets/noto-sans-sc.css"><link rel="stylesheet" href="styles.css">
@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="workspace.css"><link rel="stylesheet" href="explore.css">
   <script src="catalog.js" defer></script><script src="details.js" defer></script><script src="workspace.js" defer></script>
-  <script src="explore.js" defer></script>
+  <script src="explore-player.js" defer></script><script src="explore.js" defer></script>
 </head>
 <body data-page="explore">
   <a class="skip-link" href="#main" data-zh="跳到主要内容" data-en="Skip to content">跳到主要内容</a>
@@ -32,6 +32,7 @@
         <div class="mobile-language"><span data-zh="语言" data-en="Language">语言</span><div class="language-inline"><a href="?lang=zh" data-language="zh" lang="zh-CN" hreflang="zh-CN">简体中文</a><a href="?lang=en" data-language="en" lang="en" hreflang="en">English</a></div></div>
       </div>
       <div class="header-actions">
+        <a class="explore-launch" href="explore.html" data-local aria-current="page" aria-label="探索" data-aria-zh="探索" data-aria-en="Explore" title="探索" data-title-zh="探索" data-title-en="Explore"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.5"/><path d="m15.8 8.2-2.4 5.2-5.2 2.4 2.4-5.2 5.2-2.4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span data-zh="探索" data-en="Explore">探索</span></a>
         <button id="search-toggle" class="icon-button" type="button" aria-label="搜索" data-aria-zh="搜索" data-aria-en="Search" aria-haspopup="dialog" aria-controls="search-dialog"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
         <div class="language-control">
           <button id="language-toggle" class="icon-button" type="button" aria-label="选择语言" data-aria-zh="选择语言" data-aria-en="Choose language" aria-expanded="false" aria-controls="language-options"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M4 12h16M12 4c2.4 2.3 3.6 5 3.6 8s-1.2 5.7-3.6 8c-2.4-2.3-3.6-5-3.6-8s1.2-5.7 3.6-8Z" stroke="currentColor" stroke-width="1.5"/></svg></button>
@@ -43,7 +44,7 @@
       </div>
     </div>
   </header>
-  <main id="main" class="wrap workspace-main"><h1 id="page-title" tabindex="-1" data-zh="探索" data-en="Explore">探索</h1><details class="explore-references"><summary data-zh="评测与排行榜" data-en="Benchmarks & leaderboards">评测与排行榜</summary><div class="explore-reference-grid"><a href="https://artificialanalysis.ai/leaderboards/models" target="_blank" rel="noopener noreferrer"><strong>Artificial Analysis</strong><span data-zh="模型能力、速度与成本" data-en="Model intelligence, speed, and cost">模型能力、速度与成本</span></a><a href="https://arena.ai/leaderboard/text" target="_blank" rel="noopener noreferrer"><strong>Arena Text</strong><span data-zh="文本对话的用户偏好" data-en="Human preferences in text conversations">文本对话的用户偏好</span></a><a href="https://www.swebench.com/" target="_blank" rel="noopener noreferrer"><strong>SWE-bench</strong><span data-zh="真实软件仓库的问题修复" data-en="Issue resolution in software repositories">真实软件仓库的问题修复</span></a><a href="https://mlcommons.org/benchmarks/inference-datacenter/" target="_blank" rel="noopener noreferrer"><strong>MLPerf Inference</strong><span data-zh="指定任务与系统的推理性能" data-en="Inference performance by workload and system">指定任务与系统的推理性能</span></a></div><p data-zh="模型详情保留已核对的 AA 与 Arena 评分快照；最新排名请查看原榜。各榜单的评测任务、版本与配置不同，分数不直接换算。" data-en="Model details retain reviewed AA and Arena score snapshots; visit each source for its latest rankings. Tasks, versions, and configurations differ, so scores are not interchangeable.">模型详情保留已核对的 AA 与 Arena 评分快照；最新排名请查看原榜。各榜单的评测任务、版本与配置不同，分数不直接换算。</p></details><div id="explore-root"></div></main>
+  <main id="main" class="wrap workspace-main"><div class="journey-heading"><h1 id="page-title" tabindex="-1" data-zh="探索" data-en="Explore">探索</h1><p data-zh="沿时间前行，随时暂停或自由浏览。" data-en="Follow the timeline. Pause or browse at any time.">沿时间前行，随时暂停或自由浏览。</p></div><div class="explore-references"><span data-zh="评测参考" data-en="Benchmarks">评测参考</span><a href="https://artificialanalysis.ai/leaderboards/models" target="_blank" rel="noopener noreferrer">Artificial Analysis</a><a href="https://arena.ai/leaderboard/text" target="_blank" rel="noopener noreferrer">Arena</a><a href="https://www.swebench.com/" target="_blank" rel="noopener noreferrer">SWE-bench</a><a href="https://mlcommons.org/benchmarks/inference-datacenter/" target="_blank" rel="noopener noreferrer">MLPerf</a></div><div id="explore-root"></div><noscript><p data-zh="请启用 JavaScript 浏览和播放完整时间线。" data-en="Enable JavaScript to browse and play the complete timeline.">请启用 JavaScript 浏览和播放完整时间线。</p></noscript></main>
   <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="dialog-title"><div class="dialog-controls"><button class="close-dialog" id="close-dialog" aria-label="关闭详情" data-aria-zh="关闭详情" data-aria-en="Close details">×</button></div><div id="dialog-content"></div></dialog>
 
   <footer class="site-footer">
@@ -56,7 +57,7 @@
         <input id="search" name="q" type="search" placeholder="搜索名称、机构…" data-placeholder-zh="搜索名称、机构…" data-placeholder-en="Search names, teams…" autocomplete="off" maxlength="300">
         <button class="search-dismiss" id="search-dismiss" type="button" aria-label="关闭搜索" data-aria-zh="关闭搜索" data-aria-en="Close search">Esc</button>
       </form>
-    <div id="search-results" class="search-results"></div><p class="search-help" id="search-help" data-zh="输入名称或关键词，按 Enter 查看筛选结果。" data-en="Search by name or keyword. Press Enter to view filtered results.">输入名称或关键词，按 Enter 查看筛选结果。</p>
+    <div id="search-results" class="search-results"></div><p class="search-help" id="search-help" data-zh="输入名称或关键词，按 Enter 定位匹配记录。" data-en="Search by name or keyword. Press Enter to locate matching events.">输入名称或关键词，按 Enter 定位匹配记录。</p>
   </dialog>
   <button class="back-to-top icon-button" id="back-to-top" type="button" hidden aria-label="返回顶部" data-aria-zh="返回顶部" data-aria-en="Back to top" title="返回顶部"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
