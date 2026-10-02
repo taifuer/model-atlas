@@ -7,7 +7,7 @@ const root = new URL('../', import.meta.url);
 const sourceRoot = new URL('src/', root);
 const output = new URL('dist/', root);
 const pages = ['index.html', 'agents.html', 'hardware.html', 'technology.html', 'about.html', 'explore.html'];
-const assets = ['explore-player.js', 'seo.js', 'catalog.js', 'details.js', 'workspace.js', 'explore.js', 'workspace.css', 'explore.css', 'styles.css', 'site.js', 'app.js', 'filters.js', 'icons.js', 'data.js', 'data-en.js', 'data-agents.js', 'data-hardware.js', 'data-technology.js', 'data-access.js', 'data-specs.js', 'data-prices.js', 'data-scores.js', 'data-model-types.js', 'favicon.svg', 'assets/noto-sans-sc.css', 'assets/OFL.txt', 'assets/FONT-NOTICE.md'];
+const assets = ['explore-periods.js', 'seo.js', 'catalog.js', 'details.js', 'workspace.js', 'explore.js', 'workspace.css', 'explore.css', 'styles.css', 'site.js', 'app.js', 'filters.js', 'icons.js', 'data.js', 'data-en.js', 'data-agents.js', 'data-hardware.js', 'data-technology.js', 'data-access.js', 'data-specs.js', 'data-prices.js', 'data-scores.js', 'data-model-types.js', 'favicon.svg', 'assets/noto-sans-sc.css', 'assets/OFL.txt', 'assets/FONT-NOTICE.md'];
 for (const name of (await readdir(new URL('assets/icons/', sourceRoot))).sort()) {
   if (/^[a-zA-Z0-9.-]+\.(svg|png|jpg|ico|txt|md)$/.test(name)) assets.push(`assets/icons/${name}`);
 }

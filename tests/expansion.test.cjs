@@ -16,7 +16,7 @@ test('new timelines have ordered, source-linked, bilingual entries with explicit
     let previous = '';
     for (const entry of data.releases) {
       assert.ok(!ids.has(entry.id), entry.id); ids.add(entry.id);
-      assert.match(entry.date, /^\d{4}(?:-\d{2}-\d{2})?$/);
+      assert.match(entry.date, /^\d{4}(?:-(?:0[1-9]|1[0-2])(?:-\d{2})?)?$/);
       if (entry.date.length === 10) assert.equal(new Date(entry.date).toISOString().slice(0, 10), entry.date);
       else assert.ok(entry.dateNote && entry.en.dateNote, entry.id);
       assert.ok(entry.date >= previous && entry.date <= data.asOf, entry.id); previous = entry.date;
@@ -35,7 +35,7 @@ test('new timelines have ordered, source-linked, bilingual entries with explicit
   assert.ok(technology.releases.length >= 40);
 });
 
-test('Transformer shares its canonical event, while year-only dates never create monthly events', () => {
+test('Transformer shares its canonical event and monthly counts respect date precision', () => {
   const original = models.releases.find(r => r.id === 'transformer');
   const linked = technology.releases.find(r => r.id === 'transformer');
   assert.equal(linked.date, original.date);
@@ -47,10 +47,19 @@ test('Transformer shares its canonical event, while year-only dates never create
   const state = filters.read('?year=2012');
   assert.equal(filters.select(state).length, 1);
   assert.equal(filters.annualCounts(state).find(y => y.year === '2012').count, 1);
-  assert.equal(filters.monthlyCounts(state).reduce((sum, m) => sum + m.count, 0), 0);
+  assert.equal(filters.monthlyCounts(state).find(m => m.month === '12').count, 1);
   assert.ok(filters.years.includes('2008'), 'The data layer retains zero years; the UI can omit them without changing counts');
   const dated = filters.read('?year=2017');
-  assert.equal(filters.select(dated).length, filters.monthlyCounts(dated).reduce((sum, m) => sum + m.count, 0) + 1);
+  assert.equal(filters.select(dated).length, filters.monthlyCounts(dated).reduce((sum, m) => sum + m.count, 0));
+  const fixture = { ...technology, releases: [
+    { ...original, id: 'year', date: '2012' },
+    { ...original, id: 'month', date: '2012-12' },
+    { ...original, id: 'day', date: '2012-12-04' },
+  ] };
+  const precision = ATLAS_FILTERS.create(fixture, new Map());
+  const all = precision.read('?year=2012');
+  assert.equal(precision.annualCounts(all).find(y => y.year === '2012').count, 3);
+  assert.equal(precision.monthlyCounts(all).reduce((sum, m) => sum + m.count, 0), 2, 'Only dates with a confirmed month enter monthly counts');
   assert.equal(filters.read('?openness=open').openness, 'all', 'Hardware and research do not inherit model access classification');
 });
 
@@ -100,7 +109,11 @@ test('hardware events do not turn roadmap targets or report publication dates in
   assert.doesNotMatch(JSON.stringify(get('atlas-950-superpod').hardware), /8192/);
   assert.equal(get('atlas-960e-superpod'), undefined, 'A system still in testing remains a candidate');
   assert.equal(get('ascend-910c-cloudmatrix384').date, '2025-04-10');
-  assert.equal(get('ascend-910b').date, '2023');
+  assert.equal(get('ascend-910b').date, '2023-08-15');
+  assert.equal(get('ascend-910b').kind, 'deployment');
+  assert.match(get('ascend-910b').dateNote, /星火一体机公开发布/);
+  assert.match(get('ascend-910b').en.dateNote, /customer product event/);
+  assert.ok(get('ascend-910b').sources.some(source => source.url === 'https://www.nbd.com.cn/articles/2023-08-15/2961074.html'));
   assert.equal(get('hygon-deepcompute3'), undefined, 'Deferred until product-level evidence supports inclusion');
 });
 

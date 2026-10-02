@@ -1162,33 +1162,6 @@ window.HARDWARE_ATLAS = {
       }
     },
     {
-      "id": "ascend-910b",
-      "date": "2023",
-      "name": "昇腾 910B",
-      "company": "huawei",
-      "category": "accelerator",
-      "kind": "deployment",
-      "summary": "昇腾 910 的后续代际开始出现在技术文档和客户部署中。",
-      "details": "路透社在 2023 年报道了 910B 的公开文档与客户采用，同时说明华为当时未举行正式芯片发布。",
-      "sources": [
-        {
-          "url": "https://theprint.in/tech/factbox-how-huawei-plans-to-rival-nvidia-in-the-ai-chip-business/1835738/",
-          "title": "路透社 · ThePrint 授权转载",
-          "titleEn": "Reuters · Syndicated by ThePrint",
-          "type": "reporting"
-        }
-      ],
-      "tags": [],
-      "milestone": false,
-      "dateNote": "仅记录可核实的 2023 年商用阶段；不将报道日期或文档日期虚构为首发日。",
-      "en": {
-        "summary": "The successor to Ascend 910 appears in technical documentation and customer deployments.",
-        "details": "Reuters documented 910B technical guides and customer adoption in 2023, while noting the absence of a formal chip announcement.",
-        "dateNote": "Records the documented deployment year, 2023. Neither the reporting date nor documentation date is substituted for an unknown launch day.",
-        "name": "Ascend 910B"
-      }
-    },
-    {
       "id": "nvidia-l4",
       "date": "2023-03-21",
       "name": "NVIDIA L4",
@@ -1278,6 +1251,39 @@ window.HARDWARE_ATLAS = {
         "summary": "Second-generation inference chips power EC2 Inf2 for generative-AI deployment.",
         "details": "General availability of Inf2 expands AWS custom inference hardware for language models and other deep-learning workloads.",
         "dateNote": "Dated to the official availability announcement for this product or cloud service."
+      }
+    },
+    {
+      "id": "ascend-910b",
+      "date": "2023-08-15",
+      "name": "昇腾 910B",
+      "company": "huawei",
+      "category": "accelerator",
+      "kind": "deployment",
+      "summary": "用于讯飞与华为联合推出的星火一体机，支持企业部署专属大模型。",
+      "details": "2023 年 8 月 15 日，科大讯飞与华为公开推出星火一体机。路透社随后确认该硬件采用昇腾 910B，并记录了同年 8 月的技术文档与客户采购；截至其 11 月报道时，华为尚未正式宣布这款芯片。",
+      "sources": [
+        {
+          "url": "https://www.nbd.com.cn/articles/2023-08-15/2961074.html",
+          "title": "每日经济新闻 · 星火一体机发布",
+          "titleEn": "National Business Daily · Spark all-in-one launch",
+          "type": "reporting"
+        },
+        {
+          "url": "https://theprint.in/tech/factbox-how-huawei-plans-to-rival-nvidia-in-the-ai-chip-business/1835738/",
+          "title": "路透社 · ThePrint 授权转载",
+          "titleEn": "Reuters · Syndicated by ThePrint",
+          "type": "reporting"
+        }
+      ],
+      "tags": [],
+      "milestone": false,
+      "dateNote": "日期对应搭载 910B 的星火一体机公开发布，记录客户商用产品节点；不代表芯片首次公布或首次出货。",
+      "en": {
+        "summary": "Powers the Spark all-in-one system introduced by iFLYTEK and Huawei for enterprise LLM deployment.",
+        "details": "iFLYTEK and Huawei introduced the Spark all-in-one system on August 15, 2023. Reuters subsequently identified Ascend 910B as its processor and documented technical guides and customer orders from that August. Huawei had not formally announced the chip by the time of the November report.",
+        "dateNote": "Dates the public introduction of the 910B-powered Spark all-in-one system as a customer product event, rather than the chip’s first announcement or shipment.",
+        "name": "Ascend 910B"
       }
     },
     {

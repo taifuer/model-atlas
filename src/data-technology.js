@@ -245,26 +245,30 @@
     },
     {
       "id": "alexnet",
-      "date": "2012",
+      "date": "2012-12-04",
       "name": "AlexNet",
       "company": "toronto",
       "category": "methods",
       "kind": "paper",
       "summary": "利用 GPU 训练深层卷积网络，在 ImageNet 图像分类中取得显著进展。",
       "details": "论文结合卷积网络、ReLU、数据增强和 dropout，展示了大规模数据与 GPU 训练的作用。研究由多伦多大学团队完成。",
-      "dateNote": "原始会议论文集标注为 2012 年，本站保留年份精度，不推定月日。",
+      "dateNote": "采用 NIPS 2012 官方议程中该论文的 Spotlight 展示日期（12 月 4 日），不作为论文最早公开或 ImageNet 比赛结果公布的日期。",
       "tags": [],
       "milestone": true,
       "sources": [
         {
           "title": "原始资料",
           "url": "https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks"
+        },
+        {
+          "title": "NIPS 2012 官方议程",
+          "url": "https://neurips.cc/archive/2012/Schedule.html"
         }
       ],
       "en": {
         "summary": "A deep convolutional network trained on GPUs advances ImageNet image classification.",
         "details": "The University of Toronto team combines convolutional networks, ReLU, data augmentation, and dropout, demonstrating the value of large datasets and GPU training.",
-        "dateNote": "The original proceedings specify 2012. No month or day is inferred."
+        "dateNote": "Dated to the paper’s December 4 Spotlight presentation in the official NIPS 2012 schedule, rather than its earliest circulation or the ImageNet competition results."
       }
     },
     {
@@ -374,13 +378,13 @@
     {
       "id": "additive-attention",
       "date": "2014-09-01",
-      "name": "Attention · Bahdanau et al.",
+      "name": "加性注意力",
       "company": "montreal",
       "category": "methods",
       "kind": "paper",
       "summary": "让翻译模型在生成每个词时动态关注不同的输入位置。",
-      "details": "论文将对齐与翻译联合学习，缓解编码器把整句话压缩到单个固定向量的限制。这是循环网络中的注意力方法，早于 Transformer。",
-      "dateNote": "日期采用 arXiv 首个公开版本。",
+      "details": "加性注意力也称 Bahdanau 注意力，在循环神经网络翻译模型中联合学习对齐与翻译，缓解单个固定长度向量表示整句话的限制。作者为 Jacobs University Bremen 的 Dzmitry Bahdanau，以及蒙特利尔大学的 Kyunghyun Cho、Yoshua Bengio；该方法早于 Transformer。",
+      "dateNote": "采用 2014-09-01 的 arXiv 首次提交日期；论文后被 ICLR 2015 录用为口头报告。",
       "tags": [],
       "milestone": true,
       "sources": [
@@ -390,9 +394,10 @@
         }
       ],
       "en": {
+        "name": "Additive Attention",
         "summary": "A translation model learns to attend to different input positions as it generates each word.",
-        "details": "Jointly learning alignment and translation reduces reliance on a single fixed-length sentence representation. This attention mechanism uses recurrent networks and predates Transformer.",
-        "dateNote": "Dated to the first public version on arXiv."
+        "details": "Additive attention, also known as Bahdanau attention, jointly learns alignment and translation in a recurrent neural network, reducing reliance on a single fixed-length sentence representation. The authors are Dzmitry Bahdanau of Jacobs University Bremen and Kyunghyun Cho and Yoshua Bengio of Université de Montréal. The method predates Transformer.",
+        "dateNote": "Dated to the first arXiv submission on September 1, 2014; the paper was later accepted as an oral presentation at ICLR 2015."
       }
     },
     {
@@ -569,26 +574,26 @@
     },
     {
       "id": "pytorch",
-      "date": "2017",
+      "date": "2017-01-19",
       "name": "PyTorch",
       "company": "pytorch",
       "category": "frameworks",
       "kind": "release",
       "summary": "以动态图和 Python 工作流支持深度学习研究。",
-      "details": "PyTorch 将张量计算、自动求导与易于调试的编程方式结合。这里记录项目的最初发布年份，后续 2.0 编译能力另设节点。",
-      "dateNote": "PyTorch 官方回顾确认首发于 2017 年；该来源未给出准确月日。",
+      "details": "PyTorch 将张量计算、自动求导与易于调试的编程方式结合。这里记录项目的首次公开发布，后续 2.0 编译能力另设节点。",
+      "dateNote": "2018 年 1 月 19 日的 PyTorch 官方周年文章明确说明，当天是首次公开发布一周年。",
       "tags": [],
       "milestone": true,
       "sources": [
         {
-          "title": "原始资料",
-          "url": "https://pytorch.org/blog/pytorch-adds-new-dev-tools/"
+          "title": "PyTorch 官方周年回顾",
+          "url": "https://pytorch.org/blog/a-year-in/"
         }
       ],
       "en": {
         "summary": "Dynamic computation graphs and a Python workflow support deep-learning research.",
-        "details": "PyTorch combines tensor computation, automatic differentiation, and an approachable debugging workflow. This entry records the initial release year; version 2.0’s compilation features have a separate entry.",
-        "dateNote": "An official PyTorch retrospective dates the first release to 2017 without specifying a day."
+        "details": "PyTorch combines tensor computation, automatic differentiation, and an approachable debugging workflow. This entry records the initial public release; version 2.0’s compilation features have a separate entry.",
+        "dateNote": "PyTorch’s official January 19, 2018 anniversary post explicitly marks one year since its public release."
       }
     },
     {
@@ -689,26 +694,34 @@
     },
     {
       "id": "jax",
-      "date": "2018",
+      "date": "2018-12-07",
       "name": "JAX",
       "company": "google",
       "category": "frameworks",
       "kind": "release",
       "summary": "结合 NumPy 风格接口、自动微分和面向加速器的编译。",
       "details": "JAX 支持可组合的函数变换，把数值程序转化为可求导、可编译和可并行执行的计算。",
-      "dateNote": "采用 Google 官方年度回顾确认的 2018 年；来源未标出首发月日。",
+      "dateNote": "采用 Google 维护的 PyPI 项目中最早一批公开软件包的发布日期：0.0 和 0.1 均发布于 2018 年 12 月 7 日；不采用早期研究原型的论文日期。",
       "tags": [],
       "milestone": false,
       "sources": [
         {
           "title": "原始资料",
           "url": "https://research.google/blog/looking-back-at-googles-research-efforts-in-2018/"
+        },
+        {
+          "title": "JAX 0.0 · PyPI 发布记录",
+          "url": "https://pypi.org/project/jax/0.0/"
+        },
+        {
+          "title": "JAX 0.1 · PyPI 发布记录",
+          "url": "https://pypi.org/project/jax/0.1/"
         }
       ],
       "en": {
         "summary": "NumPy-style programming combines with automatic differentiation and accelerator compilation.",
         "details": "JAX provides composable function transformations for differentiating, compiling, and parallelizing numerical programs.",
-        "dateNote": "The release year is confirmed by Google’s 2018 research retrospective; it does not specify the launch day."
+        "dateNote": "Uses the earliest package-release date in the Google-maintained PyPI project: versions 0.0 and 0.1 were both published on December 7, 2018. This is distinct from the earlier research prototype paper."
       }
     },
     {
@@ -1311,26 +1324,30 @@
     },
     {
       "id": "mlx",
-      "date": "2023",
+      "date": "2023-12-05",
       "name": "MLX",
       "company": "apple",
       "category": "frameworks",
       "kind": "release",
       "summary": "为 Apple 芯片提供支持自动求导与统一内存的数组计算框架。",
       "details": "MLX 提供 Python 与 C++ 接口，支持函数变换和延迟计算。数组可在 CPU 与 GPU 运算中使用统一内存。",
-      "dateNote": "官方项目引用信息标注 2023 年；本站不推定准确月日。",
+      "dateNote": "采用 Apple 维护的 PyPI 项目中最早保留的公开版本 0.0.2 的发布日期：2023 年 12 月 5 日。",
       "tags": [],
       "milestone": false,
       "sources": [
         {
           "title": "原始资料",
           "url": "https://github.com/ml-explore/mlx/blob/main/README.md"
+        },
+        {
+          "title": "MLX 0.0.2 · PyPI 发布记录",
+          "url": "https://pypi.org/project/mlx/0.0.2/"
         }
       ],
       "en": {
         "summary": "An array framework brings automatic differentiation and unified-memory execution to Apple silicon.",
         "details": "MLX offers Python and C++ interfaces, function transformations, and lazy computation. Arrays use unified memory across CPU and GPU operations.",
-        "dateNote": "The official project citation specifies 2023; no precise launch day is inferred."
+        "dateNote": "Dated to December 5, 2023, the release date of version 0.0.2, the earliest retained public release in the Apple-maintained PyPI project."
       }
     },
     {

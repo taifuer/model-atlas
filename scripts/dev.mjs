@@ -14,7 +14,7 @@ const flag = (name, fallback) => {
 const port = Number(flag('--port', process.env.PORT || '5173'));
 const host = flag('--host', '0.0.0.0');
 const files = new Map([
-  ['explore-player.js', ['explore-player.js', 'text/javascript']],
+  ['explore-periods.js', ['explore-periods.js', 'text/javascript']],
   ['seo.js', ['seo.js', 'text/javascript']],
   ['explore.html', ['explore.html', 'text/html']],
   ['catalog.js', ['catalog.js', 'text/javascript']],

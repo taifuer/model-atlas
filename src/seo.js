@@ -53,13 +53,13 @@
     explore: {
       zh: {
         title: '探索 AI 发布与技术进展 · Model Atlas',
-        description: '按时间从旧到新浏览大模型、智能体、算力硬件与关键技术的完整事件流。自动逐条高亮摘要，随时暂停、调整速度或跳转年份；搜索定位匹配事件，全部记录始终可见。',
-        keywords: ['AI 时间线探索', 'AI 历史', '自动播放时间线', '大模型', '智能体', '算力硬件', 'AI 技术'],
+        description: '从最新进展开始，按年月浏览大模型、智能体、算力硬件与关键技术。同日事件集中展示，通过横向年月导航和搜索定位记录，查阅事件摘要、详情与公开来源。',
+        keywords: ['AI 时间线探索', 'AI 发展历史', 'AI 技术进展', '模型发布', '智能体', '算力硬件', '技术里程碑'],
       },
       en: {
         title: 'Explore AI Releases and Milestones · Model Atlas',
-        description: 'Follow every model, agent, hardware and AI technology event from oldest to newest. Autoplay highlights each summary; pause, change speed or jump to a year. Search locates matches while all events stay visible.',
-        keywords: ['AI timeline explorer', 'AI history', 'timeline autoplay', 'language models', 'AI agents', 'AI hardware', 'AI technology'],
+        description: 'Browse AI models, agents, hardware and technology from newest to oldest, grouped by month and day. Navigate by year or month, search all events, and read summaries, details and sources.',
+        keywords: ['AI timeline explorer', 'AI history', 'AI milestones', 'model releases', 'AI agents', 'AI hardware', 'AI technology'],
       },
     },
     about: {

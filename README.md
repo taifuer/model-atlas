@@ -36,7 +36,7 @@ Entries are selected for historical influence or technical significance. This is
 - Filter by organization, year, type, and keyword; share the resulting URL. Organization selection is single by default, with a multi-select switch for comparisons.
 - Switch between detailed cards and a compact list, with newest entries first.
 - Browse annual and monthly counts for the current selection.
-- Open [Explore](https://ai.taifua.com/explore.html?lang=en) from the compass button in the header. It shows summaries for all 318 events across the four timelines, from oldest to newest, and automatically highlights each event in sequence.
+- Open [Explore](https://ai.taifua.com/explore.html?lang=en) from the compass button in the header. It presents all 318 events across the four timelines in monthly groups, from newest to oldest, with same-day events shown together and horizontal year and month navigation.
 - Open an entry for its release scope, specifications, and sources.
 - Use Chinese or English. The home page initially follows the browser language; manual choices are remembered, with dedicated URLs for each language.
 - Browse on desktop or mobile, with keyboard navigation and reduced-motion support.
@@ -45,7 +45,7 @@ Switching multi-select off keeps the most recently selected organization. Existi
 
 Mobile organization filters initially show six organizations plus the selected ones. Additional organizations are available through the disclosure control. Desktop shows all organizations. The Milestones filter hides organizations with no matching entries.
 
-Explore keeps the complete event stream visible without filtering or collapsing entries. Pause or play at any time, move to the previous or next event, choose 0.5×, 1×, or 2× speed, jump to a year, or drag the progress slider. Search highlights and locates matching events while all other events remain visible. Scrolling, touch, keyboard navigation, opening details, or searching pauses playback; reduced-motion preferences start it paused. The Transformer event appears once across timelines. Evaluation references link to AA, Arena, SWE-bench, and MLPerf; model details retain reviewed scores and snapshot dates.
+Explore keeps all records and summaries visible, with the latest events first. Year and month controls navigate within the page, and search highlights and locates matching events. Category badges distinguish models, agents, hardware and technology. Sources and date notes explain whether an event records a paper presentation, package release or commercial deployment. The Transformer event appears once across timelines. Evaluation references link to AA, Arena, SWE-bench, and MLPerf; model details retain reviewed scores and snapshot dates.
 
 The website uses local fonts and icons. There are no analytics, runtime API calls, or third-party scripts. Browser storage saves only language and view preferences.
 
