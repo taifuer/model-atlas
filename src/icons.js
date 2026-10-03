@@ -16,7 +16,8 @@
     crewai: 'crewai-color', warp: 'warp', autogpt: 'autogpt.png',
     amd: 'amd', intel: 'intel', apple: 'apple', huawei: 'huawei', cerebras: 'cerebras-color',
     pytorch: 'pytorch', vllm: 'vllm.png', ggml: 'ggml.jpg', sglang: 'sglang.png',
-    flashattention: 'flashattention.png', 'state-spaces': 'state-spaces.png',
+    // These research projects have generated GitHub avatars, not distinct organization marks.
+    flashattention: 'arxiv', 'state-spaces': 'arxiv',
     toronto: 'university-toronto', montreal: 'university-montreal', berkeley: 'university-berkeley',
     stanford: 'university-stanford', washington: 'university-washington',
     graphcore: 'graphcore', docker: 'docker', kata: 'kata.png', 'cloud-hypervisor': 'cloud-hypervisor.png',

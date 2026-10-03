@@ -51,13 +51,29 @@ test('papers retain project and organization marks across timelines', () => {
   assert.equal(icons.company('google'), 'assets/icons/google-color.svg');
   assert.equal(icons.release(alexnet, 'technology'), 'assets/icons/neurips.ico');
 
-  for (const id of ['flashattention', 'sglang']) {
+  for (const id of ['sglang']) {
     const paper = papers.find(entry => entry.id === id);
     assert.equal(paper.kind, 'paper');
     assert.equal(icons.release(paper, 'technology'), `assets/icons/${id}.png`);
     assert.equal(icons.release(paper, 'models'), `assets/icons/${id}.png`);
     assert.equal(icons.release({ ...paper, kind: 'release' }, 'technology'), `assets/icons/${id}.png`, 'Citing a paper does not turn a software release into a paper');
   }
+});
+
+test('research projects with generated GitHub avatars use the paper platform', () => {
+  const papers = context.window.TECHNOLOGY_ATLAS.releases;
+  for (const company of ['flashattention', 'state-spaces']) {
+    assert.equal(icons.company(company), 'assets/icons/arxiv.svg');
+    const entries = papers.filter(entry => entry.company === company);
+    assert.ok(entries.length > 0);
+    for (const entry of entries) {
+      assert.equal(entry.kind, 'paper');
+      assert.ok(entry.sources.some(source => new URL(source.url).hostname === 'arxiv.org'));
+      assert.equal(icons.release(entry, 'technology'), 'assets/icons/arxiv.svg', entry.id);
+      assert.equal(icons.release(entry, 'explore'), 'assets/icons/arxiv.svg', entry.id);
+    }
+  }
+  assert.equal(icons.release(papers.find(entry => entry.id === 'flashattention-4')), 'assets/icons/arxiv.svg');
 });
 
 test('product and family marks take priority over paper sources', () => {
