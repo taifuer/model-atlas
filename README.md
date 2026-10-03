@@ -36,7 +36,7 @@ Entries are selected for historical influence or technical significance. This is
 - Filter by organization, year, type, and keyword; share the resulting URL. Organization selection is single by default, with a multi-select switch for comparisons.
 - Switch between detailed cards and a compact list, with newest entries first.
 - Browse annual and monthly counts for the current selection.
-- Open [Explore](https://ai.taifua.com/explore.html?lang=en) from the compass button in the header. It presents all 318 events across the four timelines in monthly groups, from newest to oldest, with same-day events shown together and horizontal year and month navigation.
+- Open [Explore](https://ai.taifua.com/explore.html?lang=en) from the compass button in the header. It presents all cataloged events across the four timelines in monthly groups, from newest to oldest, with same-day events shown together and horizontal year and month navigation.
 - Open an entry for its release scope, specifications, and sources.
 - Use Chinese or English. The home page initially follows the browser language; manual choices are remembered, with dedicated URLs for each language.
 - Browse on desktop or mobile, with keyboard navigation and reduced-motion support.
@@ -104,7 +104,7 @@ Edit the website in `src/` and run the npm commands from the repository root. Th
 
 Corrections and additions are welcome through issues or pull requests.
 
-- Explain an entry's historical significance, technical representativeness, or demonstrated influence. Hardware also needs evidence of actual adoption for the specific chip or system.
+- Explain an entry's historical significance, technical representativeness, or demonstrated influence. For hardware, distinguish documented architectural contributions from evidence of adoption for the specific chip or system.
 - Provide reliable sources and event dates; match specifications, prices, and scores to the exact version or configuration. Write original summaries rather than copying source pages.
 - Update Chinese and English together, preserve stable IDs, and leave unverified information absent.
 - Run `npm run check`, `npm test`, and `npm run build`; check mobile and desktop layouts when changing the interface.

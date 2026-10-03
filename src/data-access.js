@@ -1,17 +1,17 @@
 /* Access is maintained per release, never inferred from its organization or tags.
- * Snapshot: 2026-09-30. This describes the referenced model/tool, not the license
+ * Snapshot: 2026-10-03. This describes the referenced model/tool, not the license
  * of its dependencies. Later weight releases do not change timeline dates.
  */
 (() => {
   'use strict';
-  const checkedAt = '2026-09-30';
+  const checkedAt = '2026-10-03';
   const models = {};
   const agents = {};
   const add = (target, status, ids) => ids.trim().split(/\s+/).forEach(id => {
     if (target[id]) throw new Error(`Duplicate access classification: ${id}`);
     target[id] = { status };
   });
-  add(models, 'open', 'transformer llama-1 grok-1 qwen-3-8-flash qwen-3-8-max');
+  add(models, 'open', 'transformer llama-1 grok-1 qwen-3-8-flash qwen-3-8-max bloom stanford-alpaca llava');
   add(models, 'open', `
     gpt-1 gpt-2 bert t5 phi-3 phi-4
     llama-2 qwen-7b mistral-7b mixtral-8x7b gemma-1 llama-3 deepseek-v2 qwen-2 gemma-2
@@ -40,13 +40,20 @@
   `);
 
   add(models, 'closed', 'gpt-6-1-sol gemini-4-argon');
-  for (const id of ['gpt-6-1-sol', 'gemini-4-argon']) models[id].checkedAt = '2026-10-01';
 
   const modelSources = {
+    'llava': 'https://huggingface.co/liuhaotian/LLaVA-13b-delta-v0',
+    'stanford-alpaca': 'https://huggingface.co/tatsu-lab/alpaca-7b-wdiff',
+    'bloom': 'https://huggingface.co/bigscience/bloom',
+    'step-5-preview': 'https://platform.stepfun.ai/docs/en/guides/models/step-5-preview',
+    'step-3-5-flash': 'https://huggingface.co/stepfun-ai/Step-3.5-Flash',
+    'hunyuan-t1': 'https://cloud.tencent.com/document/product/1729/131925',
+    'palm': 'https://developers.googleblog.com/en/palm-api-makersuite-an-approachable-way-to-start-prototyping-and-building-generative-ai-applications/',
+    'gpt-3': 'https://openai.com/index/openai-api/',
     transformer: 'https://github.com/tensorflow/tensor2tensor',
     'grok-1': 'https://x.ai/news/grok-os',
-    'qwen-3-8-flash': 'https://huggingface.co/Qwen/Qwen3.8-Flash-Next',
-    'qwen-3-8-max': 'https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B',
+    'qwen-3-8-flash': 'https://www.qwencloud.com/models/qwen3.8-flash',
+    'qwen-3-8-max': 'https://www.qwencloud.com/models/qwen3.8-max',
     'qwen-3-8-max-0902': 'https://docs.qwencloud.com/changelog/model-updates/qwen3.8-max-upgrade',
     'gpt-1': 'https://github.com/openai/finetune-transformer-lm',
     'gpt-2': 'https://github.com/openai/gpt-2',
@@ -89,21 +96,28 @@
   note(models, 'minimax-m2-7', '首发后已开放权重，发布日期保持不变。', 'Weights became available after launch; the launch date is unchanged.');
   note(models, 'kimi-k3', '首发后已开放权重，发布日期保持不变。', 'Weights became available after launch; the launch date is unchanged.');
   note(models, 'step-5-preview', '截至核对日仅有预览服务；计划开放不视为已经开放。', 'Only the preview service is available at the review date; a planned weight release is not a completed release.');
-  note(models, 'qwen-3-8-flash', '官方确认 Flash 基于开放权重 Flash-Next；托管服务另有上下文和工具配置。', 'The official model card identifies Flash as based on the open Flash-Next checkpoint. Hosted context and tool configurations differ.');
-  note(models, 'qwen-3-8-max', '开源指官方公开的 Qwen3.8-2.4T-A95B 基础版本；Max 托管服务另有多模态和工具配置。', 'Open source refers to the official Qwen3.8-2.4T-A95B checkpoint underlying Max. Hosted multimodal and tool configurations differ.');
+  note(models, 'qwen-3-8-flash', '开源标签指官方明确对应的 Flash-Next 基础权重；Flash 托管版的上下文、工具和服务配置另计。', 'The open-source label refers to the officially linked Flash-Next base weights. Hosted Flash has separate context, tool, and service configurations.');
+  note(models, 'qwen-3-8-max', '开源标签指官方明确对应的 Qwen3.8-2.4T-A95B 基础权重；其为文本模型，Max 托管版另有视觉、工具和服务配置。', 'The open-source label refers to the officially linked Qwen3.8-2.4T-A95B base weights. That checkpoint is text-only; hosted Max adds vision, tools, and service configurations.');
   note(models, 'qwen-3-8-max-0902', '此节点记录 0902 托管服务更新；已公开的初始基础版本单独收录。', 'This entry covers the 0902 hosted update. The initially released base checkpoint is recorded separately.');
 
+  note(models, 'bloom', '权重采用 BigScience RAIL 许可，附使用范围限制。', 'Weights are available under the BigScience RAIL license, with use restrictions.');
+  note(models, 'stanford-alpaca', '首发公开训练数据与配方，权重差分随后开放；恢复模型需原始 LLaMA 权重，差分适用 CC BY-NC 4.0，仅限非商业研究。', 'Training data and the recipe were released first; weight differences followed. Reconstruction requires the original LLaMA weights. The differences use CC BY-NC 4.0 and are restricted to non-commercial research.');
+  note(models, 'llava', '首代以权重差分方式发布，需配合原始 LLaMA 权重使用；基础模型与训练数据的许可仍适用。', 'The original release provides weight differences to apply to LLaMA weights. The base model and training data retain their respective license terms.');
+  note(models, 'palm', '此节点记录原始 PaLM 研究；公开论文不等于开放模型权重，后续 PaLM API 为托管服务。', 'This entry records the original PaLM research. Publication of the paper does not make its weights open; the later PaLM API was a hosted service.');
+  note(models, 'hunyuan-t1', 'T1 为托管模型，官方公布的旧版 API 下线日期为 2026 年 6 月 22 日；后续 Hy3 的开放方式另计。', 'T1 was provided as a hosted model. Its announced legacy API retirement date was June 22, 2026; later Hy3 releases have separate access terms.');
   add(agents, 'open', `
-    autogpt-0-2 aider autogen langgraph swe-agent openhands cline-2 mcp roo-code-3 smolagents
-    goose openai-agents-sdk google-adk codex-cli strands-agents gemini-cli qwen-code deep-agents
+    autogpt-0-2 aider autogen langgraph swe-agent openhands cline-2 mcp a2a smolagents
+    goose openai-agents-sdk google-adk codex-cli warp-2 strands-agents gemini-cli qwen-code deep-agents
     claude-agent-sdk crewai-1 opencode-1 pi-agent kimi-cli-1 openclaw hermes-agent deepseek-harness agent-skills
   `);
   add(agents, 'closed', `
     devin replit-agent windsurf cursor-agent operator deep-research claude-code codex-cloud
-    copilot-coding-agent jules warp-2 kiro chatgpt-agent trae-solo qoder manus-1-5 kiro-cli
+    copilot-coding-agent jules kiro chatgpt-agent trae-solo qoder manus-1-5 kiro-cli
     google-antigravity kiro-autonomous cowork codex-app workbuddy cowork-unified
   `);
   const agentSources = {
+    a2a: 'https://github.com/a2aproject/A2A',
+    'warp-2': 'https://github.com/warpdotdev/warp',
     'autogpt-0-2': 'https://github.com/Significant-Gravitas/AutoGPT/tree/v0.2.0',
     aider: 'https://github.com/Aider-AI/aider',
     autogen: 'https://github.com/microsoft/autogen',
@@ -112,7 +126,6 @@
     openhands: 'https://github.com/OpenHands/OpenHands',
     'cline-2': 'https://github.com/cline/cline/tree/v2.0.0',
     mcp: 'https://github.com/modelcontextprotocol/specification',
-    'roo-code-3': 'https://github.com/RooCodeInc/Roo-Code/tree/v3.0.0',
     smolagents: 'https://github.com/huggingface/smolagents',
     goose: 'https://github.com/block/goose',
     'openai-agents-sdk': 'https://github.com/openai/openai-agents-python',
@@ -136,6 +149,7 @@
   note(agents, 'claude-agent-sdk', 'SDK 代码采用 MIT 许可；底层 Claude Code 运行时与模型不因此变为开源。', 'The SDK is MIT licensed; this does not make the underlying Claude Code runtime or model open source.');
   note(agents, 'agent-skills', '规范与官方示例公开；示例和文档技能分别适用其仓库内的许可。', 'The specification and official examples are public. Examples and document skills retain their individual repository licenses.');
   note(agents, 'codex-cli', '开源的是 CLI 工具，不代表其连接的模型或云端服务开源。', 'The CLI is open source; connected models and hosted services have separate access terms.');
+  note(agents, 'warp-2', 'Warp 客户端于 2026 年 4 月开放源代码；云端服务与连接的模型另计。此处仍记录 Warp 2 首发。', 'Warp opened its client source code in April 2026; cloud services and connected models have separate terms. This entry retains the Warp 2 launch date.');
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

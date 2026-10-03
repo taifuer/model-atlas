@@ -26,6 +26,25 @@ test('release dates are real, sorted, unique events within the research cutoff',
 test('every event has valid metadata and a primary source; supporting reports are explicit', () => {
   const companyIds = new Set(data.companies.map(company => company.id));
   const primaryHosts = new Set(['openai.com', 'developers.openai.com', 'deepmind.google', 'arxiv.org', 'www.anthropic.com', 'platform.claude.com', 'research.google', 'blog.google', 'ai.meta.com', 'research.meta.ai', 'about.fb.com', 'api-docs.deepseek.com', 'github.com', 'huggingface.co', 'qwenlm.github.io', 'qwen.ai', 'docs.qwencloud.com', 'mistral.ai', 'x.ai', 'platform.kimi.ai', 'www.kimi.com', 'z.ai', 'docs.z.ai', 'www.minimax.io', 'mimo.xiaomi.com', 'mimo.mi.com', 'static.stepfun.com', 'www.stepfun.com', 'news.microsoft.com', 'techcommunity.microsoft.com', 'aws.amazon.com', 'nvidianews.nvidia.com', 'blogs.nvidia.com', 'cloud.tencent.com', 'www.tencent.com', 'seed.bytedance.com']);
+  // These additional official/project/author pages were reviewed for the named event.
+  // Keep community-hosted articles and personal author archives URL-specific.
+  const reviewedPrimarySources = new Map([
+    ['https://crfm.stanford.edu/2023/03/13/alpaca.html', 'stanford-alpaca'],
+    ['https://llava-vl.github.io/', 'llava'],
+    ['https://ai.google.dev/gemma/docs/get_started', 'gemma-3'],
+    ['https://developer.cloud.tencent.com/article/2508216', 'hunyuan-t1'],
+    ['https://www.kimi.ai/blog/kimi-k3', 'kimi-k3'],
+    ['https://docs.x.ai/developers/release-notes', 'grok-4-6'],
+    ['https://shital.com/blog/tweets/thread/202501082332-phi-4-official-release/', 'phi-4'],
+    ['https://platform.stepfun.ai/docs/en/guides/models/step-5-preview', 'step-5-preview'],
+  ]);
+  const reviewedHuggingFacePaths = new Map([
+    ['/blog/bloom', 'bloom'],
+    ['/Qwen/Qwen3-Next-80B-A3B-Instruct', 'qwen-3-next'],
+    ['/zai-org/GLM-4.5', 'glm-4-5'],
+    ['/stepfun-ai/Step-3.5-Flash', 'step-3-5-flash'],
+  ]);
+  const isPrimary = source => primaryHosts.has(new URL(source.url).hostname) || reviewedPrimarySources.has(source.url);
   const supportingReports = new Set(['https://www.ithome.com/1/004/705.htm']);
   for (const release of data.releases) {
     assert.ok(companyIds.has(release.company), release.name);
@@ -34,18 +53,24 @@ test('every event has valid metadata and a primary source; supporting reports ar
     assert.ok(release.name && release.summary && release.details && release.tags.length, release.name);
     assert.equal(typeof release.milestone, 'boolean');
     assert.ok(release.sources.length, `Missing source: ${release.name}`);
-    assert.ok(primaryHosts.has(new URL(release.sources[0].url).hostname), `First source must be primary: ${release.name}`);
+    assert.ok(isPrimary(release.sources[0]), `First source must be primary: ${release.name}`);
     for (const source of release.sources) {
       const url = new URL(source.url);
       assert.equal(url.protocol, 'https:');
-      if (!primaryHosts.has(url.hostname)) {
+      if (reviewedPrimarySources.has(source.url)) {
+        assert.equal(release.id, reviewedPrimarySources.get(source.url), `Source does not identify this event: ${source.url}`);
+        if (url.hostname === 'shital.com') assert.match(source.title, /Phi.*作者/);
+      }
+      if (!isPrimary(source)) {
         assert.ok(supportingReports.has(source.url), `Unreviewed supporting source: ${source.url}`);
         assert.match(source.title, /交叉核验/);
         assert.ok(release.dateNote, 'Supporting reports must explain their date role');
       }
       assert.ok(source.title);
       if (url.hostname === 'github.com') assert.match(url.pathname, /^\/(QwenLM|deepseek-ai|MoonshotAI|stepfun-ai)\//);
-      if (url.hostname === 'huggingface.co') assert.match(url.pathname, /^\/meta-llama\//);
+      if (url.hostname === 'huggingface.co' && !/^\/meta-llama\//.test(url.pathname)) {
+        assert.equal(reviewedHuggingFacePaths.get(url.pathname), release.id, `Unreviewed publisher or model version: ${source.url}`);
+      }
     }
   }
 });
@@ -65,7 +90,7 @@ test('research, product launches, and previews retain their distinct date meanin
   assert.equal(find('claude-opus-4-5').date, '2025-11-24');
   assert.equal(find('glm-5-3').date, '2026-08-18');
   assert.equal(find('step-5-preview').kind, 'preview');
-  assert.ok(find('step-5-preview').dateNote && find('step-5-preview').sources.length === 2);
+  assert.ok(find('step-5-preview').dateNote && find('step-5-preview').sources.length >= 2);
   assert.equal(find('deepseek-v4').kind, 'preview');
   assert.equal(find('deepseek-v4-pro-0813').kind, 'release');
   assert.equal(find('deepseek-v4-pro-0813').date, '2026-08-13');
@@ -124,7 +149,7 @@ test('English content covers every model and retains date clarifications', () =>
 test('agent entries have distinct categories, bilingual descriptions, and dated first-party sources', () => {
   vm.runInNewContext(fs.readFileSync(require('node:path').join(__dirname, '../src/data-agents.js'), 'utf8'), context);
   const agents = context.window.AGENT_ATLAS;
-  const hosts = new Set(['www.microsoft.com', 'www.langchain.com', 'cognition.com', 'arxiv.org', 'replit.com', 'windsurf.com', 'cursor.com', 'www.anthropic.com', 'openai.com', 'github.blog', 'blog.google', 'claude.com', 'mariozechner.at', 'openclaw.ai', 'nousresearch.com', 'hermes-agent.nousresearch.com', 'www.deepseek.com', 'www.codebuddy.cn', 'cloud.tencent.com', 'qoder.com', 'qwenlm.github.io', 'kiro.dev', 'www.trae.ai', 'aider.chat', 'github.com', 'opencode.ai', 'manus.im', 'huggingface.co', 'goose-docs.ai', 'developers.googleblog.com', 'aws.amazon.com', 'blog.crewai.com', 'www.warp.dev']);
+  const hosts = new Set(['www.microsoft.com', 'www.langchain.com', 'cognition.com', 'arxiv.org', 'replit.com', 'windsurf.com', 'cursor.com', 'www.anthropic.com', 'openai.com', 'github.blog', 'blog.google', 'antigravity.google', 'claude.com', 'support.claude.com', 'mariozechner.at', 'openclaw.ai', 'nousresearch.com', 'hermes-agent.nousresearch.com', 'www.deepseek.com', 'www.codebuddy.cn', 'cloud.tencent.com', 'qoder.com', 'qwenlm.github.io', 'kiro.dev', 'www.trae.ai', 'aider.chat', 'github.com', 'opencode.ai', 'manus.im', 'huggingface.co', 'goose-docs.ai', 'developers.googleblog.com', 'aws.amazon.com', 'blog.crewai.com', 'www.warp.dev']);
   const ids = new Set();
   let previous = '';
   for (const entry of agents.releases) {

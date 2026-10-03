@@ -1,8 +1,8 @@
-// First-party specifications, checked 2026-09-30. Omitted fields are unverified.
+// First-party specifications, checked 2026-10-03. Omitted fields are unverified.
 // Each variant names its API snapshot, checkpoint, or paper configuration.
 // Numeric limits are exact; K/M strings retain the source convention.
 window.MODEL_ATLAS_SPECS = Object.freeze({
-  "checkedAt": "2026-09-30",
+  "checkedAt": "2026-10-03",
   "entries": {
     "gpt-6-astra": {
       "variants": [
@@ -10,7 +10,6 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           "name": "gpt-6-astra",
           "basis": "api",
           "contextTokens": 1050000,
-          "inputTokens": 922000,
           "outputTokens": 128000,
           "input": [
             "text",
@@ -31,7 +30,6 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           "name": "gpt-6-sol",
           "basis": "api",
           "contextTokens": 1050000,
-          "inputTokens": 922000,
           "outputTokens": 128000,
           "input": [
             "text",
@@ -48,7 +46,6 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           "name": "gpt-6-luna",
           "basis": "api",
           "contextTokens": 1050000,
-          "inputTokens": 922000,
           "outputTokens": 128000,
           "input": [
             "text",
@@ -69,7 +66,6 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           "name": "gpt-5.6-sol",
           "basis": "api",
           "contextTokens": 1050000,
-          "inputTokens": 922000,
           "outputTokens": 128000,
           "input": [
             "text",
@@ -132,7 +128,6 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           "name": "gpt-5.3-codex",
           "basis": "api",
           "contextTokens": 400000,
-          "inputTokens": 272000,
           "outputTokens": 128000,
           "input": [
             "text",
@@ -2004,7 +1999,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       "noteEn": "The QwenCloud hosted version. Input limits vary by thinking configuration; the open Flash-Next checkpoint has separate specifications."
     },
     "gpt-6-1-sol": {
-      "checkedAt": "2026-10-01",
+      "checkedAt": "2026-10-03",
       "variants": [
         {
           "name": "gpt-6.1-sol",
@@ -2025,7 +2020,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "gemini-4-argon": {
-      "checkedAt": "2026-10-01",
+      "checkedAt": "2026-10-03",
       "variants": [
         {
           "name": "Gemini 4 Argon (high)",

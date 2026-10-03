@@ -2,7 +2,7 @@
 (() => {
   const data = {
   "asOf": "2026-10-01",
-  "updatedAt": "2026-10-01",
+  "updatedAt": "2026-10-03",
   "accessFilter": false,
   "companies": [
     {
@@ -190,6 +190,12 @@
       "name": "Cloud Hypervisor",
       "nameEn": "Cloud Hypervisor",
       "aliases": "VMM 虚拟机监控器 Rust Linux Foundation"
+    },
+    {
+      "id": "huggingface",
+      "name": "Hugging Face",
+      "nameEn": "Hugging Face",
+      "aliases": "Transformers 预训练模型库"
     }
   ],
   "categories": {
@@ -573,6 +579,36 @@
       }
     },
     {
+      "id": "layer-normalization",
+      "date": "2016-07-21",
+      "name": "Layer Normalization",
+      "company": "toronto",
+      "category": "methods",
+      "kind": "paper",
+      "summary": "在单个样本的层内计算归一化统计量，减少对批次大小的依赖。",
+      "details": "论文提出逐样本计算均值与方差，在训练和推理中采用相同运算，并研究其对循环神经网络训练稳定性的作用。LayerNorm 随后用于 Transformer。",
+      "dateNote": "采用 arXiv 首版提交日期。",
+      "tags": [],
+      "milestone": true,
+      "sources": [
+        {
+          "title": "论文 · Layer Normalization",
+          "titleEn": "Paper · Layer Normalization",
+          "url": "https://arxiv.org/abs/1607.06450"
+        },
+        {
+          "title": "后续应用 · Transformer",
+          "titleEn": "Subsequent use · Transformer",
+          "url": "https://arxiv.org/abs/1706.03762"
+        }
+      ],
+      "en": {
+        "summary": "Normalization statistics are computed within each example rather than across a batch.",
+        "details": "The paper uses per-example means and variances with the same computation at training and inference, and studies stability in recurrent networks. LayerNorm is subsequently used in the Transformer.",
+        "dateNote": "Uses the first arXiv submission date."
+      }
+    },
+    {
       "id": "pytorch",
       "date": "2017-01-19",
       "name": "PyTorch",
@@ -726,7 +762,7 @@
     },
     {
       "id": "gvisor",
-      "date": "2018-05-03",
+      "date": "2018-05-02",
       "name": "gVisor",
       "company": "google",
       "category": "infrastructure",
@@ -908,6 +944,66 @@
       }
     },
     {
+      "id": "megatron-lm",
+      "date": "2019-09-17",
+      "name": "Megatron-LM",
+      "company": "nvidia",
+      "category": "frameworks",
+      "kind": "paper",
+      "summary": "通过层内模型并行，将大型 Transformer 的训练分布到多块 GPU。",
+      "details": "NVIDIA 团队在 PyTorch 中划分层内计算与通信，展示 83 亿参数语言模型的多 GPU 训练。该路线也被后来的 Turing-NLG 训练采用。",
+      "dateNote": "采用首篇论文的 arXiv 首版日期，不作为代码仓库首次公开日。",
+      "tags": [],
+      "milestone": true,
+      "sources": [
+        {
+          "title": "论文 · Megatron-LM",
+          "titleEn": "Paper · Megatron-LM",
+          "url": "https://arxiv.org/abs/1909.08053"
+        },
+        {
+          "title": "Microsoft · Turing-NLG 训练实践",
+          "titleEn": "Microsoft · Turing-NLG training",
+          "url": "https://www.microsoft.com/en-us/research/blog/turing-nlg-a-17-billion-parameter-language-model-by-microsoft/"
+        }
+      ],
+      "en": {
+        "summary": "Intra-layer model parallelism distributes large Transformer training across GPUs.",
+        "details": "NVIDIA’s approach partitions computation and communication within layers in PyTorch, demonstrating training of an 8.3-billion-parameter language model. The approach is later used for Turing-NLG.",
+        "dateNote": "Uses the first arXiv submission of the paper, not a claim about the repository’s first public release."
+      }
+    },
+    {
+      "id": "huggingface-transformers",
+      "date": "2019-10-09",
+      "name": "Hugging Face Transformers",
+      "company": "huggingface",
+      "category": "frameworks",
+      "kind": "paper",
+      "summary": "用统一接口提供 Transformer 架构和预训练模型，支持研究与应用开发。",
+      "details": "系统论文介绍开源模型库及社区预训练模型集合。统一的模型加载与运行接口成为后续训练、微调和推理工具的重要基础。",
+      "dateNote": "采用系统论文的 arXiv 首版日期；模型库及其前身此前已存在。",
+      "tags": [],
+      "milestone": true,
+      "sources": [
+        {
+          "title": "论文 · Transformers 模型库",
+          "titleEn": "Paper · Transformers library",
+          "url": "https://arxiv.org/abs/1910.03771"
+        },
+        {
+          "title": "后续应用 · vLLM 集成",
+          "titleEn": "Subsequent use · vLLM integration",
+          "url": "https://blog.vllm.ai/2023/06/20/vllm.html"
+        }
+      ],
+      "en": {
+        "summary": "A unified API makes Transformer architectures and pretrained models accessible for research and applications.",
+        "details": "The system paper describes the open-source library and its community collection of pretrained models, providing a common interface used by later training, fine-tuning and inference tools.",
+        "dateNote": "Uses the first arXiv submission of the system paper. The library and its predecessors already existed."
+      }
+    },
+    {
       "id": "scaling-laws",
       "date": "2020-01-23",
       "name": "Neural Scaling Laws",
@@ -1049,6 +1145,36 @@
         "summary": "Images become sequences of patches for Transformer-based visual learning.",
         "details": "ViT embeds image patches as tokens and performs image recognition after substantial pretraining, demonstrating Transformer’s applicability to vision.",
         "dateNote": "Dated to the first public version on arXiv."
+      }
+    },
+    {
+      "id": "clip",
+      "date": "2021-01-05",
+      "name": "CLIP",
+      "company": "openai",
+      "category": "methods",
+      "kind": "announcement",
+      "summary": "通过图文对比预训练学习视觉概念，利用文字描述进行零样本图像分类。",
+      "details": "CLIP 将图像和文本映射到可比较的表示空间，使同一模型能够按自然语言类别描述迁移到不同视觉任务。它也成为后续视觉语言助手的视觉编码基础。",
+      "dateNote": "采用 OpenAI 研究公告日，不是论文随后提交 arXiv 的日期。",
+      "tags": [],
+      "milestone": true,
+      "sources": [
+        {
+          "title": "OpenAI · CLIP 研究公告",
+          "titleEn": "OpenAI · CLIP research announcement",
+          "url": "https://openai.com/index/clip/"
+        },
+        {
+          "title": "后续应用 · LLaVA",
+          "titleEn": "Subsequent use · LLaVA",
+          "url": "https://arxiv.org/abs/2304.08485"
+        }
+      ],
+      "en": {
+        "summary": "Image–text contrastive pretraining enables visual concepts to be recognized from natural-language descriptions.",
+        "details": "CLIP aligns image and text representations for zero-shot transfer across visual tasks. Its visual encoder is also used by later vision-language assistants.",
+        "dateNote": "Uses OpenAI’s research announcement, not the later arXiv paper submission."
       }
     },
     {
@@ -1270,6 +1396,36 @@
         "summary": "Vector fields along conditional probability paths train continuous-flow generative models.",
         "details": "Flow Matching trains without simulating full flow trajectories and develops into a major approach for image and other generative tasks.",
         "dateNote": "Uses the cited paper’s first public arXiv version, not earlier related ideas or later software releases."
+      }
+    },
+    {
+      "id": "react",
+      "date": "2022-10-06",
+      "name": "ReAct",
+      "company": "google",
+      "category": "methods",
+      "kind": "paper",
+      "summary": "交替生成推理步骤和工具动作，让语言模型根据环境反馈调整任务计划。",
+      "details": "普林斯顿大学与 Google Research 的研究结合推理、行动和观察，在问答、事实核验及交互式任务中验证这一智能体方法。",
+      "dateNote": "采用 arXiv 首版提交日期；论文后发表于 ICLR 2023。",
+      "tags": [],
+      "milestone": true,
+      "sources": [
+        {
+          "title": "论文 · ReAct",
+          "titleEn": "Paper · ReAct",
+          "url": "https://arxiv.org/abs/2210.03629"
+        },
+        {
+          "title": "作者 · 研究项目页",
+          "titleEn": "Authors · Research project",
+          "url": "https://react-lm.github.io/"
+        }
+      ],
+      "en": {
+        "summary": "Reasoning steps and tool actions are interleaved so language models can adapt their plans to environment feedback.",
+        "details": "Researchers from Princeton and Google Research combine reasoning, actions and observations, evaluating the approach on question answering, fact verification and interactive tasks.",
+        "dateNote": "Uses the first arXiv submission; the paper later appeared at ICLR 2023."
       }
     },
     {

@@ -12,6 +12,7 @@
     swe: 'swe-agent', pi: 'pi-agent', openclaw: 'openclaw-color',
     nous: 'nousresearch', aider: 'aider.png', cline: 'cline', roo: 'roocode', block: 'block.jpg',
     opencode: 'opencode', manus: 'manus', huggingface: 'huggingface-color',
+    bigscience: 'bigscience.png', llava: 'arxiv',
     crewai: 'crewai-color', warp: 'warp', autogpt: 'autogpt.png',
     amd: 'amd', intel: 'intel', apple: 'apple', huawei: 'huawei', cerebras: 'cerebras-color',
     pytorch: 'pytorch', vllm: 'vllm.png', ggml: 'ggml.jpg', sglang: 'sglang.png',

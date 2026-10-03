@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
   "asOf": "2026-09-29",
-  "updatedAt": "2026-09-29",
+  "updatedAt": "2026-10-03",
   "companies": [
     {
       "id": "anthropic",
@@ -122,11 +122,6 @@ window.AGENT_ATLAS = {
       "id": "cline",
       "name": "Cline",
       "aliases": "Claude Dev Saoud Rizwan"
-    },
-    {
-      "id": "roo",
-      "name": "Roo Code",
-      "aliases": "Roo Cline RooCode"
     },
     {
       "id": "block",
@@ -394,8 +389,8 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "announcement",
       "summary": "通过自然语言构建应用，将环境设置、编码和运行整合进工作流。",
-      "details": "采用所引官方介绍页标注的日期，记录产品介绍而非推定最初内测日期。",
-      "dateNote": "官方页面标注 2024 年 9 月 16 日，后续另有更新日期。",
+      "details": "官方介绍早期产品的环境配置、依赖安装、编码与部署流程。当时已向 Replit Core 订阅用户提供 alpha 访问。",
+      "dateNote": "采用 9 月 16 日的官方产品介绍文章日期。正文说明产品此前一周已推出，此日期不作为首次开放日。",
       "tags": [
         "编程",
         "工具使用"
@@ -409,8 +404,8 @@ window.AGENT_ATLAS = {
       ],
       "en": {
         "summary": "Natural-language app building combines setup, coding, and execution.",
-        "details": "Uses the date on the cited official introduction, not an inferred first internal test.",
-        "dateNote": "The official page is dated September 16, 2024 and also displays a later update date."
+        "details": "The official introduction describes environment setup, dependency installation, coding and deployment. Alpha access was already available to Replit Core subscribers.",
+        "dateNote": "Uses the official introduction dated September 16. The article says the product launched the previous week; this is not its first-availability date."
       }
     },
     {
@@ -519,33 +514,6 @@ window.AGENT_ATLAS = {
         "summary": "An open protocol standardizes connections between models, data, and tools.",
         "details": "MCP is infrastructure for the agent ecosystem, not an autonomous agent itself.",
         "dateNote": ""
-      }
-    },
-    {
-      "id": "roo-code-3",
-      "date": "2024-12-18",
-      "name": "Roo Cline 3.0 / Roo Code",
-      "company": "roo",
-      "category": "coding",
-      "kind": "release",
-      "summary": "从 Cline 演进的开源编辑器 Agent，支持读写项目文件与执行终端命令。",
-      "details": "记录项目的 3.0 版本，保留当时的 Roo Cline 名称，便于追溯后来的 Roo Code。",
-      "dateNote": "采用官方版本记录的日期，不作为 Roo Code 名称启用日。",
-      "tags": [
-        "编程",
-        "工具使用"
-      ],
-      "milestone": false,
-      "sources": [
-        {
-          "title": "官方 · v3.0.0 发布记录",
-          "url": "https://github.com/RooCodeInc/Roo-Code/releases/tag/v3.0.0"
-        }
-      ],
-      "en": {
-        "summary": "An open-source editor agent derived from Cline, with project-file editing and terminal tools.",
-        "details": "Records version 3.0 under its earlier Roo Cline name, linking it to the later Roo Code project.",
-        "dateNote": "Uses the release record, not the date the Roo Code name was introduced."
       }
     },
     {
@@ -735,6 +703,34 @@ window.AGENT_ATLAS = {
         "summary": "Tools for building, orchestrating, evaluating and deploying agents, including multi-agent applications.",
         "details": "Google released the open-source ADK at Cloud Next, making its agent development framework available to developers.",
         "dateNote": ""
+      }
+    },
+    {
+      "id": "a2a",
+      "date": "2025-04-09",
+      "name": "Agent2Agent · A2A",
+      "company": "google",
+      "category": "framework",
+      "kind": "announcement",
+      "summary": "开放跨厂商智能体协作协议，支持能力发现、任务委派与状态同步。",
+      "details": "Google 与技术伙伴公布 A2A 协议草案和示例。它连接不同系统中的智能体，与侧重工具和上下文接入的 MCP 互补。",
+      "dateNote": "记录开放协议的首次公告；当时公布的是草案，不是后续生产版本。",
+      "tags": [
+        "工作流",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Google · A2A 首发公告",
+          "titleEn": "Google · A2A announcement",
+          "url": "https://developers.googleblog.com/a2a-a-new-era-of-agent-interoperability/"
+        }
+      ],
+      "en": {
+        "summary": "An open protocol supports agent discovery, task delegation and status updates across vendors.",
+        "details": "Google and its partners introduce the A2A draft specification and examples. It connects agents across systems and complements MCP’s focus on tools and context.",
+        "dateNote": "Records the initial open-protocol announcement and draft, not a later production release."
       }
     },
     {
@@ -1100,9 +1096,9 @@ window.AGENT_ATLAS = {
       "company": "anthropic",
       "category": "harness",
       "kind": "release",
-      "summary": "开放 Claude Code 背后的执行能力，支持构建面向不同工作的 Agent。",
-      "details": "SDK 处理上下文、工具与任务循环，适合在编程之外构建长期运行的工作流。",
-      "dateNote": "",
+      "summary": "Claude Code SDK 更名为 Claude Agent SDK，将开发范围扩展到通用智能体。",
+      "details": "沿用 Claude Code 的上下文管理、工具执行和任务循环，支持编程之外的研究、文档与工作流程。",
+      "dateNote": "记录 SDK 更名与扩展公告；Claude Code SDK 及其执行能力此前已经提供。",
       "tags": [
         "执行环境",
         "任务规划"
@@ -1115,9 +1111,9 @@ window.AGENT_ATLAS = {
         }
       ],
       "en": {
-        "summary": "The execution capabilities behind Claude Code become reusable for other agents.",
-        "details": "The SDK handles context, tools, and task loops for workflows beyond coding.",
-        "dateNote": ""
+        "summary": "Claude Code SDK becomes Claude Agent SDK, expanding its focus to general-purpose agents.",
+        "details": "It builds on Claude Code’s context management, tool execution and agent loop for research, documents and workflows beyond coding.",
+        "dateNote": "Records the SDK rename and expanded scope, not the first availability of the earlier Claude Code SDK."
       }
     },
     {
@@ -1276,6 +1272,11 @@ window.AGENT_ATLAS = {
       "milestone": true,
       "sources": [
         {
+          "title": "Google · 首发公告",
+          "titleEn": "Google · Launch announcement",
+          "url": "https://antigravity.google/blog/introducing-google-antigravity"
+        },
+        {
           "title": "官方 · Antigravity 发布",
           "url": "https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/"
         }
@@ -1357,6 +1358,11 @@ window.AGENT_ATLAS = {
       "milestone": true,
       "sources": [
         {
+          "title": "Anthropic · 历史发布日志",
+          "titleEn": "Anthropic · Release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
+        },
+        {
           "title": "官方 · 发布记录",
           "url": "https://claude.com/blog/cowork-research-preview"
         }
@@ -1374,9 +1380,9 @@ window.AGENT_ATLAS = {
       "company": "moonshot",
       "category": "coding",
       "kind": "release",
-      "summary": "在终端中读写项目文件、执行命令并调用子 Agent，1.0 版增加账户登录入口。",
-      "details": "官方更新日志记录 1.0 版加入登录与退出命令，并修复子 Agent 的审批处理。项目此前已有 0.x 版本。",
-      "dateNote": "记录 1.0 版，不是首个开发版本。原仓库后续归档并指向 Kimi Code CLI。",
+      "summary": "终端编程工具进入 1.0 版本，加入账户登录与退出命令。",
+      "details": "Kimi CLI 支持读写项目文件、运行命令及调用子智能体。此节点记录 1.0 版的账户接入更新和子智能体审批修复。",
+      "dateNote": "采用官方更新日志的 2026-01-27 日期；此前已有 0.x 版本，1.0 不代表该工具首次公开。",
       "tags": [
         "编程",
         "工具使用"
@@ -1389,9 +1395,9 @@ window.AGENT_ATLAS = {
         }
       ],
       "en": {
-        "summary": "A terminal agent edits project files, runs commands and uses subagents; version 1.0 adds account login.",
-        "details": "The official changelog records login and logout commands and a subagent approval fix. Earlier 0.x versions preceded it.",
-        "dateNote": "Records version 1.0, not the first development build. The original repository was later archived in favor of Kimi Code CLI."
+        "summary": "Version 1.0 of the terminal coding tool adds account login and logout commands.",
+        "details": "Kimi CLI edits project files, runs commands and uses subagents. This entry records the account-access update and subagent approval fix in version 1.0.",
+        "dateNote": "Uses January 27, 2026 from the official changelog. Earlier 0.x versions existed; version 1.0 is not the tool’s public debut."
       }
     },
     {
@@ -1493,7 +1499,7 @@ window.AGENT_ATLAS = {
         "任务规划",
         "工具使用"
       ],
-      "milestone": true,
+      "milestone": false,
       "sources": [
         {
           "title": "官方 · WorkBuddy 更新日志",

@@ -522,6 +522,7 @@ body.modal-open .back-to-top { display: none; }
 .fact-chip:hover { border-color: #adc0b2; background: var(--accent-soft); color: var(--accent); }
 .fact-label, .fact-unit { color: var(--muted); font-size: 11px; }
 .fact-label { margin-right: 1px; }
+.fact-model { color: var(--body); font-weight: 500; padding-right: 5px; margin-right: 2px; border-right: 1px solid var(--line); overflow-wrap: anywhere; }
 .fact-unit { white-space: nowrap; }
 .fact-separator { color: #a2aba5; margin-inline: 1px; }
 .detail-specs, .detail-pricing, .detail-scores, .detail-classification, .detail-references { margin: 18px 0 0; padding: 14px 0 0; border: 0; border-top: 1px solid var(--line); }

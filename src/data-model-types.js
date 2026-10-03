@@ -1,7 +1,7 @@
 // Input-modality classifications are reviewed per release, not inferred from company or family names.
 (() => {
   const data = {
-  "checkedAt": "2026-09-30",
+  "checkedAt": "2026-10-03",
   "entries": {
     "transformer": {
       "category": "text",
@@ -192,7 +192,7 @@
     "claude-3-5": {
       "category": "multimodal",
       "sources": [
-        "https://platform.claude.com/docs/en/release-notes/overview#june-20th-2024"
+        "https://www.anthropic.com/news/claude-3-5-sonnet"
       ]
     },
     "gemma-2": {
@@ -365,7 +365,8 @@
     "claude-4": {
       "category": "multimodal",
       "sources": [
-        "https://www.anthropic.com/news/claude-4"
+        "https://www.anthropic.com/news/claude-4",
+        "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-4.html"
       ]
     },
     "deepseek-r1-0528": {
@@ -408,7 +409,7 @@
     "claude-opus-4-1": {
       "category": "multimodal",
       "sources": [
-        "https://www.anthropic.com/news/claude-opus-4-1"
+        "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-opus-4-1.html"
       ]
     },
     "gpt-oss": {
@@ -672,7 +673,7 @@
     "qwen-3-6-max-preview": {
       "category": "text",
       "sources": [
-        "https://docs.qwencloud.com/developer-guides/text-generation/quickstart"
+        "https://www.qwencloud.com/models/qwen3.6-max-preview"
       ]
     },
     "gpt-5-5": {
@@ -684,9 +685,11 @@
     "mimo-v2-5": {
       "category": "multimodal",
       "sources": [
-        "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro",
-        "https://mimo.mi.com/docs/en-US/updates/model"
-      ]
+        "https://huggingface.co/XiaomiMiMo/MiMo-V2.5",
+        "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro"
+      ],
+      "note": "家族中的 MiMo-V2.5 支持图像、视频和音频输入；Pro 为文本模型。",
+      "noteEn": "Within this family, MiMo-V2.5 accepts images, video, and audio; Pro is a text model."
     },
     "deepseek-v4": {
       "category": "text",
@@ -802,7 +805,7 @@
     "qwen-3-8-max": {
       "category": "multimodal",
       "sources": [
-        "https://docs.qwencloud.com/developer-guides/text-generation/quickstart"
+        "https://www.qwencloud.com/models/qwen3.8-max"
       ]
     },
     "grok-4-6": {
@@ -816,7 +819,9 @@
       "sources": [
         "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
         "https://huggingface.co/Qwen/Qwen3.8-27B"
-      ]
+      ],
+      "note": "多模态标签对应 8 月 14 日加入的 27B 视觉语言型号；8 月 12 日首发的 2.4T-A95B 为文本模型。",
+      "noteEn": "The multimodal label refers to the 27B vision-language model added on August 14. The 2.4T-A95B model released on August 12 is text-only."
     },
     "deepseek-v4-pro-0813": {
       "category": "text",
@@ -905,7 +910,7 @@
     "step-5-preview": {
       "category": "multimodal",
       "sources": [
-        "https://www.stepfun.com/step-5-preview"
+        "https://platform.stepfun.ai/docs/en/guides/models/step-5-preview"
       ]
     },
     "grok-4-7": {
@@ -944,14 +949,35 @@
       "sources": [
         "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
       ],
-      "checkedAt": "2026-10-01"
+      "checkedAt": "2026-10-03"
     },
     "gemini-4-argon": {
       "category": "multimodal",
       "sources": [
-        "https://deepmind.google/models/gemini/"
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/"
       ],
-      "checkedAt": "2026-10-01"
+      "checkedAt": "2026-10-03"
+    },
+    "bloom": {
+      "category": "text",
+      "sources": [
+        "https://huggingface.co/bigscience/bloom"
+      ]
+    },
+    "stanford-alpaca": {
+      "category": "text",
+      "sources": [
+        "https://crfm.stanford.edu/2023/03/13/alpaca.html"
+      ]
+    },
+    "llava": {
+      "category": "multimodal",
+      "sources": [
+        "https://arxiv.org/abs/2304.08485",
+        "https://huggingface.co/liuhaotian/LLaVA-13b-delta-v0"
+      ],
+      "note": "按首版论文的图像与文本输入、文本输出分类。",
+      "noteEn": "Classified by the original paper’s image and text inputs and text output."
     }
   }
 };

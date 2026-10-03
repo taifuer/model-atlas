@@ -6,6 +6,8 @@ These local images identify the organizations and products in Model Atlas. Brand
 
 All SVGs except those listed below are from `@lobehub/icons-static-svg` **1.95.1**, published by [LobeHub](https://github.com/lobehub/lobe-icons). Copyright (c) 2023 LobeHub. MIT license: `LICENSE-LOBEHUB.txt`. SVGs are copied without modification.
 
+`bigscience.png` is the public profile mark of the [BigScience workshop](https://github.com/bigscience-workshop), retrieved unchanged at 96 px on 2026-10-03 from https://github.com/bigscience-workshop.png?size=96. It identifies the research collaboration; the mark remains the property of its owner. LLaVA uses its paper's arXiv source mark as a fallback.
+
 ## Additional sources
 
 - `xiaomi.svg`: [Simple Icons](https://github.com/simple-icons/simple-icons/blob/develop/icons/xiaomi.svg), retrieved 2026-09-29. CC0 1.0: `LICENSE-SIMPLE-ICONS.txt`.

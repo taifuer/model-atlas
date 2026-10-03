@@ -40,6 +40,10 @@ test('new releases retain availability and independently dated specifications', 
   const prices = context.window.MODEL_ATLAS_PRICES;
   assert.equal(prices.entries['gemini-4-argon'].variants[0].announced, true);
   assert.equal(prices.entries['gpt-6-1-sol'].variants[0].tiers[1].output, 15);
-  assert.ok(prices.entries['gpt-6-1-sol'].checkedAt > prices.checkedAt);
+  for (const entry of Object.values(prices.entries)) {
+    const reviewed = entry.checkedAt || prices.checkedAt;
+    assert.equal(new Date(reviewed + 'T00:00:00Z').toISOString().slice(0, 10), reviewed);
+    assert.ok(reviewed <= models.updatedAt, 'A price review cannot postdate the site update');
+  }
   assert.equal(context.window.MODEL_ATLAS.updatedAt, models.updatedAt, 'Access metadata must not overwrite the newer site update date');
 });

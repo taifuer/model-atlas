@@ -2,7 +2,7 @@
  * Numeric input/output pairs are per one million tokens, in the stated currency.
  * Preserve version, region, tiers, and expiry when updating. */
 window.MODEL_ATLAS_PRICES = Object.freeze({
-  "checkedAt": "2026-09-30",
+  "checkedAt": "2026-10-03",
   "unitTokens": 1000000,
   "inputType": "uncached-text",
   "outputType": "text",
@@ -110,8 +110,8 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
             "https://developers.openai.com/api/docs/models/gpt-5.6",
             "https://developers.openai.com/api/docs/pricing"
           ],
-          "note": "输入超过 272K tokens 后，整次请求采用长上下文费率。",
-          "noteEn": "For prompts over 272K input tokens, long-context rates apply to the full request."
+          "note": "输入超过 272K tokens 后，整次请求采用长上下文费率。当前为优惠价，至少持续至 2026 年 11 月 21 日；官方未公布确定结束日期。",
+          "noteEn": "For prompts over 272K input tokens, long-context rates apply to the full request. These promotional rates are available at least through November 21, 2026; no fixed end date has been announced."
         }
       ]
     },
@@ -1030,8 +1030,8 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
           ]
         }
       ],
-      "note": "全球 API 端点的标准价格；达到长上下文阈值后整次请求按高档费率计费。美国区域端点另加 10%，Priority 档另行定价。",
-      "noteEn": "Standard global-endpoint rates. At the long-context threshold, all request tokens use the higher tier. The US regional endpoint adds 10%; Priority has separate rates."
+      "note": "全球 API 端点的标准价格；达到长上下文阈值后整次请求按高档费率计费。Priority 档另行定价。",
+      "noteEn": "Standard global-endpoint rates. At the long-context threshold, all request tokens use the higher tier. Priority has separate rates."
     },
     "glm-5-3-flash": {
       "variants": [
@@ -1390,7 +1390,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
             }
           ],
           "sources": [
-            "https://mimo.mi.com/docs/pricing"
+            "https://mimo.mi.com/docs/en-US/price/pay-as-you-go"
           ]
         },
         {
@@ -1405,7 +1405,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
             }
           ],
           "sources": [
-            "https://mimo.mi.com/docs/pricing"
+            "https://mimo.mi.com/docs/en-US/price/pay-as-you-go"
           ]
         }
       ],
@@ -1426,7 +1426,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
             }
           ],
           "sources": [
-            "https://mimo.mi.com/docs/pricing"
+            "https://mimo.mi.com/docs/en-US/price/pay-as-you-go"
           ]
         },
         {
@@ -1441,7 +1441,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
             }
           ],
           "sources": [
-            "https://mimo.mi.com/docs/pricing"
+            "https://mimo.mi.com/docs/en-US/price/pay-as-you-go"
           ]
         }
       ],
@@ -1449,7 +1449,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       "noteEn": "USD rates for the overseas real-time API. Mainland China has separate CNY rates; Batch and Ultraspeed are excluded. V2.5 API retirement is scheduled for October 21, 2026."
     },
     "gpt-6-1-sol": {
-      "checkedAt": "2026-10-01",
+      "checkedAt": "2026-10-03",
       "variants": [
         {
           "name": "gpt-6.1-sol",
@@ -1475,7 +1475,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       ]
     },
     "gemini-4-argon": {
-      "checkedAt": "2026-10-01",
+      "checkedAt": "2026-10-03",
       "variants": [
         {
           "name": "Gemini 4 Argon",

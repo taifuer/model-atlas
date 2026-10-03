@@ -1,7 +1,7 @@
 /* Curated hardware history. Event dates and configurations retain explicit source scope. */
 window.HARDWARE_ATLAS = {
   "asOf": "2026-10-01",
-  "updatedAt": "2026-10-01",
+  "updatedAt": "2026-10-03",
   "accessFilter": false,
   "companies": [
     {
@@ -57,6 +57,12 @@ window.HARDWARE_ATLAS = {
       "name": "Graphcore",
       "nameEn": "Graphcore",
       "aliases": "IPU Colossus GC200 Bow Bow-2000"
+    },
+    {
+      "id": "meta",
+      "name": "Meta",
+      "nameEn": "Meta",
+      "aliases": "Facebook MTIA 推荐 推理"
     }
   ],
   "categories": {
@@ -190,19 +196,24 @@ window.HARDWARE_ATLAS = {
     },
     {
       "id": "google-tpu",
-      "date": "2016-05-19",
+      "date": "2016-05-18",
       "name": "Google TPU",
       "company": "google",
       "category": "accelerator",
       "kind": "announcement",
       "summary": "Google 公开介绍自研张量处理器，为神经网络推理提供专用硬件。",
       "details": "第一代 TPU 已在 Google 内部运行。它以定制计算路径提高机器学习推理效率。",
-      "dateNote": "采用官方技术介绍的 2016-05-19 日期；不是内部首次部署或云服务上线日。",
+      "dateNote": "采用 Google 技术公告的 2016-05-18 日期；第一代 TPU 此前已在内部部署。",
       "tags": [
         "AI 加速器"
       ],
       "milestone": true,
       "sources": [
+        {
+          "title": "Google · TPU 技术公告",
+          "titleEn": "Google · TPU announcement",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/google-supercharges-machine-learning-tasks-with-custom-chip"
+        },
         {
           "title": "官方发布资料",
           "url": "https://cloud.google.com/blog/products/gcp/google-supercharges-machine-learning-tasks-with-custom-chip"
@@ -211,7 +222,7 @@ window.HARDWARE_ATLAS = {
       "en": {
         "summary": "Google describes its custom tensor processor for neural-network inference.",
         "details": "The first TPU was already deployed inside Google, using specialized computation to improve machine-learning inference efficiency.",
-        "dateNote": "Uses the official technical article dated 2016-05-19, not the first internal deployment or a cloud-service launch."
+        "dateNote": "Uses Google’s May 18, 2016 technical announcement. The first-generation TPU had already been deployed internally."
       }
     },
     {
@@ -1342,7 +1353,7 @@ window.HARDWARE_ATLAS = {
         "dateNote": "Dated to the official announcement; availability is described in the original source."
       },
       "hardware": {
-        "variant": "H200 SXM · 1 GPU · 预先规格",
+        "variant": "H200 SXM · 1 GPU · 初步规格",
         "variantEn": "H200 SXM · 1 GPU · Preliminary",
         "checkedAt": "2026-10-01",
         "facts": [
@@ -1475,6 +1486,11 @@ window.HARDWARE_ATLAS = {
       "details": "v5p 面向训练吞吐与规模扩展，和 v5e 的成本侧重形成不同产品定位。",
       "sources": [
         {
+          "title": "Google · Gemini 与 TPU v5p 公告",
+          "titleEn": "Google · Gemini and TPU v5p announcement",
+          "url": "https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/"
+        },
+        {
           "url": "https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5p-and-ai-hypercomputer",
           "title": "官方发布资料",
           "titleEn": "Official announcement"
@@ -1482,11 +1498,11 @@ window.HARDWARE_ATLAS = {
       ],
       "tags": [],
       "milestone": false,
-      "dateNote": "日期为所列资料中的产品公布日，后续供应安排见详情。",
+      "dateNote": "采用 Google 在 2023-12-06 的 Gemini 公告中公布 TPU v5p 的日期；Cloud 技术介绍页现标注 12 月 7 日。",
       "en": {
         "summary": "A fifth-generation TPU focused on large-model training is announced with AI Hypercomputer.",
         "details": "v5p emphasizes training throughput and scale, complementing the cost focus of v5e.",
-        "dateNote": "Dated to the product announcement in the cited source; availability is described separately."
+        "dateNote": "Uses the TPU v5p announcement in Google’s December 6, 2023 Gemini article. The Cloud technical article is currently dated December 7."
       },
       "hardware": {
         "variant": "TPU v5p · 1 chip",
@@ -1630,8 +1646,9 @@ window.HARDWARE_ATLAS = {
       "milestone": false,
       "sources": [
         {
-          "title": "官方发布资料",
-          "url": "https://newsroom.intel.com/artificial-intelligence/vision-2024-gaudi-3-ai-accelerator"
+          "title": "Intel · Gaudi 3 发布归档",
+          "titleEn": "Intel · Gaudi 3 announcement archive",
+          "url": "https://www.intel.com/content/www/us/en/newsroom/news/vision-2024-gaudi-3-ai-accelerator.html"
         }
       ],
       "en": {
@@ -1657,10 +1674,89 @@ window.HARDWARE_ATLAS = {
           }
         ],
         "sources": [
-          "https://newsroom.intel.com/artificial-intelligence/vision-2024-gaudi-3-ai-accelerator"
+          "https://www.intel.com/content/www/us/en/newsroom/news/vision-2024-gaudi-3-ai-accelerator.html"
         ],
         "note": "规格对应上述型号，以所列原始资料为准；其他封装与整机配置可能不同。",
         "noteEn": "Specifications apply to the named configuration in the cited source. Other form factors and complete systems may differ."
+      }
+    },
+    {
+      "id": "meta-mtia-v2",
+      "date": "2024-04-10",
+      "name": "Meta MTIA · 第二代",
+      "company": "meta",
+      "category": "accelerator",
+      "kind": "announcement",
+      "summary": "面向推荐与排序推理的自研加速器，在 Meta 数据中心运行生产模型。",
+      "details": "第二代 MTIA 结合专用计算、片上 SRAM 和 PyTorch 软件栈，服务 Facebook 与 Instagram 的推荐和广告模型。此时的应用重点是推荐推理。",
+      "dateNote": "采用 Meta 的第二代产品技术公告日；公告确认芯片已部署，不作为最早内部上线日。",
+      "tags": [
+        "AI 加速器"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Meta · 第二代 MTIA 技术公告",
+          "titleEn": "Meta · Next-generation MTIA",
+          "url": "https://ai.meta.com/blog/next-generation-meta-training-inference-accelerator-AI-MTIA/"
+        },
+        {
+          "title": "Meta · 生产部署说明",
+          "titleEn": "Meta · Production deployment",
+          "url": "https://about.fb.com/news/2024/04/introducing-our-next-generation-infrastructure-for-ai/"
+        }
+      ],
+      "en": {
+        "summary": "Meta’s custom accelerator serves production ranking and recommendation models in its data centers.",
+        "details": "The second generation combines specialized compute, on-chip SRAM and a PyTorch software stack for Facebook and Instagram recommendation and advertising models. Its deployed focus is recommendation inference.",
+        "dateNote": "Uses Meta’s second-generation technical announcement. Deployment was already underway; this is not the first internal deployment date.",
+        "name": "Meta MTIA · Second generation"
+      },
+      "hardware": {
+        "variant": "MTIA · 2nd generation · 1 accelerator",
+        "checkedAt": "2026-10-03",
+        "facts": [
+          {
+            "label": "BF16·稠密",
+            "labelEn": "BF16 · Dense",
+            "value": "177 TFLOPS",
+            "chip": true,
+            "metric": "compute",
+            "precision": "BF16",
+            "sparsity": "dense",
+            "scope": "accelerator",
+            "estimate": false
+          },
+          {
+            "label": "内存",
+            "labelEn": "Memory",
+            "value": "128 GB LPDDR5",
+            "chip": true
+          },
+          {
+            "label": "内存带宽",
+            "labelEn": "Memory bandwidth",
+            "value": "204.8 GB/s",
+            "chip": true
+          },
+          {
+            "label": "片上 SRAM",
+            "labelEn": "On-chip SRAM",
+            "value": "256 MB",
+            "chip": false
+          },
+          {
+            "label": "TDP",
+            "labelEn": "TDP",
+            "value": "90 W",
+            "chip": true
+          }
+        ],
+        "sources": [
+          "https://ai.meta.com/blog/next-generation-meta-training-inference-accelerator-AI-MTIA/"
+        ],
+        "note": "规格对应第二代单个加速器。BF16 为官方 GEMM 稠密理论峰值；128 GB 与 204.8 GB/s 对应片外 LPDDR5，不是片上 SRAM 或互连带宽。TDP 不等于整机功耗。",
+        "noteEn": "Specifications refer to one second-generation accelerator. BF16 is the stated dense GEMM theoretical peak. Capacity and bandwidth refer to off-chip LPDDR5, not SRAM or interconnect bandwidth. TDP is not complete-system power."
       }
     },
     {
@@ -2096,11 +2192,11 @@ window.HARDWARE_ATLAS = {
       ],
       "tags": [],
       "milestone": true,
-      "dateNote": "公告正文明确事件发生于 2025-04-10；页面发表日期为 4 月 24 日。芯片组成另据华为团队系统论文核对。",
+      "dateNote": "官方公告明确发布活动发生于 2025-04-10。910C 芯片组成另据华为团队的系统论文核对。",
       "en": {
         "summary": "384 Ascend 910C processors are connected into a unified compute system.",
         "details": "CloudMatrix 384 is a cloud instance built on Atlas 900 A3. This entry dates the system announcement, not the first release of the 910C chip.",
-        "dateNote": "The announcement explicitly dates the event to 2025-04-10, while the page was published April 24. Chip composition is checked against the Huawei-authored system paper.",
+        "dateNote": "The official announcement dates the event to April 10, 2025. The 910C chip configuration is documented in the Huawei-authored system paper.",
         "name": "Ascend 910C · CloudMatrix 384"
       }
     },
@@ -2188,18 +2284,18 @@ window.HARDWARE_ATLAS = {
       "details": "128 GB 为 CPU 与 GPU 共享的一致性内存。此处记录交付公告，与此前 Project DIGITS 和 DGX Spark 的产品预告区分。",
       "sources": [
         {
-          "url": "https://blogs.nvidia.cn/blog/nvidia-dgx-spark-arrives-for-worlds-ai-developers/",
-          "title": "官方发布资料",
-          "titleEn": "Official announcement"
+          "title": "NVIDIA · DGX Spark 交付公告",
+          "titleEn": "NVIDIA · DGX Spark shipping announcement",
+          "url": "https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-DGX-Spark-Arrives-for-Worlds-AI-Developers/default.aspx"
         }
       ],
       "tags": [],
       "milestone": false,
-      "dateNote": "日期为 NVIDIA 宣布开始交付的 2025-10-13。",
+      "dateNote": "记录 10 月 13 日的交付公告；公告说明设备自 10 月 15 日起可订购。",
       "en": {
         "summary": "GB10 and unified memory move into a desktop system for local model development.",
         "details": "128 GB is coherent memory shared by CPU and GPU. This entry records the shipping announcement separately from earlier Project DIGITS and DGX Spark previews.",
-        "dateNote": "Dated to NVIDIA’s 2025-10-13 shipping announcement."
+        "dateNote": "Records the October 13 shipping announcement, which states that ordering opens on October 15."
       },
       "hardware": {
         "variant": "NVIDIA DGX Spark",
@@ -2213,7 +2309,7 @@ window.HARDWARE_ATLAS = {
           }
         ],
         "sources": [
-          "https://blogs.nvidia.cn/blog/nvidia-dgx-spark-arrives-for-worlds-ai-developers/"
+          "https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-DGX-Spark-Arrives-for-Worlds-AI-Developers/default.aspx"
         ],
         "note": "规格对应所注明的芯片、板卡或系统配置；来源为发布资料或有明确出处的报道。",
         "noteEn": "Specifications apply to the named chip, card, or system configuration and are drawn from the linked announcement or attributed reporting."
@@ -2390,7 +2486,7 @@ window.HARDWARE_ATLAS = {
       "tags": [
         "AI 加速器"
       ],
-      "milestone": true,
+      "milestone": false,
       "sources": [
         {
           "title": "官方发布资料",
@@ -2481,7 +2577,7 @@ window.HARDWARE_ATLAS = {
       "tags": [
         "GPU"
       ],
-      "milestone": true,
+      "milestone": false,
       "sources": [
         {
           "title": "官方发布资料",

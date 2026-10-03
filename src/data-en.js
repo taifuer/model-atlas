@@ -36,9 +36,9 @@ window.MODEL_ATLAS_EN = {
     "dateNote": "This is the 2021 code model; the coding-agent product of the same name launched in 2025."
   },
   "instructgpt": {
-    "summary": "Human feedback helps language models follow user intent.",
+    "summary": "Reinforcement learning from human feedback improves instruction following and alignment with user intent.",
     "details": "Demonstrations, preference comparisons, and reinforcement learning support instruction alignment.",
-    "dateNote": ""
+    "dateNote": "Records the research announcement and switch of the default API models; InstructGPT had already been available in the API beta."
   },
   "palm": {
     "summary": "Google explores reasoning and language capabilities at larger scale.",
@@ -102,7 +102,7 @@ window.MODEL_ATLAS_EN = {
   },
   "mixtral-8x7b": {
     "summary": "A sparse mixture-of-experts model expands efficient open-weight inference.",
-    "details": "The date follows the official technical article rather than the earlier sharing of weight files.",
+    "details": "Uses Mistral’s December 11 technical announcement. Only a subset of expert parameters is active per token; weights are provided under Apache 2.0.",
     "dateNote": ""
   },
   "gemini-1-5": {
@@ -207,7 +207,7 @@ window.MODEL_ATLAS_EN = {
   },
   "phi-4": {
     "summary": "Synthetic data and training improvements strengthen small-model reasoning.",
-    "details": "The 14B model first appears in Azure AI Foundry; weight availability is a separate event.",
+    "details": "Phi-4 is a 14B-parameter model. This entry records its Azure AI Foundry debut; the official Hugging Face release under MIT followed on January 8, 2025.",
     "dateNote": ""
   },
   "deepseek-v3": {
@@ -293,8 +293,8 @@ window.MODEL_ATLAS_EN = {
   },
   "minimax-m1": {
     "summary": "Hybrid attention explores efficient reasoning and long-context work.",
-    "details": "The date records the original paper; model and Agent product releases followed.",
-    "dateNote": ""
+    "details": "MiniMax-M1 combines mixture-of-experts modeling with Lightning Attention to reduce computation in long-context reasoning.",
+    "dateNote": "Uses the original paper’s first submission date. The separately announced MiniMax Agent is a product release."
   },
   "grok-4": {
     "summary": "xAI advances reasoning and tool-assisted problem solving.",
@@ -338,8 +338,8 @@ window.MODEL_ATLAS_EN = {
   },
   "qwen-3-next": {
     "summary": "Hybrid attention and highly sparse activation target efficient long-context processing.",
-    "details": "The blog announcement and repository release news use different dates.",
-    "dateNote": "The blog announcement is September 10; repository news records September 11."
+    "details": "Qwen3-Next combines Gated DeltaNet, gated attention, and highly sparse mixture-of-experts modeling, with multi-token prediction for inference efficiency.",
+    "dateNote": "Uses the official blog timestamp of September 10, 2025 at 20:00 UTC, equivalent to September 11 at 04:00 in Beijing. The page date follows the browser’s time zone."
   },
   "claude-sonnet-4-5": {
     "summary": "Sonnet advances coding, computer use, and sustained agentic tasks.",
@@ -423,7 +423,7 @@ window.MODEL_ATLAS_EN = {
   },
   "minimax-m2-1": {
     "summary": "MiniMax improves programming across languages and practical office tasks.",
-    "details": "The date follows the original release blog rather than later technical commentary.",
+    "details": "Records MiniMax’s December 23 model announcement.",
     "dateNote": ""
   },
   "glm-4-7-flash": {
@@ -438,8 +438,8 @@ window.MODEL_ATLAS_EN = {
   },
   "step-3-5-flash": {
     "summary": "Sparse mixture-of-experts modeling balances speed with agent capabilities.",
-    "details": "The official repository records the first release before the later blog update.",
-    "dateNote": "Repository news records February 2. February 12 is a later blog update."
+    "details": "The model targets reasoning and agent tasks, with downloadable weights.",
+    "dateNote": "Uses the February 2 release entry in the official repository’s News section."
   },
   "claude-opus-4-6": {
     "summary": "Opus expands complex codebase analysis and long-running agent tasks.",
@@ -474,7 +474,7 @@ window.MODEL_ATLAS_EN = {
   "qwen-3-5": {
     "summary": "Native multimodality and agent capabilities come together in a large expert model.",
     "details": "The first announcement introduces Qwen3.5-397B-A17B.",
-    "dateNote": "Uses February 15 from the official English blog; regional reports may differ."
+    "dateNote": "Uses the official blog timestamp of February 15, 2026 at 20:00 UTC, equivalent to February 16 at 04:00 in Beijing. The page date follows the browser’s time zone."
   },
   "claude-sonnet-4-6": {
     "summary": "Sonnet improves coding, visual interaction, planning, and knowledge work.",
@@ -488,7 +488,7 @@ window.MODEL_ATLAS_EN = {
   },
   "gpt-5-4": {
     "summary": "Reasoning, coding, and native computer use target professional work.",
-    "details": "GPT-5.4 and Pro launch together across ChatGPT, API, and Codex.",
+    "details": "GPT-5.4 launches in ChatGPT, the API, and Codex. GPT-5.4 Pro launches the same day in ChatGPT and the API.",
     "dateNote": ""
   },
   "nemotron-3-super": {
@@ -553,13 +553,13 @@ window.MODEL_ATLAS_EN = {
   },
   "gemini-3-5-flash": {
     "summary": "Google I/O introduces a Flash update focused on speed and agent tasks.",
-    "details": "The model rolls out across Google products and developer APIs.",
+    "details": "Introduced with the Gemini app updates at Google I/O, with a focus on fast responses and task execution.",
     "dateNote": ""
   },
   "qwen-3-7-max": {
     "summary": "Qwen improves agentic coding, office work, and long-running execution.",
-    "details": "The official Qwen3.7 announcement connects the 3.6 and 3.8 generations.",
-    "dateNote": ""
+    "details": "Qwen3.7-Max targets coding, office documents, and extended tool tasks, with multi-agent orchestration.",
+    "dateNote": "Uses May 20 from the current official article. Embedded legacy content also contains May 16; the original publication time remains unconfirmed."
   },
   "mistral-medium-3-5": {
     "summary": "A public preview targets sustained coding and remote agent tasks.",
@@ -593,7 +593,7 @@ window.MODEL_ATLAS_EN = {
   },
   "glm-5-2": {
     "summary": "GLM extends long-running task and engineering capabilities.",
-    "details": "Platform release dates are distinguished from earlier subscriber previews.",
+    "details": "Uses the June 16 release entry in the official Z.ai platform log.",
     "dateNote": ""
   },
   "claude-sonnet-5": {
@@ -614,8 +614,8 @@ window.MODEL_ATLAS_EN = {
   },
   "muse-spark-1-1": {
     "summary": "Muse improves coding, computer use, and multimodal understanding.",
-    "details": "The model announcement accompanies a Meta Model API preview.",
-    "dateNote": "Model announcement: July 9. The developer API article is dated July 8."
+    "details": "The model announcement accompanies a public preview of the Meta Model API.",
+    "dateNote": "Uses July 9, as dated in the Meta AI model announcement."
   },
   "grok-4-5": {
     "summary": "Grok advances coding, agent tasks, and professional knowledge work.",
@@ -624,7 +624,7 @@ window.MODEL_ATLAS_EN = {
   },
   "kimi-k3": {
     "summary": "Kimi combines native vision, long context, and complex coding.",
-    "details": "The model becomes available through Kimi Code before the full weights.",
+    "details": "At launch, Kimi K3 is available through Kimi, Kimi Work, Kimi Code, and the Kimi API; full weights are announced as a later release.",
     "dateNote": ""
   },
   "gemini-3-6-flash": {
@@ -638,14 +638,14 @@ window.MODEL_ATLAS_EN = {
     "dateNote": ""
   },
   "qwen-3-8-max": {
-    "summary": "A new multimodal flagship supports long context and complex agents.",
+    "summary": "A native vision-language flagship supports a one-million-token context.",
     "details": "The date records first availability in the QwenCloud model log.",
     "dateNote": ""
   },
   "grok-4-6": {
     "summary": "Grok improves sustained work across agents, interactive apps, and vision.",
-    "details": "The official article and API log carry different dates.",
-    "dateNote": "Official article: August 12. API release log: August 11."
+    "details": "Records the Grok 4.6 technical announcement and API release.",
+    "dateNote": "Both the official article and API release log date Grok 4.6 to August 12."
   },
   "qwen-3-8": {
     "summary": "Qwen opens 2.4T-A95B weights, followed by a 27B model.",
@@ -666,12 +666,12 @@ window.MODEL_ATLAS_EN = {
   },
   "glm-5-3": {
     "summary": "GLM strengthens complex coding and extended task execution.",
-    "details": "The official platform log is used instead of earlier subscription-preview dates.",
-    "dateNote": "Uses August 18 from the platform log. Earlier subscription access was a preview."
+    "details": "The model targets complex coding and extended engineering tasks.",
+    "dateNote": "Uses the August 18 release entry in the official Z.ai platform log."
   },
   "glm-5-3-flash": {
-    "summary": "A new Flash model extends the GLM family.",
-    "details": "The entry follows the official Z.ai platform release log.",
+    "summary": "Native vision and hybrid linear/sparse attention support coding, browser, and GUI tasks.",
+    "details": "The model can read interfaces, rendered results, and interaction feedback, with tool use for office documents and financial research.",
     "dateNote": ""
   },
   "qwen-3-8-flash": {
@@ -701,8 +701,8 @@ window.MODEL_ATLAS_EN = {
     "dateNote": ""
   },
   "qwen-3-8-max-0902": {
-    "summary": "A flagship snapshot improves engineering, tool collaboration, and vision.",
-    "details": "Snapshot availability precedes the switch of the default API endpoint.",
+    "summary": "Improves engineering projects, multi-tool orchestration, chart reasoning, and document parsing.",
+    "details": "The snapshot focuses on long-running autonomous development and end-to-end task delivery, retaining the one-million-token context and thinking mode.",
     "dateNote": "Snapshot available September 2; default endpoint switched September 5."
   },
   "gpt-6-astra": {
@@ -727,8 +727,8 @@ window.MODEL_ATLAS_EN = {
   },
   "step-5-preview": {
     "summary": "A flagship preview targets long-running engineering, knowledge work, and research.",
-    "details": "Preview and API access precede the planned release of full weights.",
-    "dateNote": "Preview and API launch: September 20, cross-checked with launch reporting. Full weights were planned for October 15; that plan is not recorded as a completed release."
+    "details": "Released as a preview, with full weights then planned for October 15.",
+    "dateNote": "The September 20 preview release is cross-checked with launch reporting; planned weight availability is not recorded as a completed event."
   },
   "grok-4-7": {
     "summary": "Grok improves coding, self-verification, and context management.",
@@ -764,6 +764,21 @@ window.MODEL_ATLAS_EN = {
     "summary": "A new multimodal model for complex coding, knowledge work, and cyber defense, initially available to invited teams.",
     "details": "Google announces Gemini 4 Argon and begins limited access for trusted cyber defenders through its Fairwind Program. The model targets multi-step reasoning and extended workflows; broad developer and consumer availability has not begun.",
     "dateNote": "Uses September 30, as dated by Google. This is an announcement with limited access, not a general API or Gemini-app launch."
+  },
+  "bloom": {
+    "summary": "BigScience releases a 176B multilingual model with weights and training artifacts.",
+    "details": "BLOOM generates text in 46 natural languages and 13 programming languages. Developed through a cross-institution research collaboration, it is available for download under the BigScience RAIL license.",
+    "dateNote": "Uses the public release announcement, distinct from training completion and the later BLOOMZ release."
+  },
+  "stanford-alpaca": {
+    "summary": "Synthetic instruction data adapts LLaMA into a small instruction-following model.",
+    "details": "Alpaca 7B fine-tunes LLaMA 7B on 52,000 instruction examples generated by text-davinci-003. The initial release includes data, generation and training code, and a research demo; model weights are not released at the same time.",
+    "dateNote": "Uses the Stanford CRFM research announcement. The work is subject to noncommercial research restrictions."
+  },
+  "llava": {
+    "summary": "Visual instruction tuning connects an image encoder and a language model for multimodal conversation.",
+    "details": "Visual Instruction Tuning uses GPT-4-generated image-language instruction data to connect a vision encoder with a language model for image understanding and multimodal dialogue.",
+    "dateNote": "Uses the first arXiv submission; later LLaVA 1.5 and 1.6 releases are separate versions."
   }
 };
 window.ATLAS_TAGS_EN = {

@@ -100,6 +100,8 @@
     if (page !== 'models') return '';
     const specs = window.MODEL_ATLAS_SPECS?.entries[release.id];
     const prices = window.MODEL_ATLAS_PRICES?.entries[release.id];
+    const grouped = specs?.variants.length > 1 || prices?.variants.length > 1 || release.name.includes('/');
+    const variantLabel = name => grouped ? `<span class="fact-model">${escape(name)}</span>` : '';
     const chips = [];
     const chip = (section, content, description) => `<button class="fact-chip" type="button" data-detail="${release.id}" data-detail-section="${section}" aria-haspopup="dialog" aria-label="${escape(`${release.name} · ${description}`)}" title="${escape(description)}">${content}</button>`;
     if (specs) {
@@ -110,10 +112,11 @@
         const label = field === 'inputTokens' ? L('输入上限', 'Input limit') : field === 'trainingTokens' ? L('训练长度', 'Training length') : variants.every(variant => variant.basis === 'benchmark') ? L('评测上下文', 'Eval context') : variants.some(variant => variant.extendedContextTokens) ? L('原生上下文', 'Native context') : L('上下文', 'Context');
         const range = values.length > 1 ? `${tokenCount(values[0])}–${tokenCount(values.at(-1))}` : tokenCount(values[0]);
         const description = `${label} ${range} tokens · ${variants.map(variant => variant.name).join(' / ')} · ${L('查看完整规格', 'View full specifications')}`;
-        chips.push(chip('specs', `<span class="fact-label">${label}</span><span>${escape(range)}</span><span class="fact-unit">tokens</span>`, description));
+        const scope = variants.length === 1 ? variants[0].name : L('各型号', 'Variants');
+        chips.push(chip('specs', `${variantLabel(scope)}<span class="fact-label">${label}</span><span>${escape(range)}</span><span class="fact-unit">tokens</span>`, description));
       } else if (specs.variants.some(variant => variant.parameters)) {
         const values = [...new Set(specs.variants.filter(variant => variant.parameters).map(variant => variant.parameters))];
-        chips.push(chip('specs', `<span class="fact-label">${L('参数量', 'Parameters')}</span><span>${escape(values.join(' / '))}</span>`, L('查看研究配置与模型参数', 'View research configurations and parameter counts')));
+        chips.push(chip('specs', `${variantLabel(L('各型号', 'Variants'))}<span class="fact-label">${L('参数量', 'Parameters')}</span><span>${escape(values.join(' / '))}</span>`, L('查看研究配置与模型参数', 'View research configurations and parameter counts')));
       }
     }
     if (prices) {
@@ -124,7 +127,7 @@
       const qualifier = variant.announced ? L('公布价', 'Announced') : variant.archived ? L('历史价', 'Archived') : rate.validUntil ? L('限时', 'Promo') : starting ? L('起', 'from') : '';
       const input = money(rate.input, variant.currency), output = money(rate.output, variant.currency);
       const description = `${variant.name} · ${rate[english ? 'labelEn' : 'label']} · ${L('输入', 'Input')} ${input} · ${L('输出', 'Output')} ${output} · ${variant.currency} / 1M tokens · ${L('查看计价条件与来源', 'View conditions and source')}`;
-      chips.push(chip('pricing', `<span class="fact-label">${L('输入', 'In')}</span><span>${input}</span><span class="fact-separator" aria-hidden="true">·</span><span class="fact-label">${L('输出', 'Out')}</span><span>${output}</span><span class="fact-unit">${variant.currency} / 1M tokens${qualifier ? ` · ${qualifier}` : ''}</span>`, description));
+      chips.push(chip('pricing', `${variantLabel(variant.name)}<span class="fact-label">${L('输入', 'In')}</span><span>${input}</span><span class="fact-separator" aria-hidden="true">·</span><span class="fact-label">${L('输出', 'Out')}</span><span>${output}</span><span class="fact-unit">${variant.currency} / 1M tokens${qualifier ? ` · ${qualifier}` : ''}</span>`, description));
     }
     const scores = window.MODEL_ATLAS_SCORES?.entries[release.id];
     for (const key of ['aa', 'arena']) {
@@ -133,7 +136,7 @@
       const label = key === 'aa' ? 'AA' : 'Arena';
       const mark = score.estimated || score.preliminary ? '*' : '';
       const description = `${window.MODEL_ATLAS_SCORES.benchmarks[key].name} · ${score.model} · ${score.score}${mark} · ${L('查看配置与评测口径', 'View configuration and methodology')}`;
-      chips.push(chip('scores', `<span class="fact-label">${label}</span><span>${score.score}${mark}</span>`, description));
+      chips.push(chip('scores', `${variantLabel(score.model)}<span class="fact-label">${label}</span><span>${score.score}${mark}</span>`, description));
     }
     return chips.length ? `<div class="card-facts">${chips.join('')}</div>` : '';
   }

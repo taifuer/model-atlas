@@ -149,7 +149,9 @@
     const card = event.target.closest('.journey-event');
     if (card) {
       const box = event.target.getBoundingClientRect();
-      goToEntry(card.dataset.entryKey, box.top < readingTop() || box.bottom > innerHeight - 22);
+      // Pointer focus must not move the button between pointerdown and click.
+      const reveal = event.target.matches(':focus-visible') && (box.top < readingTop() || box.bottom > innerHeight - 22);
+      goToEntry(card.dataset.entryKey, reveal);
     }
   });
   document.addEventListener('keydown', markInteraction);
