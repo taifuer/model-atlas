@@ -39,6 +39,7 @@
   const accessLabels = { open: L('开源', 'Open source'), closed: L('闭源', 'Closed source') };
   const accessFilterLabel = value => accessLabels[value];
   let state = readState();
+  let stateSearch = location.search;
   let scrollFrame = 0;
   let scrollSections = [];
   let activeYear = '';
@@ -100,8 +101,8 @@
     if (page !== 'models') return '';
     const specs = window.MODEL_ATLAS_SPECS?.entries[release.id];
     const prices = window.MODEL_ATLAS_PRICES?.entries[release.id];
-    const grouped = specs?.variants.length > 1 || prices?.variants.length > 1 || release.name.includes('/');
-    const variantLabel = name => grouped ? `<span class="fact-model">${escape(name)}</span>` : '';
+    const facts = window.ATLAS_FACTS;
+    const variantLabel = name => name ? `<span class="fact-model">${escape(name)}</span>` : '';
     const chips = [];
     const chip = (section, content, description) => `<button class="fact-chip" type="button" data-detail="${release.id}" data-detail-section="${section}" aria-haspopup="dialog" aria-label="${escape(`${release.name} · ${description}`)}" title="${escape(description)}">${content}</button>`;
     if (specs) {
@@ -112,22 +113,21 @@
         const label = field === 'inputTokens' ? L('输入上限', 'Input limit') : field === 'trainingTokens' ? L('训练长度', 'Training length') : variants.every(variant => variant.basis === 'benchmark') ? L('评测上下文', 'Eval context') : variants.some(variant => variant.extendedContextTokens) ? L('原生上下文', 'Native context') : L('上下文', 'Context');
         const range = values.length > 1 ? `${tokenCount(values[0])}–${tokenCount(values.at(-1))}` : tokenCount(values[0]);
         const description = `${label} ${range} tokens · ${variants.map(variant => variant.name).join(' / ')} · ${L('查看完整规格', 'View full specifications')}`;
-        const scope = variants.length === 1 ? variants[0].name : L('各型号', 'Variants');
+        const scope = facts.scopeLabel(specs, variants, language);
         chips.push(chip('specs', `${variantLabel(scope)}<span class="fact-label">${label}</span><span>${escape(range)}</span><span class="fact-unit">tokens</span>`, description));
       } else if (specs.variants.some(variant => variant.parameters)) {
         const values = [...new Set(specs.variants.filter(variant => variant.parameters).map(variant => variant.parameters))];
-        chips.push(chip('specs', `${variantLabel(L('各型号', 'Variants'))}<span class="fact-label">${L('参数量', 'Parameters')}</span><span>${escape(values.join(' / '))}</span>`, L('查看研究配置与模型参数', 'View research configurations and parameter counts')));
+        chips.push(chip('specs', `${variantLabel(facts.scopeLabel(specs, specs.variants.filter(variant => variant.parameters), language))}<span class="fact-label">${L('参数量', 'Parameters')}</span><span>${escape(values.join(' / '))}</span>`, L('查看研究配置与模型参数', 'View research configurations and parameter counts')));
       }
     }
     if (prices) {
       // Use one actual rate pair. Never combine minima from different models.
       const variant = prices.variants[0];
       const rate = variant.tiers[0];
-      const starting = prices.variants.length > 1 || variant.tiers.length > 1;
-      const qualifier = variant.announced ? L('公布价', 'Announced') : variant.archived ? L('历史价', 'Archived') : rate.validUntil ? L('限时', 'Promo') : starting ? L('起', 'from') : '';
+      const qualifier = facts.pricingQualifier(prices, language);
       const input = money(rate.input, variant.currency), output = money(rate.output, variant.currency);
       const description = `${variant.name} · ${rate[english ? 'labelEn' : 'label']} · ${L('输入', 'Input')} ${input} · ${L('输出', 'Output')} ${output} · ${variant.currency} / 1M tokens · ${L('查看计价条件与来源', 'View conditions and source')}`;
-      chips.push(chip('pricing', `${variantLabel(variant.name)}<span class="fact-label">${L('输入', 'In')}</span><span>${input}</span><span class="fact-separator" aria-hidden="true">·</span><span class="fact-label">${L('输出', 'Out')}</span><span>${output}</span><span class="fact-unit">${variant.currency} / 1M tokens${qualifier ? ` · ${qualifier}` : ''}</span>`, description));
+      chips.push(chip('pricing', `${variantLabel(facts.scopeLabel(prices, [variant], language))}<span class="fact-label">${L('输入', 'In')}</span><span>${input}</span><span class="fact-separator" aria-hidden="true">·</span><span class="fact-label">${L('输出', 'Out')}</span><span>${output}</span><span class="fact-unit">${variant.currency} / 1M tokens${qualifier ? ` · ${qualifier}` : ''}</span>`, description));
     }
     const scores = window.MODEL_ATLAS_SCORES?.entries[release.id];
     for (const key of ['aa', 'arena']) {
@@ -135,8 +135,9 @@
       if (!score) continue;
       const label = key === 'aa' ? 'AA' : 'Arena';
       const mark = score.estimated || score.preliminary ? '*' : '';
-      const description = `${window.MODEL_ATLAS_SCORES.benchmarks[key].name} · ${score.model} · ${score.score}${mark} · ${L('查看配置与评测口径', 'View configuration and methodology')}`;
-      chips.push(chip('scores', `${variantLabel(score.model)}<span class="fact-label">${label}</span><span>${score.score}${mark}</span>`, description));
+      const checkedAt = score.checkedAt || window.MODEL_ATLAS_SCORES.checkedAt;
+      const description = `${window.MODEL_ATLAS_SCORES.benchmarks[key].name} · ${score.model} · ${score.score}${mark} · ${L('快照', 'Snapshot')} ${formattedDate(checkedAt)} · ${L('查看配置与评测口径', 'View configuration and methodology')}`;
+      chips.push(chip('scores', `${variantLabel(facts.scoreLabel(score, window.MODEL_ATLAS_SCORES.cardScopes?.[release.id]))}<span class="fact-label">${label}</span><span>${score.score}${mark}</span>`, description));
     }
     return chips.length ? `<div class="card-facts">${chips.join('')}</div>` : '';
   }
@@ -209,7 +210,6 @@
   function render() {
     const filtered = filters.select(state).sort((a, b) => (state.sort === 'desc' ? -1 : 1) * a.date.localeCompare(b.date));
     const shownYears = [...new Set(filtered.map(release => release.date.slice(0, 4)))];
-    if ($('#search').value !== state.query) $('#search').value = state.query;
     const availableYears = filters.annualCounts(state).filter(({ count }) => count > 0).map(({ year }) => year);
     // A year from a shared URL stays selectable even if other filters remove its entries.
     if (state.year !== 'all' && !availableYears.includes(state.year)) availableYears.push(state.year);
@@ -240,12 +240,6 @@
     renderChart();
     renderActiveFilters();
     const hasFilter = filters.hasFilters(state);
-    $('#search-toggle').classList.toggle('has-query', Boolean(state.query));
-    $('#search-results').innerHTML = state.query ? filtered.slice(0, 8).map(original => {
-      const release = releaseText(original);
-      return `<button class="search-result" data-search-result="${release.id}"><div class="search-result-identity">${releaseIcon(release, 22)}<div><strong>${escape(release.name)}</strong><span>${escape(companyName(companyById.get(release.company)))}</span></div></div>${dateMarkup(release, 'search-result-date')}</button>`;
-    }).join('') : '';
-    $('#search-help').textContent = state.query ? L(`找到 ${filtered.length} 个节点，按 Enter 查看全部结果。`, `${filtered.length} matching ${entryNoun(filtered.length)}. Press Enter to view all results.`) : L('输入名称或关键词，按 Enter 查看筛选结果。', 'Search by name or keyword. Press Enter to view filtered results.');
     $('#reset-filters').hidden = !hasFilter;
     $('#results-count').innerHTML = hasFilter ? L(`找到 <strong>${filtered.length}</strong> / ${releases.length} 个节点`, `<strong>${filtered.length}</strong> of ${releases.length} entries`) : L(`共 <strong>${releases.length}</strong> 个${extended ? '' : '发布'}节点`, `<strong>${releases.length}</strong> ${extended ? '' : 'release '}entries`);
     const navigationYears = filters.annualCounts(state).filter(({ count }) => count > 0);
@@ -271,40 +265,8 @@
     activeYear = year;
     document.querySelectorAll('.year-jump').forEach(link => { if (link.dataset.jump === year) link.setAttribute('aria-current', 'true'); else link.removeAttribute('aria-current'); });
   }
-  function changeState(mode = 'push') { writeState(mode); render(); }
+  function changeState(mode = 'push') { writeState(mode); stateSearch = location.search; render(); }
   function reset() { state = { ...filters.read(''), multiSelect: state.multiSelect, sort: state.sort, view: state.view }; changeState(); }
-  function showRelease(id, updateHash = true, section = '') {
-    if (!releaseById.has(id)) return;
-    $('#dialog-content').innerHTML = window.ATLAS_DETAILS.render(page, raw, id, language);
-    if (updateHash) { const url = new URL(location.href); url.hash = `release-${id}`; try { history.replaceState(null, '', url); } catch { /* Optional. */ } }
-    const dialog = $('#detail-dialog');
-    document.body.classList.add('modal-open');
-    // Stop an in-flight page scroll before locking the background and moving focus.
-    window.scrollTo({ top: window.scrollY, left: window.scrollX, behavior: 'instant' });
-    if (!dialog.open) dialog.showModal();
-    $('#dialog-content').scrollTop = 0;
-    if (['specs', 'pricing', 'scores'].includes(section)) {
-      const heading = $(`#${section}-title`);
-      if (heading) {
-        heading.focus({ preventScroll: true });
-        const content = $('#dialog-content');
-        content.scrollTop = heading.getBoundingClientRect().top - content.getBoundingClientRect().top - 12;
-      }
-    }
-  }
-  async function copyRelease(id) {
-    const url = window.ATLAS_UI.localPage(pages[page].file);
-    url.searchParams.set('lang', language);
-    url.hash = `release-${id}`;
-    try { await navigator.clipboard.writeText(url.href); toast(location.protocol === 'file:' ? L('本地路径已复制，托管网页后即可分享', 'Local path copied; host the site to share it') : L('节点链接已复制', 'Release link copied')); }
-    catch {
-      const input = document.createElement('input'); input.value = url.href; input.readOnly = true;
-      input.setAttribute('aria-label', L('节点链接', 'Release link')); input.className = 'copy-link-input';
-      $('#dialog-content').append(input); input.focus(); input.select(); toast(L('请选择并复制节点链接', 'Select and copy the release link'));
-    }
-  }
-  function openHash() { if (location.hash.startsWith('#release-')) showRelease(location.hash.slice(9), false); }
-
   $('#release-total').textContent = releases.length;
   $('#company-total').textContent = companies.length;
   if ($('#category-select')) {
@@ -313,10 +275,6 @@
   }
   $('#company-filters').innerHTML = `<button class="company-chip" data-company-filter="all" aria-pressed="true"><span>${allOrganizations}</span><span class="chip-count" aria-hidden="true"></span></button>` + companies.map(company => `<button class="company-chip" id="company-filter-${company.id}" data-company-filter="${company.id}" aria-pressed="false"${companyRanking ? ` title="${escape(companyHint(company.id))}"` : ''}>${icon(window.ATLAS_ICONS.company(company.id), 16)}<span>${escape(companyName(company))}</span><span class="chip-count" aria-hidden="true"></span></button>`).join('');
   $('#company-filters').append($('#company-disclosure'));
-  const updateQuery = event => { if (event.isComposing) return; state.query = event.target.value.slice(0, 300); changeState('replace'); };
-  $('#search').addEventListener('input', updateQuery);
-  $('#search').addEventListener('compositionend', updateQuery);
-  $('#search-form').addEventListener('submit', event => { event.preventDefault(); $('#search-dialog').close(); $('#explore').scrollIntoView({ behavior: 'instant' }); });
   $('#year-select').addEventListener('change', event => { state.year = event.target.value; state.month = 'all'; changeState(); });
   $('#openness-select')?.addEventListener('change', event => { state.openness = event.target.value; changeState(); });
   $('#chart-back').addEventListener('click', () => { state.year = 'all'; state.month = 'all'; changeState(); $('#annual-chart button:last-child')?.focus({ preventScroll: true }); });
@@ -326,16 +284,6 @@
   $('#company-multi').addEventListener('change', event => { state = filters.setMultiSelect(state, event.target.checked); changeState(); });
   $('#company-disclosure').addEventListener('click', () => { companiesExpanded = !companiesExpanded; renderCompanyDisclosure(); });
   mobileFilters.addEventListener('change', renderCompanyDisclosure);
-  $('#close-dialog').addEventListener('click', () => $('#detail-dialog').close());
-  $('#detail-dialog').addEventListener('close', () => {
-    if (!document.querySelector('dialog[open]')) document.body.classList.remove('modal-open');
-    if (location.hash.startsWith('#release-')) { const url = new URL(location.href); url.hash = ''; try { history.replaceState(null, '', url); } catch { /* Optional. */ } }
-  });
-  $('#detail-dialog').addEventListener('click', event => {
-    if (event.target !== $('#detail-dialog')) return;
-    const bounds = event.target.getBoundingClientRect();
-    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) event.target.close();
-  });
   document.addEventListener('click', event => {
     const button = event.target.closest('button');
     if (!button) return;
@@ -367,16 +315,15 @@
       else if (['month', 'category', 'openness'].includes(key)) state[key] = 'all';
       changeState();
       ($('#active-filters button') || $('#sort-button')).focus({ preventScroll: true });
-    } else if (button.hasAttribute('data-search-result')) { $('#search-dialog').close(); showRelease(button.dataset.searchResult); }
-    else if (button.hasAttribute('data-detail')) showRelease(button.dataset.detail, true, button.dataset.detailSection);
-    else if (button.hasAttribute('data-reset')) { reset(); $('#sort-button').focus(); }
-    else if (button.hasAttribute('data-copy')) copyRelease(button.dataset.copy);
+    } else if (button.hasAttribute('data-reset')) { reset(); $('#sort-button').focus(); }
   });
   window.addEventListener('scroll', () => {
     if (scrollFrame) return;
     scrollFrame = requestAnimationFrame(() => { updateActiveYear(); scrollFrame = 0; });
   }, { passive: true });
-  window.addEventListener('popstate', () => { state = readState(); render(); openHash(); });
-  window.addEventListener('hashchange', openHash);
-  render(); openHash();
+  window.addEventListener('popstate', () => {
+    if (stateSearch === location.search) return;
+    state = readState(); stateSearch = location.search; render();
+  });
+  render();
 })();

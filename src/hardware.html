@@ -7,9 +7,8 @@
   <title>AI 算力硬件时间线 · Model Atlas</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="assets/noto-sans-sc.css"><link rel="stylesheet" href="styles.css">
-  <script src="data.js" defer></script><script src="data-en.js" defer></script><script src="data-agents.js" defer></script>
-  <script src="data-access.js" defer></script><script src="data-hardware.js" defer></script><script src="filters.js" defer></script>
-  <script src="seo.js" defer></script><script src="site.js" defer></script><script src="icons.js" defer></script><script src="details.js" defer></script><script src="app.js" defer></script>
+
+  <script src="data.js" defer></script><script src="data-en.js" defer></script><script src="data-agents.js" defer></script><script src="data-access.js" defer></script><script src="data-specs.js" defer></script><script src="data-prices.js" defer></script><script src="data-scores.js" defer></script><script src="data-model-types.js" defer></script><script src="data-hardware.js" defer></script><script src="data-technology.js" defer></script><script src="filters.js" defer></script><script src="seo.js" defer></script><script src="site.js" defer></script><script src="icons.js" defer></script><script src="catalog.js" defer></script><script src="details.js" defer></script><script src="facts.js" defer></script><script src="app.js" defer></script><script src="workspace.js" defer></script>
 </head>
 <body data-page="hardware">
   <a class="skip-link" href="#main" data-zh="跳到主要内容" data-en="Skip to content">跳到主要内容</a>
@@ -66,7 +65,7 @@
         <button class="company-disclosure" id="company-disclosure" type="button" aria-expanded="false" aria-controls="company-filters" hidden></button>
         <div class="active-filter-row" id="active-filter-row" hidden><div id="active-filters" class="active-filters" role="group" aria-label="已选条件" data-aria-zh="已选条件" data-aria-en="Active filters" hidden></div><button class="text-button reset-button" id="reset-filters" type="button" hidden data-zh="清除筛选" data-en="Clear filters">清除筛选</button></div>
       </div>
-      <div class="results-toolbar"><div class="results-meta"><p id="results-count" role="status" aria-live="polite"></p></div><div class="results-actions"><div class="view-switch" role="group" aria-label="时间线视图" data-aria-zh="时间线视图" data-aria-en="Timeline view"><button type="button" data-view="detail" aria-pressed="true" data-zh="详细" data-en="Detail">详细</button><button type="button" data-view="compact" aria-pressed="false" data-zh="极简" data-en="Compact">极简</button></div><button class="outline-button button-small" id="sort-button">最新优先</button></div></div>
+      <div class="results-toolbar"><div class="results-meta"><p id="results-count" role="status" aria-live="polite"></p></div><div class="results-actions"><div class="view-switch" role="group" aria-label="时间线视图" data-aria-zh="时间线视图" data-aria-en="Timeline view"><button type="button" data-view="detail" aria-pressed="true" data-zh="详细" data-en="Detail">详细</button><button type="button" data-view="compact" aria-pressed="false" data-zh="极简" data-en="Compact">极简</button></div><button class="outline-button button-small" id="sort-button" data-zh="最新优先" data-en="Newest first">最新优先</button></div></div>
       <div class="timeline-layout"><aside class="year-sidebar"><p class="sidebar-label" data-zh="年份" data-en="Years">年份</p><nav id="year-nav" aria-label="选择年份查看月度统计" data-aria-zh="选择年份查看月度统计" data-aria-en="Select a year for monthly counts"></nav></aside><div class="timeline" id="timeline"></div></div>
       <noscript><p>请启用 JavaScript 浏览时间线。Enable JavaScript to explore the timeline.</p></noscript>
     </section>
@@ -74,16 +73,16 @@
   <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="dialog-title"><div class="dialog-controls"><button class="close-dialog" id="close-dialog" aria-label="关闭详情" data-aria-zh="关闭详情" data-aria-en="Close details">×</button></div><div id="dialog-content"></div></dialog>
 
   <footer class="site-footer">
-    <div class="wrap footer-bottom"><p>© 2026 <a class="footer-project-link" href="https://github.com/taifuer/model-atlas" target="_blank" rel="noopener noreferrer" aria-label="Model Atlas on GitHub" data-aria-zh="Model Atlas 的 GitHub 仓库" data-aria-en="Model Atlas on GitHub">Model Atlas</a></p><p><span data-zh="最后更新于" data-en="Last updated" >最后更新于</span> <time data-updated datetime="2026-10-03">2026.10.03</time></p></div>
+    <div class="wrap footer-bottom"><p>© 2026 <a class="footer-project-link" href="https://github.com/taifuer/model-atlas" target="_blank" rel="noopener noreferrer" aria-label="Model Atlas on GitHub" data-aria-zh="Model Atlas 的 GitHub 仓库" data-aria-en="Model Atlas on GitHub">Model Atlas</a></p><p><span data-zh="最后更新于" data-en="Last updated" >最后更新于</span> <time data-updated datetime="2026-10-04">2026.10.04</time></p></div>
   </footer>
   <dialog id="search-dialog" class="search-dialog" aria-label="搜索" data-aria-zh="搜索" data-aria-en="Search">
-      <form class="search-box" id="search-form" action="hardware.html" method="get" role="search">
+      <form class="search-box" id="search-form" action="explore.html" method="get" role="search">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-        <label class="sr-only" for="search" data-zh="搜索当前时间线" data-en="Search this timeline">搜索当前时间线</label>
-        <input id="search" name="q" type="search" placeholder="搜索名称、机构…" data-placeholder-zh="搜索名称、机构…" data-placeholder-en="Search names, teams…" autocomplete="off" maxlength="300">
+        <label class="sr-only" for="search" data-zh="搜索全部时间线" data-en="Search all timelines">搜索全部时间线</label>
+        <input id="search" name="q" type="search" placeholder="搜索全部内容…" data-placeholder-zh="搜索全部内容…" data-placeholder-en="Search all timelines…" autocomplete="off" maxlength="300">
         <button class="search-dismiss" id="search-dismiss" type="button" aria-label="关闭搜索" data-aria-zh="关闭搜索" data-aria-en="Close search">Esc</button>
       </form>
-    <div id="search-results" class="search-results"></div><p class="search-help" id="search-help" data-zh="输入名称或关键词，按 Enter 查看筛选结果。" data-en="Search by name or keyword. Press Enter to view filtered results.">输入名称或关键词，按 Enter 查看筛选结果。</p>
+    <div id="search-results" class="search-results"></div><p class="search-help" id="search-help" data-zh="搜索全部时间线中的名称、机构或关键词。" data-en="Search names, organizations, or keywords across all timelines.">搜索全部时间线中的名称、机构或关键词。</p>
   </dialog>
   <button class="back-to-top icon-button" id="back-to-top" type="button" hidden aria-label="返回顶部" data-aria-zh="返回顶部" data-aria-en="Back to top" title="返回顶部"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>

@@ -182,10 +182,6 @@
   const languageInput = document.createElement('input');
   languageInput.type = 'hidden'; languageInput.name = 'lang'; languageInput.value = language;
   form.append(languageInput);
-  if (page === 'about') {
-    document.querySelector('#search').placeholder = L('搜索模型…', 'Search models…');
-    document.querySelector('label[for="search"]').textContent = L('搜索大模型时间线', 'Search the model timeline');
-  }
   const back = document.querySelector('#back-to-top');
   back.title = L('返回顶部', 'Back to top');
   document.querySelector('#search-toggle').title = L('搜索（/）', 'Search (/)');

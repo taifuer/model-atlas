@@ -14,7 +14,6 @@
   const noun = count => L(`${count} 条记录`, `${count} ${count === 1 ? 'event' : 'events'}`);
   const monthName = month => new Intl.DateTimeFormat(english ? 'en' : 'zh-CN', { month: 'long', timeZone: 'UTC' }).format(new Date(Date.UTC(2000, Number(month) - 1, 1)));
   const periodName = period => period.month ? L(`${period.year} 年 ${Number(period.month)} 月`, `${monthName(period.month)} ${period.year}`) : L(`${period.year} 年`, period.year);
-  const normalize = value => String(value || '').normalize('NFKC').toLowerCase().replace(/[\s\-_.·/]+/g, '');
   function locationState() {
     const params = new URLSearchParams(location.search);
     let hashKey;
@@ -60,7 +59,7 @@
     params.set('period', periods[currentIndex].key);
     if (selectedKey) params.set('at', selectedKey);
     if (query) params.set('q', query);
-    history.replaceState(null, '', `${location.pathname}?${params}${location.hash}`);
+    history.replaceState(history.state, '', `${location.pathname}?${params}${location.hash}`);
   }
   function measure() {
     root.style.setProperty('--journey-header', `${document.querySelector('.site-header').getBoundingClientRect().height}px`);
@@ -113,15 +112,9 @@
   function goToEntry(key, scroll = true) { const canonical = canonicalKey(key), index = periodByEntry.get(canonical); if (index !== undefined) goTo(index, scroll, canonical); }
   function applyQuery(value, navigate = true) {
     query = value.trim().slice(0, 300); matchCursor = -1;
-    const terms = query.split(/\s+/).filter(Boolean).map(normalize);
-    matches = [];
-    entries.forEach(entry => {
-      const translated = catalog.text(entry, language);
-      const haystack = normalize([entry.release.name, translated.name, entry.release.summary, translated.summary, companyName(entry.company), entry.company.name, entry.company.nameEn, entry.company.aliases, entry.release.date].join(' '));
-      const match = terms.length > 0 && terms.every(term => haystack.includes(term));
-      cards.get(entry.key).classList.toggle('is-match', match);
-      if (match) matches.push(entry.key);
-    });
+    const matchingKeys = new Set(catalog.search(query, language).map(entry => entry.key));
+    matches = entries.filter(entry => matchingKeys.has(entry.key)).map(entry => entry.key);
+    entries.forEach(entry => cards.get(entry.key).classList.toggle('is-match', matchingKeys.has(entry.key)));
     search.value = query; search.dispatchEvent(new Event('input'));
     root.querySelector('#journey-search').hidden = !query;
     root.querySelector('#journey-search-status').textContent = L(`“${query}” · ${matches.length} 条匹配`, `“${query}” · ${matches.length} ${matches.length === 1 ? 'match' : 'matches'}`);

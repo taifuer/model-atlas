@@ -8,7 +8,7 @@ const sourceRoot = path.join(__dirname, '..', 'src');
 const scripts = [
   'data.js', 'data-en.js', 'data-agents.js', 'data-hardware.js', 'data-technology.js',
   'data-access.js', 'data-specs.js', 'data-prices.js', 'data-scores.js', 'data-model-types.js',
-  'catalog.js', 'details.js',
+  'filters.js', 'catalog.js', 'details.js',
 ];
 const escape = value => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 const definitions = {
@@ -41,6 +41,21 @@ const localized = { zh: loadAtlas('zh'), en: loadAtlas('en') };
 const globals = localized.zh;
 const catalog = globals.ATLAS_CATALOG;
 const datasets = Object.fromEntries(Object.entries(definitions).map(([section, [global]]) => [section, globals[global]]));
+
+test('cross-timeline search shares punctuation rules and both language titles', () => {
+  const keys = (query, language) => Array.from(catalog.search(query, language), entry => entry.key);
+  for (const language of ['zh', 'en']) {
+    assert.deepEqual(keys('FlashAttention‑4', language), ['technology:flashattention-4']);
+    assert.deepEqual(keys('FlashAttention—4', language), keys('FlashAttention-4', language));
+    assert.deepEqual(keys('Qwen3.8 open-weight family', language), ['models:qwen-3-8']);
+    assert.deepEqual(keys('DeepSeek-V4-Pro (GA)', language), ['models:deepseek-v4-pro-0813']);
+    assert.deepEqual(keys('---', language), []);
+    assert.deepEqual(keys('no-such-model-atlas-record', language), []);
+    const matches = catalog.search('Transformer', language);
+    assert.equal(matches.filter(entry => entry.release.id === 'transformer').length, 1);
+    assert.ok(matches.every((entry, index) => !index || matches[index - 1].release.date >= entry.release.date));
+  }
+});
 
 function detail(globals, record, language) {
   return globals.ATLAS_DETAILS.render(record.section, record.raw, record.release.id, language);

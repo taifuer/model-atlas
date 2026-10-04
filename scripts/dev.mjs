@@ -1,5 +1,6 @@
 import seo from '../src/seo.js';
 import { renderPage, renderSitemap, renderRobots } from './seo.mjs';
+import { loadCatalog, prerenderPage } from './prerender.mjs';
 import http from 'node:http';
 import { createReadStream } from 'node:fs';
 import { stat, readdir, readFile } from 'node:fs/promises';
@@ -29,12 +30,15 @@ const files = new Map([
   ['data-hardware.js', ['data-hardware.js', 'text/javascript']], ['data-technology.js', ['data-technology.js', 'text/javascript']],
   ['site.js', ['site.js', 'text/javascript']], ['data-en.js', ['data-en.js', 'text/javascript']], ['data-agents.js', ['data-agents.js', 'text/javascript']],
   ['styles.css', ['styles.css', 'text/css']], ['app.js', ['app.js', 'text/javascript']],
+  ['facts.js', ['facts.js', 'text/javascript']],
   ['icons.js', ['icons.js', 'text/javascript']],
   ['data-scores.js', ['data-scores.js', 'text/javascript']],
   ['data-model-types.js', ['data-model-types.js', 'text/javascript']],
   ['data-access.js', ['data-access.js', 'text/javascript']], ['data-specs.js', ['data-specs.js', 'text/javascript']], ['data-prices.js', ['data-prices.js', 'text/javascript']], ['filters.js', ['filters.js', 'text/javascript']],
   ['data.js', ['data.js', 'text/javascript']], ['favicon.svg', ['favicon.svg', 'image/svg+xml']],
   ['assets/noto-sans-sc.css', ['assets/noto-sans-sc.css', 'text/css']],
+  ['assets/atlas-sans-latin.woff2', ['assets/atlas-sans-latin.woff2', 'font/woff2']],
+  ['assets/atlas-sans-cjk.woff2', ['assets/atlas-sans-cjk.woff2', 'font/woff2']],
 ]);
 for (const name of await readdir(new URL('assets/icons/', sourceRoot))) {
   const extension = /^[a-z0-9-]+\.(svg|png|jpg|ico)$/.exec(name)?.[1];
@@ -65,12 +69,14 @@ const server = http.createServer(async (req, res) => {
   try {
     if (mime === 'text/html') {
       const source = await readFile(path, 'utf8');
-      const body = renderPage(source, { page: name === 'index.html' ? 'models' : name.replace('.html', ''), language: english ? 'en' : 'zh', origin, seo });
+      const page = name === 'index.html' ? 'models' : name.replace('.html', '');
+      const language = english ? 'en' : 'zh';
+      const body = prerenderPage(renderPage(source, { page, language, origin, seo }), { page, language, window: await loadCatalog(sourceRoot) });
       res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': Buffer.byteLength(body), 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' });
       return res.end(req.method === 'HEAD' ? undefined : body);
     }
     const info = await stat(path);
-    res.writeHead(200, { 'Content-Type': `${mime}; charset=utf-8`, 'Content-Length': info.size, 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' });
+    res.writeHead(200, { 'Content-Type': mime.startsWith('text/') ? `${mime}; charset=utf-8` : mime, 'Content-Length': info.size, 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' });
     if (req.method === 'HEAD') return res.end();
     const stream = createReadStream(path);
     stream.on('error', () => res.destroy());
