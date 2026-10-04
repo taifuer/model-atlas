@@ -16,6 +16,11 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "adjustments": "style-control"
     }
   },
+  "cardScopes": {
+    "claude-fable-5-1": "variant",
+    "gpt-6-sol-luna": "variant",
+    "mimo-v2-6": "variant"
+  },
   "entries": {
     "claude-opus-5-5": {
       "aa": {

@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
   "asOf": "2026-09-29",
-  "updatedAt": "2026-10-03",
+  "updatedAt": "2026-10-04",
   "companies": [
     {
       "id": "anthropic",
@@ -1198,6 +1198,39 @@ window.AGENT_ATLAS = {
       }
     },
     {
+      "id": "kimi-cli-1",
+      "date": "2025-10-21",
+      "name": "Kimi CLI",
+      "company": "moonshot",
+      "category": "coding",
+      "kind": "release",
+      "summary": "公开发布的终端编程智能体，连接 Shell、项目文件与 MCP 工具。",
+      "details": "早期公开版本 0.33 已支持命令执行、项目文件读写、会话管理和 MCP 工具接入，可在终端中完成多步骤编程任务。",
+      "dateNote": "采用官方 GitHub 0.33 Release 的公开发布时间（UTC）；更新日志中的 2025-10-18 是该版本的更早记录日期。",
+      "tags": [
+        "编程",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "官方 · Kimi CLI 0.33 公开发布",
+          "titleEn": "Official · Kimi CLI 0.33 release",
+          "url": "https://github.com/MoonshotAI/kimi-cli/releases/tag/0.33"
+        },
+        {
+          "title": "官方 · Kimi CLI 更新日志",
+          "titleEn": "Official · Kimi CLI changelog",
+          "url": "https://github.com/MoonshotAI/kimi-cli/blob/main/CHANGELOG.md"
+        }
+      ],
+      "en": {
+        "summary": "A publicly released terminal coding agent connecting shell commands, project files and MCP tools.",
+        "details": "The early public 0.33 release supports command execution, reading and editing project files, session management and MCP tools for multi-step coding tasks in the terminal.",
+        "dateNote": "Uses the official GitHub 0.33 Release publication timestamp in UTC. October 18, 2025 in the changelog is an earlier version-record date."
+      }
+    },
+    {
       "id": "opencode-1",
       "date": "2025-10-31",
       "name": "OpenCode 1.0",
@@ -1371,33 +1404,6 @@ window.AGENT_ATLAS = {
         "summary": "Claude Code-style execution expands to files, documents, and office work.",
         "details": "A research preview introduces desktop agent workflows for non-coding tasks.",
         "dateNote": ""
-      }
-    },
-    {
-      "id": "kimi-cli-1",
-      "date": "2026-01-27",
-      "name": "Kimi CLI 1.0",
-      "company": "moonshot",
-      "category": "coding",
-      "kind": "release",
-      "summary": "终端编程工具进入 1.0 版本，加入账户登录与退出命令。",
-      "details": "Kimi CLI 支持读写项目文件、运行命令及调用子智能体。此节点记录 1.0 版的账户接入更新和子智能体审批修复。",
-      "dateNote": "采用官方更新日志的 2026-01-27 日期；此前已有 0.x 版本，1.0 不代表该工具首次公开。",
-      "tags": [
-        "编程",
-        "工具使用"
-      ],
-      "milestone": false,
-      "sources": [
-        {
-          "title": "官方 · Kimi CLI 更新日志",
-          "url": "https://github.com/MoonshotAI/kimi-cli/blob/main/CHANGELOG.md"
-        }
-      ],
-      "en": {
-        "summary": "Version 1.0 of the terminal coding tool adds account login and logout commands.",
-        "details": "Kimi CLI edits project files, runs commands and uses subagents. This entry records the account-access update and subagent approval fix in version 1.0.",
-        "dateNote": "Uses January 27, 2026 from the official changelog. Earlier 0.x versions existed; version 1.0 is not the tool’s public debut."
       }
     },
     {

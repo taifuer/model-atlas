@@ -175,4 +175,9 @@ test('agent entries have distinct categories, bilingual descriptions, and dated 
   assert.equal(agents.releases.find(entry => entry.id === 'openclaw').kind, 'announcement');
   assert.equal(agents.releases.find(entry => entry.id === 'claude-code').date, '2025-02-24');
   assert.equal(agents.releases.find(entry => entry.id === 'codex-cli').date, '2025-04-16');
+  const kimi = agents.releases.find(entry => entry.id === 'kimi-cli-1');
+  assert.equal(kimi.name, 'Kimi CLI', 'Keep existing links while selecting the representative public release');
+  assert.equal(kimi.date, '2025-10-21', 'Use the published Release date, not the earlier changelog date');
+  assert.ok(kimi.sources.some(source => source.url === 'https://github.com/MoonshotAI/kimi-cli/releases/tag/0.33'));
+  assert.equal(kimi.milestone, false);
 });

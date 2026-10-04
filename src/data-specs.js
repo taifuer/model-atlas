@@ -61,6 +61,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "gpt-5-6": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "gpt-5.6-sol",
@@ -163,6 +164,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "gpt-5-1": {
+      "cardScope": "snapshot",
       "variants": [
         {
           "name": "gpt-5.1-2025-11-13",
@@ -244,6 +246,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "gpt-4o": {
+      "cardScope": "snapshot",
       "variants": [
         {
           "name": "gpt-4o-2024-08-06",
@@ -286,6 +289,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "gpt-4-turbo": {
+      "cardScope": "snapshot",
       "variants": [
         {
           "name": "gpt-4-turbo-2024-04-09",
@@ -308,6 +312,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       "noteEn": "Specifications apply to the API snapshot above, which may postdate the original release."
     },
     "gpt-4": {
+      "cardScope": "snapshot",
       "variants": [
         {
           "name": "gpt-4-0613",
@@ -384,6 +389,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "o1": {
+      "cardScope": "snapshot",
       "variants": [
         {
           "name": "o1-2024-12-17",
@@ -459,6 +465,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "claude-fable-5-1": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "Claude Fable 5.1",
@@ -481,6 +488,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       "noteEn": "These are Fable specifications for the synchronous Messages API; they do not describe Mythos."
     },
     "claude-fable-5": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "Claude Fable 5",
@@ -795,6 +803,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       "noteEn": "Input and output limits are listed separately in the Gemini API documentation."
     },
     "gemini-3-6-flash": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "Gemini 3.6 Flash",
@@ -1091,6 +1100,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "qwen-3": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "Qwen3-235B-A22B",
@@ -1114,6 +1124,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       "noteEn": "Extending to 131,072 tokens requires the YaRN configuration in the model card. This entry covers the 235B-A22B variant."
     },
     "qwen-3-coder": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "Qwen3-Coder-480B-A35B-Instruct",
@@ -1134,6 +1145,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "qwen-3-next": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "Qwen3-Next-80B-A3B-Instruct",
@@ -1157,6 +1169,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       "noteEn": "Extended context requires the inference configuration in each model card. Specifications apply to the listed open-weight checkpoints."
     },
     "qwen-3-5": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "Qwen3.5-397B-A17B",
@@ -1223,6 +1236,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       "noteEn": "Extended context requires the inference configuration in each model card. Specifications apply to the listed open-weight checkpoints."
     },
     "glm-4-5": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "GLM-4.5",
@@ -1258,6 +1272,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "minimax-m1": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "MiniMax-M1-80k",
@@ -1407,6 +1422,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "mimo-v2-5": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "MiMo-V2.5-Pro",
@@ -1421,6 +1437,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "mimo-v2-6": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "MiMo-V2.6-Pro-RL",
@@ -1443,6 +1460,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       "noteEn": "These specifications cover the Pro-RL checkpoint. Flash and other variants have their own specifications."
     },
     "phi-3": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "Phi-3-mini-128k-instruct",
@@ -1906,6 +1924,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       "noteEn": "512 tokens is the pretraining sequence length reported in the paper."
     },
     "gpt-2": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "GPT-2 (1.5B)",
@@ -1927,6 +1946,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       "noteEn": "Parameter count follows the largest model in Table 2 of the original paper."
     },
     "gpt-3": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "GPT-3 175B",
@@ -2020,6 +2040,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "gemini-4-argon": {
+      "cardScope": "configuration",
       "checkedAt": "2026-10-03",
       "variants": [
         {

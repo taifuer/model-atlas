@@ -88,9 +88,11 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       ]
     },
     "gpt-5-6": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "gpt-5.6-sol",
+          "promotional": true,
           "currency": "USD",
           "tiers": [
             {
@@ -212,6 +214,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       ]
     },
     "gpt-5-1": {
+      "cardScope": "snapshot",
       "variants": [
         {
           "name": "gpt-5.1-2025-11-13",
@@ -295,6 +298,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       ]
     },
     "gpt-4o": {
+      "cardScope": "snapshot",
       "variants": [
         {
           "name": "gpt-4o-2024-08-06",
@@ -335,6 +339,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       ]
     },
     "gpt-4-turbo": {
+      "cardScope": "snapshot",
       "variants": [
         {
           "name": "gpt-4-turbo-2024-04-09",
@@ -355,6 +360,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       ]
     },
     "gpt-4": {
+      "cardScope": "snapshot",
       "variants": [
         {
           "name": "gpt-4-0613",
@@ -431,6 +437,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       ]
     },
     "o1": {
+      "cardScope": "snapshot",
       "variants": [
         {
           "name": "o1-2024-12-17",
@@ -471,6 +478,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       ]
     },
     "claude-fable-5-1": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "Claude Fable 5.1",
@@ -491,6 +499,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       ]
     },
     "claude-fable-5": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "Claude Fable 5",
@@ -734,6 +743,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       "variants": [
         {
           "name": "gemini-3.8-flash",
+          "promotional": true,
           "currency": "USD",
           "tiers": [
             {
@@ -758,6 +768,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       "variants": [
         {
           "name": "gemini-3.7-flash",
+          "promotional": true,
           "currency": "USD",
           "tiers": [
             {
@@ -779,9 +790,11 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       "noteEn": "Paid Standard text rates for the Gemini Developer API. Output includes thinking tokens."
     },
     "gemini-3-6-flash": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "gemini-3.6-flash",
+          "promotional": true,
           "currency": "USD",
           "tiers": [
             {
@@ -1181,6 +1194,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       "noteEn": "Official Z.ai international API rates, separate from the cost of self-hosting model weights."
     },
     "glm-4-5": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "GLM-4.5",
@@ -1377,6 +1391,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       "noteEn": "Current international Pay-as-you-go Standard rates, excluding Priority, Highspeed, and Token Plan subscriptions."
     },
     "mimo-v2-6": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "mimo-v2.6-flash",
@@ -1413,6 +1428,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       "noteEn": "USD rates for the overseas real-time API. Mainland China has separate CNY rates; Batch and Ultraspeed are excluded."
     },
     "mimo-v2-5": {
+      "cardScope": "variant",
       "variants": [
         {
           "name": "mimo-v2.5",

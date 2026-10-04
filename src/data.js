@@ -657,5 +657,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-10-01', updatedAt: '2026-10-03', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-10-01', updatedAt: '2026-10-04', companies, companyRanking, kinds, themes, releases, coverage });
 })();
