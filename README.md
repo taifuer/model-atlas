@@ -33,11 +33,11 @@ Entries are selected for historical influence or technical significance. This is
 
 ## Explore
 
-- Filter by organization, year, type, and keyword; share the resulting URL. Organization selection is single by default, with a multi-select switch for comparisons.
+- Filter by organization, year, and type; share the resulting URL. Header search covers all timelines. Organization selection is single by default, with a multi-select switch for comparisons.
 - Switch between detailed cards and a compact list, with newest entries first.
 - Browse annual and monthly counts for the current selection.
 - Open [Explore](https://ai.taifua.com/explore.html?lang=en) from the compass button in the header. It presents all cataloged events across the four timelines in monthly groups, from newest to oldest, with same-day events shown together and horizontal year and month navigation.
-- Open an entry for its release scope, specifications, and sources.
+- Open an entry for its release scope, specifications, and sources. Browser Back closes details and Forward reopens them, preserving the selected filters.
 - Use Chinese or English. The home page initially follows the browser language; manual choices are remembered, with dedicated URLs for each language.
 - Browse on desktop or mobile, with keyboard navigation and reduced-motion support.
 
@@ -47,11 +47,11 @@ Mobile organization filters initially show six organizations plus the selected o
 
 Explore keeps all records and summaries visible, with the latest events first. Year and month controls navigate within the page, and search highlights and locates matching events. Category badges distinguish models, agents, hardware and technology. Sources and date notes explain whether an event records a paper presentation, package release or commercial deployment. The Transformer event appears once across timelines. Evaluation references link to AA, Arena, SWE-bench, and MLPerf; model details retain reviewed scores and snapshot dates.
 
-The website uses local fonts and icons. There are no analytics, runtime API calls, or third-party scripts. Browser storage saves only language and view preferences.
+The website uses local fonts and icons, with Latin and CJK font subsets requested according to the characters on the page. There are no analytics, runtime API calls, or third-party scripts. Browser storage saves only language and view preferences.
 
 ## Run locally
 
-Use **Node.js 22 or 24 LTS**. There are no npm dependencies to install.
+Use **Node.js 22 or 24 LTS**. Previewing, data checks, and builds need no npm dependencies; browser tests use development dependencies.
 
 ```bash
 git clone https://github.com/taifuer/model-atlas.git
@@ -73,9 +73,21 @@ npm test
 npm run build
 ```
 
-The build creates `dist/` with six page types in Chinese and English, a sitemap, and local assets. Deploy that directory to any static host; no Node.js process or backend is needed in production. Asset URLs include content hashes for cache updates. CI runs the same checks on Node.js 22 and 24.
+The build creates `dist/` with six page types in Chinese and English, a sitemap, and local assets. Deploy that directory to any static host; no Node.js process or backend is needed in production. Asset URLs include content hashes for cache updates. CI runs the same checks on Node.js 22 and 24, plus a separate Chromium browser regression job.
+
+To run browser checks for the first time:
+
+```bash
+npm ci
+npx playwright install chromium
+npm run test:browser
+```
+
+The tests build and serve the site locally, covering Chinese/English desktop and mobile flows, detail history, global search, short-screen dialogs, static content, and font requests. Test dependencies are not included in the published site.
 
 Chinese pages are served from the site root, with English editions under `/en/`. Each static page includes localized titles, descriptions, keywords, canonical and hreflang links, and social metadata. The build also generates `sitemap.xml` and `robots.txt`. For another deployment domain, use `BASE_URL=https://example.com npm run build`. Existing `?lang=en` / `?lang=zh` links remain supported.
+
+The build writes default entries, dates, summaries, sources, and counts directly into HTML. The timelines remain readable without JavaScript; browser scripts add filters, search, and detail dialogs. Header search uses the same matching rules everywhere, including typographic hyphens. Selecting a result opens its details; Enter shows all matches in Explore.
 
 ## Data and sources
 
@@ -94,7 +106,7 @@ The site's “open / closed” filter is an editorial classification of the list
 | `src/app.js`, `src/filters.js`, `src/site.js`, `src/icons.js`, `src/styles.css` | Rendering, filtering, navigation, language, and layout. |
 | `src/assets/` | Local font, icons, and their notices. |
 | `scripts/` | Development server (`dev.mjs`), static build, and optional font-subsetting tool. |
-| `tests/` | Data and behavior checks, including dated score fixtures. |
+| `tests/` | Data and behavior checks, dated score fixtures, and browser regressions in `tests/browser/`. |
 | `docs/` | Documentation assets, including desktop and mobile previews. |
 | `dist/` | Generated static site, excluded from Git. |
 
