@@ -158,6 +158,7 @@
   function renderChart() {
     const monthly = state.year !== 'all';
     const counts = monthly ? filters.monthlyCounts(state) : filters.annualCounts(state).filter(({ count }) => count > 0);
+    $('#activity').style.setProperty('--chart-columns', Math.max(counts.length, 1));
     const ceiling = Math.max(5, Math.ceil(Math.max(...counts.map(item => item.count), 1) / 5) * 5);
     $('#activity-title').textContent = monthly ? L(`${state.year} 年每月节点数量`, `Monthly entries · ${state.year}`) : L('年度节点数量', 'Entries by year');
     $('#chart-back').hidden = !monthly;
@@ -170,7 +171,6 @@
       const accessible = future ? L(`${date}，资料截止日期之后`, `${date}, after the research cutoff`) : L(`${date}，${count} 个已收录节点，点击${monthly ? '筛选月份' : '查看每月统计'}`, `${date}: ${count} curated ${entryNoun(count)}. ${monthly ? 'Filter this month.' : 'View monthly counts.'}`);
       return `<button class="annual-bar${future ? ' is-future' : ''}" data-chart-${monthly ? 'month' : 'year'}="${value}" data-count="${count}"${future ? ' disabled' : ''} aria-pressed="${monthly && state.month === month}" aria-label="${escape(accessible)}" title="${escape(accessible)}" style="--bar-height:${count / ceiling * 100}%"><span class="bar-track"><span class="bar-count">${future ? '—' : count}</span><span class="bar-fill${date === (monthly ? asOf.slice(0, 7) : asOf.slice(0, 4)) ? ' current-year' : ''}"></span></span><span class="bar-year">${label}</span></button>`;
     }).join('') || `<p class="chart-empty">${L('当前筛选无收录记录', 'No entries match these filters')}</p>`;
-    $('#chart-scope').textContent = state.companies.size || state.query || state.category !== 'all' || state.openness !== 'all' || state.milestones ? L('当前筛选', 'Filtered') : L('全部收录', 'All entries');
     $('#chart-note').textContent = '';
     const notes = [monthly ? L('* 仅统计本站收录节点。', '* Counts cover curated entries.') : L('* 仅统计本站收录节点，无记录的年份已省略。', '* Counts cover curated entries; years without entries are omitted.')];
     if (monthly) {

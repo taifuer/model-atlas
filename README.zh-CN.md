@@ -20,6 +20,13 @@ AI 模型、智能体、算力硬件与关键技术的发展时间线。
 
 </details>
 
+<details>
+<summary>探索页预览</summary>
+
+![Model Atlas — 探索页年度数量统计与按月归组的事件](docs/images/explore-zh.png)
+
+</details>
+
 ## 四条时间线
 
 | 板块 | 内容 |

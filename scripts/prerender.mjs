@@ -104,6 +104,8 @@ export function prerenderPage(html, { page, language, window }) {
       html = replaceContainer(html, 'release-total', raw.releases.length);
       html = replaceContainer(html, 'company-total', raw.companies.length);
       html = replaceContainer(html, 'results-count', language === 'en' ? `<strong>${raw.releases.length}</strong> entries` : `共 <strong>${raw.releases.length}</strong> 个节点`);
+      const chartColumns = Math.max(new Set(raw.releases.map(entry => entry.date.slice(0, 4))).size, 1);
+      html = html.replace(/(<figure\b[^>]*\bid="activity")/, `$1 style="--chart-columns:${chartColumns}"`);
     }
     // A readable default collection replaces the old JavaScript-required notice.
     html = html.replace(/<noscript>[\s\S]*?<\/noscript>/g, '');

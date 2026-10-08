@@ -20,6 +20,13 @@ Left: models in detailed view. Right: agents in compact view.
 
 </details>
 
+<details>
+<summary>Explore preview</summary>
+
+![Model Atlas — Explore with yearly counts and events grouped by month](docs/images/explore-en.png)
+
+</details>
+
 ## Four timelines
 
 | Timeline | Coverage |

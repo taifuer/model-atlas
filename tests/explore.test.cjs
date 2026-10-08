@@ -12,7 +12,7 @@ const scripts = [
 ];
 const escape = value => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 const definitions = {
-  models: ['MODEL_ATLAS', 'index.html', ['大模型发布时间线', 'Language model timeline']],
+  models: ['MODEL_ATLAS', 'index.html', ['大模型时间线', 'Language model timeline']],
   agents: ['AGENT_ATLAS', 'agents.html', ['智能体工具时间线', 'Agent tool timeline']],
   hardware: ['HARDWARE_ATLAS', 'hardware.html', ['算力硬件时间线', 'AI hardware timeline']],
   technology: ['TECHNOLOGY_ATLAS', 'technology.html', ['AI 技术演进', 'AI technology timeline']],

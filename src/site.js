@@ -15,7 +15,7 @@
   const formattedDate = date => date.replaceAll('-', '.');
   const page = document.body.dataset.page;
   const pages = {
-    models: { file: 'index.html', zh: '大模型', en: 'LLM', title: ['大模型发布时间线', 'Language model timeline'], data: window.MODEL_ATLAS },
+    models: { file: 'index.html', zh: '大模型', en: 'LLM', title: ['大模型时间线', 'Language model timeline'], data: window.MODEL_ATLAS },
     agents: { file: 'agents.html', zh: '智能体', en: 'Agent', title: ['智能体工具时间线', 'Agent tool timeline'], data: window.AGENT_ATLAS },
     hardware: { file: 'hardware.html', zh: '算力', en: 'Hardware', title: ['算力硬件时间线', 'AI hardware timeline'], data: window.HARDWARE_ATLAS },
     technology: { file: 'technology.html', zh: '技术', en: 'Technology', title: ['AI 技术演进', 'AI technology timeline'], data: window.TECHNOLOGY_ATLAS },

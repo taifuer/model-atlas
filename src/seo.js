@@ -4,12 +4,12 @@
   const seo = {
     models: {
       zh: {
-        title: '大模型发布时间线 · Model Atlas',
+        title: '大模型时间线 · Model Atlas',
         description: '查阅主流语言模型与多模态模型的代表性发布，涵盖 GPT、Claude、Gemini、Llama 等系列。按机构、年份和类型筛选，查看公开来源，以及已核实的上下文长度、API 价格与评测分数。',
         keywords: ['大模型时间线', '语言模型', '多模态模型', '模型发布', '上下文长度', 'API 价格'],
       },
       en: {
-        title: 'AI Model Release Timeline · Model Atlas',
+        title: 'AI Model Timeline · Model Atlas',
         description: 'Browse major language and multimodal model releases, with source links and verified context limits, API prices and benchmark scores for documented versions.',
         keywords: ['AI model timeline', 'language models', 'multimodal models', 'model releases', 'context window', 'API pricing'],
       },
