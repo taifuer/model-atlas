@@ -9,7 +9,7 @@ const { MODEL_ATLAS: models, MODEL_ATLAS_PRICES: prices } = context.window;
 
 test('documented rates retain currency, units, exact versions, and first-party evidence', () => {
   const ids = new Set(models.releases.map(model => model.id));
-  const hosts = new Set(['blog.google', 'developers.openai.com', 'platform.claude.com', 'ai.google.dev', 'api-docs.deepseek.com', 'docs.x.ai', 'docs.z.ai', 'www.qwencloud.com', 'docs.qwencloud.com', 'platform.minimax.io', 'mimo.mi.com']);
+  const hosts = new Set(['docs.mistral.ai', 'www.anthropic.com', 'blog.google', 'developers.openai.com', 'platform.claude.com', 'ai.google.dev', 'api-docs.deepseek.com', 'docs.x.ai', 'docs.z.ai', 'www.qwencloud.com', 'docs.qwencloud.com', 'platform.minimax.io', 'mimo.mi.com']);
   assert.equal(prices.unitTokens, 1000000);
   assert.equal(prices.inputType, 'uncached-text');
   assert.equal(prices.outputType, 'text');

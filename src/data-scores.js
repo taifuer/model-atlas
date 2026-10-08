@@ -1,6 +1,6 @@
 // Curated public benchmark snapshot. Exact configurations only; not launch scores.
 window.MODEL_ATLAS_SCORES = Object.freeze({
-  "checkedAt": "2026-10-01",
+  "checkedAt": "2026-10-08",
   "benchmarks": {
     "aa": {
       "name": "Artificial Analysis Intelligence Index",
@@ -10,7 +10,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
     },
     "arena": {
       "name": "Arena Text · Overall · Style Control",
-      "publishedAt": "2026-09-30",
+      "publishedAt": "2026-10-02",
       "source": "https://arena.ai/leaderboard/text",
       "category": "text-overall",
       "adjustments": "style-control"
@@ -31,8 +31,8 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "arena": {
         "model": "claude-opus-5.5-high",
         "score": 1504,
-        "confidenceInterval": 10,
-        "votes": 3932,
+        "confidenceInterval": 9,
+        "votes": 4552,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -41,6 +41,13 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Claude Sonnet 5.5 (max with fallback)",
         "score": 56,
         "source": "https://artificialanalysis.ai/models/claude-sonnet-5-5"
+      },
+      "arena": {
+        "model": "claude-sonnet-5.5-xhigh",
+        "score": 1471,
+        "confidenceInterval": 10,
+        "votes": 3145,
+        "source": "https://arena.ai/leaderboard/text"
       }
     },
     "claude-fable-5-1": {
@@ -52,8 +59,8 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "arena": {
         "model": "claude-fable-5.1-max",
         "score": 1501,
-        "confidenceInterval": 7,
-        "votes": 11241,
+        "confidenceInterval": 6,
+        "votes": 11800,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -65,9 +72,9 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "gpt-6-astra-max",
-        "score": 1476,
+        "score": 1477,
         "confidenceInterval": 7,
-        "votes": 8565,
+        "votes": 9156,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -76,6 +83,13 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "GPT-6.1 Sol (max)",
         "score": 52,
         "source": "https://artificialanalysis.ai/models/gpt-6-1-sol"
+      },
+      "arena": {
+        "model": "gpt-6.1-sol-max",
+        "score": 1483,
+        "confidenceInterval": 11,
+        "votes": 3071,
+        "source": "https://arena.ai/leaderboard/text"
       }
     },
     "gemini-4-argon": {
@@ -88,7 +102,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "gemini-4-argon-high",
         "score": 1525,
         "confidenceInterval": 9,
-        "votes": 4942,
+        "votes": 4932,
         "source": "https://arena.ai/leaderboard/text",
         "preliminary": true
       }
@@ -101,9 +115,9 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "muse-spark-1.3-max",
-        "score": 1495,
+        "score": 1494,
         "confidenceInterval": 6,
-        "votes": 11698,
+        "votes": 12343,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -117,7 +131,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "grok-4.7-xhigh",
         "score": 1442,
         "confidenceInterval": 8,
-        "votes": 5675,
+        "votes": 6405,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -131,7 +145,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "mimo-v2.6-pro",
         "score": 1480,
         "confidenceInterval": 9,
-        "votes": 4074,
+        "votes": 4056,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -150,9 +164,9 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "glm-5.3-max",
-        "score": 1479,
+        "score": 1478,
         "confidenceInterval": 6,
-        "votes": 17268,
+        "votes": 17857,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -173,7 +187,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "kimi-k3-max",
         "score": 1488,
         "confidenceInterval": 5,
-        "votes": 27719,
+        "votes": 28280,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -185,9 +199,9 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "glm-5.3-flash",
-        "score": 1474,
+        "score": 1473,
         "confidenceInterval": 5,
-        "votes": 21644,
+        "votes": 22971,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -199,9 +213,9 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "gemini-3.8-flash-high",
-        "score": 1494,
+        "score": 1495,
         "confidenceInterval": 5,
-        "votes": 24828,
+        "votes": 26298,
         "source": "https://arena.ai/leaderboard/text",
         "preliminary": true
       }
@@ -214,9 +228,9 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "deepseek-v4.1-flash-max",
-        "score": 1473,
+        "score": 1474,
         "confidenceInterval": 7,
-        "votes": 8125,
+        "votes": 8728,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -256,10 +270,24 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "gpt-6-sol-max",
-        "score": 1456,
+        "score": 1457,
         "confidenceInterval": 7,
-        "votes": 7574,
+        "votes": 8787,
         "source": "https://arena.ai/leaderboard/text"
+      }
+    },
+    "claude-haiku-5-5": {
+      "aa": {
+        "model": "Claude Haiku 5.5 (max)",
+        "score": 43,
+        "source": "https://artificialanalysis.ai/models/claude-haiku-5-5"
+      }
+    },
+    "mistral-large-4-preview": {
+      "aa": {
+        "model": "Mistral Large 4 Preview",
+        "score": 38,
+        "source": "https://artificialanalysis.ai/models/mistral-large-4"
       }
     }
   }

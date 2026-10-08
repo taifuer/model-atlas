@@ -40,6 +40,8 @@
   `);
 
   add(models, 'closed', 'gpt-6-1-sol gemini-4-argon');
+  add(models, 'closed', 'claude-haiku-5-5 mistral-large-4-preview gpt-6-sol-luna-chatgpt-october');
+  ['claude-haiku-5-5', 'mistral-large-4-preview', 'gpt-6-sol-luna-chatgpt-october'].forEach(id => { models[id].checkedAt = '2026-10-08'; });
 
   const modelSources = {
     'llava': 'https://huggingface.co/liuhaotian/LLaVA-13b-delta-v0',
@@ -95,6 +97,7 @@
   note(models, 'mimo-v2-6', '官方提供 Pro 与 Flash 的 RL / MOPD 检查点；托管服务配置可能不同。', 'Official Pro and Flash RL / MOPD checkpoints are available; hosted configurations may differ.');
   note(models, 'minimax-m2-7', '首发后已开放权重，发布日期保持不变。', 'Weights became available after launch; the launch date is unchanged.');
   note(models, 'kimi-k3', '首发后已开放权重，发布日期保持不变。', 'Weights became available after launch; the launch date is unchanged.');
+  note(models, 'mistral-large-4-preview', '截至 2026 年 10 月 8 日提供公开 API 预览，权重仍在发布计划中。', 'As of October 8, 2026, the public API preview is available, but the weight release is still planned.');
   note(models, 'step-5-preview', '截至核对日仅有预览服务；计划开放不视为已经开放。', 'Only the preview service is available at the review date; a planned weight release is not a completed release.');
   note(models, 'qwen-3-8-flash', '开源标签指官方明确对应的 Flash-Next 基础权重；Flash 托管版的上下文、工具和服务配置另计。', 'The open-source label refers to the officially linked Flash-Next base weights. Hosted Flash has separate context, tool, and service configurations.');
   note(models, 'qwen-3-8-max', '开源标签指官方明确对应的 Qwen3.8-2.4T-A95B 基础权重；其为文本模型，Max 托管版另有视觉、工具和服务配置。', 'The open-source label refers to the officially linked Qwen3.8-2.4T-A95B base weights. That checkpoint is text-only; hosted Max adds vision, tools, and service configurations.');
@@ -150,6 +153,9 @@
   note(agents, 'agent-skills', '规范与官方示例公开；示例和文档技能分别适用其仓库内的许可。', 'The specification and official examples are public. Examples and document skills retain their individual repository licenses.');
   note(agents, 'codex-cli', '开源的是 CLI 工具，不代表其连接的模型或云端服务开源。', 'The CLI is open source; connected models and hosted services have separate access terms.');
   note(agents, 'warp-2', 'Warp 客户端于 2026 年 4 月开放源代码；云端服务与连接的模型另计。此处仍记录 Warp 2 首发。', 'Warp opened its client source code in April 2026; cloud services and connected models have separate terms. This entry retains the Warp 2 launch date.');
+  add(agents, 'closed', 'openai-dots meta-muse');
+  Object.assign(agents['openai-dots'], { checkedAt: '2026-10-08', source: 'https://openai.com/index/introducing-dots/' });
+  Object.assign(agents['meta-muse'], { checkedAt: '2026-10-08', source: 'https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/' });
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

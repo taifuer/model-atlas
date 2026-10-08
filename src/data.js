@@ -30,7 +30,7 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    checkedAt: '2026-10-01',
+    checkedAt: '2026-10-08',
     source: 'https://artificialanalysis.ai/leaderboards/models',
     methodology: 'https://artificialanalysis.ai/methodology/intelligence-benchmarking',
     metric: 'Artificial Analysis Intelligence Index',
@@ -93,6 +93,11 @@ window.MODEL_ATLAS = (() => {
     "score": 39
   },
   {
+    "company": "mistral",
+    "model": "Mistral Large 4 Preview",
+    "score": 38
+  },
+  {
     "company": "minimax",
     "model": "MiniMax-M3",
     "score": 29
@@ -112,11 +117,6 @@ window.MODEL_ATLAS = (() => {
     "model": "Doubao Seed Code",
     "score": 17,
     "estimated": true
-  },
-  {
-    "company": "mistral",
-    "model": "Mistral Medium 3.5",
-    "score": 14
   },
   {
     "company": "amazon",
@@ -632,6 +632,21 @@ window.MODEL_ATLAS = (() => {
       "采用官方模型发布日志 9 月 22 日；Pro 的加速服务不作为新模型重复计数。"),
     {"id": "gpt-6-1-sol", "date": "2026-09-29", "name": "GPT-6.1 Sol", "company": "openai", "kind": "release", "summary": "升级编程、计算机操作与专业任务能力，并支持在单次请求中分派子任务。", "details": "GPT-6.1 Sol 延续 Sol 的价格定位，提供 1,050,000 tokens 上下文和图像输入，改进长程工具使用。Multi-agent 以测试功能提供；推理档位与产品接入方式合并在同一节点记录。", "dateNote": "采用 OpenAI API 更新日志的 9 月 29 日。ChatGPT Work 与 Codex 的分批开放不另作模型发布时间。", "tags": ["推理", "多模态", "智能体"], "milestone": false, "sources": [{"title": "OpenAI · API 发布日志", "url": "https://developers.openai.com/api/docs/changelog"}, {"title": "OpenAI · 模型文档", "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol"}]},
     {"id": "gemini-4-argon", "date": "2026-09-30", "name": "Gemini 4 Argon", "company": "google", "kind": "announcement", "summary": "面向复杂编程、知识工作与网络防御的新一代多模态模型，先向受邀团队开放。", "details": "Google 公布 Gemini 4 Argon，并通过 Fairwind 计划向受邀网络防御团队逐步开放。模型侧重多步骤推理与长程任务；面向开发者和消费者的普遍开放尚未开始。", "dateNote": "采用 Google 公告标注的 9 月 30 日，记录模型公布与有限开放，不能视为公开 API 或 Gemini 应用全面上线。", "tags": ["多模态", "推理", "智能体"], "milestone": false, "sources": [{"title": "Google · 模型公告", "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/"}, {"title": "Google DeepMind · 模型与评测", "url": "https://deepmind.google/models/gemini/"}]},
+    event("mistral-large-4-preview", "2026-10-06", "Mistral Large 4 Preview", "mistral", "preview",
+      "公开预览新一代多模态旗舰，结合指令遵循、混合推理与智能体任务能力。", ["多模态", "推理", "智能体"],
+      [source("Mistral · 模型发布", "https://mistral.ai/news/mistral-large-4/"), source("Mistral · 官方发布日志", "https://docs.mistral.ai/resources/changelogs")], false,
+      "首发通过 Mistral Studio API 提供公开预览，支持图像理解与百万 token 上下文。官方计划于月底发布权重；截至本次核对尚未开放，当前按闭源记录。",
+      "采用官方公告与发布日志的 10 月 6 日。此节点记录 API 公开预览，权重开放计划不作为已经发生的事件。"),
+    event("claude-haiku-5-5", "2026-10-07", "Claude Haiku 5.5", "anthropic", "release",
+      "Haiku 系列首次支持可调推理力度，面向高频任务、编程及子智能体调用。", ["多模态", "高效推理", "智能体"],
+      [source("Anthropic · 模型发布", "https://www.anthropic.com/claude-haiku-5-5"), source("Anthropic · 模型文档", "https://platform.claude.com/docs/en/models/overview")], false,
+      "支持百万 token 上下文与最高 128K tokens 输出。API 标准输入与输出按提示长度分档计费；可调 effort 配置合并在同一发布节点，不作为独立模型重复计数。",
+      "采用 Anthropic 官方公告的 10 月 7 日。"),
+    event("gpt-6-sol-luna-chatgpt-october", "2026-10-07", "GPT-6 Sol / Luna（ChatGPT）", "openai", "product",
+      "GPT-6 Sol 与 Luna 推出面向 ChatGPT 的十月版本，覆盖免费及付费用户。", ["多模态", "对话产品"],
+      source("OpenAI · 十月版本系统卡", "https://deploymentsafety.openai.com/gpt-6-october"), false,
+      "此次版本在 ChatGPT 中替代 GPT-5.6 Sol 与 Luna，并更新安全训练。官方明确将其与 Codex、ChatGPT Work 当时使用的九月版本区分；十月版本的上线范围为 ChatGPT。",
+      "采用官方系统卡的 10 月 7 日，记录 ChatGPT 十月版本上线；保留九月模型首次发布节点。"),
     event("bloom", "2022-07-12", "BLOOM", "bigscience", "weights",
       "BigScience 协作发布 176B 多语言模型，开放权重与训练过程资料。", ["多语言","开放权重"], [source("BigScience / Hugging Face · BLOOM 发布", "https://huggingface.co/blog/bloom")], true,
       "BLOOM 可生成 46 种自然语言和 13 种编程语言，由跨机构研究协作训练。模型按 BigScience RAIL 许可提供，可下载并在本地研究使用。", "采用公开发布公告日期，区别于训练完成和后续 BLOOMZ 发布。"),
@@ -643,7 +658,7 @@ window.MODEL_ATLAS = (() => {
       "《Visual Instruction Tuning》使用 GPT-4 生成图文指令数据，将视觉编码器的图像特征接入语言模型，研究通用图像理解与多模态对话。", "采用 arXiv 第一版提交日期；后续 LLaVA 1.5、1.6 属于其他版本。"),
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-10-01',
+    checkedAt: '2026-10-08',
     scope: '主流通用语言、推理、编程模型及其多模态扩展，兼顾重要历史研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
@@ -657,5 +672,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-10-01', updatedAt: '2026-10-04', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-10-08', updatedAt: '2026-10-08', companies, companyRanking, kinds, themes, releases, coverage });
 })();

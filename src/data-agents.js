@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
-  "asOf": "2026-09-29",
-  "updatedAt": "2026-10-04",
+  "asOf": "2026-10-08",
+  "updatedAt": "2026-10-08",
   "companies": [
     {
       "id": "anthropic",
@@ -11,7 +11,12 @@ window.AGENT_ATLAS = {
     {
       "id": "openai",
       "name": "OpenAI",
-      "aliases": "Codex ChatGPT Operator"
+      "aliases": "Codex ChatGPT Operator dots"
+    },
+    {
+      "id": "meta",
+      "name": "Meta",
+      "aliases": "Facebook Muse 个人智能体"
     },
     {
       "id": "google",
@@ -1554,6 +1559,34 @@ window.AGENT_ATLAS = {
       }
     },
     {
+      "id": "meta-muse",
+      "date": "2026-09-08",
+      "name": "Muse",
+      "company": "meta",
+      "category": "general",
+      "kind": "product",
+      "summary": "在独立云端虚拟机中使用浏览器和授权应用，持续推进个人任务。",
+      "details": "Meta 的个人智能体运行于 Muse Secure VM，可通过 Muse 应用或 WhatsApp 交互，关闭应用后仍可在后台处理任务。首发面向美国的 iOS、Android 和网页用户；发送邮件、购买等敏感操作需要用户确认。",
+      "dateNote": "采用官方公告的 9 月 8 日；页面的 9 月 30 日是后续更新时间。此处记录智能体产品，不是其使用的 Muse Spark 模型。",
+      "tags": [
+        "任务规划",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Meta · Muse 发布公告",
+          "titleEn": "Meta · Muse announcement",
+          "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
+        }
+      ],
+      "en": {
+        "summary": "A personal agent uses a browser and connected apps in its own cloud VM to carry out ongoing tasks.",
+        "details": "Meta’s agent runs in Muse Secure VM, communicates through the Muse app or WhatsApp, and can continue working after the app closes. The initial rollout covers US users on iOS, Android, and the web, with approval for sensitive actions such as sending email or making purchases.",
+        "dateNote": "Uses the September 8 announcement, not the page’s September 30 update. This records the agent product, separately from the Muse Spark model that powers it."
+      }
+    },
+    {
       "id": "cowork-unified",
       "date": "2026-09-16",
       "name": "Claude / Cowork",
@@ -1579,12 +1612,40 @@ window.AGENT_ATLAS = {
         "details": "The official announcement describes a staged rollout of the unified workflow, not a new foundation model.",
         "dateNote": ""
       }
+    },
+    {
+      "id": "openai-dots",
+      "date": "2026-09-29",
+      "name": "dots",
+      "company": "openai",
+      "category": "general",
+      "kind": "product",
+      "summary": "通过独立云端计算机、浏览器和授权应用，在后台持续处理多项任务。",
+      "details": "OpenAI 将通用任务执行与持续工作上下文结合，用户可在 ChatGPT、Slack 或 Teams 中与 dots 协作，并查看和调整其工作。首批向符合条件市场的 Pro、Business Premium 用户开放；Enterprise 测试版需管理员启用。",
+      "dateNote": "采用官方公告及分批上线日期；同日公布的 specialist dots 属于企业试点，不作为全面开放记录。",
+      "tags": [
+        "任务规划",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "OpenAI · dots 发布公告",
+          "titleEn": "OpenAI · dots announcement",
+          "url": "https://openai.com/index/introducing-dots/"
+        }
+      ],
+      "en": {
+        "summary": "Dedicated cloud computers, browsers, and connected apps let dots work on multiple tasks in the background.",
+        "details": "OpenAI combines general task execution with persistent work context. Users can collaborate through ChatGPT, Slack, or Teams and inspect or redirect the work. The initial rollout covers Pro and Business Premium users in eligible markets; Enterprise beta access requires an administrator to enable it.",
+        "dateNote": "Uses the announcement and staged rollout date. Specialist dots announced the same day were enterprise pilots, not a general release."
+      }
     }
   ],
   "coverage": {
-    "checkedAt": "2026-09-29",
+    "checkedAt": "2026-10-08",
     "scope": "编程 Agent、通用 Agent、Harness 及重要框架与协议的主要公开节点。",
-    "method": "以原始公告、维护者文章与论文核对日期，区分预览、论文公开、改名和正式发布。",
+    "method": "以原始公告、维护者文章与论文核对日期，区分预览、论文公开、改名和正式发布；按经典性、代表性或影响力筛选，不逐条收录常规版本更新。",
     "references": []
   }
 };

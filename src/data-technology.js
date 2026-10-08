@@ -1,8 +1,8 @@
 // Primary-source history of AI methods, computing frameworks, and deployment.
 (() => {
   const data = {
-  "asOf": "2026-10-01",
-  "updatedAt": "2026-10-04",
+  "asOf": "2026-10-08",
+  "updatedAt": "2026-10-08",
   "accessFilter": false,
   "companies": [
     {
@@ -21,7 +21,7 @@
       "id": "microsoft",
       "name": "Microsoft",
       "nameEn": "Microsoft",
-      "aliases": "微软 ONNX DeepSpeed"
+      "aliases": "微软 ONNX DeepSpeed MXC Microsoft Execution Containers"
     },
     {
       "id": "openai",
@@ -1968,8 +1968,49 @@
         "details": "The fourth version responds to uneven performance scaling across hardware units by redesigning attention computation and execution pipelines to reduce emerging bottlenecks.",
         "dateNote": "Dated to the first public version on arXiv."
       }
+    },
+    {
+      "id": "microsoft-execution-containers",
+      "date": "2026-10-07",
+      "name": "Microsoft Execution Containers · MXC",
+      "company": "microsoft",
+      "category": "infrastructure",
+      "kind": "release",
+      "summary": "以统一策略与 SDK 限定智能体的文件、网络等资源访问，交由操作系统隔离机制执行。",
+      "details": "MXC 将工作负载权限映射到 Windows、macOS 和 Linux 的隔离后端，策略由智能体外部控制。正式发布时已有 GitHub Copilot、OpenAI Codex、OpenClaw 和 Replit 等集成；MicroVM 后端仍为实验阶段。",
+      "dateNote": "采用 10 月 7 日正式可用公告及 SDK v1.0.0 发布日；6 月 2 日已有早期预览公告，不将正式发布日视为首次公开。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Microsoft · MXC 正式发布",
+          "titleEn": "Microsoft · MXC general availability",
+          "url": "https://blogs.windows.com/windowsdeveloper/2026/10/07/microsoft-execution-containers-policy-driven-containment-for-ai-agents/"
+        },
+        {
+          "title": "Microsoft · SDK v1.0.0 发布记录",
+          "titleEn": "Microsoft · SDK v1.0.0 release",
+          "url": "https://github.com/microsoft/mxc/releases/tag/v1.0.0"
+        },
+        {
+          "title": "Microsoft · 早期预览公告",
+          "titleEn": "Microsoft · Early preview announcement",
+          "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/windows-platform-security-for-ai-agents/"
+        }
+      ],
+      "en": {
+        "summary": "A common policy and SDK restrict agents’ file and network access through OS-enforced isolation.",
+        "details": "MXC maps workload permissions to isolation backends on Windows, macOS, and Linux, with policy controlled outside the agent. GitHub Copilot, OpenAI Codex, OpenClaw, and Replit were among the integrations available at launch; the MicroVM backend remains experimental.",
+        "dateNote": "Uses the October 7 general-availability announcement and SDK v1.0.0 release. An early preview was announced on June 2, so this is not the first public introduction."
+      }
     }
-  ]
+  ],
+  "coverage": {
+    "checkedAt": "2026-10-08",
+    "scope": "算法、计算框架、推理部署与容器沙箱中具有经典性、代表性或影响力的公开节点。",
+    "method": "以原始论文、项目公告与发布记录核对日期，区分预览、正式可用和后续更新；不逐条收录常规软件版本。",
+    "references": []
+  }
 };
   // One canonical Transformer record, shared with the LLM timeline.
   const transformer = window.MODEL_ATLAS.releases.find(entry => entry.id === 'transformer');

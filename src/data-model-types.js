@@ -3,6 +3,28 @@
   const data = {
   "checkedAt": "2026-10-03",
   "entries": {
+    "mistral-large-4-preview": {
+      "checkedAt": "2026-10-08",
+      "category": "multimodal",
+      "sources": [
+        "https://mistral.ai/news/mistral-large-4/",
+        "https://docs.mistral.ai/models/mistral-large-4-0"
+      ]
+    },
+    "claude-haiku-5-5": {
+      "checkedAt": "2026-10-08",
+      "category": "multimodal",
+      "sources": [
+        "https://platform.claude.com/docs/en/models/overview"
+      ]
+    },
+    "gpt-6-sol-luna-chatgpt-october": {
+      "checkedAt": "2026-10-08",
+      "category": "multimodal",
+      "sources": [
+        "https://deploymentsafety.openai.com/gpt-6-october"
+      ]
+    },
     "transformer": {
       "category": "text",
       "sources": [

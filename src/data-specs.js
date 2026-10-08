@@ -1,9 +1,54 @@
-// First-party specifications, checked 2026-10-03. Omitted fields are unverified.
+// First-party specifications. Per-entry checkedAt overrides the baseline date.
+// Omitted fields are unverified.
 // Each variant names its API snapshot, checkpoint, or paper configuration.
 // Numeric limits are exact; K/M strings retain the source convention.
 window.MODEL_ATLAS_SPECS = Object.freeze({
   "checkedAt": "2026-10-03",
   "entries": {
+    "claude-haiku-5-5": {
+      "checkedAt": "2026-10-08",
+      "variants": [
+        {
+          "name": "claude-haiku-5-5",
+          "basis": "api",
+          "contextTokens": "1M",
+          "outputTokens": "128K",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://platform.claude.com/docs/en/models/overview"
+          ]
+        }
+      ]
+    },
+    "mistral-large-4-preview": {
+      "checkedAt": "2026-10-08",
+      "variants": [
+        {
+          "name": "mistral-large-4",
+          "basis": "api",
+          "contextTokens": "1M",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://docs.mistral.ai/models/mistral-large-4-0",
+            "https://docs.mistral.ai/resources/changelogs"
+          ]
+        }
+      ],
+      "note": "采用当前官方 API 文档的 1M 上下文，区别于榜单中受测配置的窗口。",
+      "noteEn": "Uses the 1M context in the current official API documentation; the benchmarked configuration may use a different window."
+    },
     "gpt-6-astra": {
       "variants": [
         {

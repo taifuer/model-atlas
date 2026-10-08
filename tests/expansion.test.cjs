@@ -122,7 +122,7 @@ test('compute facts retain precision, sparsity, scale, and preliminary status', 
   const records = hardware.releases.flatMap(r => (r.hardware?.facts || []).filter(f => f.metric === 'compute'));
   assert.ok(records.length >= 10);
   for (const fact of records) {
-    assert.ok(['BF16', 'FP16', 'FP16.16', 'FP32', 'FP8', 'INT8'].includes(fact.precision));
+    assert.ok(['BF16', 'FP16', 'FP16.16', 'FP32', 'FP8', 'FP4', 'INT8'].includes(fact.precision));
     assert.ok(['dense', 'sparse', 'not-stated'].includes(fact.sparsity));
     assert.ok(['chip', 'accelerator', 'system'].includes(fact.scope));
     assert.equal(fact.chip, true);

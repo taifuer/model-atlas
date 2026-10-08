@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "retrievedAt": "2026-10-08",
+  "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+  "sourceSha256": "02eac0f3203d143ed8af294c93fcd91cde1c1b6f2f6af1c60c47efc0f8276bf9",
+  "metric": {
+    "name": "Arena Text · Overall · Style Control",
+    "publishedAt": "2026-10-02",
+    "source": "https://arena.ai/leaderboard/text",
+    "category": "text-overall",
+    "adjustments": "style-control"
+  },
+  "selection": "Explicit reviewed model mapping, text_style_control / latest / overall. Ratings and half-width confidence intervals rounded to the nearest integer for display.",
+  "records": [
+    {
+      "releaseId": "claude-opus-5-5",
+      "model": "claude-opus-5.5-high",
+      "score": 1504,
+      "confidenceInterval": 9,
+      "votes": 4552,
+      "source": "https://arena.ai/leaderboard/text"
+    },
+    {
+      "releaseId": "claude-fable-5-1",
+      "model": "claude-fable-5.1-max",
+      "score": 1501,
+      "confidenceInterval": 6,
+      "votes": 11800,
+      "source": "https://arena.ai/leaderboard/text"
+    },
+    {
+      "releaseId": "gpt-6-astra",
+      "model": "gpt-6-astra-max",
+      "score": 1477,
+      "confidenceInterval": 7,
+      "votes": 9156,
+      "source": "https://arena.ai/leaderboard/text"
+    },
+    {
+      "releaseId": "gemini-4-argon",
+      "model": "gemini-4-argon-high",
+      "score": 1525,
+      "confidenceInterval": 9,
+      "votes": 4932,
+      "source": "https://arena.ai/leaderboard/text",
+      "preliminary": true
+    },
+    {
+      "releaseId": "muse-spark-1-3",
+      "model": "muse-spark-1.3-max",
+      "score": 1494,
+      "confidenceInterval": 6,
+      "votes": 12343,
+      "source": "https://arena.ai/leaderboard/text"
+    },
+    {
+      "releaseId": "grok-4-7",
+      "model": "grok-4.7-xhigh",
+      "score": 1442,
+      "confidenceInterval": 8,
+      "votes": 6405,
+      "source": "https://arena.ai/leaderboard/text"
+    },
+    {
+      "releaseId": "mimo-v2-6",
+      "model": "mimo-v2.6-pro",
+      "score": 1480,
+      "confidenceInterval": 9,
+      "votes": 4056,
+      "source": "https://arena.ai/leaderboard/text"
+    },
+    {
+      "releaseId": "glm-5-3",
+      "model": "glm-5.3-max",
+      "score": 1478,
+      "confidenceInterval": 6,
+      "votes": 17857,
+      "source": "https://arena.ai/leaderboard/text"
+    },
+    {
+      "releaseId": "kimi-k3",
+      "model": "kimi-k3-max",
+      "score": 1488,
+      "confidenceInterval": 5,
+      "votes": 28280,
+      "source": "https://arena.ai/leaderboard/text"
+    },
+    {
+      "releaseId": "glm-5-3-flash",
+      "model": "glm-5.3-flash",
+      "score": 1473,
+      "confidenceInterval": 5,
+      "votes": 22971,
+      "source": "https://arena.ai/leaderboard/text"
+    },
+    {
+      "releaseId": "gemini-3-8-flash",
+      "model": "gemini-3.8-flash-high",
+      "score": 1495,
+      "confidenceInterval": 5,
+      "votes": 26298,
+      "source": "https://arena.ai/leaderboard/text",
+      "preliminary": true
+    },
+    {
+      "releaseId": "deepseek-v4-1-flash",
+      "model": "deepseek-v4.1-flash-max",
+      "score": 1474,
+      "confidenceInterval": 7,
+      "votes": 8728,
+      "source": "https://arena.ai/leaderboard/text"
+    },
+    {
+      "releaseId": "gpt-6-sol-luna",
+      "model": "gpt-6-sol-max",
+      "score": 1457,
+      "confidenceInterval": 7,
+      "votes": 8787,
+      "source": "https://arena.ai/leaderboard/text"
+    },
+    {
+      "releaseId": "gpt-6-1-sol",
+      "model": "gpt-6.1-sol-max",
+      "score": 1483,
+      "confidenceInterval": 11,
+      "votes": 3071,
+      "source": "https://arena.ai/leaderboard/text"
+    },
+    {
+      "releaseId": "claude-sonnet-5-5",
+      "model": "claude-sonnet-5.5-xhigh",
+      "score": 1471,
+      "confidenceInterval": 10,
+      "votes": 3145,
+      "source": "https://arena.ai/leaderboard/text"
+    }
+  ]
+}

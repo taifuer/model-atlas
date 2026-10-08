@@ -123,6 +123,43 @@ for (const language of ['zh', 'en']) {
       await noOverflow(page);
     });
 
+    test('new releases keep their price tiers, preview status and product boundaries', async ({ page }) => {
+      await ready(page, route(language));
+      const haiku = page.locator('#release-claude-haiku-5-5');
+      await expect(haiku.locator('[data-detail-section="specs"]')).toContainText('1M');
+      await expect(haiku.locator('[data-detail-section="scores"]')).toContainText('43');
+      await haiku.locator('[data-detail-section="pricing"]').click();
+      await expect(page.locator('.detail-pricing .price-tier')).toHaveCount(2);
+      await expect(page.locator('.price-condition').first()).toContainText('≤ 100K');
+      await expect(page.locator('.price-condition').last()).toContainText('> 100K');
+      await page.keyboard.press('Escape');
+      const mistral = page.locator('#release-mistral-large-4-preview');
+      await expect(mistral.locator('[data-detail-section="pricing"]')).toContainText(language === 'en' ? 'Promo' : '优惠');
+      await mistral.locator('.card-title button').click();
+      await expect(page.locator('.dialog-meta')).toContainText(language === 'en' ? 'Preview' : '预览');
+      await expect(page.locator('.dialog-meta')).toContainText(language === 'en' ? 'Closed source' : '闭源');
+      await page.keyboard.press('Escape');
+      const chatgpt = page.locator('#release-gpt-6-sol-luna-chatgpt-october');
+      await expect(chatgpt.locator('.fact-chip')).toHaveCount(0);
+      await chatgpt.locator('.card-title button').click();
+      await expect(page.locator('#dialog-title')).toContainText('ChatGPT');
+      await expect(page.locator('.detail-specs, .detail-pricing, .detail-scores')).toHaveCount(0);
+      await page.keyboard.press('Escape');
+      await noOverflow(page);
+
+      for (const [file, id, icon, date] of [
+        ['agents.html', 'meta-muse', 'meta-color.svg', '2026-09-08'],
+        ['agents.html', 'openai-dots', 'openai.svg', '2026-09-29'],
+        ['hardware.html', 'ascend-960-supernode', 'huawei.svg', '2026-09-17'],
+        ['technology.html', 'microsoft-execution-containers', 'microsoft-color.svg', '2026-10-07'],
+      ]) {
+        await ready(page, route(language, file) + '#release-' + id);
+        await expect(page.locator('.dialog-title-row .brand-icon')).toHaveAttribute('src', 'assets/icons/' + icon);
+        await expect(page.locator('.dialog-meta time')).toHaveAttribute('datetime', date);
+        await noOverflow(page);
+      }
+    });
+
     test('every header searches all timelines and understands typographic hyphens', async ({ page }) => {
       for (const file of pages) {
         await ready(page, route(language, file));

@@ -7,6 +7,57 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
   "inputType": "uncached-text",
   "outputType": "text",
   "entries": {
+    "claude-haiku-5-5": {
+      "checkedAt": "2026-10-08",
+      "variants": [
+        {
+          "name": "claude-haiku-5-5",
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 0.1,
+              "output": 0.5,
+              "label": "输入 ≤ 100K tokens",
+              "labelEn": "Input ≤ 100K tokens"
+            },
+            {
+              "input": 0.5,
+              "output": 2.5,
+              "label": "输入 > 100K tokens",
+              "labelEn": "Input > 100K tokens"
+            }
+          ],
+          "sources": [
+            "https://www.anthropic.com/claude-haiku-5-5",
+            "https://platform.claude.com/docs/en/models/overview"
+          ]
+        }
+      ]
+    },
+    "mistral-large-4-preview": {
+      "checkedAt": "2026-10-08",
+      "variants": [
+        {
+          "name": "mistral-large-4",
+          "promotional": true,
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 0.68,
+              "output": 2.09,
+              "label": "首发优惠",
+              "labelEn": "Launch promotion"
+            }
+          ],
+          "sources": [
+            "https://docs.mistral.ai/models/mistral-large-4-0",
+            "https://docs.mistral.ai/resources/changelogs"
+          ],
+          "note": "发布日志说明首发两周五折。此处记录核对日的优惠价；页面列示的常规输入/输出价为每百万 tokens 1.36 / 4.18 美元，未标注确切优惠结束时间。",
+          "noteEn": "The changelog announces 50% off for two launch weeks. These are the promotional rates at the review date. Listed regular input/output rates are $1.36 / $4.18 per million tokens; no exact promotion end time is published."
+        }
+      ]
+    },
     "gpt-6-astra": {
       "variants": [
         {

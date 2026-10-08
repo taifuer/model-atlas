@@ -1,14 +1,14 @@
 /* Curated hardware history. Event dates and configurations retain explicit source scope. */
 window.HARDWARE_ATLAS = {
-  "asOf": "2026-10-01",
-  "updatedAt": "2026-10-04",
+  "asOf": "2026-10-08",
+  "updatedAt": "2026-10-08",
   "accessFilter": false,
   "companies": [
     {
       "id": "nvidia",
       "name": "NVIDIA",
       "nameEn": "NVIDIA",
-      "aliases": "英伟达 GeForce Tesla Jetson Blackwell Rubin"
+      "aliases": "英伟达 GeForce Tesla Jetson Blackwell Rubin RTX Spark"
     },
     {
       "id": "amd",
@@ -32,7 +32,7 @@ window.HARDWARE_ATLAS = {
       "id": "huawei",
       "name": "华为",
       "nameEn": "Huawei",
-      "aliases": "昇腾 Ascend 华为 达芬奇 Atlas CloudMatrix 灵衢 950PR 950DT"
+      "aliases": "昇腾 Ascend 华为 达芬奇 Atlas CloudMatrix 灵衢 950PR 950DT 960 超节点 Hi-ONE"
     },
     {
       "id": "intel",
@@ -44,13 +44,13 @@ window.HARDWARE_ATLAS = {
       "id": "cerebras",
       "name": "Cerebras",
       "nameEn": "Cerebras",
-      "aliases": "晶圆 WSE"
+      "aliases": "晶圆 WSE CS-4 Nexus"
     },
     {
       "id": "apple",
       "name": "Apple",
       "nameEn": "Apple",
-      "aliases": "苹果 M1 M3 Ultra Mac"
+      "aliases": "苹果 M1 M3 Ultra M5 Ultra Mac"
     },
     {
       "id": "graphcore",
@@ -2523,6 +2523,73 @@ window.HARDWARE_ATLAS = {
       }
     },
     {
+      "id": "nvidia-rtx-spark",
+      "date": "2026-05-31",
+      "name": "NVIDIA RTX Spark",
+      "company": "nvidia",
+      "category": "edge",
+      "kind": "announcement",
+      "summary": "将 Blackwell RTX GPU 与 Grace CPU 集成到 Windows 电脑平台，支持本地模型与智能体。",
+      "details": "通过 NVLink-C2C 连接 GPU 与 CPU，提供最高 128 GB 统一内存。10 月 7 日开启笔记本预售，官方计划 10 月 16 日供应，紧凑台式机计划 11 月供应。",
+      "dateNote": "日期为 5 月 31 日产品公布；后续预售与计划供货日期不作为首次发布日期。",
+      "tags": [
+        "本地与边缘"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "NVIDIA 产品公告",
+          "titleEn": "NVIDIA product announcement",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-microsoft-windows-pcs-agents-rtx-spark"
+        },
+        {
+          "title": "预售与供应计划",
+          "titleEn": "Preorders and availability plans",
+          "url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-microsoft-windows-event/"
+        }
+      ],
+      "en": {
+        "summary": "Combines a Blackwell RTX GPU and Grace CPU in a Windows PC platform for local models and agents.",
+        "details": "NVLink-C2C connects the GPU and CPU, with up to 128 GB of unified memory. Laptop preorders opened October 7, with availability scheduled for October 16; compact desktops are planned for November.",
+        "dateNote": "Dated to the May 31 product announcement, separately from later preorders and planned availability."
+      },
+      "hardware": {
+        "variant": "NVIDIA RTX Spark · 1 superchip",
+        "checkedAt": "2026-10-08",
+        "facts": [
+          {
+            "label": "统一内存上限",
+            "labelEn": "Max unified memory",
+            "value": "128 GB",
+            "chip": true
+          },
+          {
+            "label": "FP4 峰值",
+            "labelEn": "FP4 peak",
+            "value": "1 PFLOPS",
+            "chip": true,
+            "metric": "compute",
+            "precision": "FP4",
+            "sparsity": "not-stated",
+            "scope": "chip",
+            "estimate": false
+          },
+          {
+            "label": "架构",
+            "labelEn": "Architecture",
+            "value": "Blackwell RTX + Grace",
+            "chip": false
+          }
+        ],
+        "sources": [
+          "https://nvidianews.nvidia.com/news/nvidia-microsoft-windows-pcs-agents-rtx-spark",
+          "https://blogs.nvidia.com/blog/local-ai-rtx-spark-microsoft-windows-event/"
+        ],
+        "note": "统一内存为最高配置。FP4 为厂商标称峰值，公告未明确稀疏性口径；不等同于实际模型吞吐，也不可直接与其他精度比较。",
+        "noteEn": "Memory is the maximum unified configuration. FP4 is the vendor-stated peak without a specified sparsity basis; it is not model throughput or directly comparable across precisions."
+      }
+    },
+    {
       "id": "atlas-950-superpod",
       "date": "2026-07-17",
       "name": "Atlas 950 SuperPoD",
@@ -2530,12 +2597,17 @@ window.HARDWARE_ATLAS = {
       "category": "systems",
       "kind": "showcase",
       "summary": "1024 卡超节点公开展示，以统一内存编址和高速互连扩展算力。",
-      "details": "记录 WAIC 展出的实际系统；不将此前路线图中更大规模的满配设想作为此次展品规格。",
+      "details": "记录 WAIC 展出的实际系统；不将此前路线图中更大规模的满配设想作为此次展品规格。华为在 9 月 17 日全联接大会上表示，昇腾 950 超节点已规模商用，但未将商用部署限定为这套展品的配置。",
       "sources": [
         {
           "url": "https://www.huawei.com/cn/news/2026/7/atlas-950-superpod",
           "title": "官方发布资料",
           "titleEn": "Official announcement"
+        },
+        {
+          "url": "https://www.huawei.com/cn/news/2026/9/hc-wang-keynote",
+          "title": "华为全联接大会后续进展",
+          "titleEn": "Huawei Connect deployment update"
         }
       ],
       "tags": [],
@@ -2543,7 +2615,7 @@ window.HARDWARE_ATLAS = {
       "dateNote": "采用华为公告正文的 2026-07-17 展示日期，事件性质为真机公开展示。",
       "en": {
         "summary": "A 1,024-card SuperPoD is publicly demonstrated with unified addressing and high-speed links.",
-        "details": "Records the system shown at WAIC; larger maximum configurations from earlier roadmaps are not attributed to this exhibit.",
+        "details": "Records the system shown at WAIC; larger roadmap configurations are not attributed to this exhibit. On September 17, Huawei reported commercial deployment of Ascend 950 Supernodes at scale, without specifying that those deployments use this exhibit’s configuration.",
         "dateNote": "Uses the 2026-07-17 demonstration date in Huawei’s announcement; this is a public hardware demonstration."
       },
       "hardware": {
@@ -2589,10 +2661,166 @@ window.HARDWARE_ATLAS = {
         "details": "MI455X targets AI while MI430X targets high-precision computing. This entry records the Advancing AI 2026 launch without combining system specifications into a single-card figure.",
         "dateNote": "Dated to the official announcement; availability is described in the original source."
       }
+    },
+    {
+      "id": "cerebras-cs4",
+      "date": "2026-08-18",
+      "name": "Cerebras CS-4",
+      "company": "cerebras",
+      "category": "systems",
+      "kind": "announcement",
+      "summary": "采用三颗 WSE-3 Turbo 与 Nexus 机架架构，面向低延迟推理及分离式部署。",
+      "details": "模块化设计整合计算、供电和 I/O，支持由其他平台完成预填充、由 CS-4 完成解码的分离式推理。CS-4 是系统代际名称，处理器为 WSE-3 Turbo。",
+      "dateNote": "采用官方 8 月 18 日公告日期；公告计划当季开始交付，未据此确认实际客户交付日。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "CS-4 系统公告",
+          "titleEn": "CS-4 system announcement",
+          "url": "https://www.cerebras.ai/blog/introducing-cerebras-cs-4"
+        }
+      ],
+      "en": {
+        "summary": "Combines three WSE-3 Turbo processors with the Nexus rack architecture for low-latency and disaggregated inference.",
+        "details": "Its modular design integrates compute, power, and I/O. Other platforms can handle prefill while CS-4 handles decoding. CS-4 names the system generation; the processors are WSE-3 Turbo.",
+        "dateNote": "Uses the August 18 announcement. Shipments were scheduled to begin that quarter; a customer delivery date is not established here."
+      },
+      "hardware": {
+        "variant": "Cerebras CS-4 · Nexus",
+        "checkedAt": "2026-10-08",
+        "facts": [
+          {
+            "label": "处理器",
+            "labelEn": "Processors",
+            "value": "3 × WSE-3 Turbo",
+            "chip": true
+          },
+          {
+            "label": "机架架构",
+            "labelEn": "Rack architecture",
+            "value": "Nexus",
+            "chip": false
+          }
+        ],
+        "sources": [
+          "https://www.cerebras.ai/blog/introducing-cerebras-cs-4"
+        ],
+        "note": "规格对应 CS-4 系统；官方性能倍率含特定模型测试与推算，不作为通用算力指标。",
+        "noteEn": "Specifications describe the CS-4 system. Published speedups include model-specific tests and projections, not general compute metrics."
+      }
+    },
+    {
+      "id": "apple-m5-ultra",
+      "date": "2026-08-25",
+      "name": "Apple M5 Ultra",
+      "company": "apple",
+      "category": "edge",
+      "kind": "announcement",
+      "summary": "GPU 神经加速器与高带宽统一内存支持本地大模型推理。",
+      "details": "用于新一代 Mac Studio，最高提供 512 GB 统一内存与 1.2 TB/s 内存带宽，官方展示了 LM Studio 等本地 AI 应用。统一内存由 CPU、GPU 等系统组件共享。",
+      "dateNote": "采用 8 月 25 日公告日期；公告安排 Mac Studio 从 9 月 22 日开始供应，512 GB 配置计划 10 月下旬供应。",
+      "tags": [
+        "本地与边缘"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Mac Studio 与 M5 Ultra 公告",
+          "titleEn": "Mac Studio and M5 Ultra announcement",
+          "url": "https://www.apple.com/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/"
+        }
+      ],
+      "en": {
+        "summary": "GPU Neural Accelerators and high-bandwidth unified memory support local language-model inference.",
+        "details": "Powers the new Mac Studio with up to 512 GB of unified memory and 1.2 TB/s memory bandwidth, with local AI applications such as LM Studio demonstrated by Apple. Memory is shared by the CPU, GPU, and other system components.",
+        "dateNote": "Uses the August 25 announcement, which scheduled Mac Studio availability from September 22 and the 512 GB configuration for late October."
+      },
+      "hardware": {
+        "variant": "Mac Studio · M5 Ultra",
+        "checkedAt": "2026-10-08",
+        "facts": [
+          {
+            "label": "统一内存上限",
+            "labelEn": "Max unified memory",
+            "value": "512 GB",
+            "chip": true
+          },
+          {
+            "label": "内存带宽",
+            "labelEn": "Memory bandwidth",
+            "value": "1.2 TB/s",
+            "chip": true
+          }
+        ],
+        "sources": [
+          "https://www.apple.com/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/"
+        ],
+        "note": "512 GB 为公布的最高统一内存配置，计划 2026 年 10 月下旬供应；截至 10 月 8 日不记作该配置已交付。",
+        "noteEn": "512 GB is the announced maximum unified-memory configuration, scheduled for late October 2026; it is not recorded as delivered as of October 8."
+      }
+    },
+    {
+      "id": "ascend-960-supernode",
+      "date": "2026-09-17",
+      "name": "昇腾 960 超节点",
+      "company": "huawei",
+      "category": "systems",
+      "kind": "announcement",
+      "summary": "以灵衢互连与 Hi-ONE NPO 光引擎连接最高 4096 张加速卡。",
+      "details": "采用统一内存编址与全液冷设计，厂商公布的系统聚合峰值为 8 EFLOPS FP8、16 EFLOPS FP4，不代表单卡算力。同场芯片路线图计划 960DT 于 2027 年第一季度、960PR 于第三季度就绪。",
+      "dateNote": "记录 9 月 17 日超节点产品公布，不代表昇腾 960 芯片或整机已经供货。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "昇腾 960 超节点公告",
+          "titleEn": "Ascend 960 Supernode announcement",
+          "url": "https://www.huawei.com/cn/news/2026/9/hc-ascend960-supernode"
+        },
+        {
+          "title": "芯片路线图与系统架构",
+          "titleEn": "Chip roadmap and system architecture",
+          "url": "https://www.huawei.com/cn/news/2026/9/hc-wang-keynote"
+        }
+      ],
+      "en": {
+        "name": "Ascend 960 Supernode",
+        "summary": "Uses UnifiedBus interconnects and Hi-ONE near-packaged optics to link up to 4,096 accelerator cards.",
+        "details": "Features unified memory addressing and liquid cooling. Vendor-stated aggregate system peaks are 8 EFLOPS FP8 and 16 EFLOPS FP4, not per-card figures. The accompanying chip roadmap targets readiness for 960DT in Q1 2027 and 960PR in Q3 2027.",
+        "dateNote": "Records the September 17 system announcement, not confirmed availability of Ascend 960 chips or complete systems."
+      },
+      "hardware": {
+        "variant": "昇腾 960 超节点 · 公布配置",
+        "variantEn": "Ascend 960 Supernode · announced configuration",
+        "checkedAt": "2026-10-08",
+        "facts": [
+          {
+            "label": "加速卡上限",
+            "labelEn": "Max accelerator cards",
+            "value": "4096",
+            "chip": true
+          },
+          {
+            "label": "互连",
+            "labelEn": "Interconnect",
+            "value": "灵衢 + Hi-ONE NPO",
+            "valueEn": "UnifiedBus + Hi-ONE NPO",
+            "chip": false
+          }
+        ],
+        "sources": [
+          "https://www.huawei.com/cn/news/2026/9/hc-ascend960-supernode",
+          "https://www.huawei.com/cn/news/2026/9/hc-wang-keynote"
+        ],
+        "note": "规格对应官方公布的完整超节点配置；芯片就绪时间另见路线图，系统规模与峰值不等于已交付性能。",
+        "noteEn": "Specifications describe the announced complete Supernode. Chip readiness follows the roadmap; system scale and peaks do not establish delivered performance."
+      }
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-01",
-    "scope": "具有代表性的 GPU、专用加速器、算力系统及本地设备；日期优先依据一手资料，辅以署名媒体报道。"
+    "checkedAt": "2026-10-08",
+    "scope": "具有代表性的 GPU、专用加速器、算力系统及本地设备；日期优先依据一手资料，辅以署名媒体报道。区分产品公布、公开展示、供应计划与实际部署，规格保留芯片、板卡或系统范围。",
+    "scopeEn": "Representative GPUs, custom accelerators, compute systems, and local devices. Dates prioritize primary sources with attributed reporting as needed. Announcements, demonstrations, availability plans, and deployments remain distinct; specifications retain chip, card, or system scope."
   }
 };

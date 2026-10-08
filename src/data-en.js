@@ -1,5 +1,21 @@
 /* English editorial copy. Original dates and sources remain in data.js. */
 window.MODEL_ATLAS_EN = {
+  "mistral-large-4-preview": {
+    "summary": "A public preview of Mistral’s new multimodal flagship combines instruction following, hybrid reasoning, and agent tasks.",
+    "details": "The initial public preview is available through the Mistral Studio API, with image understanding and a one-million-token context. Weights are planned for the end of October but are not yet available at the review date; access is currently classified as closed.",
+    "dateNote": "Uses October 6 from the official announcement and changelog. This entry records the API public preview; the planned weight release is not treated as completed."
+  },
+  "claude-haiku-5-5": {
+    "summary": "The first Haiku model with adjustable effort targets high-volume tasks, coding, and subagent calls.",
+    "details": "Supports a one-million-token context and up to 128K output tokens. Standard API input and output rates vary by prompt length. Effort settings are grouped into this model release rather than counted as separate models.",
+    "dateNote": "Uses October 7 from the official Anthropic announcement."
+  },
+  "gpt-6-sol-luna-chatgpt-october": {
+    "name": "GPT-6 Sol / Luna (ChatGPT)",
+    "summary": "October versions of GPT-6 Sol and Luna arrive in ChatGPT for free and paid users.",
+    "details": "These versions replace GPT-5.6 Sol and Luna in ChatGPT and include updated safety training. OpenAI distinguishes them from the September versions then used in Codex and ChatGPT Work. The October rollout is for ChatGPT.",
+    "dateNote": "Uses October 7 from the official system card for the ChatGPT October release. The original September launch remains a separate entry."
+  },
   "transformer": {
     "summary": "Google researchers introduce the Transformer, an attention-based sequence model, in Attention Is All You Need.",
     "details": "The paper presents an encoder–decoder architecture using multi-head attention and positional encoding, evaluated on machine translation. It provided the architectural foundation for later pretrained models including GPT and BERT.",
@@ -782,6 +798,7 @@ window.MODEL_ATLAS_EN = {
   }
 };
 window.ATLAS_TAGS_EN = {
+  "对话产品": "Chat product",
   "模型架构": "Architecture",
   "注意力机制": "Attention",
   "预训练": "Pretraining",

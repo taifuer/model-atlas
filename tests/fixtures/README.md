@@ -1,9 +1,11 @@
 # Test fixtures
 
-The score snapshots in `scores/2026-10-01/` were manually reviewed against
+The score snapshots in the dated `scores/` directories were manually reviewed against
 [Artificial Analysis](https://artificialanalysis.ai/leaderboards/models) and
-[Arena](https://arena.ai/leaderboard/text) on October 1, 2026. The Arena snapshot
-was published on September 30, 2026. Each file records its source URL, retrieval
+[Arena](https://arena.ai/leaderboard/text) on their recorded retrieval dates. The October 1 fixtures use Arena’s September 30 publication;
+the October 8 fixtures use its October 2 publication from the official Hugging Face dataset.
+The newer AA fixtures include the current leaderboard and a separately checked deprecated model page.
+Each file records its source URL, retrieval
 date, source checksum, metric, model configuration, and selected results; no
 original source pages are included.
 
