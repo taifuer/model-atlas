@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
-  "asOf": "2026-10-08",
-  "updatedAt": "2026-10-08",
+  "asOf": "2026-10-11",
+  "updatedAt": "2026-10-11",
   "companies": [
     {
       "id": "anthropic",
@@ -71,8 +71,9 @@ window.AGENT_ATLAS = {
     },
     {
       "id": "pi",
-      "name": "Mario Zechner",
-      "aliases": "Pi Harness badlogic"
+      "name": "Pi / Earendil",
+      "aliases": "Pi Harness badlogic Earendil Mario Zechner",
+      "nameEn": "Pi / Earendil"
     },
     {
       "id": "openclaw",
@@ -162,6 +163,47 @@ window.AGENT_ATLAS = {
       "id": "autogpt",
       "name": "Significant Gravitas",
       "aliases": "AutoGPT Auto-GPT Toran Bruce Richards"
+    },
+    {
+      "id": "zhipu",
+      "name": "智谱",
+      "nameEn": "Z.ai",
+      "aliases": "Zhipu ZCode Z Code GLM 智谱华章"
+    },
+    {
+      "id": "jetbrains",
+      "name": "JetBrains",
+      "aliases": "Junie IntelliJ PyCharm Air"
+    },
+    {
+      "id": "roo",
+      "name": "Roo Code",
+      "aliases": "Roo Cline Roo Veterinary Matt Rubens"
+    },
+    {
+      "id": "kilo",
+      "name": "Kilo",
+      "aliases": "Kilo Code kilocode Anaconda"
+    },
+    {
+      "id": "augment",
+      "name": "Augment Code",
+      "aliases": "Augment Agent Auggie Context Engine"
+    },
+    {
+      "id": "zed",
+      "name": "Zed Industries",
+      "aliases": "Zed Agent Panel"
+    },
+    {
+      "id": "amp",
+      "name": "Amp",
+      "aliases": "Sourcegraph Amp Frontier"
+    },
+    {
+      "id": "factory",
+      "name": "Factory",
+      "aliases": "Droid Droids"
     }
   ],
   "kinds": {
@@ -549,6 +591,44 @@ window.AGENT_ATLAS = {
       }
     },
     {
+      "id": "roo-code-3-2",
+      "date": "2025-01-21",
+      "name": "Roo Code 3.2",
+      "company": "roo",
+      "category": "coding",
+      "kind": "release",
+      "summary": "从 Roo Cline 更名为 Roo Code，并加入可配置提示词和工具权限的自定义模式。",
+      "details": "源自 Cline 的开源编程 Agent，允许为架构设计、编码和问答配置不同角色与工具。该分支随后成为 Kilo Code 等项目的基础；原项目于 2026 年 5 月 15 日停止服务并归档，保留为历史节点。",
+      "dateNote": "采用 Open VSX 的 3.2.0 公开发布时间；记录改名与自定义模式版本，不是 Cline 或 Roo Cline 首发。",
+      "tags": [
+        "编程",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Open VSX · Roo Code 3.2.0 发布记录",
+          "titleEn": "Open VSX · Roo Code 3.2.0 publication",
+          "url": "https://open-vsx.org/api/RooVeterinaryInc/roo-cline/3.2.0"
+        },
+        {
+          "title": "Roo Code · 3.2.0 版本提交",
+          "titleEn": "Roo Code · 3.2.0 version commit",
+          "url": "https://github.com/RooCodeInc/Roo-Code/commit/45c396137bdd884fbf3c3e74e36a356e1a8d701f"
+        },
+        {
+          "title": "Roo Code · 项目与归档说明",
+          "titleEn": "Roo Code · Project and archival notice",
+          "url": "https://github.com/RooCodeInc/Roo-Code"
+        }
+      ],
+      "en": {
+        "summary": "Roo Cline becomes Roo Code and adds custom modes with configurable prompts and tool access.",
+        "details": "An open-source coding agent derived from Cline, with separate roles and tools for planning, coding and questions. It later served as a foundation for projects including Kilo Code. The original project shut down and was archived on May 15, 2026; this entry records its historical release.",
+        "dateNote": "Uses the Open VSX publication date for 3.2.0, recording the rebrand and custom modes rather than the first Cline or Roo Cline release."
+      }
+    },
+    {
       "id": "operator",
       "date": "2025-01-23",
       "name": "Operator",
@@ -573,6 +653,34 @@ window.AGENT_ATLAS = {
         "summary": "A research preview carries out tasks through a browser interface.",
         "details": "Records the standalone Operator preview; its capabilities later became part of ChatGPT agent.",
         "dateNote": ""
+      }
+    },
+    {
+      "id": "junie",
+      "date": "2025-01-23",
+      "name": "Junie",
+      "company": "jetbrains",
+      "category": "coding",
+      "kind": "preview",
+      "summary": "在 JetBrains IDE 中规划和执行编程任务，调用代码检查、测试与项目上下文。",
+      "details": "JetBrains 的编程 Agent 首次面向早期访问用户推出，可生成代码、运行检查并验证测试。初期支持 IntelliJ IDEA Ultimate 与 PyCharm Professional，使用前需申请早期访问。",
+      "dateNote": "记录早期访问计划公告，不表示当天已向所有用户开放。",
+      "tags": [
+        "编程",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "JetBrains · Junie 发布公告",
+          "titleEn": "JetBrains · Junie announcement",
+          "url": "https://blog.jetbrains.com/junie/2025/01/meet-junie-your-coding-agent-by-jetbrains/"
+        }
+      ],
+      "en": {
+        "summary": "Plans and executes coding tasks inside JetBrains IDEs using project context, code inspections and tests.",
+        "details": "JetBrains introduced its coding agent through an Early Access Program, initially for IntelliJ IDEA Ultimate and PyCharm Professional. It could generate code, run inspections and verify tests; access required joining the waitlist.",
+        "dateNote": "Records the Early Access Program announcement, not general availability."
       }
     },
     {
@@ -684,6 +792,67 @@ window.AGENT_ATLAS = {
       }
     },
     {
+      "id": "kilo-code",
+      "date": "2025-03-26",
+      "name": "Kilo Code",
+      "company": "kilo",
+      "category": "coding",
+      "kind": "product",
+      "summary": "基于 Roo Code 与 Cline 构建开源编程 Agent，在 VS Code 中连接模型并执行开发任务。",
+      "details": "首发以 VS Code 扩展提供，整合模型接入与任务执行，延续 Roo Code 的多模式工作流。后续扩展到 CLI 与云端；此节点记录最初的公开发布。",
+      "dateNote": "采用创始人的公开发布文章日期；次日的 Product Hunt 上线不另作节点。",
+      "tags": [
+        "编程",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Kilo · 首次发布公告",
+          "titleEn": "Kilo · Initial launch announcement",
+          "url": "https://blog.kilo.ai/p/kilo-code-speedrunning-open-source-coding-ai"
+        },
+        {
+          "title": "Kilo · 官方源码",
+          "titleEn": "Kilo · Official source code",
+          "url": "https://github.com/Kilo-Org/kilocode"
+        }
+      ],
+      "en": {
+        "summary": "An open-source coding agent built on Roo Code and Cline connects models to development tasks in VS Code.",
+        "details": "The initial VS Code extension combined model access and task execution, building on Roo Code’s modes. CLI and cloud products followed; this entry records the original public launch.",
+        "dateNote": "Uses the founder’s public announcement date; the following day’s Product Hunt launch is not a separate entry."
+      }
+    },
+    {
+      "id": "augment-agent",
+      "date": "2025-04-02",
+      "name": "Augment Agent",
+      "company": "augment",
+      "category": "coding",
+      "kind": "product",
+      "summary": "围绕大型代码库执行开发任务，结合代码检索、跨会话记忆和外部工具。",
+      "details": "在 VS Code 与 JetBrains IDE 中提供 Agent 工作流，可编辑代码、运行终端命令并用检查点回退修改。原生集成与 MCP 将项目管理和文档信息带入任务上下文。",
+      "dateNote": "采用文章首发的 2025 年 4 月 2 日，区别于页面后续更新时间。",
+      "tags": [
+        "编程",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Augment Code · Agent 发布公告",
+          "titleEn": "Augment Code · Agent announcement",
+          "url": "https://www.augmentcode.com/blog/meet-augment-agent"
+        }
+      ],
+      "en": {
+        "summary": "Executes tasks in large codebases using code retrieval, persistent memories and connected tools.",
+        "details": "An agent workflow for VS Code and JetBrains IDEs combines code edits, terminal execution and checkpoints for reverting changes. Native integrations and MCP bring project-management and documentation context into tasks.",
+        "dateNote": "Uses the original April 2, 2025 publication date rather than later page updates."
+      }
+    },
+    {
       "id": "google-adk",
       "date": "2025-04-09",
       "name": "Google Agent Development Kit",
@@ -763,6 +932,62 @@ window.AGENT_ATLAS = {
         "summary": "An open-source terminal coding agent works directly with local code and tools.",
         "details": "Initially a lightweight experiment, distinct from the 2021 Codex model and the later cloud product.",
         "dateNote": ""
+      }
+    },
+    {
+      "id": "zed-agent",
+      "date": "2025-05-07",
+      "name": "Zed Agent",
+      "company": "zed",
+      "category": "coding",
+      "kind": "release",
+      "summary": "通过 Agent Panel 搜索和修改代码、运行命令，并在编辑器中集中审阅变更。",
+      "details": "Zed 的开源 Agentic Editing 将工具执行直接整合进编辑器，支持自带模型密钥、本地模型和 MCP。用户可选择只读或可写工具配置，并审阅统一差异视图。",
+      "dateNote": "记录 Agent Panel 与 Agentic Editing 发布；Zed 编辑器和早期 AI 助手已有更早版本。",
+      "tags": [
+        "编程",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Zed · Agentic Editing 发布公告",
+          "titleEn": "Zed · Agentic Editing announcement",
+          "url": "https://zed.dev/blog/fastest-ai-code-editor"
+        }
+      ],
+      "en": {
+        "summary": "The Agent Panel searches and edits code, runs commands and presents changes for review inside the editor.",
+        "details": "Zed’s open-source Agentic Editing integrates tool execution with the editor, supports external API keys, local models and MCP, and offers configurable tool profiles with a unified review diff.",
+        "dateNote": "Records the Agent Panel and Agentic Editing launch, not the original editor or earlier AI assistant."
+      }
+    },
+    {
+      "id": "amp",
+      "date": "2025-05-15",
+      "name": "Amp",
+      "company": "amp",
+      "category": "coding",
+      "kind": "product",
+      "summary": "通过编辑器和命令行执行编程任务，串联代码检索、文件修改与工具调用。",
+      "details": "Sourcegraph 团队推出的编程 Agent 在早期测试后向所有用户开放，可在 VS Code 或终端使用，围绕代码库组织任务与工具执行。",
+      "dateNote": "采用面向所有用户开放的公告日；此前已有早期测试。",
+      "tags": [
+        "编程",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Amp · 向所有用户开放",
+          "titleEn": "Amp · Public availability announcement",
+          "url": "https://ampcode.com/notes/how-i-use-amp"
+        }
+      ],
+      "en": {
+        "summary": "A coding agent connects code search, file edits and tools through an editor extension and command line.",
+        "details": "Built by the Sourcegraph team, Amp opened to all users after early testing, with interfaces in VS Code and the terminal.",
+        "dateNote": "Uses the all-users availability announcement; early testing preceded this date."
       }
     },
     {
@@ -872,6 +1097,39 @@ window.AGENT_ATLAS = {
         "details": "Google opened Jules to public beta, running tasks in isolated cloud environments alongside the user’s own work.",
         "dateNote": "Records the public beta; Google first previewed Jules in December 2024.",
         "name": "Jules"
+      }
+    },
+    {
+      "id": "factory-droids",
+      "date": "2025-05-28",
+      "name": "Factory Droids",
+      "company": "factory",
+      "category": "coding",
+      "kind": "product",
+      "summary": "将任务单、代码库与协作工具连接起来，执行开发、代码研究和故障排查任务。",
+      "details": "Factory 的软件开发 Agent 正式向公众开放，以组织上下文和工具集成支持软件生命周期中的多类任务。该系列随后作为 Droid 参与 Terminal-Bench 等公开评测。",
+      "dateNote": "记录正式开放日期；此前已有受限访问版本。",
+      "tags": [
+        "编程",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Factory · Droids 正式开放",
+          "titleEn": "Factory · Droids general availability",
+          "url": "https://factory.com/news/factory-is-ga"
+        },
+        {
+          "title": "Factory · Terminal-Bench 评测说明",
+          "titleEn": "Factory · Terminal-Bench results and methodology",
+          "url": "https://docs.factory.com/benchmarks/terminal-bench"
+        }
+      ],
+      "en": {
+        "summary": "Connects tickets, codebases and collaboration tools to carry out development, code research and incident work.",
+        "details": "Factory opened its software-development agents to general access, using organizational context and integrations across the development lifecycle. The Droid series later participated in public evaluations including Terminal-Bench.",
+        "dateNote": "Records general availability; restricted access preceded this release."
       }
     },
     {
@@ -1092,6 +1350,34 @@ window.AGENT_ATLAS = {
         "summary": "Plans and executes development tasks with repository context; Quest mode supports longer delegated work.",
         "details": "Qoder introduced a coding platform combining interactive editing with task delegation and review.",
         "dateNote": ""
+      }
+    },
+    {
+      "id": "codebuddy-code",
+      "date": "2025-09-09",
+      "name": "CodeBuddy Code / IDE",
+      "company": "tencent",
+      "category": "coding",
+      "kind": "product",
+      "summary": "推出终端编程 Agent，并向所有用户开放 IDE，连接代码修改、命令执行与应用部署。",
+      "details": "CodeBuddy Code 提供文件编辑、终端命令和提交创建，可通过 MCP 扩展工具。同日开放的 CodeBuddy IDE 与 CloudBase、EdgeOne Pages 集成，衔接开发与部署。",
+      "dateNote": "采用腾讯公告正文的 9 月 9 日；文章转载日期为 9 月 11 日，IDE 此前已有内测。",
+      "tags": [
+        "编程",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "腾讯 · CodeBuddy Code 与 IDE 发布公告",
+          "titleEn": "Tencent · CodeBuddy Code and IDE announcement",
+          "url": "https://developer.cloud.tencent.com/article/2566993"
+        }
+      ],
+      "en": {
+        "summary": "A terminal coding agent launches alongside public IDE access, connecting edits, command execution and application deployment.",
+        "details": "CodeBuddy Code provides file editing, terminal commands and commit creation, with MCP extensions. CodeBuddy IDE opened the same day and integrated CloudBase and EdgeOne Pages for development and deployment.",
+        "dateNote": "Uses the September 9 event date in Tencent’s announcement, not its September 11 republication. The IDE had earlier private testing."
       }
     },
     {
@@ -1333,7 +1619,7 @@ window.AGENT_ATLAS = {
       "category": "harness",
       "kind": "announcement",
       "summary": "以精简工具、上下文控制和会话管理构建可定制的编程 Harness。",
-      "details": "采用作者公开技术文章日期；文章讨论已在使用的项目，不推断为第一行代码或首个版本日期。",
+      "details": "Mario Zechner 公开介绍 Pi 的设计与使用方式。文章讨论已在使用的项目，不推断为第一行代码或首个版本日期。",
       "dateNote": "此节点为作者的公开技术介绍；项目原型早于文章日期。",
       "tags": [
         "执行环境",
@@ -1348,7 +1634,7 @@ window.AGENT_ATLAS = {
       ],
       "en": {
         "summary": "A minimal coding harness emphasizes tools, context control, and session management.",
-        "details": "Uses the author's public technical article, not an inferred first commit or initial package release.",
+        "details": "Mario Zechner publicly explains Pi’s design and use. The article describes an existing project; its date is not treated as the first commit or initial package release.",
         "dateNote": "This is the author's technical introduction; prototypes existed before the article."
       }
     },
@@ -1614,6 +1900,39 @@ window.AGENT_ATLAS = {
       }
     },
     {
+      "id": "zcode-open-source",
+      "date": "2026-09-21",
+      "name": "ZCode",
+      "company": "zhipu",
+      "category": "coding",
+      "kind": "release",
+      "summary": "开放 AI 编程工作台源码，覆盖桌面端、浏览器界面和终端 Agent。",
+      "details": "智谱以 Apache-2.0 许可公开客户端、后端、共享界面与 Agent 运行时，围绕代码、终端、Git 和任务工作区组织开发流程。托管模型及订阅服务另计。",
+      "dateNote": "记录 9 月 21 日源码开放公告，不是产品首次上线；对应开源提交时间为 9 月 20 日 21:14 UTC，即北京时间 9 月 21 日。",
+      "tags": [
+        "编程",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "智谱 · ZCode 官方源码",
+          "titleEn": "Z.ai · ZCode official source code",
+          "url": "https://github.com/zai-org/ZCode"
+        },
+        {
+          "title": "IT之家 · ZCode 开源公告报道",
+          "titleEn": "IT Home · ZCode source-release announcement",
+          "url": "https://www.ithome.com/1/005/046.htm"
+        }
+      ],
+      "en": {
+        "summary": "Z.ai opens the source of its coding workspace, covering desktop, browser and terminal-agent interfaces.",
+        "details": "The Apache-2.0 release includes the client, backend, shared UI and agent runtime, organizing development around code, a terminal, Git and task workspaces. Hosted models and subscriptions remain separate services.",
+        "dateNote": "Records the September 21 source-release announcement, not the original product launch. The open-source commit is dated September 20 at 21:14 UTC, September 21 in Beijing."
+      }
+    },
+    {
       "id": "openai-dots",
       "date": "2026-09-29",
       "name": "dots",
@@ -1640,10 +1959,43 @@ window.AGENT_ATLAS = {
         "details": "OpenAI combines general task execution with persistent work context. Users can collaborate through ChatGPT, Slack, or Teams and inspect or redirect the work. The initial rollout covers Pro and Business Premium users in eligible markets; Enterprise beta access requires an administrator to enable it.",
         "dateNote": "Uses the announcement and staged rollout date. Specialist dots announced the same day were enterprise pilots, not a general release."
       }
+    },
+    {
+      "id": "pi-1-0",
+      "date": "2026-10-01",
+      "name": "Pi 1.0",
+      "company": "pi",
+      "category": "harness",
+      "kind": "release",
+      "summary": "发布稳定版编程 Harness，整合 Codemode、MCP、延迟工具加载与可扩展模型路由。",
+      "details": "Earendil 与 Pi 社区将经过持续迭代的终端 Agent 发布为 1.0，保持可扩展的运行核心，采用 MIT 许可。同日另行推出的 Pi Durable 为实验性框架。",
+      "dateNote": "记录 1.0 稳定版公告与 GitHub 发布日；Pi 的早期公开版本单独收录。",
+      "tags": [
+        "执行环境",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Earendil · Pi 1.0 发布公告",
+          "titleEn": "Earendil · Pi 1.0 announcement",
+          "url": "https://earendil.com/posts/pi-1-0/"
+        },
+        {
+          "title": "Pi · v1.0.0 发布记录",
+          "titleEn": "Pi · v1.0.0 release",
+          "url": "https://github.com/earendil-works/pi/releases/tag/v1.0.0"
+        }
+      ],
+      "en": {
+        "summary": "A stable coding harness brings together Codemode, MCP, deferred tool loading and extensible model routing.",
+        "details": "Earendil and the Pi community released the terminal agent as version 1.0 under the MIT license, retaining an extensible runtime. Pi Durable, announced the same day, remained an experimental framework rather than part of the stable-release claim.",
+        "dateNote": "Uses the 1.0 announcement and GitHub release date. The earlier public Pi release is recorded separately."
+      }
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-08",
+    "checkedAt": "2026-10-11",
     "scope": "编程 Agent、通用 Agent、Harness 及重要框架与协议的主要公开节点。",
     "method": "以原始公告、维护者文章与论文核对日期，区分预览、论文公开、改名和正式发布；按经典性、代表性或影响力筛选，不逐条收录常规版本更新。",
     "references": []

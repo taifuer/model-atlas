@@ -156,6 +156,102 @@
   add(agents, 'closed', 'openai-dots meta-muse');
   Object.assign(agents['openai-dots'], { checkedAt: '2026-10-08', source: 'https://openai.com/index/introducing-dots/' });
   Object.assign(agents['meta-muse'], { checkedAt: '2026-10-08', source: 'https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/' });
+  Object.assign(models, {
+  "gpt-j-6b": {
+    "status": "open",
+    "checkedAt": "2026-10-11",
+    "source": "https://huggingface.co/EleutherAI/gpt-j-6b"
+  },
+  "chatglm-6b": {
+    "status": "open",
+    "checkedAt": "2026-10-11",
+    "source": "https://github.com/zai-org/ChatGLM-6B",
+    "note": "代码采用 Apache 2.0；模型权重采用独立许可，学术研究开放，免费商用需登记。",
+    "noteEn": "Code uses Apache 2.0. Model weights have a separate license: academic research is open, and free commercial use requires registration."
+  },
+  "starcoder": {
+    "status": "open",
+    "checkedAt": "2026-10-11",
+    "source": "https://huggingface.co/blog/starcoder",
+    "note": "权重采用 BigCode OpenRAIL-M 许可，附使用限制；训练代码另按 Apache 2.0 提供。",
+    "noteEn": "Weights use BigCode OpenRAIL-M with use restrictions; training code separately uses Apache 2.0."
+  },
+  "olmo": {
+    "status": "open",
+    "checkedAt": "2026-10-11",
+    "source": "https://huggingface.co/allenai/OLMo-7B"
+  },
+  "mellum-2-1-thinking": {
+    "status": "open",
+    "checkedAt": "2026-10-11",
+    "source": "https://huggingface.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking"
+  }
+});
+  Object.assign(agents, {
+  "roo-code-3-2": {
+    "status": "open",
+    "checkedAt": "2026-10-11",
+    "source": "https://github.com/RooCodeInc/Roo-Code"
+  },
+  "junie": {
+    "status": "closed",
+    "checkedAt": "2026-10-11",
+    "source": "https://blog.jetbrains.com/junie/2025/01/meet-junie-your-coding-agent-by-jetbrains/"
+  },
+  "kilo-code": {
+    "status": "open",
+    "checkedAt": "2026-10-11",
+    "source": "https://github.com/Kilo-Org/kilocode"
+  },
+  "augment-agent": {
+    "status": "closed",
+    "checkedAt": "2026-10-11",
+    "source": "https://www.augmentcode.com/blog/meet-augment-agent"
+  },
+  "zed-agent": {
+    "status": "open",
+    "checkedAt": "2026-10-11",
+    "source": "https://github.com/zed-industries/zed",
+    "note": "Zed 编辑器代码采用 GPL 3.0；连接的模型与托管服务适用各自条款。",
+    "noteEn": "The Zed editor code uses GPL 3.0; connected models and hosted services retain their own terms."
+  },
+  "amp": {
+    "status": "closed",
+    "checkedAt": "2026-10-11",
+    "source": "https://ampcode.com/notes/how-i-use-amp"
+  },
+  "factory-droids": {
+    "status": "closed",
+    "checkedAt": "2026-10-11",
+    "source": "https://factory.com/news/factory-is-ga"
+  },
+  "codebuddy-code": {
+    "status": "closed",
+    "checkedAt": "2026-10-11",
+    "source": "https://developer.cloud.tencent.com/article/2566993"
+  },
+  "zcode-open-source": {
+    "status": "open",
+    "checkedAt": "2026-10-11",
+    "source": "https://github.com/zai-org/ZCode",
+    "note": "此节点记录 Apache 2.0 源码开放；连接的模型和云端服务另计。",
+    "noteEn": "This entry records the Apache 2.0 source release; connected models and cloud services have separate terms."
+  },
+  "pi-1-0": {
+    "status": "open",
+    "checkedAt": "2026-10-11",
+    "source": "https://github.com/badlogic/pi-mono"
+  }
+});
+  Object.assign(models, {
+  "ling-3-1-flash": {
+    "status": "closed",
+    "checkedAt": "2026-10-11",
+    "source": "https://artificialanalysis.ai/models/ling-3-1-flash",
+    "note": "当前版本提供 API 服务，未开放模型权重；不沿用前代开放模型的许可。",
+    "noteEn": "The current version is API-only, without public weights; earlier open models’ licenses do not apply."
+  }
+});
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

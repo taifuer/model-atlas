@@ -11,8 +11,8 @@ const allowedFields = new Set(['name', 'basis', 'sources', ...tokenFields, 'para
 const types = new Set(['text', 'image', 'audio', 'video', 'pdf', 'document']);
 
 test('specifications identify existing entries, exact variants, and first-party evidence', () => {
-  const hosts = new Set(['docs.mistral.ai', 'artificialanalysis.ai', 'developers.openai.com', 'cdn.openai.com', 'platform.claude.com', 'ai.google.dev', 'api-docs.deepseek.com', 'huggingface.co', 'docs.x.ai', 'docs.z.ai', 'docs.qwencloud.com', 'www.qwencloud.com', 'arxiv.org', 'github.com', 'aws.amazon.com']);
-  const hfOrganizations = new Set(['deepseek-ai', 'Qwen', 'zai-org', 'MiniMaxAI', 'moonshotai', 'XiaomiMiMo', 'microsoft', 'nvidia', 'stepfun-ai', 'tencent', 'mistralai', 'meta-llama', 'google']);
+  const hosts = new Set(['developer.ant-ling.com', 'docs.mistral.ai', 'artificialanalysis.ai', 'developers.openai.com', 'cdn.openai.com', 'platform.claude.com', 'ai.google.dev', 'api-docs.deepseek.com', 'huggingface.co', 'docs.x.ai', 'docs.z.ai', 'docs.qwencloud.com', 'www.qwencloud.com', 'arxiv.org', 'github.com', 'aws.amazon.com']);
+  const hfOrganizations = new Set(['EleutherAI', 'allenai', 'JetBrains', 'deepseek-ai', 'Qwen', 'zai-org', 'MiniMaxAI', 'moonshotai', 'XiaomiMiMo', 'microsoft', 'nvidia', 'stepfun-ai', 'tencent', 'mistralai', 'meta-llama', 'google']);
   const ids = new Set(models.releases.map(model => model.id));
   assert.equal(new Date(specs.checkedAt + 'T00:00:00Z').toISOString().slice(0, 10), specs.checkedAt);
   assert.ok(specs.checkedAt <= models.updatedAt);
@@ -34,8 +34,8 @@ test('specifications identify existing entries, exact variants, and first-party 
         const url = new URL(source);
         assert.equal(url.protocol, 'https:', id);
         assert.ok(hosts.has(url.hostname), source);
-        if (url.hostname === 'huggingface.co') assert.ok(hfOrganizations.has(url.pathname.split('/')[1]), source);
-        if (url.hostname === 'github.com') assert.match(url.pathname, /^\/google-research\/bert/);
+        if (url.hostname === 'huggingface.co') assert.ok(hfOrganizations.has(url.pathname.split('/')[1]) || (id === 'starcoder' && url.pathname === '/blog/starcoder'), source);
+        if (url.hostname === 'github.com') assert.ok(/^\/google-research\/bert/.test(url.pathname) || (id === 'chatglm-6b' && url.pathname === '/zai-org/ChatGLM-6B'), source);
       }
     }
   }

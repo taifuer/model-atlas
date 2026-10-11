@@ -1,8 +1,8 @@
 // Primary-source history of AI methods, computing frameworks, and deployment.
 (() => {
   const data = {
-  "asOf": "2026-10-08",
-  "updatedAt": "2026-10-08",
+  "asOf": "2026-10-11",
+  "updatedAt": "2026-10-11",
   "accessFilter": false,
   "companies": [
     {
@@ -196,6 +196,24 @@
       "name": "Hugging Face",
       "nameEn": "Hugging Face",
       "aliases": "Transformers 预训练模型库"
+    },
+    {
+      "id": "freiburg",
+      "name": "弗赖堡大学",
+      "nameEn": "U. Freiburg",
+      "aliases": "University of Freiburg U-Net AdamW"
+    },
+    {
+      "id": "flashinfer",
+      "name": "FlashInfer",
+      "nameEn": "FlashInfer",
+      "aliases": "FlashInfer team 推理内核"
+    },
+    {
+      "id": "kubernetes",
+      "name": "Kubernetes",
+      "nameEn": "Kubernetes",
+      "aliases": "Kubernetes SIG Apps Agent Sandbox K8s"
     }
   ],
   "categories": {
@@ -2003,10 +2021,235 @@
         "details": "MXC maps workload permissions to isolation backends on Windows, macOS, and Linux, with policy controlled outside the agent. GitHub Copilot, OpenAI Codex, OpenClaw, and Replit were among the integrations available at launch; the MicroVM backend remains experimental.",
         "dateNote": "Uses the October 7 general-availability announcement and SDK v1.0.0 release. An early preview was announced on June 2, so this is not the first public introduction."
       }
+    },
+    {
+      "id": "batch-normalization",
+      "date": "2015-02-11",
+      "name": "Batch Normalization",
+      "company": "google",
+      "category": "methods",
+      "kind": "paper",
+      "summary": "按小批量统计量归一化网络激活，改善深层网络的训练效率。",
+      "details": "Google 的 Sergey Ioffe 与 Christian Szegedy 提出批量归一化，在归一化后加入可学习的缩放与平移。该方法被 PyTorch 等框架作为基础网络层提供，广泛用于卷积网络训练。",
+      "dateNote": "采用论文在 arXiv 的首个公开版本日期；不等同于 ICML 2015 会议发表日。",
+      "tags": [],
+      "milestone": true,
+      "sources": [
+        {
+          "title": "原始论文 · arXiv",
+          "titleEn": "Original paper · arXiv",
+          "url": "https://arxiv.org/abs/1502.03167"
+        },
+        {
+          "title": "PyTorch · BatchNorm2d",
+          "titleEn": "PyTorch · BatchNorm2d",
+          "url": "https://docs.pytorch.org/docs/stable/generated/torch.nn.BatchNorm2d.html"
+        }
+      ],
+      "en": {
+        "summary": "Normalizes network activations using mini-batch statistics to improve deep-network training.",
+        "details": "Google researchers Sergey Ioffe and Christian Szegedy introduce batch normalization with learned scale and shift parameters. Frameworks including PyTorch provide it as a standard layer, widely used in convolutional networks.",
+        "dateNote": "Uses the first public arXiv version, rather than the ICML 2015 conference publication."
+      }
+    },
+    {
+      "id": "u-net",
+      "date": "2015-05-18",
+      "name": "U-Net",
+      "company": "freiburg",
+      "category": "methods",
+      "kind": "paper",
+      "summary": "通过编码器、解码器与跨层连接，结合图像上下文和精细定位信息。",
+      "details": "弗赖堡大学团队面向生物医学图像分割提出 U-Net。其收缩与扩张路径通过跨层连接共享特征，后续变体也成为扩散图像生成系统的常见组件。",
+      "dateNote": "采用原始论文的 arXiv 首次提交日期；后续扩散模型中的 U-Net 变体不属于此次发布。",
+      "tags": [],
+      "milestone": true,
+      "sources": [
+        {
+          "title": "原始论文 · arXiv",
+          "titleEn": "Original paper · arXiv",
+          "url": "https://arxiv.org/abs/1505.04597"
+        },
+        {
+          "title": "弗赖堡大学 · U-Net 项目",
+          "titleEn": "University of Freiburg · U-Net project",
+          "url": "https://lmb.informatik.uni-freiburg.de/lmbsoft/unet/"
+        },
+        {
+          "title": "Hugging Face · Diffusers 中的 U-Net",
+          "titleEn": "Hugging Face · U-Net in Diffusers",
+          "url": "https://huggingface.co/docs/diffusers/api/models/unet2d-cond"
+        }
+      ],
+      "en": {
+        "summary": "Encoder and decoder paths linked by skip connections combine image context with precise localization.",
+        "details": "The University of Freiburg team introduces U-Net for biomedical image segmentation. Skip connections share features between its contracting and expanding paths; later variants also become common components in diffusion image-generation systems.",
+        "dateNote": "Uses the original paper’s first arXiv submission. Later U-Net variants used in diffusion models are separate developments."
+      }
+    },
+    {
+      "id": "adamw",
+      "date": "2017-11-14",
+      "name": "AdamW",
+      "company": "freiburg",
+      "category": "methods",
+      "kind": "paper",
+      "summary": "将权重衰减与 Adam 的自适应梯度更新解耦，改进训练中的正则化。",
+      "details": "Ilya Loshchilov 与 Frank Hutter 指出，在 Adam 等自适应优化器中，L2 正则化与权重衰减并不等价。AdamW 单独执行权重衰减，随后被 PyTorch 等主流框架作为标准优化器提供。",
+      "dateNote": "采用论文在 arXiv 的首个公开版本日期；论文后发表于 ICLR 2019。",
+      "tags": [],
+      "milestone": true,
+      "sources": [
+        {
+          "title": "原始论文 · arXiv",
+          "titleEn": "Original paper · arXiv",
+          "url": "https://arxiv.org/abs/1711.05101"
+        },
+        {
+          "title": "PyTorch · AdamW",
+          "titleEn": "PyTorch · AdamW",
+          "url": "https://docs.pytorch.org/docs/stable/generated/torch.optim.AdamW.html"
+        }
+      ],
+      "en": {
+        "summary": "Decouples weight decay from Adam’s adaptive gradient updates to improve regularization.",
+        "details": "Ilya Loshchilov and Frank Hutter show that L2 regularization and weight decay are not equivalent for adaptive optimizers such as Adam. AdamW applies weight decay separately and is subsequently provided as a standard optimizer in frameworks including PyTorch.",
+        "dateNote": "Uses the paper’s first public arXiv version; it later appeared at ICLR 2019."
+      }
+    },
+    {
+      "id": "ray",
+      "date": "2017-12-16",
+      "name": "Ray",
+      "company": "berkeley",
+      "category": "frameworks",
+      "kind": "paper",
+      "summary": "以任务与 Actor 的统一接口组织分布式计算，支持强化学习等 AI 工作负载。",
+      "details": "伯克利团队提出 Ray，通过动态调度与分布式状态管理协调并行任务。后续生态覆盖模型训练、调参和在线服务；Uber 的生产系统及 Ray Serve 的大模型部署文档提供了实际应用实例。",
+      "dateNote": "采用系统论文的 arXiv 首次提交日期，不作为 Ray 仓库建立、首版软件或后续 Ray Serve 的发布日期。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "原始论文 · arXiv",
+          "titleEn": "Original paper · arXiv",
+          "url": "https://arxiv.org/abs/1712.05889"
+        },
+        {
+          "title": "Uber Engineering · Ray 生产应用",
+          "titleEn": "Uber Engineering · Ray in production",
+          "url": "https://www.uber.com/us/en/blog/how-uber-uses-ray-to-optimize-the-rides-business/"
+        },
+        {
+          "title": "Ray · 大模型服务",
+          "titleEn": "Ray · LLM serving",
+          "url": "https://docs.ray.io/en/latest/serve/llm/index.html"
+        }
+      ],
+      "en": {
+        "summary": "A unified task and actor interface coordinates distributed computing for AI workloads such as reinforcement learning.",
+        "details": "The Berkeley team presents Ray with dynamic scheduling and distributed state management. Its later ecosystem spans training, tuning, and serving; Uber’s production systems and Ray Serve’s LLM deployment documentation demonstrate practical uses.",
+        "dateNote": "Uses the system paper’s first arXiv submission, not the repository’s creation, first software release, or later Ray Serve launch."
+      }
+    },
+    {
+      "id": "flashinfer",
+      "date": "2024-02-02",
+      "name": "FlashInfer",
+      "company": "flashinfer",
+      "category": "deployment",
+      "kind": "announcement",
+      "summary": "提供面向大模型服务的注意力内核，适配不同 KV 缓存布局与请求批次。",
+      "details": "FlashInfer 团队公开介绍用于预填充、解码与追加计算的 GPU 内核库。项目由华盛顿大学、卡内基梅隆大学和 OctoAI 等研究者共同开发，后续集成到 SGLang、vLLM 和 MLC-Engine。",
+      "dateNote": "采用团队技术介绍文章的公开日期。文章说明开发始于 2023 年夏季；2025 年系统论文是后续发表，不将本文日期视作首个代码提交日。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "FlashInfer · 技术介绍",
+          "titleEn": "FlashInfer · Technical introduction",
+          "url": "https://flashinfer.ai/2024/02/02/introduce-flashinfer.html"
+        },
+        {
+          "title": "原始论文 · arXiv",
+          "titleEn": "Original paper · arXiv",
+          "url": "https://arxiv.org/abs/2501.01005"
+        }
+      ],
+      "en": {
+        "summary": "Attention kernels for LLM serving accommodate different KV-cache layouts and request batches.",
+        "details": "The FlashInfer team introduces GPU kernels for prefill, decode, and append operations. Researchers from the University of Washington, Carnegie Mellon University, and OctoAI develop the project, which is later integrated into SGLang, vLLM, and MLC-Engine.",
+        "dateNote": "Uses the team’s technical introduction. Development began in summer 2023 and the system paper followed in 2025; this is not the date of the first code commit."
+      }
+    },
+    {
+      "id": "kubernetes-agent-sandbox",
+      "date": "2025-11-11",
+      "name": "Kubernetes Agent Sandbox",
+      "company": "kubernetes",
+      "category": "infrastructure",
+      "kind": "announcement",
+      "summary": "以 Kubernetes API 管理智能体的隔离执行环境、生命周期与预热资源池。",
+      "details": "Agent Sandbox 作为 Kubernetes SIG Apps 子项目，管理需要保留状态的智能体沙箱，可结合 gVisor 或 Kata Containers 等隔离运行时。Google Cloud 后续公开的应用实例包括 LangChain 与 Lovable；托管 GKE 产品与开源项目分别演进。",
+      "dateNote": "采用官方公告记录的 11 月 11 日；按时区换算，部分页面显示为 11 月 12 日。此为开源项目公开介绍，不等同于托管 GKE 服务后续全面开放。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Google Cloud · Agent Sandbox 公开介绍",
+          "titleEn": "Google Cloud · Agent Sandbox introduction",
+          "url": "https://cloud.google.com/blog/products/containers-kubernetes/agentic-ai-on-kubernetes-and-gke/"
+        },
+        {
+          "title": "Kubernetes SIG Apps · 公开代码",
+          "titleEn": "Kubernetes SIG Apps · Source repository",
+          "url": "https://github.com/kubernetes-sigs/agent-sandbox"
+        },
+        {
+          "title": "Google Cloud · 后续可用性与应用实例",
+          "titleEn": "Google Cloud · Later availability and adoption",
+          "url": "https://cloud.google.com/blog/products/containers-kubernetes/bringing-you-agent-sandbox-on-gke-and-agent-substrate"
+        }
+      ],
+      "en": {
+        "summary": "Kubernetes APIs manage isolated agent environments, their lifecycles, and warm resource pools.",
+        "details": "A Kubernetes SIG Apps subproject, Agent Sandbox manages stateful agent environments and can use isolation runtimes such as gVisor or Kata Containers. Google Cloud later names LangChain and Lovable as users; the managed GKE service and open-source project evolve separately.",
+        "dateNote": "Uses November 11 recorded in the official announcement; some localized views show November 12 after time-zone conversion. This records the open-source introduction, not the later general availability of the managed GKE service."
+      }
+    },
+    {
+      "id": "nvidia-openshell",
+      "date": "2026-03-16",
+      "name": "NVIDIA OpenShell",
+      "company": "nvidia",
+      "category": "infrastructure",
+      "kind": "announcement",
+      "summary": "在智能体进程之外执行文件、网络与模型访问策略，提供隔离运行环境。",
+      "details": "OpenShell 是 NVIDIA Agent Toolkit 中的开源运行时，可承载 OpenClaw、Claude Code、Codex 等智能体。沙箱与策略引擎控制资源访问，推理路由约束数据流向；它提供执行边界，不代表智能体行为本身已获安全保证。",
+      "dateNote": "采用 NVIDIA 于 GTC 2026 发布的技术公告日期，不与 NemoClaw 的上层集成方案或后续 OpenShell 版本混为同一事件。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "NVIDIA · OpenShell 公开介绍",
+          "titleEn": "NVIDIA · OpenShell introduction",
+          "url": "https://developer.nvidia.com/blog/run-autonomous-self-evolving-agents-more-safely-with-nvidia-openshell/"
+        },
+        {
+          "title": "NVIDIA · OpenShell 公开代码",
+          "titleEn": "NVIDIA · OpenShell source repository",
+          "url": "https://github.com/NVIDIA/OpenShell"
+        }
+      ],
+      "en": {
+        "summary": "Enforces file, network, and model-access policies outside the agent process within an isolated runtime.",
+        "details": "OpenShell is an open-source runtime in NVIDIA Agent Toolkit that can host OpenClaw, Claude Code, and Codex. Its sandbox and policy engine control resource access while inference routing governs data flow. The execution boundary does not by itself guarantee safe agent behavior.",
+        "dateNote": "Uses NVIDIA’s GTC 2026 technical announcement, separately from the higher-level NemoClaw integration and later OpenShell releases."
+      }
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-08",
+    "checkedAt": "2026-10-11",
     "scope": "算法、计算框架、推理部署与容器沙箱中具有经典性、代表性或影响力的公开节点。",
     "method": "以原始论文、项目公告与发布记录核对日期，区分预览、正式可用和后续更新；不逐条收录常规软件版本。",
     "references": []

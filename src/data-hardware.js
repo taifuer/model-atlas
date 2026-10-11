@@ -1,7 +1,7 @@
 /* Curated hardware history. Event dates and configurations retain explicit source scope. */
 window.HARDWARE_ATLAS = {
-  "asOf": "2026-10-08",
-  "updatedAt": "2026-10-08",
+  "asOf": "2026-10-11",
+  "updatedAt": "2026-10-11",
   "accessFilter": false,
   "companies": [
     {
@@ -63,6 +63,18 @@ window.HARDWARE_ATLAS = {
       "name": "Meta",
       "nameEn": "Meta",
       "aliases": "Facebook MTIA 推荐 推理"
+    },
+    {
+      "id": "microsoft",
+      "name": "Microsoft",
+      "nameEn": "Microsoft",
+      "aliases": "微软 Azure Maia 100 200"
+    },
+    {
+      "id": "groq",
+      "name": "Groq",
+      "nameEn": "Groq",
+      "aliases": "LPU GroqCloud 语言处理器"
     }
   ],
   "categories": {
@@ -1403,6 +1415,33 @@ window.HARDWARE_ATLAS = {
       }
     },
     {
+      "id": "microsoft-maia-100",
+      "date": "2023-11-15",
+      "name": "Microsoft Azure Maia 100",
+      "company": "microsoft",
+      "category": "accelerator",
+      "kind": "announcement",
+      "summary": "微软首款自研 AI 加速器，面向 Azure 中的大模型训练与推理。",
+      "details": "Maia 将芯片、服务器、以太网互连和液冷系统共同设计，并与 OpenAI 合作测试模型。此节点记录 Ignite 产品公布，当时计划于 2024 年开始部署。",
+      "dateNote": "采用 Ignite 2023 的公布日期，不代表云实例已经向公众供应。",
+      "tags": [
+        "AI 加速器"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Microsoft · Maia 100 与系统设计",
+          "titleEn": "Microsoft · Maia 100 and system design",
+          "url": "https://news.microsoft.com/source/features/ai/in-house-chips-silicon-to-service-to-meet-ai-demand/"
+        }
+      ],
+      "en": {
+        "summary": "Microsoft’s first custom AI accelerator targets large-model training and inference in Azure.",
+        "details": "Maia combines chip, server, Ethernet, and liquid-cooling design, with OpenAI collaborating on model testing. This entry records the Ignite announcement, when deployment was planned for 2024.",
+        "dateNote": "Dated to the Ignite 2023 announcement, not public availability of cloud instances."
+      }
+    },
+    {
       "id": "instinct-mi300x",
       "date": "2023-12-06",
       "name": "AMD Instinct MI300X",
@@ -1537,6 +1576,38 @@ window.HARDWARE_ATLAS = {
         ],
         "note": "采用官方每芯片 BF16 峰值，未增加稀疏计算倍数；与 Pod 总量分开。 算力为所列配置的理论峰值，非模型训练或推理的实测吞吐。稠密与稀疏算力分别标注，显存带宽不等同于芯片互联带宽；功耗为上限或板卡规格。",
         "noteEn": "Uses the official BF16 peak per chip without adding a sparsity multiplier; separate from Pod totals. Compute is the theoretical peak for the named configuration, not measured model throughput. Dense and sparse values are labeled separately. Memory bandwidth is distinct from chip interconnect bandwidth; power is the stated maximum or board rating."
+      }
+    },
+    {
+      "id": "groq-lpu-cloud",
+      "date": "2024-03-01",
+      "name": "Groq LPU · GroqCloud",
+      "company": "groq",
+      "category": "accelerator",
+      "kind": "availability",
+      "summary": "通过 GroqCloud 向开发者提供 LPU 推理服务，面向低延迟的大模型应用。",
+      "details": "这一节点记录专用 LPU 在公开云服务中的应用。Groq 于 4 月披露，已有超过 7 万名开发者使用平台，1.9 万个新应用通过 API 运行。",
+      "dateNote": "采用 GroqCloud 正式公告日；2 月已有试用开放，此日期不是 LPU 芯片首发日。",
+      "tags": [
+        "AI 加速器"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Groq · GroqCloud 正式公告",
+          "titleEn": "Groq · GroqCloud launch announcement",
+          "url": "https://www.prnewswire.com/news-releases/groq-acquires-definitive-intelligence-to-launch-groqcloud-302077413.html"
+        },
+        {
+          "title": "Groq · 开发者与应用数据",
+          "titleEn": "Groq · Developer and application adoption",
+          "url": "https://groq.com/newsroom/demand-for-real-time-ai-inference-from-groq-accelerates-week-over-week"
+        }
+      ],
+      "en": {
+        "summary": "GroqCloud gives developers access to LPU inference for low-latency language-model applications.",
+        "details": "This entry records the use of dedicated LPUs in a public cloud service. In April, Groq reported more than 70,000 developers and 19,000 new applications using its API.",
+        "dateNote": "Uses the formal GroqCloud announcement. Trial access began in February; this is not the first launch of the LPU chip."
       }
     },
     {
@@ -2413,6 +2484,158 @@ window.HARDWARE_ATLAS = {
       }
     },
     {
+      "id": "microsoft-maia-200",
+      "date": "2026-01-26",
+      "name": "Microsoft Maia 200",
+      "company": "microsoft",
+      "category": "accelerator",
+      "kind": "announcement",
+      "summary": "面向大模型推理的自研加速器，结合低精度计算与高带宽内存。",
+      "details": "公布时已部署于 Azure 美国中部数据中心，采用 3 nm 工艺、原生 FP4/FP8 计算及以太网互连。SDK 当时处于预览，不能据此视为公开可租用的独立云实例。",
+      "dateNote": "采用 Microsoft 正式公布日期；公告同时确认已有内部部署。",
+      "tags": [
+        "AI 加速器"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Microsoft · Maia 200 发布与部署",
+          "titleEn": "Microsoft · Maia 200 announcement and deployment",
+          "url": "https://blogs.microsoft.com/blog/2026/01/26/maia-200-the-ai-accelerator-built-for-inference/"
+        }
+      ],
+      "en": {
+        "summary": "A custom accelerator for large-model inference combines low-precision compute with high-bandwidth memory.",
+        "details": "Already deployed in Azure’s US Central region at announcement, Maia 200 uses a 3 nm process, native FP4/FP8 compute, and Ethernet connectivity. The SDK was in preview; this does not establish public availability of standalone cloud instances.",
+        "dateNote": "Dated to Microsoft’s formal announcement, which also confirms internal deployment."
+      },
+      "hardware": {
+        "variant": "Microsoft Maia 200",
+        "checkedAt": "2026-10-11",
+        "facts": [
+          {
+            "label": "内存",
+            "labelEn": "Memory",
+            "value": "216 GB HBM3e",
+            "chip": true
+          },
+          {
+            "label": "内存带宽",
+            "labelEn": "Memory bandwidth",
+            "value": "7 TB/s",
+            "chip": true
+          }
+        ],
+        "sources": [
+          "https://blogs.microsoft.com/blog/2026/01/26/maia-200-the-ai-accelerator-built-for-inference/"
+        ],
+        "note": "规格对应单颗 Maia 200；片上 SRAM 与 HBM 属于不同存储层级。",
+        "noteEn": "Specifications apply to one Maia 200 chip. On-chip SRAM and HBM are separate memory tiers."
+      }
+    },
+    {
+      "id": "meta-mtia-300",
+      "date": "2026-03-11",
+      "name": "Meta MTIA 300",
+      "company": "meta",
+      "category": "accelerator",
+      "kind": "deployment",
+      "summary": "自研加速器从推荐推理扩展到训练，将网络接口与集合通信卸载集成到芯片。",
+      "details": "Meta 确认 MTIA 300 已用于排序与推荐模型训练。内置网络芯粒与专用通信引擎减少通信对计算资源的占用；同场披露的 MTIA 400、450、500 处于不同阶段，不能合并为已部署产品。",
+      "dateNote": "采用首次明确披露 MTIA 300 生产应用的官方公告日；8 月技术文章补充架构与规格。",
+      "tags": [
+        "AI 加速器"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Meta · MTIA 300 生产应用",
+          "titleEn": "Meta · MTIA 300 in production",
+          "url": "https://about.fb.com/news/2026/03/expanding-metas-custom-silicon-to-power-our-ai-workloads/"
+        },
+        {
+          "title": "Meta Engineering · 架构与规格",
+          "titleEn": "Meta Engineering · Architecture and specifications",
+          "url": "https://engineering.fb.com/2026/08/24/networking-traffic/mtia-300-meta-training-chip-built-in-nics/"
+        }
+      ],
+      "en": {
+        "summary": "Meta’s custom accelerator expands from recommendation inference to training, integrating networking and collective offload.",
+        "details": "Meta confirms MTIA 300 is in production for ranking and recommendation training. Built-in network chiplets and dedicated communication engines preserve compute resources. MTIA 400, 450, and 500, disclosed alongside it, were at different stages and are not counted as deployed products.",
+        "dateNote": "Uses the official disclosure of MTIA 300 production use. The August technical article adds architecture and specifications."
+      },
+      "hardware": {
+        "variant": "Meta MTIA 300",
+        "checkedAt": "2026-10-11",
+        "facts": [
+          {
+            "label": "内存",
+            "labelEn": "Memory",
+            "value": "216 GB HBM3e",
+            "chip": true
+          }
+        ],
+        "sources": [
+          "https://engineering.fb.com/2026/08/24/networking-traffic/mtia-300-meta-training-chip-built-in-nics/"
+        ],
+        "note": "内存规格对应单颗 MTIA 300，不是整套训练集群。",
+        "noteEn": "Memory capacity applies to one MTIA 300 accelerator, not a complete training cluster."
+      }
+    },
+    {
+      "id": "nvidia-groq-3-lpx",
+      "date": "2026-03-16",
+      "name": "NVIDIA Groq 3 LPX",
+      "company": "nvidia",
+      "category": "systems",
+      "kind": "announcement",
+      "summary": "以 LPU 与片上 SRAM 加速低延迟解码，与 Rubin GPU 组成异构推理系统。",
+      "details": "LPX 机架包含 256 颗 Groq 3 LPU；GPU 负责预填充与注意力，LPU 执行延迟敏感的前馈网络和 MoE 计算。NVIDIA 于 8 月 24 日宣布量产，Nebius 被列为首个云采用方，其服务上线仍按各自部署安排。",
+      "dateNote": "采用 GTC 技术公告日期；后续量产公告不等同于所有云服务已开放。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "NVIDIA · LPX 架构与规格",
+          "titleEn": "NVIDIA · LPX architecture and specifications",
+          "url": "https://developer.nvidia.com/blog/inside-nvidia-groq-3-lpx-the-low-latency-inference-accelerator-for-the-nvidia-vera-rubin-platform"
+        },
+        {
+          "title": "NVIDIA · 量产与云部署计划",
+          "titleEn": "NVIDIA · Production and cloud deployment plans",
+          "url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Groq-3-LPX-Now-in-Full-Production-With-World-Class-Speed-for-Agentic-AI/default.aspx"
+        }
+      ],
+      "en": {
+        "summary": "LPUs and on-chip SRAM accelerate low-latency decoding alongside Rubin GPUs in a heterogeneous inference system.",
+        "details": "An LPX rack contains 256 Groq 3 LPUs. GPUs handle prefill and attention; LPUs execute latency-sensitive feed-forward and MoE layers. NVIDIA announced full production on August 24, naming Nebius as the first cloud adopter; service availability follows deployment schedules.",
+        "dateNote": "Dated to the GTC technical announcement. Subsequent full production does not mean all cloud services are available."
+      },
+      "hardware": {
+        "variant": "NVIDIA Groq 3 LPU",
+        "checkedAt": "2026-10-11",
+        "facts": [
+          {
+            "label": "片上 SRAM",
+            "labelEn": "On-chip SRAM",
+            "value": "500 MB",
+            "chip": true
+          },
+          {
+            "label": "SRAM 带宽",
+            "labelEn": "SRAM bandwidth",
+            "value": "150 TB/s",
+            "chip": true
+          }
+        ],
+        "sources": [
+          "https://developer.nvidia.com/blog/inside-nvidia-groq-3-lpx-the-low-latency-inference-accelerator-for-the-nvidia-vera-rubin-platform"
+        ],
+        "note": "规格对应单颗 LPU。LPX 为 256 芯片机架；片上 SRAM 的带宽不能直接当作 GPU 外部 HBM 带宽比较。",
+        "noteEn": "Specifications apply to one LPU. LPX is a 256-chip rack; on-chip SRAM bandwidth is not directly comparable to external GPU HBM bandwidth."
+      }
+    },
+    {
       "id": "ascend-950pr",
       "date": "2026-03-20",
       "name": "昇腾 950PR · Atlas 350",
@@ -2819,7 +3042,7 @@ window.HARDWARE_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-08",
+    "checkedAt": "2026-10-11",
     "scope": "具有代表性的 GPU、专用加速器、算力系统及本地设备；日期优先依据一手资料，辅以署名媒体报道。区分产品公布、公开展示、供应计划与实际部署，规格保留芯片、板卡或系统范围。",
     "scopeEn": "Representative GPUs, custom accelerators, compute systems, and local devices. Dates prioritize primary sources with attributed reporting as needed. Announcements, demonstrations, availability plans, and deployments remain distinct; specifications retain chip, card, or system scope."
   }

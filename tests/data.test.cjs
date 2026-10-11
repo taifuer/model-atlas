@@ -29,6 +29,14 @@ test('every event has valid metadata and a primary source; supporting reports ar
   // These additional official/project/author pages were reviewed for the named event.
   // Keep community-hosted articles and personal author archives URL-specific.
   const reviewedPrimarySources = new Map([
+    ['https://www.ant-ling.com/', 'ling-3-1-flash'],
+    ['https://developer.ant-ling.com/zh-CN/docs/models/ling/', 'ling-3-1-flash'],
+    ['https://vercel.com/changelog/ling-3-1-flash-is-now-available-on-ai-gateway', 'ling-3-1-flash'],
+    ['https://x.com/Zai_org/status/2065704919299235870', 'glm-5-2'],
+    ['https://arankomatsuzaki.wordpress.com/2021/06/04/gpt-j/', 'gpt-j-6b'],
+    ['https://university.chatglm.cn/blog', 'chatglm-6b'],
+    ['https://allenai.org/blog/hello-olmo-a-truly-open-llm-43f7e7359222', 'olmo'],
+    ['https://blog.jetbrains.com/ai/2026/10/mellum2-1-gets-to-work-a-fast-open-model-for-coding-agents/', 'mellum-2-1-thinking'],
     ['https://crfm.stanford.edu/2023/03/13/alpaca.html', 'stanford-alpaca'],
     ['https://llava-vl.github.io/', 'llava'],
     ['https://ai.google.dev/gemma/docs/get_started', 'gemma-3'],
@@ -39,6 +47,10 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['https://platform.stepfun.ai/docs/en/guides/models/step-5-preview', 'step-5-preview'],
   ]);
   const reviewedHuggingFacePaths = new Map([
+    ['/EleutherAI/gpt-j-6b', 'gpt-j-6b'],
+    ['/blog/starcoder', 'starcoder'],
+    ['/allenai/OLMo-7B', 'olmo'],
+    ['/JetBrains/Mellum2.1-12B-A2.5B-Thinking', 'mellum-2-1-thinking'],
     ['/blog/bloom', 'bloom'],
     ['/Qwen/Qwen3-Next-80B-A3B-Instruct', 'qwen-3-next'],
     ['/zai-org/GLM-4.5', 'glm-4-5'],
@@ -67,7 +79,10 @@ test('every event has valid metadata and a primary source; supporting reports ar
         assert.ok(release.dateNote, 'Supporting reports must explain their date role');
       }
       assert.ok(source.title);
-      if (url.hostname === 'github.com') assert.match(url.pathname, /^\/(QwenLM|deepseek-ai|MoonshotAI|stepfun-ai)\//);
+      if (url.hostname === 'github.com') {
+        if (url.pathname === '/zai-org/ChatGLM-6B') assert.equal(release.id, 'chatglm-6b');
+        else assert.match(url.pathname, /^\/(QwenLM|deepseek-ai|MoonshotAI|stepfun-ai)\//);
+      }
       if (url.hostname === 'huggingface.co' && !/^\/meta-llama\//.test(url.pathname)) {
         assert.equal(reviewedHuggingFacePaths.get(url.pathname), release.id, `Unreviewed publisher or model version: ${source.url}`);
       }
@@ -146,10 +161,11 @@ test('English content covers every model and retains date clarifications', () =>
   assert.equal(data.releases.some(release => ['baidu', 'cohere'].includes(release.company)), false);
 });
 
-test('agent entries have distinct categories, bilingual descriptions, and dated first-party sources', () => {
+test('agent entries have distinct categories, bilingual descriptions, and primary sources with explicit corroboration', () => {
   vm.runInNewContext(fs.readFileSync(require('node:path').join(__dirname, '../src/data-agents.js'), 'utf8'), context);
   const agents = context.window.AGENT_ATLAS;
-  const hosts = new Set(['about.fb.com', 'www.microsoft.com', 'www.langchain.com', 'cognition.com', 'arxiv.org', 'replit.com', 'windsurf.com', 'cursor.com', 'www.anthropic.com', 'openai.com', 'github.blog', 'blog.google', 'antigravity.google', 'claude.com', 'support.claude.com', 'mariozechner.at', 'openclaw.ai', 'nousresearch.com', 'hermes-agent.nousresearch.com', 'www.deepseek.com', 'www.codebuddy.cn', 'cloud.tencent.com', 'qoder.com', 'qwenlm.github.io', 'kiro.dev', 'www.trae.ai', 'aider.chat', 'github.com', 'opencode.ai', 'manus.im', 'huggingface.co', 'goose-docs.ai', 'developers.googleblog.com', 'aws.amazon.com', 'blog.crewai.com', 'www.warp.dev']);
+  const hosts = new Set(['developer.cloud.tencent.com', 'docs.factory.com', 'open-vsx.org', 'blog.jetbrains.com', 'blog.kilo.ai', 'www.augmentcode.com', 'zed.dev', 'ampcode.com', 'factory.com', 'earendil.com', 'about.fb.com', 'www.microsoft.com', 'www.langchain.com', 'cognition.com', 'arxiv.org', 'replit.com', 'windsurf.com', 'cursor.com', 'www.anthropic.com', 'openai.com', 'github.blog', 'blog.google', 'antigravity.google', 'claude.com', 'support.claude.com', 'mariozechner.at', 'openclaw.ai', 'nousresearch.com', 'hermes-agent.nousresearch.com', 'www.deepseek.com', 'www.codebuddy.cn', 'cloud.tencent.com', 'qoder.com', 'qwenlm.github.io', 'kiro.dev', 'www.trae.ai', 'aider.chat', 'github.com', 'opencode.ai', 'manus.im', 'huggingface.co', 'goose-docs.ai', 'developers.googleblog.com', 'aws.amazon.com', 'blog.crewai.com', 'www.warp.dev']);
+  const supportingReports = new Map([['https://www.ithome.com/1/005/046.htm', 'zcode-open-source']]);
   const ids = new Set();
   let previous = '';
   for (const entry of agents.releases) {
@@ -161,10 +177,14 @@ test('agent entries have distinct categories, bilingual descriptions, and dated 
     assert.ok(agents.kinds[entry.kind] && agents.themes[entry.date.slice(0, 4)]);
     assert.ok(entry.summary && entry.details && entry.en.summary && entry.en.details);
     if (entry.dateNote) assert.ok(entry.en.dateNote);
+    assert.ok(hosts.has(new URL(entry.sources[0].url).hostname), `First source must be primary: ${entry.id}`);
     for (const source of entry.sources) {
       const url = new URL(source.url);
       assert.equal(url.protocol, 'https:');
-      assert.ok(hosts.has(url.hostname), source.url);
+      if (!hosts.has(url.hostname)) {
+        assert.equal(supportingReports.get(source.url), entry.id, source.url);
+        assert.ok(entry.dateNote && entry.en.dateNote, 'Corroborating reports retain the event date scope');
+      }
     }
   }
   for (const id of ['hermes-agent', 'workbuddy', 'deepseek-harness', 'aider', 'cline-2', 'opencode-1', 'qwen-code', 'kimi-cli-1', 'goose', 'kiro', 'qoder', 'trae-solo', 'google-antigravity']) assert.ok(ids.has(id), `Missing agent: ${id}`);

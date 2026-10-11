@@ -2099,6 +2099,132 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ],
       "note": "上下文采用 AA 公布的评测配置；有限开放期间，不据此推定公开 API 的输入或输出上限。",
       "noteEn": "Context is the configuration recorded by AA. During limited access, it does not establish public API input or output limits."
+    },
+    "gpt-j-6b": {
+      "checkedAt": "2026-10-11",
+      "variants": [
+        {
+          "name": "GPT-J-6B",
+          "contextTokens": 2048,
+          "parameters": "6B",
+          "basis": "weights",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/EleutherAI/gpt-j-6b"
+          ]
+        }
+      ]
+    },
+    "chatglm-6b": {
+      "checkedAt": "2026-10-11",
+      "variants": [
+        {
+          "name": "ChatGLM-6B",
+          "contextTokens": 2048,
+          "parameters": "6.2B",
+          "basis": "weights",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://github.com/zai-org/ChatGLM-6B"
+          ]
+        }
+      ],
+      "note": "2,048 tokens 为官方注明的训练长度；超过这一长度性能会下降，不将相对位置编码视为无限上下文保证。",
+      "noteEn": "The documented training length is 2,048 tokens; performance degrades beyond it. Relative position encoding is not treated as an unlimited-context guarantee."
+    },
+    "starcoder": {
+      "checkedAt": "2026-10-11",
+      "variants": [
+        {
+          "name": "StarCoder",
+          "contextTokens": "8K",
+          "parameters": "15B",
+          "basis": "weights",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/blog/starcoder"
+          ]
+        }
+      ]
+    },
+    "olmo": {
+      "checkedAt": "2026-10-11",
+      "variants": [
+        {
+          "name": "OLMo-7B",
+          "contextTokens": 2048,
+          "parameters": "7B",
+          "basis": "weights",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/allenai/OLMo-7B"
+          ]
+        }
+      ]
+    },
+    "mellum-2-1-thinking": {
+      "checkedAt": "2026-10-11",
+      "variants": [
+        {
+          "name": "Mellum2.1-12B-A2.5B-Thinking",
+          "contextTokens": 131072,
+          "parameters": "12B",
+          "activeParameters": "2.5B",
+          "basis": "weights",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking"
+          ]
+        }
+      ]
+    },
+    "ling-3-1-flash": {
+      "checkedAt": "2026-10-11",
+      "variants": [
+        {
+          "name": "Ling-3.1-flash",
+          "basis": "api",
+          "contextTokens": "256K",
+          "parameters": "560B",
+          "activeParameters": "25B",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://developer.ant-ling.com/zh-CN/docs/models/ling/"
+          ]
+        }
+      ],
+      "note": "官方当前 API 上下文为 256K，模型公布的上限为 1M。第三方服务的上下文与输出限制可能不同。",
+      "noteEn": "The current official API exposes 256K context; the announced model ceiling is 1M. Third-party providers may use different context and output limits."
     }
   }
 });

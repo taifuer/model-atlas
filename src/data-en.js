@@ -608,9 +608,9 @@ window.MODEL_ATLAS_EN = {
     "dateNote": ""
   },
   "glm-5-2": {
-    "summary": "GLM extends long-running task and engineering capabilities.",
-    "details": "Uses the June 16 release entry in the official Z.ai platform log.",
-    "dateNote": ""
+    "summary": "GLM-5.2 becomes available to Coding Plan subscribers, extending long-running coding and project-level work.",
+    "details": "All Coding Plan subscription tiers received access on June 13, followed by API, chat and open-weight availability. The model targets long-running coding, complex engineering and project-context handling. Service access and weight publication are distinct stages.",
+    "dateNote": "Records initial public Coding Plan availability on June 13. The official platform log’s June 16 entry covers the later API and chat release, rather than the earliest availability."
   },
   "claude-sonnet-5": {
     "summary": "Sonnet expands planning, browser use, terminal work, and sustained execution.",
@@ -795,6 +795,36 @@ window.MODEL_ATLAS_EN = {
     "summary": "Visual instruction tuning connects an image encoder and a language model for multimodal conversation.",
     "details": "Visual Instruction Tuning uses GPT-4-generated image-language instruction data to connect a vision encoder with a language model for image understanding and multimodal dialogue.",
     "dateNote": "Uses the first arXiv submission; later LLaVA 1.5 and 1.6 releases are separate versions."
+  },
+  "gpt-j-6b": {
+    "summary": "An openly available six-billion-parameter language model provides an early foundation for locally run general-purpose LLMs.",
+    "details": "Ben Wang and Aran Komatsuzaki trained GPT-J with Mesh Transformer JAX, with weights distributed through EleutherAI. Trained on The Pile with rotary position embeddings, it is a base text-generation model rather than an instruction-tuned chat model.",
+    "dateNote": "Uses the author’s June 4, 2021 announcement, rather than inferring a day from month-only repository citation metadata."
+  },
+  "chatglm-6b": {
+    "summary": "Tsinghua KEG and Zhipu release a bilingual Chinese–English dialogue model that can run locally on consumer GPUs after quantization.",
+    "details": "The 6.2-billion-parameter ChatGLM-6B combines GLM pretraining with instruction tuning and represents an early open Chinese chat model. Code uses Apache 2.0; weights have a separate model license allowing academic research and free commercial use after registration.",
+    "dateNote": "Uses March 14, 2023 from the official historical announcement. This records ChatGLM-6B weight availability, distinct from the concurrent larger ChatGLM closed test."
+  },
+  "starcoder": {
+    "summary": "BigCode releases code-generation models, training resources and evaluation tools covering more than 80 programming languages.",
+    "details": "Led jointly by Hugging Face and ServiceNow, BigCode released the roughly 15-billion-parameter StarCoder family trained on The Stack, with code completion and fill-in-the-middle support. Weights use BigCode OpenRAIL-M; training and data-processing code use Apache 2.0.",
+    "dateNote": "Uses the official May 4, 2023 announcement. The same-day StarCoderBase and StarCoder releases are grouped together."
+  },
+  "olmo": {
+    "summary": "Ai2 releases weights, training code, data and checkpoints to support reproducible research into language-model training and evaluation.",
+    "details": "The first OLMo release provides 1B and 7B base models alongside the Dolma dataset, training materials and evaluation tools. Its release extends beyond weights to the resources needed to study training, representing transparent, reproducible LLM research. Models and code use Apache 2.0.",
+    "dateNote": "Uses Ai2’s initial February 1, 2024 announcement, separate from later checkpoints and OLMo 2."
+  },
+  "mellum-2-1-thinking": {
+    "summary": "JetBrains releases a reasoning model for coding agents that handles repository tasks with a relatively small active parameter count.",
+    "details": "Mellum2.1-12B-A2.5B-Thinking is a mixture-of-experts model with 12B total parameters, about 2.5B active per token and a 131,072-token context. Reinforcement learning uses real repositories and sandbox tools. Apache 2.0 weights support local coding tools and subagents.",
+    "dateNote": "Uses October 8, 2026 from the JetBrains announcement. This records the Thinking weight release; later quantized formats and multi-token prediction heads are not treated as simultaneously available."
+  },
+  "ling-3-1-flash": {
+    "summary": "InclusionAI releases a hybrid reasoning model for coding, tool use, and multi-step agent tasks.",
+    "details": "The MoE model has approximately 560B total parameters and activates 25B per token. Official documentation lists a 1M model context ceiling, while the current API service exposes 256K. The advertised model ceiling is not treated as an available service limit. The current release is available through APIs; weights are not public.",
+    "dateNote": "Uses September 30 from Ant Ling’s official news feed. Dates of third-party catalog integrations are not treated as the original release date."
   }
 };
 window.ATLAS_TAGS_EN = {

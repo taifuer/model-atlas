@@ -14,6 +14,10 @@
     opencode: 'opencode', manus: 'manus', huggingface: 'huggingface-color',
     bigscience: 'bigscience.png', llava: 'arxiv',
     crewai: 'crewai-color', warp: 'warp', autogpt: 'autogpt.png',
+    amp: 'amp-color', augment: 'augment', factory: 'factory', zed: 'zed', kilo: 'kilocode',
+    eleutherai: 'eleutherai.png', bigcode: 'bigcode.png', allenai: 'ai2-color', jetbrains: 'jetbrains',
+    inclusionai: 'inclusionai.jpg',
+    groq: 'groq', freiburg: 'freiburg.png', flashinfer: 'flashinfer.png', kubernetes: 'kubernetes',
     amd: 'amd', intel: 'intel', apple: 'apple', huawei: 'huawei', cerebras: 'cerebras-color',
     pytorch: 'pytorch', vllm: 'vllm.png', ggml: 'ggml.jpg', sglang: 'sglang.png',
     // These research projects have generated GitHub avatars, not distinct organization marks.

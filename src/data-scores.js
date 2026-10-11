@@ -1,6 +1,6 @@
 // Curated public benchmark snapshot. Exact configurations only; not launch scores.
 window.MODEL_ATLAS_SCORES = Object.freeze({
-  "checkedAt": "2026-10-08",
+  "checkedAt": "2026-10-11",
   "benchmarks": {
     "aa": {
       "name": "Artificial Analysis Intelligence Index",
@@ -10,7 +10,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
     },
     "arena": {
       "name": "Arena Text · Overall · Style Control",
-      "publishedAt": "2026-10-02",
+      "publishedAt": "2026-10-08",
       "source": "https://arena.ai/leaderboard/text",
       "category": "text-overall",
       "adjustments": "style-control"
@@ -30,9 +30,9 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "claude-opus-5.5-high",
-        "score": 1504,
-        "confidenceInterval": 9,
-        "votes": 4552,
+        "score": 1507,
+        "confidenceInterval": 8,
+        "votes": 6272,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -44,9 +44,9 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "claude-sonnet-5.5-xhigh",
-        "score": 1471,
-        "confidenceInterval": 10,
-        "votes": 3145,
+        "score": 1476,
+        "confidenceInterval": 9,
+        "votes": 4838,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -60,7 +60,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "claude-fable-5.1-max",
         "score": 1501,
         "confidenceInterval": 6,
-        "votes": 11800,
+        "votes": 13063,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -72,9 +72,9 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "gpt-6-astra-max",
-        "score": 1477,
+        "score": 1475,
         "confidenceInterval": 7,
-        "votes": 9156,
+        "votes": 10536,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -86,9 +86,9 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "gpt-6.1-sol-max",
-        "score": 1483,
-        "confidenceInterval": 11,
-        "votes": 3071,
+        "score": 1484,
+        "confidenceInterval": 9,
+        "votes": 4512,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -102,7 +102,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "gemini-4-argon-high",
         "score": 1525,
         "confidenceInterval": 9,
-        "votes": 4932,
+        "votes": 4892,
         "source": "https://arena.ai/leaderboard/text",
         "preliminary": true
       }
@@ -117,7 +117,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "muse-spark-1.3-max",
         "score": 1494,
         "confidenceInterval": 6,
-        "votes": 12343,
+        "votes": 14694,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -129,9 +129,9 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "grok-4.7-xhigh",
-        "score": 1442,
-        "confidenceInterval": 8,
-        "votes": 6405,
+        "score": 1443,
+        "confidenceInterval": 7,
+        "votes": 8780,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -145,7 +145,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "mimo-v2.6-pro",
         "score": 1480,
         "confidenceInterval": 9,
-        "votes": 4056,
+        "votes": 4069,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -165,8 +165,8 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "arena": {
         "model": "glm-5.3-max",
         "score": 1478,
-        "confidenceInterval": 6,
-        "votes": 17857,
+        "confidenceInterval": 5,
+        "votes": 20049,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -187,7 +187,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "kimi-k3-max",
         "score": 1488,
         "confidenceInterval": 5,
-        "votes": 28280,
+        "votes": 30351,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -199,9 +199,9 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "glm-5.3-flash",
-        "score": 1473,
+        "score": 1475,
         "confidenceInterval": 5,
-        "votes": 22971,
+        "votes": 27678,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -213,9 +213,9 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "gemini-3.8-flash-high",
-        "score": 1495,
+        "score": 1497,
         "confidenceInterval": 5,
-        "votes": 26298,
+        "votes": 31437,
         "source": "https://arena.ai/leaderboard/text",
         "preliminary": true
       }
@@ -228,9 +228,9 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "deepseek-v4.1-flash-max",
-        "score": 1474,
+        "score": 1475,
         "confidenceInterval": 7,
-        "votes": 8728,
+        "votes": 10872,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -270,9 +270,9 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "gpt-6-sol-max",
-        "score": 1457,
+        "score": 1456,
         "confidenceInterval": 7,
-        "votes": 8787,
+        "votes": 10469,
         "source": "https://arena.ai/leaderboard/text"
       }
     },
@@ -288,6 +288,13 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Mistral Large 4 Preview",
         "score": 38,
         "source": "https://artificialanalysis.ai/models/mistral-large-4"
+      }
+    },
+    "ling-3-1-flash": {
+      "aa": {
+        "model": "Ling 3.1 Flash",
+        "score": 41,
+        "source": "https://artificialanalysis.ai/models/ling-3-1-flash"
       }
     }
   }

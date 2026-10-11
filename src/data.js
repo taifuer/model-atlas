@@ -5,6 +5,11 @@
  */
 window.MODEL_ATLAS = (() => {
   const companies = [
+    {"id": "inclusionai", "name": "蚂蚁百灵", "nameEn": "InclusionAI", "aliases": "Ant Group AntLing 百灵 蚂蚁集团 Ling Ring", "color": "#709d8d"},
+    {"id": "eleutherai", "name": "EleutherAI", "aliases": "GPT-J GPT Neo GPT-NeoX Pythia", "color": "#9b746d"},
+    {"id": "bigcode", "name": "BigCode", "aliases": "StarCoder Hugging Face ServiceNow", "color": "#b39a56"},
+    {"id": "allenai", "name": "Ai2", "aliases": "Allen Institute for AI AllenAI OLMo", "color": "#7d8e77"},
+    {"id": "jetbrains", "name": "JetBrains", "aliases": "Mellum Junie", "color": "#8b739c"},
     { id: 'openai', name: 'OpenAI', aliases: 'GPT ChatGPT o1 o3', color: '#4e755c' },
     { id: 'google', name: 'Google', aliases: 'Google DeepMind 谷歌 Gemini Gemma BERT PaLM', color: '#587db0' },
     { id: 'anthropic', name: 'Anthropic', aliases: 'Claude 克劳德', color: '#b47d60' },
@@ -30,107 +35,118 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    checkedAt: '2026-10-08',
-    source: 'https://artificialanalysis.ai/leaderboards/models',
-    methodology: 'https://artificialanalysis.ai/methodology/intelligence-benchmarking',
-    metric: 'Artificial Analysis Intelligence Index',
-    version: '4.3.2',
-    selection: 'highest-listed-score',
-    entries: [
-  {
-    "company": "anthropic",
-    "model": "Claude Opus 5.5 (max with fallback)",
-    "score": 58
-  },
-  {
-    "company": "openai",
-    "model": "GPT-6 Astra (max)",
-    "score": 53
-  },
-  {
-    "company": "google",
-    "model": "Gemini 4 Argon (high)",
-    "score": 53
-  },
-  {
-    "company": "meta",
-    "model": "Muse Spark 1.3 (max)",
-    "score": 48
-  },
-  {
-    "company": "xai",
-    "model": "Grok 4.7 (xhigh)",
-    "score": 46
-  },
-  {
-    "company": "xiaomi",
-    "model": "MiMo-V2.6-Pro",
-    "score": 46
-  },
-  {
-    "company": "qwen",
-    "model": "Qwen3.8 Max (0902)",
-    "score": 45
-  },
-  {
-    "company": "zhipu",
-    "model": "GLM-5.3 (max)",
-    "score": 45
-  },
-  {
-    "company": "stepfun",
-    "model": "Step 5 Preview",
-    "score": 44
-  },
-  {
-    "company": "moonshot",
-    "model": "Kimi K3 (max)",
-    "score": 44
-  },
-  {
-    "company": "deepseek",
-    "model": "DeepSeek V4.1 Flash (max)",
-    "score": 39
-  },
-  {
-    "company": "mistral",
-    "model": "Mistral Large 4 Preview",
-    "score": 38
-  },
-  {
-    "company": "minimax",
-    "model": "MiniMax-M3",
-    "score": 29
-  },
-  {
-    "company": "tencent",
-    "model": "Hy3",
-    "score": 25
-  },
-  {
-    "company": "nvidia",
-    "model": "Nemotron 3 Ultra",
-    "score": 23
-  },
-  {
-    "company": "bytedance",
-    "model": "Doubao Seed Code",
-    "score": 17,
-    "estimated": true
-  },
-  {
-    "company": "amazon",
-    "model": "Nova 2.0 Pro Preview (medium)",
-    "score": 14,
-    "estimated": true
-  },
-  {
-    "company": "microsoft",
-    "model": "Phi-4 Mini",
-    "score": 6,
-    "estimated": true
-  }
-],
+    "checkedAt": "2026-10-11",
+    "source": "https://artificialanalysis.ai/leaderboards/models",
+    "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+    "metric": "Artificial Analysis Intelligence Index",
+    "version": "4.3.2",
+    "selection": "highest-listed-score",
+    "entries": [
+      {
+        "company": "anthropic",
+        "model": "Claude Opus 5.5 (max with fallback)",
+        "score": 58
+      },
+      {
+        "company": "openai",
+        "model": "GPT-6 Astra (max)",
+        "score": 53
+      },
+      {
+        "company": "google",
+        "model": "Gemini 4 Argon (high)",
+        "score": 53
+      },
+      {
+        "company": "meta",
+        "model": "Muse Spark 1.3 (max)",
+        "score": 48
+      },
+      {
+        "company": "xai",
+        "model": "Grok 4.7 (xhigh)",
+        "score": 46
+      },
+      {
+        "company": "xiaomi",
+        "model": "MiMo-V2.6-Pro",
+        "score": 46
+      },
+      {
+        "company": "qwen",
+        "model": "Qwen3.8 Max (0902)",
+        "score": 45
+      },
+      {
+        "company": "zhipu",
+        "model": "GLM-5.3 (max)",
+        "score": 45
+      },
+      {
+        "company": "stepfun",
+        "model": "Step 5 Preview",
+        "score": 44
+      },
+      {
+        "company": "moonshot",
+        "model": "Kimi K3 (max)",
+        "score": 44
+      },
+      {
+        "company": "inclusionai",
+        "model": "Ling 3.1 Flash",
+        "score": 41
+      },
+      {
+        "company": "deepseek",
+        "model": "DeepSeek V4.1 Flash (max)",
+        "score": 39
+      },
+      {
+        "company": "mistral",
+        "model": "Mistral Large 4 Preview",
+        "score": 38
+      },
+      {
+        "company": "minimax",
+        "model": "MiniMax-M3",
+        "score": 29
+      },
+      {
+        "company": "tencent",
+        "model": "Hy3",
+        "score": 25
+      },
+      {
+        "company": "nvidia",
+        "model": "Nemotron 3 Ultra",
+        "score": 23
+      },
+      {
+        "company": "bytedance",
+        "model": "Doubao Seed Code",
+        "score": 17,
+        "estimated": true
+      },
+      {
+        "company": "amazon",
+        "model": "Nova 2.0 Pro Preview (medium)",
+        "score": 14,
+        "estimated": true
+      },
+      {
+        "company": "allenai",
+        "model": "Olmo 3.1 32B Think",
+        "score": 7,
+        "estimated": true
+      },
+      {
+        "company": "microsoft",
+        "model": "Phi-4 Mini",
+        "score": 6,
+        "estimated": true
+      }
+    ]
   };
   const kinds = { paper: '论文公开', release: '模型发布', preview: '预览发布', product: '产品上线', weights: '权重开放', announcement: '官方公告' };
   const themes = {
@@ -149,6 +165,36 @@ window.MODEL_ATLAS = (() => {
     return { id, date, name, company, kind, summary, tags, sources: Array.isArray(sources) ? sources : [sources], milestone, details, dateNote };
   }
   const releases = [
+    event("ling-3-1-flash", "2026-09-30", "Ling-3.1-flash", "inclusionai", "release",
+      "蚂蚁百灵发布混合推理模型，面向编程、工具调用与多步骤智能体任务。", ["推理", "智能体"],
+      [source("蚂蚁百灵 · 官方发布动态", "https://www.ant-ling.com/"), source("蚂蚁百灵 · 模型文档", "https://developer.ant-ling.com/zh-CN/docs/models/ling/"), source("Vercel · AI Gateway 发布日志", "https://vercel.com/changelog/ling-3-1-flash-is-now-available-on-ai-gateway")], false,
+      "采用 MoE 架构，总参数约 560B，每个 token 激活约 25B。官方文档给出 1M 的模型上下文上限，当前 API 服务开放 256K；不将模型上限视为已开放的服务规格。当前通过 API 提供，权重未公开。",
+      "采用蚂蚁百灵官网最新动态标注的 9 月 30 日；第三方模型目录的接入日期不作为首次发布日期。"),
+    event("gpt-j-6b", "2021-06-04", "GPT-J-6B", "eleutherai", "weights",
+      "开放 60 亿参数的自回归语言模型，为早期可本地运行的通用语言模型提供研究基础。", ["预训练", "开放权重"],
+      [source("GPT-J · 作者发布公告", "https://arankomatsuzaki.wordpress.com/2021/06/04/gpt-j/"), source("EleutherAI · 官方模型卡", "https://huggingface.co/EleutherAI/gpt-j-6b")], false,
+      "Ben Wang 与 Aran Komatsuzaki 使用 Mesh Transformer JAX 训练 GPT-J，并通过 EleutherAI 发布模型权重。模型采用 The Pile 数据与旋转位置编码，属于基础文本生成模型，尚未进行对话指令微调。",
+      "采用作者于 2021 年 6 月 4 日发布的模型公告，区别于仓库引用信息中仅精确到月份的日期。"),
+    event("chatglm-6b", "2023-03-14", "ChatGLM-6B", "zhipu", "weights",
+      "清华 KEG 与智谱开放中英双语对话模型，支持量化后在消费级显卡上本地运行。", ["多语言", "开放权重"],
+      [source("ChatGLM · 官方历史公告", "https://university.chatglm.cn/blog"), source("智谱 / 清华 KEG · ChatGLM-6B", "https://github.com/zai-org/ChatGLM-6B")], false,
+      "62 亿参数的 ChatGLM-6B 将 GLM 预训练与指令微调结合，是早期中文开放对话模型的代表。代码采用 Apache 2.0，权重采用单独的模型许可，允许学术研究及登记后的免费商用。",
+      "采用官方历史公告的 2023 年 3 月 14 日；此节点记录 ChatGLM-6B 权重开放，区别于同期千亿参数 ChatGLM 的内测。"),
+    event("starcoder", "2023-05-04", "StarCoder", "bigcode", "weights",
+      "BigCode 开放面向代码生成的模型、训练资料和评测工具，覆盖 80 多种编程语言。", ["编程", "开放权重"],
+      [source("BigCode / Hugging Face · StarCoder 发布", "https://huggingface.co/blog/starcoder")], false,
+      "由 Hugging Face 与 ServiceNow 共同牵头的 BigCode 发布约 150 亿参数的 StarCoder 系列，基于 The Stack 训练，支持代码补全与中间填充。权重采用 BigCode OpenRAIL-M 许可，训练与数据处理代码另按 Apache 2.0 提供。",
+      "采用官方发布文章的 2023 年 5 月 4 日；同日的 StarCoderBase 与 StarCoder 合并记录。"),
+    event("olmo", "2024-02-01", "OLMo", "allenai", "weights",
+      "Ai2 开放语言模型权重、训练代码、数据与检查点，使模型训练和评估过程可供复现研究。", ["预训练", "研究"],
+      [source("Ai2 · OLMo 发布公告", "https://allenai.org/blog/hello-olmo-a-truly-open-llm-43f7e7359222"), source("Ai2 · OLMo-7B 模型卡", "https://huggingface.co/allenai/OLMo-7B")], false,
+      "首代 OLMo 提供 1B 与 7B 基础模型，并公开 Dolma 数据集、训练过程与评测工具。它将开放范围延伸到模型训练所需的材料，成为透明、可复现语言模型研究的代表。模型与代码采用 Apache 2.0。",
+      "采用 Ai2 首次公开发布公告的 2024 年 2 月 1 日；不与后续检查点或 OLMo 2 混合。"),
+    event("mellum-2-1-thinking", "2026-10-08", "Mellum2.1 Thinking", "jetbrains", "weights",
+      "JetBrains 开放面向编程 Agent 的推理模型，以较小的激活参数规模执行代码库任务。", ["编程", "智能体", "开放权重"],
+      [source("JetBrains · Mellum2.1 发布", "https://blog.jetbrains.com/ai/2026/10/mellum2-1-gets-to-work-a-fast-open-model-for-coding-agents/"), source("JetBrains · 官方模型卡", "https://huggingface.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking")], false,
+      "Mellum2.1-12B-A2.5B-Thinking 采用混合专家架构，总参数 12B、每个 token 激活约 2.5B，支持 131,072 tokens 上下文。模型在真实代码库与沙箱工具环境中进行强化学习，权重以 Apache 2.0 开放，可用于本地编程工具和子智能体。",
+      "采用 JetBrains 官方发布文章的 2026 年 10 月 8 日；记录 Thinking 权重发布，后续量化格式与多 token 预测头不视为同时可用。"),
     event('transformer', '2017-06-12', 'Transformer', 'google', 'paper',
       'Google 团队在《Attention Is All You Need》中提出 Transformer，以注意力机制构建序列模型。', ['模型架构', '注意力机制'],
       [paper('1706.03762'), source('Google Research · 论文页面', 'https://research.google/pubs/attention-is-all-you-need/')], true,
@@ -558,9 +604,11 @@ window.MODEL_ATLAS = (() => {
     event("kimi-k2-7-code", "2026-06-12", "Kimi K2.7 Code", "moonshot", "release",
       "专注长程编程、工具调用与更高效的思考。", ["编程","工具使用"], source("Kimi · 官方发布日志", "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html"), false,
       "采用官方 Kimi Code 日志的模型发布时间，区别于客户端版本更新。"),
-    event("glm-5-2", "2026-06-16", "GLM-5.2", "zhipu", "release",
-      "继续增强长程任务与模型工程能力。", ["智能体","长上下文"], [source("Z.ai · 官方发布日志", "https://docs.z.ai/release-notes/new-released")], false,
-      "采用 Z.ai 官方平台 6 月 16 日的发布记录。"),
+    event("glm-5-2", "2026-06-13", "GLM-5.2", "zhipu", "release",
+      "面向 Coding Plan 用户开放，增强长程编程与项目级任务能力。", ["智能体","长上下文"],
+      [source("Z.ai · Coding Plan 发布公告", "https://x.com/Zai_org/status/2065704919299235870"), source("Z.ai · GLM-5.2 发布", "https://z.ai/blog/glm-5.2"), source("Z.ai · 平台发布日志", "https://docs.z.ai/release-notes/new-released")], false,
+      "6 月 13 日先向所有 Coding Plan 订阅档位开放，后续提供 API、聊天服务与开放权重。模型面向长程编程、复杂工程和项目上下文处理；服务开放与权重发布属于不同阶段。",
+      "记录 6 月 13 日 Coding Plan 首次公开可用；官方平台日志的 6 月 16 日对应后续 API 与聊天服务发布，不作为最早可用日期。"),
     event("claude-sonnet-5", "2026-06-30", "Claude Sonnet 5", "anthropic", "release",
       "让 Sonnet 更完整地规划任务、使用浏览器和终端，并持续执行。", ["智能体","工具使用"], source("Anthropic · 官方发布", "https://www.anthropic.com/news/claude-sonnet-5"), false,
       "面向编程和知识工作；不同推理力度属于同一模型配置，不重复记为独立发布。"),
@@ -658,7 +706,7 @@ window.MODEL_ATLAS = (() => {
       "《Visual Instruction Tuning》使用 GPT-4 生成图文指令数据，将视觉编码器的图像特征接入语言模型，研究通用图像理解与多模态对话。", "采用 arXiv 第一版提交日期；后续 LLaVA 1.5、1.6 属于其他版本。"),
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-10-08',
+    checkedAt: '2026-10-11',
     scope: '主流通用语言、推理、编程模型及其多模态扩展，兼顾重要历史研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
@@ -672,5 +720,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-10-08', updatedAt: '2026-10-08', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-10-11', updatedAt: '2026-10-11', companies, companyRanking, kinds, themes, releases, coverage });
 })();

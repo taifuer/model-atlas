@@ -44,3 +44,16 @@ No logo or font is requested from a third-party server at runtime.
 - `docker.svg`: [Simple Icons Docker mark](https://github.com/simple-icons/simple-icons/blob/develop/icons/docker.svg), CC0; original Docker blue applied as fill.
 - `kata.png`: [Kata Containers official website icon](https://katacontainers.io/icons/icon-96x96.png), unchanged.
 - `cloud-hypervisor.png`: the [official Cloud Hypervisor GitHub organization](https://github.com/cloud-hypervisor) profile mark, retrieved at 96 px from https://github.com/cloud-hypervisor.png?size=96, unchanged. The website’s generic document favicon is not used.
+
+## Coverage additions · 2026-10-11
+
+- `groq.svg`, `ai2-color.svg`, `amp-color.svg`, `kilocode.svg`: copied unchanged from `@lobehub/icons-static-svg` 1.95.1, MIT (see `LICENSE-LOBEHUB.txt`). Ai2 identifies the Allen Institute for AI; Kilo Code uses its project mark.
+- `kubernetes.svg`, `zed.svg`, `jetbrains.svg`: [Simple Icons](https://github.com/simple-icons/simple-icons/tree/develop/icons), CC0 (see `LICENSE-SIMPLE-ICONS.txt`), retrieved 2026-10-11 from `kubernetes.svg`, `zedindustries.svg`, and `jetbrains.svg`. Kubernetes blue `#326CE5` is applied as fill; the other SVGs are unchanged.
+- `freiburg.png`: the [University of Freiburg's official 96 px website icon](https://uni-freiburg.de/en/wp-content/themes/ufr-main-theme/assets/img/favicon/favicon-96x96.png), unchanged. This is an official mark, not one of the neutral university initials described above.
+- `flashinfer.png`: the [FlashInfer project's GitHub organization mark](https://github.com/flashinfer-ai.png?size=96), retrieved unchanged at 96 px.
+- `inclusionai.jpg`: the [verified InclusionAI GitHub organization's profile mark](https://github.com/inclusionAI.png?size=192), retrieved unchanged at 192 px. The image is served as JPEG and is stored with that extension.
+- `eleutherai.png`: [EleutherAI's official 192 px website icon](https://eleuther.ai/favicon-192x192.png), unchanged. `bigcode.png`: [BigCode's published header mark](https://www.bigcode-project.org/flow.png), unchanged; the site's generic document favicon is not used.
+- `augment.svg`: [Augment Code's official website icon](https://www.augmentcode.com/favicon.svg). A matching `512 × 512` viewBox was added and the dark-mode white override removed for visibility on this site's light background; paths are unchanged.
+- `factory.svg`: [Factory's official website icon](https://factory.com/favicon.svg), reached from the official `factory.ai` website. A matching `508 × 508` outer viewBox was added; artwork and colors are unchanged.
+
+Official website and profile marks above were retrieved on 2026-10-11 for identification. They remain the property of their respective owners; their inclusion does not imply endorsement or relicense the trademarks.

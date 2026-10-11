@@ -1000,6 +1000,48 @@
       ],
       "note": "按首版论文的图像与文本输入、文本输出分类。",
       "noteEn": "Classified by the original paper’s image and text inputs and text output."
+    },
+    "gpt-j-6b": {
+      "checkedAt": "2026-10-11",
+      "category": "text",
+      "sources": [
+        "https://huggingface.co/EleutherAI/gpt-j-6b"
+      ]
+    },
+    "chatglm-6b": {
+      "checkedAt": "2026-10-11",
+      "category": "text",
+      "sources": [
+        "https://github.com/zai-org/ChatGLM-6B"
+      ]
+    },
+    "starcoder": {
+      "checkedAt": "2026-10-11",
+      "category": "text",
+      "sources": [
+        "https://huggingface.co/blog/starcoder"
+      ]
+    },
+    "olmo": {
+      "checkedAt": "2026-10-11",
+      "category": "text",
+      "sources": [
+        "https://huggingface.co/allenai/OLMo-7B"
+      ]
+    },
+    "mellum-2-1-thinking": {
+      "checkedAt": "2026-10-11",
+      "category": "text",
+      "sources": [
+        "https://huggingface.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking"
+      ]
+    },
+    "ling-3-1-flash": {
+      "checkedAt": "2026-10-11",
+      "category": "text",
+      "sources": [
+        "https://developer.ant-ling.com/zh-CN/docs/models/ling/"
+      ]
     }
   }
 };
