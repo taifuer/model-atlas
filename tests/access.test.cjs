@@ -16,8 +16,31 @@ test('every model and agent has one explicit binary classification and dated evi
       assert.equal(new URL(release.openness.source).protocol, 'https:', release.id);
       assert.ok(release.openness.checkedAt >= access.checkedAt && release.openness.checkedAt <= data.updatedAt);
       if (release.openness.note) assert.ok(release.openness.noteEn, release.id);
+      for (const license of release.openness.licenses || []) {
+        assert.ok(license.object && license.objectEn && license.name, `${release.id}: license has a scoped bilingual label`);
+        assert.equal(new URL(license.source).protocol, 'https:', `${release.id}: license evidence`);
+      }
     }
   }
+});
+
+test('licenses distinguish weights, components and SDK scope without changing the binary filter', () => {
+  const accessFor = id => [...models.releases, ...agents.releases].find(release => release.id === id).openness;
+  const chatglm = accessFor('chatglm-6b');
+  assert.equal(chatglm.licenses.find(item => item.objectEn === 'Model weights').name, 'ChatGLM-6B Model License');
+  assert.equal(chatglm.licenses.find(item => item.objectEn === 'Code').name, 'Apache 2.0');
+  assert.match(chatglm.noteEn, /commercial use requires registration/);
+  const starcoder = accessFor('starcoder');
+  assert.equal(starcoder.licenses.find(item => item.objectEn === 'Model weights').name, 'BigCode OpenRAIL-M v1');
+  assert.match(starcoder.licenses.find(item => item.objectEn === 'Training code').name, /MIT.*BSD.*NVIDIA/);
+  for (const id of ['gemma-1', 'gemma-2', 'gemma-3']) assert.equal(accessFor(id).licenses[0].name, 'Gemma Terms of Use');
+  assert.equal(accessFor('gemma-4').licenses[0].name, 'Apache 2.0', 'The newer license must not overwrite earlier Gemma releases');
+  assert.equal(accessFor('stanford-alpaca').licenses[0].objectEn, 'Weight differences');
+  assert.match(accessFor('stanford-alpaca').noteEn, /non-commercial/);
+  assert.equal(accessFor('zcode-open-source').licenses[0].objectEn, 'Tool code');
+  assert.equal(accessFor('claude-agent-sdk').licenses[0].objectEn, 'SDK code');
+  assert.match(accessFor('claude-agent-sdk').noteEn, /runtime and model are not made open source/);
+  for (const id of ['llama-2', 'gemma-1', 'gemma-2', 'gemma-3', 'gemma-4', 'stanford-alpaca', 'chatglm-6b', 'starcoder', 'zcode-open-source', 'claude-agent-sdk']) assert.equal(accessFor(id).status, 'open', id);
 });
 
 test('open and closed filters partition results under combined filters and chart counts', () => {

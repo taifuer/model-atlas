@@ -49,17 +49,51 @@
   function renderCompanyDisclosure() {
     const buttons = [...document.querySelectorAll('[data-company-filter]')];
     const focused = document.activeElement;
-    // Hide organizations without matching milestones before applying the mobile limit.
+    // Hide organizations without matching milestones before measuring the mobile rows.
     // Selected conditions remain removable in the active-filter row, even with no results.
     const available = buttons.filter(button => !state.milestones || button.dataset.companyFilter === 'all' || !button.classList.contains('is-empty'));
-    const secondary = available.filter((button, index) => index > 6 && button.getAttribute('aria-pressed') !== 'true');
-    for (const button of buttons) button.hidden = !available.includes(button) || (mobileFilters.matches && !companiesExpanded && secondary.includes(button));
     const toggle = $('#company-disclosure');
+    for (const button of buttons) button.hidden = !available.includes(button);
+    toggle.hidden = true;
+    let secondary = [];
+    if (mobileFilters.matches) {
+      const container = $('#company-filters');
+      const width = container.getBoundingClientRect().width;
+      const gap = parseFloat(getComputedStyle(container).columnGap) || 0;
+      const widths = new Map(available.map(button => [button, button.getBoundingClientRect().width]));
+      const fitsTwoRows = items => {
+        let rows = 1, used = 0;
+        for (const item of items) {
+          const itemWidth = widths.get(item);
+          if (used && used + gap + itemWidth > width) { rows++; used = 0; }
+          used += (used ? gap : 0) + itemWidth;
+        }
+        return rows <= 2;
+      };
+      if (!fitsTwoRows(available)) {
+        // Reserve space for More, and keep every selected organization visible.
+        // Selecting many organizations may deliberately occupy more than two rows.
+        const visible = new Set(available.filter(button => button.dataset.companyFilter === 'all' || button.getAttribute('aria-pressed') === 'true'));
+        toggle.textContent = L(`更多（${available.length - visible.size}）`, `More (${available.length - visible.size})`);
+        toggle.hidden = false;
+        widths.set(toggle, toggle.getBoundingClientRect().width);
+        for (const button of available) {
+          if (visible.has(button)) continue;
+          const candidate = available.filter(item => visible.has(item) || item === button);
+          if (!fitsTwoRows([...candidate, toggle])) break;
+          visible.add(button);
+        }
+        secondary = available.filter(button => !visible.has(button));
+        if (!companiesExpanded) for (const button of secondary) button.hidden = true;
+      }
+    }
     toggle.hidden = !mobileFilters.matches || !secondary.length;
     toggle.setAttribute('aria-expanded', String(companiesExpanded));
     toggle.textContent = companiesExpanded ? L('收起', 'Show fewer') : L(`更多（${secondary.length}）`, `More (${secondary.length})`);
-    if ((buttons.includes(focused) || focused === toggle) && focused.hidden) {
-      (toggle.hidden ? buttons[0] : toggle).focus({ preventScroll: true });
+    if (buttons.includes(focused) || focused === toggle) {
+      const target = focused.hidden ? (toggle.hidden ? buttons[0] : toggle) : focused;
+      // Measurement temporarily hides More; restore keyboard focus after layout settles.
+      if (document.activeElement !== target) target.focus({ preventScroll: true });
     }
   }
 
@@ -136,7 +170,10 @@
       const label = key === 'aa' ? 'AA' : 'Arena';
       const mark = score.estimated || score.preliminary ? '*' : '';
       const checkedAt = score.checkedAt || window.MODEL_ATLAS_SCORES.checkedAt;
-      const description = `${window.MODEL_ATLAS_SCORES.benchmarks[key].name} · ${score.model} · ${score.score}${mark} · ${L('快照', 'Snapshot')} ${formattedDate(checkedAt)} · ${L('查看配置与评测口径', 'View configuration and methodology')}`;
+      const metric = window.MODEL_ATLAS_SCORES.benchmarks[key];
+      const publishedAt = score.publishedAt || metric.publishedAt;
+      const published = publishedAt ? ` · ${L('榜单日期', 'Leaderboard date')} ${formattedDate(publishedAt)}` : '';
+      const description = `${window.MODEL_ATLAS_SCORES.benchmarks[key].name} · ${score.model} · ${score.score}${mark}${published} · ${L('核对日期', 'Checked')} ${formattedDate(checkedAt)} · ${L('查看配置与评测口径', 'View configuration and methodology')}`;
       chips.push(chip('scores', `${variantLabel(facts.scoreLabel(score, window.MODEL_ATLAS_SCORES.cardScopes?.[release.id]))}<span class="fact-label">${label}</span><span>${score.score}${mark}</span>`, description));
     }
     return chips.length ? `<div class="card-facts">${chips.join('')}</div>` : '';
@@ -284,6 +321,18 @@
   $('#company-multi').addEventListener('change', event => { state = filters.setMultiSelect(state, event.target.checked); changeState(); });
   $('#company-disclosure').addEventListener('click', () => { companiesExpanded = !companiesExpanded; renderCompanyDisclosure(); });
   mobileFilters.addEventListener('change', renderCompanyDisclosure);
+  // Recalculate only when the available width changes, not after our height updates.
+  // Fonts can change chip widths without resizing their parent.
+  if ('ResizeObserver' in window) {
+    let previousWidth = $('#company-filters').getBoundingClientRect().width;
+    new ResizeObserver(entries => {
+      const width = entries[0].contentRect.width;
+      if (Math.abs(width - previousWidth) < .5) return;
+      previousWidth = width;
+      renderCompanyDisclosure();
+    }).observe($('#company-filters'));
+  } else window.addEventListener('resize', renderCompanyDisclosure);
+  document.fonts?.ready.then(renderCompanyDisclosure);
   document.addEventListener('click', event => {
     const button = event.target.closest('button');
     if (!button) return;

@@ -803,12 +803,12 @@ window.MODEL_ATLAS_EN = {
   },
   "chatglm-6b": {
     "summary": "Tsinghua KEG and Zhipu release a bilingual Chinese–English dialogue model that can run locally on consumer GPUs after quantization.",
-    "details": "The 6.2-billion-parameter ChatGLM-6B combines GLM pretraining with instruction tuning and represents an early open Chinese chat model. Code uses Apache 2.0; weights have a separate model license allowing academic research and free commercial use after registration.",
+    "details": "The 6.2-billion-parameter ChatGLM-6B combines GLM pretraining with instruction tuning and represents an early open Chinese chat model.",
     "dateNote": "Uses March 14, 2023 from the official historical announcement. This records ChatGLM-6B weight availability, distinct from the concurrent larger ChatGLM closed test."
   },
   "starcoder": {
     "summary": "BigCode releases code-generation models, training resources and evaluation tools covering more than 80 programming languages.",
-    "details": "Led jointly by Hugging Face and ServiceNow, BigCode released the roughly 15-billion-parameter StarCoder family trained on The Stack, with code completion and fill-in-the-middle support. Weights use BigCode OpenRAIL-M; training and data-processing code use Apache 2.0.",
+    "details": "Led jointly by Hugging Face and ServiceNow, BigCode released the roughly 15-billion-parameter StarCoder family trained on The Stack, with code completion and fill-in-the-middle support.",
     "dateNote": "Uses the official May 4, 2023 announcement. The same-day StarCoderBase and StarCoder releases are grouped together."
   },
   "olmo": {

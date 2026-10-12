@@ -1,7 +1,7 @@
 /* Curated hardware history. Event dates and configurations retain explicit source scope. */
 window.HARDWARE_ATLAS = {
   "asOf": "2026-10-11",
-  "updatedAt": "2026-10-11",
+  "updatedAt": "2026-10-12",
   "accessFilter": false,
   "companies": [
     {

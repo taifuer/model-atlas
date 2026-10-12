@@ -252,6 +252,39 @@
     "noteEn": "The current version is API-only, without public weights; earlier open models’ licenses do not apply."
   }
 });
+  // License scope is recorded for the named release, not inherited by a family.
+  const license = (object, objectEn, name, source) => ({ object, objectEn, name, source });
+  const reviewedLicense = (target, id, licenses, zh, en) => Object.assign(target[id], {
+    checkedAt: '2026-10-12', licenses, note: zh, noteEn: en,
+  });
+  reviewedLicense(models, 'chatglm-6b', [
+    license('模型权重', 'Model weights', 'ChatGLM-6B Model License', 'https://github.com/zai-org/ChatGLM-6B/blob/main/MODEL_LICENSE'),
+    license('代码', 'Code', 'Apache 2.0', 'https://github.com/zai-org/ChatGLM-6B/blob/main/LICENSE'),
+  ], '权重向学术研究开放，免费商用需登记；模型许可附使用限制。', 'Weights are available for academic research; free commercial use requires registration. The model license includes use restrictions.');
+  reviewedLicense(models, 'starcoder', [
+    license('模型权重', 'Model weights', 'BigCode OpenRAIL-M v1', 'https://huggingface.co/spaces/bigcode/bigcode-model-license-agreement'),
+    license('训练代码', 'Training code', 'Apache 2.0 / MIT / BSD / NVIDIA', 'https://github.com/bigcode-project/Megatron-LM/blob/main/LICENSE'),
+  ], '权重附使用限制；训练仓库内不同组件分别适用其许可。', 'Weights have use restrictions; components in the training repository retain their individual licenses.');
+  reviewedLicense(models, 'llama-2', [
+    license('权重与模型代码', 'Weights and model code', 'Llama 2 Community License', 'https://github.com/meta-llama/llama/blob/llama_v2/LICENSE'),
+  ], '适用可接受使用政策；不得用于改进 Llama 2 及其衍生模型以外的大模型。发布时符合许可约定的超过 7 亿月活用户条件，需另向 Meta 申请许可。', 'The acceptable-use policy applies; use to improve LLMs other than Llama 2 or its derivatives is prohibited. Organizations above the license’s 700-million-monthly-user threshold at release must obtain a separate license from Meta.');
+  for (const id of ['gemma-1', 'gemma-2', 'gemma-3']) {
+    reviewedLicense(models, id, [
+      license('模型权重', 'Model weights', 'Gemma Terms of Use', 'https://ai.google.dev/gemma/terms'),
+    ], '适用 Gemma 禁止用途政策；再分发须保留条款、使用限制与相关声明。', 'The Gemma prohibited-use policy applies. Redistribution must retain the terms, use restrictions and required notices.');
+  }
+  reviewedLicense(models, 'gemma-4', [
+    license('模型权重', 'Model weights', 'Apache 2.0', 'https://ai.google.dev/gemma/apache_2'),
+  ], '', '');
+  reviewedLicense(models, 'stanford-alpaca', [
+    license('权重差分', 'Weight differences', 'CC BY-NC 4.0', 'https://huggingface.co/tatsu-lab/alpaca-7b-wdiff'),
+  ], '权重差分在首发后开放，恢复模型需原始 LLaMA 权重。模型研究与差分仅限非商业用途。', 'Weight differences were released after the initial announcement. Reconstructing the model requires the original LLaMA weights; the research model and differences are limited to non-commercial use.');
+  reviewedLicense(agents, 'zcode-open-source', [
+    license('工具代码', 'Tool code', 'Apache 2.0', 'https://github.com/zai-org/ZCode/blob/main/LICENSE'),
+  ], '连接的模型和云端服务适用各自条款。', 'Connected models and cloud services retain their own terms.');
+  reviewedLicense(agents, 'claude-agent-sdk', [
+    license('SDK 代码', 'SDK code', 'MIT', 'https://github.com/anthropics/claude-agent-sdk-python/blob/main/LICENSE'),
+  ], '开放范围为 SDK 代码；底层 Claude Code 运行时与模型不因此变为开源。', 'Only the SDK code is covered; the underlying Claude Code runtime and model are not made open source by this license.');
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

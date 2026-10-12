@@ -8,8 +8,9 @@
     "start": "node scripts/dev.mjs",
     "build": "node scripts/build.mjs",
     "test": "node --test tests/*.test.cjs",
-    "check": "node --check src/app.js && node --check src/filters.js && node --check src/site.js && node --check src/icons.js && node --check src/data.js && node --check src/data-en.js && node --check src/data-agents.js && node --check src/data-access.js && node --check src/data-specs.js && node --check src/data-prices.js && node --check scripts/dev.mjs && node --check scripts/build.mjs && node --check src/data-hardware.js && node --check src/data-technology.js && node --check src/data-model-types.js && node --check src/data-scores.js && node --check src/catalog.js && node --check src/details.js && node --check src/workspace.js && node --check src/explore.js && node --check src/seo.js && node --check scripts/seo.mjs && node --check src/explore-periods.js && node --check src/facts.js && node --check scripts/prerender.mjs && node --check playwright.config.mjs && node --check tests/browser/serve.mjs && node --check tests/browser/site.spec.mjs",
-    "test:browser": "playwright test"
+    "check": "node --check src/app.js && node --check src/filters.js && node --check src/site.js && node --check src/icons.js && node --check src/data.js && node --check src/data-en.js && node --check src/data-agents.js && node --check src/data-access.js && node --check src/data-specs.js && node --check src/data-prices.js && node --check scripts/dev.mjs && node --check scripts/build.mjs && node --check src/data-hardware.js && node --check src/data-technology.js && node --check src/data-model-types.js && node --check src/data-scores.js && node --check src/catalog.js && node --check src/details.js && node --check src/workspace.js && node --check src/explore.js && node --check src/seo.js && node --check scripts/seo.mjs && node --check src/explore-periods.js && node --check src/facts.js && node --check scripts/prerender.mjs && node --check playwright.config.mjs && node --check tests/browser/serve.mjs && node --check tests/browser/site.spec.mjs && node --check scripts/check-sources.mjs && node --check tests/browser/layout.spec.mjs",
+    "test:browser": "playwright test",
+    "check:sources": "node scripts/check-sources.mjs"
   },
   "engines": {
     "node": ">=22"

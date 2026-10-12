@@ -2,7 +2,7 @@
 (() => {
   const data = {
   "asOf": "2026-10-11",
-  "updatedAt": "2026-10-11",
+  "updatedAt": "2026-10-12",
   "accessFilter": false,
   "companies": [
     {

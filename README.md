@@ -50,9 +50,9 @@ Entries are selected for historical influence or technical significance. This is
 
 Switching multi-select off keeps the most recently selected organization. Existing links with several organizations open in multi-select mode. Paper entries prefer project or product marks, then official organization logos; arXiv or NeurIPS marks provide a fallback when no such logo is available.
 
-Mobile organization filters initially show six organizations plus the selected ones. Additional organizations are available through the disclosure control. Desktop shows all organizations. The Milestones filter hides organizations with no matching entries.
+Mobile organization filters initially fit two rows, adapting to the screen width. Selected organizations remain visible and may exceed that limit. Additional organizations are available through the disclosure control. Desktop shows all organizations. The Milestones filter hides organizations with no matching entries.
 
-Explore keeps all records and summaries visible, with the latest events first. Year and month controls navigate within the page, and search highlights and locates matching events. Category badges distinguish models, agents, hardware and technology. Sources and date notes explain whether an event records a paper presentation, package release or commercial deployment. The Transformer event appears once across timelines. Evaluation references link to AA, Arena, SWE-bench, and MLPerf; model details retain reviewed scores and snapshot dates.
+Explore keeps all records and summaries visible, with the latest events first. Year and month controls navigate within the page, and search highlights and locates matching events. Category badges distinguish models, agents, hardware and technology. Sources and date notes explain whether an event records a paper presentation, package release or commercial deployment. The Transformer event appears once across timelines. Evaluation references link to AA, Arena, SWE-bench, and MLPerf; model details retain reviewed scores with separate verification and leaderboard dates.
 
 The website uses local fonts and icons, with Latin and CJK font subsets requested according to the characters on the page. There are no analytics, runtime API calls, or third-party scripts. Browser storage saves only language and view preferences.
 
@@ -98,11 +98,22 @@ The build writes default entries, dates, summaries, sources, and counts directly
 
 ## Data and sources
 
-Records are maintained manually. Dates distinguish papers, announcements, previews, releases, and availability. Specifications and prices apply to the named version and configuration; leaderboard results retain their metric and snapshot date. Missing information stays absent.
+Records are maintained manually. Dates distinguish papers, announcements, previews, releases, and availability. Specifications and prices apply to the named version and configuration; leaderboard results retain their metric, verification date, and available leaderboard date. Missing information stays absent.
 
 Evaluation references include [Artificial Analysis](https://artificialanalysis.ai/leaderboards/models), [Arena](https://arena.ai/leaderboard/text), [LiveBench](https://livebench.ai/), [HELM](https://crfm.stanford.edu/helm/capabilities/latest/), [OpenCompass](https://rank.opencompass.org.cn/), [SWE-bench](https://www.swebench.com/), [Terminal-Bench](https://www.tbench.ai/), and [MLPerf](https://mlcommons.org/benchmarks/inference-datacenter/). They inform curation and are not combined into a single score.
 
 The site's “open / closed” filter is an editorial classification of the listed models and tools. It does not describe this repository's license or replace each product's license terms. The [About page](https://ai.taifua.com/about.html?lang=en) explains the conventions.
+
+Maintainers can manually check the sources already cited in the catalog:
+
+```bash
+npm run check:sources -- --section models --limit 8
+npm run check:sources -- --help
+```
+
+Reports and normalized content snapshots stay in Git-ignored `research/source-monitor/`, outside the site build. The review queue prioritizes prices, scores, licenses, and specifications; it preserves entry IDs and links to the original source sections. A changed page is a review candidate, not a confirmed factual update. HTTP 403/429 and network failures are recorded separately from 404/410; none deletes entries or overwrites evidence. HTML comparison omits scripts and most navigation, but dynamic content can still produce differences.
+
+The first run has no accepted baseline. After reviewing a report and its snapshots, run `npm run check:sources -- --accept research/source-monitor/reports/<report>.json` to establish or update that baseline. This accepts successful observations in that report only and does not change website data. Subsequent runs compare against the accepted baseline until another report is explicitly accepted. The tool does not discover new releases, import scores, schedule checks, or send notifications; publication still requires editorial review and the normal project checks.
 
 ## Project structure
 

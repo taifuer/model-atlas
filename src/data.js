@@ -178,12 +178,12 @@ window.MODEL_ATLAS = (() => {
     event("chatglm-6b", "2023-03-14", "ChatGLM-6B", "zhipu", "weights",
       "清华 KEG 与智谱开放中英双语对话模型，支持量化后在消费级显卡上本地运行。", ["多语言", "开放权重"],
       [source("ChatGLM · 官方历史公告", "https://university.chatglm.cn/blog"), source("智谱 / 清华 KEG · ChatGLM-6B", "https://github.com/zai-org/ChatGLM-6B")], false,
-      "62 亿参数的 ChatGLM-6B 将 GLM 预训练与指令微调结合，是早期中文开放对话模型的代表。代码采用 Apache 2.0，权重采用单独的模型许可，允许学术研究及登记后的免费商用。",
+      "62 亿参数的 ChatGLM-6B 将 GLM 预训练与指令微调结合，是早期中文开放对话模型的代表。",
       "采用官方历史公告的 2023 年 3 月 14 日；此节点记录 ChatGLM-6B 权重开放，区别于同期千亿参数 ChatGLM 的内测。"),
     event("starcoder", "2023-05-04", "StarCoder", "bigcode", "weights",
       "BigCode 开放面向代码生成的模型、训练资料和评测工具，覆盖 80 多种编程语言。", ["编程", "开放权重"],
       [source("BigCode / Hugging Face · StarCoder 发布", "https://huggingface.co/blog/starcoder")], false,
-      "由 Hugging Face 与 ServiceNow 共同牵头的 BigCode 发布约 150 亿参数的 StarCoder 系列，基于 The Stack 训练，支持代码补全与中间填充。权重采用 BigCode OpenRAIL-M 许可，训练与数据处理代码另按 Apache 2.0 提供。",
+      "由 Hugging Face 与 ServiceNow 共同牵头的 BigCode 发布约 150 亿参数的 StarCoder 系列，基于 The Stack 训练，支持代码补全与中间填充。",
       "采用官方发布文章的 2023 年 5 月 4 日；同日的 StarCoderBase 与 StarCoder 合并记录。"),
     event("olmo", "2024-02-01", "OLMo", "allenai", "weights",
       "Ai2 开放语言模型权重、训练代码、数据与检查点，使模型训练和评估过程可供复现研究。", ["预训练", "研究"],
@@ -720,5 +720,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-10-11', updatedAt: '2026-10-11', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-10-11', updatedAt: '2026-10-12', companies, companyRanking, kinds, themes, releases, coverage });
 })();

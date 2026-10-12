@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
   "asOf": "2026-10-11",
-  "updatedAt": "2026-10-11",
+  "updatedAt": "2026-10-12",
   "companies": [
     {
       "id": "anthropic",

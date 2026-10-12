@@ -156,7 +156,9 @@ for (const language of ['zh', 'en']) {
       const references = section(html, 'detail-references');
       assert.ok(references, `${record.key}: source section`);
       assert.doesNotMatch(references, /<a\b[^>]*>\s*<\/a>/, `${record.key}: sources have readable labels`);
-      assert.equal((references.match(/<li>/g) || []).length, record.release.sources.length, record.key);
+      const access = record.raw.accessFilter !== false && record.release.openness;
+      const separateAccessSource = access?.source && !(access.licenses?.length || access.note || access.noteEn) && !record.release.sources.some(source => source.url === access.source);
+      assert.equal((references.match(/<li>/g) || []).length, record.release.sources.length + Number(Boolean(separateAccessSource)), record.key);
       for (const source of record.release.sources) {
         assert.ok(references.includes(`href="${escape(source.url)}"`), `${record.key}: ${source.url}`);
         if (language === 'zh' || source.titleEn) assert.ok(references.includes(escape(language === 'zh' ? source.title : source.titleEn)), `${record.key}: source label`);
@@ -207,6 +209,67 @@ for (const language of ['zh', 'en']) {
         if (score.confidenceInterval) assert.ok(scoreHtml.includes(`±${score.confidenceInterval}`), `${id}: score uncertainty`);
         if (score.votes) assert.ok(scoreHtml.includes(score.votes.toLocaleString('en-US')), `${id}: votes`);
         assert.ok(scoreHtml.includes(`href="${escape(score.source)}"`), `${id}: benchmark evidence`);
+      }
+    }
+  });
+
+  test(`licensing stays near the overview with its own evidence date in ${language}`, () => {
+    const current = localized[language];
+    for (const record of current.ATLAS_CATALOG.entries) {
+      const html = detail(current, record, language);
+      const access = record.raw.accessFilter !== false && record.release.openness;
+      const accessHtml = section(html, 'detail-access-summary');
+      const substantive = access && (access.licenses?.length || access.note || access.noteEn);
+      assert.equal(Boolean(accessHtml), Boolean(substantive), `${record.key}: no empty licensing section`);
+      if (!substantive) continue;
+      assert.ok(accessHtml.includes(`datetime="${access.checkedAt}"`), `${record.key}: access-specific verification date`);
+      for (const next of ['detail-specs', 'detail-pricing', 'detail-scores', 'detail-classification', 'detail-references']) {
+        const position = html.indexOf(`class="${next}"`);
+        if (position >= 0) assert.ok(html.indexOf('class="detail-access-summary"') < position, `${record.key}: access before ${next}`);
+      }
+      for (const license of access.licenses || []) {
+        assert.ok(accessHtml.includes(`<dt>${escape(language === 'en' ? license.objectEn : license.object)}</dt>`), `${record.key}: opened object`);
+        assert.ok(accessHtml.includes(escape(license.name)), `${record.key}: named license`);
+        assert.ok(accessHtml.includes(`href="${escape(license.source)}"`), `${record.key}: license source`);
+      }
+      if (access.note) assert.ok(accessHtml.includes(escape(language === 'en' ? access.noteEn : access.note)), `${record.key}: restrictions retained`);
+    }
+  });
+
+  test(`a separate access source remains reachable without an empty licensing section in ${language}`, () => {
+    const current = localized[language];
+    const record = current.ATLAS_CATALOG.get('models:gpt-1');
+    const access = record.release.openness;
+    assert.ok(access.source && !access.note && !access.licenses);
+    assert.ok(!record.release.sources.some(source => source.url === access.source), 'Fixture has a separate code repository as access evidence');
+    const html = detail(current, record, language);
+    assert.equal(section(html, 'detail-access-summary'), '');
+    const references = section(html, 'detail-references');
+    assert.ok(references.includes(`href="${escape(access.source)}"`));
+    assert.ok(references.includes(language === 'en' ? 'Access evidence' : '开放依据'));
+    assert.ok(references.includes(`datetime="${access.checkedAt}"`));
+  });
+
+  test(`verification dates and leaderboard dates remain distinct in ${language}`, () => {
+    const current = localized[language];
+    for (const record of current.ATLAS_CATALOG.entries) {
+      const html = detail(current, record, language);
+      for (const [className, data] of [['detail-specs', current.MODEL_ATLAS_SPECS], ['detail-pricing', current.MODEL_ATLAS_PRICES], ['detail-scores', current.MODEL_ATLAS_SCORES]]) {
+        const content = section(html, className);
+        if (!content) continue;
+        const expected = record.section === 'hardware' ? record.release.hardware.checkedAt : data.entries[record.release.id].checkedAt || data.checkedAt;
+        const heading = /<div class="detail-section-title">[\s\S]*?<\/div>/.exec(content)?.[0];
+        assert.ok(heading?.includes(`datetime="${expected}"`), `${record.key}: ${className} check date next to heading`);
+        assert.ok(heading.includes(language === 'en' ? 'Checked' : '核对日期'), `${record.key}: a check date is not called a snapshot date`);
+        assert.doesNotMatch(content, /评测快照|Benchmark snapshot|规格核对于|价格核对于/);
+      }
+      const scores = record.section === 'models' && current.MODEL_ATLAS_SCORES.entries[record.release.id];
+      if (!scores) continue;
+      const scoreHtml = section(html, 'detail-scores');
+      const headings = Array.from(scoreHtml.matchAll(/<div class="benchmark-heading">[\s\S]*?<\/strong><\/div>/g), match => match[0]);
+      for (const score of Object.values(scores)) assert.ok(headings.some(heading => heading.includes(escape(score.model)) && heading.includes(`<strong>${score.score}`)), `${record.key}: exact model configuration adjacent to score`);
+      if (scores.arena) {
+        assert.ok(scoreHtml.includes(`${language === 'en' ? 'Leaderboard date' : '榜单日期'} ${current.MODEL_ATLAS_SCORES.benchmarks.arena.publishedAt.replaceAll('-', '.')}`), `${record.key}: actual Arena publication date`);
       }
     }
   });
