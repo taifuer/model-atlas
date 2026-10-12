@@ -10,8 +10,11 @@ import { loadCatalog } from './prerender.mjs';
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const PRIVATE_ROOT = path.join(ROOT, 'research/source-monitor');
 const SCHEMA = 1;
-const NORMALIZER = 'text-v1';
+const NORMALIZER = 'text-v2';
+const HTML_ATTRIBUTES = String.raw`(?:[^>"']|"[^"]*"|'[^']*')*`;
+const stripTags = text => text.replace(new RegExp(`<${HTML_ATTRIBUTES}>`, 'g'), ' ');
 const SECTIONS = ['models', 'agents', 'hardware', 'technology'];
+const REVIEW_SCOPES = ['price', 'score', 'license', 'specification'];
 const hash = body => createHash('sha256').update(body).digest('hex');
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -92,16 +95,20 @@ export function fingerprint(body, contentType = '') {
     kind = 'json';
   } else if (/html/i.test(contentType) || /^\s*<!doctype html|^\s*<html[\s>]/i.test(raw)) {
     kind = 'html-text';
-    text = raw.replace(/<!--[^]*?-->/g, ' ').replace(/<(script|style|noscript|svg|iframe)\b[^>]*>[^]*?<\/\1\s*>/gi, ' ');
-    const title = decodeEntities(text.match(/<title\b[^>]*>([^]*?)<\/title>/i)?.[1] || '').replace(/<[^>]*>/g, '').trim();
+    text = raw.replace(/<!--[^]*?-->/g, ' ').replace(new RegExp(String.raw`<(script|style|noscript|svg|iframe)\b${HTML_ATTRIBUTES}>[^]*?<\/\1\s*>`, 'gi'), ' ');
+    const title = decodeEntities(stripTags(text.match(/<title\b[^>]*>([^]*?)<\/title>/i)?.[1] || '')).trim();
     if (/^(just a moment|access denied|attention required|checking your browser|verify (you|that)|security (check|verification)|robot or human|403 forbidden|captcha)/i.test(title)) {
       return { blocked: true, reason: 'The response is an access challenge, not the source document.' };
     }
     // Main/article text avoids most navigation, script-build hashes and cookie banners.
-    const articles = text.match(/<article\b[^>]*>[^]*?<\/article\s*>/gi);
-    text = articles?.join('\n') || text.match(/<main\b[^>]*>([^]*?)<\/main\s*>/i)?.[1] || text;
-    text = text.replace(/<(nav|header|footer|aside|form)\b[^>]*>[^]*?<\/\1\s*>/gi, ' ');
-    text = `${title}\n${decodeEntities(text.replace(/<[^>]*>/g, ' '))}`.replace(/\s+/g, ' ').trim();
+    const articles = text.match(new RegExp(String.raw`<article\b${HTML_ATTRIBUTES}>[^]*?<\/article\s*>`, 'gi'));
+    const main = text.match(new RegExp(String.raw`<main\b${HTML_ATTRIBUTES}>([^]*?)<\/main\s*>`, 'i'))?.[1];
+    const scoped = Boolean(articles || main);
+    text = articles?.join('\n') || main || text;
+    // A document header can carry its title, publication date or license badge.
+    const chrome = scoped ? 'nav|footer|aside|form' : 'nav|header|footer|aside|form';
+    text = text.replace(new RegExp(String.raw`<(${chrome})\b${HTML_ATTRIBUTES}>[^]*?<\/\1\s*>`, 'gi'), ' ');
+    text = `${title}\n${decodeEntities(stripTags(text))}`.replace(/\s+/g, ' ').trim();
     if (text.length < 80) return { blocked: true, reason: 'Too little readable HTML to establish a reliable content baseline.' };
   } else if (!/^text\//i.test(contentType) && !/xml|javascript|markdown/i.test(contentType)) {
     // PDFs and other binary documents are compared byte-for-byte, without extraction or execution.
@@ -244,7 +251,7 @@ export async function runCheck(sources, { directory = PRIVATE_ROOT, concurrency 
       results[position] = { ...source, ...compareObservation(observed, previous), previous, observed };
     }
   }));
-  const report = { schemaVersion: SCHEMA, checkedAt: new Date().toISOString(), baselineDigest: baseline.digest, parameters: { concurrency, originDelay, timeout: probeOptions.timeout || 15000 }, total: results.length, summary: {}, queue: [], results };
+  const report = { schemaVersion: SCHEMA, checkedAt: new Date().toISOString(), baselineDigest: baseline.digest, parameters: { concurrency, originDelay, timeout: probeOptions.timeout || 15000, maxBytes: probeOptions.maxBytes || 4 * 1024 * 1024 }, total: results.length, summary: {}, queue: [], results };
   for (const result of results) {
     report.summary[result.status] = (report.summary[result.status] || 0) + 1;
     if (result.review) report.queue.push({ sourceId: result.id, ...reviewPriority(result.references), status: result.status, url: result.url, reason: result.reason, entries: [...new Set(result.references.map(ref => `${ref.section}:${ref.entryId || '(shared reference)'}`))], references: result.references });
@@ -256,7 +263,7 @@ export async function runCheck(sources, { directory = PRIVATE_ROOT, concurrency 
   return { report, filename };
 }
 
-export async function acceptReport(filename, directory = PRIVATE_ROOT) {
+export async function acceptReport(filename, directory = PRIVATE_ROOT, sourceIds) {
   const base = await realpath(directory), resolved = await realpath(filename);
   if (!resolved.startsWith(path.join(base, 'reports') + path.sep)) throw new Error('Accept only reports inside research/source-monitor/reports/.');
   const lock = path.join(base, '.accept.lock');
@@ -265,66 +272,129 @@ export async function acceptReport(filename, directory = PRIVATE_ROOT) {
     if (error.code === 'EEXIST') throw new Error('Another baseline acceptance holds research/source-monitor/.accept.lock. Retry after it finishes; remove a stale lock only after confirming that no acceptance process is running.');
     throw error;
   }
-  try { return await acceptLockedReport(resolved, directory); }
+  try { return await acceptLockedReport(resolved, directory, sourceIds); }
   finally { await rm(lock, { recursive: true }); }
 }
 
-async function acceptLockedReport(resolved, directory) {
-  const report = JSON.parse(await readFile(resolved, 'utf8'));
+async function acceptLockedReport(resolved, directory, sourceIds) {
+  const reportText = await readFile(resolved, 'utf8'), reportDigest = hash(reportText);
+  const report = JSON.parse(reportText);
   const baseline = await readBaseline(directory);
-  if (report.schemaVersion !== SCHEMA || !Array.isArray(report.results) || report.baselineDigest !== baseline.digest) throw new Error('The report is invalid or its baseline is stale. Run the check again before accepting.');
+  if (report.schemaVersion !== SCHEMA || !Array.isArray(report.results)) throw new Error('The source report is invalid.');
+  const receiptFile = path.join(directory, 'acceptances', `${reportDigest}.json`);
+  let receipt;
+  try { receipt = JSON.parse(await readFile(receiptFile, 'utf8')); }
+  catch (error) { if (error.code !== 'ENOENT') throw error; }
+  // A report may be reviewed in several batches. Only this exact report's most
+  // recent acceptance can advance its baseline; unrelated writes still invalidate it.
+  const continuedReview = receipt?.schemaVersion === SCHEMA && receipt.reportDigest === reportDigest && receipt.originalBaselineDigest === report.baselineDigest && receipt.baselineDigest === baseline.digest;
+  if (report.baselineDigest !== baseline.digest && !continuedReview) throw new Error('The report baseline is stale. Run the check again before accepting.');
+  const knownIds = new Set(report.results.map(result => result.id));
+  if (knownIds.size !== report.results.length) throw new Error('Duplicate source identities in report.');
+  const selected = sourceIds === undefined ? undefined : new Set(sourceIds);
+  if (selected && !selected.size) throw new Error('Select at least one source identity to accept.');
+  for (const id of selected || []) {
+    if (!knownIds.has(id)) throw new Error(`Unknown source identity in this report: ${id}`);
+    if (report.results.find(result => result.id === id).observed?.status !== 'ok') throw new Error(`Source ${id} has no successful observation to accept. Keep its prior baseline and review the fetch issue.`);
+  }
   const acceptedAt = new Date().toISOString(), entries = { ...baseline.value.entries };
+  const previouslyAccepted = new Set(continuedReview ? receipt.sourceIds : []);
   let accepted = 0;
   for (const result of report.results) {
+    if (selected && !selected.has(result.id)) continue;
     const observation = result.observed;
     if (observation?.status !== 'ok') continue; // Never replace a valid baseline with a failure.
     if (result.id !== hash(sourceURL(result.url)) || !/^[a-f0-9]{64}$/.test(observation.fingerprint?.hash || '') || observation.fingerprint.normalizer !== NORMALIZER || !['text', 'html-text', 'json', 'binary'].includes(observation.fingerprint.kind)) throw new Error('Invalid source identity or fingerprint in report.');
     const snapshot = `snapshots/${observation.fingerprint.hash}.txt`;
     if (hash(await readFile(path.join(directory, snapshot))) !== observation.fingerprint.hash) throw new Error('The normalized snapshot is missing or changed.');
+    if (previouslyAccepted.has(result.id)) continue;
     entries[result.id] = { url: sourceURL(result.url), finalURL: sourceURL(observation.finalURL), fingerprint: observation.fingerprint, snapshot, checkedAt: observation.checkedAt, acceptedAt, report: path.basename(resolved) };
+    previouslyAccepted.add(result.id);
     accepted++;
   }
-  if (accepted) await writeJSON(path.join(directory, 'baseline.json'), { schemaVersion: SCHEMA, acceptedAt, entries });
+  if (accepted) {
+    await mkdir(path.dirname(receiptFile), { recursive: true, mode: 0o700 });
+    await writeJSON(path.join(directory, 'baseline.json'), { schemaVersion: SCHEMA, acceptedAt, entries });
+    const updated = await readBaseline(directory);
+    // Baseline first: an interrupted receipt write fails closed on the next accept.
+    await writeJSON(receiptFile, { schemaVersion: SCHEMA, report: path.basename(resolved), reportDigest, originalBaselineDigest: report.baselineDigest, baselineDigest: updated.digest, acceptedAt, sourceIds: [...previouslyAccepted].sort() });
+  }
   return accepted;
 }
 
 const HELP = `Manual source checks for Model Atlas (Node.js 22 or 24)
 
   npm run check:sources -- --section models --limit 8
+  npm run check:sources -- --scope price,score --priority high
   npm run check:sources -- --list
-  npm run check:sources -- --accept research/source-monitor/reports/<report>.json
+  npm run check:sources -- --accept research/source-monitor/reports/<report>.json --source <id>
 
 Options:
   --section <names>     models,agents,hardware,technology (default: all)
+  --scope <names>       price,score,license,specification; match any requested scope
+  --priority <value>    high or normal (default: both)
+  --source <ids>        Full source IDs; comma-separated or repeat this option
   --limit <number>      Check the first N deduplicated URLs (sorted by URL)
   --concurrency <1-4>   Total concurrent requests (default: 3)
   --timeout <ms>        Per-request timeout, 100-60000 (default: 15000)
+  --max-bytes <bytes>   Per-document limit, 1024-16777216 (default: 4194304)
   --origin-delay <ms>   Delay between requests to one origin, 200-10000 (default: 800)
   --list               Print source identities/references without fetching or writing
-  --accept <report>    Accept successful observations AFTER manually reviewing this report
+  --accept <report>     Accept observations AFTER manually reviewing their snapshots
   --help               Show this help
 
-One request per origin at a time; at most five redirects and 4 MiB per document.
+One request per origin at a time; at most five redirects and 4 MiB per document by default.
 No retries, authentication, remote script execution, schedules, or public-data edits.
 HTML is compared as normalized readable text; binary files use byte fingerprints.
 A content difference is only a candidate for review, not a verified factual change.
-The first run reports missing baselines; --accept establishes the reviewed baseline.
+The first run reports missing baselines; acceptance is always an explicit manual step.
+Use --accept with --source to accept ONLY reviewed IDs. Unknown/failed IDs reject the batch.
+Without --source, --accept accepts ALL successful observations in that report.
+More subsets of the same report may be accepted until another report changes the baseline.
+Already accepted IDs are skipped. A stale report must be checked again; do not edit reports.
+Acceptance cannot be combined with fetching/listing filters other than --source.
 Reports and snapshots stay in Git-ignored research/source-monitor/, outside dist/.
 Completed checks exit 0 even when the report needs review; execution errors exit 1.
 `;
 
-async function main(args) {
-  if (args.includes('--help')) return console.log(HELP);
-  const options = {}, flags = new Set(['--list']), values = new Set(['--section', '--limit', '--concurrency', '--timeout', '--origin-delay', '--accept']);
+export function parseOptions(args) {
+  const options = {}, flags = new Set(['--list']), values = new Set(['--section', '--scope', '--priority', '--source', '--limit', '--concurrency', '--timeout', '--max-bytes', '--origin-delay', '--accept']);
   for (let index = 0; index < args.length; index++) {
     const name = args[index];
     if (flags.has(name)) options[name] = true;
-    else if (values.has(name) && args[index + 1] && !args[index + 1].startsWith('--')) options[name] = args[++index];
+    else if (values.has(name) && args[index + 1] && !args[index + 1].startsWith('--')) {
+      const value = args[++index];
+      if (name === '--source') options[name] = [...(options[name] || []), ...value.split(',')];
+      else {
+        if (options[name] !== undefined) throw new Error(`Repeated option: ${name}. Use comma-separated names where supported.`);
+        options[name] = value;
+      }
+    }
     else throw new Error(`Unknown option or missing value: ${name}. Use --help.`);
   }
+  if (options['--source']) {
+    if (options['--source'].some(id => !/^[a-f0-9]{64}$/.test(id))) throw new Error('Invalid --source; use complete source IDs from --list or a report.');
+    options['--source'] = [...new Set(options['--source'])];
+  }
+  if (options['--accept'] && Object.keys(options).some(name => !['--accept', '--source'].includes(name))) throw new Error('--accept cannot be combined with fetching or listing options; only --source is allowed.');
+  return options;
+}
+
+export function selectSources(sources, { scopes, priority, sourceIds } = {}) {
+  if (scopes?.some(scope => !REVIEW_SCOPES.includes(scope))) throw new Error('Invalid scope. Use --help.');
+  if (priority && !['high', 'normal'].includes(priority)) throw new Error('Invalid priority. Use high or normal.');
+  const selected = sourceIds && new Set(sourceIds);
+  if (selected) for (const id of selected) {
+    if (!sources.some(source => source.id === id)) throw new Error(`Unknown source identity in the selected sections: ${id}`);
+  }
+  return sources.filter(source => (!scopes || source.reviewScopes.some(scope => scopes.includes(scope))) && (!priority || source.priority === priority) && (!selected || selected.has(source.id)));
+}
+
+async function main(args) {
+  if (args.includes('--help')) return console.log(HELP);
+  const options = parseOptions(args);
   if (options['--accept']) {
-    if (Object.keys(options).length !== 1) throw new Error('--accept cannot be combined with fetching or listing options.');
-    return console.log(`Accepted ${await acceptReport(path.resolve(options['--accept']))} successful observations. Website data was not changed.`);
+    return console.log(`Accepted ${await acceptReport(path.resolve(options['--accept']), PRIVATE_ROOT, options['--source'])} reviewed observations. Website data was not changed.`);
   }
   const sections = options['--section']?.split(',') || SECTIONS;
   if (sections.some(section => !SECTIONS.includes(section))) throw new Error('Invalid section. Use --help.');
@@ -333,11 +403,11 @@ async function main(args) {
     if (!Number.isInteger(value) || value < min || value > max) throw new Error(`Invalid ${key}; expected ${min}-${max}.`);
     return value;
   };
-  const limit = number('--limit', 10000, 1, 10000), concurrency = number('--concurrency', 3, 1, 4), timeout = number('--timeout', 15000, 100, 60000), originDelay = number('--origin-delay', 800, 200, 10000);
-  const sources = (await loadSources([...new Set(sections)])).slice(0, limit);
+  const limit = number('--limit', 10000, 1, 10000), concurrency = number('--concurrency', 3, 1, 4), timeout = number('--timeout', 15000, 100, 60000), originDelay = number('--origin-delay', 800, 200, 10000), maxBytes = number('--max-bytes', 4 * 1024 * 1024, 1024, 16 * 1024 * 1024);
+  const sources = selectSources(await loadSources([...new Set(sections)]), { scopes: options['--scope']?.split(','), priority: options['--priority'], sourceIds: options['--source'] }).slice(0, limit);
   if (options['--list']) return console.log(JSON.stringify(sources, null, 2));
   console.log(`Checking ${sources.length} source documents; no public data will be changed.`);
-  const { report, filename } = await runCheck(sources, { concurrency, timeout, originDelay });
+  const { report, filename } = await runCheck(sources, { concurrency, timeout, originDelay, maxBytes });
   console.log(JSON.stringify(report.summary));
   console.log(`Review ${path.relative(ROOT, filename)} (${report.queue.length} candidates/issues).`);
 }

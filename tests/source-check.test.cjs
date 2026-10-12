@@ -1,7 +1,7 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const http = require('node:http');
-const { mkdtemp, readFile, rm } = require('node:fs/promises');
+const { mkdtemp, readFile, writeFile, rm } = require('node:fs/promises');
 const path = require('node:path');
 const os = require('node:os');
 
@@ -44,6 +44,27 @@ test('review priorities follow mutable field scopes, not paper dates', async () 
   const { reviewPriority } = await modulePromise;
   assert.deepEqual(reviewPriority([{ section: 'technology', entryId: 'paper-1989', field: 'release.sources[0].url' }]), { priority: 'normal', reviewScopes: [] });
   assert.deepEqual(reviewPriority([{ field: 'prices.variants[0].sources[0]' }, { field: 'scores.arena.source' }, { field: 'release.openness.source' }, { field: 'release.hardware.sources[0]' }]), { priority: 'high', reviewScopes: ['license', 'price', 'score', 'specification'] });
+});
+
+test('scope and identity filters are explicit, and acceptance cannot inherit fetching options', async () => {
+  const { parseOptions, selectSources } = await modulePromise;
+  const a = 'a'.repeat(64), b = 'b'.repeat(64), c = 'c'.repeat(64);
+  assert.deepEqual(parseOptions(['--accept', 'report.json', '--source', `${a},${b}`, '--source', a]), { '--accept': 'report.json', '--source': [a, b] });
+  for (const option of ['--scope', '--priority', '--section', '--limit', '--timeout', '--max-bytes', '--origin-delay', '--concurrency']) assert.throws(() => parseOptions(['--accept', 'report.json', option, 'high']), /cannot be combined/);
+  assert.throws(() => parseOptions(['--accept', 'report.json', '--list']), /cannot be combined/);
+  assert.throws(() => parseOptions(['--source', 'short-id']), /complete source IDs/);
+  assert.throws(() => parseOptions(['--scope', 'price', '--scope', 'score']), /Repeated option/);
+  const sources = [
+    { id: a, priority: 'high', reviewScopes: ['price', 'specification'] },
+    { id: b, priority: 'high', reviewScopes: ['score'] },
+    { id: c, priority: 'normal', reviewScopes: [] },
+  ];
+  assert.deepEqual(selectSources(sources, { scopes: ['price', 'score'] }).map(source => source.id), [a, b]);
+  assert.deepEqual(selectSources(sources, { priority: 'normal' }).map(source => source.id), [c]);
+  assert.deepEqual(selectSources(sources, { sourceIds: [b], priority: 'high', scopes: ['score'] }).map(source => source.id), [b]);
+  assert.throws(() => selectSources(sources, { scopes: ['unknown'] }), /Invalid scope/);
+  assert.throws(() => selectSources(sources, { priority: 'unknown' }), /Invalid priority/);
+  assert.throws(() => selectSources(sources, { sourceIds: ['d'.repeat(64)] }), /Unknown source identity/);
 });
 
 test('readable content ignores shell/script churn but retains changed specifications', async () => {
@@ -171,4 +192,91 @@ test('concurrent accept operations cannot silently overwrite a newly accepted ba
   const refreshed = await runCheck([source('/a'), source('/b')], options);
   assert.equal(await acceptReport(refreshed.filename, directory), 2);
   assert.equal(Object.keys((await readBaseline(directory)).value.entries).length, 2);
+});
+
+test('reviewed subsets can be accepted sequentially without accepting unknown, failed, or unreviewed sources', async t => {
+  const { runCheck, acceptReport, readBaseline } = await modulePromise;
+  const { createHash } = require('node:crypto');
+  const directory = await mkdtemp(path.join(os.tmpdir(), 'model-atlas-source-subsets-'));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const url = await fixture(t, (request, response) => response.writeHead(request.url === '/restricted' ? 403 : 200, { 'content-type': 'text/html' }).end(page(original)));
+  const source = suffix => ({ id: createHash('sha256').update(url + suffix).digest('hex'), url: url + suffix, references: [{ section: 'models', entryId: suffix.slice(1), field: 'release.sources[0].url' }] });
+  const [existing, a, b, restricted] = ['/existing', '/a', '/b', '/restricted'].map(source);
+  const options = { directory, allowLocal: true, originDelay: 0 };
+  await acceptReport((await runCheck([existing], options)).filename, directory);
+  const originalBaseline = await readBaseline(directory);
+  const batch = await runCheck([a, b, restricted], options);
+  await assert.rejects(acceptReport(batch.filename, directory, [a.id, 'f'.repeat(64)]), /Unknown source identity/);
+  await assert.rejects(acceptReport(batch.filename, directory, [a.id, restricted.id]), /no successful observation/);
+  await assert.rejects(acceptReport(batch.filename, directory, []), /at least one source/);
+  assert.equal((await readBaseline(directory)).digest, originalBaseline.digest);
+  assert.equal(await acceptReport(batch.filename, directory, [a.id]), 1);
+  let accepted = await readBaseline(directory);
+  assert.deepEqual(Object.keys(accepted.value.entries).sort(), [existing.id, a.id].sort());
+  assert.deepEqual(accepted.value.entries[existing.id], originalBaseline.value.entries[existing.id]);
+  const aRecord = accepted.value.entries[a.id];
+  assert.equal(await acceptReport(batch.filename, directory, [b.id]), 1);
+  accepted = await readBaseline(directory);
+  assert.deepEqual(Object.keys(accepted.value.entries).sort(), [existing.id, a.id, b.id].sort());
+  assert.deepEqual(accepted.value.entries[a.id], aRecord);
+  assert.equal(await acceptReport(batch.filename, directory, [a.id, b.id]), 0);
+  assert.equal((await readBaseline(directory)).digest, accepted.digest);
+  const receipt = JSON.parse(await readFile(path.join(directory, 'acceptances', createHash('sha256').update(await readFile(batch.filename)).digest('hex') + '.json'), 'utf8'));
+  assert.deepEqual(receipt.sourceIds, [a.id, b.id].sort());
+  assert.equal(receipt.baselineDigest, accepted.digest);
+});
+
+test('partial acceptance cannot continue after an unrelated baseline update or a modified report', async t => {
+  const { runCheck, acceptReport, readBaseline } = await modulePromise;
+  const { createHash } = require('node:crypto');
+  const directory = await mkdtemp(path.join(os.tmpdir(), 'model-atlas-source-stale-subsets-'));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const url = await fixture(t, (_request, response) => response.writeHead(200, { 'content-type': 'text/html' }).end(page(original)));
+  const source = suffix => ({ id: createHash('sha256').update(url + suffix).digest('hex'), url: url + suffix, references: [{ section: 'models', entryId: suffix.slice(1), field: 'release.sources[0].url' }] });
+  const [a, b, c] = ['/a', '/b', '/c'].map(source), options = { directory, allowLocal: true, originDelay: 0 };
+  const batch = await runCheck([a, b], options);
+  await acceptReport(batch.filename, directory, [a.id]);
+  const reportText = await readFile(batch.filename, 'utf8');
+  await writeFile(batch.filename, reportText + '\n');
+  await assert.rejects(acceptReport(batch.filename, directory, [b.id]), /stale/);
+  await writeFile(batch.filename, reportText);
+  const separate = await runCheck([c], options);
+  await acceptReport(separate.filename, directory, [c.id]);
+  const accepted = await readBaseline(directory);
+  await assert.rejects(acceptReport(batch.filename, directory, [b.id]), /stale/);
+  assert.equal((await readBaseline(directory)).digest, accepted.digest);
+  assert.equal(accepted.value.entries[b.id], undefined);
+  assert.equal(await acceptReport((await runCheck([b], options)).filename, directory, [b.id]), 1);
+});
+
+test('a selected changed snapshot rejects the entire batch before any baseline write', async t => {
+  const { runCheck, acceptReport, readBaseline } = await modulePromise;
+  const { createHash } = require('node:crypto');
+  const directory = await mkdtemp(path.join(os.tmpdir(), 'model-atlas-source-subset-integrity-'));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const url = await fixture(t, (request, response) => response.writeHead(200, { 'content-type': 'text/html' }).end(page(original + request.url)));
+  const source = suffix => ({ id: createHash('sha256').update(url + suffix).digest('hex'), url: url + suffix, references: [{ section: 'models', entryId: suffix.slice(1), field: 'release.sources[0].url' }] });
+  const [a, b] = ['/a', '/b'].map(source), options = { directory, allowLocal: true, originDelay: 0 };
+  const batch = await runCheck([a, b], options);
+  await writeFile(path.join(directory, batch.report.results[1].observed.snapshot), 'tampered snapshot');
+  await assert.rejects(acceptReport(batch.filename, directory, [a.id, b.id]), /snapshot is missing or changed/);
+  assert.equal((await readBaseline(directory)).digest, null);
+  assert.equal(await acceptReport(batch.filename, directory, [a.id]), 1);
+  assert.equal((await readBaseline(directory)).value.entries[b.id], undefined);
+});
+
+
+test('HTML fingerprints keep document headers and ignore markup-like strings inside attributes', async () => {
+  const { fingerprint } = await modulePromise;
+  const document = nonce => `<html><title>Alpaca weight differences</title><body><nav>Site shell ${nonce}</nav><main><div data-props='{"token":"</s>","nonce":"${nonce}"}'><header><h1>Alpaca</h1><p>License: CC BY-NC 4.0</p></header><p>These weight differences reconstruct the research model when applied to the original base weights.</p></div></main></body></html>`;
+  const first = fingerprint(Buffer.from(document('one')), 'text/html');
+  assert.equal(first.hash, fingerprint(Buffer.from(document('two')), 'text/html').hash);
+  assert.match(first.text, /License: CC BY-NC 4.0/);
+  assert.match(first.text, /weight differences reconstruct/);
+  assert.doesNotMatch(first.text, /nonce|token|Site shell|one/);
+  assert.notEqual(first.hash, fingerprint(Buffer.from(document('one').replace('CC BY-NC 4.0', 'Apache 2.0')), 'text/html').hash);
+  const article = fingerprint(Buffer.from(`<html><title>Model card</title><article data-config='{"token":"<s>"}'><header>Model X, October 12</header><p>${original}</p></article></html>`), 'text/html');
+  assert.match(article.text, /Model X, October 12/);
+  assert.match(article.text, /131072/);
+  assert.doesNotMatch(article.text, /"token"|data-config/);
 });

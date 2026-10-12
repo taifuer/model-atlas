@@ -106,12 +106,32 @@ npm run test:browser
 
 ```bash
 npm run check:sources -- --section models --limit 8
+npm run check:sources -- --scope price,score --priority high
+npm run check:sources -- --scope license,specification --list
 npm run check:sources -- --help
 ```
 
-报告和规范化正文快照仅保存在 Git 忽略的 `research/source-monitor/`，不会进入站点构建。复核清单优先列出价格、评分、许可与规格资料，保留节点 ID 及原文段落链接。页面变化只是待复核线索，不代表事实已更新；403、429 和网络错误与 404、410 分别记录，均不会自动删节点或覆盖旧证据。HTML 对比会排除脚本和大部分导航，但动态正文仍可能产生差异。
+报告和规范化正文快照仅保存在 Git 忽略的 `research/source-monitor/`，不会进入站点构建。复核清单将价格、评分、许可与规格资料标为高优先级，保留节点 ID 及原文段落链接。页面变化只是待复核线索，不代表事实已更新；403、429 和网络错误与 404、410 分别记录，均不会自动删节点或覆盖旧证据。HTML 对比会排除脚本和大部分导航，但动态正文仍可能产生差异。
 
-首次运行尚无已接受的基线。阅读报告与快照后，执行 `npm run check:sources -- --accept research/source-monitor/reports/<report>.json`，建立或更新基线；只接受该报告中成功获取的结果，不修改网站数据。后续巡检持续与已接受的基线对比，直到再次手动接受报告。工具不负责发现新发布、导入分数、定时运行或发送通知；内容发布仍需人工审核并通过项目检查。
+首次运行尚无已接受的基线。先核对文档身份、可见内容及相关版本或配置，再使用报告中的完整来源 ID 接受已复核的快照：
+
+```bash
+npm run check:sources -- --accept research/source-monitor/reports/<report>.json --source <source-id>,<source-id>
+```
+
+同一报告可以分批接受。失败结果不能接受；其他报告改动基线后，需要重新检查。报告开始分批接受后若被修改，也不能继续接受该报告。省略 `--source` 会接受报告中全部成功结果，仅在逐项复核后使用。接受快照只更新私有比较基线，不修改网站数据或核对日期。页面变化仍需事实核查，尤其要注意实时页面是否已切换到其他模型版本。超过大小限制的页面明确记录为失败；针对性检查可用 `--max-bytes` 将默认 4 MiB 上限提高至最多 16 MiB。
+
+另一个手动命令从少量已核实的官方新闻源、公开 GitHub 发布源及 AA / Arena 模型列表采集候选：
+
+```bash
+npm run discover:candidates -- --list
+npm run discover:candidates -- --since 2026-10-01
+npm run discover:candidates -- --source claude-code,arena-text --limit 10
+```
+
+`scripts/candidate-sources.json` 说明各来源的覆盖范围，属于起步清单，不是完整发布索引。`--limit` 限制每个来源的候选数量；`--since` 仅筛选有明确发布日期的记录，日期未知或仅有月份的候选继续保留待审。上榜时间或订阅源修改时间不会代替发布日期。
+
+报告、原始快照及 `queue.json` 仅保存在 Git 忽略的 `research/candidate-discovery/`。队列保留精确版本与配置，提供已有节点匹配建议；人工可在两次运行之间核对原始来源与收录标准，编辑 `status` 和 `reviewNote`，例如标记为已收录（`represented`）、暂缓（`deferred`）或不收录（`rejected`）。候选内容有实质变化时会重新进入待审，并在 `reviewHistory` 保留此前决定与备注；重复观察不会重复建项。采集记录是研究线索，不等于新发布或已通过收录。两个工具均不自动导入分数、添加站点节点、定时运行或发送通知；内容发布仍需人工审核并通过项目检查。
 
 ## 项目结构
 
@@ -121,7 +141,7 @@ npm run check:sources -- --help
 | `src/data*.js` | 双语节点、分类、规格、价格及榜单快照。 |
 | `src/app.js`、`src/filters.js`、`src/site.js`、`src/icons.js`、`src/styles.css` | 渲染、筛选、导航、语言与排版。 |
 | `src/assets/` | 本地字体、图标及许可声明。 |
-| `scripts/` | 开发服务器（`dev.mjs`）、静态构建和可选的字体子集工具。 |
+| `scripts/` | 开发服务器、静态构建、手动来源巡检与候选采集，以及可选的字体子集工具。 |
 | `tests/` | 数据与交互逻辑检查，包含带日期的评分快照样本，以及 `tests/browser/` 中的浏览器回归检查。 |
 | `docs/` | 文档资源，包括桌面与移动端预览图。 |
 | `dist/` | 自动生成的静态站点，不提交到 Git。 |

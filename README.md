@@ -108,12 +108,32 @@ Maintainers can manually check the sources already cited in the catalog:
 
 ```bash
 npm run check:sources -- --section models --limit 8
+npm run check:sources -- --scope price,score --priority high
+npm run check:sources -- --scope license,specification --list
 npm run check:sources -- --help
 ```
 
-Reports and normalized content snapshots stay in Git-ignored `research/source-monitor/`, outside the site build. The review queue prioritizes prices, scores, licenses, and specifications; it preserves entry IDs and links to the original source sections. A changed page is a review candidate, not a confirmed factual update. HTTP 403/429 and network failures are recorded separately from 404/410; none deletes entries or overwrites evidence. HTML comparison omits scripts and most navigation, but dynamic content can still produce differences.
+Reports and normalized content snapshots stay in Git-ignored `research/source-monitor/`, outside the site build. The review queue marks prices, scores, licenses, and specifications as high priority; it preserves entry IDs and links to the original source sections. A changed page is a review candidate, not a confirmed factual update. HTTP 403/429 and network failures are recorded separately from 404/410; none deletes entries or overwrites evidence. HTML comparison omits scripts and most navigation, but dynamic content can still produce differences.
 
-The first run has no accepted baseline. After reviewing a report and its snapshots, run `npm run check:sources -- --accept research/source-monitor/reports/<report>.json` to establish or update that baseline. This accepts successful observations in that report only and does not change website data. Subsequent runs compare against the accepted baseline until another report is explicitly accepted. The tool does not discover new releases, import scores, schedule checks, or send notifications; publication still requires editorial review and the normal project checks.
+The first run has no accepted baseline. Review the document identity, visible content, and relevant version or configuration before accepting a snapshot. Select reviewed documents by their full source IDs from the report:
+
+```bash
+npm run check:sources -- --accept research/source-monitor/reports/<report>.json --source <source-id>,<source-id>
+```
+
+Documents from the same report can be accepted in separate review batches. Failed observations cannot be accepted. Unrelated baseline changes require a fresh check; modifying a report after partial acceptance also prevents further acceptance from that report. Omitting `--source` accepts all successful observations in that report, so use it only after reviewing every successful document. Acceptance updates the private comparison baseline, not website data or verification dates. Subsequent runs compare with this baseline. Page changes still need factual review, especially where a live page now describes a different model revision. Oversized pages remain explicit failures; `--max-bytes` can raise the default 4 MiB limit up to 16 MiB for a targeted check.
+
+For release discovery, a separate manual command reads a small registry of official news feeds, public GitHub release feeds, and AA/Arena model lists:
+
+```bash
+npm run discover:candidates -- --list
+npm run discover:candidates -- --since 2026-10-01
+npm run discover:candidates -- --source claude-code,arena-text --limit 10
+```
+
+The registry in `scripts/candidate-sources.json` documents each source's coverage. It is a starting set, not a complete release index. `--limit` applies per source. `--since` filters confirmed publication days; entries with unknown dates or only a reported month stay visible for review. A leaderboard appearance or feed modification date is never substituted for a release date.
+
+Reports, raw snapshots, and `queue.json` stay in Git-ignored `research/candidate-discovery/`. The queue retains exact versions and configurations, suggests possible existing catalog matches, and preserves manual `status` and `reviewNote` fields across runs. Edit these fields between runs after checking original sources and the inclusion criteria; examples of decisions are `represented`, `deferred`, and `rejected`. Meaningful candidate changes reopen review and retain earlier decisions in `reviewHistory`; repeated observations do not create duplicate entries. An observation is a research lead, not a new or approved release. Neither tool imports scores, adds website entries, schedules checks, or sends notifications. Publication still requires editorial review and the normal project checks.
 
 ## Project structure
 
@@ -123,7 +143,7 @@ The first run has no accepted baseline. After reviewing a report and its snapsho
 | `src/data*.js` | Bilingual entries, classifications, specifications, prices, and scores. |
 | `src/app.js`, `src/filters.js`, `src/site.js`, `src/icons.js`, `src/styles.css` | Rendering, filtering, navigation, language, and layout. |
 | `src/assets/` | Local font, icons, and their notices. |
-| `scripts/` | Development server (`dev.mjs`), static build, and optional font-subsetting tool. |
+| `scripts/` | Development server, static build, manual source checks and candidate discovery, and optional font-subsetting tool. |
 | `tests/` | Data and behavior checks, dated score fixtures, and browser regressions in `tests/browser/`. |
 | `docs/` | Documentation assets, including desktop and mobile previews. |
 | `dist/` | Generated static site, excluded from Git. |

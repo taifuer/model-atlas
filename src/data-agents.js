@@ -328,7 +328,7 @@ window.AGENT_ATLAS = {
       "category": "harness",
       "kind": "announcement",
       "summary": "以有状态的图和循环组织 Agent 执行，支持可控的任务流程。",
-      "details": "这是 LangGraph 的官方技术介绍，聚焦 Agent 运行时而非单次模型调用。",
+      "details": "LangGraph 用共享状态、节点与条件分支组织模型和工具调用，允许执行流程循环，直到满足退出条件。例如，检索结果不足时可以改写查询后再次检索；开发者也能规定工具调用顺序，而不是把全部流程选择交给模型。",
       "dateNote": "",
       "tags": [
         "执行环境",
@@ -343,7 +343,7 @@ window.AGENT_ATLAS = {
       ],
       "en": {
         "summary": "Stateful graphs and cycles organize controllable agent execution.",
-        "details": "The official introduction focuses on an agent runtime built around graph-based execution.",
+        "details": "LangGraph organizes model and tool calls through shared state, nodes, and conditional edges, allowing execution to loop until an exit condition is met. An agent can refine a query after poor retrieval results, while developers can specify tool order instead of leaving every workflow decision to the model.",
         "dateNote": ""
       }
     },
@@ -544,7 +544,7 @@ window.AGENT_ATLAS = {
       "category": "framework",
       "kind": "release",
       "summary": "开放连接模型、数据与工具的协议，减少重复集成。",
-      "details": "MCP 属于 Agent 生态的基础协议；它本身不是自主执行任务的 Agent。",
+      "details": "MCP 让数据和工具通过服务器向兼容客户端提供统一接口，减少每个应用为每个数据源分别编写连接器的工作。首发同时开放规范、SDK 与示例服务器，并在 Claude Desktop 中支持本地连接；MCP 本身负责连接，不执行自主任务循环。",
       "dateNote": "",
       "tags": [
         "工作流",
@@ -559,7 +559,7 @@ window.AGENT_ATLAS = {
       ],
       "en": {
         "summary": "An open protocol standardizes connections between models, data, and tools.",
-        "details": "MCP is infrastructure for the agent ecosystem, not an autonomous agent itself.",
+        "details": "MCP exposes data and tools through servers with a shared interface for compatible clients, reducing the need for a separate connector for every application and data source. The launch includes the specification, SDKs, example servers, and local connections in Claude Desktop. MCP provides connections rather than an autonomous task loop.",
         "dateNote": ""
       }
     },

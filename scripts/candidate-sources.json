@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "description": "A small, manually verified discovery registry. Feeds and rankings produce review candidates, never automatic timeline entries. Coverage is intentionally incomplete.",
+  "verifiedOn": "2026-10-12",
+  "sources": [
+    { "id": "openai-news", "name": "OpenAI News", "url": "https://openai.com/news/rss.xml", "kind": "rss", "sections": ["models", "agents", "technology"], "note": "Official news feed; includes non-release announcements. Publication date is the article date." },
+    { "id": "google-ai", "name": "Google AI", "url": "https://blog.google/innovation-and-ai/technology/ai/rss/", "kind": "rss", "sections": ["models", "agents", "technology"], "note": "Official AI blog feed; publication date is the article date, not a verified product release date." },
+    { "id": "nvidia-blog", "name": "NVIDIA Blog", "url": "https://blogs.nvidia.com/feed/", "kind": "rss", "sections": ["hardware", "models", "technology"], "note": "Official general blog feed; includes applications and company news that may not merit inclusion." },
+    { "id": "claude-code", "name": "Claude Code", "url": "https://github.com/anthropics/claude-code/releases.atom", "kind": "github-atom", "sections": ["agents"], "note": "Official repository release feed. Atom updated is modification time, not a verified publication date. Patch releases generally do not merit separate timeline entries." },
+    { "id": "gemini-cli", "name": "Gemini CLI", "url": "https://github.com/google-gemini/gemini-cli/releases.atom", "kind": "github-atom", "sections": ["agents"], "note": "Official repository release feed; includes preview/nightly versions. Atom updated is modification time, not a verified publication date." },
+    { "id": "firecracker", "name": "Firecracker", "url": "https://github.com/firecracker-microvm/firecracker/releases.atom", "kind": "github-atom", "sections": ["technology"], "note": "Official microVM release feed. A release needs a representative technical change to merit inclusion." },
+    { "id": "artificial-analysis", "name": "Artificial Analysis model releases", "url": "https://artificialanalysis.ai/models/releases", "kind": "aa-releases", "sections": ["models"], "note": "Public model release groups, potentially filtered or paginated. Names are retained exactly; groups can contain several reasoning configurations. Visible month is retained as a period, never an invented day." },
+    { "id": "arena-text", "name": "Arena Text leaderboard", "url": "https://arena.ai/leaderboard/chat/text", "kind": "arena-item-list", "sections": ["models"], "note": "Public Text Arena model/configuration names. First observation and leaderboard dates are not model release dates. No score, rank or inclusion decision is inferred." }
+  ]
+}

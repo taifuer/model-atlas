@@ -275,7 +275,7 @@
       "category": "methods",
       "kind": "paper",
       "summary": "利用 GPU 训练深层卷积网络，在 ImageNet 图像分类中取得显著进展。",
-      "details": "论文结合卷积网络、ReLU、数据增强和 dropout，展示了大规模数据与 GPU 训练的作用。研究由多伦多大学团队完成。",
+      "details": "多伦多大学团队用两块 GPU 训练深层卷积网络，以 ReLU 加快训练，并用数据增强与 dropout 控制过拟合。论文报告的七个网络集成在 ILSVRC 2012 图像分类赛中取得 15.3% 的 top-5 测试错误率，第二名为 26.2%，展示了深层网络在大规模图像识别中的效果。",
       "dateNote": "采用 NIPS 2012 官方议程中该论文的 Spotlight 展示日期（12 月 4 日），不作为论文最早公开或 ImageNet 比赛结果公布的日期。",
       "tags": [],
       "milestone": true,
@@ -291,7 +291,7 @@
       ],
       "en": {
         "summary": "A deep convolutional network trained on GPUs advances ImageNet image classification.",
-        "details": "The University of Toronto team combines convolutional networks, ReLU, data augmentation, and dropout, demonstrating the value of large datasets and GPU training.",
+        "details": "The University of Toronto team trains a deep convolutional network on two GPUs, using ReLU to speed training and data augmentation and dropout to control overfitting. Its seven-network ensemble records a 15.3% top-5 test error in the ILSVRC 2012 classification competition, against 26.2% for the runner-up, demonstrating deep networks at large-scale image recognition.",
         "dateNote": "Dated to the paper’s December 4 Spotlight presentation in the official NIPS 2012 schedule, rather than its earliest circulation or the ImageNet competition results."
       }
     },
@@ -303,7 +303,7 @@
       "category": "methods",
       "kind": "paper",
       "summary": "高效学习词向量，以连续空间表示词语关系。",
-      "details": "CBOW 与 Skip-gram 降低大规模词表示学习的计算成本，成为神经语言处理的基础方法。",
+      "details": "CBOW 根据周围词预测中心词，Skip-gram 则根据中心词预测周围词；两者通过简化模型结构降低词向量训练成本。论文用语义与语法类比任务检验向量中保存的词语关系，为大规模文本提供可复用的词表示。",
       "sources": [
         {
           "url": "https://arxiv.org/abs/1301.3781",
@@ -316,7 +316,7 @@
       "dateNote": "采用所列论文在 arXiv 的首个公开版本日期；不等同于更早相关概念或后续软件的首发日期。",
       "en": {
         "summary": "Efficient word-vector learning represents relationships in a continuous space.",
-        "details": "CBOW and Skip-gram reduce the cost of learning large-scale word representations and become foundational neural NLP methods.",
+        "details": "CBOW predicts a word from its surrounding context; Skip-gram predicts surrounding words from a central word. Their simplified architectures reduce the cost of learning word vectors. Semantic and syntactic analogy tests examine the relationships captured in these reusable word representations.",
         "dateNote": "Uses the cited paper’s first public arXiv version, not earlier related ideas or later software releases."
       }
     },

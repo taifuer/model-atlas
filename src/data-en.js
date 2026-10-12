@@ -28,7 +28,7 @@ window.MODEL_ATLAS_EN = {
   },
   "bert": {
     "summary": "Bidirectional context advances language understanding and reading comprehension.",
-    "details": "BERT is an encoder model, included as a foundational research milestone alongside generative models.",
+    "details": "BERT masks some input words and trains a Transformer encoder to predict them using context on both sides. Fine-tuning then adapts it to question answering and classification with few task-specific architecture changes. In 2019, Google applied BERT to search ranking and featured snippets to interpret relationships between words in queries.",
     "dateNote": "Uses the first arXiv submission date, not a later revision or code release."
   },
   "gpt-2": {
@@ -43,7 +43,7 @@ window.MODEL_ATLAS_EN = {
   },
   "gpt-3": {
     "summary": "A 175B-parameter model demonstrates broad few-shot learning.",
-    "details": "Tasks are specified through prompts and examples without updating model parameters.",
+    "details": "The paper compares zero-shot, one-shot, and few-shot settings: task descriptions and examples go into the prompt, allowing translation and question answering without task-specific parameter updates. Scaling improves this in-context learning, while the study also identifies difficult tasks and overlap between training data and evaluation sets.",
     "dateNote": "Records the paper debut. The API beta followed in June 2020."
   },
   "codex": {

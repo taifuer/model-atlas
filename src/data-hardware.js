@@ -214,7 +214,7 @@ window.HARDWARE_ATLAS = {
       "category": "accelerator",
       "kind": "announcement",
       "summary": "Google 公开介绍自研张量处理器，为神经网络推理提供专用硬件。",
-      "details": "第一代 TPU 已在 Google 内部运行。它以定制计算路径提高机器学习推理效率。",
+      "details": "第一代 TPU 以适合机器学习的低精度计算路径提高推理效率，公布时已在 Google 数据中心运行一年多。Google 列出的实际应用包括搜索排序系统 RankBrain、Street View，以及对战李世石时的 AlphaGo；这次公告披露内部部署，并非对外云服务上线。",
       "dateNote": "采用 Google 技术公告的 2016-05-18 日期；第一代 TPU 此前已在内部部署。",
       "tags": [
         "AI 加速器"
@@ -233,7 +233,7 @@ window.HARDWARE_ATLAS = {
       ],
       "en": {
         "summary": "Google describes its custom tensor processor for neural-network inference.",
-        "details": "The first TPU was already deployed inside Google, using specialized computation to improve machine-learning inference efficiency.",
+        "details": "The first TPU uses reduced-precision computation tailored to machine learning and had already operated in Google data centers for over a year when announced. Google names RankBrain, Street View, and AlphaGo's matches against Lee Sedol as deployments. This announcement describes internal use, not the launch of a public cloud service.",
         "dateNote": "Uses Google’s May 18, 2016 technical announcement. The first-generation TPU had already been deployed internally."
       }
     },
@@ -245,7 +245,7 @@ window.HARDWARE_ATLAS = {
       "category": "gpu",
       "kind": "announcement",
       "summary": "Volta 引入 Tensor Core，将矩阵计算加速直接用于深度学习。",
-      "details": "V100 面向训练、推理和高性能计算。此节点记录初代 16 GB 型号的公布。",
+      "details": "V100 的 Tensor Core 专门执行矩阵乘加，支持 FP16 输入与 FP32 累加，为神经网络提供混合精度计算。后来的 GPT-3 论文记载，模型训练使用了微软提供的 V100 GPU 集群。此节点所列规格对应初代 16 GB 型号。",
       "dateNote": "日期为官方公布日；后续供货安排见原始公告。",
       "tags": [
         "GPU"
@@ -255,11 +255,21 @@ window.HARDWARE_ATLAS = {
         {
           "title": "官方发布资料",
           "url": "https://nvidianews.nvidia.com/news/nvidia-launches-revolutionary-volta-gpu-platform-fueling-next-era-of-ai-and-high-performance-computing"
+        },
+        {
+          "title": "NVIDIA · Tensor Core 技术说明",
+          "titleEn": "NVIDIA · Tensor Core technical explanation",
+          "url": "https://developer.nvidia.com/blog/programming-tensor-cores-cuda-9/"
+        },
+        {
+          "title": "后续应用 · GPT-3 训练论文",
+          "titleEn": "Subsequent use · GPT-3 training paper",
+          "url": "https://arxiv.org/abs/2005.14165"
         }
       ],
       "en": {
         "summary": "Volta introduces Tensor Cores to accelerate matrix operations for deep learning.",
-        "details": "V100 targets training, inference, and HPC. This entry records the original 16 GB configuration.",
+        "details": "V100 Tensor Cores perform matrix multiply-accumulate operations with FP16 inputs and FP32 accumulation for mixed-precision neural-network computation. The later GPT-3 paper reports training on a Microsoft-provided V100 GPU cluster. The specifications listed here describe the original 16 GB model.",
         "dateNote": "Dated to the official announcement; availability is described in the original source."
       },
       "hardware": {
@@ -979,7 +989,7 @@ window.HARDWARE_ATLAS = {
       "category": "gpu",
       "kind": "announcement",
       "summary": "Hopper 引入 Transformer Engine 与 FP8，加速大模型训练和推理。",
-      "details": "H100 的 SXM 与 PCIe 型号规格不同。此处保留发布时披露的 SXM 配置。",
+      "details": "Transformer Engine 结合硬件与软件，在 FP8 和 16 位计算之间选择并处理数值缩放，以加速 Transformer 训练与推理。Meta 后来使用 H100 集群训练 Llama 3 405B。H100 的 SXM 与 PCIe 型号规格不同，此处保留发布时披露的 SXM 配置。",
       "dateNote": "日期为官方公布日；后续供货安排见原始公告。",
       "tags": [
         "GPU"
@@ -989,11 +999,21 @@ window.HARDWARE_ATLAS = {
         {
           "title": "官方发布资料",
           "url": "https://nvidianews.nvidia.com/news/nvidia-announces-hopper-architecture-the-next-generation-of-accelerated-computing"
+        },
+        {
+          "title": "NVIDIA · Hopper 架构详解",
+          "titleEn": "NVIDIA · Hopper architecture in depth",
+          "url": "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/"
+        },
+        {
+          "title": "后续应用 · Llama 3 训练论文",
+          "titleEn": "Subsequent use · Llama 3 training paper",
+          "url": "https://arxiv.org/abs/2407.21783"
         }
       ],
       "en": {
         "summary": "Hopper introduces the Transformer Engine and FP8 for large-model training and inference.",
-        "details": "H100 SXM and PCIe variants have different specifications. This record retains the SXM figures disclosed at announcement.",
+        "details": "The Transformer Engine combines hardware and software to choose between FP8 and 16-bit computation and manage numerical scaling for Transformer training and inference. Meta later used H100 clusters to train Llama 3 405B. SXM and PCIe variants differ; this record retains the SXM specifications disclosed at announcement.",
         "dateNote": "Dated to the official announcement; availability is described in the original source."
       },
       "hardware": {
