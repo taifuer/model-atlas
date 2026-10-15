@@ -559,7 +559,7 @@ window.MODEL_ATLAS_EN = {
   },
   "mimo-v2-5": {
     "summary": "MiMo upgrades complex tasks, multimodal work, and inference efficiency.",
-    "details": "The official model log records the same-day V2.5 and Pro releases.",
+    "details": "The official model log records the same-day V2.5 and Pro releases. From October 14, 2026 at 18:00 (UTC+8), V2.5 and Pro API requests automatically route to V2.6 Flash and Pro respectively, at the replacement models’ rates. The old identifiers stop working on October 21 at 10:00 (UTC+8). This API retirement does not affect the released model weights.",
     "dateNote": ""
   },
   "deepseek-v4": {
@@ -569,7 +569,7 @@ window.MODEL_ATLAS_EN = {
   },
   "gemini-3-5-flash": {
     "summary": "Google I/O introduces a Flash update focused on speed and agent tasks.",
-    "details": "Introduced with the Gemini app updates at Google I/O, with a focus on fast responses and task execution.",
+    "details": "Introduced with the Gemini app updates at Google I/O, with a focus on fast responses and task execution. Since October 8, 2026, the deprecated gemini-3.5-flash API identifier automatically routes requests to Gemini 3.6 Flash.",
     "dateNote": ""
   },
   "qwen-3-7-max": {
@@ -677,7 +677,7 @@ window.MODEL_ATLAS_EN = {
   },
   "gemini-3-7-flash": {
     "summary": "Flash improves multi-step coding, knowledge work, and web development.",
-    "details": "Developer, enterprise, and consumer channels have separate rollout paths.",
+    "details": "Developer, enterprise, and consumer channels have separate rollout paths. Since October 8, 2026, the deprecated gemini-3.7-flash API identifier automatically routes requests to Gemini 3.8 Flash.",
     "dateNote": ""
   },
   "glm-5-3": {
@@ -777,9 +777,9 @@ window.MODEL_ATLAS_EN = {
     "dateNote": "Uses the September 29 API changelog. Staged availability in ChatGPT Work and Codex is not counted as a separate model launch."
   },
   "gemini-4-argon": {
-    "summary": "A new multimodal model for complex coding, knowledge work, and cyber defense, initially available to invited teams.",
-    "details": "Google announces Gemini 4 Argon and begins limited access for trusted cyber defenders through its Fairwind Program. The model targets multi-step reasoning and extended workflows; broad developer and consumer availability has not begun.",
-    "dateNote": "Uses September 30, as dated by Google. This is an announcement with limited access, not a general API or Gemini-app launch."
+    "summary": "A new multimodal generation for complex coding, knowledge work, and cyber defense, with sustained reasoning and tool use.",
+    "details": "Initially offered to invited cyber-defense teams through Fairwind on September 30, Argon became generally available through the Gemini API on October 13. Developers can use the paid API; Google AI Ultra provides access in AI Studio and Antigravity, while the Gemini app offers access to Pro and Ultra subscribers.",
+    "dateNote": "Keeps the September 30 announcement date. General API availability and the Gemini app rollout on October 13 are recorded as later developments."
   },
   "bloom": {
     "summary": "BigScience releases a 176B multilingual model with weights and training artifacts.",
@@ -825,6 +825,11 @@ window.MODEL_ATLAS_EN = {
     "summary": "InclusionAI releases a hybrid reasoning model for coding, tool use, and multi-step agent tasks.",
     "details": "The MoE model has approximately 560B total parameters and activates 25B per token. Official documentation lists a 1M model context ceiling, while the current API service exposes 256K. The advertised model ceiling is not treated as an available service limit. The current release is available through APIs; weights are not public.",
     "dateNote": "Uses September 30 from Ant Ling’s official news feed. Dates of third-party catalog integrations are not treated as the original release date."
+  },
+  "muse-wonder": {
+    "summary": "Meta’s new multimodal models target sustained coding, computer use, and professional tasks, with cross-session memory and sub-agent delegation.",
+    "details": "Wonder is available in preview through Meta Model API and in Muse Code. Full is limited to Muse Code Power Usage and Maximum Usage subscribers. Both accept text, images, audio, and video and generate text; public API rates apply only to Wonder. A later rollout in the Muse app remains planned.",
+    "dateNote": "Uses October 12 from both Meta’s announcement and model card. The two models share one family entry, with their distinct access scopes retained."
   }
 };
 window.ATLAS_TAGS_EN = {

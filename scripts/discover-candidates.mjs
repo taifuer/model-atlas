@@ -192,11 +192,12 @@ export function mergeQueue(previous, observations, entries) {
       const matching = matchCatalog(item, entries), fingerprint = candidateFingerprint(item);
       const changed = Boolean(old && candidateFingerprint(old) !== fingerprint);
       const reviewHistory = [...(old?.reviewHistory || [])];
-      if (changed && (old.status !== 'needs_review' || old.reviewNote)) reviewHistory.push({ status: old.status, reviewNote: old.reviewNote || '', supersededAt: observation.observedAt, fingerprint: candidateFingerprint(old), reason: 'Candidate fields changed after the previous decision.' });
+      if (changed && (old.status !== 'needs_review' || old.reviewNote || old.reviewDecision)) reviewHistory.push({ status: old.status, reviewNote: old.reviewNote || '', reviewDecision: old.reviewDecision || null, supersededAt: observation.observedAt, fingerprint: candidateFingerprint(old), reason: 'Candidate fields changed after the previous decision.' });
       queue.entries[id] = { ...old, id, source: observation.source, ...item, firstObservedAt: old?.firstObservedAt || observation.observedAt,
-        lastObservedAt: observation.observedAt, snapshot: observation.snapshot, catalogMatches: matching,
+        lastObservedAt: observation.observedAt, lastChangedAt: changed ? observation.observedAt : old?.lastChangedAt || null, snapshot: observation.snapshot, catalogMatches: matching,
         fingerprint, observationChange: old ? changed ? 'changed' : 'unchanged' : 'first_observation', reviewHistory,
         status: changed ? 'needs_review' : old?.status || 'needs_review', reviewNote: changed ? '' : old?.reviewNote || '',
+        reviewDecision: changed ? null : old?.reviewDecision || null,
         reason: changed ? 'Candidate fields changed; review the release/configuration again. Any previous decision is preserved in reviewHistory.' : matching.length ? 'Possible existing entry; compare release version, date and configuration. Kept for review.' : 'Observed in a monitored source; assess whether it is classic, representative or influential.',
       };
     }
@@ -274,7 +275,8 @@ Usage: node scripts/discover-candidates.mjs [options]
   --timeout MS           Per-request timeout, default 20000 (100-60000).
   --help                 Show this help.
 Reports/raw snapshots/queue: research/candidate-discovery/ (Git-ignored).
-Review queue.json manually; firstObservedAt and review decisions survive later runs.
+Use npm run review:candidates to summarize and explicitly review the private queue.
+firstObservedAt, lastChangedAt and review decisions survive later runs.
 Changed candidate fields reopen needs_review and retain the earlier decision in
 reviewHistory; page-navigation changes alone do not. GitHub version IDs survive title edits.
 Suggested statuses: needs_review, represented, deferred, rejected. An exact title or

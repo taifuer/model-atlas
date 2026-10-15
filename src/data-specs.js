@@ -2085,20 +2085,31 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "gemini-4-argon": {
-      "cardScope": "configuration",
-      "checkedAt": "2026-10-03",
+      "checkedAt": "2026-10-15",
       "variants": [
         {
-          "name": "Gemini 4 Argon (high)",
-          "basis": "benchmark",
-          "contextTokens": "1M",
+          "name": "gemini-4-argon",
+          "basis": "api",
+          "contextTokens": 1048576,
+          "outputTokens": 65536,
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ],
           "sources": [
-            "https://artificialanalysis.ai/models/gemini-4-argon"
+            "https://ai.google.dev/gemini-api/docs/models/gemini-4-argon",
+            "https://ai.google.dev/gemini-api/docs/latest-model"
           ]
         }
       ],
-      "note": "上下文采用 AA 公布的评测配置；有限开放期间，不据此推定公开 API 的输入或输出上限。",
-      "noteEn": "Context is the configuration recorded by AA. During limited access, it does not establish public API input or output limits."
+      "note": "输入、思考与输出共用 1,048,576 tokens 窗口；65,536 为默认同步输出上限。超过该值需后台执行并提高 max_output_tokens，或使用客户端续写；思考与输出合计仍受扣除输入后的剩余窗口限制，不能把 1M 当作额外输出空间。",
+      "noteEn": "Input, thinking, and output share a 1,048,576-token window. The default synchronous output limit is 65,536. Longer generation requires background execution with a higher max_output_tokens setting, or client-side continuation; thinking and output together must still fit the window remaining after input."
     },
     "gpt-j-6b": {
       "checkedAt": "2026-10-11",
@@ -2225,6 +2236,48 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ],
       "note": "官方当前 API 上下文为 256K，模型公布的上限为 1M。第三方服务的上下文与输出限制可能不同。",
       "noteEn": "The current official API exposes 256K context; the announced model ceiling is 1M. Third-party providers may use different context and output limits."
+    },
+    "muse-wonder": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "Muse Wonder (muse-wonder-1.0)",
+          "basis": "api",
+          "contextTokens": 1048576,
+          "input": [
+            "text",
+            "image",
+            "audio",
+            "video"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://dev.meta.ai/docs/overview",
+            "https://research.meta.ai/static/muse-wonder-model-card"
+          ]
+        },
+        {
+          "name": "Muse Wonder Full",
+          "basis": "paper",
+          "contextTokens": "1M",
+          "input": [
+            "text",
+            "image",
+            "audio",
+            "video"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://research.meta.ai/static/muse-wonder-model-card"
+          ]
+        }
+      ],
+      "note": "Wonder 上下文采用 API 文档的精确值；Full 采用官方模型卡的 1M 标注，仅通过 Muse Code 订阅提供，不据此推定独立 API 上限。两款均未公布参数量或单独的输出上限。",
+      "noteEn": "Wonder uses the exact API context limit; Full retains the model card’s 1M specification. Full is offered only through Muse Code subscriptions, so this does not imply a standalone API limit. Parameter counts and separate output limits are not documented."
     }
   }
 });

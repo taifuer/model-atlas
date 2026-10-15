@@ -976,9 +976,9 @@
     "gemini-4-argon": {
       "category": "multimodal",
       "sources": [
-        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/"
+        "https://ai.google.dev/gemini-api/docs/models/gemini-4-argon"
       ],
-      "checkedAt": "2026-10-03"
+      "checkedAt": "2026-10-15"
     },
     "bloom": {
       "category": "text",
@@ -1041,6 +1041,13 @@
       "category": "text",
       "sources": [
         "https://developer.ant-ling.com/zh-CN/docs/models/ling/"
+      ]
+    },
+    "muse-wonder": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "sources": [
+        "https://research.meta.ai/static/muse-wonder-model-card"
       ]
     }
   }

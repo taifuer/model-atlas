@@ -75,8 +75,9 @@
     url.searchParams.set('lang', language);
     link.href = url.href;
   });
+  const updatedAt = ['models', 'agents', 'hardware', 'technology'].map(key => pages[key].data.updatedAt || pages[key].data.asOf).sort().at(-1);
   document.querySelectorAll('[data-updated], [data-cutoff]').forEach(time => {
-    const date = time.hasAttribute('data-cutoff') ? raw.asOf : raw.updatedAt || raw.asOf;
+    const date = time.hasAttribute('data-cutoff') ? raw.asOf : updatedAt;
     time.dateTime = date;
     time.textContent = formattedDate(date);
   });

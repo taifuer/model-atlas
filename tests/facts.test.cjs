@@ -21,7 +21,7 @@ test('single-model chips identify a family member or later API snapshot explicit
   }
   assert.equal(facts.scopeLabel(specs.entries['phi-3']), 'Phi-3-mini-128k-instruct');
   assert.equal(facts.scopeLabel(specs.entries['qwen-3']), 'Qwen3-235B-A22B');
-  assert.equal(facts.scopeLabel(specs.entries['gemini-4-argon']), 'Gemini 4 Argon (high)');
+  assert.equal(facts.scopeLabel(specs.entries['gemini-4-argon']), '', 'Official API context is no longer a benchmark-only configuration');
   assert.equal(facts.scopeLabel(specs.entries['claude-opus-5-5']), '');
 });
 
@@ -34,6 +34,8 @@ test('family context, chosen price and evaluated member retain independent scope
   assert.equal(facts.scoreLabel(scores.entries['gpt-6-sol-luna'].aa, scores.cardScopes['gpt-6-sol-luna']), 'GPT-6 Sol (max)');
   assert.equal(facts.scopeLabel(specs.entries['mimo-v2-6']), 'MiMo-V2.6-Pro-RL');
   assert.equal(facts.scopeLabel(prices.entries['glm-4-5']), 'GLM-4.5');
+  assert.equal(facts.scopeLabel(prices.entries['muse-wonder']), 'muse-wonder-1.0');
+  assert.equal(facts.scoreLabel(scores.entries['muse-wonder'].aa, scores.cardScopes['muse-wonder']), 'Muse Wonder Full (max)');
   assert.equal(facts.scopeLabel(undefined), '');
   assert.equal(facts.scoreLabel(undefined), '');
 });
@@ -46,7 +48,7 @@ test('promotions remain visible without a fixed expiry and preserve context-tier
   assert.equal(facts.pricingQualifier(entry, 'en'), 'Promo · from');
   assert.equal(facts.pricingQualifier(prices.entries['gemini-3-8-flash'], 'en'), 'Promo');
   assert.equal(facts.pricingQualifier(prices.entries['gpt-4-5'], 'en'), 'Archived');
-  assert.equal(facts.pricingQualifier(prices.entries['gemini-4-argon'], 'en'), 'Announced · from');
+  assert.equal(facts.pricingQualifier(prices.entries['gemini-4-argon'], 'en'), 'Promo');
   assert.equal(facts.pricingQualifier(prices.entries['gpt-6-sol-luna'], 'en'), 'from');
   assert.equal(facts.pricingQualifier({ variants: [{ tiers: [{ validUntil: '2027-01-01' }] }] }), '', 'An expiry alone does not establish a discount');
 });

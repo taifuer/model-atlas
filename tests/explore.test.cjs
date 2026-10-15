@@ -19,7 +19,7 @@ const definitions = {
 };
 
 function loadAtlas(language = 'zh') {
-  const context = { window: {}, URL };
+  const context = { window: {}, URL, URLSearchParams };
   for (const file of scripts) vm.runInNewContext(fs.readFileSync(path.join(sourceRoot, file), 'utf8'), context, { filename: file });
   const globals = context.window;
   const english = language === 'en';
@@ -53,7 +53,72 @@ test('cross-timeline search shares punctuation rules and both language titles', 
     assert.deepEqual(keys('no-such-model-atlas-record', language), []);
     const matches = catalog.search('Transformer', language);
     assert.equal(matches.filter(entry => entry.release.id === 'transformer').length, 1);
-    assert.ok(matches.every((entry, index) => !index || matches[index - 1].release.date >= entry.release.date));
+    assert.equal(matches[0].key, 'technology:transformer');
+  }
+});
+
+
+test('search prioritizes exact identities and model variants without promoting sibling products', () => {
+  for (const language of ['zh', 'en']) {
+    const keys = query => Array.from(catalog.search(query, language), entry => entry.key);
+    assert.equal(keys('BERT')[0], 'models:bert');
+    assert.equal(keys('Transformer')[0], 'technology:transformer');
+    assert.equal(keys('GPT 4')[0], 'models:gpt-4');
+    assert.equal(keys('Qwen 3.8')[0], 'models:qwen-3-8');
+    assert.deepEqual(keys('gpt-4o-2024-08-06'), ['models:gpt-4o']);
+    assert.deepEqual(keys('H100'), ['hardware:nvidia-h100']);
+    assert.ok(!keys('BERT').includes('models:gemini-4-argon'));
+    assert.ok(!keys('Kiro').includes('models:amazon-nova'));
+    assert.ok(!keys('Qwen').includes('agents:qoder'));
+    assert.ok(keys('通义千问').includes('models:qwen-3-8'));
+    assert.ok(!keys('通义千问').includes('agents:qoder'));
+    assert.ok(keys('克劳德').includes('agents:claude-code'));
+    const family = catalog.search('FlashAttention', language).slice(1).filter(entry => entry.release.name.startsWith('FlashAttention'));
+    assert.ok(family.every((entry, index) => !index || family[index - 1].release.date >= entry.release.date), 'Equally relevant family entries remain newest first');
+  }
+});
+
+test('organization names remain bilingual across sections and filters use the same matching fields', () => {
+  for (const [company, queries] of [['google', ['Google', '谷歌', 'DeepMind']], ['qwen', ['Alibaba', '阿里巴巴']], ['zhipu', ['Z.ai', '智谱']]]) {
+    for (const query of queries) {
+      const found = new Set(catalog.search(query).map(entry => entry.key));
+      for (const entry of catalog.events.filter(entry => entry.release.company === company)) assert.ok(found.has(entry.key), `${query}: ${entry.key}`);
+    }
+  }
+  for (const query of ['BERT', 'Transformer', 'Qwen 3.8', '通义千问', 'Google', '谷歌', 'H100', 'gpt-4o-2024-08-06', 'FlashAttention‑4']) {
+    const results = catalog.search(query);
+    for (const [section, raw] of Object.entries(datasets)) {
+      const filters = globals.ATLAS_FILTERS.create(raw, catalog.searchIndex(section));
+      const state = filters.read(new URLSearchParams({ q: query }).toString());
+      const selected = Array.from(filters.select(state), entry => entry.id).sort();
+      const expected = Array.from(results.filter(entry => entry.sections.includes(section)), entry => entry.release.id).sort();
+      assert.deepEqual(selected, expected, `${section}: ${query}`);
+    }
+  }
+});
+
+test('detail corrections prefill the existing issue template with a stable bilingual node link', () => {
+  const template = fs.readFileSync(path.join(sourceRoot, '..', '.github', 'ISSUE_TEMPLATE', 'entry.md'), 'utf8');
+  const headings = template.match(/^\*\*.+\*\*$/gm);
+  for (const language of ['zh', 'en']) {
+    const current = localized[language];
+    for (const key of ['models:bert', 'agents:claude-code', 'hardware:nvidia-h100', 'technology:transformer', 'models:transformer']) {
+      const record = current.ATLAS_CATALOG.get(key);
+      const html = detail(current, record, language);
+      const markup = /<p class="detail-correction">([\s\S]*?)<\/p>/.exec(html)?.[1];
+      assert.ok(markup, key);
+      assert.ok(markup.includes(language === 'en' ? 'Report a correction' : '纠错'));
+      const url = new URL(/href="([^"]+)"/.exec(markup)[1].replaceAll('&amp;', '&'));
+      assert.equal(url.origin + url.pathname, 'https://github.com/taifuer/model-atlas/issues/new');
+      assert.equal(url.searchParams.get('template'), 'entry.md');
+      assert.ok(url.searchParams.get('title').endsWith(current.ATLAS_CATALOG.text(record, language).name));
+      const body = url.searchParams.get('body');
+      assert.ok(body.includes(record.key));
+      assert.ok(body.includes(record.release.date));
+      assert.ok(body.includes(new URL(current.ATLAS_CATALOG.timelineUrl(record, language), 'https://ai.taifua.com/').href));
+      for (const heading of headings) assert.ok(body.includes(heading));
+      assert.match(markup, /target="_blank" rel="noopener noreferrer"/);
+    }
   }
 });
 
@@ -254,7 +319,7 @@ for (const language of ['zh', 'en']) {
     const current = localized[language];
     for (const record of current.ATLAS_CATALOG.entries) {
       const html = detail(current, record, language);
-      for (const [className, data] of [['detail-specs', current.MODEL_ATLAS_SPECS], ['detail-pricing', current.MODEL_ATLAS_PRICES], ['detail-scores', current.MODEL_ATLAS_SCORES]]) {
+      for (const [className, data] of [['detail-specs', current.MODEL_ATLAS_SPECS], ['detail-pricing', current.MODEL_ATLAS_PRICES]]) {
         const content = section(html, className);
         if (!content) continue;
         const expected = record.section === 'hardware' ? record.release.hardware.checkedAt : data.entries[record.release.id].checkedAt || data.checkedAt;
@@ -266,6 +331,12 @@ for (const language of ['zh', 'en']) {
       const scores = record.section === 'models' && current.MODEL_ATLAS_SCORES.entries[record.release.id];
       if (!scores) continue;
       const scoreHtml = section(html, 'detail-scores');
+      const checkedRecords = Array.from(scoreHtml.matchAll(/<div class="benchmark-record">[\s\S]*?<\/a><\/div>/g), match => match[0]);
+      for (const [key, score] of Object.entries(scores)) {
+        const expected = score.checkedAt || current.MODEL_ATLAS_SCORES.benchmarks[key].checkedAt || current.MODEL_ATLAS_SCORES.checkedAt;
+        const content = checkedRecords.find(record => record.includes(escape(score.model)));
+        assert.ok(content?.includes(`datetime="${expected}"`), `${record.key}: ${key} keeps its own check date`);
+      }
       const headings = Array.from(scoreHtml.matchAll(/<div class="benchmark-heading">[\s\S]*?<\/strong><\/div>/g), match => match[0]);
       for (const score of Object.values(scores)) assert.ok(headings.some(heading => heading.includes(escape(score.model)) && heading.includes(`<strong>${score.score}`)), `${record.key}: exact model configuration adjacent to score`);
       if (scores.arena) {
@@ -296,6 +367,31 @@ for (const language of ['zh', 'en']) {
     }
   });
 }
+
+
+test('benchmark check dates prefer the individual record, then its source, then the legacy default', () => {
+  for (const language of ['zh', 'en']) {
+    const current = loadAtlas(language), original = current.MODEL_ATLAS_SCORES;
+    const key = 'claude-opus-5-5', entry = original.entries[key];
+    for (const [recordDate, sourceDate, expected] of [
+      ['2026-10-15', '2026-10-14', '2026-10-15'],
+      [undefined, '2026-10-14', '2026-10-14'],
+      [undefined, undefined, '2026-10-10'],
+    ]) {
+      current.MODEL_ATLAS_SCORES = {
+        ...original, checkedAt: '2026-10-10',
+        benchmarks: { ...original.benchmarks, aa: { ...original.benchmarks.aa, checkedAt: sourceDate }, arena: { ...original.benchmarks.arena, checkedAt: '2026-10-11' } },
+        entries: { ...original.entries, [key]: { aa: { ...entry.aa, checkedAt: recordDate }, arena: { ...entry.arena, checkedAt: undefined } } },
+      };
+      const html = section(detail(current, current.ATLAS_CATALOG.get(`models:${key}`), language), 'detail-scores');
+      const records = Array.from(html.matchAll(/<div class="benchmark-record">[\s\S]*?<\/a><\/div>/g), match => match[0]);
+      assert.ok(records[0].includes(`datetime="${expected}"`));
+      assert.ok(records[1].includes('datetime="2026-10-11"'));
+      assert.ok(records[1].includes(`${language === 'en' ? 'Leaderboard date' : '榜单日期'} ${original.benchmarks.arena.publishedAt.replaceAll('-', '.')}`));
+      assert.doesNotMatch(/<div class="detail-section-title">[\s\S]*?<\/div>/.exec(html)[0], /<time/, 'The section must not imply that different boards were checked on one date');
+    }
+  }
+});
 
 test('a hardware ID collision cannot import model specifications, prices or scores', () => {
   const current = loadAtlas('en');

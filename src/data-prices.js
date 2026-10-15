@@ -819,26 +819,27 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       "variants": [
         {
           "name": "gemini-3.7-flash",
-          "promotional": true,
           "currency": "USD",
           "tiers": [
             {
               "input": 0.75,
               "output": 3.75,
-              "label": "限时价格 · 至 2026.12.31",
-              "labelEn": "Promotional rate · through Dec 31, 2026",
-              "validUntil": "2026-12-31"
+              "label": "历史标准 API 价格",
+              "labelEn": "Historical Standard API rate"
             }
           ],
           "sources": [
-            "https://ai.google.dev/gemini-api/docs/pricing#gemini-3.7-flash"
+            "https://ai.google.dev/gemini-api/docs/pricing#gemini-3.7-flash",
+            "https://ai.google.dev/gemini-api/docs/changelog"
           ],
-          "note": "官方计划自 2027 年 1 月 1 日起调整为输入 $1.50、输出 $7.50 / 百万 tokens。",
-          "noteEn": "The published schedule changes to $1.50 input and $7.50 output per million tokens on January 1, 2027."
+          "note": "保留此前文档记录的价格；2026 年 10 月 8 日起，此 API 名称已弃用，请求自动路由至 Gemini 3.8 Flash。上述为旧型号历史记录，替换后的调用按新版型号计费。",
+          "noteEn": "Retains the previously documented rate. Since October 8, 2026, this deprecated API identifier routes requests to Gemini 3.8 Flash. These figures document the old model; redirected requests are billed at the replacement model’s rates.",
+          "archived": true
         }
       ],
       "note": "采用 Gemini Developer API 的付费标准档文本价格；输出包含思考 tokens。",
-      "noteEn": "Paid Standard text rates for the Gemini Developer API. Output includes thinking tokens."
+      "noteEn": "Paid Standard text rates for the Gemini Developer API. Output includes thinking tokens.",
+      "checkedAt": "2026-10-15"
     },
     "gemini-3-6-flash": {
       "cardScope": "variant",
@@ -875,17 +876,22 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
             {
               "input": 1.5,
               "output": 9,
-              "label": "标准 API",
-              "labelEn": "Standard API"
+              "label": "历史标准 API 价格",
+              "labelEn": "Historical Standard API rate"
             }
           ],
           "sources": [
-            "https://ai.google.dev/gemini-api/docs/pricing#gemini-3.5-flash"
-          ]
+            "https://ai.google.dev/gemini-api/docs/pricing#gemini-3.5-flash",
+            "https://ai.google.dev/gemini-api/docs/changelog"
+          ],
+          "archived": true,
+          "note": "保留此前文档记录的价格；2026 年 10 月 8 日起，此 API 名称已弃用，请求自动路由至 Gemini 3.6 Flash。上述为旧型号历史记录，替换后的调用按新版型号计费。",
+          "noteEn": "Retains the previously documented rate. Since October 8, 2026, this deprecated API identifier routes requests to Gemini 3.6 Flash. These figures document the old model; redirected requests are billed at the replacement model’s rates."
         }
       ],
       "note": "采用 Gemini Developer API 的付费标准档文本价格；输出包含思考 tokens。",
-      "noteEn": "Paid Standard text rates for the Gemini Developer API. Output includes thinking tokens."
+      "noteEn": "Paid Standard text rates for the Gemini Developer API. Output includes thinking tokens.",
+      "checkedAt": "2026-10-15"
     },
     "gemini-3-1": {
       "variants": [
@@ -1488,13 +1494,17 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
             {
               "input": 0.14,
               "output": 0.28,
-              "label": "标准 API",
-              "labelEn": "Standard API"
+              "label": "历史标准 API 价格",
+              "labelEn": "Historical Standard API rate"
             }
           ],
           "sources": [
-            "https://mimo.mi.com/docs/en-US/price/pay-as-you-go"
-          ]
+            "https://mimo.mi.com/docs/en-US/price/pay-as-you-go",
+            "https://mimo.mi.com/docs/zh-CN/updates/deprecate"
+          ],
+          "archived": true,
+          "note": "2026 年 10 月 14 日 18:00（UTC+8）起自动路由至 mimo-v2.6-flash 并按新版计价；10 月 21 日 10:00（UTC+8）旧名称失效。上列为替换前的历史价格。",
+          "noteEn": "Automatically routes to mimo-v2.6-flash at its rates from October 14, 2026 at 18:00 (UTC+8). The old identifier stops working on October 21 at 10:00 (UTC+8). The figures above are historical rates before replacement."
         },
         {
           "name": "mimo-v2.5-pro",
@@ -1503,17 +1513,22 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
             {
               "input": 0.435,
               "output": 0.87,
-              "label": "标准 API",
-              "labelEn": "Standard API"
+              "label": "历史标准 API 价格",
+              "labelEn": "Historical Standard API rate"
             }
           ],
           "sources": [
-            "https://mimo.mi.com/docs/en-US/price/pay-as-you-go"
-          ]
+            "https://mimo.mi.com/docs/en-US/price/pay-as-you-go",
+            "https://mimo.mi.com/docs/zh-CN/updates/deprecate"
+          ],
+          "archived": true,
+          "note": "2026 年 10 月 14 日 18:00（UTC+8）起自动路由至 mimo-v2.6-pro 并按新版计价；10 月 21 日 10:00（UTC+8）旧名称失效。上列为替换前的历史价格。",
+          "noteEn": "Automatically routes to mimo-v2.6-pro at its rates from October 14, 2026 at 18:00 (UTC+8). The old identifier stops working on October 21 at 10:00 (UTC+8). The figures above are historical rates before replacement."
         }
       ],
-      "note": "海外区域实时 API 的美元价格；中国大陆区域按人民币另行定价，不含 Batch 或加速服务。官方计划于 2026 年 10 月 21 日停用 V2.5 系列 API。",
-      "noteEn": "USD rates for the overseas real-time API. Mainland China has separate CNY rates; Batch and Ultraspeed are excluded. V2.5 API retirement is scheduled for October 21, 2026."
+      "note": "海外区域实时 API 的历史美元价格；中国大陆区域按人民币另行定价，不含 Batch 或加速服务。API 下线不影响已开放的模型权重。",
+      "noteEn": "Historical USD rates for the overseas real-time API. Mainland China has separate CNY rates; Batch and Ultraspeed are excluded. API retirement does not affect the released model weights.",
+      "checkedAt": "2026-10-15"
     },
     "gpt-6-1-sol": {
       "checkedAt": "2026-10-03",
@@ -1542,33 +1557,53 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       ]
     },
     "gemini-4-argon": {
-      "checkedAt": "2026-10-03",
+      "checkedAt": "2026-10-15",
       "variants": [
         {
-          "name": "Gemini 4 Argon",
+          "name": "gemini-4-argon",
           "currency": "USD",
-          "announced": true,
+          "promotional": true,
           "tiers": [
             {
               "input": 2,
               "output": 10,
-              "label": "已公布的首发价 · 尚未普遍开放",
-              "labelEn": "Announced introductory rate · Not generally available"
-            },
-            {
-              "input": 4,
-              "output": 20,
-              "label": "首发优惠结束后的公布价格",
-              "labelEn": "Announced rate after the introductory period"
+              "label": "首发优惠 · 至 2026.11.30",
+              "labelEn": "Introductory rate · through Nov 30, 2026",
+              "validUntil": "2026-11-30"
             }
           ],
           "sources": [
-            "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/"
+            "https://ai.google.dev/gemini-api/docs/pricing#gemini-4-argon"
           ],
-          "note": "Google 尚未明确优惠的结束日期。此处是公告价格，不表示公开 API 已可购买。",
-          "noteEn": "Google has not specified the introductory period’s end date. These announced rates do not imply general API availability."
+          "note": "2026 年 10 月 13 日 API 正式开放；官方计划自 12 月 1 日起调整为输入 $4、输出 $20 / 百万 tokens。",
+          "noteEn": "The API became generally available on October 13, 2026. Published rates rise to $4 input and $20 output per million tokens on December 1."
         }
-      ]
+      ],
+      "note": "采用 Gemini Developer API 付费 Standard 档；输出包含思考 tokens。",
+      "noteEn": "Paid Standard rates for the Gemini Developer API. Output includes thinking tokens."
+    },
+    "muse-wonder": {
+      "checkedAt": "2026-10-15",
+      "cardScope": "variant",
+      "variants": [
+        {
+          "name": "muse-wonder-1.0",
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 4,
+              "output": 20,
+              "label": "Standard 模式",
+              "labelEn": "Standard mode"
+            }
+          ],
+          "sources": [
+            "https://dev.meta.ai/docs/pricing-rate-limits"
+          ]
+        }
+      ],
+      "note": "仅为 Wonder 的 Standard 模式未缓存文本 API 价格，无长上下文溢价。Wonder Full 仅通过 Muse Code 指定订阅方案提供，未公布按 token 计费的 API 价格。",
+      "noteEn": "Standard-mode uncached text API rates for Wonder only, with no long-context premium. Wonder Full is available through eligible Muse Code subscriptions and has no published per-token API price."
     }
   }
 });

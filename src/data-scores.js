@@ -6,7 +6,8 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "name": "Artificial Analysis Intelligence Index",
       "version": "4.3.2",
       "source": "https://artificialanalysis.ai/leaderboards/models",
-      "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking"
+      "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+      "checkedAt": "2026-10-15"
     },
     "arena": {
       "name": "Arena Text · Overall · Style Control",
@@ -19,14 +20,16 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
   "cardScopes": {
     "claude-fable-5-1": "variant",
     "gpt-6-sol-luna": "variant",
-    "mimo-v2-6": "variant"
+    "mimo-v2-6": "variant",
+    "muse-wonder": "variant"
   },
   "entries": {
     "claude-opus-5-5": {
       "aa": {
         "model": "Claude Opus 5.5 (max with fallback)",
         "score": 58,
-        "source": "https://artificialanalysis.ai/models/claude-opus-5-5"
+        "source": "https://artificialanalysis.ai/models/claude-opus-5-5",
+        "checkedAt": "2026-10-15"
       },
       "arena": {
         "model": "claude-opus-5.5-high",
@@ -40,7 +43,8 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "aa": {
         "model": "Claude Sonnet 5.5 (max with fallback)",
         "score": 56,
-        "source": "https://artificialanalysis.ai/models/claude-sonnet-5-5"
+        "source": "https://artificialanalysis.ai/models/claude-sonnet-5-5",
+        "checkedAt": "2026-10-15"
       },
       "arena": {
         "model": "claude-sonnet-5.5-xhigh",
@@ -54,7 +58,8 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "aa": {
         "model": "Claude Fable 5.1 (max with fallback)",
         "score": 53,
-        "source": "https://artificialanalysis.ai/models/claude-fable-5-1"
+        "source": "https://artificialanalysis.ai/models/claude-fable-5-1",
+        "checkedAt": "2026-10-15"
       },
       "arena": {
         "model": "claude-fable-5.1-max",
@@ -68,7 +73,8 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "aa": {
         "model": "GPT-6 Astra (max)",
         "score": 53,
-        "source": "https://artificialanalysis.ai/models/gpt-6-astra"
+        "source": "https://artificialanalysis.ai/models/gpt-6-astra",
+        "checkedAt": "2026-10-15"
       },
       "arena": {
         "model": "gpt-6-astra-max",
@@ -82,7 +88,8 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "aa": {
         "model": "GPT-6.1 Sol (max)",
         "score": 52,
-        "source": "https://artificialanalysis.ai/models/gpt-6-1-sol"
+        "source": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+        "checkedAt": "2026-10-15"
       },
       "arena": {
         "model": "gpt-6.1-sol-max",
@@ -96,7 +103,8 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "aa": {
         "model": "Gemini 4 Argon (high)",
         "score": 53,
-        "source": "https://artificialanalysis.ai/models/gemini-4-argon"
+        "source": "https://artificialanalysis.ai/models/gemini-4-argon",
+        "checkedAt": "2026-10-15"
       },
       "arena": {
         "model": "gemini-4-argon-high",
@@ -111,7 +119,8 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "aa": {
         "model": "Muse Spark 1.3 (max)",
         "score": 48,
-        "source": "https://artificialanalysis.ai/models/muse-spark-1-3"
+        "source": "https://artificialanalysis.ai/models/muse-spark-1-3",
+        "checkedAt": "2026-10-15"
       },
       "arena": {
         "model": "muse-spark-1.3-max",
@@ -125,7 +134,8 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "aa": {
         "model": "Grok 4.7 (xhigh)",
         "score": 46,
-        "source": "https://artificialanalysis.ai/models/grok-4-7"
+        "source": "https://artificialanalysis.ai/models/grok-4-7",
+        "checkedAt": "2026-10-15"
       },
       "arena": {
         "model": "grok-4.7-xhigh",
@@ -139,7 +149,8 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "aa": {
         "model": "MiMo-V2.6-Pro",
         "score": 46,
-        "source": "https://artificialanalysis.ai/models/mimo-v2-6-pro"
+        "source": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+        "checkedAt": "2026-10-15"
       },
       "arena": {
         "model": "mimo-v2.6-pro",
@@ -153,14 +164,16 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "aa": {
         "model": "Qwen3.8 Max (0902)",
         "score": 45,
-        "source": "https://artificialanalysis.ai/models/qwen3-8-max"
+        "source": "https://artificialanalysis.ai/models/qwen3-8-max",
+        "checkedAt": "2026-10-15"
       }
     },
     "glm-5-3": {
       "aa": {
         "model": "GLM-5.3 (max)",
         "score": 45,
-        "source": "https://artificialanalysis.ai/models/glm-5-3"
+        "source": "https://artificialanalysis.ai/models/glm-5-3",
+        "checkedAt": "2026-10-15"
       },
       "arena": {
         "model": "glm-5.3-max",
@@ -174,14 +187,16 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "aa": {
         "model": "Step 5 Preview",
         "score": 44,
-        "source": "https://artificialanalysis.ai/models/step-5"
+        "source": "https://artificialanalysis.ai/models/step-5",
+        "checkedAt": "2026-10-15"
       }
     },
     "kimi-k3": {
       "aa": {
         "model": "Kimi K3 (max)",
         "score": 44,
-        "source": "https://artificialanalysis.ai/models/kimi-k3"
+        "source": "https://artificialanalysis.ai/models/kimi-k3",
+        "checkedAt": "2026-10-15"
       },
       "arena": {
         "model": "kimi-k3-max",
@@ -195,7 +210,8 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "aa": {
         "model": "GLM-5.3-Flash",
         "score": 42,
-        "source": "https://artificialanalysis.ai/models/glm-5-3-flash"
+        "source": "https://artificialanalysis.ai/models/glm-5-3-flash",
+        "checkedAt": "2026-10-15"
       },
       "arena": {
         "model": "glm-5.3-flash",
@@ -209,7 +225,8 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "aa": {
         "model": "Gemini 3.8 Flash (high)",
         "score": 41,
-        "source": "https://artificialanalysis.ai/models/gemini-3-8-flash"
+        "source": "https://artificialanalysis.ai/models/gemini-3-8-flash",
+        "checkedAt": "2026-10-15"
       },
       "arena": {
         "model": "gemini-3.8-flash-high",
@@ -224,7 +241,8 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "aa": {
         "model": "DeepSeek V4.1 Flash (max)",
         "score": 39,
-        "source": "https://artificialanalysis.ai/models/deepseek-v4-1-flash"
+        "source": "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
+        "checkedAt": "2026-10-15"
       },
       "arena": {
         "model": "deepseek-v4.1-flash-max",
@@ -238,35 +256,40 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "aa": {
         "model": "DeepSeek V4 Pro 0813 (max)",
         "score": 36,
-        "source": "https://artificialanalysis.ai/models/deepseek-v4-pro"
+        "source": "https://artificialanalysis.ai/models/deepseek-v4-pro",
+        "checkedAt": "2026-10-15"
       }
     },
     "minimax-m3": {
       "aa": {
         "model": "MiniMax-M3",
         "score": 29,
-        "source": "https://artificialanalysis.ai/models/minimax-m3"
+        "source": "https://artificialanalysis.ai/models/minimax-m3",
+        "checkedAt": "2026-10-15"
       }
     },
     "hunyuan-hy3": {
       "aa": {
         "model": "Hy3",
         "score": 25,
-        "source": "https://artificialanalysis.ai/models/hy3"
+        "source": "https://artificialanalysis.ai/models/hy3",
+        "checkedAt": "2026-10-15"
       }
     },
     "mistral-medium-3-5": {
       "aa": {
         "model": "Mistral Medium 3.5",
         "score": 14,
-        "source": "https://artificialanalysis.ai/models/mistral-medium-3-5"
+        "source": "https://artificialanalysis.ai/models/mistral-medium-3-5",
+        "checkedAt": "2026-10-15"
       }
     },
     "gpt-6-sol-luna": {
       "aa": {
         "model": "GPT-6 Sol (max)",
         "score": 48,
-        "source": "https://artificialanalysis.ai/models/gpt-6-sol"
+        "source": "https://artificialanalysis.ai/models/gpt-6-sol",
+        "checkedAt": "2026-10-15"
       },
       "arena": {
         "model": "gpt-6-sol-max",
@@ -280,21 +303,32 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       "aa": {
         "model": "Claude Haiku 5.5 (max)",
         "score": 43,
-        "source": "https://artificialanalysis.ai/models/claude-haiku-5-5"
+        "source": "https://artificialanalysis.ai/models/claude-haiku-5-5",
+        "checkedAt": "2026-10-15"
       }
     },
     "mistral-large-4-preview": {
       "aa": {
         "model": "Mistral Large 4 Preview",
         "score": 38,
-        "source": "https://artificialanalysis.ai/models/mistral-large-4"
+        "source": "https://artificialanalysis.ai/models/mistral-large-4",
+        "checkedAt": "2026-10-15"
       }
     },
     "ling-3-1-flash": {
       "aa": {
         "model": "Ling 3.1 Flash",
         "score": 41,
-        "source": "https://artificialanalysis.ai/models/ling-3-1-flash"
+        "source": "https://artificialanalysis.ai/models/ling-3-1-flash",
+        "checkedAt": "2026-10-15"
+      }
+    },
+    "muse-wonder": {
+      "aa": {
+        "model": "Muse Wonder Full (max)",
+        "score": 56,
+        "source": "https://artificialanalysis.ai/models/muse-wonder-full",
+        "checkedAt": "2026-10-15"
       }
     }
   }

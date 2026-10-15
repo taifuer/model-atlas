@@ -11,7 +11,7 @@ const allowedFields = new Set(['name', 'basis', 'sources', ...tokenFields, 'para
 const types = new Set(['text', 'image', 'audio', 'video', 'pdf', 'document']);
 
 test('specifications identify existing entries, exact variants, and first-party evidence', () => {
-  const hosts = new Set(['developer.ant-ling.com', 'docs.mistral.ai', 'artificialanalysis.ai', 'developers.openai.com', 'cdn.openai.com', 'platform.claude.com', 'ai.google.dev', 'api-docs.deepseek.com', 'huggingface.co', 'docs.x.ai', 'docs.z.ai', 'docs.qwencloud.com', 'www.qwencloud.com', 'arxiv.org', 'github.com', 'aws.amazon.com']);
+  const hosts = new Set(['dev.meta.ai', 'research.meta.ai', 'developer.ant-ling.com', 'docs.mistral.ai', 'artificialanalysis.ai', 'developers.openai.com', 'cdn.openai.com', 'platform.claude.com', 'ai.google.dev', 'api-docs.deepseek.com', 'huggingface.co', 'docs.x.ai', 'docs.z.ai', 'docs.qwencloud.com', 'www.qwencloud.com', 'arxiv.org', 'github.com', 'aws.amazon.com']);
   const hfOrganizations = new Set(['EleutherAI', 'allenai', 'JetBrains', 'deepseek-ai', 'Qwen', 'zai-org', 'MiniMaxAI', 'moonshotai', 'XiaomiMiMo', 'microsoft', 'nvidia', 'stepfun-ai', 'tencent', 'mistralai', 'meta-llama', 'google']);
   const ids = new Set(models.releases.map(model => model.id));
   assert.equal(new Date(specs.checkedAt + 'T00:00:00Z').toISOString().slice(0, 10), specs.checkedAt);
@@ -67,6 +67,13 @@ test('limits and parameter counts retain valid units and coherent ranges', () =>
 
 test('research configurations, API versions, family variants, and extensions stay distinct', () => {
   const variants = id => specs.entries[id].variants;
+  assert.equal(variants('gemini-4-argon')[0].contextTokens, 1048576);
+  assert.equal(variants('gemini-4-argon')[0].inputTokens, undefined, 'Unified context is not a separate input allowance');
+  assert.equal(variants('gemini-4-argon')[0].outputTokens, 65536, 'Do not replace the default synchronous limit with conditional long-decode capacity');
+  assert.match(specs.entries['gemini-4-argon'].noteEn, /thinking and output together/);
+  assert.equal(variants('muse-wonder')[0].basis, 'api');
+  assert.equal(variants('muse-wonder')[1].basis, 'paper', 'Full has a model card, not public API documentation');
+  assert.equal(variants('muse-wonder')[1].outputTokens, undefined);
   assert.equal(variants('gpt-4o')[0].name, 'gpt-4o-2024-08-06');
   assert.equal(variants('gpt-4o')[0].parameters, undefined);
   assert.equal(variants('gpt-1')[0].trainingTokens, 512);

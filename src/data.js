@@ -35,7 +35,7 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    "checkedAt": "2026-10-11",
+    "checkedAt": "2026-10-15",
     "source": "https://artificialanalysis.ai/leaderboards/models",
     "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
     "metric": "Artificial Analysis Intelligence Index",
@@ -48,6 +48,11 @@ window.MODEL_ATLAS = (() => {
         "score": 58
       },
       {
+        "company": "meta",
+        "model": "Muse Wonder Full (max)",
+        "score": 56
+      },
+      {
         "company": "openai",
         "model": "GPT-6 Astra (max)",
         "score": 53
@@ -56,11 +61,6 @@ window.MODEL_ATLAS = (() => {
         "company": "google",
         "model": "Gemini 4 Argon (high)",
         "score": 53
-      },
-      {
-        "company": "meta",
-        "model": "Muse Spark 1.3 (max)",
-        "score": 48
       },
       {
         "company": "xai",
@@ -392,8 +392,8 @@ window.MODEL_ATLAS = (() => {
       '推出 Pro 与 Flash 两条路线，支持百万 token 上下文并开放模型权重。', ['长上下文', '开放权重'], ds('news260424'), true,
       'V4 的预览发布聚焦长上下文效率、推理与智能体编程，提供面向不同计算需求的两个型号。', '此处为预览版；V4-Pro 正式版于 8 月另行发布。'),
     event("gemini-3-5-flash", "2026-05-19", "Gemini 3.5 Flash", "google", "release",
-      "在 Google I/O 推出，将响应速度与智能体任务能力作为重点。", ["高效推理","智能体"], [source("Google · I/O 2026 Gemini 公告", "https://blog.google/innovation-and-ai/products/gemini-app/next-evolution-gemini-app/")], false,
-      "随 Google I/O 的 Gemini 应用更新介绍，侧重快速响应与任务执行。"),
+      "在 Google I/O 推出，将响应速度与智能体任务能力作为重点。", ["高效推理","智能体"], [source("Google · I/O 2026 Gemini 公告", "https://blog.google/innovation-and-ai/products/gemini-app/next-evolution-gemini-app/"), source("Google · API 发布日志", "https://ai.google.dev/gemini-api/docs/changelog")], false,
+      "随 Google I/O 的 Gemini 应用更新介绍，侧重快速响应与任务执行。2026 年 10 月 8 日起，gemini-3.5-flash API 名称已弃用，请求自动路由至 Gemini 3.6 Flash。"),
     event('claude-fable-5', '2026-06-09', 'Claude Fable 5 / Mythos 5', 'anthropic', 'release',
       '推出面向高难度编码和知识工作的模型，两个型号采取不同访问范围。', ['复杂任务', '研究'], an('claude-fable-5-mythos-5'), true,
       'Fable 5 面向更广泛使用，Mythos 5 采用受限访问。该节点记录初次发布，而不表示两者均向所有用户开放。', '官方后续记录了 6 月的访问暂停以及 7 月 1 日恢复；这里保留初次发布日期。'),
@@ -584,8 +584,8 @@ window.MODEL_ATLAS = (() => {
       "增强跨软件、跨工具的任务完成能力，围绕编程和知识工作迭代。", ["智能体","知识工作"], source("OpenAI · 官方发布", "https://openai.com/index/introducing-gpt-5-5/"), false,
       "采用 4 月 23 日产品首发公告；GPT-5.5 与 Pro 的 API 开放为次日 4 月 24 日。", "ChatGPT 与 Codex 首发为 4 月 23 日，API 开放为 4 月 24 日。"),
     event("mimo-v2-5", "2026-04-23", "MiMo-V2.5 / Pro", "xiaomi", "release",
-      "升级复杂任务处理，兼顾智能体能力与推理效率。", ["智能体","多模态"], source("小米 MiMo · 官方发布", "https://mimo.mi.com/docs/en-US/updates/model"), false,
-      "采用官方模型日志中两种型号同日发布的日期，区别于后续权重开放。"),
+      "升级复杂任务处理，兼顾智能体能力与推理效率。", ["智能体","多模态"], [source("小米 MiMo · 官方发布", "https://mimo.mi.com/docs/en-US/updates/model"), source("小米 MiMo · API 下线计划", "https://mimo.mi.com/docs/zh-CN/updates/deprecate")], false,
+      "采用官方模型日志中两种型号同日发布的日期，区别于后续权重开放。2026 年 10 月 14 日 18:00（UTC+8）起，V2.5 / Pro API 请求分别自动路由至 V2.6 Flash / Pro 并按新版计价；旧名称于 10 月 21 日 10:00（UTC+8）失效。已开放的模型权重不受此次 API 下线影响。"),
     event("qwen-3-7-max", "2026-05-20", "Qwen3.7-Max", "qwen", "announcement",
       "继续升级智能体编程、办公任务与长程执行能力。", ["编程","知识工作"], [source("Qwen · 官方发布", "https://qwen.ai/blog?id=qwen3.7&locale=en")], false,
       "Qwen3.7-Max 面向编程、办公文档与长程工具任务，支持多智能体编排。", "按官方文章当前标注的 5 月 20 日记录；页面遗留内容另含 5 月 16 日，首次公开时间尚未确认。"),
@@ -640,8 +640,8 @@ window.MODEL_ATLAS = (() => {
       "V4 Pro 转为正式版本，强化智能体任务并原生支持 Responses API。", ["智能体","工具使用"], source("DeepSeek · 官方发布日志", "https://api-docs.deepseek.com/zh-cn/news/news260813/"), false,
       "采用官方发布日志 8 月 13 日；0813 为此次模型快照，与 4 月的 V4 预览分开。"),
     event("gemini-3-7-flash", "2026-08-13", "Gemini 3.7 Flash", "google", "release",
-      "继续增强编程、知识工作与网页开发中的多步骤任务处理。", ["编程","智能体"], source("Google · 官方博客", "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/"), false,
-      "这是 Flash 系列在 3.6 之后的模型迭代，开发者、企业和消费者端分渠道提供。"),
+      "继续增强编程、知识工作与网页开发中的多步骤任务处理。", ["编程","智能体"], [source("Google · 官方博客", "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/"), source("Google · API 发布日志", "https://ai.google.dev/gemini-api/docs/changelog")], false,
+      "这是 Flash 系列在 3.6 之后的模型迭代，开发者、企业和消费者端分渠道提供。2026 年 10 月 8 日起，gemini-3.7-flash API 名称已弃用，请求自动路由至 Gemini 3.8 Flash。"),
     event("glm-5-3", "2026-08-18", "GLM-5.3", "zhipu", "release",
       "强化复杂编程与长期任务执行。", ["编程","智能体"], [source("Z.ai · 官方发布日志", "https://docs.z.ai/release-notes/new-released"), source("Z.ai · GLM-5.3 模型文档", "https://docs.z.ai/guides/llm/glm-5.3")], false,
       "模型面向复杂编程与长程工程任务。", "采用 Z.ai 官方平台 8 月 18 日的发布记录。"),
@@ -679,7 +679,7 @@ window.MODEL_ATLAS = (() => {
       "结合全模态理解与大规模强化学习，升级长程任务能力。", ["全模态","智能体"], source("小米 MiMo · 官方发布", "https://mimo.mi.com/docs/en-US/updates/model"), false,
       "采用官方模型发布日志 9 月 22 日；Pro 的加速服务不作为新模型重复计数。"),
     {"id": "gpt-6-1-sol", "date": "2026-09-29", "name": "GPT-6.1 Sol", "company": "openai", "kind": "release", "summary": "升级编程、计算机操作与专业任务能力，并支持在单次请求中分派子任务。", "details": "GPT-6.1 Sol 延续 Sol 的价格定位，提供 1,050,000 tokens 上下文和图像输入，改进长程工具使用。Multi-agent 以测试功能提供；推理档位与产品接入方式合并在同一节点记录。", "dateNote": "采用 OpenAI API 更新日志的 9 月 29 日。ChatGPT Work 与 Codex 的分批开放不另作模型发布时间。", "tags": ["推理", "多模态", "智能体"], "milestone": false, "sources": [{"title": "OpenAI · API 发布日志", "url": "https://developers.openai.com/api/docs/changelog"}, {"title": "OpenAI · 模型文档", "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol"}]},
-    {"id": "gemini-4-argon", "date": "2026-09-30", "name": "Gemini 4 Argon", "company": "google", "kind": "announcement", "summary": "面向复杂编程、知识工作与网络防御的新一代多模态模型，先向受邀团队开放。", "details": "Google 公布 Gemini 4 Argon，并通过 Fairwind 计划向受邀网络防御团队逐步开放。模型侧重多步骤推理与长程任务；面向开发者和消费者的普遍开放尚未开始。", "dateNote": "采用 Google 公告标注的 9 月 30 日，记录模型公布与有限开放，不能视为公开 API 或 Gemini 应用全面上线。", "tags": ["多模态", "推理", "智能体"], "milestone": false, "sources": [{"title": "Google · 模型公告", "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/"}, {"title": "Google DeepMind · 模型与评测", "url": "https://deepmind.google/models/gemini/"}]},
+    {"id": "gemini-4-argon", "date": "2026-09-30", "name": "Gemini 4 Argon", "company": "google", "kind": "announcement", "summary": "面向复杂编程、知识工作与网络防御的新一代多模态模型，支持长程推理与工具任务。", "details": "9 月 30 日先通过 Fairwind 计划向受邀网络防御团队开放，10 月 13 日转为 Gemini API 正式可用。开发者可使用付费 API；Google AI Ultra 可在 AI Studio 和 Antigravity 使用，Gemini 应用则向 Pro 与 Ultra 订阅用户开放。", "dateNote": "保留 9 月 30 日首次公告日期；10 月 13 日的 API 正式开放与应用上线作为后续进展记录。", "tags": ["多模态", "推理", "智能体"], "milestone": false, "sources": [{"title": "Google · 模型公告", "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/"}, {"title": "Google · API 发布日志", "url": "https://ai.google.dev/gemini-api/docs/changelog"}, {"title": "Google · 开发者开放公告", "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/"}, {"title": "Google · Gemini 应用开放公告", "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability/"}]},
     event("mistral-large-4-preview", "2026-10-06", "Mistral Large 4 Preview", "mistral", "preview",
       "公开预览新一代多模态旗舰，结合指令遵循、混合推理与智能体任务能力。", ["多模态", "推理", "智能体"],
       [source("Mistral · 模型发布", "https://mistral.ai/news/mistral-large-4/"), source("Mistral · 官方发布日志", "https://docs.mistral.ai/resources/changelogs")], false,
@@ -695,6 +695,11 @@ window.MODEL_ATLAS = (() => {
       source("OpenAI · 十月版本系统卡", "https://deploymentsafety.openai.com/gpt-6-october"), false,
       "此次版本在 ChatGPT 中替代 GPT-5.6 Sol 与 Luna，并更新安全训练。官方明确将其与 Codex、ChatGPT Work 当时使用的九月版本区分；十月版本的上线范围为 ChatGPT。",
       "采用官方系统卡的 10 月 7 日，记录 ChatGPT 十月版本上线；保留九月模型首次发布节点。"),
+    event("muse-wonder", "2026-10-12", "Muse Wonder / Wonder Full", "meta", "preview",
+      "Meta 新一代多模态模型面向长程编程、计算机操作与专业任务，支持跨会话记忆和子任务分派。", ["多模态", "编程", "智能体"],
+      [source("Meta · 模型发布", "https://research.meta.ai/blog/muse-wonder"), source("Meta · 模型卡", "https://research.meta.ai/static/muse-wonder-model-card"), source("Meta · 型号与访问范围", "https://dev.meta.ai/models/muse-wonder")], false,
+      "Wonder 通过 Meta Model API 预览和 Muse Code 提供，Full 仅向 Muse Code 的 Power Usage 与 Maximum Usage 订阅用户开放。两款均支持文本、图像、音频与视频输入及文本输出；API 价格仅适用于 Wonder。Muse 应用中的后续接入仍为计划。",
+      "采用 Meta 公告与模型卡共同标注的 10 月 12 日；同日两款模型合并为一个家族节点，保留各自的访问范围。"),
     event("bloom", "2022-07-12", "BLOOM", "bigscience", "weights",
       "BigScience 协作发布 176B 多语言模型，开放权重与训练过程资料。", ["多语言","开放权重"], [source("BigScience / Hugging Face · BLOOM 发布", "https://huggingface.co/blog/bloom")], true,
       "BLOOM 可生成 46 种自然语言和 13 种编程语言，由跨机构研究协作训练。模型按 BigScience RAIL 许可提供，可下载并在本地研究使用。", "采用公开发布公告日期，区别于训练完成和后续 BLOOMZ 发布。"),
@@ -706,7 +711,7 @@ window.MODEL_ATLAS = (() => {
       "《Visual Instruction Tuning》使用 GPT-4 生成图文指令数据，将视觉编码器的图像特征接入语言模型，研究通用图像理解与多模态对话。", "采用 arXiv 第一版提交日期；后续 LLaVA 1.5、1.6 属于其他版本。"),
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-10-11',
+    checkedAt: '2026-10-15',
     scope: '主流通用语言、推理、编程模型及其多模态扩展，兼顾重要历史研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
@@ -720,5 +725,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-10-11', updatedAt: '2026-10-12', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-10-15', updatedAt: '2026-10-15', companies, companyRanking, kinds, themes, releases, coverage });
 })();

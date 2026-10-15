@@ -40,11 +40,11 @@ Entries are selected for historical influence or technical significance. This is
 
 ## Explore
 
-- Filter by organization, year, and type; share the resulting URL. Header search covers all timelines. Organization selection is single by default, with a multi-select switch for comparisons.
+- Filter by organization, year, and type; share the resulting URL. Header search covers all timelines, prioritizing exact names, then model or series names, then descriptive matches. Organization selection is single by default, with a multi-select switch for comparisons.
 - Switch between detailed cards and a compact list, with newest entries first.
 - Browse annual and monthly counts for the current selection.
 - Open [Explore](https://ai.taifua.com/explore.html?lang=en) from the compass button in the header. It presents all cataloged events across the four timelines in monthly groups, from newest to oldest, with same-day events shown together and horizontal year and month navigation.
-- Open an entry for its release scope, specifications, and sources. Browser Back closes details and Forward reopens them, preserving the selected filters.
+- Open an entry for its release scope, specifications, and sources. Browser Back closes details and Forward reopens them, preserving the selected filters. A correction link opens the existing GitHub issue form with the entry name and URL; it does not submit an issue.
 - Use Chinese or English. The home page initially follows the browser language; manual choices are remembered, with dedicated URLs for each language.
 - Browse on desktop or mobile, with keyboard navigation and reduced-motion support.
 
@@ -121,7 +121,7 @@ The first run has no accepted baseline. Review the document identity, visible co
 npm run check:sources -- --accept research/source-monitor/reports/<report>.json --source <source-id>,<source-id>
 ```
 
-Documents from the same report can be accepted in separate review batches. Failed observations cannot be accepted. Unrelated baseline changes require a fresh check; modifying a report after partial acceptance also prevents further acceptance from that report. Omitting `--source` accepts all successful observations in that report, so use it only after reviewing every successful document. Acceptance updates the private comparison baseline, not website data or verification dates. Subsequent runs compare with this baseline. Page changes still need factual review, especially where a live page now describes a different model revision. Oversized pages remain explicit failures; `--max-bytes` can raise the default 4 MiB limit up to 16 MiB for a targeted check.
+Documents from the same report can be accepted in separate review batches. Failed observations cannot be accepted. Unrelated baseline changes require a fresh check; modifying a report after partial acceptance also prevents further acceptance from that report. Omitting `--source` accepts all successful observations in that report, so use it only after reviewing every successful document. Acceptance updates the private comparison baseline, not website data or verification dates. Subsequent runs compare with this baseline. Page changes still need factual review, especially where a live page now describes a different model revision. A normalization-version change is flagged for review rather than silently accepting a new baseline. Oversized pages remain explicit failures; `--max-bytes` can raise the default 4 MiB limit up to 16 MiB for a targeted check.
 
 For release discovery, a separate manual command reads a small registry of official news feeds, public GitHub release feeds, and AA/Arena model lists:
 
@@ -133,7 +133,17 @@ npm run discover:candidates -- --source claude-code,arena-text --limit 10
 
 The registry in `scripts/candidate-sources.json` documents each source's coverage. It is a starting set, not a complete release index. `--limit` applies per source. `--since` filters confirmed publication days; entries with unknown dates or only a reported month stay visible for review. A leaderboard appearance or feed modification date is never substituted for a release date.
 
-Reports, raw snapshots, and `queue.json` stay in Git-ignored `research/candidate-discovery/`. The queue retains exact versions and configurations, suggests possible existing catalog matches, and preserves manual `status` and `reviewNote` fields across runs. Edit these fields between runs after checking original sources and the inclusion criteria; examples of decisions are `represented`, `deferred`, and `rejected`. Meaningful candidate changes reopen review and retain earlier decisions in `reviewHistory`; repeated observations do not create duplicate entries. An observation is a research lead, not a new or approved release. Neither tool imports scores, adds website entries, schedules checks, or sends notifications. Publication still requires editorial review and the normal project checks.
+Reports, raw snapshots, and `queue.json` stay in Git-ignored `research/candidate-discovery/`. Generate a readable private review summary, then record explicit decisions after comparing the sources with the inclusion criteria:
+
+```bash
+npm run review:candidates -- --since 2026-10-12
+npm run review:candidates -- --source artificial-analysis --status needs_review,deferred
+npm run review:candidates -- --from research/candidate-discovery/reviews/<summary>.json --id <full-candidate-id> --decide represented --note "Exact release already covered." --entry models/<entry-id> --evidence https://example.com/release
+```
+
+The review command's `--since` means **first observed or content changed**, not released. Summaries include full IDs, source excerpts, publication-date precision, previous reasons, and possible catalog matches. New observations, changed content, and possible matches can overlap. Default status is `needs_review`; `--status all` includes prior decisions. JSON and Markdown summaries stay in the private `reviews/` directory.
+
+Decisions are `represented`, `deferred`, `rejected`, or `needs_review`. Every decision requires a reason; represented entries require an explicit catalog mapping, and represented/rejected decisions require evidence URLs. Generate a fresh summary after each decision batch. Unknown IDs, invalid mappings, concurrent writes, and a queue changed since the summary are refused. Meaningful source changes reopen review, preserve earlier decisions, mappings, and evidence in `reviewHistory`, and retain the date of the change; repeated observations do not create duplicate entries. An observation is a research lead, not a new or approved release. These tools do not import scores, add website entries, schedule checks, or send notifications. Publication still requires editorial review and the normal project checks.
 
 ## Project structure
 
@@ -143,7 +153,7 @@ Reports, raw snapshots, and `queue.json` stay in Git-ignored `research/candidate
 | `src/data*.js` | Bilingual entries, classifications, specifications, prices, and scores. |
 | `src/app.js`, `src/filters.js`, `src/site.js`, `src/icons.js`, `src/styles.css` | Rendering, filtering, navigation, language, and layout. |
 | `src/assets/` | Local font, icons, and their notices. |
-| `scripts/` | Development server, static build, manual source checks and candidate discovery, and optional font-subsetting tool. |
+| `scripts/` | Development server, static build, manual source checks, candidate discovery and review, and optional font-subsetting tool. |
 | `tests/` | Data and behavior checks, dated score fixtures, and browser regressions in `tests/browser/`. |
 | `docs/` | Documentation assets, including desktop and mobile previews. |
 | `dist/` | Generated static site, excluded from Git. |

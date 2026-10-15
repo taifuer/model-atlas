@@ -82,11 +82,12 @@
     const records = Object.entries(entry).map(([key, score]) => {
       const metric = data.benchmarks[key];
       const title = metric.name + (metric.version ? ` v${metric.version}` : '');
+      const checkedAt = score.checkedAt || metric.checkedAt || data.checkedAt;
       const caveat = score.estimated ? L('AA 估算值', 'AA estimate') : score.preliminary ? L('初步结果', 'Preliminary result') : '';
       const extra = key === 'arena' ? `${L('榜单日期', 'Leaderboard date')} ${formattedDate(metric.publishedAt)} · ${score.votes.toLocaleString('en-US')} ${L('次投票', 'votes')}${caveat ? ` · ${caveat}` : ''}` : caveat;
-      return `<div class="benchmark-record"><div class="benchmark-heading"><div class="benchmark-identity"><h4>${escape(title)}</h4><p class="benchmark-model">${escape(score.model)}</p></div><strong>${score.score}${score.confidenceInterval ? `<span> ±${score.confidenceInterval}</span>` : ''}${score.estimated || score.preliminary ? '<sup>*</sup>' : ''}</strong></div>${extra ? `<p class="benchmark-meta">${escape(extra)}</p>` : ''}<a href="${escape(score.source)}" target="_blank" rel="noopener noreferrer">${L('评测来源', 'Evaluation source')}</a></div>`;
+      return `<div class="benchmark-record"><div class="benchmark-heading"><div class="benchmark-identity"><h4>${escape(title)}</h4><p class="benchmark-model">${escape(score.model)}</p></div><strong>${score.score}${score.confidenceInterval ? `<span> ±${score.confidenceInterval}</span>` : ''}${score.estimated || score.preliminary ? '<sup>*</sup>' : ''}</strong></div><p class="benchmark-meta">${L('核对日期', 'Checked')} <time datetime="${escape(checkedAt)}">${formattedDate(checkedAt)}</time>${extra ? ` · ${escape(extra)}` : ''}</p><a href="${escape(score.source)}" target="_blank" rel="noopener noreferrer">${L('评测来源', 'Evaluation source')}</a></div>`;
     }).join('');
-    return `<section class="detail-scores" aria-labelledby="scores-title">${sectionHeading('scores-title', L('评测分数', 'Benchmark scores'), data.checkedAt, `about.html?lang=${language}#scores`, L('评测口径', 'Methodology'))}${records}<p class="spec-note">${L('AA 衡量基准任务能力；Arena Text Overall（风格控制）反映文本对话偏好，± 为榜单置信区间。两者不直接换算。分数对应上述型号和推理配置，不代表整个系列或发布时的成绩。', 'AA measures benchmark-task performance; Arena Text Overall with Style Control reflects text-chat preferences, with the leaderboard confidence interval shown as ±. The scales are not interchangeable. Scores describe the listed configurations, not an entire family or performance at launch.')}</p></section>`;
+    return `<section class="detail-scores" aria-labelledby="scores-title">${sectionHeading('scores-title', L('评测分数', 'Benchmark scores'), '', `about.html?lang=${language}#scores`, L('评测口径', 'Methodology'))}${records}<p class="spec-note">${L('AA 衡量基准任务能力；Arena Text Overall（风格控制）反映文本对话偏好，± 为榜单置信区间。两者不直接换算。分数对应上述型号和推理配置，不代表整个系列或发布时的成绩。', 'AA measures benchmark-task performance; Arena Text Overall with Style Control reflects text-chat preferences, with the leaderboard confidence interval shown as ±. The scales are not interchangeable. Scores describe the listed configurations, not an entire family or performance at launch.')}</p></section>`;
   }
     const original = releaseById.get(id);
     if (!original) return '';
@@ -104,13 +105,37 @@
       const note = L(modelType.note || '', modelType.noteEn || '');
       classification.push(`<p class="detail-access">${L('输入类型：', 'Input type: ')}<strong>${escape(categoryName(modelType.category))}</strong>${note ? ` · ${escape(note)}` : ''} ${modelType.sources.map((url, i) => `<a href="${escape(url)}" target="_blank" rel="noopener noreferrer">${L('分类来源', 'Source')}${modelType.sources.length > 1 ? ` ${i + 1}` : ''}</a>`).join(' · ')} · <a href="about.html?lang=${language}#model-types">${L('分类说明', 'Classification guide')}</a></p>`);
     }
+    const correctionURL = new URL('https://github.com/taifuer/model-atlas/issues/new');
+    const record = window.ATLAS_CATALOG.get(`${page}:${id}`);
+    const entryURL = new URL(window.ATLAS_CATALOG.timelineUrl(record, language), 'https://ai.taifua.com/');
+    correctionURL.searchParams.set('template', 'entry.md');
+    correctionURL.searchParams.set('title', `${L('纠错', 'Correction')}: ${release.name}`);
+    correctionURL.searchParams.set('body', `**Timeline / 时间线**
+${window.ATLAS_CATALOG.sections[page].zh} / ${window.ATLAS_CATALOG.sections[page].en}
+
+**Event or existing entry / 事件或现有节点**
+${release.name} · ${release.date}
+${page}:${id}
+${entryURL.href}
+
+**Proposal / 建议**
+What should be added or corrected? / 需要补充或修正什么？
+
+**Sources / 来源**
+Link reliable evidence and distinguish the event date from the article date.
+提供可信来源，并区分事件发生日期与报道日期。
+
+**Significance / 收录理由**
+For new entries, explain their historical influence or technical significance.
+新节点请说明经典性、技术代表性或可验证影响；硬件请补充该型号的实际采用证据。`);
     let html = `
       <header class="detail-header"><div class="dialog-title-row">${releaseIcon(release, 30)}<h2 id="dialog-title">${escape(release.name)}</h2></div><div class="dialog-meta">${metadata.join('')}</div></header>
       <div class="detail-overview"><p class="dialog-summary">${escape(release.summary)}</p>${release.details ? `<p class="detail-copy">${escape(release.details)}</p>` : ''}${release.dateNote ? `<p class="detail-note"><strong>${L('日期与范围：', 'Date and scope: ')}</strong>${escape(release.dateNote)}</p>` : ''}</div>
       ${accessHTML}${specifications(id)}${pricing(id)}${benchmarkScores(id)}
       ${classification.length ? `<section class="detail-classification" aria-labelledby="classification-title"><h3 id="classification-title">${L('分类依据', 'Classification')}</h3>${classification.join('')}</section>` : ''}
       <section class="detail-references" aria-labelledby="sources-title"><h3 class="dialog-source-title" id="sources-title">${L('资料来源', 'Sources')}</h3><ul class="detail-sources">${release.sources.map(source => `<li><a href="${escape(source.url)}" target="_blank" rel="noopener noreferrer">${escape(sourceTitle(source))}</a></li>`).join('')}${accessEvidence}</ul></section>
-      <div class="dialog-actions"><a class="solid-button" href="${escape(release.sources[0].url)}" target="_blank" rel="noopener noreferrer">${L('查看资料', 'Read source')}</a><button class="outline-button" data-copy="${release.id}">${L('复制节点链接', 'Copy link')}</button></div>`;
+      <div class="dialog-actions"><a class="solid-button" href="${escape(release.sources[0].url)}" target="_blank" rel="noopener noreferrer">${L('查看资料', 'Read source')}</a><button class="outline-button" data-copy="${release.id}">${L('复制节点链接', 'Copy link')}</button></div>
+      <p class="detail-correction"><a href="${escape(correctionURL.href)}" target="_blank" rel="noopener noreferrer">${L('纠错', 'Report a correction')}</a></p>`;
     if (id === 'transformer' && ['models', 'technology'].includes(page)) {
       const target = page === 'models' ? pages.technology : pages.models;
       html = html.replace('<div class="dialog-actions">', `<p class="detail-related"><a href="${target.file}?lang=${language}#release-transformer">${L('同时收录于', 'Also on')} ${L(...target.title)}</a></p><div class="dialog-actions">`);

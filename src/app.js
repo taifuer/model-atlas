@@ -28,13 +28,8 @@
   }
   const companyById = new Map(companies.map(company => [company.id, company]));
   const releaseById = new Map(releases.map(release => [release.id, release]));
-  const { normalize } = window.ATLAS_FILTERS;
   const categoryName = id => english ? raw.categoriesEn?.[id] : raw.categories?.[id];
-  const searchIndex = new Map(releases.map(release => {
-    const company = companyById.get(release.company);
-    const en = release.en || window.MODEL_ATLAS_EN?.[release.id] || {};
-    return [release.id, [release.name, en.name || '', company.name, companyName(company), company.aliases || '', release.date, release.summary, release.details, en.summary || '', en.details || '', raw.categories?.[release.category] || '', raw.categoriesEn?.[release.category] || '', ...release.tags, ...release.tags.map(tag)].map(normalize).join('\0')];
-  }));
+  const searchIndex = window.ATLAS_CATALOG.searchIndex(page);
   const filters = window.ATLAS_FILTERS.create(raw, searchIndex);
   const accessLabels = { open: L('开源', 'Open source'), closed: L('闭源', 'Closed source') };
   const accessFilterLabel = value => accessLabels[value];
@@ -169,8 +164,8 @@
       if (!score) continue;
       const label = key === 'aa' ? 'AA' : 'Arena';
       const mark = score.estimated || score.preliminary ? '*' : '';
-      const checkedAt = score.checkedAt || window.MODEL_ATLAS_SCORES.checkedAt;
       const metric = window.MODEL_ATLAS_SCORES.benchmarks[key];
+      const checkedAt = score.checkedAt || metric.checkedAt || window.MODEL_ATLAS_SCORES.checkedAt;
       const publishedAt = score.publishedAt || metric.publishedAt;
       const published = publishedAt ? ` · ${L('榜单日期', 'Leaderboard date')} ${formattedDate(publishedAt)}` : '';
       const description = `${window.MODEL_ATLAS_SCORES.benchmarks[key].name} · ${score.model} · ${score.score}${mark}${published} · ${L('核对日期', 'Checked')} ${formattedDate(checkedAt)} · ${L('查看配置与评测口径', 'View configuration and methodology')}`;

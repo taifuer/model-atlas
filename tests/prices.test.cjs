@@ -9,7 +9,7 @@ const { MODEL_ATLAS: models, MODEL_ATLAS_PRICES: prices } = context.window;
 
 test('documented rates retain currency, units, exact versions, and first-party evidence', () => {
   const ids = new Set(models.releases.map(model => model.id));
-  const hosts = new Set(['docs.mistral.ai', 'www.anthropic.com', 'blog.google', 'developers.openai.com', 'platform.claude.com', 'ai.google.dev', 'api-docs.deepseek.com', 'docs.x.ai', 'docs.z.ai', 'www.qwencloud.com', 'docs.qwencloud.com', 'platform.minimax.io', 'mimo.mi.com']);
+  const hosts = new Set(['dev.meta.ai', 'docs.mistral.ai', 'www.anthropic.com', 'blog.google', 'developers.openai.com', 'platform.claude.com', 'ai.google.dev', 'api-docs.deepseek.com', 'docs.x.ai', 'docs.z.ai', 'www.qwencloud.com', 'docs.qwencloud.com', 'platform.minimax.io', 'mimo.mi.com']);
   assert.equal(prices.unitTokens, 1000000);
   assert.equal(prices.inputType, 'uncached-text');
   assert.equal(prices.outputType, 'text');
@@ -70,4 +70,28 @@ test('pricing distinguishes context tiers, promotions, retired models, and hoste
   assert.equal(variants('minimax-m3')[0].tiers[0].input, 0.3, 'Use effective Standard price, not crossed-out or Priority rate');
   assert.equal(variants('mimo-v2-6')[0].currency, 'USD');
   assert.equal(variants('mimo-v2-6')[0].tiers[0].input, 0.14, 'Do not mix domestic CNY or Batch prices');
+});
+
+
+test('new availability and API replacements preserve variant and historical price scope', () => {
+  const wonder = prices.entries['muse-wonder'];
+  assert.equal(wonder.variants.length, 1, 'Wonder Full has no public per-token API price');
+  assert.equal(wonder.variants[0].name, 'muse-wonder-1.0');
+  assert.equal(wonder.cardScope, 'variant');
+  assert.equal(wonder.variants[0].tiers[0].input, 4);
+  assert.equal(wonder.variants[0].tiers[0].output, 20);
+  const argon = prices.entries['gemini-4-argon'].variants[0];
+  assert.equal(argon.tiers.length, 1, 'Future December pricing belongs in the dated note, not current price tiers');
+  assert.equal(argon.announced, undefined);
+  assert.equal(argon.tiers[0].validUntil, '2026-11-30');
+  assert.match(argon.noteEn, /December 1/);
+  for (const id of ['gemini-3-5-flash', 'gemini-3-7-flash', 'mimo-v2-5']) {
+    for (const variant of prices.entries[id].variants) {
+      assert.equal(variant.archived, true, id);
+      assert.match(variant.noteEn, /routes?(?: requests)? to/, id);
+      assert.ok(variant.sources.some(url => /changelog|deprecate/.test(url)), id);
+    }
+  }
+  assert.equal(prices.entries['gemini-3-5-flash'].variants[0].tiers[0].input, 1.5, 'Retain historical price, not replacement-model price');
+  assert.match(prices.entries['mimo-v2-5'].variants[0].noteEn, /October 14.*18:00.*October 21.*10:00/);
 });

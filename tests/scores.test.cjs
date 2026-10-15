@@ -14,7 +14,7 @@ test('published scores exactly match dated public source snapshots and known rel
   assert.equal(scores.benchmarks.arena.adjustments, 'style-control');
   const ids = new Set(models.releases.map(r => r.id));
   for (const key of ['aa', 'arena']) {
-    const snapshot = JSON.parse(fs.readFileSync(path.join(__dirname, 'fixtures', 'scores', scores.checkedAt, `${key}-scores.json`)));
+    const snapshot = JSON.parse(fs.readFileSync(path.join(__dirname, 'fixtures', 'scores', scores.benchmarks[key].checkedAt || scores.checkedAt, `${key}-scores.json`)));
     assert.deepEqual(JSON.parse(JSON.stringify(scores.benchmarks[key])), snapshot.metric);
     for (const row of snapshot.records) {
       const { releaseId, ...record } = row;
@@ -27,6 +27,12 @@ test('published scores exactly match dated public source snapshots and known rel
     assert.equal(snapshot.records.length, Object.values(scores.entries).filter(e => e[key]).length);
   }
   assert.equal(scores.entries['gemini-4-argon'].arena.preliminary, true);
+  assert.equal(scores.benchmarks.aa.checkedAt, '2026-10-15');
+  assert.equal(scores.checkedAt, '2026-10-11', 'A new AA check must not advance the unchanged Arena review date');
+  assert.equal(scores.benchmarks.arena.publishedAt, '2026-10-08');
+  assert.equal(scores.entries['muse-wonder'].aa.model, 'Muse Wonder Full (max)');
+  assert.equal(scores.cardScopes['muse-wonder'], 'variant');
+  assert.equal(scores.entries['muse-wonder'].arena, undefined, 'Do not transfer Wonder results to Full without verified metric scope');
   assert.equal(scores.entries['gpt-6-1-sol'].arena.model, 'gpt-6.1-sol-max', 'Use the exact newly evaluated configuration');
   assert.equal(scores.entries['claude-sonnet-5-5'].arena.model, 'claude-sonnet-5.5-xhigh');
   assert.equal(scores.entries['gpt-6-sol-luna-chatgpt-october'], undefined, 'Do not transfer September API scores to the ChatGPT October versions');
@@ -40,7 +46,9 @@ test('new releases retain availability and independently dated specifications', 
   assert.equal(gemini.kind, 'announcement');
   assert.equal(gemini.openness.status, 'closed');
   const prices = context.window.MODEL_ATLAS_PRICES;
-  assert.equal(prices.entries['gemini-4-argon'].variants[0].announced, true);
+  assert.equal(gemini.date, '2026-09-30', 'General availability must not rewrite the first announcement');
+  assert.equal(prices.entries['gemini-4-argon'].variants[0].announced, undefined);
+  assert.equal(prices.entries['gemini-4-argon'].variants[0].tiers[0].validUntil, '2026-11-30');
   assert.equal(prices.entries['gpt-6-1-sol'].variants[0].tiers[1].output, 15);
   for (const entry of Object.values(prices.entries)) {
     const reviewed = entry.checkedAt || prices.checkedAt;

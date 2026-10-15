@@ -114,7 +114,10 @@ for (const language of ['zh', 'en']) {
       await page.keyboard.press('Escape');
       await expect(page.locator('#detail-dialog')).not.toBeVisible();
 
-      const snapshot = await page.evaluate(() => window.MODEL_ATLAS_SCORES.checkedAt.replaceAll('-', '.'));
+      const snapshot = await page.evaluate(() => {
+        const scores = window.MODEL_ATLAS_SCORES;
+        return (scores.entries['claude-opus-5-5'].aa.checkedAt || scores.benchmarks.aa.checkedAt || scores.checkedAt).replaceAll('-', '.');
+      });
       const score = page.locator('#release-claude-opus-5-5 [data-detail-section="scores"]').first();
       await expect(score).toHaveAttribute('title', new RegExp(snapshot.replaceAll('.', '\\.')));
       await page.locator('[data-view="compact"]').click();
@@ -163,6 +166,8 @@ for (const language of ['zh', 'en']) {
     test('every header searches all timelines and understands typographic hyphens', async ({ page }) => {
       for (const file of pages) {
         await ready(page, route(language, file));
+        const latestUpdate = await page.evaluate(() => [window.MODEL_ATLAS, window.AGENT_ATLAS, window.HARDWARE_ATLAS, window.TECHNOLOGY_ATLAS].map(data => data.updatedAt || data.asOf).sort().at(-1));
+        await expect(page.locator('[data-updated]')).toHaveAttribute('datetime', latestUpdate);
         await noOverflow(page);
         const hit = await page.locator('.explore-launch').boundingBox();
         expect(hit.width, `${file}: Explore hit target width`).toBeGreaterThanOrEqual(44);

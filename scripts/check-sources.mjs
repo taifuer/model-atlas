@@ -10,9 +10,26 @@ import { loadCatalog } from './prerender.mjs';
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const PRIVATE_ROOT = path.join(ROOT, 'research/source-monitor');
 const SCHEMA = 1;
-const NORMALIZER = 'text-v2';
+const NORMALIZER = 'text-v3';
 const HTML_ATTRIBUTES = String.raw`(?:[^>"']|"[^"]*"|'[^']*')*`;
 const stripTags = text => text.replace(new RegExp(`<${HTML_ATTRIBUTES}>`, 'g'), ' ');
+function articleBody(text) {
+  const opening = new RegExp(String.raw`<div\b${HTML_ATTRIBUTES}>`, 'gi');
+  let match;
+  while ((match = opening.exec(text))) {
+    const classes = match[0].match(/\bclass\s*=\s*(["'])([^]*?)\1/i)?.[2]?.split(/\s+/) || [];
+    if (!classes.includes('article-body')) continue;
+    // Balance nested divs instead of truncating the document at its first child.
+    const tags = new RegExp(String.raw`<\/?div\b${HTML_ATTRIBUTES}>`, 'gi');
+    tags.lastIndex = opening.lastIndex;
+    let depth = 1, end;
+    while ((end = tags.exec(text))) {
+      depth += /^<\//.test(end[0]) ? -1 : 1;
+      if (!depth) return text.slice(opening.lastIndex, end.index);
+    }
+  }
+  return null;
+}
 const SECTIONS = ['models', 'agents', 'hardware', 'technology'];
 const REVIEW_SCOPES = ['price', 'score', 'license', 'specification'];
 const hash = body => createHash('sha256').update(body).digest('hex');
@@ -100,11 +117,13 @@ export function fingerprint(body, contentType = '') {
     if (/^(just a moment|access denied|attention required|checking your browser|verify (you|that)|security (check|verification)|robot or human|403 forbidden|captcha)/i.test(title)) {
       return { blocked: true, reason: 'The response is an access challenge, not the source document.' };
     }
-    // Main/article text avoids most navigation, script-build hashes and cookie banners.
+    // Main includes specification/price cards outside a prose article. Some news
+    // sites use article tags only for related cards and article-body for the story.
     const articles = text.match(new RegExp(String.raw`<article\b${HTML_ATTRIBUTES}>[^]*?<\/article\s*>`, 'gi'));
     const main = text.match(new RegExp(String.raw`<main\b${HTML_ATTRIBUTES}>([^]*?)<\/main\s*>`, 'i'))?.[1];
-    const scoped = Boolean(articles || main);
-    text = articles?.join('\n') || main || text;
+    const story = articleBody(text);
+    const scoped = Boolean(main || story || articles);
+    text = main || story || articles?.join('\n') || text;
     // A document header can carry its title, publication date or license badge.
     const chrome = scoped ? 'nav|footer|aside|form' : 'nav|header|footer|aside|form';
     text = text.replace(new RegExp(String.raw`<(${chrome})\b${HTML_ATTRIBUTES}>[^]*?<\/\1\s*>`, 'gi'), ' ');

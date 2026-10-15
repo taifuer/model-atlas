@@ -40,11 +40,11 @@ AI 模型、智能体、算力硬件与关键技术的发展时间线。
 
 ## 浏览功能
 
-- 按机构、年份和类型组合筛选，通过链接分享当前结果；页头搜索覆盖全部时间线。机构默认单选，可开启“多选”同时查看多家。
+- 按机构、年份和类型组合筛选，通过链接分享当前结果；页头搜索覆盖全部时间线，依次优先匹配精确名称、型号或系列名称、正文描述。机构默认单选，可开启“多选”同时查看多家。
 - 详细与极简视图，默认按时间倒序排列。
 - 年度与月度数量图表，跟随当前筛选条件统计。
 - 通过页头的指南针按钮进入[探索页](https://ai.taifua.com/explore.html?lang=zh)，将四条时间线的全部已收录事件按月归组、从新到旧展示，同日事件集中呈现，并提供横向年月导航。
-- 节点详情展示事件范围、规格和原始来源；浏览器后退关闭详情、前进重新打开，保留原筛选条件。
+- 节点详情展示事件范围、规格和原始来源；浏览器后退关闭详情、前进重新打开，保留原筛选条件；“纠错”链接预填节点名称和地址并打开现有 GitHub 表单，不会自动提交问题。
 - 中英文切换，首页首次访问匹配浏览器语言，记住手动选择；中英文页面也有固定地址。
 - 桌面与移动端适配，支持键盘操作及减少动画偏好。
 
@@ -119,7 +119,7 @@ npm run check:sources -- --help
 npm run check:sources -- --accept research/source-monitor/reports/<report>.json --source <source-id>,<source-id>
 ```
 
-同一报告可以分批接受。失败结果不能接受；其他报告改动基线后，需要重新检查。报告开始分批接受后若被修改，也不能继续接受该报告。省略 `--source` 会接受报告中全部成功结果，仅在逐项复核后使用。接受快照只更新私有比较基线，不修改网站数据或核对日期。页面变化仍需事实核查，尤其要注意实时页面是否已切换到其他模型版本。超过大小限制的页面明确记录为失败；针对性检查可用 `--max-bytes` 将默认 4 MiB 上限提高至最多 16 MiB。
+同一报告可以分批接受。失败结果不能接受；其他报告改动基线后，需要重新检查。报告开始分批接受后若被修改，也不能继续接受该报告。省略 `--source` 会接受报告中全部成功结果，仅在逐项复核后使用。接受快照只更新私有比较基线，不修改网站数据或核对日期。页面变化仍需事实核查，尤其要注意实时页面是否已切换到其他模型版本。规范化版本变化会标记为待复核，不会自动接受新基线。超过大小限制的页面明确记录为失败；针对性检查可用 `--max-bytes` 将默认 4 MiB 上限提高至最多 16 MiB。
 
 另一个手动命令从少量已核实的官方新闻源、公开 GitHub 发布源及 AA / Arena 模型列表采集候选：
 
@@ -131,7 +131,17 @@ npm run discover:candidates -- --source claude-code,arena-text --limit 10
 
 `scripts/candidate-sources.json` 说明各来源的覆盖范围，属于起步清单，不是完整发布索引。`--limit` 限制每个来源的候选数量；`--since` 仅筛选有明确发布日期的记录，日期未知或仅有月份的候选继续保留待审。上榜时间或订阅源修改时间不会代替发布日期。
 
-报告、原始快照及 `queue.json` 仅保存在 Git 忽略的 `research/candidate-discovery/`。队列保留精确版本与配置，提供已有节点匹配建议；人工可在两次运行之间核对原始来源与收录标准，编辑 `status` 和 `reviewNote`，例如标记为已收录（`represented`）、暂缓（`deferred`）或不收录（`rejected`）。候选内容有实质变化时会重新进入待审，并在 `reviewHistory` 保留此前决定与备注；重复观察不会重复建项。采集记录是研究线索，不等于新发布或已通过收录。两个工具均不自动导入分数、添加站点节点、定时运行或发送通知；内容发布仍需人工审核并通过项目检查。
+报告、原始快照及 `queue.json` 仅保存在 Git 忽略的 `research/candidate-discovery/`。先生成易读的私有摘要，逐条核对来源与收录标准，再记录明确决定：
+
+```bash
+npm run review:candidates -- --since 2026-10-12
+npm run review:candidates -- --source artificial-analysis --status needs_review,deferred
+npm run review:candidates -- --from research/candidate-discovery/reviews/<summary>.json --id <完整候选ID> --decide represented --note "相同发布已由现有节点覆盖。" --entry models/<节点ID> --evidence https://example.com/release
+```
+
+审核命令的 `--since` 指**首次观察或内容变化时间**，不是发布日期。摘要展示完整 ID、来源摘要、发布日期精度、已有理由与节点匹配建议。“新发现”“内容变化”“疑似已有节点”可以重叠；默认只看 `needs_review`，`--status all` 可包含已有决定。JSON 与 Markdown 摘要均保存在私有 `reviews/` 目录。
+
+可记录已覆盖（`represented`）、暂缓（`deferred`）、不收录（`rejected`）或待审（`needs_review`）。每次决定必须说明理由；已覆盖必须指定现有节点，已覆盖和不收录还需提供依据链接。每批决定后需重新生成摘要。未知 ID、无效节点映射、并发写入及摘要生成后的队列变化都会被拒绝。候选内容实质变化后重新待审，变化日期持续保留，此前决定、映射与依据进入 `reviewHistory`；重复观察不重复建项。采集记录是研究线索，不等于新发布或已通过收录。这些工具均不自动导入分数、添加站点节点、定时运行或发送通知；内容发布仍需人工审核并通过项目检查。
 
 ## 项目结构
 
@@ -141,7 +151,7 @@ npm run discover:candidates -- --source claude-code,arena-text --limit 10
 | `src/data*.js` | 双语节点、分类、规格、价格及榜单快照。 |
 | `src/app.js`、`src/filters.js`、`src/site.js`、`src/icons.js`、`src/styles.css` | 渲染、筛选、导航、语言与排版。 |
 | `src/assets/` | 本地字体、图标及许可声明。 |
-| `scripts/` | 开发服务器、静态构建、手动来源巡检与候选采集，以及可选的字体子集工具。 |
+| `scripts/` | 开发服务器、静态构建、手动来源巡检、候选采集与审核，以及可选的字体子集工具。 |
 | `tests/` | 数据与交互逻辑检查，包含带日期的评分快照样本，以及 `tests/browser/` 中的浏览器回归检查。 |
 | `docs/` | 文档资源，包括桌面与移动端预览图。 |
 | `dist/` | 自动生成的静态站点，不提交到 Git。 |

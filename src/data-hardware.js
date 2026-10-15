@@ -1,7 +1,7 @@
 /* Curated hardware history. Event dates and configurations retain explicit source scope. */
 window.HARDWARE_ATLAS = {
-  "asOf": "2026-10-11",
-  "updatedAt": "2026-10-12",
+  "asOf": "2026-10-15",
+  "updatedAt": "2026-10-15",
   "accessFilter": false,
   "companies": [
     {
@@ -2511,7 +2511,7 @@ window.HARDWARE_ATLAS = {
       "category": "accelerator",
       "kind": "announcement",
       "summary": "面向大模型推理的自研加速器，结合低精度计算与高带宽内存。",
-      "details": "公布时已部署于 Azure 美国中部数据中心，采用 3 nm 工艺、原生 FP4/FP8 计算及以太网互连。SDK 当时处于预览，不能据此视为公开可租用的独立云实例。",
+      "details": "公布时已部署于 Azure 美国中部，采用 3 nm 工艺、原生 FP4/FP8 计算及以太网互连。微软 10 月 12 日进一步确认其已服务 Microsoft Copilot 等生产负载，并支持 MAI 团队；这属于内部业务部署。",
       "dateNote": "采用 Microsoft 正式公布日期；公告同时确认已有内部部署。",
       "tags": [
         "AI 加速器"
@@ -2522,16 +2522,21 @@ window.HARDWARE_ATLAS = {
           "title": "Microsoft · Maia 200 发布与部署",
           "titleEn": "Microsoft · Maia 200 announcement and deployment",
           "url": "https://blogs.microsoft.com/blog/2026/01/26/maia-200-the-ai-accelerator-built-for-inference/"
+        },
+        {
+          "title": "Microsoft · 后续生产应用",
+          "titleEn": "Microsoft · Subsequent production use",
+          "url": "https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/"
         }
       ],
       "en": {
         "summary": "A custom accelerator for large-model inference combines low-precision compute with high-bandwidth memory.",
-        "details": "Already deployed in Azure’s US Central region at announcement, Maia 200 uses a 3 nm process, native FP4/FP8 compute, and Ethernet connectivity. The SDK was in preview; this does not establish public availability of standalone cloud instances.",
+        "details": "Already deployed in Azure’s US Central region at announcement, Maia 200 uses a 3 nm process, native FP4/FP8 compute, and Ethernet. On October 12, Microsoft confirmed production use in Microsoft Copilot and support for the MAI team; these are internal service deployments.",
         "dateNote": "Dated to Microsoft’s formal announcement, which also confirms internal deployment."
       },
       "hardware": {
         "variant": "Microsoft Maia 200",
-        "checkedAt": "2026-10-11",
+        "checkedAt": "2026-10-15",
         "facts": [
           {
             "label": "内存",
@@ -2542,15 +2547,34 @@ window.HARDWARE_ATLAS = {
           {
             "label": "内存带宽",
             "labelEn": "Memory bandwidth",
-            "value": "7 TB/s",
+            "value": "7.1 TB/s",
+            "chip": true
+          },
+          {
+            "label": "FP4·峰值",
+            "labelEn": "FP4 · Peak",
+            "value": "10.1 POPS",
+            "chip": true,
+            "metric": "compute",
+            "precision": "FP4",
+            "sparsity": "not-stated",
+            "scope": "accelerator",
+            "estimate": false
+          },
+          {
+            "label": "芯片 TDP",
+            "labelEn": "Chip TDP",
+            "value": "750 W",
             "chip": true
           }
         ],
         "sources": [
-          "https://blogs.microsoft.com/blog/2026/01/26/maia-200-the-ai-accelerator-built-for-inference/"
+          "https://blogs.microsoft.com/blog/2026/01/26/maia-200-the-ai-accelerator-built-for-inference/",
+          "https://azure.microsoft.com/en-us/blog/deep-dive-into-azure-maia-300-architecture/",
+          "https://azure.microsoft.com/en-us/blog/wp-content/uploads/2026/10/Maia-300-Specifications.webp"
         ],
-        "note": "规格对应单颗 Maia 200；片上 SRAM 与 HBM 属于不同存储层级。",
-        "noteEn": "Specifications apply to one Maia 200 chip. On-chip SRAM and HBM are separate memory tiers."
+        "note": "规格对应单颗 Maia 200，采用 10 月架构说明的规格表。FP4 为厂商公布的理论峰值，原表使用 POPS，未标明稠密或稀疏条件；不代表模型实测吞吐。",
+        "noteEn": "Per-accelerator specifications use the October architecture table. FP4 is the vendor’s theoretical peak in POPS; the table does not state dense or sparse conditions. It is not measured model throughput."
       }
     },
     {
@@ -3059,10 +3083,86 @@ window.HARDWARE_ATLAS = {
         "note": "规格对应官方公布的完整超节点配置；芯片就绪时间另见路线图，系统规模与峰值不等于已交付性能。",
         "noteEn": "Specifications describe the announced complete Supernode. Chip readiness follows the roadmap; system scale and peaks do not establish delivered performance."
       }
+    },
+    {
+      "id": "microsoft-maia-300",
+      "date": "2026-10-12",
+      "name": "Microsoft Azure Maia 300",
+      "company": "microsoft",
+      "category": "accelerator",
+      "kind": "announcement",
+      "summary": "以多芯粒与 HBM4 提升内存带宽，面向长上下文和多步智能体推理。",
+      "details": "将计算、内存控制与 I/O 分置于不同芯粒，通过软件管理数据位置和搬运。公布的单颗规格为 288 GB HBM4、18 TB/s；机架包含 96 颗加速器。微软计划于 2027 年开始生产部署。",
+      "dateNote": "记录芯片与系统架构公布日期；2027 年是计划部署时间。",
+      "tags": [
+        "AI 加速器"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Microsoft · Maia 300 公布与部署计划",
+          "titleEn": "Microsoft · Maia 300 announcement and deployment plan",
+          "url": "https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/"
+        },
+        {
+          "title": "Microsoft Azure · 架构与规格",
+          "titleEn": "Microsoft Azure · Architecture and specifications",
+          "url": "https://azure.microsoft.com/en-us/blog/deep-dive-into-azure-maia-300-architecture/"
+        }
+      ],
+      "en": {
+        "summary": "Chiplets and HBM4 increase memory bandwidth for long-context and multi-step agent inference.",
+        "details": "Compute, memory control, and I/O occupy separate chiplets, with software coordinating data placement and movement. Announced per-accelerator specifications are 288 GB HBM4 and 18 TB/s; a rack contains 96 accelerators. Microsoft plans production deployment from 2027.",
+        "dateNote": "Records the chip and system architecture announcement. Production deployment is planned for 2027."
+      },
+      "hardware": {
+        "variant": "Maia 300 · 单颗公布规格",
+        "variantEn": "Maia 300 · announced per-accelerator specifications",
+        "checkedAt": "2026-10-15",
+        "facts": [
+          {
+            "label": "内存",
+            "labelEn": "Memory",
+            "value": "288 GB HBM4",
+            "chip": true
+          },
+          {
+            "label": "内存带宽",
+            "labelEn": "Memory bandwidth",
+            "value": "18 TB/s",
+            "chip": true
+          },
+          {
+            "label": "FP4·峰值",
+            "labelEn": "FP4 · Peak",
+            "value": "13.8 POPS（公布）",
+            "chip": true,
+            "valueEn": "13.8 POPS (announced)",
+            "metric": "compute",
+            "precision": "FP4",
+            "sparsity": "not-stated",
+            "scope": "accelerator",
+            "estimate": true
+          },
+          {
+            "label": "芯片 TDP",
+            "labelEn": "Chip TDP",
+            "value": "950 W",
+            "chip": true
+          }
+        ],
+        "sources": [
+          "https://azure.microsoft.com/en-us/blog/deep-dive-into-azure-maia-300-architecture/",
+          "https://azure.microsoft.com/en-us/blog/wp-content/uploads/2026/10/Maia-300-Specifications.webp",
+          "https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/"
+        ],
+        "note": "规格适用于单颗加速器。FP4 使用原表的 POPS 单位，未标明稠密或稀疏条件；属厂商公布峰值，非模型实测吞吐。生产部署计划为 2027 年。",
+        "noteEn": "Specifications apply to one accelerator. FP4 retains the table’s POPS unit with dense/sparse conditions unspecified. This is an announced vendor peak, not measured model throughput. Production deployment is planned for 2027."
+      }
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-11",
+    "checkedAt": "2026-10-15",
     "scope": "具有代表性的 GPU、专用加速器、算力系统及本地设备；日期优先依据一手资料，辅以署名媒体报道。区分产品公布、公开展示、供应计划与实际部署，规格保留芯片、板卡或系统范围。",
     "scopeEn": "Representative GPUs, custom accelerators, compute systems, and local devices. Dates prioritize primary sources with attributed reporting as needed. Announcements, demonstrations, availability plans, and deployments remain distinct; specifications retain chip, card, or system scope."
   }

@@ -39,7 +39,9 @@
     gpt-6-sol-luna claude-sonnet-5-5
   `);
 
-  add(models, 'closed', 'gpt-6-1-sol gemini-4-argon');
+  add(models, 'closed', 'gpt-6-1-sol gemini-4-argon muse-wonder');
+  Object.assign(models['muse-wonder'], { checkedAt: '2026-10-15', source: 'https://dev.meta.ai/models/muse-wonder', note: '两款模型均未开放权重；Wonder 提供 API 预览，Full 限 Muse Code 指定订阅方案。', noteEn: 'Neither model has public weights. Wonder has an API preview; Full requires eligible Muse Code subscription plans.' });
+  models['gemini-4-argon'].checkedAt = '2026-10-15';
   add(models, 'closed', 'claude-haiku-5-5 mistral-large-4-preview gpt-6-sol-luna-chatgpt-october');
   ['claude-haiku-5-5', 'mistral-large-4-preview', 'gpt-6-sol-luna-chatgpt-october'].forEach(id => { models[id].checkedAt = '2026-10-08'; });
 

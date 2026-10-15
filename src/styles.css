@@ -552,6 +552,9 @@ body.modal-open .back-to-top { display: none; }
 .spec-sources { margin: 12px 0 0; line-height: 1.6; }
 .spec-note { margin: 12px 0 0; color: var(--body); font-size: 12px; line-height: 1.85; }
 .spec-checked { margin: 10px 0 0; color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.detail-correction { margin: 4px 0 0; font-size: 12px; line-height: 1.7; }
+.detail-correction a { display: inline-flex; align-items: center; min-height: 36px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.detail-correction a:hover { color: var(--accent); }
 .detail-related { margin: 20px 0; font-size: 13px; }
 .detail-related a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
 

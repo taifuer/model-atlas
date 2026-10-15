@@ -112,8 +112,8 @@
   function goToEntry(key, scroll = true) { const canonical = canonicalKey(key), index = periodByEntry.get(canonical); if (index !== undefined) goTo(index, scroll, canonical); }
   function applyQuery(value, navigate = true) {
     query = value.trim().slice(0, 300); matchCursor = -1;
-    const matchingKeys = new Set(catalog.search(query, language).map(entry => entry.key));
-    matches = entries.filter(entry => matchingKeys.has(entry.key)).map(entry => entry.key);
+    matches = catalog.search(query, language).map(entry => entry.key);
+    const matchingKeys = new Set(matches);
     entries.forEach(entry => cards.get(entry.key).classList.toggle('is-match', matchingKeys.has(entry.key)));
     search.value = query; search.dispatchEvent(new Event('input'));
     root.querySelector('#journey-search').hidden = !query;

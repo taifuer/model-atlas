@@ -280,3 +280,16 @@ test('HTML fingerprints keep document headers and ignore markup-like strings ins
   assert.match(article.text, /131072/);
   assert.doesNotMatch(article.text, /"token"|data-config/);
 });
+
+test('source extraction retains cards beside prose and news bodies outside related articles', async () => {
+  const { fingerprint } = await modulePromise;
+  const docs = '<html><title>Model documentation</title><main><article><p>Model description with enough text to identify this particular family and release.</p></article><section>Context 1M. Input $2/M. Output $6/M.</section></main></html>';
+  const first = fingerprint(Buffer.from(docs), 'text/html');
+  assert.match(first.text, /Context 1M.*Input \$2/);
+  assert.notEqual(first.hash, fingerprint(Buffer.from(docs.replace('$2/M', '$3/M')), 'text/html').hash);
+  const news = '<html><title>Hardware launch</title><div class="article-body"><p>New accelerator announcement with its exact architecture and performance specifications.</p><div><p>Tensor throughput: 120 TFLOPS.</p></div><p>Memory bandwidth: 900 GB/s.</p></div><article>Unrelated latest news card with sufficiently long text to otherwise mask the target article entirely.</article></html>';
+  const story = fingerprint(Buffer.from(news), 'text/html');
+  assert.match(story.text, /120 TFLOPS.*900 GB\/s/);
+  assert.doesNotMatch(story.text, /Unrelated/);
+  assert.equal(story.normalizer, 'text-v3');
+});
