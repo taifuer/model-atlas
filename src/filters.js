@@ -20,6 +20,7 @@
         multiSelect: params.get('multi') === '1' || companies.size > 1,
         year, month,
         category: Object.hasOwn(raw.categories || {}, params.get('category')) ? params.get('category') : 'all',
+        task: Object.hasOwn(raw.tasks || {}, params.get('task')) ? params.get('task') : 'all',
         openness: raw.accessFilter !== false && accessTypes.has(params.get('openness')) ? params.get('openness') : 'all',
         query: (params.get('q') || '').slice(0, 300),
         milestones: params.get('milestones') === '1',
@@ -57,6 +58,7 @@
         (ignore('year') || state.year === 'all' || release.date.startsWith(state.year)) &&
         (ignore('month') || state.month === 'all' || release.date.slice(5, 7) === state.month) &&
         (ignore('category') || state.category === 'all' || release.category === state.category) &&
+        (ignore('task') || !state.task || state.task === 'all' || release.tasks?.includes(state.task)) &&
         (ignore('openness') || state.openness === 'all' || state.openness === openness) &&
         (ignore('milestones') || !state.milestones || release.milestone) &&
         (ignore('query') || terms.every(term => (searchIndex.get(release.id) || '').includes(term)));
@@ -91,6 +93,7 @@
       if (state.year !== 'all') params.set('year', state.year);
       if (state.year !== 'all' && state.month !== 'all') params.set('month', state.month);
       if (state.category !== 'all') params.set('category', state.category);
+      if (state.task && state.task !== 'all') params.set('task', state.task);
       if (state.openness !== 'all') params.set('openness', state.openness);
       if (state.query) params.set('q', state.query);
       if (state.milestones) params.set('milestones', '1');
@@ -99,7 +102,7 @@
       return params.toString();
     }
     function hasFilters(state) {
-      return Boolean(state.companies.size || state.year !== 'all' || state.category !== 'all' || state.openness !== 'all' || state.query || state.milestones);
+      return Boolean(state.companies.size || state.year !== 'all' || state.category !== 'all' || (state.task && state.task !== 'all') || state.openness !== 'all' || state.query || state.milestones);
     }
     return { years, read, chooseCompany, setMultiSelect, select, matches, annualCounts, monthlyCounts, companyCounts, serialize, hasFilters };
   }

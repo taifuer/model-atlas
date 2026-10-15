@@ -5,13 +5,13 @@
     models: {
       zh: {
         title: '大模型时间线 · Model Atlas',
-        description: '查阅主流语言模型与多模态模型的代表性发布，涵盖 GPT、Claude、Gemini、Llama 等系列。按机构、年份和类型筛选，查看公开来源，以及已核实的上下文长度、API 价格与评测分数。',
-        keywords: ['大模型时间线', '语言模型', '多模态模型', '模型发布', '上下文长度', 'API 价格'],
+        description: '查阅语言、多模态与视频生成模型的代表性发布，涵盖 GPT、Gemini、Seedance、Veo、Sora、可灵与 Wan。按机构、年份和任务筛选，查看公开来源、开放状态及已核实的模型规格。',
+        keywords: ['大模型时间线', '语言模型', '多模态模型', '视频生成模型', 'Seedance', '模型发布', '上下文长度', 'API 价格'],
       },
       en: {
         title: 'Large Model Timeline · Model Atlas',
-        description: 'Browse representative releases of large language and multimodal models, with sources, documented context limits, API prices and dated benchmark scores.',
-        keywords: ['large model timeline', 'language models', 'multimodal models', 'model releases', 'context window', 'API pricing'],
+        description: 'Explore major language, multimodal and video model releases, including GPT, Gemini, Seedance, Veo and Wan. Filter by task and trace dates, access and specifications to sources.',
+        keywords: ['large model timeline', 'language models', 'multimodal models', 'video generation models', 'Seedance', 'model releases', 'context window', 'API pricing'],
       },
     },
     agents: {

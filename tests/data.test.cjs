@@ -25,10 +25,11 @@ test('release dates are real, sorted, unique events within the research cutoff',
 
 test('every event has valid metadata and a primary source; supporting reports are explicit', () => {
   const companyIds = new Set(data.companies.map(company => company.id));
-  const primaryHosts = new Set(['openai.com', 'developers.openai.com', 'deploymentsafety.openai.com', 'docs.mistral.ai', 'deepmind.google', 'arxiv.org', 'www.anthropic.com', 'platform.claude.com', 'research.google', 'blog.google', 'dev.meta.ai', 'ai.google.dev', 'ai.meta.com', 'research.meta.ai', 'about.fb.com', 'api-docs.deepseek.com', 'github.com', 'huggingface.co', 'qwenlm.github.io', 'qwen.ai', 'docs.qwencloud.com', 'mistral.ai', 'x.ai', 'platform.kimi.ai', 'www.kimi.com', 'z.ai', 'docs.z.ai', 'www.minimax.io', 'mimo.xiaomi.com', 'mimo.mi.com', 'static.stepfun.com', 'www.stepfun.com', 'news.microsoft.com', 'techcommunity.microsoft.com', 'aws.amazon.com', 'nvidianews.nvidia.com', 'blogs.nvidia.com', 'cloud.tencent.com', 'www.tencent.com', 'seed.bytedance.com']);
+  const primaryHosts = new Set(['www.alibabacloud.com', 'help.openai.com', 'cloud.google.com', 'docs.cloud.google.com', 'help.runwayml.com', 'ir.kuaishou.com', 'runway.com', 'openai.com', 'developers.openai.com', 'deploymentsafety.openai.com', 'docs.mistral.ai', 'deepmind.google', 'arxiv.org', 'www.anthropic.com', 'platform.claude.com', 'research.google', 'blog.google', 'dev.meta.ai', 'ai.google.dev', 'ai.meta.com', 'research.meta.ai', 'about.fb.com', 'api-docs.deepseek.com', 'github.com', 'huggingface.co', 'qwenlm.github.io', 'qwen.ai', 'docs.qwencloud.com', 'mistral.ai', 'x.ai', 'platform.kimi.ai', 'www.kimi.com', 'z.ai', 'docs.z.ai', 'www.minimax.io', 'mimo.xiaomi.com', 'mimo.mi.com', 'static.stepfun.com', 'www.stepfun.com', 'news.microsoft.com', 'techcommunity.microsoft.com', 'aws.amazon.com', 'nvidianews.nvidia.com', 'blogs.nvidia.com', 'cloud.tencent.com', 'www.tencent.com', 'seed.bytedance.com']);
   // These additional official/project/author pages were reviewed for the named event.
   // Keep community-hosted articles and personal author archives URL-specific.
   const reviewedPrimarySources = new Map([
+    ['https://www.youtube.com/watch?v=trXPfpV5iRQ', 'runway-gen-2'],
     ['https://www.ant-ling.com/', 'ling-3-1-flash'],
     ['https://developer.ant-ling.com/zh-CN/docs/models/ling/', 'ling-3-1-flash'],
     ['https://vercel.com/changelog/ling-3-1-flash-is-now-available-on-ai-gateway', 'ling-3-1-flash'],
@@ -47,6 +48,9 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['https://platform.stepfun.ai/docs/en/guides/models/step-5-preview', 'step-5-preview'],
   ]);
   const reviewedHuggingFacePaths = new Map([
+    ['/tencent/HunyuanVideo-1.5', 'hunyuan-video-1-5'],
+    ['/MiniMaxAI/MiniMax-H3', 'minimax-h3'],
+    ['/MiniMaxAI/MiniMax-H3/raw/main/LICENSE', 'minimax-h3'],
     ['/EleutherAI/gpt-j-6b', 'gpt-j-6b'],
     ['/blog/starcoder', 'starcoder'],
     ['/allenai/OLMo-7B', 'olmo'],
@@ -81,6 +85,8 @@ test('every event has valid metadata and a primary source; supporting reports ar
       assert.ok(source.title);
       if (url.hostname === 'github.com') {
         if (url.pathname === '/zai-org/ChatGLM-6B') assert.equal(release.id, 'chatglm-6b');
+        else if (url.pathname.startsWith('/Wan-Video/')) assert.ok(new RegExp('^/Wan-Video/Wan2\\.[12](?:/|$)').test(url.pathname) && /^wan-2-[12]$/.test(release.id), source.url);
+        else if (url.pathname.startsWith('/Tencent-Hunyuan/')) assert.ok(/^\/Tencent-Hunyuan\/HunyuanVideo(?:-1\.5)?(?:\/|$)/.test(url.pathname) && /^hunyuan-video(?:-1-5)?$/.test(release.id), source.url);
         else assert.match(url.pathname, /^\/(QwenLM|deepseek-ai|MoonshotAI|stepfun-ai)\//);
       }
       if (url.hostname === 'huggingface.co' && !/^\/meta-llama\//.test(url.pathname)) {
@@ -120,7 +126,7 @@ test('company coverage and research metadata are complete', () => {
     assert.ok(data.companies.some(company => company.id === id), `Missing provider: ${id}`);
   }
   assert.equal(data.coverage.checkedAt, data.asOf);
-  assert.deepEqual(Array.from(data.coverage.references, reference => new URL(reference.url).hostname).sort(), ['arena.ai', 'artificialanalysis.ai', 'crfm.stanford.edu', 'livebench.ai', 'rank.opencompass.org.cn', 'www.swebench.com', 'www.tbench.ai']);
+  assert.deepEqual([...new Set(Array.from(data.coverage.references, reference => new URL(reference.url).hostname))].sort(), ['arena.ai', 'artificialanalysis.ai', 'crfm.stanford.edu', 'livebench.ai', 'rank.opencompass.org.cn', 'www.swebench.com', 'www.tbench.ai']);
 });
 
 test('organization ranking records a dated, comparable AA snapshot with explicit estimates', () => {

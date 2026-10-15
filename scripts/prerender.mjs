@@ -53,12 +53,13 @@ function timelineHTML(window, page, language) {
   const card = original => {
     const entry = translated(window, original, language);
     const category = english ? raw.categoriesEn?.[entry.category] : raw.categories?.[entry.category];
+    const tasks = (entry.tasks || []).filter(task => task !== 'language').map(task => english ? raw.tasksEn?.[task] : raw.tasks?.[task]);
     const kind = english ? (raw.kindsEn || englishKinds)[entry.kind] : raw.kinds?.[entry.kind];
     const access = raw.accessFilter !== false && original.openness ? (original.openness.status === 'open' ? (english ? 'Open source' : '开源') : (english ? 'Closed source' : '闭源')) : '';
     const source = entry.sources[0].url;
     return `<article id="release-${escape(entry.id)}" class="release-card${entry.milestone ? ' is-milestone' : ''}" data-company="${escape(entry.company)}" data-date="${entry.date}" data-category="${escape(entry.category || '')}" aria-labelledby="title-${escape(entry.id)}">
       ${dateHTML(entry.date, 'card-date', true)}<div class="release-body"><div class="card-heading"><h3 class="card-title" id="title-${escape(entry.id)}"><a href="${escape(source)}" target="_blank" rel="noopener noreferrer">${iconHTML(window, original)}<span>${escape(entry.name)}</span></a></h3><div class="card-meta"><span class="company-label">${escape(companyName(companies.get(entry.company), language))}</span>${entry.milestone ? `<span class="milestone-badge">${english ? 'Milestone' : '里程碑'}</span>` : ''}</div></div>
-      <p class="card-summary">${escape(entry.summary)}</p><div class="card-bottom"><div class="card-tags">${[kind, access, category].filter(Boolean).map(label => `<span class="tag">${escape(label)}</span>`).join('')}</div><a class="source-link" href="${escape(source)}" target="_blank" rel="noopener noreferrer">${sourceLabel}</a></div></div></article>`;
+      <p class="card-summary">${escape(entry.summary)}</p><div class="card-bottom"><div class="card-tags">${[kind, access, category, ...tasks].filter(Boolean).map(label => `<span class="tag">${escape(label)}</span>`).join('')}</div><a class="source-link" href="${escape(source)}" target="_blank" rel="noopener noreferrer">${sourceLabel}</a></div></div></article>`;
   };
   const markup = years.map(year => {
     const releases = entries.filter(entry => entry.date.startsWith(year));

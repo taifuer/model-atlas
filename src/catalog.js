@@ -45,6 +45,8 @@
   const familyAliases = [
     ['qwen', '通义千问', '千问', '通义'], ['claude', '克劳德'], ['hunyuan', '混元'],
     ['ascend', '昇腾'], ['hermes', '赫尔墨斯'], ['doubao', '豆包'],
+    ['wan', '万相', '通义万相'], ['hunyuanvideo', '混元', '混元视频'],
+    ['kling', '可灵'], ['hailuo', '海螺'],
   ];
   const organizationNames = new Map();
   for (const [, , , , raw] of definitions) for (const company of raw?.companies || []) {
@@ -73,6 +75,7 @@
       const body = normalizedFields([
         release.summary, en.summary, release.details, en.details, release.date,
         raw.categories?.[release.category], raw.categoriesEn?.[release.category],
+        ...(release.tasks || []).flatMap(task => [raw.tasks?.[task], raw.tasksEn?.[task]]),
         ...(release.tags || []), ...(release.tags || []).map(tag => raw.tagsEn?.[tag] || window.ATLAS_TAGS_EN?.[tag]),
       ]);
       return [entry.key, { entry, titles, names, identity: [...titles, ...names].join('\0'), organization: organization.join('\0'), haystack: [...titles, ...names, ...organization, ...body].join('\0') }];

@@ -42,8 +42,8 @@
     const data = window.MODEL_ATLAS_SPECS;
     const entry = page === 'models' ? data?.entries[id] : null;
     if (!entry) return '';
-    const basis = { api: 'API', weights: L('权重版本', 'Checkpoint'), paper: L('研究配置', 'Research configuration'), benchmark: L('评测配置', 'Benchmark configuration') };
-    const sourceLabel = { api: L('官方文档', 'Documentation'), weights: L('官方模型卡', 'Model card'), paper: L('研究资料', 'Research source'), benchmark: L('评测来源', 'Benchmark source') };
+    const basis = { api: 'API', weights: L('权重版本', 'Checkpoint'), paper: L('研究配置', 'Research configuration'), benchmark: L('评测配置', 'Benchmark configuration'), release: L('发布配置', 'Release specification'), service: L('服务配置', 'Service specification') };
+    const sourceLabel = { api: L('官方文档', 'Documentation'), weights: L('官方模型卡', 'Model card'), paper: L('研究资料', 'Research source'), benchmark: L('评测来源', 'Benchmark source'), release: L('发布资料', 'Release source'), service: L('服务文档', 'Service documentation') };
     const modalities = { text: L('文本', 'Text'), image: L('图像', 'Image'), audio: L('音频', 'Audio'), video: L('视频', 'Video'), pdf: 'PDF', document: L('文档', 'Document') };
     const tokens = value => `${escape(typeof value === 'number' ? value.toLocaleString('en-US') : value)} <span class="spec-unit">tokens</span>`;
     const variants = entry.variants.map(variant => {
@@ -56,8 +56,16 @@
       if (variant.trainingTokens) row(L('训练序列长度', 'Training sequence'), tokens(variant.trainingTokens));
       if (variant.parameters) row(variant.activeParameters ? L('总参数量', 'Total parameters') : L('参数量', 'Parameters'), escape(variant.parameters));
       if (variant.activeParameters) row(L('激活参数量', 'Active parameters'), escape(variant.activeParameters));
+      if (variant.video) {
+        const video = variant.video;
+        if (video.maxDurationSeconds) row(L('单次生成时长上限', 'Maximum generation duration'), `${video.maxDurationSeconds} ${L('秒', 'seconds')}`);
+        if (video.resolutions?.length) row(L('输出分辨率', 'Output resolution'), escape(video.resolutions.join(' · ')));
+        if (video.upscaledResolutions?.length) row(L('升采样输出', 'Upscaled output'), escape(video.upscaledResolutions.join(' · ')));
+        if (video.frameRates?.length) row(L('帧率', 'Frame rate'), `${video.frameRates.join(' / ')} fps`);
+        if (video.audio) row(L('声音生成', 'Audio generation'), video.audio === 'native' ? L('原生音视频', 'Native audiovisual output') : L('无声视频', 'Silent video'));
+      }
       for (const field of ['input', 'output']) if (variant[field]) row(field === 'input' ? L('输入类型', 'Input types') : L('输出类型', 'Output types'), variant[field].map(type => escape(modalities[type])).join(' · '));
-      return `<div class="spec-variant"><div class="spec-version"><h4>${escape(variant.name)}</h4><span>${basis[variant.basis]}</span></div><dl class="spec-grid">${rows.join('')}</dl><p class="spec-sources">${variant.sources.map((url, i) => `<a href="${escape(url)}" target="_blank" rel="noopener noreferrer">${sourceLabel[variant.basis]}${variant.sources.length > 1 ? ` ${i + 1}` : ''}</a>`).join(' · ')}</p></div>`;
+      return `<div class="spec-variant"><div class="spec-version"><h4>${escape(variant.name)}</h4><span>${basis[variant.basis]}</span></div><dl class="spec-grid">${rows.join('')}</dl>${variant.note ? `<p class="spec-note">${escape(L(variant.note, variant.noteEn))}</p>` : ''}<p class="spec-sources">${variant.sources.map((url, i) => `<a href="${escape(url)}" target="_blank" rel="noopener noreferrer">${sourceLabel[variant.basis]}${variant.sources.length > 1 ? ` ${i + 1}` : ''}</a>`).join(' · ')}</p></div>`;
     }).join('');
     const note = english ? entry.noteEn : entry.note;
     const checkedAt = entry.checkedAt || data.checkedAt;

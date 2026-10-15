@@ -29,6 +29,7 @@
   const companyById = new Map(companies.map(company => [company.id, company]));
   const releaseById = new Map(releases.map(release => [release.id, release]));
   const categoryName = id => english ? raw.categoriesEn?.[id] : raw.categories?.[id];
+  const taskName = id => english ? raw.tasksEn?.[id] : raw.tasks?.[id];
   const searchIndex = window.ATLAS_CATALOG.searchIndex(page);
   const filters = window.ATLAS_FILTERS.create(raw, searchIndex);
   const accessLabels = { open: L('开源', 'Open source'), closed: L('闭源', 'Closed source') };
@@ -44,9 +45,9 @@
   function renderCompanyDisclosure() {
     const buttons = [...document.querySelectorAll('[data-company-filter]')];
     const focused = document.activeElement;
-    // Hide organizations without matching milestones before measuring the mobile rows.
+    // Hide organizations without matching milestones or tasks before measuring mobile rows.
     // Selected conditions remain removable in the active-filter row, even with no results.
-    const available = buttons.filter(button => !state.milestones || button.dataset.companyFilter === 'all' || !button.classList.contains('is-empty'));
+    const available = buttons.filter(button => (!state.milestones && state.task === 'all') || button.dataset.companyFilter === 'all' || !button.classList.contains('is-empty'));
     const toggle = $('#company-disclosure');
     for (const button of buttons) button.hidden = !available.includes(button);
     toggle.hidden = true;
@@ -135,6 +136,17 @@
     const chips = [];
     const chip = (section, content, description) => `<button class="fact-chip" type="button" data-detail="${release.id}" data-detail-section="${section}" aria-haspopup="dialog" aria-label="${escape(`${release.name} · ${description}`)}" title="${escape(description)}">${content}</button>`;
     if (specs) {
+      // Keep video limits scoped to one documented variant. Extension capacity
+      // and output quality from other variants must not become a combined claim.
+      const videoVariant = specs.variants.find(variant => variant.video);
+      if (videoVariant) {
+        const video = videoVariant.video;
+        const scope = facts.scopeLabel(specs, [videoVariant], language);
+        const values = [];
+        if (video.maxDurationSeconds) values.push([L('最长', 'Up to'), `${video.maxDurationSeconds} ${L('秒', 's')}`]);
+        if (video.resolutions?.length) values.push([L('分辨率', 'Resolution'), video.resolutions.join(' / ')]);
+        for (const [label, value] of values) chips.push(chip('specs', `${variantLabel(scope)}<span class="fact-label">${label}</span><span>${escape(value)}</span>`, `${videoVariant.name} · ${label} ${value} · ${L('查看配置限制与来源', 'View conditions and source')}`));
+      }
       const field = ['contextTokens', 'inputTokens', 'trainingTokens'].find(key => specs.variants.some(variant => variant[key]));
       if (field) {
         const variants = specs.variants.filter(variant => variant[field]);
@@ -233,6 +245,7 @@
     if (state.month !== 'all') chip('month', L(`${Number(state.month)} 月`, new Date(2000, Number(state.month) - 1, 1).toLocaleString('en', { month: 'long' })));
     if (state.openness !== 'all') chip('openness', accessFilterLabel(state.openness));
     if (state.category !== 'all') chip('category', categoryName(state.category));
+    if (state.task !== 'all') chip('task', taskName(state.task));
     if (state.milestones) chip('milestones', L('里程碑', 'Milestones'));
     if (state.query) chip('query', L(`搜索：${state.query}`, `Search: ${state.query}`));
     $('#active-filters').innerHTML = chips.join('');
@@ -250,6 +263,7 @@
     $('#year-select').value = state.year;
     if ($('#openness-select')) $('#openness-select').value = state.openness;
     if ($('#category-select')) $('#category-select').value = state.category;
+    if ($('#task-select')) $('#task-select').value = state.task;
     $('#milestone-only').checked = state.milestones;
     $('#company-multi').checked = state.multiSelect;
     $('#company-filters').setAttribute('aria-label', state.multiSelect ? L('按机构筛选，可多选', 'Filter by organization; multiple selection') : L('按机构筛选，单选', 'Filter by organization; single selection'));
@@ -305,6 +319,10 @@
     $('#category-select').insertAdjacentHTML('beforeend', Object.keys(raw.categories).map(id => `<option value="${id}">${escape(categoryName(id))}</option>`).join(''));
     $('#category-select').addEventListener('change', event => { state.category = event.target.value; changeState(); });
   }
+  if ($('#task-select')) {
+    $('#task-select').insertAdjacentHTML('beforeend', Object.keys(raw.tasks).map(id => `<option value="${id}">${escape(taskName(id))}</option>`).join(''));
+    $('#task-select').addEventListener('change', event => { state.task = event.target.value; changeState(); });
+  }
   $('#company-filters').innerHTML = `<button class="company-chip" data-company-filter="all" aria-pressed="true"><span>${allOrganizations}</span><span class="chip-count" aria-hidden="true"></span></button>` + companies.map(company => `<button class="company-chip" id="company-filter-${company.id}" data-company-filter="${company.id}" aria-pressed="false"${companyRanking ? ` title="${escape(companyHint(company.id))}"` : ''}>${icon(window.ATLAS_ICONS.company(company.id), 16)}<span>${escape(companyName(company))}</span><span class="chip-count" aria-hidden="true"></span></button>`).join('');
   $('#company-filters').append($('#company-disclosure'));
   $('#year-select').addEventListener('change', event => { state.year = event.target.value; state.month = 'all'; changeState(); });
@@ -356,7 +374,7 @@
       else if (key === 'year') { state.year = 'all'; state.month = 'all'; }
       else if (key === 'query') state.query = '';
       else if (key === 'milestones') state.milestones = false;
-      else if (['month', 'category', 'openness'].includes(key)) state[key] = 'all';
+      else if (['month', 'category', 'task', 'openness'].includes(key)) state[key] = 'all';
       changeState();
       ($('#active-filters button') || $('#sort-button')).focus({ preventScroll: true });
     } else if (button.hasAttribute('data-reset')) { reset(); $('#sort-button').focus(); }

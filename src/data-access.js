@@ -287,6 +287,281 @@
   reviewedLicense(agents, 'claude-agent-sdk', [
     license('SDK 代码', 'SDK code', 'MIT', 'https://github.com/anthropics/claude-agent-sdk-python/blob/main/LICENSE'),
   ], '开放范围为 SDK 代码；底层 Claude Code 运行时与模型不因此变为开源。', 'Only the SDK code is covered; the underlying Claude Code runtime and model are not made open source by this license.');
+  // Reviewed video-model access.
+  Object.assign(models, {
+    "seedance-1-0": {
+      "status": "closed",
+      "source": "https://seed.bytedance.com/en/blog/tech-report-of-seedance-1-0-is-now-publicly-available",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或托管服务提供，未发布可下载模型权重。",
+      "noteEn": "Offered through official products or hosted services; downloadable model weights have not been released."
+    },
+    "seedance-1-5-pro": {
+      "status": "closed",
+      "source": "https://seed.bytedance.com/en/blog/sound-and-vision-all-in-one-take-the-official-release-of-seedance-1-5-pro",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或托管服务提供，未发布可下载模型权重。",
+      "noteEn": "Offered through official products or hosted services; downloadable model weights have not been released."
+    },
+    "seedance-2-0": {
+      "status": "closed",
+      "source": "https://seed.bytedance.com/en/blog/seedance-2-0-official-launch",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或托管服务提供，未发布可下载模型权重。",
+      "noteEn": "Offered through official products or hosted services; downloadable model weights have not been released."
+    },
+    "seedance-2-5": {
+      "status": "closed",
+      "source": "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或托管服务提供，未发布可下载模型权重。",
+      "noteEn": "Offered through official products or hosted services; downloadable model weights have not been released."
+    },
+    "wan-2-1": {
+      "status": "open",
+      "source": "https://github.com/Wan-Video/Wan2.1/blob/main/LICENSE.txt",
+      "checkedAt": "2026-10-15",
+      "note": "模型权重与推理代码按 Apache 2.0 许可公开；不表示训练数据全部公开。",
+      "noteEn": "Model weights and inference code are released under Apache 2.0; this does not imply release of all training data.",
+      "licenses": [
+        {
+          "object": "模型权重",
+          "objectEn": "Model weights",
+          "name": "Apache 2.0",
+          "source": "https://github.com/Wan-Video/Wan2.1/blob/main/LICENSE.txt"
+        }
+      ]
+    },
+    "wan-2-2": {
+      "status": "open",
+      "source": "https://github.com/Wan-Video/Wan2.2/blob/main/LICENSE.txt",
+      "checkedAt": "2026-10-15",
+      "note": "模型权重与推理代码按 Apache 2.0 许可公开；不表示训练数据全部公开。",
+      "noteEn": "Model weights and inference code are released under Apache 2.0; this does not imply release of all training data.",
+      "licenses": [
+        {
+          "object": "模型权重",
+          "objectEn": "Model weights",
+          "name": "Apache 2.0",
+          "source": "https://github.com/Wan-Video/Wan2.2/blob/main/LICENSE.txt"
+        }
+      ]
+    },
+    "wan-2-5-preview": {
+      "status": "closed",
+      "source": "https://www.alibabacloud.com/en/press-room/alibabacloudunveilsstrategicroadmaps",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或托管服务提供，未发布可下载模型权重。",
+      "noteEn": "Offered through official products or hosted services; downloadable model weights have not been released."
+    },
+    "wan-2-6": {
+      "status": "closed",
+      "source": "https://www.alibabacloud.com/en/press-room/alibaba-unveils-wan2-6-series-enabling-everyone",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或托管服务提供，未发布可下载模型权重。",
+      "noteEn": "Offered through official products or hosted services; downloadable model weights have not been released."
+    },
+    "wan-2-7-video": {
+      "status": "closed",
+      "source": "https://www.alibabacloud.com/help/en/model-studio/newly-released-models",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或托管服务提供，未发布可下载模型权重。",
+      "noteEn": "Offered through official products or hosted services; downloadable model weights have not been released."
+    },
+    "wan-3-0-video": {
+      "status": "closed",
+      "source": "https://www.alibabacloud.com/help/en/model-studio/newly-released-models",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或托管服务提供，未发布可下载模型权重。",
+      "noteEn": "Offered through official products or hosted services; downloadable model weights have not been released."
+    },
+    "hunyuan-video": {
+      "status": "open",
+      "source": "https://github.com/Tencent-Hunyuan/HunyuanVideo/blob/main/LICENSE.txt",
+      "checkedAt": "2026-10-15",
+      "note": "权重与推理代码公开，采用腾讯混元社区许可；许可含地域、用途和大规模商用限制，并非 Apache/MIT 许可。",
+      "noteEn": "Weights and inference code are public under the Tencent Hunyuan Community License, which imposes territorial, use and large-scale commercial restrictions; it is not an Apache/MIT license.",
+      "licenses": [
+        {
+          "object": "模型权重",
+          "objectEn": "Model weights",
+          "name": "Tencent Hunyuan Community License",
+          "source": "https://github.com/Tencent-Hunyuan/HunyuanVideo/blob/main/LICENSE.txt"
+        }
+      ]
+    },
+    "hunyuan-video-1-5": {
+      "status": "open",
+      "source": "https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5/blob/main/LICENSE",
+      "checkedAt": "2026-10-15",
+      "note": "权重与推理代码公开，采用腾讯混元社区许可；许可含地域、用途和大规模商用限制，并非 Apache/MIT 许可。",
+      "noteEn": "Weights and inference code are public under the Tencent Hunyuan Community License, which imposes territorial, use and large-scale commercial restrictions; it is not an Apache/MIT license.",
+      "licenses": [
+        {
+          "object": "模型权重",
+          "objectEn": "Model weights",
+          "name": "Tencent Hunyuan Community License",
+          "source": "https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5/blob/main/LICENSE"
+        }
+      ]
+    },
+    "sora": {
+      "status": "closed",
+      "source": "https://openai.com/index/video-generation-models-as-world-simulators/",
+      "checkedAt": "2026-10-15",
+      "note": "未公开模型权重；初次发布为受限研究预览。",
+      "noteEn": "Model weights were not released; the initial announcement was a restricted research preview."
+    },
+    "veo": {
+      "status": "closed",
+      "source": "https://blog.google/innovation-and-ai/products/google-generative-ai-veo-imagen-3/",
+      "checkedAt": "2026-10-15",
+      "note": "通过 Google 托管产品提供，未公开模型权重；首发为创作者私有预览。",
+      "noteEn": "Provided through Google's hosted products without released model weights; initially a private creator preview."
+    },
+    "sora-turbo": {
+      "status": "closed",
+      "source": "https://openai.com/index/sora-is-here/",
+      "checkedAt": "2026-10-15",
+      "note": "托管闭源模型，未公开权重；Sora 网页与 App 已于 2026-04-26 停服。",
+      "noteEn": "A hosted model without released weights; the Sora web and app service ended on April 26, 2026."
+    },
+    "veo-2": {
+      "status": "closed",
+      "source": "https://blog.google/innovation-and-ai/models-and-research/google-labs/video-image-generation-update-december-2024/",
+      "checkedAt": "2026-10-15",
+      "note": "通过 Google 托管产品提供，未公开模型权重；首发仍为逐步开放的试用。",
+      "noteEn": "Provided through Google's hosted products without released model weights; initial availability was a gradual preview rollout."
+    },
+    "veo-3": {
+      "status": "closed",
+      "source": "https://blog.google/innovation-and-ai/products/generative-media-models-io-2025/",
+      "checkedAt": "2026-10-15",
+      "note": "通过 Google 托管服务提供，未公开模型权重；Veo 3.0 API 已在官方文档中标为弃用。",
+      "noteEn": "Provided through Google's hosted services without released weights; the official documentation now marks the Veo 3.0 API deprecated."
+    },
+    "sora-2": {
+      "status": "closed",
+      "source": "https://openai.com/index/sora-2/",
+      "checkedAt": "2026-10-15",
+      "note": "未公开模型权重；网页与 App 于 2026-04-26 停服，Sora 2 / Pro 与 Videos API 于 2026-09-24 下线。",
+      "noteEn": "Model weights were not released. Web and app access ended April 26, 2026; Sora 2, Pro and the Videos API shut down September 24, 2026."
+    },
+    "veo-3-1": {
+      "status": "closed",
+      "source": "https://blog.google/innovation-and-ai/products/veo-updates-flow/",
+      "checkedAt": "2026-10-15",
+      "note": "通过 Google 托管服务提供，未公开模型权重；Gemini API 型号仍以 preview 命名。",
+      "noteEn": "Provided through Google's hosted services without released weights; the Gemini API variant retains its preview model name."
+    },
+    "gemini-omni-flash": {
+      "status": "closed",
+      "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni/",
+      "checkedAt": "2026-10-15",
+      "note": "通过 Google 托管产品提供，未公开模型权重。",
+      "noteEn": "Provided through Google's hosted products without released model weights."
+    },
+    "gemini-omni-1-1-flash": {
+      "status": "closed",
+      "source": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash/",
+      "checkedAt": "2026-10-15",
+      "note": "通过 Google 托管服务与 API 提供，未公开模型权重。",
+      "noteEn": "Provided through Google's hosted services and APIs without released model weights."
+    },
+    "kling-1": {
+      "status": "closed",
+      "source": "https://ir.kuaishou.com/news-releases/news-release-details/kuaishou-unveils-proprietary-video-generation-model-kling",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或服务提供，未发布模型权重。",
+      "noteEn": "Provided through official products or services; model weights have not been released."
+    },
+    "kling-2": {
+      "status": "closed",
+      "source": "https://ir.kuaishou.com/news-releases/news-release-details/kling-ai-advances-20-era-empowering-everyone-tell-great-stories",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或服务提供，未发布模型权重。",
+      "noteEn": "Provided through official products or services; model weights have not been released."
+    },
+    "kling-o1": {
+      "status": "closed",
+      "source": "https://ir.kuaishou.com/news-releases/news-release-details/kling-o1-launches-worlds-first-unified-multimodal-video-model-0/",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或服务提供，未发布模型权重。",
+      "noteEn": "Provided through official products or services; model weights have not been released."
+    },
+    "kling-3": {
+      "status": "closed",
+      "source": "https://ir.kuaishou.com/news-releases/news-release-details/kling-ai-launches-30-model-ushering-era-where-everyone-can-be",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或服务提供，未发布模型权重。",
+      "noteEn": "Provided through official products or services; model weights have not been released."
+    },
+    "runway-gen-1": {
+      "status": "closed",
+      "source": "https://runway.com/research/gen-1",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或服务提供，未发布模型权重。",
+      "noteEn": "Provided through official products or services; model weights have not been released."
+    },
+    "runway-gen-2": {
+      "status": "closed",
+      "source": "https://runway.com/research/gen-2",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或服务提供，未发布模型权重。",
+      "noteEn": "Provided through official products or services; model weights have not been released."
+    },
+    "runway-gen-3-alpha": {
+      "status": "closed",
+      "source": "https://runway.com/research/introducing-gen-3-alpha",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或服务提供，未发布模型权重。",
+      "noteEn": "Provided through official products or services; model weights have not been released."
+    },
+    "runway-gen-4": {
+      "status": "closed",
+      "source": "https://runway.com/research/introducing-runway-gen-4",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或服务提供，未发布模型权重。",
+      "noteEn": "Provided through official products or services; model weights have not been released."
+    },
+    "runway-gen-4-5": {
+      "status": "closed",
+      "source": "https://runway.com/research/introducing-runway-gen-4.5",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或服务提供，未发布模型权重。",
+      "noteEn": "Provided through official products or services; model weights have not been released."
+    },
+    "hailuo-01": {
+      "status": "closed",
+      "source": "https://www.minimax.io/news/Video-01",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或服务提供，未发布模型权重。",
+      "noteEn": "Provided through official products or services; model weights have not been released."
+    },
+    "hailuo-02": {
+      "status": "closed",
+      "source": "https://www.minimax.io/news/minimax-hailuo-02",
+      "checkedAt": "2026-10-15",
+      "note": "通过官方产品或服务提供，未发布模型权重。",
+      "noteEn": "Provided through official products or services; model weights have not been released."
+    },
+    "minimax-h3": {
+      "status": "open",
+      "source": "https://huggingface.co/MiniMaxAI/MiniMax-H3/raw/main/LICENSE",
+      "checkedAt": "2026-10-15",
+      "note": "开放基础模型权重，采用带地域与商业使用限制的社区许可证；2K 完整工作流还依赖官方 API。",
+      "noteEn": "Base weights are available under a community license with territorial and commercial-use restrictions; the full 2K workflow also relies on official APIs.",
+      "licenses": [
+        {
+          "object": "模型权重",
+          "objectEn": "Model weights",
+          "name": "MiniMax H3 Community License",
+          "source": "https://huggingface.co/MiniMaxAI/MiniMax-H3/raw/main/LICENSE"
+        }
+      ]
+    }
+  });
+  // End video-model access.
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

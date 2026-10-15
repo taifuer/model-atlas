@@ -672,9 +672,11 @@ body.modal-open .back-to-top { display: none; }
   .specs-heading { gap: 12px; }
   .benchmark-heading { gap: 12px; }
 }
-@media (max-width: 360px) {
+@media (max-width: 540px) {
   /* The unfiltered total is already beside the page title; keep live counts accessible. */
   .explorer:has(#active-filter-row[hidden]) .results-meta { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+}
+@media (max-width: 360px) {
   .results-actions { width: 100%; }
 }
 

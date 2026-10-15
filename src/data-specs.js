@@ -2278,6 +2278,1025 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ],
       "note": "Wonder 上下文采用 API 文档的精确值；Full 采用官方模型卡的 1M 标注，仅通过 Muse Code 订阅提供，不据此推定独立 API 上限。两款均未公布参数量或单独的输出上限。",
       "noteEn": "Wonder uses the exact API context limit; Full retains the model card’s 1M specification. Full is offered only through Muse Code subscriptions, so this does not imply a standalone API limit. Parameter counts and separate output limits are not documented."
+    },
+    "seedance-1-0": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "Seedance 1.0",
+          "basis": "release",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "video"
+          ],
+          "video": {
+            "resolutions": [
+              "1080p"
+            ],
+            "audio": "silent"
+          },
+          "sources": [
+            "https://seed.bytedance.com/en/blog/tech-report-of-seedance-1-0-is-now-publicly-available"
+          ],
+          "note": "首发说明支持 1080p，并展示 10 秒多镜头生成；未将示例时长宣称为硬性上限。",
+          "noteEn": "The launch report specifies 1080p and demonstrates 10-second multi-shot generation; the example duration is not asserted as a hard limit."
+        }
+      ]
+    },
+    "seedance-1-5-pro": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "Seedance 1.5 Pro",
+          "basis": "release",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ],
+          "video": {
+            "audio": "native"
+          },
+          "sources": [
+            "https://seed.bytedance.com/en/blog/sound-and-vision-all-in-one-take-the-official-release-of-seedance-1-5-pro"
+          ]
+        }
+      ]
+    },
+    "seedance-2-0": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "Seedance 2.0",
+          "basis": "release",
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ],
+          "video": {
+            "maxDurationSeconds": 15,
+            "audio": "native"
+          },
+          "sources": [
+            "https://seed.bytedance.com/en/blog/seedance-2-0-official-launch"
+          ]
+        }
+      ]
+    },
+    "seedance-2-5": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "Seedance 2.5",
+          "basis": "release",
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ],
+          "video": {
+            "maxDurationSeconds": 30,
+            "audio": "native"
+          },
+          "sources": [
+            "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5"
+          ]
+        }
+      ]
+    },
+    "wan-2-1": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "Wan2.1-T2V-14B",
+          "basis": "weights",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "video"
+          ],
+          "video": {
+            "resolutions": [
+              "480p",
+              "720p"
+            ]
+          },
+          "sources": [
+            "https://github.com/Wan-Video/Wan2.1"
+          ]
+        },
+        {
+          "name": "Wan2.1-I2V-14B",
+          "basis": "weights",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "video"
+          ],
+          "video": {
+            "resolutions": [
+              "480p",
+              "720p"
+            ]
+          },
+          "sources": [
+            "https://github.com/Wan-Video/Wan2.1"
+          ]
+        },
+        {
+          "name": "Wan2.1-T2V-1.3B",
+          "basis": "weights",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "video"
+          ],
+          "video": {
+            "resolutions": [
+              "480p"
+            ]
+          },
+          "note": "官方推荐 480p；720p 的训练较少，未列作推荐规格。",
+          "noteEn": "480p is officially recommended; 720p received less training and is not listed as a recommended configuration.",
+          "sources": [
+            "https://github.com/Wan-Video/Wan2.1"
+          ]
+        }
+      ]
+    },
+    "wan-2-2": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "Wan2.2-TI2V-5B",
+          "basis": "weights",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "video"
+          ],
+          "video": {
+            "resolutions": [
+              "720p"
+            ],
+            "frameRates": [
+              24
+            ]
+          },
+          "note": "此规格仅适用于 TI2V-5B，不能直接套用到 A14B 或后来的 S2V/Animate。",
+          "noteEn": "These specifications apply only to TI2V-5B, not to A14B or later S2V/Animate models.",
+          "sources": [
+            "https://github.com/Wan-Video/Wan2.2"
+          ]
+        }
+      ],
+      "cardScope": "configuration"
+    },
+    "wan-2-5-preview": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "Wan 2.5 Preview",
+          "basis": "release",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ],
+          "video": {
+            "maxDurationSeconds": 10,
+            "audio": "native"
+          },
+          "sources": [
+            "https://www.alibabacloud.com/en/press-room/alibabacloudunveilsstrategicroadmaps"
+          ]
+        }
+      ]
+    },
+    "wan-2-6": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "Wan 2.6",
+          "basis": "release",
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ],
+          "video": {
+            "maxDurationSeconds": 15,
+            "audio": "native"
+          },
+          "sources": [
+            "https://www.alibabacloud.com/en/press-room/alibaba-unveils-wan2-6-series-enabling-everyone"
+          ]
+        }
+      ]
+    },
+    "wan-2-7-video": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "Wan 2.7 Video",
+          "basis": "release",
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ],
+          "video": {
+            "maxDurationSeconds": 15,
+            "resolutions": [
+              "720p",
+              "1080p"
+            ],
+            "audio": "native"
+          },
+          "sources": [
+            "https://www.alibabacloud.com/blog/alibaba-unveils-wan2-7-video-to-elevate-creators-from-executors-to-directors_603009"
+          ]
+        }
+      ]
+    },
+    "wan-3-0-video": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "wan3.0-video",
+          "basis": "api",
+          "input": [
+            "text",
+            "image",
+            "audio",
+            "video"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ],
+          "video": {
+            "maxDurationSeconds": 30,
+            "resolutions": [
+              "480p",
+              "720p",
+              "1080p"
+            ],
+            "audio": "native"
+          },
+          "sources": [
+            "https://www.alibabacloud.com/help/en/model-studio/wan3-0-video",
+            "https://www.alibabacloud.com/help/en/model-studio/video-generate-edit-model"
+          ]
+        }
+      ],
+      "cardScope": "configuration"
+    },
+    "hunyuan-video": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "HunyuanVideo",
+          "basis": "weights",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "video"
+          ],
+          "video": {
+            "resolutions": [
+              "540p",
+              "720p"
+            ]
+          },
+          "sources": [
+            "https://github.com/Tencent-Hunyuan/HunyuanVideo"
+          ]
+        }
+      ]
+    },
+    "hunyuan-video-1-5": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "HunyuanVideo 1.5",
+          "basis": "weights",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "video"
+          ],
+          "video": {
+            "resolutions": [
+              "480p",
+              "720p"
+            ]
+          },
+          "sources": [
+            "https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5"
+          ],
+          "note": "基础模型原生 480p/720p；独立超分模型可提升至 1080p。不将超分辨率写作原生规格。",
+          "noteEn": "Base models generate native 480p/720p; a separate super-resolution model upscales to 1080p."
+        }
+      ]
+    },
+    "sora": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "Sora research model",
+          "video": {
+            "maxDurationSeconds": 60,
+            "resolutions": [
+              "1080p"
+            ]
+          },
+          "note": "2024 年 2 月研究展示：最长约 60 秒，含 1920×1080 与 1080×1920 示例；非后来 Sora Turbo 产品额度。",
+          "noteEn": "February 2024 research demonstrations: up to about 60 seconds, including 1920×1080 and 1080×1920 examples; these are not Sora Turbo product limits.",
+          "sources": [
+            "https://openai.com/index/video-generation-models-as-world-simulators/"
+          ],
+          "basis": "paper",
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "video"
+          ]
+        }
+      ],
+      "cardScope": "configuration"
+    },
+    "veo": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "Veo research preview",
+          "video": {
+            "resolutions": [
+              "1080p"
+            ]
+          },
+          "note": "首发展示可生成超过一分钟的 1080p 视频；官方未在该公告给出统一产品时长上限，因此不填写最大秒数。",
+          "noteEn": "The launch demonstrated 1080p videos longer than a minute. No universal product duration ceiling is given, so no numeric maximum is assigned.",
+          "sources": [
+            "https://blog.google/innovation-and-ai/products/google-generative-ai-veo-imagen-3/"
+          ],
+          "basis": "release",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "video"
+          ]
+        }
+      ],
+      "cardScope": "configuration"
+    },
+    "sora-turbo": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "Sora Turbo · Pro plan",
+          "video": {
+            "maxDurationSeconds": 20,
+            "resolutions": [
+              "1080p"
+            ]
+          },
+          "note": "2024-12-09 产品发布规格；1080p 与 20 秒为高档方案可达上限，不代表所有订阅。现已停服。",
+          "noteEn": "December 9, 2024 product specifications; 1080p and 20 seconds are upper-tier limits, not allowances for every subscription. The service has closed.",
+          "sources": [
+            "https://openai.com/index/sora-is-here/"
+          ],
+          "basis": "release",
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "video"
+          ]
+        }
+      ],
+      "cardScope": "configuration"
+    },
+    "veo-2": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "Veo 2 · Gemini (2025-04)",
+          "video": {
+            "maxDurationSeconds": 8,
+            "resolutions": [
+              "720p"
+            ]
+          },
+          "note": "采用 2025-04-15 Gemini 产品的明确规格：文本生成 8 秒、720p、16:9 视频；不将模型演示的 4K / 分钟级能力当作产品上限。",
+          "noteEn": "Specifications for the April 15, 2025 Gemini product: eight-second 720p, 16:9 clips from text. The model's 4K and minute-scale demonstrations are not treated as product limits.",
+          "sources": [
+            "https://blog.google/products-and-platforms/products/gemini/video-generation/"
+          ],
+          "basis": "service",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "video"
+          ]
+        }
+      ],
+      "cardScope": "configuration"
+    },
+    "veo-3": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "veo-3.0-generate-001",
+          "video": {
+            "maxDurationSeconds": 8,
+            "resolutions": [
+              "720p",
+              "1080p"
+            ],
+            "frameRates": [
+              24
+            ],
+            "audio": "native"
+          },
+          "note": "采用后续 Vertex AI 型号的 4 / 6 / 8 秒、720p / 1080p、24 FPS 规格，不倒填为全部首发产品限制；文档列该端点于 2026-06-30 退役。",
+          "noteEn": "Specifications for the later Vertex AI model: 4/6/8 seconds, 720p/1080p and 24 FPS, not universal launch limits. Its documentation lists June 30, 2026 as the endpoint retirement date.",
+          "sources": [
+            "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/veo/3-0-generate"
+          ],
+          "basis": "api",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ]
+        }
+      ],
+      "cardScope": "configuration"
+    },
+    "sora-2": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "Sora 2 · archived API",
+          "video": {
+            "maxDurationSeconds": 20,
+            "resolutions": [
+              "720p"
+            ],
+            "audio": "native"
+          },
+          "sources": [
+            "https://developers.openai.com/api/docs/models/sora-2",
+            "https://developers.openai.com/api/docs/guides/video-generation"
+          ],
+          "note": "停服后保留的 API 文档：最长 20 秒；Sora 2 的输出分辨率为 1280×720 或 720×1280。不是 2025 年 9 月首发 App 的统一限制。",
+          "noteEn": "Retained API documentation after retirement: up to 20 seconds, with Sora 2 output at 1280×720 or 720×1280. These are not universal September 2025 app launch limits.",
+          "basis": "api",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ]
+        },
+        {
+          "name": "Sora 2 Pro · archived API",
+          "video": {
+            "maxDurationSeconds": 20,
+            "resolutions": [
+              "720p",
+              "1080p"
+            ],
+            "audio": "native"
+          },
+          "sources": [
+            "https://developers.openai.com/api/docs/models/sora-2-pro",
+            "https://developers.openai.com/api/docs/guides/video-generation"
+          ],
+          "note": "保留的 Pro API 文档还列出 1792×1024 / 1024×1792 和 1920×1080 / 1080×1920；全部为已下线服务的历史规格。",
+          "noteEn": "The retained Pro API page also lists 1792×1024 / 1024×1792 and 1920×1080 / 1080×1920 outputs. These are historical specifications of a retired service.",
+          "basis": "api",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ]
+        }
+      ]
+    },
+    "veo-3-1": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "veo-3.1-generate-preview · Gemini API",
+          "video": {
+            "maxDurationSeconds": 8,
+            "resolutions": [
+              "720p",
+              "1080p"
+            ],
+            "frameRates": [
+              24
+            ],
+            "audio": "native",
+            "upscaledResolutions": [
+              "4K"
+            ]
+          },
+          "note": "2026-10-15 核对的 Gemini API：单次 4 / 6 / 8 秒；1080p、4K 和参考图生成要求 8 秒，延展仅 720p。4K 在 2026 年 1 月以增强分辨率功能公布，不称为原生 4K；延展总时长不等于单次生成上限。",
+          "noteEn": "Gemini API checked October 15, 2026: 4/6/8-second clips; 1080p, 4K and reference-image generation require 8 seconds, with extension limited to 720p. The January 2026 announcement describes enhanced/upscaled 4K, not native 4K. Extended total duration is not a single-generation limit.",
+          "sources": [
+            "https://ai.google.dev/gemini-api/docs/veo?hl=en"
+          ],
+          "basis": "api",
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ]
+        }
+      ],
+      "cardScope": "configuration"
+    },
+    "gemini-omni-flash": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "Gemini Omni Flash",
+          "video": {
+            "audio": "native"
+          },
+          "note": "模型卡确认原生音视频输出。",
+          "noteEn": "The model card confirms native audiovisual output.",
+          "sources": [
+            "https://deepmind.google/models/model-cards/gemini-omni-flash/"
+          ],
+          "basis": "release",
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ]
+        }
+      ]
+    },
+    "gemini-omni-1-1-flash": {
+      "checkedAt": "2026-10-15",
+      "variants": [
+        {
+          "name": "gemini-omni-1.1-flash · Gemini API",
+          "video": {
+            "resolutions": [
+              "360p",
+              "720p"
+            ],
+            "audio": "native",
+            "upscaledResolutions": [
+              "1080p",
+              "4K"
+            ]
+          },
+          "sources": [
+            "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash/",
+            "https://ai.google.dev/gemini-api/docs/omni"
+          ],
+          "note": "360p 草稿、720p 标准输出，1080p 与 4K 为升采样；每次延展增加 10 秒，累计上限 40 秒，因此不将 40 秒写入单次生成最大时长。",
+          "noteEn": "360p drafts and standard 720p output, with upscaling to 1080p and 4K. Extensions add ten seconds up to 40 seconds total, so 40 seconds is not recorded as the maximum single-generation duration.",
+          "basis": "api",
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ]
+        }
+      ],
+      "cardScope": "configuration"
+    },
+    "kling-1": {
+      "variants": [
+        {
+          "name": "Kling",
+          "basis": "release",
+          "sources": [
+            "https://ir.kuaishou.com/news-releases/news-release-details/kuaishou-unveils-proprietary-video-generation-model-kling",
+            "https://ir.kuaishou.com/news-releases/news-release-details/kuaishou-launches-full-beta-testing-kling-ai-global-users-0"
+          ],
+          "input": [
+            "text"
+          ],
+          "output": [
+            "video"
+          ]
+        }
+      ],
+      "checkedAt": "2026-10-15"
+    },
+    "kling-2": {
+      "variants": [
+        {
+          "name": "Kling 2.0",
+          "basis": "release",
+          "sources": [
+            "https://ir.kuaishou.com/news-releases/news-release-details/kling-ai-advances-20-era-empowering-everyone-tell-great-stories"
+          ],
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "video"
+          ]
+        }
+      ],
+      "checkedAt": "2026-10-15"
+    },
+    "kling-o1": {
+      "variants": [
+        {
+          "name": "Kling O1",
+          "video": {
+            "maxDurationSeconds": 10
+          },
+          "note": "公告给出 3–10 秒生成长度；首尾帧模式在发布时仍计划后续支持此范围。",
+          "noteEn": "The announcement gives a 3–10-second generation range; support for this range in first/last-frame mode was still forthcoming.",
+          "sources": [
+            "https://ir.kuaishou.com/news-releases/news-release-details/kling-o1-launches-worlds-first-unified-multimodal-video-model-0/"
+          ],
+          "basis": "release",
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "video"
+          ]
+        }
+      ],
+      "checkedAt": "2026-10-15"
+    },
+    "kling-3": {
+      "variants": [
+        {
+          "name": "Kling Video 3.0 / 3.0 Omni",
+          "video": {
+            "maxDurationSeconds": 15,
+            "audio": "native"
+          },
+          "note": "视频模型的 15 秒上限；公告的 2K/4K 描述属于 Image 3.0，不作为视频规格。",
+          "noteEn": "The 15-second limit applies to video. The announcement's 2K/4K claims concern Image 3.0, not video.",
+          "sources": [
+            "https://ir.kuaishou.com/news-releases/news-release-details/kling-ai-launches-30-model-ushering-era-where-everyone-can-be"
+          ],
+          "basis": "release",
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ]
+        }
+      ],
+      "checkedAt": "2026-10-15",
+      "cardScope": "configuration"
+    },
+    "runway-gen-1": {
+      "variants": [
+        {
+          "name": "Runway Gen-1",
+          "basis": "paper",
+          "sources": [
+            "https://runway.com/research/gen-1",
+            "https://arxiv.org/abs/2302.03011"
+          ],
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "video"
+          ]
+        }
+      ],
+      "checkedAt": "2026-10-15"
+    },
+    "runway-gen-2": {
+      "variants": [
+        {
+          "name": "Runway Gen-2",
+          "basis": "release",
+          "sources": [
+            "https://runway.com/research/gen-2"
+          ],
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "video"
+          ]
+        }
+      ],
+      "checkedAt": "2026-10-15"
+    },
+    "runway-gen-3-alpha": {
+      "variants": [
+        {
+          "name": "Runway Gen-3 Alpha",
+          "basis": "release",
+          "sources": [
+            "https://runway.com/research/introducing-gen-3-alpha"
+          ],
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "video"
+          ],
+          "note": "公告描述文本与图像条件生成，功能按产品阶段开放；不表示公告当天所有用户均可使用。",
+          "noteEn": "The announcement describes text- and image-conditioned generation, with features rolled out in stages; this does not imply universal availability on the announcement date."
+        }
+      ],
+      "checkedAt": "2026-10-15"
+    },
+    "runway-gen-4": {
+      "variants": [
+        {
+          "name": "Gen-4 Video",
+          "video": {
+            "maxDurationSeconds": 10,
+            "resolutions": [
+              "720p"
+            ],
+            "frameRates": [
+              24
+            ]
+          },
+          "note": "官方视频使用说明：5 秒或 10 秒、24fps；16:9 为 1280×720，其他比例采用对应像素尺寸。",
+          "noteEn": "Official video documentation: 5 or 10 seconds at 24fps; 16:9 is 1280×720, with corresponding dimensions for other aspect ratios.",
+          "sources": [
+            "https://help.runwayml.com/hc/en-us/articles/37327109429011-Creating-with-Gen-4-Video"
+          ],
+          "basis": "service",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "video"
+          ]
+        }
+      ],
+      "checkedAt": "2026-10-15",
+      "cardScope": "configuration"
+    },
+    "runway-gen-4-5": {
+      "variants": [
+        {
+          "name": "Gen-4.5 · hosted service",
+          "video": {
+            "maxDurationSeconds": 10,
+            "frameRates": [
+              24,
+              25
+            ],
+            "resolutions": [
+              "720p"
+            ]
+          },
+          "note": "当前使用说明：720p、2–10 秒、24 或 25fps；与首发功能范围区分。",
+          "noteEn": "Current documentation: 720p, 2–10 seconds at 24 or 25fps; distinct from the initial launch feature set.",
+          "sources": [
+            "https://help.runwayml.com/hc/en-us/articles/46974685288467-Creating-with-Gen-4-5"
+          ],
+          "basis": "service",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "video"
+          ]
+        }
+      ],
+      "checkedAt": "2026-10-15",
+      "cardScope": "configuration"
+    },
+    "hailuo-01": {
+      "variants": [
+        {
+          "name": "Video-01",
+          "video": {
+            "maxDurationSeconds": 6,
+            "resolutions": [
+              "720p"
+            ],
+            "frameRates": [
+              25
+            ]
+          },
+          "note": "使用 Video-01 官方公告规格；不套用后续版本的 10 秒参数。",
+          "noteEn": "Uses the official Video-01 specifications, without applying later versions' 10-second limit.",
+          "sources": [
+            "https://www.minimax.io/news/Video-01"
+          ],
+          "basis": "release",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "video"
+          ]
+        }
+      ],
+      "checkedAt": "2026-10-15",
+      "cardScope": "configuration"
+    },
+    "hailuo-02": {
+      "variants": [
+        {
+          "name": "Hailuo 02 · 768p",
+          "video": {
+            "maxDurationSeconds": 10,
+            "resolutions": [
+              "768p"
+            ]
+          },
+          "note": "768p 支持 6 秒或 10 秒。",
+          "noteEn": "768p supports 6- or 10-second clips.",
+          "sources": [
+            "https://www.minimax.io/news/minimax-hailuo-02"
+          ],
+          "basis": "release",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "video"
+          ]
+        },
+        {
+          "name": "Hailuo 02 · 1080p",
+          "video": {
+            "maxDurationSeconds": 6,
+            "resolutions": [
+              "1080p"
+            ]
+          },
+          "note": "1080p 支持 6 秒；不合并成 1080p / 10 秒。",
+          "noteEn": "1080p supports 6 seconds; this does not imply 1080p at 10 seconds.",
+          "sources": [
+            "https://www.minimax.io/news/minimax-hailuo-02"
+          ],
+          "basis": "release",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "video"
+          ]
+        }
+      ],
+      "checkedAt": "2026-10-15"
+    },
+    "minimax-h3": {
+      "variants": [
+        {
+          "name": "H3 Base · local weights",
+          "video": {
+            "maxDurationSeconds": 15,
+            "resolutions": [
+              "768p"
+            ],
+            "frameRates": [
+              24
+            ],
+            "audio": "native"
+          },
+          "note": "本地基础模型默认短边 768px、4–15 秒、24fps，原生立体声音频；2K 需要额外官方工作流。 音频参考须同时提供图像或视频，具体输入组合依检查点而定。",
+          "noteEn": "Local base defaults to a 768px short edge, 4–15 seconds and 24fps with native stereo audio; 2K requires the additional official workflow. Audio references require an accompanying image or video; supported input combinations depend on the checkpoint.",
+          "sources": [
+            "https://huggingface.co/MiniMaxAI/MiniMax-H3"
+          ],
+          "basis": "weights",
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ]
+        },
+        {
+          "name": "H3 · hosted workflow",
+          "video": {
+            "maxDurationSeconds": 15,
+            "resolutions": [
+              "2K"
+            ],
+            "audio": "native"
+          },
+          "note": "完整 2K 流程结合 H3 Base 与官方 Context-IR、Regenerate-2K API，不是完全本地开放权重能力。 音频参考须同时提供图像或视频，具体输入组合依检查点而定。",
+          "noteEn": "The full 2K pipeline combines H3 Base with official Context-IR and Regenerate-2K APIs; it is not a fully local open-weight capability. Audio references require an accompanying image or video; supported input combinations depend on the checkpoint.",
+          "sources": [
+            "https://huggingface.co/MiniMaxAI/MiniMax-H3"
+          ],
+          "basis": "api",
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ]
+        }
+      ],
+      "checkedAt": "2026-10-15"
     }
   }
 });

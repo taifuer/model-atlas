@@ -830,6 +830,192 @@ window.MODEL_ATLAS_EN = {
     "summary": "Meta’s new multimodal models target sustained coding, computer use, and professional tasks, with cross-session memory and sub-agent delegation.",
     "details": "Wonder is available in preview through Meta Model API and in Muse Code. Full is limited to Muse Code Power Usage and Maximum Usage subscribers. Both accept text, images, audio, and video and generate text; public API rates apply only to Wonder. A later rollout in the Muse app remains planned.",
     "dateNote": "Uses October 12 from both Meta’s announcement and model card. The two models share one family entry, with their distinct access scopes retained."
+  },
+  "seedance-1-0": {
+    "summary": "Text- and image-to-video generation with multiple shots in one sequence and 1080p output.",
+    "details": "The first Seedance generation supports text and image conditioning. Its release report demonstrates multiple shots within a 10-second clip. Native audio generation belongs to later releases.",
+    "dateNote": "Dated to the official release announcement; the technical report was submitted to arXiv on June 10, 2025."
+  },
+  "seedance-1-5-pro": {
+    "summary": "Introduces native joint audio-video generation with synchronized dialogue, music and sound effects.",
+    "details": "A unified audio-video architecture supports text-driven and image-conditioned generation, including multilingual and dialect lip synchronization. It is the Seedance release that adds native audio to video generation.",
+    "dateNote": "Officially launched and made available for use on this date; the technical report was submitted the previous day."
+  },
+  "seedance-2-0": {
+    "summary": "Uses text, image, video and audio references for video generation and editing.",
+    "details": "Seedance 2.0 uses a unified audio-video generation architecture and supports 15-second multi-shot output. The announcement specifies up to nine image, three video and three audio references; these limits do not describe version 2.5.",
+    "dateNote": "Dated to the February 12 official announcement. Testing in China preceded it; this date does not mark general worldwide API availability."
+  },
+  "seedance-2-5": {
+    "summary": "Extends single-pass generation to 30 seconds with richer references, continuation and targeted editing.",
+    "details": "Supports up to 30 images, 10 video clips and 10 audio clips as references, with timestamp-based audio-video editing. The single-pass limit is 30 seconds; longer videos require successive extensions.",
+    "dateNote": "Rollout began in Jimeng AI, Doubao Pro and other products on this date. BytePlus ModelArk API access was described as coming soon at launch."
+  },
+  "wan-2-1": {
+    "summary": "Releases video model weights and inference code, with 1.3B and 14B models for text- and image-to-video generation.",
+    "details": "The initial release includes T2V-1.3B, T2V-14B and I2V-14B models. The 14B models support 480p and 720p configurations, while 480p is recommended for 1.3B. First/last-frame and VACE editing models were released later.",
+    "dateNote": "Dated to the official repository's inference-code and weight release. The technical report followed in March."
+  },
+  "wan-2-2": {
+    "summary": "Introduces mixture-of-experts video generation and releases a 5B text/image-to-video model for consumer GPUs.",
+    "details": "The initial models are T2V-A14B, I2V-A14B and TI2V-5B. The 5B model unifies text- and image-to-video generation at 720p and 24 fps. Speech-driven S2V and Animate models followed in separate releases.",
+    "dateNote": "Dated to the official repository's code and weight release."
+  },
+  "wan-2-5-preview": {
+    "summary": "Adds native synchronized audio-video generation and extends Wan clips to 10 seconds.",
+    "details": "The Apsara Conference preview introduced updated text- and image-to-video models trained for synchronized sound and visuals. This node covers video models only, excluding the image generation and editing models presented alongside them.",
+    "dateNote": "Dated to the official Apsara Conference preview, not later regional commercial API launch dates."
+  },
+  "wan-2-6": {
+    "summary": "Adds reference-to-video generation that preserves a subject's appearance and voice across scenes.",
+    "details": "The family includes text-, image- and reference-to-video models, with multi-shot narratives and audio-video output up to 15 seconds. Reference videos can provide both appearance and voice. Image models in the same family are outside this node.",
+    "dateNote": "Officially announced on this date with access through Model Studio and wan.video."
+  },
+  "wan-2-7-video": {
+    "summary": "Combines video generation, references and natural-language editing with multimodal inputs and shot consistency.",
+    "details": "The official video series includes T2V, I2V, R2V and VideoEdit models for generation, continuation, references and editing. Its launch description specifies 2–15-second output at 720p and 1080p. It is distinct from Wan 2.7 Image, released on April 1.",
+    "dateNote": "Dated to the April 3 release in the official model changelog; the English announcement was published on April 7."
+  },
+  "wan-3-0-video": {
+    "summary": "Unifies video generation and editing, with clips up to 30 seconds and references from documents and web pages.",
+    "details": "The model supports text, image, audio and video inputs, with document and web references, for text-, image-, first/last-frame and reference-to-video generation. Standard output supports 480p, 720p and 1080p. Prime is a speed-optimized version of the same generation and is not a separate node.",
+    "dateNote": "Entered testing on August 6; the August 7 announcement required users to apply for access. General launch followed on August 24. The timeline retains the initial testing date."
+  },
+  "hunyuan-video": {
+    "summary": "Tencent releases video model weights and inference code for text-conditioned video generation.",
+    "details": "The initial release is a text-to-video model, with official 540p and 720p inference configurations. The image-to-video branch followed in March 2025 and is not part of the December 2024 release's input capabilities.",
+    "dateNote": "Dated to the weight and inference-code release consistently recorded by the official repository and license."
+  },
+  "hunyuan-video-1-5": {
+    "summary": "Provides text- and image-to-video generation with 8.3B parameters and lower local hardware requirements.",
+    "details": "Unifies text- and image-to-video generation with native 480p and 720p models, plus a separate super-resolution network for 1080p output. 1080p is upscaled output, not a native base-model resolution. Training code followed in December.",
+    "dateNote": "Dated to the November 20 code and weight release recorded by this model's repository and model card; the license and parent repository announcement state November 21."
+  },
+  "sora": {
+    "name": "Sora",
+    "summary": "OpenAI introduced the Sora research model for generating video from text, images or existing footage.",
+    "details": "Its diffusion transformer operates on spacetime patches and demonstrated videos up to about a minute long. The initial release was a research preview with invited evaluation. The later Sora consumer service closed on April 26, 2026.",
+    "dateNote": "The date marks the research announcement and technical report, not a public product launch."
+  },
+  "veo": {
+    "name": "Veo",
+    "summary": "Google DeepMind introduced Veo with 1080p video demonstrations and a private VideoFX preview for selected creators.",
+    "details": "The launch emphasized text-directed scenes and camera work, demonstrating clips longer than a minute. A December 2024 Vertex AI preview explicitly supported both text and image prompts for the same generation.",
+    "dateNote": "The date marks the Google I/O announcement and creator preview, not the later Vertex AI launch."
+  },
+  "sora-turbo": {
+    "name": "Sora Turbo",
+    "summary": "The faster Sora Turbo model launched through Sora.com for ChatGPT Plus and Pro subscribers.",
+    "details": "It supported text, image and video inputs with storyboard, remix and extension tools. Product limits reached 1080p and 20 seconds, depending on the plan. The Sora web and app service closed on April 26, 2026.",
+    "dateNote": "The date marks the distinct Sora Turbo model and Sora.com launch, separate from the February research preview."
+  },
+  "veo-2": {
+    "name": "Veo 2",
+    "summary": "Veo 2 updated motion, physical realism and camera controls, with expanded access through VideoFX.",
+    "details": "It later powered video generation in Gemini and Whisk: Gemini produced eight-second 720p clips from text, while Whisk animated images into eight-second clips. Launch demonstrations and later product limits are kept separate.",
+    "dateNote": "The date marks the Veo 2 announcement and expanded VideoFX preview. Gemini and Whisk integration followed in April 2025."
+  },
+  "veo-3": {
+    "name": "Veo 3",
+    "summary": "Veo 3 introduced native dialogue, sound effects and ambient audio alongside video generation in Gemini, Flow and Vertex AI.",
+    "details": "Text and image prompts control a generation process that produces both sound and video. Initial access targeted U.S. Google AI Ultra users and enterprise channels. Later API and regional releases had separate schedules; the Veo 3.0 API documentation now marks the model deprecated.",
+    "dateNote": "The date marks the Google I/O model launch and initial access, not simultaneous general availability in every region or API variant."
+  },
+  "sora-2": {
+    "name": "Sora 2",
+    "summary": "Sora 2 added synchronized dialogue and sound effects, with updated motion, physical consistency and shot control.",
+    "details": "Initial access used invitations in the U.S. and Canada through the Sora app and web, alongside the higher-quality Sora 2 Pro variant. The web and app closed on April 26, 2026; Sora 2, Pro and the Videos API shut down on September 24.",
+    "dateNote": "The date marks the model and invitation-based product launch. API access was still planned for a later release."
+  },
+  "veo-3-1": {
+    "name": "Veo 3.1",
+    "summary": "Veo 3.1 updated audiovisual generation and prompt following, with stronger reference-image, frame and extension controls.",
+    "details": "The model arrived through Flow, Gemini and developer services, with individual editing features rolling out by channel. A January 2026 update added portrait reference-image generation and enhanced 1080p/4K output. Fast and Lite are speed and cost tiers of the same generation.",
+    "dateNote": "The date marks the initial Veo 3.1 announcement and preview. Features added in 2026 are not presented as launch specifications."
+  },
+  "gemini-omni-flash": {
+    "name": "Gemini Omni Flash",
+    "summary": "The first Gemini Omni model combined multimodal inputs with video generation and conversational editing.",
+    "details": "It arrived in Gemini, Google Flow and YouTube creation tools, combining text, images, video and restricted voice references to produce video with audio. Audio references were initially limited to voice identity; standalone image and audio outputs remained planned.",
+    "dateNote": "The date marks the Google I/O announcement and start of consumer rollout. Developer APIs were announced for a later release."
+  },
+  "gemini-omni-1-1-flash": {
+    "name": "Gemini Omni 1.1 Flash",
+    "summary": "Omni 1.1 Flash added scene extension, first-and-last-frame control, 360p drafts and upscaled output up to 4K.",
+    "details": "Extensions add ten-second segments up to 40 seconds in total, using up to ten seconds of prior context; this is not a 40-second single-generation limit. It launched through Gemini and enterprise APIs and Flow, with integrations documented for Adobe Firefly, Figma Weave and Runway.",
+    "dateNote": "The date marks the 1.1 model and added controls, not a duplicate entry for the original Omni API rollout."
+  },
+  "kling-1": {
+    "name": "Kling",
+    "summary": "Kuaishou opened testing for Kling, a DiT video model designed to model motion across space and time.",
+    "details": "The original Kling combined a proprietary 3D VAE with spatiotemporal attention for text-to-video, later adding image-to-video and video extension.",
+    "dateNote": "Uses June 6, when testing applications opened, as confirmed by Kuaishou's retrospective. The English announcement followed on June 10 and global beta access on July 25."
+  },
+  "kling-2": {
+    "name": "Kling 2.0",
+    "summary": "Kling's second generation introduced multimodal visual language for generation and editing with text, reference images and video clips.",
+    "details": "The 2.0 Master edition improved motion and instruction following, with text- and image-guided insertion, removal and replacement within video clips.",
+    "dateNote": "Uses the date of Kuaishou's global Kling 2.0 launch."
+  },
+  "kling-o1": {
+    "name": "Kling O1",
+    "summary": "Kling O1 unified video generation and editing in a multimodal model guided by reference material and natural language.",
+    "details": "It accepts text, image, video and subject references for generation, local editing, style transfer and shot extension.",
+    "dateNote": "The December 2 announcement explicitly states that the model launched on December 1."
+  },
+  "kling-3": {
+    "name": "Kling 3.0 / 3.0 Omni",
+    "summary": "Kling 3.0 brought native audiovisual generation, multi-shot storytelling and subject consistency into one video-model generation.",
+    "details": "Video generation extends to 15 seconds. Omni adds character and voice references from video alongside shot-by-shot storyboard control.",
+    "dateNote": "Uses the official announcement date; initial early access was limited to Ultra subscribers."
+  },
+  "runway-gen-1": {
+    "name": "Runway Gen-1",
+    "summary": "Runway Gen-1 used an input video's structure while changing its appearance through text or image references.",
+    "details": "The diffusion model separated structure and content control for video stylization, storyboard visualization and localized transformations.",
+    "dateNote": "Uses the associated paper's first arXiv submission date; the official product research page only specifies February 2023."
+  },
+  "runway-gen-2": {
+    "name": "Runway Gen-2",
+    "summary": "Runway Gen-2 added text-to-video generation alongside image- and video-guided control.",
+    "details": "Unlike Gen-1's reliance on existing video structure, Gen-2 could generate new video from text, with additional image-reference, stylization and storyboard modes.",
+    "dateNote": "Uses the March 20 date of Runway's official announcement video; the public web product followed later. The research page's current month field conflicts with that announcement record."
+  },
+  "runway-gen-3-alpha": {
+    "name": "Runway Gen-3 Alpha",
+    "summary": "Runway Gen-3 Alpha introduced a new training infrastructure for stronger motion, detail and temporal control.",
+    "details": "Joint image-video training and dense temporal captions describe actions within a clip, improving complex scenes and human motion.",
+    "dateNote": "Uses the official model announcement date; public availability expanded afterward."
+  },
+  "runway-gen-4": {
+    "name": "Runway Gen-4",
+    "summary": "Runway Gen-4 used reference images to maintain consistent characters, objects and scenes across shots.",
+    "details": "The video model combines an input image with a text prompt, emphasizing visual continuity across changes in viewpoint and setting.",
+    "dateNote": "Uses the March 31 release date recorded in Runway's official research index."
+  },
+  "runway-gen-4-5": {
+    "name": "Runway Gen-4.5",
+    "summary": "Runway Gen-4.5 improves complex motion, physical consistency and prompt adherence.",
+    "details": "It launched with text-to-video and later added image-to-video, with pretraining and post-training improvements to motion and temporal stability.",
+    "dateNote": "Uses December 1 from the model announcement. The research index lists November 1, which conflicts with the article and its November 30 evaluation date."
+  },
+  "hailuo-01": {
+    "name": "Hailuo-01 (Video-01)",
+    "summary": "MiniMax released Video-01, the first generation of its Hailuo video-model line.",
+    "details": "It generated short clips from text, with image references supported in the first-generation family. Official specifications list 720p, 25fps and up to six seconds.",
+    "dateNote": "Uses August 31 from MiniMax's original Video-01 announcement. Later Hailuo-01 naming and image-to-video support are grouped in this generation."
+  },
+  "hailuo-02": {
+    "name": "Hailuo 02",
+    "summary": "Hailuo 02 introduced noise-aware compute redistribution to improve physical motion, instruction following and video detail.",
+    "details": "It supports text-to-video and image-to-video with native 1080p output, while clip duration depends on resolution.",
+    "dateNote": "Uses the official MiniMax Hailuo 02 release date."
+  },
+  "minimax-h3": {
+    "name": "MiniMax H3",
+    "summary": "MiniMax H3 unified multimodal references with native audiovisual generation and subsequently released its model weights.",
+    "details": "The 33B single-stream Transformer accepts text, image, video and audio references. Open base checkpoints generate 768p audiovisual clips; the full hosted workflow supports 2K.",
+    "dateNote": "The model launched on July 31; MiniMax announced open weights on August 3. The license's August 2 date is not treated as the original release."
   }
 };
 window.ATLAS_TAGS_EN = {
@@ -907,7 +1093,24 @@ window.ATLAS_TAGS_EN = {
   "任务规划": "Planning",
   "会话管理": "Sessions",
   "数据连接": "Data connections",
-  "自主编程": "Autonomous coding"
+  "自主编程": "Autonomous coding",
+  "视频生成": "Video generation",
+  "音视频生成": "Audio-video generation",
+  "扩散 Transformer": "Diffusion transformer",
+  "VideoFX": "VideoFX",
+  "分镜": "Storyboards",
+  "镜头控制": "Camera control",
+  "原生音频": "Native audio",
+  "参考图": "Reference images",
+  "对话编辑": "Conversational editing",
+  "DiT": "DiT",
+  "视频编辑": "Video editing",
+  "统一多模态": "Unified multimodal",
+  "文生视频": "Text-to-video",
+  "时间控制": "Temporal control",
+  "主体一致性": "Visual consistency",
+  "运动建模": "Motion modeling",
+  "NCR": "NCR"
 };
 window.MODEL_THEMES_EN = {
   "2017": "The Transformer architecture",

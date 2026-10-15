@@ -1049,6 +1049,375 @@
       "sources": [
         "https://research.meta.ai/static/muse-wonder-model-card"
       ]
+    },
+    "seedance-1-0": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://seed.bytedance.com/en/blog/tech-report-of-seedance-1-0-is-now-publicly-available"
+      ]
+    },
+    "seedance-1-5-pro": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://seed.bytedance.com/en/blog/sound-and-vision-all-in-one-take-the-official-release-of-seedance-1-5-pro"
+      ]
+    },
+    "seedance-2-0": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://seed.bytedance.com/en/blog/seedance-2-0-official-launch"
+      ]
+    },
+    "seedance-2-5": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5"
+      ]
+    },
+    "wan-2-1": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://github.com/Wan-Video/Wan2.1"
+      ]
+    },
+    "wan-2-2": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://github.com/Wan-Video/Wan2.2"
+      ]
+    },
+    "wan-2-5-preview": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://www.alibabacloud.com/en/press-room/alibabacloudunveilsstrategicroadmaps"
+      ]
+    },
+    "wan-2-6": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://www.alibabacloud.com/en/press-room/alibaba-unveils-wan2-6-series-enabling-everyone"
+      ]
+    },
+    "wan-2-7-video": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
+      ]
+    },
+    "wan-3-0-video": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
+      ]
+    },
+    "hunyuan-video": {
+      "checkedAt": "2026-10-15",
+      "category": "text",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://github.com/Tencent-Hunyuan/HunyuanVideo"
+      ]
+    },
+    "hunyuan-video-1-5": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5"
+      ]
+    },
+    "sora": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://openai.com/index/video-generation-models-as-world-simulators/"
+      ],
+      "note": "图像动画、视频延展和编辑在原始技术报告中直接演示；视频输入用于生成控制，不代表通用视频理解。",
+      "noteEn": "The original report demonstrates image animation, video extension and editing. Video input controls generation; it does not imply general video understanding."
+    },
+    "veo": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://blog.google/innovation-and-ai/products/google-generative-ai-veo-imagen-3/",
+        "https://cloud.google.com/blog/products/ai-machine-learning/introducing-veo-and-imagen-3-on-vertex-ai"
+      ],
+      "note": "文本输入在首发确认；同代模型的图像输入由 2024-12-03 Vertex AI 公告确认，不倒填为所有首发用户功能。",
+      "noteEn": "Text input is confirmed at launch; image input is confirmed for the same generation by the December 3, 2024 Vertex AI announcement, not assumed available to every initial user."
+    },
+    "sora-turbo": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://openai.com/index/sora-is-here/"
+      ]
+    },
+    "veo-2": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://blog.google/products-and-platforms/products/gemini/video-generation/"
+      ],
+      "note": "文本输入对应 Gemini，图像输入对应 Whisk；不把两种界面的入口能力混写。",
+      "noteEn": "Text input is confirmed for Gemini and image input for Whisk; their interface capabilities are not treated as identical."
+    },
+    "veo-3": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://blog.google/innovation-and-ai/products/generative-media-models-io-2025/",
+        "https://ai.google.dev/gemini-api/docs/veo?hl=en"
+      ],
+      "note": "原生音频为输出；不能据此添加音频输入能力。",
+      "noteEn": "Native audio is an output capability and does not establish audio input support."
+    },
+    "sora-2": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://developers.openai.com/api/docs/models/sora-2",
+        "https://developers.openai.com/api/docs/models/sora-2-pro"
+      ],
+      "note": "按 API 型号文档确认文本、图像输入和音画输出；不将原生音频输出误记为音频输入。",
+      "noteEn": "The API model pages confirm text/image input and audiovisual output. Audio output is not evidence of audio input."
+    },
+    "veo-3-1": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://ai.google.dev/gemini-api/docs/veo?hl=en"
+      ],
+      "note": "视频输入限于延展由 Veo 生成的视频；不表示任意视频理解。参考图、首尾帧与延展在不同服务上的支持范围不同。",
+      "noteEn": "Video input is scoped to extension of Veo-generated footage, not arbitrary video understanding. Reference-image, frame and extension support varies by service."
+    },
+    "gemini-omni-flash": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni/",
+        "https://deepmind.google/models/model-cards/gemini-omni-flash/"
+      ],
+      "note": "首发声音参考仅限声音身份，语音编辑尚未开放；模型层输入模态不能直接等同每个 API 的能力。",
+      "noteEn": "Initial voice references were limited to voice identity and speech editing was not available. Model-level modalities do not imply support in every API."
+    },
+    "gemini-omni-1-1-flash": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://deepmind.google/models/model-cards/gemini-omni-flash/",
+        "https://ai.google.dev/gemini-api/docs/omni"
+      ],
+      "note": "模型卡确认四种输入；当前 Gemini API 不支持上传音频参考，也不支持语音编辑。API 视频参考最多 3 段、每段 3 秒，不能用模型能力概述覆盖这些限制。",
+      "noteEn": "The model card lists four input modalities. The current Gemini API does not support uploading audio references or voice editing. Video references are limited to three clips of up to three seconds each; these service limits remain distinct from model-level capabilities."
+    },
+    "kling-1": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://ir.kuaishou.com/news-releases/news-release-details/kuaishou-unveils-proprietary-video-generation-model-kling",
+        "https://ir.kuaishou.com/news-releases/news-release-details/kuaishou-launches-full-beta-testing-kling-ai-global-users-0"
+      ],
+      "note": "首发为文生视频；图生视频是初代后续能力。",
+      "noteEn": "Text-to-video at launch; image-to-video was added during the first generation."
+    },
+    "kling-2": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://ir.kuaishou.com/news-releases/news-release-details/kling-ai-advances-20-era-empowering-everyone-tell-great-stories"
+      ]
+    },
+    "kling-o1": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://ir.kuaishou.com/news-releases/news-release-details/kling-o1-launches-worlds-first-unified-multimodal-video-model-0/"
+      ]
+    },
+    "kling-3": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://ir.kuaishou.com/news-releases/news-release-details/kling-ai-launches-30-model-ushering-era-where-everyone-can-be"
+      ],
+      "note": "能力覆盖 3.0 与 3.0 Omni；不同模式的参考输入有所不同。",
+      "noteEn": "Capabilities span 3.0 and 3.0 Omni; reference inputs differ by mode."
+    },
+    "runway-gen-1": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://runway.com/research/gen-1",
+        "https://arxiv.org/abs/2302.03011"
+      ]
+    },
+    "runway-gen-2": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://runway.com/research/gen-2"
+      ]
+    },
+    "runway-gen-3-alpha": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://runway.com/research/introducing-gen-3-alpha"
+      ],
+      "note": "系列支持文生视频与图生视频，具体模式按产品推出阶段开放。",
+      "noteEn": "The family supports text-to-video and image-to-video, with modes introduced in stages."
+    },
+    "runway-gen-4": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://help.runwayml.com/hc/en-us/articles/37327109429011-Creating-with-Gen-4-Video"
+      ],
+      "note": "Gen-4 视频生成需要输入图像与文字；不将同系列图像模型能力套用到视频。",
+      "noteEn": "Gen-4 video generation requires an input image and text; image-model capabilities are not attributed to the video model."
+    },
+    "runway-gen-4-5": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://runway.com/research/introducing-runway-gen-4.5",
+        "https://help.runwayml.com/hc/en-us/articles/46974685288467-Creating-with-Gen-4-5"
+      ],
+      "note": "图生视频是后续支持的能力，不记为首发当日已开放。",
+      "noteEn": "Image-to-video was added later and is not presented as available on launch day."
+    },
+    "hailuo-01": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://www.minimax.io/news/Video-01"
+      ],
+      "note": "首发文生视频；当前原始公告也描述图生视频，不能据此断言该模式在首发当日已开放。",
+      "noteEn": "Text-to-video at launch; the current original announcement also describes image-to-video, which does not establish day-one availability."
+    },
+    "hailuo-02": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://www.minimax.io/news/minimax-hailuo-02"
+      ]
+    },
+    "minimax-h3": {
+      "checkedAt": "2026-10-15",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://www.minimax.io/blog/minimax-h3",
+        "https://huggingface.co/MiniMaxAI/MiniMax-H3"
+      ],
+      "note": "输入方式依任务及检查点而定。",
+      "noteEn": "Supported reference inputs depend on the task and checkpoint."
     }
   }
 };
@@ -1057,6 +1426,8 @@
     ...window.MODEL_ATLAS,
     categories: { text: '文本', multimodal: '多模态' },
     categoriesEn: { text: 'Text', multimodal: 'Multimodal' },
-    releases: window.MODEL_ATLAS.releases.map(entry => ({ ...entry, category: data.entries[entry.id]?.category })),
+    tasks: { language: '语言', 'video-generation': '视频生成' },
+    tasksEn: { language: 'Language', 'video-generation': 'Video generation' },
+    releases: window.MODEL_ATLAS.releases.map(entry => ({ ...entry, category: data.entries[entry.id]?.category, tasks: data.entries[entry.id]?.tasks || ['language'] })),
   });
 })();

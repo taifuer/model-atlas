@@ -31,7 +31,7 @@ Left: models in detailed view. Right: agents in compact view.
 
 | Timeline | Coverage |
 | --- | --- |
-| [Large Model Timeline](https://ai.taifua.com/en/) | Major model releases and architecture papers, with context windows, API prices, and evaluation snapshots where available. |
+| [Large Model Timeline](https://ai.taifua.com/en/) | Language, multimodal and video-generation model releases, with architecture papers, verified specifications and dated evaluation snapshots. |
 | Agents | Coding and general-purpose agents, harnesses, frameworks, and protocols. |
 | Hardware | GPUs, dedicated accelerators, systems, and local devices, with configuration-specific specifications. |
 | Technology | Foundational methods, frameworks, inference tools, containers, and sandboxes. |
@@ -40,7 +40,7 @@ Entries are selected for historical influence or technical significance. This is
 
 ## Explore
 
-- Filter by organization, year, and type; share the resulting URL. Header search covers all timelines, prioritizing exact names, then model or series names, then descriptive matches. Organization selection is single by default, with a multi-select switch for comparisons.
+- Filter by organization, year, task, and input type; share the resulting URL. Header search covers all timelines, prioritizing exact names, then model or series names, then descriptive matches. Organization selection is single by default, with a multi-select switch for comparisons.
 - Switch between detailed cards and a compact list, with newest entries first.
 - Browse annual and monthly counts for the current selection.
 - Open [Explore](https://ai.taifua.com/explore.html?lang=en) from the compass button in the header. It presents all cataloged events across the four timelines in monthly groups, from newest to oldest, with same-day events shown together and horizontal year and month navigation.
