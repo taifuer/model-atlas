@@ -1810,7 +1810,7 @@
       ],
       "en": {
         "summary": "Group-relative rewards estimate advantages without a separate value model.",
-        "details": "The DeepSeekMath paper introduces Group Relative Policy Optimization for mathematical reasoning. This entry records the method; model releases belong on the LLM timeline.",
+        "details": "The DeepSeekMath paper introduces Group Relative Policy Optimization for mathematical reasoning. This entry records the method; model releases belong on the Models timeline.",
         "dateNote": "Dated to the first public version on arXiv."
       }
     },
@@ -2255,7 +2255,7 @@
     "references": []
   }
 };
-  // One canonical Transformer record, shared with the LLM timeline.
+  // One canonical Transformer record, shared with the Models timeline.
   const transformer = window.MODEL_ATLAS.releases.find(entry => entry.id === 'transformer');
   data.releases.push({ ...transformer, category: 'methods', en: window.MODEL_ATLAS_EN.transformer });
   data.releases.sort((a, b) => a.date.localeCompare(b.date));

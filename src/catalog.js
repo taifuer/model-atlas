@@ -2,7 +2,7 @@
 (() => {
   'use strict';
   const definitions = [
-    ['models', '大模型', 'LLM', 'index.html', window.MODEL_ATLAS],
+    ['models', '大模型', 'Models', 'index.html', window.MODEL_ATLAS],
     ['agents', '智能体', 'Agent', 'agents.html', window.AGENT_ATLAS],
     ['hardware', '算力', 'Hardware', 'hardware.html', window.HARDWARE_ATLAS],
     ['technology', '技术', 'Technology', 'technology.html', window.TECHNOLOGY_ATLAS],

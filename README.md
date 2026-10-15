@@ -6,7 +6,7 @@ English · [简体中文](README.zh-CN.md)
 
 [Live site](https://ai.taifua.com) · [Contributing](#contributing) · [License](#license)
 
-![Model Atlas — English desktop preview](docs/images/timeline-en.png)
+![Model Atlas — Large Model Timeline on desktop](docs/images/timeline-en.png)
 
 <details>
 <summary>Mobile preview</summary>
@@ -31,7 +31,7 @@ Left: models in detailed view. Right: agents in compact view.
 
 | Timeline | Coverage |
 | --- | --- |
-| Models | Major model releases and architecture papers, with context windows, API prices, and evaluation snapshots where available. |
+| [Large Model Timeline](https://ai.taifua.com/en/) | Major model releases and architecture papers, with context windows, API prices, and evaluation snapshots where available. |
 | Agents | Coding and general-purpose agents, harnesses, frameworks, and protocols. |
 | Hardware | GPUs, dedicated accelerators, systems, and local devices, with configuration-specific specifications. |
 | Technology | Foundational methods, frameworks, inference tools, containers, and sandboxes. |

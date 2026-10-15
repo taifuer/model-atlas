@@ -85,7 +85,7 @@ function exploreHTML(window, language) {
 }
 
 function fallbackNavigation(page, language) {
-  const labels = language === 'en' ? ['LLM', 'Agent', 'Hardware', 'Technology', 'Explore', 'About'] : ['大模型', '智能体', '算力', '技术', '探索', '关于'];
+  const labels = language === 'en' ? ['Models', 'Agent', 'Hardware', 'Technology', 'Explore', 'About'] : ['大模型', '智能体', '算力', '技术', '探索', '关于'];
   const prefix = language === 'en' ? 'en/' : '';
   const links = Object.keys(PAGE_FILES).map((key, index) => `<a href="${prefix}${PAGE_FILES[key]}">${labels[index]}</a>`);
   links.push(`<a href="${language === 'en' ? '' : 'en/'}${PAGE_FILES[page]}" lang="${language === 'en' ? 'zh-CN' : 'en'}">${language === 'en' ? '简体中文' : 'English'}</a>`);

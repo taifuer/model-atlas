@@ -9,9 +9,9 @@
         keywords: ['大模型时间线', '语言模型', '多模态模型', '模型发布', '上下文长度', 'API 价格'],
       },
       en: {
-        title: 'AI Model Timeline · Model Atlas',
-        description: 'Browse major language and multimodal model releases, with source links and verified context limits, API prices and benchmark scores for documented versions.',
-        keywords: ['AI model timeline', 'language models', 'multimodal models', 'model releases', 'context window', 'API pricing'],
+        title: 'Large Model Timeline · Model Atlas',
+        description: 'Browse representative releases of large language and multimodal models, with sources, documented context limits, API prices and dated benchmark scores.',
+        keywords: ['large model timeline', 'language models', 'multimodal models', 'model releases', 'context window', 'API pricing'],
       },
     },
     agents: {
