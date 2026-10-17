@@ -2,6 +2,38 @@ import { test, expect } from '@playwright/test';
 const route = (language, file) => `${language === 'en' ? '/en/' : '/'}${file}`;
 
 for (const language of ['zh', 'en']) {
+  test(`${language}: year navigation places entries below the header while charts retain their drilldown`, async ({ page, isMobile }) => {
+    for (const file of ['index.html', 'agents.html', 'hardware.html', 'technology.html']) {
+      await page.goto(route(language, file));
+      await page.evaluate(() => document.fonts.ready);
+      if (isMobile) await page.locator('#year-select').selectOption('2024');
+      else await page.locator('[data-jump="2024"]').click();
+      await expect(page.locator('#heading-2024')).toBeFocused();
+      const position = await page.locator('#year-2024').evaluate(section => {
+        const header = document.querySelector('.site-header').getBoundingClientRect();
+        const actual = section.getBoundingClientRect().top;
+        const documentTop = actual + scrollY;
+        const maxScroll = document.documentElement.scrollHeight - innerHeight;
+        const desired = Math.max(0, documentTop - header.height - 24);
+        return { actual, expected: documentTop - Math.min(maxScroll, desired) };
+      });
+      expect(Math.abs(position.actual - position.expected)).toBeLessThanOrEqual(2);
+      await expect(page.locator('#year-2024 .card-title').first()).toBeInViewport();
+      await expect(page.locator('#year-select')).toHaveValue('2024');
+      await page.keyboard.press('Tab');
+      await expect(page.locator('#year-2024 .card-title button').first()).toBeFocused();
+      await page.locator('#chart-back').click();
+      await page.locator('#annual-chart [data-chart-year="2024"]').click();
+      await expect(page.locator('#chart-back')).toBeFocused();
+      await expect(page.locator('#annual-chart')).toBeInViewport();
+      await expect(page.locator('#annual-chart [data-chart-month]')).toHaveCount(12);
+    }
+    await page.goto(route(language, 'agents.html') + '#year-2023');
+    await page.locator('#year-select').selectOption('2024');
+    expect(new URL(page.url()).hash).toBe('');
+    await expect(page.locator('#heading-2024')).toBeFocused();
+  });
+
   test(`${language}: timelines expand without truncating dates, counts or explicit filters`, async ({ page }) => {
     for (const file of ['index.html', 'agents.html', 'hardware.html', 'technology.html']) {
       await page.goto(route(language, file));

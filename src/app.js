@@ -112,7 +112,7 @@
   function writeState(mode = 'push') {
     const url = new URL(location.href);
     url.search = filters.serialize(state, language);
-    if (url.hash.startsWith('#release-')) url.hash = '';
+    if (url.hash.startsWith('#release-') || url.hash.startsWith('#year-')) url.hash = '';
     if (url.href === location.href) return;
     try { history[mode === 'replace' ? 'replaceState' : 'pushState']({ atlasTimelineLimit: visibleLimit }, '', url); } catch { /* Optional on file previews. */ }
   }
@@ -301,7 +301,7 @@
     $('#results-count').innerHTML = hasFilter ? L(`找到 <strong>${filtered.length}</strong> / ${releases.length} 个节点`, `<strong>${filtered.length}</strong> of ${releases.length} entries`) : L(`共 <strong>${releases.length}</strong> 个${extended ? '' : '发布'}节点`, `<strong>${releases.length}</strong> ${extended ? '' : 'release '}entries`);
     const navigationYears = filters.annualCounts(state).filter(({ count }) => count > 0);
     if (state.sort === 'desc') navigationYears.reverse();
-    $('#year-nav').innerHTML = navigationYears.map(({ year, count }) => `<button type="button" class="year-jump" data-chart-year="${year}" data-jump="${year}" aria-pressed="${state.year === year}" aria-label="${escape(L(`${year} 年，${count} 个节点，查看月度统计`, `${year}: ${count} ${entryNoun(count)}. View monthly counts.`))}">${year}<span>${count}</span></button>`).join('');
+    $('#year-nav').innerHTML = navigationYears.map(({ year, count }) => `<button type="button" class="year-jump" data-chart-year="${year}" data-jump="${year}" aria-pressed="${state.year === year}" aria-label="${escape(L(`${year} 年，${count} 个节点，查看该年节点`, `${year}: ${count} ${entryNoun(count)}. View entries from this year.`))}">${year}<span>${count}</span></button>`).join('');
     $('.year-sidebar').hidden = !filtered.length;
     $('.timeline-layout').classList.toggle('has-no-results', !filtered.length);
     renderTimeline();
@@ -346,12 +346,23 @@
     const index = orderedEntries.findIndex(release => release.id === id);
     if (index >= visibleCount) { visibleLimit = index + 1; renderTimeline(); }
   }
+  function scrollToYear(year) {
+    const section = document.getElementById(`year-${year}`);
+    if (!section) return;
+    const heading = section.querySelector('h2');
+    heading.tabIndex = -1;
+    heading.focus({ preventScroll: true });
+    // Measure the sticky header directly; scroll-padding and scroll-margin
+    // would otherwise both contribute to the offset for scrollIntoView.
+    const inset = $('.site-header').getBoundingClientRect().height + 24;
+    window.scrollTo({ top: Math.max(0, scrollY + section.getBoundingClientRect().top - inset), behavior: 'instant' });
+  }
   function revealYearHash() {
     const year = /^#year-(\d{4})$/.exec(location.hash)?.[1];
     if (!year) return;
     const last = orderedEntries.findLastIndex(release => release.date.startsWith(year));
     if (last >= visibleCount) { visibleLimit = last + 1; renderTimeline(); }
-    document.getElementById(`year-${year}`)?.scrollIntoView({ block: 'start', behavior: 'instant' });
+    scrollToYear(year);
   }
   function reset() { state = { ...filters.read(''), multiSelect: state.multiSelect, sort: state.sort, view: state.view }; changeState(); }
   $('#release-total').textContent = releases.length;
@@ -366,7 +377,7 @@
   }
   $('#company-filters').innerHTML = `<button class="company-chip" data-company-filter="all" aria-pressed="true"><span>${allOrganizations}</span><span class="chip-count" aria-hidden="true"></span></button>` + companies.map(company => `<button class="company-chip" id="company-filter-${company.id}" data-company-filter="${company.id}" aria-pressed="false"${companyRanking ? ` title="${escape(companyHint(company.id))}"` : ''}>${icon(window.ATLAS_ICONS.company(company.id), 16)}<span>${escape(companyName(company))}</span><span class="chip-count" aria-hidden="true"></span></button>`).join('');
   $('#company-filters').append($('#company-disclosure'));
-  $('#year-select').addEventListener('change', event => { state.year = event.target.value; state.month = 'all'; changeState(); });
+  $('#year-select').addEventListener('change', event => { state.year = event.target.value; state.month = 'all'; changeState(); if (state.year !== 'all') scrollToYear(state.year); });
   $('#openness-select')?.addEventListener('change', event => { state.openness = event.target.value; changeState(); });
   $('#chart-back').addEventListener('click', () => { state.year = 'all'; state.month = 'all'; changeState(); $('#annual-chart button:last-child')?.focus({ preventScroll: true }); });
   $('#milestone-only').addEventListener('change', event => { state.milestones = event.target.checked; changeState(); });
@@ -398,8 +409,8 @@
       state.year = year;
       state.month = 'all';
       changeState();
-      if (button.classList.contains('year-jump')) $('#activity').scrollIntoView({ behavior: 'instant', block: 'start' });
-      $('#chart-back').focus({ preventScroll: true });
+      if (button.hasAttribute('data-jump')) scrollToYear(year);
+      else $('#chart-back').focus({ preventScroll: true });
     } else if (button.hasAttribute('data-chart-month')) {
       const month = button.dataset.chartMonth;
       state.month = state.month === month ? 'all' : month;
