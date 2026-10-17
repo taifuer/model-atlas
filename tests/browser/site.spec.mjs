@@ -91,6 +91,7 @@ for (const language of ['zh', 'en']) {
 
     test('fact chips identify the model, snapshot and promotional price, then open the right section', async ({ page }) => {
       await ready(page, route(language));
+      await page.locator('[data-show-all]').click();
       const sol = page.locator('#release-gpt-5-6');
       const solSpecs = sol.locator('[data-detail-section="specs"]');
       const solPrice = sol.locator('[data-detail-section="pricing"]');
@@ -128,6 +129,7 @@ for (const language of ['zh', 'en']) {
 
     test('new releases keep their price tiers, preview status and product boundaries', async ({ page }) => {
       await ready(page, route(language));
+      await page.locator('[data-show-all]').click();
       const haiku = page.locator('#release-claude-haiku-5-5');
       await expect(haiku.locator('[data-detail-section="specs"]')).toContainText('1M');
       await expect(haiku.locator('[data-detail-section="scores"]')).toContainText('43');

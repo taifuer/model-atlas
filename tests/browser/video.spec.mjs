@@ -22,6 +22,8 @@ for (const language of ['zh', 'en']) {
     await expect(page.locator('#openness-select')).toHaveValue('open');
     await page.locator('#reset-filters').click();
     await expect(page.locator('#task-select')).toHaveValue('all');
+    await expect(page.locator('[data-show-more]')).toBeVisible();
+    await page.locator('[data-show-all]').click();
     await expect(page.locator('#release-gpt-4o')).toBeAttached();
     await page.goBack();
     await expect(page.locator('#task-select')).toHaveValue('video-generation');

@@ -41,6 +41,17 @@
   let activeYear = '';
   const mobileFilters = matchMedia('(max-width: 760px)');
   let companiesExpanded = false;
+  const batchSize = 30;
+  const savedLimit = () => Number.isInteger(history.state?.atlasTimelineLimit) && history.state.atlasTimelineLimit >= batchSize ? Math.min(history.state.atlasTimelineLimit, releases.length) : batchSize;
+  let visibleLimit = savedLimit();
+  let orderedEntries = [], visibleCount = 0;
+
+  function batchEnd(entries, limit) {
+    let end = Math.min(limit, entries.length);
+    // Keep releases from the same day together at the end of each batch.
+    while (end > 0 && end < entries.length && entries[end].date === entries[end - 1].date) end++;
+    return end;
+  }
 
   function renderCompanyDisclosure() {
     const buttons = [...document.querySelectorAll('[data-company-filter]')];
@@ -103,7 +114,7 @@
     url.search = filters.serialize(state, language);
     if (url.hash.startsWith('#release-')) url.hash = '';
     if (url.href === location.href) return;
-    try { history[mode === 'replace' ? 'replaceState' : 'pushState'](null, '', url); } catch { /* Optional on file previews. */ }
+    try { history[mode === 'replace' ? 'replaceState' : 'pushState']({ atlasTimelineLimit: visibleLimit }, '', url); } catch { /* Optional on file previews. */ }
   }
   function companyLabel(id) { const name = escape(companyName(companyById.get(id))); return `<span class="company-label" title="${name}">${name}</span>`; }
   function companyHint(id) {
@@ -254,7 +265,7 @@
   }
   function render() {
     const filtered = filters.select(state).sort((a, b) => (state.sort === 'desc' ? -1 : 1) * a.date.localeCompare(b.date));
-    const shownYears = [...new Set(filtered.map(release => release.date.slice(0, 4)))];
+    orderedEntries = filtered;
     const availableYears = filters.annualCounts(state).filter(({ count }) => count > 0).map(({ year }) => year);
     // A year from a shared URL stays selectable even if other filters remove its entries.
     if (state.year !== 'all' && !availableYears.includes(state.year)) availableYears.push(state.year);
@@ -293,14 +304,23 @@
     $('#year-nav').innerHTML = navigationYears.map(({ year, count }) => `<button type="button" class="year-jump" data-chart-year="${year}" data-jump="${year}" aria-pressed="${state.year === year}" aria-label="${escape(L(`${year} 年，${count} 个节点，查看月度统计`, `${year}: ${count} ${entryNoun(count)}. View monthly counts.`))}">${year}<span>${count}</span></button>`).join('');
     $('.year-sidebar').hidden = !filtered.length;
     $('.timeline-layout').classList.toggle('has-no-results', !filtered.length);
+    renderTimeline();
+  }
+  function renderTimeline() {
+    const filtered = orderedEntries;
+    visibleCount = filters.hasFilters(state) ? filtered.length : batchEnd(filtered, visibleLimit);
+    const visible = filtered.slice(0, visibleCount);
+    const shownYears = [...new Set(visible.map(release => release.date.slice(0, 4)))];
     $('#timeline').innerHTML = shownYears.map(year => {
-      const entries = filtered.filter(release => release.date.startsWith(year));
+      const entries = visible.filter(release => release.date.startsWith(year));
+      const total = filtered.filter(release => release.date.startsWith(year)).length;
       const theme = english ? (raw.themesEn || window.MODEL_THEMES_EN)[year] : themes[year];
-      return `<section class="year-section" id="year-${year}" aria-labelledby="heading-${year}"><div class="year-heading"><h2 id="heading-${year}">${year}</h2><span class="year-theme">${escape(theme || '')}</span><span class="year-count">${entries.length} ${L('个节点', entryNoun(entries.length))}</span></div>${entries.map(card).join('')}</section>`;
-    }).join('') + (filtered.length ? `<p class="timeline-end">${L(`已显示全部 ${filtered.length} 个节点`, `${filtered.length === 1 ? '1 entry' : `All ${filtered.length} entries`} shown`)}</p>` : `<div class="empty-state"><h3>${L('没有找到匹配的节点', 'No matching entries')}</h3><p>${L('试试其他关键词，或放宽筛选条件。', 'Try a different search or fewer filters.')}</p><button class="solid-button" data-reset>${L('清除筛选', 'Reset filters')}</button></div>`);
+      return `<section class="year-section" id="year-${year}" aria-labelledby="heading-${year}"><div class="year-heading"><h2 id="heading-${year}">${year}</h2><span class="year-theme">${escape(theme || '')}</span><span class="year-count">${total} ${L('个节点', entryNoun(total))}</span></div>${entries.map(card).join('')}</section>`;
+    }).join('') + (visibleCount < filtered.length ? `<div class="timeline-disclosure"><p role="status">${L(`已显示 ${visibleCount} / ${filtered.length} 个节点`, `Showing ${visibleCount} of ${filtered.length} entries`)}</p><div class="disclosure-actions"><button class="outline-button" type="button" data-show-more aria-controls="timeline">${L('显示更多', 'Show more')}</button><button class="disclosure-all" type="button" data-show-all aria-controls="timeline">${L('显示全部', 'Show all')}</button></div></div>` : filtered.length ? `<p class="timeline-end" tabindex="-1">${L(`已显示全部 ${filtered.length} 个节点`, `${filtered.length === 1 ? '1 entry' : `All ${filtered.length} entries`} shown`)}</p>` : `<div class="empty-state"><h3>${L('没有找到匹配的节点', 'No matching entries')}</h3><p>${L('试试其他关键词，或放宽筛选条件。', 'Try a different search or fewer filters.')}</p><button class="solid-button" data-reset>${L('清除筛选', 'Reset filters')}</button></div>`);
     scrollSections = [...document.querySelectorAll('.year-section')];
     activeYear = '';
     updateActiveYear();
+    try { history.replaceState({ ...history.state, atlasTimelineLimit: visibleLimit }, '', location.href); } catch { /* Optional on file previews. */ }
   }
   function updateActiveYear() {
     if (!scrollSections.length) return;
@@ -311,7 +331,28 @@
     activeYear = year;
     document.querySelectorAll('.year-jump').forEach(link => { if (link.dataset.jump === year) link.setAttribute('aria-current', 'true'); else link.removeAttribute('aria-current'); });
   }
-  function changeState(mode = 'push') { writeState(mode); stateSearch = location.search; render(); }
+  function changeState(mode = 'push', resetLimit = true) { if (resetLimit) visibleLimit = batchSize; writeState(mode); stateSearch = location.search; render(); }
+  function showMore(all = false) {
+    const firstNew = orderedEntries[visibleCount];
+    const position = scrollY;
+    visibleLimit = all ? orderedEntries.length : visibleCount + batchSize;
+    renderTimeline();
+    window.scrollTo({ top: position, behavior: 'instant' });
+    const target = firstNew && document.querySelector(`#release-${CSS.escape(firstNew.id)} [data-detail]`);
+    target?.focus({ preventScroll: true });
+    target?.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+  }
+  function revealEntry(id) {
+    const index = orderedEntries.findIndex(release => release.id === id);
+    if (index >= visibleCount) { visibleLimit = index + 1; renderTimeline(); }
+  }
+  function revealYearHash() {
+    const year = /^#year-(\d{4})$/.exec(location.hash)?.[1];
+    if (!year) return;
+    const last = orderedEntries.findLastIndex(release => release.date.startsWith(year));
+    if (last >= visibleCount) { visibleLimit = last + 1; renderTimeline(); }
+    document.getElementById(`year-${year}`)?.scrollIntoView({ block: 'start', behavior: 'instant' });
+  }
   function reset() { state = { ...filters.read(''), multiSelect: state.multiSelect, sort: state.sort, view: state.view }; changeState(); }
   $('#release-total').textContent = releases.length;
   $('#company-total').textContent = companies.length;
@@ -367,7 +408,7 @@
     } else if (button.hasAttribute('data-view')) {
       state.view = button.dataset.view;
       try { localStorage.setItem('atlas-view', state.view); } catch { /* Optional. */ }
-      changeState();
+      changeState('push', false);
     } else if (button.hasAttribute('data-remove-filter')) {
       const key = button.dataset.removeFilter;
       if (key.startsWith('company:')) state.companies.delete(key.slice(8));
@@ -378,14 +419,23 @@
       changeState();
       ($('#active-filters button') || $('#sort-button')).focus({ preventScroll: true });
     } else if (button.hasAttribute('data-reset')) { reset(); $('#sort-button').focus(); }
+    else if (button.hasAttribute('data-show-more')) showMore();
+    else if (button.hasAttribute('data-show-all')) showMore(true);
   });
+  document.addEventListener('atlas:entry-open', event => {
+    const prefix = `${page}:`;
+    if (event.detail.startsWith(prefix)) revealEntry(event.detail.slice(prefix.length));
+  });
+  window.addEventListener('hashchange', revealYearHash);
+  window.addEventListener('beforeprint', () => { visibleLimit = orderedEntries.length; renderTimeline(); });
   window.addEventListener('scroll', () => {
     if (scrollFrame) return;
     scrollFrame = requestAnimationFrame(() => { updateActiveYear(); scrollFrame = 0; });
   }, { passive: true });
   window.addEventListener('popstate', () => {
     if (stateSearch === location.search) return;
-    state = readState(); stateSearch = location.search; render();
+    state = readState(); stateSearch = location.search; visibleLimit = savedLimit(); render(); revealYearHash();
   });
   render();
+  revealYearHash();
 })();
