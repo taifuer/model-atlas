@@ -29,6 +29,9 @@ test('every event has valid metadata and a primary source; supporting reports ar
   // These additional official/project/author pages were reviewed for the named event.
   // Keep community-hosted articles and personal author archives URL-specific.
   const reviewedPrimarySources = new Map([
+    ['https://reflection.ai/blog/introducing-beam', 'reflection-beam-1'],
+    ['https://reflection.ai/blog/beam-is-available', 'reflection-beam-1'],
+    ['https://kling.ai/blog/kling40-kling-visual-realism-creative-control-introducing-storytelling', 'kling-4'],
     ['https://www.youtube.com/watch?v=trXPfpV5iRQ', 'runway-gen-2'],
     ['https://www.ant-ling.com/', 'ling-3-1-flash'],
     ['https://developer.ant-ling.com/zh-CN/docs/models/ling/', 'ling-3-1-flash'],
@@ -48,6 +51,13 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['https://platform.stepfun.ai/docs/en/guides/models/step-5-preview', 'step-5-preview'],
   ]);
   const reviewedHuggingFacePaths = new Map([
+    ['/deepseek-ai/DeepSeek-V4.1-Flash-1017', 'deepseek-v4-1-flash'],
+    ['/stepfun-ai/Step-5-Preview-NVFP4', 'step-5-preview'],
+    ['/stepfun-ai/Step-5-Preview/blob/main/LICENSE.txt', 'step-5-preview'],
+    ['/reflection/Beam-1.0-501B-A23B', 'reflection-beam-1'],
+    ['/meta-models/Muse-Spark-Open-816B-A42B', 'muse-spark-open'],
+    ['/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4', 'nemotron-3-5-vl-bolt'],
+    ['/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB', 'nemotron-3-5-vl-bolt'],
     ['/tencent/HunyuanVideo-1.5', 'hunyuan-video-1-5'],
     ['/MiniMaxAI/MiniMax-H3', 'minimax-h3'],
     ['/MiniMaxAI/MiniMax-H3/raw/main/LICENSE', 'minimax-h3'],
@@ -115,6 +125,12 @@ test('research, product launches, and previews retain their distinct date meanin
   assert.equal(find('deepseek-v4').kind, 'preview');
   assert.equal(find('deepseek-v4-pro-0813').kind, 'release');
   assert.equal(find('deepseek-v4-pro-0813').date, '2026-08-13');
+  assert.equal(find('step-5-preview').date, '2026-09-20', 'Later public weights do not move the original preview date');
+  assert.equal(find('deepseek-v4-1-flash').date, '2026-09-10', 'The 1017 checkpoint remains a follow-up to the original model release');
+  assert.equal(find('reflection-beam-1').date, '2026-10-05', 'Beam was announced before the October 16 weight release');
+  assert.equal(find('reflection-beam-1').kind, 'announcement');
+  assert.equal(find('kling-4').date, '2026-09-30', 'The main model preview predates October general availability');
+  assert.equal(find('kling-4').kind, 'preview');
 });
 
 test('company coverage and research metadata are complete', () => {

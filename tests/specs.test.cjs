@@ -12,7 +12,11 @@ const types = new Set(['text', 'image', 'audio', 'video', 'pdf', 'document']);
 
 test('specifications identify existing entries, exact variants, and first-party evidence', () => {
   const hosts = new Set(['seed.bytedance.com', 'www.alibabacloud.com', 'openai.com', 'blog.google', 'cloud.google.com', 'docs.cloud.google.com', 'deepmind.google', 'ir.kuaishou.com', 'runway.com', 'help.runwayml.com', 'www.minimax.io', 'dev.meta.ai', 'research.meta.ai', 'developer.ant-ling.com', 'docs.mistral.ai', 'artificialanalysis.ai', 'developers.openai.com', 'cdn.openai.com', 'platform.claude.com', 'ai.google.dev', 'api-docs.deepseek.com', 'huggingface.co', 'docs.x.ai', 'docs.z.ai', 'docs.qwencloud.com', 'www.qwencloud.com', 'arxiv.org', 'github.com', 'aws.amazon.com']);
-  const hfOrganizations = new Set(['EleutherAI', 'allenai', 'JetBrains', 'deepseek-ai', 'Qwen', 'zai-org', 'MiniMaxAI', 'moonshotai', 'XiaomiMiMo', 'microsoft', 'nvidia', 'stepfun-ai', 'tencent', 'mistralai', 'meta-llama', 'google']);
+  const hfOrganizations = new Set(['EleutherAI', 'allenai', 'JetBrains', 'deepseek-ai', 'Qwen', 'zai-org', 'MiniMaxAI', 'moonshotai', 'XiaomiMiMo', 'microsoft', 'nvidia', 'stepfun-ai', 'tencent', 'mistralai', 'meta-llama', 'meta-models', 'reflection', 'google']);
+  const reviewedSources = new Set([
+    'https://developers.reflection.ai/models',
+    'https://kling.ai/blog/kling40-kling-visual-realism-creative-control-introducing-storytelling',
+  ]);
   const ids = new Set(models.releases.map(model => model.id));
   assert.equal(new Date(specs.checkedAt + 'T00:00:00Z').toISOString().slice(0, 10), specs.checkedAt);
   assert.ok(specs.checkedAt <= models.updatedAt);
@@ -37,7 +41,7 @@ test('specifications identify existing entries, exact variants, and first-party 
       for (const source of variant.sources) {
         const url = new URL(source);
         assert.equal(url.protocol, 'https:', id);
-        assert.ok(hosts.has(url.hostname), source);
+        assert.ok(hosts.has(url.hostname) || reviewedSources.has(source), source);
         if (url.hostname === 'huggingface.co') assert.ok(hfOrganizations.has(url.pathname.split('/')[1]) || (id === 'starcoder' && url.pathname === '/blog/starcoder'), source);
         if (url.hostname === 'github.com') assert.ok(/^\/google-research\/bert/.test(url.pathname) || (id === 'chatglm-6b' && url.pathname === '/zai-org/ChatGLM-6B') || (/^wan-2-[12]$/.test(id) && /^\/Wan-Video\/Wan2\.[12]$/.test(url.pathname)) || (/^hunyuan-video(?:-1-5)?$/.test(id) && /^\/Tencent-Hunyuan\/HunyuanVideo(?:-1\.5)?$/.test(url.pathname)), source);
       }
@@ -103,4 +107,13 @@ test('research configurations, API versions, family variants, and extensions sta
   assert.deepEqual(Array.from(variants('deepseek-v4-pro-0813')[0].input), ['text']);
   assert.equal(specs.entries['deepseek-v4'], undefined, 'Current API limits must not silently backfill the original preview');
   assert.equal(variants('nemotron-3-nano')[0].activeParameters, '3.5B');
+  assert.deepEqual(Array.from(variants('nemotron-3-5-vl-bolt'), variant => variant.contextTokens), ['1M', '256K']);
+  assert.equal(specs.entries['nemotron-3-5-vl-bolt'].cardScope, 'variant', 'Family specifications must identify their individual model');
+  assert.equal(variants('reflection-beam-1')[0].basis, 'api');
+  assert.equal(variants('reflection-beam-1')[0].outputTokens, '128K');
+  assert.equal(specs.entries['deepseek-v4-1-flash'].cardScope, 'snapshot');
+  assert.match(variants('deepseek-v4-1-flash')[0].name, /1017/);
+  assert.equal(variants('kling-4')[0].video.maxDurationSeconds, 30, 'Single-generation duration excludes announced extensions');
+  assert.equal(variants('kling-4')[0].video.resolutions, undefined, 'Announced 4K is not silently treated as generally available');
+  assert.equal(variants('kling-4')[0].contextTokens, undefined, 'Prompt input size is not a multimodal context window');
 });

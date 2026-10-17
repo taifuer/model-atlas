@@ -971,7 +971,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
     "deepseek-v4-1-flash": {
       "variants": [
         {
-          "name": "DeepSeek-V4.1-Flash",
+          "name": "DeepSeek-V4.1-Flash-1017 (deepseek-flash)",
           "currency": "USD",
           "tiers": [
             {
@@ -993,7 +993,9 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
         }
       ],
       "note": "未命中缓存的输入价格。高峰为周一至周五 UTC 01:00–04:00、06:00–10:00（北京时间 09:00–12:00、14:00–18:00），中国法定节假日除外；其余时段按低峰计费。",
-      "noteEn": "Uncached input rates. Peak hours are Monday–Friday, 01:00–04:00 and 06:00–10:00 UTC, excluding Chinese public holidays. All other hours are off-peak."
+      "noteEn": "Uncached input rates. Peak hours are Monday–Friday, 01:00–04:00 and 06:00–10:00 UTC, excluding Chinese public holidays. All other hours are off-peak.",
+      "checkedAt": "2026-10-17",
+      "cardScope": "snapshot"
     },
     "deepseek-v4-pro-0813": {
       "variants": [

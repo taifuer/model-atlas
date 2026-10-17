@@ -912,9 +912,11 @@
       ]
     },
     "deepseek-v4-1-flash": {
+      "checkedAt": "2026-10-17",
       "category": "multimodal",
       "sources": [
-        "https://api-docs.deepseek.com/quick_start/pricing"
+        "https://api-docs.deepseek.com/quick_start/pricing/",
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
       ]
     },
     "kimi-k2-8-preview": {
@@ -930,9 +932,10 @@
       ]
     },
     "step-5-preview": {
+      "checkedAt": "2026-10-17",
       "category": "multimodal",
       "sources": [
-        "https://platform.stepfun.ai/docs/en/guides/models/step-5-preview"
+        "https://huggingface.co/stepfun-ai/Step-5-Preview-NVFP4"
       ]
     },
     "grok-4-7": {
@@ -1418,6 +1421,52 @@
       ],
       "note": "输入方式依任务及检查点而定。",
       "noteEn": "Supported reference inputs depend on the task and checkpoint."
+    },
+    "reflection-beam-1": {
+      "checkedAt": "2026-10-17",
+      "category": "text",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://reflection.ai/blog/introducing-beam",
+        "https://reflection.ai/blog/beam-is-available",
+        "https://huggingface.co/reflection/Beam-1.0-501B-A23B"
+      ]
+    },
+    "muse-spark-open": {
+      "checkedAt": "2026-10-17",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://research.meta.ai/blog/muse-spark-open",
+        "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
+      ]
+    },
+    "nemotron-3-5-vl-bolt": {
+      "checkedAt": "2026-10-17",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/",
+        "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4",
+        "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB"
+      ]
+    },
+    "kling-4": {
+      "checkedAt": "2026-10-17",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://kling.ai/blog/kling40-kling-visual-realism-creative-control-introducing-storytelling",
+        "https://ir.kuaishou.com/news-releases/news-release-details/kling-ai-officially-launches-next-generation-kling-40-raising"
+      ]
     }
   }
 };

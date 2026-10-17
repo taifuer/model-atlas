@@ -10,6 +10,7 @@ All SVGs except those listed below are from `@lobehub/icons-static-svg` **1.95.1
 
 ## Additional sources
 
+- `reflection.svg`: [Reflection's official website icon](https://reflection.ai/icon.svg?icon.2l1p3ovm0zbbb.svg), retrieved unchanged on 2026-10-17. The mark identifies the organization and remains its owner's trademark.
 - `kuaishou.ico`: favicon declared by [Kuaishou's official website](https://www.kuaishou.com/new-reco), retrieved unchanged on 2026-10-15 from `https://p66-plat.wsbkwai.com/udata/pkg/WEB-LIVE/kwai_icon.8f6787d8.ico`.
 - `runway.png`: [Runway's official site icon](https://runway.com/icon.png?icon.35ps9bmugbe1e.png), retrieved unchanged on 2026-10-15. These marks identify their respective organizations and remain their owners' trademarks.
 

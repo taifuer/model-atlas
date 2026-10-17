@@ -54,6 +54,42 @@ test('AA preserves release-group month and Arena keeps exact configurations with
   assert.throws(() => parseCandidates(arena.replace('"numberOfItems":2', '"numberOfItems":3'), source('arena-item-list')), /incomplete/);
 });
 
+// Synthetic cards reproduce AA's two link shapes without storing a remote page.
+const aaCard = (href, title, metadata = 'Lab · Oct 2026 · 1 variant') => `<li><a href="${href}"><div><p>${title}</p><p>${metadata}</p></div><dl><dt>Intelligence</dt><dd>30</dd></dl></a></li>`;
+
+test('AA discovers single-model and multi-configuration cards while excluding navigation and hydration', async () => {
+  const { parseCandidates } = await modulePromise;
+  const cards = [
+    aaCard('/models/beam', 'Beam 1.0'),
+    aaCard('/models/muse-open', 'Muse Spark Open'),
+    aaCard('https://example.com/models/nemotron-vl', 'Nemotron 3.5 Super VL'),
+    aaCard('/models/releases/model-2', 'Model 2', 'Lab · Sep 2026 · 5 variants'),
+  ].join('');
+  const body = `<p>4 of 510 releases</p><a href="/models/recommend">Model Recommender</a><ul>${cards}</ul>
+    <script>throw new Error('Never execute remote data'); ${aaCard('/models/script-only', 'Hidden model')} releaseDate: '2026-10-16'</script>
+    <template>${aaCard('/models/template-only', 'Template model')}</template>
+    <!-- ${aaCard('/models/comment-only', 'Comment model')} -->`;
+  const models = parseCandidates(body, source('aa-releases'));
+  assert.deepEqual(models.map(item => item.title), ['Beam 1.0', 'Muse Spark Open', 'Nemotron 3.5 Super VL', 'Model 2']);
+  assert.equal(models[0].url, 'https://example.com/models/beam');
+  assert.deepEqual(models.map(item => item.publishedPeriod), ['2026-10', '2026-10', '2026-10', '2026-09']);
+  assert.ok(models.every(item => item.publishedAt === null && item.dateMeaning === 'reported-release-month' && item.configurationScope === 'release-group'));
+  const [undated] = parseCandidates(aaCard('/models/undated', 'Undated model', 'Lab · Unknown · 1 variant'), source('aa-releases'));
+  assert.equal(undated.publishedAt, null);
+  assert.equal(undated.publishedPeriod, null);
+});
+
+test('AA rejects partial lists and changed card structures instead of reporting a subset as success', async () => {
+  const { parseCandidates } = await modulePromise;
+  const card = aaCard('/models/releases/model-2', 'Model 2', 'Lab · Oct 2026 · 3 variants');
+  assert.throws(() => parseCandidates('<p>2 of 510 releases</p>' + card, source('aa-releases')), /parsed 1, expected 2 of 510/);
+  assert.throws(() => parseCandidates('<p>1 of 0 releases</p>' + card, source('aa-releases')), /incomplete or changed/);
+  assert.throws(() => parseCandidates(card + aaCard('/models/new/path', 'New URL'), source('aa-releases')), /URL structure changed/);
+  assert.throws(() => parseCandidates(card + '<a href="/models/broken"><p>Missing metadata</p><dl></dl></a>', source('aa-releases')), /card structure changed/);
+  assert.throws(() => parseCandidates(aaCard('/models/empty', 'Empty group', 'Lab · Oct 2026 · 0 variants'), source('aa-releases')), /card structure changed/);
+  assert.equal(parseCandidates('<p>1 of 510 releases</p>' + card + card, source('aa-releases')).length, 1, 'Repeated markup must not inflate the visible candidate count.');
+});
+
 test('broken or blocked structures fail explicitly instead of returning empty success', async () => {
   const { parseCandidates } = await modulePromise;
   for (const kind of ['rss', 'atom', 'aa-releases', 'arena-item-list']) {
@@ -159,4 +195,32 @@ test('discovery persists private queue, reports partial errors, and applies sinc
   assert.equal(await fs.readFile(path.join(directory, saved.snapshot), 'utf8'), atom);
   assert.equal(saved.publishedAt, null);
   await assert.rejects(runDiscovery([], { directory, since: '2026-02-30' }), /exact YYYY-MM-DD/);
+});
+
+test('AA completeness failures preserve reviewed queue entries and retain the failed snapshot for inspection', async t => {
+  const { runDiscovery } = await modulePromise;
+  const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'atlas-aa-candidates-'));
+  t.after(() => fs.rm(directory, { recursive: true, force: true }));
+  let body = '<p>2 of 510 releases</p>' + aaCard('/models/one', 'One') + aaCard('/models/releases/two', 'Two', 'Lab · Oct 2026 · 2 variants');
+  const base = await fixture(t, (_request, response) => { response.writeHead(200); response.end(body); });
+  const sources = [{ ...source('aa-releases'), url: base + '/models/releases' }];
+  const options = { directory, allowLocal: true, originDelay: 0, since: '2026-10-17' };
+  const first = await runDiscovery(sources, options);
+  assert.equal(first.report.results[0].parsedCount, 2);
+  assert.equal(first.report.results[0].undatedCount, 2, 'A leaderboard month cannot be used as an exact-day cutoff.');
+  const queueFile = path.join(directory, 'queue.json');
+  const queue = JSON.parse(await fs.readFile(queueFile, 'utf8'));
+  assert.ok(Object.values(queue.entries).every(entry => entry.status === 'needs_review'));
+  const id = Object.keys(queue.entries)[0];
+  queue.entries[id].status = 'deferred'; queue.entries[id].reviewNote = 'Await original release evidence.';
+  await fs.writeFile(queueFile, JSON.stringify(queue));
+  body = '<p>2 of 510 releases</p>' + aaCard('/models/releases/two', 'Two', 'Lab · Oct 2026 · 2 variants');
+  const failed = await runDiscovery(sources, options);
+  const result = failed.report.results[0];
+  assert.equal(result.status, 'parse_error');
+  assert.match(result.reason, /parsed 1, expected 2/);
+  assert.equal(failed.report.summary.observedCandidates, 0);
+  assert.equal(await fs.readFile(path.join(directory, result.snapshot), 'utf8'), body);
+  const retained = JSON.parse(await fs.readFile(queueFile, 'utf8'));
+  assert.deepEqual(retained.entries, queue.entries, 'A partial response must not supersede prior observations or review decisions.');
 });

@@ -1,7 +1,7 @@
 /* Curated hardware history. Event dates and configurations retain explicit source scope. */
 window.HARDWARE_ATLAS = {
-  "asOf": "2026-10-15",
-  "updatedAt": "2026-10-15",
+  "asOf": "2026-10-17",
+  "updatedAt": "2026-10-17",
   "accessFilter": false,
   "companies": [
     {
@@ -2299,7 +2299,7 @@ window.HARDWARE_ATLAS = {
       "category": "gpu",
       "kind": "announcement",
       "summary": "CDNA 4 扩展低精度计算与 HBM3e 容量，面向生成式 AI。",
-      "details": "系列包括 MI350X 与 MI355X。规格按单个加速器列出，散热方案与功耗依型号而异。",
+      "details": "系列包括 MI350X 与 MI355X，散热方案与功耗依型号而异。Meta 于 2026 年 10 月 15 日公开 MI350X 推荐模型训练的生产化经验，相关优化已回馈 PyTorch、Triton 和 ROCm。",
       "dateNote": "日期为官方公布日；后续供货安排见原始公告。",
       "tags": [
         "GPU"
@@ -2307,13 +2307,19 @@ window.HARDWARE_ATLAS = {
       "milestone": true,
       "sources": [
         {
-          "title": "官方发布资料",
-          "url": "https://www.amd.com/en/blogs/2025/amd-instinct-mi350-series-and-beyond-accelerating-the-future-of-ai-and-hpc.html"
+          "title": "AMD · MI350 系列产品公告",
+          "url": "https://www.amd.com/en/blogs/2025/amd-instinct-mi350-series-and-beyond-accelerating-the-future-of-ai-and-hpc.html",
+          "titleEn": "AMD · MI350 Series announcement"
+        },
+        {
+          "title": "Meta · MI350X 推荐模型训练实践",
+          "titleEn": "Meta · Recommendation-model training on MI350X",
+          "url": "https://arxiv.org/abs/2610.22230"
         }
       ],
       "en": {
         "summary": "CDNA 4 expands low-precision compute and HBM3e capacity for generative AI.",
-        "details": "The family includes MI350X and MI355X. Specifications are per accelerator, with cooling and power varying by model.",
+        "details": "The family includes MI350X and MI355X, with cooling and power varying by model. On October 15, 2026, Meta published its experience bringing recommendation-model training on MI350X into production, with optimizations contributed to PyTorch, Triton and ROCm.",
         "dateNote": "Dated to the official announcement; availability is described in the original source."
       },
       "hardware": {
@@ -2797,8 +2803,8 @@ window.HARDWARE_ATLAS = {
       "category": "edge",
       "kind": "announcement",
       "summary": "将 Blackwell RTX GPU 与 Grace CPU 集成到 Windows 电脑平台，支持本地模型与智能体。",
-      "details": "通过 NVLink-C2C 连接 GPU 与 CPU，提供最高 128 GB 统一内存。10 月 7 日开启笔记本预售，官方计划 10 月 16 日供应，紧凑台式机计划 11 月供应。",
-      "dateNote": "日期为 5 月 31 日产品公布；后续预售与计划供货日期不作为首次发布日期。",
+      "details": "通过 NVLink-C2C 连接 GPU 与 CPU，提供最高 128 GB 统一内存。笔记本于 2026 年 10 月 16 日开始供应，首批厂商包括 ASUS、Dell、HP、Lenovo、Microsoft 和 MSI；紧凑台式机此前计划于 11 月供应。",
+      "dateNote": "日期为 5 月 31 日产品公布；笔记本于 10 月 7 日预售，10 月 16 日正式供应。",
       "tags": [
         "本地与边缘"
       ],
@@ -2813,16 +2819,21 @@ window.HARDWARE_ATLAS = {
           "title": "预售与供应计划",
           "titleEn": "Preorders and availability plans",
           "url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-microsoft-windows-event/"
+        },
+        {
+          "title": "NVIDIA · RTX Spark 笔记本正式供应",
+          "titleEn": "NVIDIA · RTX Spark laptop availability",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-rtx-spark-pcs-available-today-a-new-beginning-for-windows-pcs/"
         }
       ],
       "en": {
         "summary": "Combines a Blackwell RTX GPU and Grace CPU in a Windows PC platform for local models and agents.",
-        "details": "NVLink-C2C connects the GPU and CPU, with up to 128 GB of unified memory. Laptop preorders opened October 7, with availability scheduled for October 16; compact desktops are planned for November.",
-        "dateNote": "Dated to the May 31 product announcement, separately from later preorders and planned availability."
+        "details": "NVLink-C2C connects the GPU and CPU, with up to 128 GB of unified memory. Laptops became available on October 16, 2026 from ASUS, Dell, HP, Lenovo, Microsoft and MSI; compact desktops were previously scheduled for November.",
+        "dateNote": "Dated to the May 31 announcement. Laptop preorders opened October 7, followed by availability on October 16."
       },
       "hardware": {
         "variant": "NVIDIA RTX Spark · 1 superchip",
-        "checkedAt": "2026-10-08",
+        "checkedAt": "2026-10-17",
         "facts": [
           {
             "label": "统一内存上限",
@@ -2850,7 +2861,8 @@ window.HARDWARE_ATLAS = {
         ],
         "sources": [
           "https://nvidianews.nvidia.com/news/nvidia-microsoft-windows-pcs-agents-rtx-spark",
-          "https://blogs.nvidia.com/blog/local-ai-rtx-spark-microsoft-windows-event/"
+          "https://blogs.nvidia.com/blog/local-ai-rtx-spark-microsoft-windows-event/",
+          "https://nvidianews.nvidia.com/news/nvidia-rtx-spark-pcs-available-today-a-new-beginning-for-windows-pcs/"
         ],
         "note": "统一内存为最高配置。FP4 为厂商标称峰值，公告未明确稀疏性口径；不等同于实际模型吞吐，也不可直接与其他精度比较。",
         "noteEn": "Memory is the maximum unified configuration. FP4 is the vendor-stated peak without a specified sparsity basis; it is not model throughput or directly comparable across precisions."
@@ -2911,22 +2923,28 @@ window.HARDWARE_ATLAS = {
       "category": "gpu",
       "kind": "announcement",
       "summary": "MI400 GPU 与 Helios 机架系统共同推进大规模 AI 基础设施。",
-      "details": "MI455X 面向 AI，MI430X 面向高精度计算。此节点记录 Advancing AI 2026 的产品发布，不将多种系统规格合并为单卡参数。",
-      "dateNote": "日期为官方公布日；后续供货安排见原始公告。",
+      "details": "MI455X 面向 AI，MI430X 面向高精度计算。AMD 于 2026 年 10 月 12 日确认 Helios 正在提升量产规模，首批系统已在 OpenAI、Meta、Microsoft 和 Oracle 安装运行。",
+      "dateNote": "采用 Advancing AI 2026 的产品公布日；初始部署不代表所有云平台均已开放使用。",
       "tags": [
         "GPU"
       ],
       "milestone": false,
       "sources": [
         {
-          "title": "官方发布资料",
-          "url": "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era"
+          "title": "AMD · Advancing AI 2026 产品公告",
+          "url": "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
+          "titleEn": "AMD · Advancing AI 2026 product announcement"
+        },
+        {
+          "title": "AMD · Helios 量产与客户部署进展",
+          "titleEn": "AMD · Helios production and customer deployments",
+          "url": "https://newsroom.amd.com/news/ocp-2026-amd-ceo-lisa-su-keynote-takeaways/"
         }
       ],
       "en": {
         "summary": "MI400 GPUs and Helios rack systems extend AMD large-scale AI infrastructure.",
-        "details": "MI455X targets AI while MI430X targets high-precision computing. This entry records the Advancing AI 2026 launch without combining system specifications into a single-card figure.",
-        "dateNote": "Dated to the official announcement; availability is described in the original source."
+        "details": "MI455X targets AI while MI430X targets high-precision computing. On October 12, 2026, AMD reported that Helios was ramping production, with initial systems installed and running at OpenAI, Meta, Microsoft and Oracle.",
+        "dateNote": "Dated to the Advancing AI 2026 announcement; initial deployments do not establish general cloud availability."
       }
     },
     {
@@ -3162,7 +3180,7 @@ window.HARDWARE_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-15",
+    "checkedAt": "2026-10-17",
     "scope": "具有代表性的 GPU、专用加速器、算力系统及本地设备；日期优先依据一手资料，辅以署名媒体报道。区分产品公布、公开展示、供应计划与实际部署，规格保留芯片、板卡或系统范围。",
     "scopeEn": "Representative GPUs, custom accelerators, compute systems, and local devices. Dates prioritize primary sources with attributed reporting as needed. Announcements, demonstrations, availability plans, and deployments remain distinct; specifications retain chip, card, or system scope."
   }

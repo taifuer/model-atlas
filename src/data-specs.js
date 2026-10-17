@@ -976,7 +976,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
     "deepseek-v4-1-flash": {
       "variants": [
         {
-          "name": "DeepSeek-V4.1-Flash",
+          "name": "DeepSeek-V4.1-Flash-1017 (deepseek-flash)",
           "basis": "api",
           "contextTokens": "1M",
           "outputTokens": "384K",
@@ -988,10 +988,14 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
             "text"
           ],
           "sources": [
-            "https://api-docs.deepseek.com/quick_start/pricing"
+            "https://api-docs.deepseek.com/quick_start/pricing/"
           ]
         }
-      ]
+      ],
+      "checkedAt": "2026-10-17",
+      "cardScope": "snapshot",
+      "note": "这里记录 10 月 17 日当前 API 所用的 1017 快照规格；时间线仍保留 9 月 10 日首次发布。",
+      "noteEn": "These specifications describe the 1017 checkpoint served by the API on October 17; the timeline retains the original September 10 release."
     },
     "deepseek-v4-pro-0813": {
       "variants": [
@@ -3297,6 +3301,157 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
         }
       ],
       "checkedAt": "2026-10-15"
+    },
+    "muse-spark-open": {
+      "checkedAt": "2026-10-17",
+      "variants": [
+        {
+          "name": "Muse Spark Open 816B-A42B",
+          "basis": "weights",
+          "contextTokens": "1M",
+          "parameters": "816B",
+          "activeParameters": "42B",
+          "input": [
+            "text",
+            "image",
+            "audio",
+            "video"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
+          ]
+        }
+      ]
+    },
+    "reflection-beam-1": {
+      "checkedAt": "2026-10-17",
+      "variants": [
+        {
+          "name": "Beam-1.0-501B-A23B",
+          "basis": "api",
+          "contextTokens": "1M",
+          "parameters": "501.3B",
+          "activeParameters": "23.4B",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+            "https://developers.reflection.ai/models"
+          ],
+          "outputTokens": "128K"
+        }
+      ],
+      "cardScope": "configuration",
+      "note": "上下文与输出上限采用官方 API 文档；参数量采用权重模型卡，保留来源各自标注。",
+      "noteEn": "Context and output limits follow the official API documentation; parameter counts follow the weight model card, retaining each source’s notation."
+    },
+    "nemotron-3-5-vl-bolt": {
+      "checkedAt": "2026-10-17",
+      "cardScope": "variant",
+      "variants": [
+        {
+          "name": "Nemotron 3.5 Super VL 120B-A12B",
+          "basis": "weights",
+          "contextTokens": "1M",
+          "parameters": "120B",
+          "activeParameters": "12B",
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4"
+          ]
+        },
+        {
+          "name": "Nemotron 3.5 Bolt 74B-A9B 24GB",
+          "basis": "weights",
+          "contextTokens": "256K",
+          "parameters": "74B",
+          "activeParameters": "9B",
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB"
+          ],
+          "note": "24GB 是特定低比特部署目标；架构搜索采用单请求、128K 上下文预算，不代表所有 256K 部署都能在 24GB 内运行。",
+          "noteEn": "24GB is a target for a specific low-bit deployment. Architecture search used a single-request, 128K-context memory budget; it does not guarantee every 256K deployment fits in 24GB."
+        }
+      ],
+      "note": "上下文上限分别属于两款模型，包含输入、视觉内容与输出。实际配置取决于硬件、精度和并发量。",
+      "noteEn": "Each context limit belongs to its named model and covers input, visual content and output. Practical settings depend on hardware, precision and concurrency."
+    },
+    "kling-4": {
+      "checkedAt": "2026-10-17",
+      "cardScope": "configuration",
+      "variants": [
+        {
+          "name": "Kling 4.0",
+          "basis": "release",
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ],
+          "video": {
+            "maxDurationSeconds": 30,
+            "audio": "native"
+          },
+          "sources": [
+            "https://kling.ai/blog/kling40-kling-visual-realism-creative-control-introducing-storytelling",
+            "https://ir.kuaishou.com/news-releases/news-release-details/kling-ai-officially-launches-next-generation-kling-40-raising"
+          ],
+          "note": "30 秒为单次生成上限，不是续写总时长。未将仍在计划中的两分钟续写，以及尚未确认全面开放的 4K/HDR 记为可用规格。",
+          "noteEn": "30 seconds is the single-generation limit, not an extension total. Planned two-minute extensions and 4K/HDR features without confirmed broad availability are not recorded as available specifications."
+        }
+      ]
+    },
+    "step-5-preview": {
+      "checkedAt": "2026-10-17",
+      "cardScope": "configuration",
+      "variants": [
+        {
+          "name": "Step 5 Preview · open weights",
+          "basis": "weights",
+          "contextTokens": "1M",
+          "parameters": "600B",
+          "activeParameters": "27B",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/stepfun-ai/Step-5-Preview-NVFP4"
+          ]
+        }
+      ],
+      "note": "规格表明确列出文本与图像输入。模型卡正文另提视频，但未在输入规格中统一说明；此处采用规格表明确列出的配置。上下文由输入与输出共同使用，实际部署受显存和并发量限制。",
+      "noteEn": "The specification table explicitly lists text and image inputs. The introduction also mentions video, but the input specification is not consistent, so this entry retains the explicitly documented configuration. Input and output share the context window; practical deployments depend on memory and concurrency."
     }
   }
 });

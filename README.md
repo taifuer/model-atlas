@@ -133,6 +133,8 @@ npm run discover:candidates -- --source claude-code,arena-text --limit 10
 
 The registry in `scripts/candidate-sources.json` documents each source's coverage. It is a starting set, not a complete release index. `--limit` applies per source. `--since` filters confirmed publication days; entries with unknown dates or only a reported month stay visible for review. A leaderboard appearance or feed modification date is never substituted for a release date.
 
+AA discovery reads both single-model and multi-configuration release cards. When the page declares a visible count, the parser checks it before applying the requested limit; an incomplete list is reported as a parsing failure and leaves prior candidate observations intact.
+
 Reports, raw snapshots, and `queue.json` stay in Git-ignored `research/candidate-discovery/`. Generate a readable private review summary, then record explicit decisions after comparing the sources with the inclusion criteria:
 
 ```bash

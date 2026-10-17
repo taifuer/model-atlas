@@ -268,6 +268,8 @@ for (const language of ['zh', 'en']) {
         for (const source of variant.sources) assert.ok(priceHtml.includes(`href="${escape(source)}"`), `${id}: pricing evidence`);
       }
       for (const [benchmark, score] of Object.entries(scores || {})) {
+        const note = language === 'en' ? score.noteEn : score.note;
+        if (note) assert.ok(scoreHtml.includes(escape(note)), `${id}: checkpoint scope note in ${language}`);
         assert.ok(scoreHtml.includes(escape(current.MODEL_ATLAS_SCORES.benchmarks[benchmark].name)), `${id}: metric name`);
         assert.ok(scoreHtml.includes(escape(score.model)), `${id}: evaluated configuration`);
         assert.ok(scoreHtml.includes(`<strong>${score.score}`), `${id}: benchmark score`);

@@ -11,7 +11,7 @@ const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const PRIVATE_ROOT = path.join(ROOT, 'research/candidate-discovery');
 const hash = value => createHash('sha256').update(value).digest('hex');
 const SCHEMA = 1;
-const PARSER = 'candidate-v1';
+const PARSER = 'candidate-v2';
 const KINDS = ['rss', 'atom', 'github-atom', 'github-json', 'aa-releases', 'arena-item-list'];
 
 function decode(text = '') {
@@ -81,17 +81,39 @@ export function parseGitHub(body, source) {
 export function parseLeaderboard(body, source) {
   const result = [];
   if (source.kind === 'aa-releases') {
-    for (const match of body.matchAll(/<a\b([^>]*\bhref\s*=\s*["'][^"']+["'][^>]*)>([^]*?)<\/a\s*>/gi)) {
-      const url = attribute(match[1], 'href');
-      if (!/^\/models\/releases\/[^/?#]+\/?$/.test(url)) continue;
+    // AA links multi-configuration groups to /models/releases/:slug and
+    // single-configuration groups directly to /models/:slug. Read rendered
+    // cards only: navigation links and script/hydration data are not releases.
+    const visible = body.replace(/<!--[^]*?-->|<(script|style|template)\b[^>]*>[^]*?<\/\1\s*>/gi, '');
+    const origin = new URL(source.url).origin;
+    for (const match of visible.matchAll(/<a\b([^>]*\bhref\s*=\s*["'][^"']+["'][^>]*)>([^]*?)<\/a\s*>/gi)) {
+      const href = attribute(match[1], 'href');
+      const target = new URL(href, source.url);
+      if (target.origin !== origin || !target.pathname.startsWith('/models/')) continue;
       const paragraphs = [...match[2].matchAll(/<p\b[^>]*>([^]*?)<\/p\s*>/gi)].map(item => clean(item[1]));
-      if (paragraphs.length < 2 || !paragraphs[0]) throw new Error('AA release card structure changed.');
+      const variants = paragraphs[1]?.match(/\b(\d+)\s+variants?\b/i);
+      const grouped = /^\/models\/releases\/[^/]+\/?$/.test(target.pathname);
+      const looksLikeCard = grouped || variants || /<dl\b/i.test(match[2]);
+      if (!looksLikeCard) continue;
+      if (!/^\/models\/(?:releases\/)?[^/]+\/?$/.test(target.pathname)) throw new Error('AA release card URL structure changed.');
+      if (paragraphs.length < 2 || !paragraphs[0] || !variants || Number(variants[1]) < 1) throw new Error('AA release card structure changed.');
       const period = paragraphs[1].match(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(20\d{2})\b/);
       const month = period ? String(['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].indexOf(period[1]) + 1).padStart(2, '0') : null;
-      result.push(candidate({ title: paragraphs[0], url, publishedPeriod: period ? `${period[2]}-${month}` : null,
+      result.push(candidate({ title: paragraphs[0], url: target.href, publishedPeriod: period ? `${period[2]}-${month}` : null,
         dateMeaning: 'reported-release-month', dateEvidence: paragraphs[1], configurationScope: 'release-group',
         note: 'AA groups variants here. Verify the original announcement and exact configuration before inclusion.',
       }, source));
+    }
+    // The counter describes the current filtered/paginated view, not every
+    // model in AA's database. Refuse partial success if a card was missed.
+    const counts = [...visible.matchAll(/<p\b[^>]*>([^]*?)<\/p\s*>/gi)]
+      .map(([, value]) => clean(value).match(/^(?:Showing\s+)?([\d,]+)\s+of\s+([\d,]+)\s+releases$/i)).filter(Boolean);
+    const parsedCount = new Set(result.map(item => `${nameKey(item.title)}\n${item.url}`)).size;
+    for (const [, shown, total] of counts) {
+      const expected = Number(shown.replaceAll(',', '')), available = Number(total.replaceAll(',', ''));
+      if (!Number.isSafeInteger(expected) || !Number.isSafeInteger(available) || expected > available || expected !== parsedCount) {
+        throw new Error(`AA visible release list is incomplete or changed: parsed ${parsedCount}, expected ${shown} of ${total} releases.`);
+      }
     }
   } else {
     for (const match of body.matchAll(/<script\b([^>]*)>([^]*?)<\/script\s*>/gi)) {

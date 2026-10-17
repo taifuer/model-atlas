@@ -131,6 +131,8 @@ npm run discover:candidates -- --source claude-code,arena-text --limit 10
 
 `scripts/candidate-sources.json` 说明各来源的覆盖范围，属于起步清单，不是完整发布索引。`--limit` 限制每个来源的候选数量；`--since` 仅筛选有明确发布日期的记录，日期未知或仅有月份的候选继续保留待审。上榜时间或订阅源修改时间不会代替发布日期。
 
+AA 采集同时识别单型号与多配置发布卡片。页面标明可见数量时，解析器先核对完整性，再应用数量限制；漏项会明确报错，并保留原有候选记录。
+
 报告、原始快照及 `queue.json` 仅保存在 Git 忽略的 `research/candidate-discovery/`。先生成易读的私有摘要，逐条核对来源与收录标准，再记录明确决定：
 
 ```bash

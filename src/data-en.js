@@ -728,8 +728,8 @@ window.MODEL_ATLAS_EN = {
   },
   "deepseek-v4-1-flash": {
     "summary": "A new architecture adds native vision and more efficient agent reasoning.",
-    "details": "An asymmetric encoder-decoder design underlies this smaller family model.",
-    "dateNote": ""
+    "details": "An asymmetric encoder-decoder design underlies this smaller family model. The October 17 snapshot, V4.1-Flash-1017, improves coding and agent tasks and replaces the model in the web app, mobile app and API. Its weights are available under MIT.",
+    "dateNote": "Retains the September 10 model release. The October 17 checkpoint is described by DeepSeek as a minor update and is recorded here as a subsequent development."
   },
   "kimi-k2-8-preview": {
     "summary": "Kimi Code gains a stronger coding and agent preview.",
@@ -742,9 +742,9 @@ window.MODEL_ATLAS_EN = {
     "dateNote": ""
   },
   "step-5-preview": {
-    "summary": "A flagship preview targets long-running engineering, knowledge work, and research.",
-    "details": "Released as a preview, with full weights then planned for October 15.",
-    "dateNote": "The September 20 preview release is cross-checked with launch reporting; planned weight availability is not recorded as a completed event."
+    "summary": "A flagship preview targets long-running engineering, knowledge work and financial research.",
+    "details": "The preview now has public BF16, FP8 and NVFP4 weights under StepFun Model License 1.0. It has 600B total and 27B active parameters and supports multimodal understanding and up to one million tokens of context.",
+    "dateNote": "Retains the September 20 preview date, cross-checked with launch reporting. Public weights and the license were verified on October 17; repository preparation dates are not used as the public release date."
   },
   "grok-4-7": {
     "summary": "Grok improves coding, self-verification, and context management.",
@@ -1016,6 +1016,26 @@ window.MODEL_ATLAS_EN = {
     "summary": "MiniMax H3 unified multimodal references with native audiovisual generation and subsequently released its model weights.",
     "details": "The 33B single-stream Transformer accepts text, image, video and audio references. Open base checkpoints generate 768p audiovisual clips; the full hosted workflow supports 2K.",
     "dateNote": "The model launched on July 31; MiniMax announced open weights on August 3. The license's August 2 date is not treated as the original release."
+  },
+  "reflection-beam-1": {
+    "summary": "Reflection’s first model targets coding, reasoning and sustained agent tasks, with weights subsequently released under Apache 2.0.",
+    "details": "The sparse MoE has 501B total and 23B active parameters, a one-million-token context, and text input and output. BF16, FP8 and NVFP4 weights support established inference frameworks and coding tools.",
+    "dateNote": "First announced on October 5 with early-access applications; weights and public services launched on October 16. Precision formats and the speculative decoder are grouped here."
+  },
+  "muse-spark-open": {
+    "summary": "Meta releases a distinct open-weight Muse Spark model for multimodal understanding, coding and sustained tool use.",
+    "details": "The model has 816B total and 42B active parameters and a one-million-token context. It accepts text, images, audio and video and generates text. The open version has additional safety post-training and uses the Muse Model License, with local deployment and third-party inference support.",
+    "dateNote": "Uses October 15, confirmed by the announcement and model card. This is a distinct open-weight model; other Muse models retain their own access status."
+  },
+  "nemotron-3-5-vl-bolt": {
+    "summary": "NVIDIA releases multimodal agent models for server and local deployment, with weights, training resources and inference support.",
+    "details": "Super VL has 120B total and 12B active parameters and a one-million-token context. Bolt 74B-A9B is compressed from it, supports a 256K context and includes a low-bit version targeting 24GB of GPU memory. Both understand images and video and use OpenMDW 1.1.",
+    "dateNote": "Super VL and Bolt 74B-A9B share one family entry for their same-day release. Bolt E4B was scheduled for October 23 and is not counted as already available."
+  },
+  "kling-4": {
+    "summary": "Kling 4.0 extends single-pass video generation to 30 seconds and improves reference control, keyframes and audiovisual consistency.",
+    "details": "Supports up to 15 reference assets and 10 keyframes, including images, video and subject voice references. General availability began on October 15. Two-minute extensions and enterprise API access remain planned in the later announcement; announced 4K and HDR specifications are not treated as broadly available.",
+    "dateNote": "Uses the main model’s September 30 preview announcement. Flash had early access for Ultra annual subscribers on September 28. Kuaishou confirms the October 15 general launch; the article publication date is not substituted for it."
   }
 };
 window.ATLAS_TAGS_EN = {

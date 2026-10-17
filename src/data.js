@@ -5,6 +5,7 @@
  */
 window.MODEL_ATLAS = (() => {
   const companies = [
+    { id: 'reflection', name: 'Reflection', nameEn: 'Reflection', aliases: 'Reflection AI Beam', color: '#788f78' },
     { id: 'kuaishou', name: '快手', nameEn: 'Kuaishou', aliases: 'Kling 可灵', color: '#a87e61' },
     { id: 'runway', name: 'Runway', nameEn: 'Runway', aliases: 'Gen-1 Gen-2 Gen-3 Gen-4', color: '#798078' },
     {"id": "inclusionai", "name": "蚂蚁百灵", "nameEn": "InclusionAI", "aliases": "Ant Group AntLing 百灵 蚂蚁集团 Ling Ring", "color": "#709d8d"},
@@ -37,7 +38,7 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    "checkedAt": "2026-10-15",
+    "checkedAt": "2026-10-17",
     "source": "https://artificialanalysis.ai/leaderboards/models",
     "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
     "metric": "Artificial Analysis Intelligence Index",
@@ -110,19 +111,24 @@ window.MODEL_ATLAS = (() => {
         "score": 38
       },
       {
+        "company": "reflection",
+        "model": "Beam 1.0",
+        "score": 30
+      },
+      {
         "company": "minimax",
         "model": "MiniMax-M3",
         "score": 29
       },
       {
+        "company": "nvidia",
+        "model": "Nemotron 3.5 Super VL",
+        "score": 26
+      },
+      {
         "company": "tencent",
         "model": "Hy3",
         "score": 25
-      },
-      {
-        "company": "nvidia",
-        "model": "Nemotron 3 Ultra",
-        "score": 23
       },
       {
         "company": "bytedance",
@@ -414,8 +420,8 @@ window.MODEL_ATLAS = (() => {
       [oa('gpt-6-astra'), source('OpenAI · 发布当日安全概述', 'https://openai.com/index/safety-overview-gpt-6-astra/')], true,
       'GPT-6 Astra 的官方发布介绍聚焦浏览器与计算机操作、软件工程和多步骤专业工作。', '发布日期由 9 月 3 日的官方安全概述交叉确认；模型分阶段开放。'),
     event('deepseek-v4-1-flash', '2026-09-10', 'DeepSeek-V4.1-Flash', 'deepseek', 'release',
-      '新架构加入原生视觉理解，同时改进推理效率与智能体任务能力。', ['视觉理解', '高效推理'], ds('news260910'), false,
-      '官方介绍这一版本为新架构家族中较小的模型，采用非对称编码器与解码器设计。'),
+      '新架构加入原生视觉理解，同时改进推理效率与智能体任务能力。', ['视觉理解', '高效推理'], [ds('news260910'), {"title": "DeepSeek · 1017 版本更新", "titleEn": "DeepSeek: 1017 checkpoint update", "url": "https://api-docs.deepseek.com/zh-cn/news/news261017/"}, {"title": "DeepSeek · 1017 开放权重", "titleEn": "DeepSeek: 1017 open weights", "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"}], false,
+      '官方介绍这一版本为新架构家族中较小的模型，采用非对称编码器与解码器设计。10 月 17 日更新至 V4.1-Flash-1017，改进编程与智能体任务，网页、App 和 API 同步切换，并以 MIT 开放该快照权重。', '保留 9 月 10 日首次发布；10 月 17 日快照由官方称为小版本更新，作为后续进展合并记录。'),
     event('claude-opus-5-5', '2026-09-22', 'Claude Opus 5.5', 'anthropic', 'release',
       '新一代 Opus 面向复杂知识工作、编程与需要审慎判断的任务。', ['编程', '知识工作'],
       source('Anthropic · Claude Opus 5.5', 'https://www.anthropic.com/claude-opus-5-5'), false,
@@ -672,8 +678,8 @@ window.MODEL_ATLAS = (() => {
       "统一处理文本、图像、音频和视频，扩展多模态工作流程。", ["全模态","工具使用"], source("Qwen · 官方发布", "https://docs.qwencloud.com/changelog/models"), false,
       "记录 Omni 模型发布；9 月 21 日的 Realtime 接口是后续实时交互扩展。"),
     event("step-5-preview", "2026-09-20", "Step 5 Preview", "stepfun", "preview",
-      "面向长程软件工程、知识工作与金融研究的旗舰预览模型。", ["多模态","智能体"], [source("阶跃星辰 · 官方发布", "https://www.stepfun.com/step-5-preview"), source("IT之家 · 首发日期交叉核验", "https://www.ithome.com/1/004/705.htm")], false,
-      "以预览版本发布；完整权重当时计划于 10 月 15 日开放。", "9 月 20 日预览发布由首发报道交叉核验；权重开放计划不作为已发生的事件。"),
+      "面向长程软件工程、知识工作与金融研究的旗舰预览模型。", ["多模态","智能体"], [source("阶跃星辰 · 官方发布", "https://www.stepfun.com/step-5-preview"), source("IT之家 · 首发日期交叉核验", "https://www.ithome.com/1/004/705.htm"), {"title": "阶跃星辰 · 开放权重与模型卡", "titleEn": "StepFun: Open weights and model card", "url": "https://huggingface.co/stepfun-ai/Step-5-Preview-NVFP4"}, {"title": "阶跃星辰 · 模型许可证", "titleEn": "StepFun: Model license", "url": "https://huggingface.co/stepfun-ai/Step-5-Preview/blob/main/LICENSE.txt"}], false,
+      "预览模型现已提供 BF16、FP8 与 NVFP4 权重，采用 StepFun Model License 1.0。总参数 600B、激活参数 27B，支持多模态理解与百万 token 上下文。", "保留 9 月 20 日预览发布日期，由首发报道交叉核验。10 月 17 日已核实权重与许可证公开；不将仓库准备阶段的提交日期当作公开日期。"),
     event("grok-4-7", "2026-09-21", "Grok 4.7", "xai", "release",
       "升级编程和知识工作，改善复杂任务的自我验证与上下文管理。", ["编程","知识工作"], source("xAI · 官方发布", "https://x.ai/news/grok-4-7"), false,
       "不同推理档位与加速服务归入同一模型发布，不按榜单中的配置重复计数。"),
@@ -845,9 +851,131 @@ window.MODEL_ATLAS = (() => {
       "可按 10 秒增量延展到累计 40 秒，延展时参考最多 10 秒前文；这不等于单次生成 40 秒。同期面向 Gemini API、企业 API 与 Flow 开放，官方列出 Adobe Firefly、Figma Weave 和 Runway 的集成应用。",
       "日期为 1.1 型号及新增控制能力发布；不是首代 Omni 的 API 重复收录。"),
     // End video-generation releases.
+    {
+      "id": "reflection-beam-1",
+      "date": "2026-10-05",
+      "name": "Beam 1.0",
+      "company": "reflection",
+      "kind": "announcement",
+      "summary": "Reflection 首款模型面向编程、推理与长程智能体任务，随后以 Apache 2.0 开放权重。",
+      "details": "采用 501B 总参数、23B 激活参数的稀疏 MoE，支持百万 token 上下文与文本输入输出。权重提供 BF16、FP8、NVFP4 格式，并支持主流推理框架与编程工具。",
+      "dateNote": "10 月 5 日首次公告并接受提前体验申请；10 月 16 日正式开放权重与公开服务。不同精度和推测解码辅助模型合并记录。",
+      "tags": [
+        "开放权重",
+        "编程",
+        "智能体"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Reflection · 首次公告",
+          "titleEn": "Reflection: Initial announcement",
+          "url": "https://reflection.ai/blog/introducing-beam"
+        },
+        {
+          "title": "Reflection · 权重开放",
+          "titleEn": "Reflection: Weight release",
+          "url": "https://reflection.ai/blog/beam-is-available"
+        },
+        {
+          "title": "Reflection · 官方模型卡",
+          "titleEn": "Reflection: Official model card",
+          "url": "https://huggingface.co/reflection/Beam-1.0-501B-A23B"
+        }
+      ]
+    },
+    {
+      "id": "muse-spark-open",
+      "date": "2026-10-15",
+      "name": "Muse Spark Open",
+      "company": "meta",
+      "kind": "weights",
+      "summary": "Meta 开放 Muse Spark 的独立权重版本，支持多模态理解、编程与长程工具任务。",
+      "details": "模型总参数 816B、激活参数 42B，支持百万 token 上下文，接收文本、图像、音频和视频并输出文本。开放版本额外进行了安全后训练，适用 Muse Model License；支持本地部署和第三方推理服务。",
+      "dateNote": "采用官方公告与模型卡共同标注的 10 月 15 日；这是独立开放型号，不将其他 Muse 模型一并标为开放权重。",
+      "tags": [
+        "开放权重",
+        "多模态",
+        "智能体"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Meta · 模型发布",
+          "titleEn": "Meta: Model release",
+          "url": "https://research.meta.ai/blog/muse-spark-open"
+        },
+        {
+          "title": "Meta · 官方模型卡",
+          "titleEn": "Meta: Official model card",
+          "url": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
+        }
+      ]
+    },
+    {
+      "id": "nemotron-3-5-vl-bolt",
+      "date": "2026-10-15",
+      "name": "Nemotron 3.5 Super VL / Bolt",
+      "company": "nvidia",
+      "kind": "weights",
+      "summary": "NVIDIA 同日开放服务器与本地部署两类多模态智能体模型，提供权重、训练资料与推理支持。",
+      "details": "Super VL 为 120B-A12B 模型，支持百万 token 上下文；Bolt 74B-A9B 从其压缩而来，支持 256K 上下文，并提供面向 24GB 显存的低比特版本。两款均支持图像和视频理解，采用 OpenMDW 1.1 许可。",
+      "dateNote": "同日可用的 Super VL 与 Bolt 74B-A9B 合并为家族节点。Bolt E4B 当时计划于 10 月 23 日开放，不计入已发布型号。",
+      "tags": [
+        "开放权重",
+        "多模态",
+        "高效推理"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "NVIDIA · 模型发布",
+          "titleEn": "NVIDIA: Model release",
+          "url": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/"
+        },
+        {
+          "title": "NVIDIA · Super VL 模型卡",
+          "titleEn": "NVIDIA: Super VL model card",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4"
+        },
+        {
+          "title": "NVIDIA · Bolt 模型卡",
+          "titleEn": "NVIDIA: Bolt model card",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB"
+        }
+      ]
+    },
+    {
+      "id": "kling-4",
+      "date": "2026-09-30",
+      "name": "Kling 4.0",
+      "company": "kuaishou",
+      "kind": "preview",
+      "summary": "可灵 4.0 将单次视频生成延长至 30 秒，加强多素材参考、关键帧控制与音画一致性。",
+      "details": "支持最多 15 项参考素材和 10 张关键帧，覆盖图像、视频与主体声音参考。10 月 15 日全面上线；两分钟续写与企业 API 在后续公告中仍为计划，4K 和 HDR 的公布规格不视为已全面开放。",
+      "dateNote": "采用 9 月 30 日主模型的官方预览公告。Flash 于 9 月 28 日先向 Ultra 年付用户开放；10 月 15 日全面上线日期由快手公告确认，不以文章发布日期替代。",
+      "tags": [
+        "视频生成",
+        "原生音频",
+        "视频编辑"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "可灵 · 4.0 预览公告",
+          "titleEn": "Kling: 4.0 preview announcement",
+          "url": "https://kling.ai/blog/kling40-kling-visual-realism-creative-control-introducing-storytelling"
+        },
+        {
+          "title": "快手 · 4.0 全面上线",
+          "titleEn": "Kuaishou: Kling 4.0 general launch",
+          "url": "https://ir.kuaishou.com/news-releases/news-release-details/kling-ai-officially-launches-next-generation-kling-40-raising"
+        }
+      ]
+    },
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-10-15',
+    checkedAt: '2026-10-17',
     scope: '主流语言、多模态与视频生成模型，兼顾具有历史影响的架构研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
@@ -863,5 +991,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-10-15', updatedAt: '2026-10-15', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-10-17', updatedAt: '2026-10-17', companies, companyRanking, kinds, themes, releases, coverage });
 })();

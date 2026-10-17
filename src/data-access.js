@@ -22,7 +22,7 @@
     step-3-5-flash glm-5 minimax-m2-5 qwen-3-5 nemotron-3-super mistral-small-4 minimax-m2-7
     gemma-4 glm-5-1 mimo-v2-5 deepseek-v4 mistral-medium-3-5 step-3-7-flash minimax-m3
     kimi-k2-7-code glm-5-2 hunyuan-hy3 kimi-k3 qwen-3-8 deepseek-v4-pro-0813 glm-5-3
-    glm-5-3-flash hunyuan-hy4-preview deepseek-v4-1-flash mimo-v2-6
+    glm-5-3-flash hunyuan-hy4-preview deepseek-v4-1-flash mimo-v2-6 step-5-preview
   `);
   add(models, 'closed', `
     gpt-3 codex instructgpt palm chatgpt claude-1 gpt-4 claude-2 gpt-4-turbo gemini-1
@@ -35,7 +35,7 @@
     gemini-3-5-flash qwen-3-7-max claude-opus-4-8 claude-fable-5 claude-sonnet-5
     gpt-5-6 muse-spark-1-1 grok-4-5 gemini-3-6-flash claude-opus-5
     grok-4-6 gemini-3-7-flash claude-fable-5-1 gemini-3-8-flash muse-spark-1-3 qwen-3-8-max-0902
-    gpt-6-astra kimi-k2-8-preview qwen-3-8-omni-flash step-5-preview grok-4-7 claude-opus-5-5
+    gpt-6-astra kimi-k2-8-preview qwen-3-8-omni-flash grok-4-7 claude-opus-5-5
     gpt-6-sol-luna claude-sonnet-5-5
   `);
 
@@ -49,7 +49,7 @@
     'llava': 'https://huggingface.co/liuhaotian/LLaVA-13b-delta-v0',
     'stanford-alpaca': 'https://huggingface.co/tatsu-lab/alpaca-7b-wdiff',
     'bloom': 'https://huggingface.co/bigscience/bloom',
-    'step-5-preview': 'https://platform.stepfun.ai/docs/en/guides/models/step-5-preview',
+    'step-5-preview': 'https://huggingface.co/stepfun-ai/Step-5-Preview-NVFP4',
     'step-3-5-flash': 'https://huggingface.co/stepfun-ai/Step-3.5-Flash',
     'hunyuan-t1': 'https://cloud.tencent.com/document/product/1729/131925',
     'palm': 'https://developers.googleblog.com/en/palm-api-makersuite-an-approachable-way-to-start-prototyping-and-building-generative-ai-applications/',
@@ -100,7 +100,6 @@
   note(models, 'minimax-m2-7', '首发后已开放权重，发布日期保持不变。', 'Weights became available after launch; the launch date is unchanged.');
   note(models, 'kimi-k3', '首发后已开放权重，发布日期保持不变。', 'Weights became available after launch; the launch date is unchanged.');
   note(models, 'mistral-large-4-preview', '截至 2026 年 10 月 8 日提供公开 API 预览，权重仍在发布计划中。', 'As of October 8, 2026, the public API preview is available, but the weight release is still planned.');
-  note(models, 'step-5-preview', '截至核对日仅有预览服务；计划开放不视为已经开放。', 'Only the preview service is available at the review date; a planned weight release is not a completed release.');
   note(models, 'qwen-3-8-flash', '开源标签指官方明确对应的 Flash-Next 基础权重；Flash 托管版的上下文、工具和服务配置另计。', 'The open-source label refers to the officially linked Flash-Next base weights. Hosted Flash has separate context, tool, and service configurations.');
   note(models, 'qwen-3-8-max', '开源标签指官方明确对应的 Qwen3.8-2.4T-A95B 基础权重；其为文本模型，Max 托管版另有视觉、工具和服务配置。', 'The open-source label refers to the officially linked Qwen3.8-2.4T-A95B base weights. That checkpoint is text-only; hosted Max adds vision, tools, and service configurations.');
   note(models, 'qwen-3-8-max-0902', '此节点记录 0902 托管服务更新；已公开的初始基础版本单独收录。', 'This entry covers the 0902 hosted update. The initially released base checkpoint is recorded separately.');
@@ -562,6 +561,91 @@
     }
   });
   // End video-model access.
+  // Model releases and weight availability reviewed on 2026-10-17.
+  Object.assign(models, {
+  "muse-spark-open": {
+    "status": "open",
+    "source": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+    "checkedAt": "2026-10-17",
+    "note": "已开放该型号权重，适用附商业使用条件的 Muse Model License；其他 Muse 型号的开放状态独立记录。",
+    "noteEn": "Weights for this model are available under the Muse Model License, which includes commercial-use conditions. Other Muse models have separate access status.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "Muse Model License",
+        "source": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B/blob/main/LICENSE.md"
+      }
+    ]
+  },
+  "nemotron-3-5-vl-bolt": {
+    "status": "open",
+    "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4",
+    "checkedAt": "2026-10-17",
+    "note": "Super VL 与 Bolt 74B-A9B 权重均已公开，适用 OpenMDW 1.1；不包含尚未发布的 Bolt E4B。",
+    "noteEn": "Super VL and Bolt 74B-A9B weights are available under OpenMDW 1.1. This does not include the unreleased Bolt E4B.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "OpenMDW 1.1",
+        "source": "https://github.com/OpenMDW/OpenMDW/blob/main/1.1/LICENSE.OpenMDW-1.1"
+      }
+    ]
+  },
+  "reflection-beam-1": {
+    "status": "open",
+    "source": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+    "checkedAt": "2026-10-17",
+    "note": "10 月 16 日开放权重，采用 Apache 2.0；保留 10 月 5 日首次公告日期。",
+    "noteEn": "Weights were released on October 16 under Apache 2.0; the timeline retains the October 5 announcement date.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "Apache 2.0",
+        "source": "https://huggingface.co/reflection/Beam-1.0-501B-A23B/blob/main/LICENSE"
+      }
+    ]
+  },
+  "kling-4": {
+    "status": "closed",
+    "source": "https://kling.ai/blog/kling40-kling-visual-realism-creative-control-introducing-storytelling",
+    "checkedAt": "2026-10-17",
+    "note": "通过官方产品提供，未发布模型权重；企业 API 在后续公告中仍为计划。",
+    "noteEn": "Available through official products without public model weights; enterprise API access remains planned in the later announcement."
+  },
+  "step-5-preview": {
+    "status": "open",
+    "source": "https://huggingface.co/stepfun-ai/Step-5-Preview-NVFP4",
+    "checkedAt": "2026-10-17",
+    "note": "BF16、FP8 与 NVFP4 权重已公开，适用 StepFun Model License 1.0，附商业使用条件。",
+    "noteEn": "BF16, FP8 and NVFP4 weights are available under StepFun Model License 1.0, which includes commercial-use conditions.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "StepFun Model License 1.0",
+        "source": "https://huggingface.co/stepfun-ai/Step-5-Preview/blob/main/LICENSE.txt"
+      }
+    ]
+  },
+  "deepseek-v4-1-flash": {
+    "status": "open",
+    "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+    "checkedAt": "2026-10-17",
+    "note": "原版与 1017 更新快照均开放权重；1017 快照采用 MIT 许可。",
+    "noteEn": "Weights are available for the original model and the 1017 update; the 1017 checkpoint uses MIT.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "MIT",
+        "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017/blob/main/LICENSE"
+      }
+    ]
+  }
+});
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

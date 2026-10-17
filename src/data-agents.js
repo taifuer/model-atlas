@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
-  "asOf": "2026-10-11",
-  "updatedAt": "2026-10-12",
+  "asOf": "2026-10-17",
+  "updatedAt": "2026-10-17",
   "companies": [
     {
       "id": "anthropic",
@@ -517,8 +517,8 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "preview",
       "summary": "Composer 加入早期 Agent，可自行获取上下文并使用终端。",
-      "details": "采用 Cursor 0.43 的官方更新日志，记录 Agent 功能而非 Cursor 编辑器首次上线。",
-      "dateNote": "",
+      "details": "Cursor 0.43 在 Composer 中加入 Agent。2026 年 10 月 16 日，云端 Agent 增加可共享的交互画布，并推出用于创建和管理云端运行环境的 Environments API 测试版。",
+      "dateNote": "记录 0.43 的 Agent 预览日期，而非 Cursor 编辑器首次上线。",
       "tags": [
         "编程",
         "工具使用"
@@ -526,14 +526,20 @@ window.AGENT_ATLAS = {
       "milestone": true,
       "sources": [
         {
-          "title": "官方 · 发布记录",
-          "url": "https://cursor.com/changelog/0-43-x"
+          "title": "Cursor · 0.43 Agent 预览",
+          "url": "https://cursor.com/changelog/0-43-x",
+          "titleEn": "Cursor · Agent preview in 0.43"
+        },
+        {
+          "title": "Cursor · 云端画布与环境 API",
+          "titleEn": "Cursor · Cloud canvases and Environments API",
+          "url": "https://cursor.com/changelog/cloud-agent-canvases-and-environments"
         }
       ],
       "en": {
         "summary": "Composer gains an early agent that retrieves context and uses the terminal.",
-        "details": "Uses the Cursor 0.43 changelog for the agent feature, not the editor's original debut.",
-        "dateNote": ""
+        "details": "Cursor 0.43 introduced Agent in Composer. On October 16, 2026, cloud agents gained shareable interactive canvases and a beta Environments API for creating and managing their cloud environments.",
+        "dateNote": "Records the Agent preview in 0.43, not the editor’s original launch."
       }
     },
     {
@@ -1052,8 +1058,8 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "preview",
       "summary": "接收 GitHub Issue，在后台修改代码、运行检查并提交 Pull Request。",
-      "details": "使用 GitHub Actions 支持的执行环境，记录公开预览而非早期代码补全产品。",
-      "dateNote": "",
+      "details": "使用 GitHub Actions 支持的执行环境处理编码任务。2026 年 10 月 15 日，Agentic autofix 向符合条件的 GitHub Enterprise Cloud 安全产品客户正式开放，可修改代码、重新运行 CodeQL 验证修复并创建草稿 PR。",
+      "dateNote": "节点日期为 coding agent 公开预览；Agentic autofix 于 2026 年 7 月 10 日预览，10 月 15 日正式可用。",
       "tags": [
         "编程",
         "工具使用"
@@ -1061,14 +1067,25 @@ window.AGENT_ATLAS = {
       "milestone": false,
       "sources": [
         {
-          "title": "官方 · 发布记录",
-          "url": "https://github.blog/changelog/2025-05-19-github-copilot-coding-agent-in-public-preview/"
+          "title": "GitHub · Coding agent 公开预览",
+          "url": "https://github.blog/changelog/2025-05-19-github-copilot-coding-agent-in-public-preview/",
+          "titleEn": "GitHub · Coding agent public preview"
+        },
+        {
+          "title": "GitHub · Agentic autofix 公开预览",
+          "titleEn": "GitHub · Agentic autofix public preview",
+          "url": "https://github.blog/changelog/2026-07-10-agentic-autofix-for-code-scanning-alerts-in-public-preview/"
+        },
+        {
+          "title": "GitHub · Agentic autofix 正式可用",
+          "titleEn": "GitHub · Agentic autofix general availability",
+          "url": "https://github.blog/changelog/2026-10-15-agentic-autofix-for-code-scanning-alerts-general-availability/"
         }
       ],
       "en": {
         "summary": "Assigned issues become background coding tasks and reviewable pull requests.",
-        "details": "The public preview uses GitHub Actions-backed environments, separate from earlier Copilot completion tools.",
-        "dateNote": ""
+        "details": "Runs coding tasks in environments backed by GitHub Actions. On October 15, 2026, Agentic autofix became generally available to eligible GitHub Enterprise Cloud security customers, editing code, rerunning CodeQL to validate fixes and opening draft pull requests.",
+        "dateNote": "The node dates the coding agent public preview. Agentic autofix entered public preview on July 10, 2026 and became generally available on October 15."
       }
     },
     {
@@ -1496,7 +1513,7 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "release",
       "summary": "公开发布的终端编程智能体，连接 Shell、项目文件与 MCP 工具。",
-      "details": "早期公开版本 0.33 已支持命令执行、项目文件读写、会话管理和 MCP 工具接入，可在终端中完成多步骤编程任务。",
+      "details": "早期公开版本 0.33 支持命令执行、项目文件读写、会话管理和 MCP 工具接入。官方 Python 仓库于 2026 年 9 月 23 日归档并停止维护，后续开发转向同团队的 Kimi Code CLI。",
       "dateNote": "采用官方 GitHub 0.33 Release 的公开发布时间（UTC）；更新日志中的 2025-10-18 是该版本的更早记录日期。",
       "tags": [
         "编程",
@@ -1513,11 +1530,21 @@ window.AGENT_ATLAS = {
           "title": "官方 · Kimi CLI 更新日志",
           "titleEn": "Official · Kimi CLI changelog",
           "url": "https://github.com/MoonshotAI/kimi-cli/blob/main/CHANGELOG.md"
+        },
+        {
+          "title": "Moonshot AI · 旧版归档与迁移说明",
+          "titleEn": "Moonshot AI · Legacy archive and migration notice",
+          "url": "https://github.com/MoonshotAI/kimi-cli"
+        },
+        {
+          "title": "Moonshot AI · Kimi Code CLI",
+          "titleEn": "Moonshot AI · Kimi Code CLI",
+          "url": "https://github.com/MoonshotAI/kimi-code"
         }
       ],
       "en": {
         "summary": "A publicly released terminal coding agent connecting shell commands, project files and MCP tools.",
-        "details": "The early public 0.33 release supports command execution, reading and editing project files, session management and MCP tools for multi-step coding tasks in the terminal.",
+        "details": "The early public 0.33 release supports commands, project files, sessions and MCP tools. The official Python repository was archived on September 23, 2026 and is no longer maintained; development continues in the same team’s Kimi Code CLI.",
         "dateNote": "Uses the official GitHub 0.33 Release publication timestamp in UTC. October 18, 2025 in the changelog is an earlier version-record date."
       }
     },
@@ -1821,7 +1848,7 @@ window.AGENT_ATLAS = {
       "category": "harness",
       "kind": "preview",
       "summary": "用插件组合模型、工具、会话、沙箱与执行循环，并记录完整任务轨迹。",
-      "details": "基于 Cordis 的开源 Agent 运行环境。开发者可替换各层能力，使用标准、代码或极简等模式构建与评测 Agent。",
+      "details": "基于 Cordis 的开源 Agent 运行环境，各层能力可替换，支持标准、代码和极简等模式。2026 年 10 月 17 日发布的 0.2.1-rc.2 接入 DeepSeek-V4.1-Flash-1017 及 Search、Fetch API，仍处于预发布阶段。",
       "dateNote": "采用 0.1.0 预览系列与 npm 包公开发布的日期；不把更早的内部标签日期当作公开上线日。",
       "tags": [
         "执行环境",
@@ -1831,16 +1858,23 @@ window.AGENT_ATLAS = {
       "sources": [
         {
           "title": "官方 · DeepSeek Harness 开发者预览",
-          "url": "https://www.deepseek.com/harness/"
+          "url": "https://www.deepseek.com/harness/",
+          "titleEn": "Official · DeepSeek Harness developer preview"
         },
         {
           "title": "官方 · 历史版本日期",
-          "url": "https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/persistence-changes/releases/README.md"
+          "url": "https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/persistence-changes/releases/README.md",
+          "titleEn": "Official · Historical release dates"
+        },
+        {
+          "title": "DeepSeek · 0.2.1-rc.2 发布记录",
+          "titleEn": "DeepSeek · 0.2.1-rc.2 release",
+          "url": "https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.1-rc.2"
         }
       ],
       "en": {
         "summary": "Plugins compose models, tools, sessions, sandboxes and execution loops, with a recorded task trajectory.",
-        "details": "An open-source agent runtime built on Cordis, with replaceable capabilities and standard, code and minimal execution modes.",
+        "details": "An open-source agent runtime built on Cordis, with replaceable capabilities and standard, code and minimal modes. Version 0.2.1-rc.2, released October 17, 2026, adds DeepSeek-V4.1-Flash-1017 and Search / Fetch API support; it remains a prerelease.",
         "dateNote": "Uses the public 0.1.0 preview-series and npm publication date, rather than earlier internal tag dates."
       }
     },
@@ -1995,7 +2029,7 @@ window.AGENT_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-11",
+    "checkedAt": "2026-10-17",
     "scope": "编程 Agent、通用 Agent、Harness 及重要框架与协议的主要公开节点。",
     "method": "以原始公告、维护者文章与论文核对日期，区分预览、论文公开、改名和正式发布；按经典性、代表性或影响力筛选，不逐条收录常规版本更新。",
     "references": []

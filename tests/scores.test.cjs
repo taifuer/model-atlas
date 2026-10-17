@@ -19,7 +19,9 @@ test('published scores exactly match dated public source snapshots and known rel
     for (const row of snapshot.records) {
       const { releaseId, ...record } = row;
       assert.ok(ids.has(releaseId), releaseId);
-      assert.deepEqual(JSON.parse(JSON.stringify(scores.entries[releaseId][key])), record);
+      const { note, noteEn, ...published } = JSON.parse(JSON.stringify(scores.entries[releaseId][key]));
+      assert.deepEqual(published, record);
+      if (note) assert.ok(noteEn, 'Editorial score notes need both languages');
       assert.ok(record.model && Number.isFinite(record.score));
       assert.equal(new URL(record.source).protocol, 'https:');
       if (key === 'arena') assert.ok(record.confidenceInterval > 0 && record.votes > 0);
@@ -27,7 +29,7 @@ test('published scores exactly match dated public source snapshots and known rel
     assert.equal(snapshot.records.length, Object.values(scores.entries).filter(e => e[key]).length);
   }
   assert.equal(scores.entries['gemini-4-argon'].arena.preliminary, true);
-  assert.equal(scores.benchmarks.aa.checkedAt, '2026-10-15');
+  assert.equal(scores.benchmarks.aa.checkedAt, '2026-10-17');
   assert.equal(scores.checkedAt, '2026-10-11', 'A new AA check must not advance the unchanged Arena review date');
   assert.equal(scores.benchmarks.arena.publishedAt, '2026-10-08');
   assert.equal(scores.entries['muse-wonder'].aa.model, 'Muse Wonder Full (max)');
@@ -38,6 +40,14 @@ test('published scores exactly match dated public source snapshots and known rel
   assert.equal(scores.entries['gpt-6-sol-luna-chatgpt-october'], undefined, 'Do not transfer September API scores to the ChatGPT October versions');
   assert.equal(scores.entries['qwen-3-8-max-0902'].arena, undefined, 'An undated Max alias must not be assigned to the 0902 snapshot');
   assert.equal(scores.entries['gpt-6-sol-luna'].aa.model, 'GPT-6 Sol (max)', 'A family score identifies its actual evaluated member');
+  assert.equal(scores.entries['deepseek-v4-1-flash'].aa.checkedAt, '2026-10-15', 'An older benchmark must not be relabeled as a check of the 1017 checkpoint');
+  for (const metric of ['aa', 'arena']) {
+    assert.match(scores.entries['deepseek-v4-1-flash'][metric].note, /不能视为 1017/);
+    assert.match(scores.entries['deepseek-v4-1-flash'][metric].noteEn, /not a score for the 1017/);
+  }
+  assert.equal(scores.cardScopes['deepseek-v4-1-flash'], 'snapshot');
+  assert.equal(scores.entries['nemotron-3-5-vl-bolt'].aa.model, 'Nemotron 3.5 Super VL', 'The family score must identify Super VL, not imply a Bolt result');
+  assert.equal(scores.cardScopes['nemotron-3-5-vl-bolt'], 'variant');
 });
 
 test('new releases retain availability and independently dated specifications', () => {
