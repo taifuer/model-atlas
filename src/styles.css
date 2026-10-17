@@ -371,8 +371,9 @@ body.modal-open .back-to-top { display: none; }
 .about-intro { padding-bottom: 40px; border-bottom: 1px solid var(--line); }
 .about-intro h1 { margin: 0 0 12px; font-size: 34px; font-weight: 600; letter-spacing: -.025em; }
 .about-intro > p:last-child { margin: 0; color: var(--body); font-size: 16px; }
-.about-layout { display: grid; grid-template-columns: 184px minmax(0, 720px); gap: 72px; padding-top: 40px; }
-.about-nav { display: flex; flex-direction: column; position: sticky; top: 108px; align-self: start; gap: 6px; }
+.about-layout { display: grid; grid-template-columns: minmax(0, 1fr) 200px; gap: 56px; padding-top: 40px; }
+.about-content { min-width: 0; }
+.about-nav { display: flex; flex-direction: column; position: sticky; top: 108px; align-self: start; gap: 6px; max-height: calc(100dvh - 140px); overflow-y: auto; padding-left: 20px; border-left: 1px solid var(--line); }
 .about-nav a { font-size: 13px; padding: 7px 0; color: var(--muted); }
 .about-nav a:hover { color: var(--accent); }
 .about-content > section { padding-bottom: 40px; margin-bottom: 36px; border-bottom: 1px solid var(--line); scroll-margin-top: 104px; }
@@ -425,7 +426,11 @@ body.modal-open .back-to-top { display: none; }
   .header-inner { gap: 16px; }
   .header-menu { gap: 16px; }
   .page-intro h1 { font-size: 29px; }
-  .about-layout { gap: 36px; grid-template-columns: 150px minmax(0, 1fr); }
+  .about-layout { gap: 32px; grid-template-columns: minmax(0, 1fr) 184px; }
+}
+@media (max-width: 960px) {
+  .about-layout { display: block; }
+  .about-nav { display: none; }
 }
 @media (max-width: 760px) {
   .header-inner { height: 64px; gap: 8px; }
@@ -462,8 +467,7 @@ body.modal-open .back-to-top { display: none; }
   .about-page { padding-top: 32px; }
   .about-intro h1 { font-size: 29px; }
   .about-intro { padding-bottom: 28px; }
-  .about-layout { display: block; padding-top: 30px; }
-  .about-nav { display: none; }
+  .about-layout { padding-top: 30px; }
   .about-content > section { padding-bottom: 28px; margin-bottom: 28px; }
   .back-to-top { right: 16px; bottom: calc(max(18px, env(safe-area-inset-bottom)) + var(--footer-offset, 0px)); }
 }
