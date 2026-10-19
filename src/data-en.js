@@ -1046,6 +1046,77 @@ window.MODEL_ATLAS_EN = {
     "summary": "An open-weight reasoning model for on-device agents, using a hybrid sparse-expert architecture for local tool use.",
     "details": "It has 24.0B total and approximately 2.45B active parameters, combining short convolutions with grouped-query attention and a 131,072-token context. Base and post-trained checkpoints support runtimes including llama.cpp, MLX and vLLM. Input and output are text only. Weights use the LFM Open License v1.0, which includes a commercial revenue threshold.",
     "dateNote": "Uses the official Liquid AI announcement dated October 13, 2026. Base and post-trained checkpoints are grouped together; GGUF, MLX and quantized formats are not separate releases."
+  },
+  "dall-e": {
+    "summary": "A 12B-parameter autoregressive model that generates images from natural language and demonstrates concept composition and image completion.",
+    "details": "Encodes text and images in one token sequence and uses a Transformer to generate images autoregressively. The research was first disclosed in January 2021, ahead of the paper in February. The full generator was not released; the later public repository contains only the discrete VAE.",
+    "dateNote": "Uses the first research announcement on January 5, 2021; the paper was submitted to arXiv on February 24. This is not an API launch or a release of the complete model weights."
+  },
+  "dall-e-2": {
+    "summary": "Combines CLIP image representations with diffusion generation for text-to-image creation, inpainting and image variations.",
+    "details": "A prior predicts CLIP image representations, which a diffusion decoder converts into images. It began as a limited research preview before expanding into a public service. By September 2022, OpenAI reported over 1.5 million users creating more than two million images daily. Model weights were not released.",
+    "dateNote": "Uses the April 6, 2022 research preview recorded in the official system card. The April 13 paper submission, September waitlist removal and later API access are not treated as separate initial releases."
+  },
+  "dall-e-3": {
+    "summary": "Improves prompt adherence with richer training captions and brings image creation into ChatGPT conversations.",
+    "details": "Improves generation from detailed prompts, including object details and text within images, while ChatGPT helps refine descriptions. Announced as a research preview in September 2023, it reached ChatGPT Plus and Enterprise in October. The model itself takes text and produces images; weights were not released.",
+    "dateNote": "Uses the September 20, 2023 research-preview announcement. The wider ChatGPT release on October 19 is a later access event and does not replace the first public date."
+  },
+  "gpt-4o-image": {
+    "name": "GPT-4o Image Generation",
+    "summary": "Brings native image generation to ChatGPT, with text rendering, conversational revisions and reference-image editing.",
+    "details": "Generates and edits images from text and image inputs across multiple conversation turns. Rollout in ChatGPT began in March 2025, followed by API access as gpt-image-1 on April 23. OpenAI reported over 130 million users generating more than 700 million images in the first week. This records the image-generation launch separately from the original GPT-4o release in 2024.",
+    "dateNote": "Uses the March 25, 2025 announcement of native image generation in ChatGPT. API access through gpt-image-1 on April 23 is recorded here rather than duplicated as another model launch."
+  },
+  "imagen": {
+    "summary": "Combines a frozen large text encoder with cascaded diffusion to study the role of language understanding in image generation.",
+    "details": "Uses T5-XXL text embeddings and cascaded diffusion to generate 1024×1024 images. The paper studies how scaling the text encoder improves prompt alignment and introduces DrawBench. The initial disclosure consisted of research and examples, without a public demo, code or model weights.",
+    "dateNote": "Uses the paper's first arXiv submission on May 23, 2022. This is a research disclosure; dates for later commercial Imagen services are not substituted for this model's debut."
+  },
+  "imagen-3": {
+    "summary": "Improves image detail, long-prompt adherence and text rendering, with an early creator preview in ImageFX.",
+    "details": "Announced at Google I/O 2024, this text-to-image model initially offered a private ImageFX preview to selected creators with a waitlist. It later reached Google's image-creation and cloud services. Complete model weights were not released.",
+    "dateNote": "Uses the first announcement and private preview on May 14, 2024. The August paper, wider ImageFX access and later Vertex AI availability do not replace this date."
+  },
+  "imagen-4": {
+    "summary": "Improves visual detail and typography, with up to 2K output and integration into Gemini and creative tools.",
+    "details": "Uses latent diffusion, with improvements to material detail, spelling and layout. It launched in Gemini and creative workflows including Flow, while Vertex AI announced preview endpoints the same day. Public generation endpoints take text and do not support image editing.",
+    "dateNote": "Uses the Google I/O announcement and product integration on May 20, 2025. Later API general availability and Fast or Ultra variants are grouped into this family release."
+  },
+  "stable-diffusion-1": {
+    "summary": "Public weights and inference code bring latent text-to-image diffusion to local deployment and customization.",
+    "details": "Developed through a collaboration between CompVis, Stability AI and Runway, with v1.4 the recommended public checkpoint. A CLIP text encoder conditions latent denoising, with text-to-image and text-guided image-to-image workflows at a 512 × 512 training resolution. Weights use CreativeML OpenRAIL-M, permitting commercial use subject to use restrictions.",
+    "dateNote": "Dated to the public weight release on August 22, 2022, rather than earlier researcher access or the latent-diffusion paper."
+  },
+  "sdxl-1": {
+    "summary": "Releases base and refiner models for 1024-pixel image generation, with multiple aspect ratios and customization support.",
+    "details": "Adds a second text encoder and a larger denoising network to latent diffusion. The base model can generate images on its own, with an optional refiner for the final denoising steps. Weights, inference code and hosted access were released together under CreativeML OpenRAIL++-M for the weights.",
+    "dateNote": "Dated to the SDXL 1.0 weight release on July 26, 2023, not the earlier 0.9 research release or the July 4 technical report."
+  },
+  "flux-1-open": {
+    "summary": "Releases 12B text-to-image weights in quality-oriented dev and few-step schnell variants.",
+    "details": "Uses a rectified-flow transformer: dev applies guidance distillation, while schnell generates images in 1–4 steps, with ComfyUI and Diffusers support. Dev weights use a non-commercial license; schnell uses Apache 2.0. The API-only pro variant launched on the same day is outside this open-weight entry.",
+    "dateNote": "Dated to Black Forest Labs' August 1, 2024 announcement; the simultaneous dev and schnell weight releases are grouped together."
+  },
+  "flux-1-kontext-dev": {
+    "summary": "Releases open weights for instruction-based image editing, supporting iterative changes and subject consistency.",
+    "details": "A 12B rectified-flow transformer takes an image and editing instructions to alter local content or an entire scene. The dev checkpoint focuses on image editing and works with the existing FLUX inference code, ComfyUI and Diffusers under the FLUX.1 non-commercial license.",
+    "dateNote": "Dated to the June 26, 2025 public dev-weight release. The May 29 launch covered pro / max APIs while dev remained in private beta."
+  },
+  "midjourney-v6": {
+    "summary": "Improves long-prompt understanding, visual coherence and image prompting, expanding control over Midjourney image creation.",
+    "details": "V6 initially opened to users as an alpha, generating images from text and reference images. The official version history records February 14, 2024 as its switch to the default model, not its initial release. It is offered through Midjourney's hosted service; model weights are not public.",
+    "dateNote": "Uses December 20, 2023 from Midjourney's official version history. Some coverage uses December 21; February 14, 2024 was the default-version change."
+  },
+  "qwen-image": {
+    "summary": "Releases a 20B image-generation model for Chinese and English text rendering, complex layouts and varied visual styles.",
+    "details": "Uses a multimodal diffusion Transformer (MMDiT) architecture. The initial open weights perform text-to-image generation and are licensed under Apache 2.0. Diffusers deployment is supported, with native ComfyUI support arriving the next day. Qwen-Image-Edit weights followed separately on August 18.",
+    "dateNote": "Uses the August 4, 2025 weight release confirmed by the announcement, model card and repository log. The later editing model is not treated as part of the initial weights."
+  },
+  "seedream-4": {
+    "summary": "Unifies image generation and editing, with multi-image references, batch creation and output up to 4K.",
+    "details": "Accepts text, images or combined inputs for text-to-image generation, single- and multi-image editing, and image composition. It launched through Jimeng, Doubao and Volcano Engine, with third-party inference integrations also available. The model is offered as a hosted service without public weights.",
+    "dateNote": "Uses September 9, 2025 from the official Seed announcement, rather than the September 24 technical report or third-party integration dates."
   }
 };
 window.ATLAS_TAGS_EN = {
@@ -1143,15 +1214,23 @@ window.ATLAS_TAGS_EN = {
   "NCR": "NCR",
   "图像生成": "Image generation",
   "图像编辑": "Image editing",
-  "端侧模型": "On-device model"
+  "端侧模型": "On-device model",
+  "潜空间扩散": "Latent diffusion",
+  "自回归": "Autoregressive",
+  "扩散模型": "Diffusion",
+  "流匹配": "Flow matching",
+  "图像参考": "Image prompting",
+  "多图参考": "Multi-image references",
+  "文字渲染": "Text rendering",
+  "提示词遵循": "Prompt adherence"
 };
 window.MODEL_THEMES_EN = {
   "2017": "The Transformer architecture",
   "2018": "Pretraining research",
   "2019": "Scale and transfer learning",
   "2020": "Few-shot learning",
-  "2021": "Code models",
-  "2022": "Instruction alignment and chat products",
+  "2021": "Code and image generation",
+  "2022": "Chat products and diffusion models",
   "2023": "Major model families",
   "2024": "Multimodality and reasoning",
   "2025": "Reasoning models and tool use",

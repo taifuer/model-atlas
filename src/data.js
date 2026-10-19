@@ -5,6 +5,8 @@
  */
 window.MODEL_ATLAS = (() => {
   const companies = [
+    {"id": "stability", "name": "Stability AI", "nameEn": "Stability AI", "aliases": "Stable Diffusion SDXL 稳定扩散 CompVis", "color": "#887b9e"},
+    {"id": "midjourney", "name": "Midjourney", "nameEn": "Midjourney", "aliases": "Midjourney MJ 图像生成", "color": "#758879"},
     {"id": "liquid", "name": "Liquid AI", "nameEn": "Liquid AI", "aliases": "LiquidAI LFM 液态人工智能", "color": "#65879a"},
     {"id": "bfl", "name": "Black Forest Labs", "nameEn": "Black Forest Labs", "aliases": "BFL FLUX 黑森林实验室", "color": "#6b7468"},
     { id: 'reflection', name: 'Reflection', nameEn: 'Reflection', aliases: 'Reflection AI Beam', color: '#788f78' },
@@ -168,7 +170,7 @@ window.MODEL_ATLAS = (() => {
   const themes = {
     '2017': 'Transformer 架构',
     '2018': '预训练研究', '2019': '规模与迁移学习', '2020': '少样本学习',
-    '2021': '代码模型', '2022': '指令对齐与对话产品', '2023': '主流模型系列',
+    '2021': '代码与图像生成', '2022': '对话产品与扩散模型', '2023': '主流模型系列',
     '2024': '多模态、开放权重与推理', '2025': '推理模型与工具调用', '2026': '多模态与智能体',
   };
   const source = (title, url) => ({ title, url });
@@ -181,6 +183,490 @@ window.MODEL_ATLAS = (() => {
     return { id, date, name, company, kind, summary, tags, sources: Array.isArray(sources) ? sources : [sources], milestone, details, dateNote };
   }
   const releases = [
+    {
+      "id": "dall-e",
+      "date": "2021-01-05",
+      "name": "DALL·E",
+      "company": "openai",
+      "kind": "announcement",
+      "summary": "以 120 亿参数的自回归模型根据自然语言生成图像，展示组合概念与图像补全能力。",
+      "details": "将文本和图像离散编码放进同一序列，用 Transformer 逐步生成图像。2021 年 1 月首次公开研究结果，论文随后于 2 月提交；完整生成模型未开放，后续公开的仓库仅包含离散 VAE。",
+      "dateNote": "采用首次研究公告的 2021 年 1 月 5 日；论文于 2 月 24 日提交 arXiv。本节点不表示 API 上线或完整模型权重开放。",
+      "tags": [
+        "图像生成",
+        "自回归"
+      ],
+      "milestone": true,
+      "sources": [
+        {
+          "title": "OpenAI · 首次研究公告",
+          "titleEn": "OpenAI: First research announcement",
+          "url": "https://openai.com/index/dall-e/"
+        },
+        {
+          "title": "原始论文 · arXiv",
+          "titleEn": "Original paper: arXiv",
+          "url": "https://arxiv.org/abs/2102.12092"
+        },
+        {
+          "title": "OpenAI · 公开代码范围",
+          "titleEn": "OpenAI: Scope of the public code",
+          "url": "https://github.com/openai/DALL-E"
+        }
+      ],
+      "searchAliases": [
+        "DALL-E",
+        "DALL E",
+        "DALL-E 1"
+      ]
+    },
+    {
+      "id": "dall-e-2",
+      "date": "2022-04-06",
+      "name": "DALL·E 2",
+      "company": "openai",
+      "kind": "preview",
+      "summary": "将 CLIP 图像表示与扩散生成结合，支持文本生成、局部重绘和图像变体。",
+      "details": "由先验模型预测 CLIP 图像表示，再由扩散解码器生成图像。首次以限量研究预览提供，随后扩大至公开服务；截至 2022 年 9 月，官方报告已有 150 多万用户每天创建超过 200 万张图像。模型权重未公开。",
+      "dateNote": "采用官方系统卡明确记录的 2022 年 4 月 6 日研究预览日期；4 月 13 日论文提交、9 月取消候补名单及后续 API 开放不另计为模型首发。",
+      "tags": [
+        "图像生成",
+        "图像编辑",
+        "扩散模型"
+      ],
+      "milestone": true,
+      "sources": [
+        {
+          "title": "OpenAI · 模型介绍",
+          "titleEn": "OpenAI: Model introduction",
+          "url": "https://openai.com/index/dall-e-2/"
+        },
+        {
+          "title": "OpenAI · 研究预览系统卡",
+          "titleEn": "OpenAI: Research preview system card",
+          "url": "https://github.com/openai/dalle-2-preview/blob/main/system-card.md"
+        },
+        {
+          "title": "原始论文 · arXiv",
+          "titleEn": "Original paper: arXiv",
+          "url": "https://arxiv.org/abs/2204.06125"
+        },
+        {
+          "title": "OpenAI · 公开服务与使用情况",
+          "titleEn": "OpenAI: Public access and adoption",
+          "url": "https://openai.com/index/dall-e-now-available-without-waitlist/"
+        }
+      ],
+      "searchAliases": [
+        "DALL-E 2",
+        "DALL E 2"
+      ]
+    },
+    {
+      "id": "imagen",
+      "date": "2022-05-23",
+      "name": "Imagen",
+      "company": "google",
+      "kind": "paper",
+      "summary": "将冻结的大型文本编码器与级联扩散模型结合，研究语言理解对图像生成的作用。",
+      "details": "使用 T5-XXL 编码文本，再通过级联扩散逐步生成 1024×1024 图像。论文显示扩大文本编码器可改善提示词对齐，并提出 DrawBench 评测。首次公开为研究论文及示例，当时未提供公开试用、代码或模型权重。",
+      "dateNote": "采用论文于 2022 年 5 月 23 日提交 arXiv 的日期；此为研究公开，后续商业 Imagen 服务的接入日期不作为该研究模型的首发日期。",
+      "tags": [
+        "图像生成",
+        "扩散模型"
+      ],
+      "milestone": true,
+      "sources": [
+        {
+          "title": "Google Research · 项目主页",
+          "titleEn": "Google Research: Project page",
+          "url": "https://imagen.research.google/"
+        },
+        {
+          "title": "原始论文 · arXiv",
+          "titleEn": "Original paper: arXiv",
+          "url": "https://arxiv.org/abs/2205.11487"
+        }
+      ]
+    },
+    {
+      "id": "stable-diffusion-1",
+      "date": "2022-08-22",
+      "name": "Stable Diffusion",
+      "company": "stability",
+      "kind": "weights",
+      "summary": "公开文生图模型权重与推理代码，使潜空间扩散模型能够在本地运行和定制。",
+      "details": "由 CompVis、Stability AI 与 Runway 合作推出，首批面向公众的推荐权重为 v1.4。以 CLIP 文本编码器控制潜空间去噪，提供文生图和文本引导的图生图流程；训练分辨率为 512 × 512。权重采用 CreativeML OpenRAIL-M 许可，允许商用并附使用范围限制。",
+      "dateNote": "采用 2022 年 8 月 22 日公众权重发布日；此前面向研究人员的访问和潜空间扩散论文不作为此节点日期。",
+      "tags": [
+        "图像生成",
+        "潜空间扩散",
+        "开放权重"
+      ],
+      "milestone": true,
+      "sources": [
+        {
+          "title": "Stability AI · 公开发布",
+          "titleEn": "Stability AI: Public release",
+          "url": "https://stability.ai/news-updates/stable-diffusion-public-release"
+        },
+        {
+          "title": "CompVis · 模型卡与权重",
+          "titleEn": "CompVis: Model card and weights",
+          "url": "https://huggingface.co/CompVis/stable-diffusion-v1-4"
+        },
+        {
+          "title": "CompVis · 官方实现",
+          "titleEn": "CompVis: Reference implementation",
+          "url": "https://github.com/CompVis/stable-diffusion"
+        }
+      ],
+      "searchAliases": [
+        "Stable Diffusion 1.4",
+        "SD 1.4",
+        "SD1",
+        "稳定扩散"
+      ]
+    },
+    {
+      "id": "sdxl-1",
+      "date": "2023-07-26",
+      "name": "SDXL 1.0",
+      "company": "stability",
+      "kind": "weights",
+      "summary": "开放面向 1024 像素图像生成的基础模型与精修模型，支持多种宽高比和定制训练。",
+      "details": "在潜空间扩散架构中加入第二个文本编码器，并扩大去噪网络。基础模型可独立生成图像，也可交由可选的 refiner 完成最后的去噪步骤；首发同步提供权重、推理代码及云端服务。权重采用 CreativeML OpenRAIL++-M 许可。",
+      "dateNote": "采用 SDXL 1.0 权重正式发布日 2023 年 7 月 26 日；不使用 0.9 研究版或 7 月 4 日技术报告的日期。",
+      "tags": [
+        "图像生成",
+        "潜空间扩散",
+        "开放权重"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Stability AI · SDXL 1.0 发布",
+          "titleEn": "Stability AI: SDXL 1.0 announcement",
+          "url": "https://stability.ai/news-updates/stable-diffusion-sdxl-1-announcement"
+        },
+        {
+          "title": "Stability AI · 模型卡与权重",
+          "titleEn": "Stability AI: Model card and weights",
+          "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0"
+        },
+        {
+          "title": "Stability AI · 发布记录",
+          "titleEn": "Stability AI: Release history",
+          "url": "https://github.com/Stability-AI/generative-models"
+        }
+      ],
+      "searchAliases": [
+        "Stable Diffusion XL",
+        "SDXL"
+      ]
+    },
+    {
+      "id": "dall-e-3",
+      "date": "2023-09-20",
+      "name": "DALL·E 3",
+      "company": "openai",
+      "kind": "preview",
+      "summary": "通过更完整的训练图像描述改善提示词遵循，并接入 ChatGPT 的对话式图像创作。",
+      "details": "针对长提示词、物体细节和图中文字改进生成效果，ChatGPT 可协助整理图像描述。2023 年 9 月公布研究预览，10 月向 ChatGPT Plus 与 Enterprise 提供；模型本身接受文本并输出图像，权重未公开。",
+      "dateNote": "采用 2023 年 9 月 20 日研究预览公告；10 月 19 日的 ChatGPT 扩大开放属于后续接入，不替换首次公开日期。",
+      "tags": [
+        "图像生成",
+        "提示词遵循"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "OpenAI · 模型介绍",
+          "titleEn": "OpenAI: Model introduction",
+          "url": "https://openai.com/index/dall-e-3/"
+        },
+        {
+          "title": "OpenAI 账号公告 · 论坛嵌入存档",
+          "titleEn": "OpenAI account announcement: Forum embed archive",
+          "url": "https://community.openai.com/t/dall-e-3-announcement-coming-soon/385170"
+        },
+        {
+          "title": "OpenAI · ChatGPT 开放说明",
+          "titleEn": "OpenAI: ChatGPT availability",
+          "url": "https://openai.com/index/dall-e-3-is-now-available-in-chatgpt-plus-and-enterprise/"
+        }
+      ],
+      "searchAliases": [
+        "DALL-E 3",
+        "DALL E 3"
+      ]
+    },
+    {
+      "id": "midjourney-v6",
+      "date": "2023-12-20",
+      "name": "Midjourney V6",
+      "company": "midjourney",
+      "kind": "preview",
+      "summary": "增强长提示词理解、画面一致性与图像参考能力，扩展 Midjourney 的图像创作控制。",
+      "details": "V6 首次向用户开放时为 Alpha 版本，支持文本与参考图像生成图片。官方版本史记录其于 2024 年 2 月 14 日成为默认版本；该日期不作为首次发布。模型通过 Midjourney 服务提供，权重未公开。",
+      "dateNote": "采用 Midjourney 官方版本文档明确标注的 2023 年 12 月 20 日。部分媒体使用 12 月 21 日，不替代官方日历日期；2024 年 2 月 14 日是默认版本切换。",
+      "tags": [
+        "图像生成",
+        "图像参考"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Midjourney · 版本历史",
+          "titleEn": "Midjourney: Version history",
+          "url": "https://docs.midjourney.com/hc/en-us/articles/32199405667853-Version"
+        },
+        {
+          "title": "Artificial Analysis · 2025 年第三季度报告",
+          "titleEn": "Artificial Analysis: Q3 2025 report",
+          "url": "https://artificialanalysis.ai/downloads/state-of-ai/2025/Q3-2025-Artificial-Analysis-State-of-AI-Highlights-Report.pdf"
+        }
+      ]
+    },
+    {
+      "id": "imagen-3",
+      "date": "2024-05-14",
+      "name": "Imagen 3",
+      "company": "google",
+      "kind": "preview",
+      "summary": "改进图像细节、长提示词遵循和文字渲染，通过 ImageFX 提供早期创作体验。",
+      "details": "Google I/O 2024 公布的新一代文本生成图像模型，首先向选定创作者提供 ImageFX 私有预览，并开放候补名单。随后进入 Google 的图像创作与云端服务；完整模型权重未公开。",
+      "dateNote": "采用 2024 年 5 月 14 日首次公告及私有预览日期；8 月论文、后续 ImageFX 扩大开放和 Vertex AI 接入不替换该日期。",
+      "tags": [
+        "图像生成",
+        "提示词遵循"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Google · I/O 2024 官方发布",
+          "titleEn": "Google: I/O 2024 announcement",
+          "url": "https://blog.google/innovation-and-ai/products/google-generative-ai-veo-imagen-3/"
+        },
+        {
+          "title": "Google · Imagen 3 论文",
+          "titleEn": "Google: Imagen 3 paper",
+          "url": "https://arxiv.org/abs/2408.07009"
+        },
+        {
+          "title": "Google Cloud · 模型文档",
+          "titleEn": "Google Cloud: Model documentation",
+          "url": "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/imagen/3-0-generate"
+        }
+      ]
+    },
+    {
+      "id": "flux-1-open",
+      "date": "2024-08-01",
+      "name": "FLUX.1 dev / schnell",
+      "company": "bfl",
+      "kind": "weights",
+      "summary": "开放 120 亿参数的文生图模型，提供面向质量的 dev 和少步生成的 schnell 两种权重。",
+      "details": "采用整流流 Transformer 架构：dev 使用引导蒸馏，schnell 可在 1–4 步生成图像，并接入 ComfyUI 与 Diffusers。dev 权重采用非商业许可，schnell 采用 Apache 2.0；同日推出的 pro 通过 API 提供，不属于本节点的开放权重范围。",
+      "dateNote": "采用 Black Forest Labs 于 2024 年 8 月 1 日发布 FLUX.1 的官方公告；同日开放的 dev 与 schnell 合并记录。",
+      "tags": [
+        "图像生成",
+        "流匹配",
+        "开放权重"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Black Forest Labs · FLUX.1 发布",
+          "titleEn": "Black Forest Labs: FLUX.1 announcement",
+          "url": "https://bfl.ai/blog/24-08-01-bfl"
+        },
+        {
+          "title": "FLUX.1 dev · 模型卡与权重",
+          "titleEn": "FLUX.1 dev: Model card and weights",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.1-dev"
+        },
+        {
+          "title": "FLUX.1 schnell · 模型卡与权重",
+          "titleEn": "FLUX.1 schnell: Model card and weights",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.1-schnell"
+        }
+      ]
+    },
+    {
+      "id": "gpt-4o-image",
+      "date": "2025-03-25",
+      "name": "GPT-4o 图像生成",
+      "company": "openai",
+      "kind": "release",
+      "summary": "将原生图像生成带入 ChatGPT，支持图中文字、多轮修改和参考图编辑。",
+      "details": "结合文本与图像输入，在多轮对话中生成和修改图像。2025 年 3 月开始向 ChatGPT 用户推出；4 月 23 日同一图像生成能力以 gpt-image-1 接入 API。官方报告首周已有超过 1.3 亿用户生成逾 7 亿张图像。此节点独立记录图像生成开放，不改变 2024 年 GPT-4o 的原始发布日期。",
+      "dateNote": "采用 2025 年 3 月 25 日 ChatGPT 原生图像生成公告；4 月 23 日的 gpt-image-1 API 开放合并记在详情，不重复建立同能力节点。",
+      "tags": [
+        "图像生成",
+        "图像编辑",
+        "多模态"
+      ],
+      "milestone": true,
+      "sources": [
+        {
+          "title": "OpenAI · 原生图像生成发布",
+          "titleEn": "OpenAI: Native image generation launch",
+          "url": "https://openai.com/index/introducing-4o-image-generation/"
+        },
+        {
+          "title": "OpenAI · gpt-image-1 API 开放",
+          "titleEn": "OpenAI: gpt-image-1 API launch",
+          "url": "https://openai.com/index/image-generation-api/"
+        },
+        {
+          "title": "OpenAI · gpt-image-1 模型文档",
+          "titleEn": "OpenAI: gpt-image-1 model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-image-1"
+        }
+      ],
+      "searchAliases": [
+        "gpt-image-1",
+        "4o image generation",
+        "GPT Image 1"
+      ]
+    },
+    {
+      "id": "imagen-4",
+      "date": "2025-05-20",
+      "name": "Imagen 4",
+      "company": "google",
+      "kind": "release",
+      "summary": "改善图像细节与文字排版，支持最高 2K 输出并进入 Gemini 与创作工具。",
+      "details": "采用潜在扩散架构，重点改善材质细节、拼写和布局。发布时进入 Gemini，并配合 Flow 等创作工具；Vertex AI 同日公布预览端点。公开生成接口接受文本输入，不支持图像编辑。",
+      "dateNote": "采用 2025 年 5 月 20 日 Google I/O 公布及产品接入日期；后续 API 正式版和 Fast、Ultra 变体不在此拆分为独立首发。",
+      "tags": [
+        "图像生成",
+        "文字渲染"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Google · I/O 2025 官方发布",
+          "titleEn": "Google: I/O 2025 announcement",
+          "url": "https://blog.google/innovation-and-ai/products/generative-media-models-io-2025/"
+        },
+        {
+          "title": "Google DeepMind · 模型卡",
+          "titleEn": "Google DeepMind: Model card",
+          "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Imagen-4-Model-Card.pdf"
+        },
+        {
+          "title": "Google Cloud · Vertex AI 预览说明",
+          "titleEn": "Google Cloud: Vertex AI preview announcement",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-veo-3-imagen-4-and-lyria-2-on-vertex-ai"
+        }
+      ]
+    },
+    {
+      "id": "flux-1-kontext-dev",
+      "date": "2025-06-26",
+      "name": "FLUX.1 Kontext dev",
+      "company": "bfl",
+      "kind": "weights",
+      "summary": "开放基于文字指令的图像编辑模型，支持连续修改与主体一致性保持。",
+      "details": "以 12B 整流流 Transformer 接收图像和编辑指令，可调整局部内容或整体场景。dev 权重专注图像编辑，并与现有 FLUX 推理代码、ComfyUI 和 Diffusers 配合使用；采用 FLUX.1 非商业许可。",
+      "dateNote": "采用 2025 年 6 月 26 日 dev 权重公开日；5 月 29 日发布的是 pro / max API，dev 当时仍为私测。",
+      "tags": [
+        "图像生成",
+        "图像编辑",
+        "流匹配",
+        "开放权重"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Black Forest Labs · Kontext dev 权重发布",
+          "titleEn": "Black Forest Labs: Kontext dev weight release",
+          "url": "https://bfl.ai/blog/flux-1-kontext-dev"
+        },
+        {
+          "title": "Black Forest Labs · 模型卡与权重",
+          "titleEn": "Black Forest Labs: Model card and weights",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev"
+        },
+        {
+          "title": "Black Forest Labs · 首次预览与访问范围",
+          "titleEn": "Black Forest Labs: Initial preview and access scope",
+          "url": "https://bfl.ai/blog/flux-1-kontext"
+        }
+      ]
+    },
+    {
+      "id": "qwen-image",
+      "date": "2025-08-04",
+      "name": "Qwen-Image",
+      "company": "qwen",
+      "kind": "weights",
+      "summary": "开放 20B 图像生成模型，面向中英文文字渲染、复杂排版和多种视觉风格。",
+      "details": "采用多模态扩散 Transformer（MMDiT）架构，首批开放权重用于文本生成图像，并以 Apache 2.0 许可提供。模型支持通过 Diffusers 部署，ComfyUI 于次日提供原生支持；图像编辑权重 Qwen-Image-Edit 于 8 月 18 日另行发布。",
+      "dateNote": "采用官方发布文章、模型卡与仓库发布日志共同确认的 2025 年 8 月 4 日权重发布日期，不将后续编辑模型合并为首日能力。",
+      "tags": [
+        "图像生成",
+        "文字渲染",
+        "开放权重"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Qwen · 官方发布",
+          "titleEn": "Qwen: Official announcement",
+          "url": "https://qwenlm.github.io/blog/qwen-image/"
+        },
+        {
+          "title": "Qwen · 模型卡与权重",
+          "titleEn": "Qwen: Model card and weights",
+          "url": "https://huggingface.co/Qwen/Qwen-Image"
+        },
+        {
+          "title": "Qwen · 官方仓库",
+          "titleEn": "Qwen: Official repository",
+          "url": "https://github.com/QwenLM/Qwen-Image"
+        }
+      ]
+    },
+    {
+      "id": "seedream-4",
+      "date": "2025-09-09",
+      "name": "Seedream 4.0",
+      "company": "bytedance",
+      "kind": "release",
+      "summary": "将图像生成与编辑统一在同一模型中，支持多图参考、组图生成和最高 4K 输出。",
+      "details": "接受文本、图像或组合输入，可完成文生图、单图与多图编辑及图像组合。发布当日上线即梦、豆包和火山方舟，后续接入第三方推理平台。模型以托管服务提供，权重未公开。",
+      "dateNote": "采用 Seed 官方公告的 2025 年 9 月 9 日；技术报告的 9 月 24 日与第三方平台接入日期不作为首次发布。",
+      "tags": [
+        "图像生成",
+        "图像编辑",
+        "多图参考"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "ByteDance Seed · 官方发布",
+          "titleEn": "ByteDance Seed: Official announcement",
+          "url": "https://seed.bytedance.com/en/blog/seedream-4-0-officially-released-beyond-drawing-into-imagination"
+        },
+        {
+          "title": "Seedream 4.0 · 技术报告",
+          "titleEn": "Seedream 4.0: Technical report",
+          "url": "https://arxiv.org/abs/2509.20427"
+        },
+        {
+          "title": "Artificial Analysis · 2025 年第三季度报告",
+          "titleEn": "Artificial Analysis: Q3 2025 report",
+          "url": "https://artificialanalysis.ai/downloads/state-of-ai/2025/Q3-2025-Artificial-Analysis-State-of-AI-Highlights-Report.pdf"
+        }
+      ],
+      "searchAliases": [
+        "即梦",
+        "Seedream 4"
+      ]
+    },
     event("lfm-2-5-24b-a2b", "2026-10-13", "LFM2.5-24B-A2B", "liquid", "weights",
       "面向端侧智能体的开放推理模型，以混合架构和稀疏专家支持本地工具调用。", ["端侧模型", "推理", "混合架构"],
       [{"title": "Liquid AI · 官方发布", "titleEn": "Liquid AI: Official announcement", "url": "https://www.liquid.ai/blog/lfm2-5-24b-a2b"}, {"title": "Liquid AI · 模型卡与权重", "titleEn": "Liquid AI: Model card and weights", "url": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B"}, {"title": "Liquid AI · 模型文档", "titleEn": "Liquid AI: Model documentation", "url": "https://docs.liquid.ai/lfm/models/lfm25-24b-a2b"}], false,
@@ -1000,6 +1486,8 @@ window.MODEL_ATLAS = (() => {
     references: [
       source('Artificial Analysis · Intelligence', 'https://artificialanalysis.ai/models#intelligence'),
       source('Arena · Text leaderboard', 'https://arena.ai/leaderboard/text'),
+      source('Artificial Analysis · Image', 'https://artificialanalysis.ai/image/leaderboard/text-to-image'),
+      source('Arena · Text-to-Image', 'https://arena.ai/leaderboard/image/text-to-image'),
       source('Artificial Analysis · Video', 'https://artificialanalysis.ai/video/leaderboard/text-to-video'),
       source('Arena · Text-to-Video', 'https://arena.ai/leaderboard/video/text-to-video'),
       source('LiveBench', 'https://livebench.ai/'),

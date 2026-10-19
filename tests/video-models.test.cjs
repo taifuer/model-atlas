@@ -12,7 +12,7 @@ const { MODEL_ATLAS: data, MODEL_ATLAS_SPECS: specs, ATLAS_CATALOG: catalog } = 
 const filters = create(data, catalog.searchIndex('models'));
 const get = id => data.releases.find(entry => entry.id === id);
 
-test('video generation is separate from multimodal understanding and text input', () => {
+test('generation tasks stay separate from input modalities and language metrics', () => {
   const state = filters.read('?task=video-generation');
   const videos = filters.select(state);
   assert.ok(videos.length > 0);
@@ -26,8 +26,13 @@ test('video generation is separate from multimodal understanding and text input'
   assert.ok(images.includes(get('flux-3-image-klein')));
   assert.equal(videos.length + language.length + images.length, data.releases.length);
   assert.equal(new Set([...videos, ...language, ...images].map(entry => entry.id)).size, data.releases.length);
-  assert.equal(context.window.MODEL_ATLAS_PRICES.entries['flux-3-image-klein'], undefined, 'Per-image prices must not be displayed as per-token prices');
-  assert.equal(context.window.MODEL_ATLAS_SCORES.entries['flux-3-image-klein'], undefined, 'Text benchmark results must not be assigned to image models');
+  for (const entry of images) {
+    assert.ok(entry.tags.includes('图像生成'), entry.id);
+    assert.ok(specs.entries[entry.id].variants.every(variant => variant.output.includes('image')), entry.id);
+    assert.ok(specs.entries[entry.id].variants.every(variant => !variant.contextTokens), 'Image prompt limits are not language-model context windows');
+    assert.equal(context.window.MODEL_ATLAS_PRICES.entries[entry.id], undefined, 'Per-image prices must not be displayed as per-token prices');
+    assert.equal(context.window.MODEL_ATLAS_SCORES.entries[entry.id], undefined, 'Text benchmark results must not be assigned to image models');
+  }
   for (const entry of videos) {
     assert.ok(entry.tags.includes('视频生成'), entry.id);
     assert.ok(specs.entries[entry.id].variants.every(variant => variant.output.includes('video')), entry.id);

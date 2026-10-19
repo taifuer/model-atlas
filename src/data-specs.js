@@ -3497,6 +3497,306 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           ]
         }
       ]
+    },
+    "dall-e": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "DALL·E (2021 research model)",
+          "basis": "paper",
+          "parameters": "12B",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://openai.com/index/dall-e/",
+            "https://arxiv.org/abs/2102.12092"
+          ],
+          "note": "研究配置生成 256 × 256 图像；以文本及部分图像为条件完成图像补全。",
+          "noteEn": "The research configuration generates 256 × 256 images and supports completion conditioned on text and a partial image."
+        }
+      ]
+    },
+    "dall-e-2": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "DALL·E 2 research preview",
+          "basis": "paper",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://arxiv.org/abs/2204.06125",
+            "https://github.com/openai/dalle-2-preview/blob/main/system-card.md"
+          ],
+          "note": "图像输入用于局部重绘与变体生成；规格对应 2022 年研究预览。",
+          "noteEn": "Image inputs support inpainting and variations. Specifications refer to the 2022 research preview."
+        }
+      ]
+    },
+    "dall-e-3": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "DALL·E 3",
+          "basis": "paper",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://openai.com/index/dall-e-3-system-card/",
+            "https://developers.openai.com/api/docs/models/dall-e-3"
+          ]
+        }
+      ]
+    },
+    "gpt-4o-image": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "gpt-image-1",
+          "basis": "api",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://developers.openai.com/api/docs/models/gpt-image-1",
+            "https://openai.com/index/image-generation-api/"
+          ],
+          "note": "后续 gpt-image-1 API 配置，支持文本和图像输入；该 API 型号现已标记弃用。",
+          "noteEn": "The later gpt-image-1 API configuration supports text and image inputs. This API model is now marked deprecated."
+        }
+      ]
+    },
+    "imagen": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "Imagen (2022 research model)",
+          "basis": "paper",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://imagen.research.google/",
+            "https://arxiv.org/abs/2205.11487"
+          ],
+          "note": "级联配置由 64×64 逐级超分至 256×256、1024×1024。T5-XXL 为独立文本编码器。",
+          "noteEn": "The cascade upsamples 64×64 images to 256×256 and then 1024×1024. T5-XXL is a separate text encoder."
+        }
+      ]
+    },
+    "imagen-3": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "Imagen 3 (initial text-to-image model)",
+          "basis": "paper",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://arxiv.org/abs/2408.07009",
+            "https://blog.google/innovation-and-ai/products/google-generative-ai-veo-imagen-3/"
+          ],
+          "note": "按首次公布的文本生成图像模型记录；不把后续 Imagen 3 编辑或定制端点的图像输入能力回填至该配置。",
+          "noteEn": "Records the initial text-to-image model; image-input features from later Imagen 3 editing or customization endpoints are not backfilled into this configuration."
+        }
+      ]
+    },
+    "imagen-4": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "imagen-4.0-generate-001",
+          "basis": "api",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/imagen/4-0-generate"
+          ],
+          "note": "公开生成接口支持 1:1、3:4、4:3、9:16、16:9 比例和最高 2K 档输出，不支持图像编辑。此后续正式版端点现已停用；规格用于历史记录。",
+          "noteEn": "The public generation endpoint supports 1:1, 3:4, 4:3, 9:16 and 16:9 aspect ratios and output up to the 2K tier, without image editing. This later GA endpoint is now discontinued; specifications are retained as historical information."
+        }
+      ]
+    },
+    "stable-diffusion-1": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "Stable Diffusion v1.4",
+          "basis": "weights",
+          "parameters": "860M",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://github.com/CompVis/stable-diffusion"
+          ],
+          "note": "860M 仅指 UNet 去噪网络，不含 123M CLIP 文本编码器和自编码器。512 × 512 为训练分辨率。图像输入用于 img2img 流程，不代表通用视觉理解。",
+          "noteEn": "860M counts the UNet denoiser only, excluding the 123M CLIP text encoder and autoencoder. The training resolution is 512 × 512. Image input refers to the img2img workflow, not general visual understanding."
+        }
+      ]
+    },
+    "sdxl-1": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "SDXL 1.0 base",
+          "basis": "weights",
+          "parameters": "3.5B",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://stability.ai/news-updates/stable-diffusion-sdxl-1-announcement",
+            "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+            "https://huggingface.co/docs/diffusers/main/en/using-diffusers/sdxl"
+          ],
+          "note": "3.5B 采用首发公告的基础模型口径，不含可选 refiner。训练分辨率约 1024 × 1024，并支持其他宽高比；图像输入用于图生图流程。",
+          "noteEn": "3.5B follows the launch announcement’s base-model count, excluding the optional refiner. Training resolution is approximately 1024 × 1024, with other aspect ratios supported. Image input refers to image-to-image workflows."
+        }
+      ]
+    },
+    "flux-1-open": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "FLUX.1 dev / schnell",
+          "basis": "weights",
+          "parameters": "12B",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://huggingface.co/black-forest-labs/FLUX.1-dev",
+            "https://huggingface.co/black-forest-labs/FLUX.1-schnell"
+          ],
+          "note": "两种模型的图像生成 Transformer 均为 12B，不含独立的文本编码器。schnell 支持 1–4 步推理。",
+          "noteEn": "Both image-generation transformers have 12B parameters, excluding separate text encoders. Schnell supports 1–4 inference steps."
+        }
+      ]
+    },
+    "flux-1-kontext-dev": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "FLUX.1 Kontext dev",
+          "basis": "weights",
+          "parameters": "12B",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev"
+          ],
+          "note": "12B 指图像编辑 Transformer，不含独立文本编码器；此处仅记录 dev 图像编辑权重，不套用 pro / max 的文生图能力。",
+          "noteEn": "12B counts the image-editing transformer, excluding separate text encoders. This entry covers the dev editing checkpoint, without attributing pro / max text-to-image capabilities to it."
+        }
+      ]
+    },
+    "midjourney-v6": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "Midjourney V6",
+          "basis": "service",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://docs.midjourney.com/hc/en-us/articles/32199405667853-Version"
+          ]
+        }
+      ]
+    },
+    "qwen-image": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "Qwen-Image",
+          "basis": "weights",
+          "parameters": "20B",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://huggingface.co/Qwen/Qwen-Image",
+            "https://qwenlm.github.io/blog/qwen-image/"
+          ],
+          "note": "20B 为官方标注的图像生成模型参数规模；此条仅记录最初的文生图权重，不包含后续 Qwen-Image-Edit。",
+          "noteEn": "20B is the published image-model parameter count. This entry covers the initial text-to-image weights, excluding the later Qwen-Image-Edit release."
+        }
+      ]
+    },
+    "seedream-4": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "Seedream 4.0",
+          "basis": "service",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://seed.bytedance.com/en/blog/seedream-4-0-officially-released-beyond-drawing-into-imagination"
+          ],
+          "note": "支持最高 4K 输出、多张参考图以及单图和多图编辑。",
+          "noteEn": "Supports output up to 4K, multiple reference images, and single- or multi-image editing."
+        }
+      ]
     }
   }
 });

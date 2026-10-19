@@ -694,6 +694,152 @@
     "noteEn": "The v2.0.0 source and official package use the MIT license."
   }
 });
+  Object.assign(models, {
+  "dall-e": {
+    "checkedAt": "2026-10-19",
+    "status": "closed",
+    "source": "https://github.com/openai/DALL-E",
+    "note": "仅离散 VAE 开放；文生图 Transformer 及完整生成模型未开放，不将组件许可视为完整模型许可。",
+    "noteEn": "Only the discrete VAE was released. The text-to-image Transformer and complete generator were not; the component license does not apply to the full model."
+  },
+  "dall-e-2": {
+    "checkedAt": "2026-10-19",
+    "status": "closed",
+    "source": "https://github.com/openai/dalle-2-preview/blob/main/system-card.md",
+    "note": "通过受限预览及后续托管服务提供，未开放生成模型权重。",
+    "noteEn": "Provided through a limited preview and later hosted services; generator weights were not released."
+  },
+  "dall-e-3": {
+    "checkedAt": "2026-10-19",
+    "status": "closed",
+    "source": "https://openai.com/index/dall-e-3-is-now-available-in-chatgpt-plus-and-enterprise/",
+    "note": "通过 ChatGPT 及后续 API 提供，未开放模型权重。",
+    "noteEn": "Provided through ChatGPT and the later API; model weights were not released."
+  },
+  "gpt-4o-image": {
+    "checkedAt": "2026-10-19",
+    "status": "closed",
+    "source": "https://openai.com/index/image-generation-api/",
+    "note": "通过 ChatGPT 与 API 提供，未开放图像生成模型权重。",
+    "noteEn": "Provided through ChatGPT and the API; image-generator weights were not released."
+  },
+  "imagen": {
+    "checkedAt": "2026-10-19",
+    "status": "closed",
+    "source": "https://imagen.research.google/",
+    "note": "论文与示例公开，完整代码及生成模型权重未开放。",
+    "noteEn": "The paper and examples are public; full code and generator weights were not released."
+  },
+  "imagen-3": {
+    "checkedAt": "2026-10-19",
+    "status": "closed",
+    "source": "https://blog.google/innovation-and-ai/products/google-generative-ai-veo-imagen-3/",
+    "note": "通过 ImageFX 和后续 Google 服务提供，完整生成模型权重未开放。",
+    "noteEn": "Provided through ImageFX and later Google services; complete generator weights were not released."
+  },
+  "imagen-4": {
+    "checkedAt": "2026-10-19",
+    "status": "closed",
+    "source": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-veo-3-imagen-4-and-lyria-2-on-vertex-ai",
+    "note": "以托管产品和 API 提供，未开放生成模型权重。",
+    "noteEn": "Provided through hosted products and APIs; generator weights were not released."
+  },
+  "stable-diffusion-1": {
+    "checkedAt": "2026-10-19",
+    "status": "open",
+    "source": "https://huggingface.co/CompVis/stable-diffusion-v1-4",
+    "note": "权重与实现公开。CreativeML OpenRAIL-M 允许商用，但附使用范围与再分发要求。",
+    "noteEn": "Weights and implementation are public. CreativeML OpenRAIL-M permits commercial use with use-based and redistribution conditions.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "CreativeML OpenRAIL-M",
+        "source": "https://huggingface.co/spaces/CompVis/stable-diffusion-license/blob/main/license.txt"
+      }
+    ]
+  },
+  "sdxl-1": {
+    "checkedAt": "2026-10-19",
+    "status": "open",
+    "source": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+    "note": "基础与精修模型权重公开，CreativeML OpenRAIL++-M 允许商用并附使用范围限制。",
+    "noteEn": "Base and refiner weights are public under CreativeML OpenRAIL++-M, permitting commercial use with use-based restrictions.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "CreativeML OpenRAIL++-M",
+        "source": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/blob/main/LICENSE.md"
+      }
+    ]
+  },
+  "flux-1-open": {
+    "checkedAt": "2026-10-19",
+    "status": "open",
+    "source": "https://bfl.ai/blog/24-08-01-bfl",
+    "note": "仅记录开放的 dev / schnell 权重。dev 的模型使用受非商业许可约束，生成结果另有授权；schnell 采用 Apache 2.0。同系列 pro 为 API 闭源服务。",
+    "noteEn": "Covers the public dev / schnell weights only. Dev model use is subject to a non-commercial license, with separate output permissions; schnell uses Apache 2.0. The pro variant is a closed API service.",
+    "licenses": [
+      {
+        "object": "dev 模型权重",
+        "objectEn": "dev model weights",
+        "name": "FLUX.1 [dev] Non-Commercial License",
+        "source": "https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/LICENSE.md"
+      },
+      {
+        "object": "schnell 模型权重",
+        "objectEn": "schnell model weights",
+        "name": "Apache 2.0",
+        "source": "https://github.com/black-forest-labs/flux/blob/main/model_licenses/LICENSE-FLUX1-schnell"
+      }
+    ]
+  },
+  "flux-1-kontext-dev": {
+    "checkedAt": "2026-10-19",
+    "status": "open",
+    "source": "https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev",
+    "note": "dev 权重公开，模型使用受 FLUX.1 非商业许可约束，生成结果另有授权；pro / max API 不在此开放范围内。",
+    "noteEn": "Dev weights are public under the FLUX.1 non-commercial license, with separate output permissions. The pro / max APIs are outside this open-weight scope.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "FLUX.1 [dev] Non-Commercial License",
+        "source": "https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev/blob/main/LICENSE.md"
+      }
+    ]
+  },
+  "midjourney-v6": {
+    "checkedAt": "2026-10-19",
+    "status": "closed",
+    "source": "https://docs.midjourney.com/hc/en-us/articles/32083055291277-Terms-of-Service",
+    "note": "通过托管服务提供，模型权重未公开。",
+    "noteEn": "Available through a hosted service; model weights are not public."
+  },
+  "qwen-image": {
+    "checkedAt": "2026-10-19",
+    "status": "open",
+    "source": "https://huggingface.co/Qwen/Qwen-Image",
+    "note": "模型权重采用 Apache 2.0 许可。",
+    "noteEn": "Model weights use the Apache 2.0 license.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "Apache 2.0",
+        "source": "https://huggingface.co/Qwen/Qwen-Image/blob/main/LICENSE"
+      }
+    ]
+  },
+  "seedream-4": {
+    "checkedAt": "2026-10-19",
+    "status": "closed",
+    "source": "https://seed.bytedance.com/en/blog/seedream-4-0-officially-released-beyond-drawing-into-imagination",
+    "note": "通过产品与 API 提供，模型权重未公开。",
+    "noteEn": "Available through products and APIs; model weights are not public."
+  }
+});
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

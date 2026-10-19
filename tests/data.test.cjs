@@ -25,10 +25,12 @@ test('release dates are real, sorted, unique events within the research cutoff',
 
 test('every event has valid metadata and a primary source; supporting reports are explicit', () => {
   const companyIds = new Set(data.companies.map(company => company.id));
-  const primaryHosts = new Set(['bfl.ai', 'docs.bfl.ai', 'www.liquid.ai', 'docs.liquid.ai', 'www.alibabacloud.com', 'help.openai.com', 'cloud.google.com', 'docs.cloud.google.com', 'help.runwayml.com', 'ir.kuaishou.com', 'runway.com', 'openai.com', 'developers.openai.com', 'deploymentsafety.openai.com', 'docs.mistral.ai', 'deepmind.google', 'arxiv.org', 'www.anthropic.com', 'platform.claude.com', 'research.google', 'blog.google', 'dev.meta.ai', 'ai.google.dev', 'ai.meta.com', 'research.meta.ai', 'about.fb.com', 'api-docs.deepseek.com', 'github.com', 'huggingface.co', 'qwenlm.github.io', 'qwen.ai', 'docs.qwencloud.com', 'mistral.ai', 'x.ai', 'platform.kimi.ai', 'www.kimi.com', 'z.ai', 'docs.z.ai', 'www.minimax.io', 'mimo.xiaomi.com', 'mimo.mi.com', 'static.stepfun.com', 'www.stepfun.com', 'news.microsoft.com', 'techcommunity.microsoft.com', 'aws.amazon.com', 'nvidianews.nvidia.com', 'blogs.nvidia.com', 'cloud.tencent.com', 'www.tencent.com', 'seed.bytedance.com']);
+  const primaryHosts = new Set(['stability.ai', 'docs.midjourney.com', 'imagen.research.google', 'artificialanalysis.ai', 'bfl.ai', 'docs.bfl.ai', 'www.liquid.ai', 'docs.liquid.ai', 'www.alibabacloud.com', 'help.openai.com', 'cloud.google.com', 'docs.cloud.google.com', 'help.runwayml.com', 'ir.kuaishou.com', 'runway.com', 'openai.com', 'developers.openai.com', 'deploymentsafety.openai.com', 'docs.mistral.ai', 'deepmind.google', 'arxiv.org', 'www.anthropic.com', 'platform.claude.com', 'research.google', 'blog.google', 'dev.meta.ai', 'ai.google.dev', 'ai.meta.com', 'research.meta.ai', 'about.fb.com', 'api-docs.deepseek.com', 'github.com', 'huggingface.co', 'qwenlm.github.io', 'qwen.ai', 'docs.qwencloud.com', 'mistral.ai', 'x.ai', 'platform.kimi.ai', 'www.kimi.com', 'z.ai', 'docs.z.ai', 'www.minimax.io', 'mimo.xiaomi.com', 'mimo.mi.com', 'static.stepfun.com', 'www.stepfun.com', 'news.microsoft.com', 'techcommunity.microsoft.com', 'aws.amazon.com', 'nvidianews.nvidia.com', 'blogs.nvidia.com', 'cloud.tencent.com', 'www.tencent.com', 'seed.bytedance.com']);
   // These additional official/project/author pages were reviewed for the named event.
   // Keep community-hosted articles and personal author archives URL-specific.
   const reviewedPrimarySources = new Map([
+    ['https://community.openai.com/t/dall-e-3-announcement-coming-soon/385170', 'dall-e-3'],
+    ['https://storage.googleapis.com/deepmind-media/Model-Cards/Imagen-4-Model-Card.pdf', 'imagen-4'],
     ['https://reflection.ai/blog/introducing-beam', 'reflection-beam-1'],
     ['https://reflection.ai/blog/beam-is-available', 'reflection-beam-1'],
     ['https://kling.ai/blog/kling40-kling-visual-realism-creative-control-introducing-storytelling', 'kling-4'],
@@ -51,6 +53,12 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['https://platform.stepfun.ai/docs/en/guides/models/step-5-preview', 'step-5-preview'],
   ]);
   const reviewedHuggingFacePaths = new Map([
+    ["/CompVis/stable-diffusion-v1-4", "stable-diffusion-1"],
+    ["/stabilityai/stable-diffusion-xl-base-1.0", "sdxl-1"],
+    ["/black-forest-labs/FLUX.1-dev", "flux-1-open"],
+    ["/black-forest-labs/FLUX.1-schnell", "flux-1-open"],
+    ["/black-forest-labs/FLUX.1-Kontext-dev", "flux-1-kontext-dev"],
+    ["/Qwen/Qwen-Image", "qwen-image"],
     ['/black-forest-labs/flux-3-image-klein', 'flux-3-image-klein'],
     ['/LiquidAI/LFM2.5-24B-A2B', 'lfm-2-5-24b-a2b'],
     ['/deepseek-ai/DeepSeek-V4.1-Flash-1017', 'deepseek-v4-1-flash'],
@@ -72,6 +80,7 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['/zai-org/GLM-4.5', 'glm-4-5'],
     ['/stepfun-ai/Step-3.5-Flash', 'step-3-5-flash'],
   ]);
+  const reviewedImageRepositories = new Map([["/openai/DALL-E", "dall-e"], ["/openai/dalle-2-preview/blob/main/system-card.md", "dall-e-2"], ["/CompVis/stable-diffusion", "stable-diffusion-1"], ["/Stability-AI/generative-models", "sdxl-1"], ["/QwenLM/Qwen-Image", "qwen-image"]]);
   const isPrimary = source => primaryHosts.has(new URL(source.url).hostname) || reviewedPrimarySources.has(source.url);
   const supportingReports = new Set(['https://www.ithome.com/1/004/705.htm']);
   for (const release of data.releases) {
@@ -96,7 +105,8 @@ test('every event has valid metadata and a primary source; supporting reports ar
       }
       assert.ok(source.title);
       if (url.hostname === 'github.com') {
-        if (url.pathname === '/zai-org/ChatGLM-6B') assert.equal(release.id, 'chatglm-6b');
+        if (reviewedImageRepositories.has(url.pathname)) assert.equal(release.id, reviewedImageRepositories.get(url.pathname));
+        else if (url.pathname === '/zai-org/ChatGLM-6B') assert.equal(release.id, 'chatglm-6b');
         else if (url.pathname.startsWith('/Wan-Video/')) assert.ok(new RegExp('^/Wan-Video/Wan2\\.[12](?:/|$)').test(url.pathname) && /^wan-2-[12]$/.test(release.id), source.url);
         else if (url.pathname.startsWith('/Tencent-Hunyuan/')) assert.ok(/^\/Tencent-Hunyuan\/HunyuanVideo(?:-1\.5)?(?:\/|$)/.test(url.pathname) && /^hunyuan-video(?:-1-5)?$/.test(release.id), source.url);
         else assert.match(url.pathname, /^\/(QwenLM|deepseek-ai|MoonshotAI|stepfun-ai)\//);

@@ -63,3 +63,7 @@ No logo or font is requested from a third-party server at runtime.
 Official website and profile marks above were retrieved on 2026-10-11 for identification. They remain the property of their respective owners; their inclusion does not imply endorsement or relicense the trademarks.
 
 2026-10-19: `bfl.svg` and `liquid.svg` are unchanged Black Forest Labs and Liquid AI marks from `@lobehub/icons-static-svg` 1.95.1, under MIT (see `LICENSE-LOBEHUB.txt`). Used to identify the respective model developers.
+
+## Image model foundations · 2026-10-19
+
+- `stability-color.svg`, `midjourney.svg`: copied unchanged from `@lobehub/icons-static-svg` 1.95.1, MIT (see `LICENSE-LOBEHUB.txt`). Used to identify Stability AI and Midjourney.

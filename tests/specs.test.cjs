@@ -11,9 +11,12 @@ const allowedFields = new Set(['name', 'basis', 'sources', ...tokenFields, 'para
 const types = new Set(['text', 'image', 'audio', 'video', 'pdf', 'document']);
 
 test('specifications identify existing entries, exact variants, and first-party evidence', () => {
-  const hosts = new Set(['docs.bfl.ai', 'docs.liquid.ai', 'seed.bytedance.com', 'www.alibabacloud.com', 'openai.com', 'blog.google', 'cloud.google.com', 'docs.cloud.google.com', 'deepmind.google', 'ir.kuaishou.com', 'runway.com', 'help.runwayml.com', 'www.minimax.io', 'dev.meta.ai', 'research.meta.ai', 'developer.ant-ling.com', 'docs.mistral.ai', 'artificialanalysis.ai', 'developers.openai.com', 'cdn.openai.com', 'platform.claude.com', 'ai.google.dev', 'api-docs.deepseek.com', 'huggingface.co', 'docs.x.ai', 'docs.z.ai', 'docs.qwencloud.com', 'www.qwencloud.com', 'arxiv.org', 'github.com', 'aws.amazon.com']);
-  const hfOrganizations = new Set(['black-forest-labs', 'LiquidAI', 'EleutherAI', 'allenai', 'JetBrains', 'deepseek-ai', 'Qwen', 'zai-org', 'MiniMaxAI', 'moonshotai', 'XiaomiMiMo', 'microsoft', 'nvidia', 'stepfun-ai', 'tencent', 'mistralai', 'meta-llama', 'meta-models', 'reflection', 'google']);
+  const hosts = new Set(['stability.ai', 'docs.midjourney.com', 'imagen.research.google', 'qwenlm.github.io', 'docs.bfl.ai', 'docs.liquid.ai', 'seed.bytedance.com', 'www.alibabacloud.com', 'openai.com', 'blog.google', 'cloud.google.com', 'docs.cloud.google.com', 'deepmind.google', 'ir.kuaishou.com', 'runway.com', 'help.runwayml.com', 'www.minimax.io', 'dev.meta.ai', 'research.meta.ai', 'developer.ant-ling.com', 'docs.mistral.ai', 'artificialanalysis.ai', 'developers.openai.com', 'cdn.openai.com', 'platform.claude.com', 'ai.google.dev', 'api-docs.deepseek.com', 'huggingface.co', 'docs.x.ai', 'docs.z.ai', 'docs.qwencloud.com', 'www.qwencloud.com', 'arxiv.org', 'github.com', 'aws.amazon.com']);
+  const hfOrganizations = new Set(['CompVis', 'stabilityai', 'black-forest-labs', 'LiquidAI', 'EleutherAI', 'allenai', 'JetBrains', 'deepseek-ai', 'Qwen', 'zai-org', 'MiniMaxAI', 'moonshotai', 'XiaomiMiMo', 'microsoft', 'nvidia', 'stepfun-ai', 'tencent', 'mistralai', 'meta-llama', 'meta-models', 'reflection', 'google']);
   const reviewedSources = new Set([
+    'https://huggingface.co/docs/diffusers/main/en/using-diffusers/sdxl',
+    "https://github.com/CompVis/stable-diffusion",
+    "https://github.com/openai/dalle-2-preview/blob/main/system-card.md",
     'https://developers.reflection.ai/models',
     'https://kling.ai/blog/kling40-kling-visual-realism-creative-control-introducing-storytelling',
   ]);
@@ -42,8 +45,8 @@ test('specifications identify existing entries, exact variants, and first-party 
         const url = new URL(source);
         assert.equal(url.protocol, 'https:', id);
         assert.ok(hosts.has(url.hostname) || reviewedSources.has(source), source);
-        if (url.hostname === 'huggingface.co') assert.ok(hfOrganizations.has(url.pathname.split('/')[1]) || (id === 'starcoder' && url.pathname === '/blog/starcoder'), source);
-        if (url.hostname === 'github.com') assert.ok(/^\/google-research\/bert/.test(url.pathname) || (id === 'chatglm-6b' && url.pathname === '/zai-org/ChatGLM-6B') || (/^wan-2-[12]$/.test(id) && /^\/Wan-Video\/Wan2\.[12]$/.test(url.pathname)) || (/^hunyuan-video(?:-1-5)?$/.test(id) && /^\/Tencent-Hunyuan\/HunyuanVideo(?:-1\.5)?$/.test(url.pathname)), source);
+        if (url.hostname === 'huggingface.co' && !reviewedSources.has(source)) assert.ok(hfOrganizations.has(url.pathname.split('/')[1]) || (id === 'starcoder' && url.pathname === '/blog/starcoder'), source);
+        if (url.hostname === 'github.com' && !reviewedSources.has(source)) assert.ok(/^\/google-research\/bert/.test(url.pathname) || (id === 'chatglm-6b' && url.pathname === '/zai-org/ChatGLM-6B') || (/^wan-2-[12]$/.test(id) && /^\/Wan-Video\/Wan2\.[12]$/.test(url.pathname)) || (/^hunyuan-video(?:-1-5)?$/.test(id) && /^\/Tencent-Hunyuan\/HunyuanVideo(?:-1\.5)?$/.test(url.pathname)), source);
       }
     }
   }

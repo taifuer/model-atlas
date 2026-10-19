@@ -1491,6 +1491,168 @@
         "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
         "https://docs.liquid.ai/lfm/models/lfm25-24b-a2b"
       ]
+    },
+    "dall-e": {
+      "checkedAt": "2026-10-19",
+      "category": "multimodal",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://openai.com/index/dall-e/"
+      ],
+      "note": "研究演示同时包括文本生成与文本加部分图像的补全。",
+      "noteEn": "The research demonstrates both text-to-image generation and completion conditioned on text and a partial image."
+    },
+    "dall-e-2": {
+      "checkedAt": "2026-10-19",
+      "category": "multimodal",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://openai.com/index/dall-e-2/",
+        "https://github.com/openai/dalle-2-preview/blob/main/system-card.md"
+      ]
+    },
+    "dall-e-3": {
+      "checkedAt": "2026-10-19",
+      "category": "text",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://openai.com/index/dall-e-3-system-card/",
+        "https://developers.openai.com/api/docs/models/dall-e-3"
+      ],
+      "note": "按 DALL·E 3 模型本身的输入分类；不把上层 ChatGPT 的图像理解能力视为该模型的图像输入。",
+      "noteEn": "Classified by DALL·E 3's own inputs; image understanding in the surrounding ChatGPT product is not attributed to this model."
+    },
+    "gpt-4o-image": {
+      "checkedAt": "2026-10-19",
+      "category": "multimodal",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://openai.com/index/introducing-4o-image-generation/",
+        "https://developers.openai.com/api/docs/models/gpt-image-1"
+      ]
+    },
+    "imagen": {
+      "checkedAt": "2026-10-19",
+      "category": "text",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://imagen.research.google/",
+        "https://arxiv.org/abs/2205.11487"
+      ]
+    },
+    "imagen-3": {
+      "checkedAt": "2026-10-19",
+      "category": "text",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://blog.google/innovation-and-ai/products/google-generative-ai-veo-imagen-3/",
+        "https://arxiv.org/abs/2408.07009"
+      ]
+    },
+    "imagen-4": {
+      "checkedAt": "2026-10-19",
+      "category": "text",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/imagen/4-0-generate"
+      ],
+      "note": "按公开 Imagen 4 生成端点的文本输入分类；模型卡记载的 image 输入不视为端点已开放能力。",
+      "noteEn": "Classified by public Imagen 4 generation endpoints, which accept text. Image inputs mentioned in the model card are not treated as supported endpoint features."
+    },
+    "stable-diffusion-1": {
+      "checkedAt": "2026-10-19",
+      "category": "multimodal",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://stability.ai/news-updates/stable-diffusion-public-release",
+        "https://huggingface.co/CompVis/stable-diffusion-v1-4",
+        "https://github.com/CompVis/stable-diffusion"
+      ]
+    },
+    "sdxl-1": {
+      "checkedAt": "2026-10-19",
+      "category": "multimodal",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://huggingface.co/docs/diffusers/main/en/using-diffusers/sdxl"
+      ]
+    },
+    "flux-1-open": {
+      "checkedAt": "2026-10-19",
+      "category": "text",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://bfl.ai/blog/24-08-01-bfl",
+        "https://huggingface.co/black-forest-labs/FLUX.1-dev",
+        "https://huggingface.co/black-forest-labs/FLUX.1-schnell"
+      ]
+    },
+    "flux-1-kontext-dev": {
+      "checkedAt": "2026-10-19",
+      "category": "multimodal",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://bfl.ai/blog/flux-1-kontext-dev",
+        "https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev",
+        "https://bfl.ai/blog/flux-1-kontext"
+      ]
+    },
+    "midjourney-v6": {
+      "checkedAt": "2026-10-19",
+      "category": "multimodal",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://docs.midjourney.com/hc/en-us/articles/32199405667853-Version",
+        "https://artificialanalysis.ai/downloads/state-of-ai/2025/Q3-2025-Artificial-Analysis-State-of-AI-Highlights-Report.pdf"
+      ]
+    },
+    "qwen-image": {
+      "checkedAt": "2026-10-19",
+      "category": "text",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://qwenlm.github.io/blog/qwen-image/",
+        "https://huggingface.co/Qwen/Qwen-Image",
+        "https://github.com/QwenLM/Qwen-Image"
+      ]
+    },
+    "seedream-4": {
+      "checkedAt": "2026-10-19",
+      "category": "multimodal",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://seed.bytedance.com/en/blog/seedream-4-0-officially-released-beyond-drawing-into-imagination",
+        "https://arxiv.org/abs/2509.20427",
+        "https://artificialanalysis.ai/downloads/state-of-ai/2025/Q3-2025-Artificial-Analysis-State-of-AI-Highlights-Report.pdf"
+      ]
     }
   }
 };

@@ -2,7 +2,7 @@
   'use strict';
   // Files are bundled locally. A product without a separate mark uses its organization.
   const companies = {
-    bfl: 'bfl', liquid: 'liquid', kuaishou: 'kuaishou.ico', runway: 'runway.png', reflection: 'reflection',
+    stability: 'stability-color', midjourney: 'midjourney', bfl: 'bfl', liquid: 'liquid', kuaishou: 'kuaishou.ico', runway: 'runway.png', reflection: 'reflection',
     openai: 'openai', google: 'google-color', anthropic: 'anthropic', meta: 'meta-color',
     deepseek: 'deepseek-color', qwen: 'alibaba-color', mistral: 'mistral-color', xai: 'xai',
     moonshot: 'moonshot', zhipu: 'zai', minimax: 'minimax-color', xiaomi: 'xiaomi',
