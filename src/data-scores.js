@@ -1,20 +1,21 @@
 // Curated public benchmark snapshot. Exact configurations only; not launch scores.
 window.MODEL_ATLAS_SCORES = Object.freeze({
-  "checkedAt": "2026-10-11",
+  "checkedAt": "2026-10-19",
   "benchmarks": {
     "aa": {
       "name": "Artificial Analysis Intelligence Index",
       "version": "4.3.2",
       "source": "https://artificialanalysis.ai/leaderboards/models",
       "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
-      "checkedAt": "2026-10-17"
+      "checkedAt": "2026-10-19"
     },
     "arena": {
       "name": "Arena Text · Overall · Style Control",
-      "publishedAt": "2026-10-08",
-      "source": "https://arena.ai/leaderboard/text",
+      "publishedAt": "2026-10-15",
+      "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
       "category": "text-overall",
-      "adjustments": "style-control"
+      "adjustments": "style-control",
+      "checkedAt": "2026-10-19"
     }
   },
   "cardScopes": {
@@ -31,14 +32,15 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Claude Opus 5.5 (max with fallback)",
         "score": 58,
         "source": "https://artificialanalysis.ai/models/claude-opus-5-5",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       },
       "arena": {
-        "model": "claude-opus-5.5-high",
-        "score": 1507,
-        "confidenceInterval": 8,
-        "votes": 6272,
-        "source": "https://arena.ai/leaderboard/text"
+        "model": "Claude Opus 5.5 (High)",
+        "score": 1508,
+        "confidenceInterval": 7,
+        "votes": 8300,
+        "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+        "checkedAt": "2026-10-19"
       }
     },
     "claude-sonnet-5-5": {
@@ -46,14 +48,15 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Claude Sonnet 5.5 (max with fallback)",
         "score": 56,
         "source": "https://artificialanalysis.ai/models/claude-sonnet-5-5",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       },
       "arena": {
         "model": "claude-sonnet-5.5-xhigh",
-        "score": 1476,
-        "confidenceInterval": 9,
-        "votes": 4838,
-        "source": "https://arena.ai/leaderboard/text"
+        "score": 1475,
+        "confidenceInterval": 8,
+        "votes": 6831,
+        "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+        "checkedAt": "2026-10-19"
       }
     },
     "claude-fable-5-1": {
@@ -61,14 +64,15 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Claude Fable 5.1 (max with fallback)",
         "score": 53,
         "source": "https://artificialanalysis.ai/models/claude-fable-5-1",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       },
       "arena": {
-        "model": "claude-fable-5.1-max",
-        "score": 1501,
+        "model": "Claude Fable 5.1 (Max)",
+        "score": 1502,
         "confidenceInterval": 6,
-        "votes": 13063,
-        "source": "https://arena.ai/leaderboard/text"
+        "votes": 14590,
+        "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+        "checkedAt": "2026-10-19"
       }
     },
     "gpt-6-astra": {
@@ -76,14 +80,15 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "GPT-6 Astra (max)",
         "score": 53,
         "source": "https://artificialanalysis.ai/models/gpt-6-astra",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       },
       "arena": {
         "model": "gpt-6-astra-max",
-        "score": 1475,
-        "confidenceInterval": 7,
-        "votes": 10536,
-        "source": "https://arena.ai/leaderboard/text"
+        "score": 1477,
+        "confidenceInterval": 6,
+        "votes": 12163,
+        "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+        "checkedAt": "2026-10-19"
       }
     },
     "gpt-6-1-sol": {
@@ -91,14 +96,15 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "GPT-6.1 Sol (max)",
         "score": 52,
         "source": "https://artificialanalysis.ai/models/gpt-6-1-sol",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       },
       "arena": {
         "model": "gpt-6.1-sol-max",
         "score": 1484,
-        "confidenceInterval": 9,
-        "votes": 4512,
-        "source": "https://arena.ai/leaderboard/text"
+        "confidenceInterval": 8,
+        "votes": 6320,
+        "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+        "checkedAt": "2026-10-19"
       }
     },
     "gemini-4-argon": {
@@ -106,15 +112,16 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Gemini 4 Argon (high)",
         "score": 53,
         "source": "https://artificialanalysis.ai/models/gemini-4-argon",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       },
       "arena": {
-        "model": "gemini-4-argon-high",
-        "score": 1525,
+        "model": "Gemini 4 Argon (High)",
+        "score": 1524,
         "confidenceInterval": 9,
-        "votes": 4892,
-        "source": "https://arena.ai/leaderboard/text",
-        "preliminary": true
+        "votes": 4904,
+        "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+        "preliminary": true,
+        "checkedAt": "2026-10-19"
       }
     },
     "muse-spark-1-3": {
@@ -122,14 +129,15 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Muse Spark 1.3 (max)",
         "score": 48,
         "source": "https://artificialanalysis.ai/models/muse-spark-1-3",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       },
       "arena": {
-        "model": "muse-spark-1.3-max",
+        "model": "Muse Spark 1.3 (Max)",
         "score": 1494,
         "confidenceInterval": 6,
-        "votes": 14694,
-        "source": "https://arena.ai/leaderboard/text"
+        "votes": 17561,
+        "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+        "checkedAt": "2026-10-19"
       }
     },
     "grok-4-7": {
@@ -137,14 +145,15 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Grok 4.7 (xhigh)",
         "score": 46,
         "source": "https://artificialanalysis.ai/models/grok-4-7",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       },
       "arena": {
         "model": "grok-4.7-xhigh",
-        "score": 1443,
-        "confidenceInterval": 7,
-        "votes": 8780,
-        "source": "https://arena.ai/leaderboard/text"
+        "score": 1444,
+        "confidenceInterval": 6,
+        "votes": 11591,
+        "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+        "checkedAt": "2026-10-19"
       }
     },
     "mimo-v2-6": {
@@ -152,14 +161,15 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "MiMo-V2.6-Pro",
         "score": 46,
         "source": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       },
       "arena": {
         "model": "mimo-v2.6-pro",
-        "score": 1480,
+        "score": 1479,
         "confidenceInterval": 9,
-        "votes": 4069,
-        "source": "https://arena.ai/leaderboard/text"
+        "votes": 4075,
+        "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+        "checkedAt": "2026-10-19"
       }
     },
     "qwen-3-8-max-0902": {
@@ -167,7 +177,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Qwen3.8 Max (0902)",
         "score": 45,
         "source": "https://artificialanalysis.ai/models/qwen3-8-max",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       }
     },
     "glm-5-3": {
@@ -175,14 +185,15 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "GLM-5.3 (max)",
         "score": 45,
         "source": "https://artificialanalysis.ai/models/glm-5-3",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       },
       "arena": {
         "model": "glm-5.3-max",
-        "score": 1478,
+        "score": 1479,
         "confidenceInterval": 5,
-        "votes": 20049,
-        "source": "https://arena.ai/leaderboard/text"
+        "votes": 22543,
+        "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+        "checkedAt": "2026-10-19"
       }
     },
     "step-5-preview": {
@@ -190,7 +201,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Step 5 Preview",
         "score": 44,
         "source": "https://artificialanalysis.ai/models/step-5",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       }
     },
     "kimi-k3": {
@@ -198,14 +209,15 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Kimi K3 (max)",
         "score": 44,
         "source": "https://artificialanalysis.ai/models/kimi-k3",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       },
       "arena": {
-        "model": "kimi-k3-max",
-        "score": 1488,
+        "model": "Kimi K3 (Max)",
+        "score": 1487,
         "confidenceInterval": 5,
-        "votes": 30351,
-        "source": "https://arena.ai/leaderboard/text"
+        "votes": 32795,
+        "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+        "checkedAt": "2026-10-19"
       }
     },
     "glm-5-3-flash": {
@@ -213,14 +225,15 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "GLM-5.3-Flash",
         "score": 42,
         "source": "https://artificialanalysis.ai/models/glm-5-3-flash",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       },
       "arena": {
         "model": "glm-5.3-flash",
-        "score": 1475,
+        "score": 1474,
         "confidenceInterval": 5,
-        "votes": 27678,
-        "source": "https://arena.ai/leaderboard/text"
+        "votes": 32925,
+        "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+        "checkedAt": "2026-10-19"
       }
     },
     "gemini-3-8-flash": {
@@ -228,34 +241,36 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Gemini 3.8 Flash (high)",
         "score": 41,
         "source": "https://artificialanalysis.ai/models/gemini-3-8-flash",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       },
       "arena": {
-        "model": "gemini-3.8-flash-high",
-        "score": 1497,
+        "model": "Gemini 3.8 Flash (High)",
+        "score": 1496,
         "confidenceInterval": 5,
-        "votes": 31437,
-        "source": "https://arena.ai/leaderboard/text",
-        "preliminary": true
+        "votes": 37454,
+        "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+        "preliminary": true,
+        "checkedAt": "2026-10-19"
       }
     },
     "deepseek-v4-1-flash": {
       "aa": {
-        "model": "DeepSeek V4.1 Flash (max)",
-        "score": 39,
-        "source": "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
-        "checkedAt": "2026-10-15",
-        "note": "此分数对应 2026 年 10 月 17 日更新前的受测版本，不能视为 1017 快照的成绩。",
-        "noteEn": "This result predates the October 17, 2026 update; it is not a score for the 1017 checkpoint."
+        "model": "DeepSeek V4.1 Flash 1017 (max)",
+        "score": 45,
+        "source": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017",
+        "checkedAt": "2026-10-19",
+        "note": "对应 2026 年 10 月 17 日的 1017 快照。",
+        "noteEn": "Evaluated on the October 17, 2026 (1017) checkpoint."
       },
       "arena": {
         "model": "deepseek-v4.1-flash-max",
         "score": 1475,
-        "confidenceInterval": 7,
-        "votes": 10872,
-        "source": "https://arena.ai/leaderboard/text",
+        "confidenceInterval": 6,
+        "votes": 12793,
+        "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
         "note": "此分数对应 2026 年 10 月 17 日更新前的受测版本，不能视为 1017 快照的成绩。",
-        "noteEn": "This result predates the October 17, 2026 update; it is not a score for the 1017 checkpoint."
+        "noteEn": "This result predates the October 17, 2026 update; it is not a score for the 1017 checkpoint.",
+        "checkedAt": "2026-10-19"
       }
     },
     "deepseek-v4-pro-0813": {
@@ -263,7 +278,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "DeepSeek V4 Pro 0813 (max)",
         "score": 36,
         "source": "https://artificialanalysis.ai/models/deepseek-v4-pro",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       }
     },
     "minimax-m3": {
@@ -271,7 +286,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "MiniMax-M3",
         "score": 29,
         "source": "https://artificialanalysis.ai/models/minimax-m3",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       }
     },
     "hunyuan-hy3": {
@@ -279,7 +294,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Hy3",
         "score": 25,
         "source": "https://artificialanalysis.ai/models/hy3",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       }
     },
     "mistral-medium-3-5": {
@@ -287,7 +302,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Mistral Medium 3.5",
         "score": 14,
         "source": "https://artificialanalysis.ai/models/mistral-medium-3-5",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       }
     },
     "gpt-6-sol-luna": {
@@ -299,10 +314,11 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
       },
       "arena": {
         "model": "gpt-6-sol-max",
-        "score": 1456,
-        "confidenceInterval": 7,
-        "votes": 10469,
-        "source": "https://arena.ai/leaderboard/text"
+        "score": 1459,
+        "confidenceInterval": 6,
+        "votes": 12466,
+        "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+        "checkedAt": "2026-10-19"
       }
     },
     "claude-haiku-5-5": {
@@ -310,7 +326,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Claude Haiku 5.5 (max)",
         "score": 43,
         "source": "https://artificialanalysis.ai/models/claude-haiku-5-5",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       }
     },
     "mistral-large-4-preview": {
@@ -318,7 +334,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Mistral Large 4 Preview",
         "score": 38,
         "source": "https://artificialanalysis.ai/models/mistral-large-4",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       }
     },
     "ling-3-1-flash": {
@@ -326,7 +342,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Ling 3.1 Flash",
         "score": 41,
         "source": "https://artificialanalysis.ai/models/ling-3-1-flash",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       }
     },
     "muse-wonder": {
@@ -334,7 +350,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Muse Wonder Full (max)",
         "score": 56,
         "source": "https://artificialanalysis.ai/models/muse-wonder-full",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       }
     },
     "muse-spark-open": {
@@ -342,7 +358,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Muse Spark Open (xhigh)",
         "score": 39,
         "source": "https://artificialanalysis.ai/models/muse-spark-open",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       }
     },
     "reflection-beam-1": {
@@ -350,7 +366,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Beam 1.0",
         "score": 30,
         "source": "https://artificialanalysis.ai/models/reflection-beam",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       }
     },
     "nemotron-3-5-vl-bolt": {
@@ -358,7 +374,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Nemotron 3.5 Super VL",
         "score": 26,
         "source": "https://artificialanalysis.ai/models/nemotron-3-5-super-vl",
-        "checkedAt": "2026-10-17"
+        "checkedAt": "2026-10-19"
       }
     }
   }

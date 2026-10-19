@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
-  "asOf": "2026-10-17",
-  "updatedAt": "2026-10-17",
+  "asOf": "2026-10-19",
+  "updatedAt": "2026-10-19",
   "companies": [
     {
       "id": "anthropic",
@@ -51,7 +51,7 @@ window.AGENT_ATLAS = {
     {
       "id": "windsurf",
       "name": "Windsurf",
-      "aliases": "Codeium Cascade Cognition"
+      "aliases": "Codeium Cascade Cognition Devin Desktop Devin Local"
     },
     {
       "id": "replit",
@@ -490,7 +490,7 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "product",
       "summary": "把 Agent 与代码编辑器结合，持续理解项目上下文并执行多步修改。",
-      "details": "首发公告介绍 Windsurf 编辑器与 Cascade，区别于此前 Codeium 的补全工具。",
+      "details": "首发公告介绍 Windsurf 编辑器与 Cascade，区别于此前 Codeium 的补全工具。2026 年 6 月 2 日，Windsurf 更名为 Devin Desktop，并引入 Devin Local；9 月 8 日的 3.9.19 稳定版移除 Cascade。",
       "dateNote": "",
       "tags": [
         "编程",
@@ -501,11 +501,21 @@ window.AGENT_ATLAS = {
         {
           "title": "官方 · 发布记录",
           "url": "https://windsurf.com/blog/windsurf-launch"
+        },
+        {
+          "title": "Cognition · Devin Desktop 发布公告",
+          "titleEn": "Cognition · Devin Desktop announcement",
+          "url": "https://devin.ai/blog/windsurf-is-now-devin-desktop"
+        },
+        {
+          "title": "Cognition · Devin Desktop 版本日志",
+          "titleEn": "Cognition · Devin Desktop changelog",
+          "url": "https://docs.devin.ai/desktop/changelog"
         }
       ],
       "en": {
         "summary": "An agentic editor combines project context with multi-step code changes.",
-        "details": "The launch introduces the Windsurf editor and Cascade, distinct from earlier Codeium completions.",
+        "details": "The launch introduced the Windsurf editor and Cascade, distinct from Codeium’s earlier completion tools. Windsurf became Devin Desktop on June 2, 2026, introducing Devin Local; stable version 3.9.19 removed Cascade on September 8.",
         "dateNote": ""
       }
     },
@@ -1907,6 +1917,44 @@ window.AGENT_ATLAS = {
       }
     },
     {
+      "id": "opencode-2",
+      "date": "2026-09-11",
+      "name": "OpenCode 2.0",
+      "company": "opencode",
+      "category": "coding",
+      "kind": "release",
+      "summary": "发布第二代开源编程 Agent，重构插件接口、服务端协议与终端配置。",
+      "details": "以 @opencode/cli 2.0.0 发布，采用 MIT 许可。V2 需要迁移旧插件及服务端集成，保留兼容的项目配置、技能与 Agent 定义；V1 与 V2 作为两条版本线维护。",
+      "dateNote": "按官方 npm 包 2.0.0 的公开发布时间记为 9 月 11 日 23:44 UTC（北京时间 9 月 12 日），不将持续更新的文档或小版本日期作为首发日。",
+      "tags": [
+        "编程",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "OpenCode · 2.0.0 版本标签",
+          "titleEn": "OpenCode · 2.0.0 version tag",
+          "url": "https://github.com/anomalyco/opencode/releases/tag/v2.0.0"
+        },
+        {
+          "title": "OpenCode · V2 迁移说明",
+          "titleEn": "OpenCode · V2 migration guide",
+          "url": "https://opencode.ai/v2/docs/migrate-v1/"
+        },
+        {
+          "title": "npm · 官方包发布记录",
+          "titleEn": "npm · Official package publication history",
+          "url": "https://registry.npmjs.org/@opencode%2fcli"
+        }
+      ],
+      "en": {
+        "summary": "A second-generation open-source coding agent revises the plugin API, server protocol and terminal configuration.",
+        "details": "Published as @opencode/cli 2.0.0 under the MIT license. V2 requires migration of V1 plugins and server integrations while retaining compatible project configuration, skills and agent definitions. V1 and V2 remain separate release lines.",
+        "dateNote": "Uses the official npm publication of 2.0.0 on September 11 at 23:44 UTC (September 12 in Beijing), not the date of later documentation or patch updates."
+      }
+    },
+    {
       "id": "cowork-unified",
       "date": "2026-09-16",
       "name": "Claude / Cowork",
@@ -1964,6 +2012,39 @@ window.AGENT_ATLAS = {
         "summary": "Z.ai opens the source of its coding workspace, covering desktop, browser and terminal-agent interfaces.",
         "details": "The Apache-2.0 release includes the client, backend, shared UI and agent runtime, organizing development around code, a terminal, Git and task workspaces. Hosted models and subscriptions remain separate services.",
         "dateNote": "Records the September 21 source-release announcement, not the original product launch. The open-source commit is dated September 20 at 21:14 UTC, September 21 in Beijing."
+      }
+    },
+    {
+      "id": "manus-2",
+      "date": "2026-09-28",
+      "name": "Manus 2.0",
+      "company": "manus",
+      "category": "general",
+      "kind": "release",
+      "summary": "更新 Agent 执行架构，结合事件触发自动化、独立云端计算机与可编辑的创作工作区。",
+      "details": "采用 Cascade Harness 按任务加载专业能力，桌面端升级为 Manus Studio，提供视频时间线编辑和游戏开发环境。自动化可由邮件、日历及协作应用事件触发；网页、桌面和移动端同步提供 2.0。",
+      "dateNote": "采用官方产品公告的 9 月 28 日；同日介绍的 Cue 仍为邀请码早期访问，不并入 Manus 2.0 的全面开放范围。",
+      "tags": [
+        "任务规划",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Manus · 2.0 发布公告",
+          "titleEn": "Manus · 2.0 announcement",
+          "url": "https://manus.im/blog/introducing-manus-2-0"
+        },
+        {
+          "title": "Manus · 产品发布档案",
+          "titleEn": "Manus · Product announcements",
+          "url": "https://manus.im/blog?kind=PRODUCT"
+        }
+      ],
+      "en": {
+        "summary": "Updates the agent harness with event-triggered automation, dedicated cloud computers and editable creative workspaces.",
+        "details": "Cascade loads specialist capabilities as tasks require them. The desktop app becomes Manus Studio, with a video timeline editor and game-development environment. Automations can react to email, calendar and collaboration-app events; version 2.0 is available on the web, desktop and mobile.",
+        "dateNote": "Uses the September 28 official announcement. Cue, introduced in the same post, remains invite-based early access and is not included in the general-availability claim for Manus 2.0."
       }
     },
     {

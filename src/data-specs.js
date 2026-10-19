@@ -3452,6 +3452,51 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ],
       "note": "规格表明确列出文本与图像输入。模型卡正文另提视频，但未在输入规格中统一说明；此处采用规格表明确列出的配置。上下文由输入与输出共同使用，实际部署受显存和并发量限制。",
       "noteEn": "The specification table explicitly lists text and image inputs. The introduction also mentions video, but the input specification is not consistent, so this entry retains the explicitly documented configuration. Input and output share the context window; practical deployments depend on memory and concurrency."
+    },
+    "flux-3-image-klein": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "FLUX 3 Image Klein",
+          "basis": "weights",
+          "parameters": "5.6B",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://huggingface.co/black-forest-labs/flux-3-image-klein",
+            "https://docs.bfl.ai/release-notes"
+          ],
+          "note": "5.6B 指图像生成部分，不含独立的 Qwen3-VL 文本编码器；支持最多 10 张参考图和最高 4K 输出。",
+          "noteEn": "5.6B describes the image generator, excluding its separate Qwen3-VL text encoder. Supports up to ten reference images and 4K output."
+        }
+      ]
+    },
+    "lfm-2-5-24b-a2b": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "LFM2.5-24B-A2B",
+          "basis": "weights",
+          "parameters": "24.0B",
+          "activeParameters": "2.45B",
+          "contextTokens": 131072,
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+            "https://docs.liquid.ai/lfm/models/lfm25-24b-a2b"
+          ]
+        }
+      ]
     }
   }
 });

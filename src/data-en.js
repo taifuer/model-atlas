@@ -1036,6 +1036,16 @@ window.MODEL_ATLAS_EN = {
     "summary": "Kling 4.0 extends single-pass video generation to 30 seconds and improves reference control, keyframes and audiovisual consistency.",
     "details": "Supports up to 15 reference assets and 10 keyframes, including images, video and subject voice references. General availability began on October 15. Two-minute extensions and enterprise API access remain planned in the later announcement; announced 4K and HDR specifications are not treated as broadly available.",
     "dateNote": "Uses the main model’s September 30 preview announcement. Flash had early access for Ultra annual subscribers on September 28. Kuaishou confirms the October 15 general launch; the article publication date is not substituted for it."
+  },
+  "flux-3-image-klein": {
+    "summary": "An open-weight image generation and editing model with multiple image references, bounding-box layout control and local deployment.",
+    "details": "Its image generator has 5.6B parameters, with a separate Qwen3-VL text encoder. Base and distilled checkpoints were released together, supporting up to ten reference images and 4K output, with Diffusers and ComfyUI integration. Weights use the FLUX Kommunity License v.1.0 with conditions on commercial use.",
+    "dateNote": "Uses October 15, 2026, confirmed by the official announcement and API release notes. Base, distilled and quantized variants are grouped into one release."
+  },
+  "lfm-2-5-24b-a2b": {
+    "summary": "An open-weight reasoning model for on-device agents, using a hybrid sparse-expert architecture for local tool use.",
+    "details": "It has 24.0B total and approximately 2.45B active parameters, combining short convolutions with grouped-query attention and a 131,072-token context. Base and post-trained checkpoints support runtimes including llama.cpp, MLX and vLLM. Input and output are text only. Weights use the LFM Open License v1.0, which includes a commercial revenue threshold.",
+    "dateNote": "Uses the official Liquid AI announcement dated October 13, 2026. Base and post-trained checkpoints are grouped together; GGUF, MLX and quantized formats are not separate releases."
   }
 };
 window.ATLAS_TAGS_EN = {
@@ -1130,7 +1140,10 @@ window.ATLAS_TAGS_EN = {
   "时间控制": "Temporal control",
   "主体一致性": "Visual consistency",
   "运动建模": "Motion modeling",
-  "NCR": "NCR"
+  "NCR": "NCR",
+  "图像生成": "Image generation",
+  "图像编辑": "Image editing",
+  "端侧模型": "On-device model"
 };
 window.MODEL_THEMES_EN = {
   "2017": "The Transformer architecture",

@@ -1467,6 +1467,30 @@
         "https://kling.ai/blog/kling40-kling-visual-realism-creative-control-introducing-storytelling",
         "https://ir.kuaishou.com/news-releases/news-release-details/kling-ai-officially-launches-next-generation-kling-40-raising"
       ]
+    },
+    "flux-3-image-klein": {
+      "checkedAt": "2026-10-19",
+      "category": "multimodal",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://bfl.ai/blog/flux-3-image-klein",
+        "https://huggingface.co/black-forest-labs/flux-3-image-klein",
+        "https://docs.bfl.ai/release-notes"
+      ]
+    },
+    "lfm-2-5-24b-a2b": {
+      "checkedAt": "2026-10-19",
+      "category": "text",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://www.liquid.ai/blog/lfm2-5-24b-a2b",
+        "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+        "https://docs.liquid.ai/lfm/models/lfm25-24b-a2b"
+      ]
     }
   }
 };
@@ -1475,8 +1499,8 @@
     ...window.MODEL_ATLAS,
     categories: { text: '文本', multimodal: '多模态' },
     categoriesEn: { text: 'Text', multimodal: 'Multimodal' },
-    tasks: { language: '语言', 'video-generation': '视频生成' },
-    tasksEn: { language: 'Language', 'video-generation': 'Video generation' },
+    tasks: { language: '语言', 'image-generation': '图像生成', 'video-generation': '视频生成' },
+    tasksEn: { language: 'Language', 'image-generation': 'Image generation', 'video-generation': 'Video generation' },
     releases: window.MODEL_ATLAS.releases.map(entry => ({ ...entry, category: data.entries[entry.id]?.category, tasks: data.entries[entry.id]?.tasks || ['language'] })),
   });
 })();

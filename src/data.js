@@ -5,6 +5,8 @@
  */
 window.MODEL_ATLAS = (() => {
   const companies = [
+    {"id": "liquid", "name": "Liquid AI", "nameEn": "Liquid AI", "aliases": "LiquidAI LFM 液态人工智能", "color": "#65879a"},
+    {"id": "bfl", "name": "Black Forest Labs", "nameEn": "Black Forest Labs", "aliases": "BFL FLUX 黑森林实验室", "color": "#6b7468"},
     { id: 'reflection', name: 'Reflection', nameEn: 'Reflection', aliases: 'Reflection AI Beam', color: '#788f78' },
     { id: 'kuaishou', name: '快手', nameEn: 'Kuaishou', aliases: 'Kling 可灵', color: '#a87e61' },
     { id: 'runway', name: 'Runway', nameEn: 'Runway', aliases: 'Gen-1 Gen-2 Gen-3 Gen-4', color: '#798078' },
@@ -38,7 +40,7 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    "checkedAt": "2026-10-17",
+    "checkedAt": "2026-10-19",
     "source": "https://artificialanalysis.ai/leaderboards/models",
     "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
     "metric": "Artificial Analysis Intelligence Index",
@@ -81,6 +83,11 @@ window.MODEL_ATLAS = (() => {
         "score": 45
       },
       {
+        "company": "deepseek",
+        "model": "DeepSeek V4.1 Flash 1017 (max)",
+        "score": 45
+      },
+      {
         "company": "zhipu",
         "model": "GLM-5.3 (max)",
         "score": 45
@@ -99,11 +106,6 @@ window.MODEL_ATLAS = (() => {
         "company": "inclusionai",
         "model": "Ling 3.1 Flash",
         "score": 41
-      },
-      {
-        "company": "deepseek",
-        "model": "DeepSeek V4.1 Flash (max)",
-        "score": 39
       },
       {
         "company": "mistral",
@@ -143,6 +145,12 @@ window.MODEL_ATLAS = (() => {
         "estimated": true
       },
       {
+        "company": "liquid",
+        "model": "LFM2.5-2.6B",
+        "score": 8,
+        "estimated": true
+      },
+      {
         "company": "allenai",
         "model": "Olmo 3.1 32B Think",
         "score": 7,
@@ -173,6 +181,16 @@ window.MODEL_ATLAS = (() => {
     return { id, date, name, company, kind, summary, tags, sources: Array.isArray(sources) ? sources : [sources], milestone, details, dateNote };
   }
   const releases = [
+    event("lfm-2-5-24b-a2b", "2026-10-13", "LFM2.5-24B-A2B", "liquid", "weights",
+      "面向端侧智能体的开放推理模型，以混合架构和稀疏专家支持本地工具调用。", ["端侧模型", "推理", "混合架构"],
+      [{"title": "Liquid AI · 官方发布", "titleEn": "Liquid AI: Official announcement", "url": "https://www.liquid.ai/blog/lfm2-5-24b-a2b"}, {"title": "Liquid AI · 模型卡与权重", "titleEn": "Liquid AI: Model card and weights", "url": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B"}, {"title": "Liquid AI · 模型文档", "titleEn": "Liquid AI: Model documentation", "url": "https://docs.liquid.ai/lfm/models/lfm25-24b-a2b"}], false,
+      "总参数 24.0B、每个 token 激活约 2.45B，将短卷积与分组查询注意力结合，支持 131,072 tokens 上下文。提供基础版与面向多步骤任务的后训练版，并支持 llama.cpp、MLX、vLLM 等运行环境。仅接受和生成文本，权重采用附带商业收入门槛的 LFM Open License v1.0。",
+      "采用 Liquid AI 官方发布文章的 2026 年 10 月 13 日；基础版与后训练版合并记录，GGUF、MLX 和量化格式不单列。"),
+    event("flux-3-image-klein", "2026-10-15", "FLUX 3 Image Klein", "bfl", "weights",
+      "开放图像生成与编辑模型，支持多图参考、边界框布局控制和本地部署。", ["图像生成", "图像编辑", "开放权重"],
+      [{"title": "Black Forest Labs · 官方发布", "titleEn": "Black Forest Labs: Official announcement", "url": "https://bfl.ai/blog/flux-3-image-klein"}, {"title": "Black Forest Labs · 模型卡与权重", "titleEn": "Black Forest Labs: Model card and weights", "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein"}, {"title": "Black Forest Labs · 发布日志", "titleEn": "Black Forest Labs: Release notes", "url": "https://docs.bfl.ai/release-notes"}], false,
+      "图像生成部分为 5.6B 参数，另配 Qwen3-VL 文本编码器；同日提供基础版与蒸馏版。支持最多 10 张参考图和最高 4K 输出，并接入 Diffusers、ComfyUI 等工具。权重采用 FLUX Kommunity License v.1.0，商业使用附带条件。",
+      "采用官方公告与 API 发布日志共同标注的 2026 年 10 月 15 日；基础版、蒸馏版和量化文件合并记录。"),
     event("ling-3-1-flash", "2026-09-30", "Ling-3.1-flash", "inclusionai", "release",
       "蚂蚁百灵发布混合推理模型，面向编程、工具调用与多步骤智能体任务。", ["推理", "智能体"],
       [source("蚂蚁百灵 · 官方发布动态", "https://www.ant-ling.com/"), source("蚂蚁百灵 · 模型文档", "https://developer.ant-ling.com/zh-CN/docs/models/ling/"), source("Vercel · AI Gateway 发布日志", "https://vercel.com/changelog/ling-3-1-flash-is-now-available-on-ai-gateway")], false,
@@ -975,8 +993,8 @@ window.MODEL_ATLAS = (() => {
     },
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-10-17',
-    scope: '主流语言、多模态与视频生成模型，兼顾具有历史影响的架构研究与产品节点。',
+    checkedAt: '2026-10-19',
+    scope: '主流语言、多模态、图像与视频生成模型，兼顾具有历史影响的架构研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
     references: [
@@ -991,5 +1009,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-10-17', updatedAt: '2026-10-17', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-10-19', updatedAt: '2026-10-19', companies, companyRanking, kinds, themes, releases, coverage });
 })();

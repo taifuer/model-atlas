@@ -646,6 +646,54 @@
     ]
   }
 });
+  Object.assign(models, {
+  "flux-3-image-klein": {
+    "status": "open",
+    "source": "https://huggingface.co/black-forest-labs/flux-3-image-klein",
+    "checkedAt": "2026-10-19",
+    "note": "开放权重；许可允许非商业用途，并为年收入低于 500 万美元的合格用户规定商业输出生成例外，具体用途受许可条款约束。",
+    "noteEn": "Open weights. The license allows non-commercial use and a commercial-output exception for qualifying users with annual revenue below US$5M, subject to its terms.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "FLUX Kommunity License v.1.0",
+        "source": "https://huggingface.co/black-forest-labs/flux-3-image-klein/blob/main/LICENSE.md"
+      }
+    ]
+  },
+  "lfm-2-5-24b-a2b": {
+    "status": "open",
+    "source": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+    "checkedAt": "2026-10-19",
+    "note": "开放权重，采用 LFM Open License v1.0；商业使用受年收入门槛条款约束，不能等同于 Apache 2.0 等无收入门槛许可。",
+    "noteEn": "Open weights under the LFM Open License v1.0. Commercial use is subject to revenue-threshold terms; it is not equivalent to an unrestricted Apache 2.0 license.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "LFM Open License v1.0",
+        "source": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B/blob/main/LICENSE"
+      }
+    ]
+  }
+});
+  Object.assign(agents, {
+  "manus-2": {
+    "status": "closed",
+    "checkedAt": "2026-10-19",
+    "source": "https://manus.im/blog/introducing-manus-2-0",
+    "note": "托管商业产品；公告未开放执行架构或客户端源码。",
+    "noteEn": "A hosted commercial product; the announcement does not release the agent harness or client source."
+  },
+  "opencode-2": {
+    "status": "open",
+    "checkedAt": "2026-10-19",
+    "source": "https://github.com/anomalyco/opencode/blob/v2.0.0/LICENSE",
+    "note": "v2.0.0 源码与官方包采用 MIT 许可。",
+    "noteEn": "The v2.0.0 source and official package use the MIT license."
+  }
+});
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

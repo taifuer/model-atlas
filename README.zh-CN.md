@@ -31,7 +31,7 @@ AI 模型、智能体、算力硬件与关键技术的发展时间线。
 
 | 板块 | 内容 |
 | --- | --- |
-| 大模型 | 语言、多模态与视频生成模型发布及架构论文，附可核实的规格和评测快照。 |
+| 大模型 | 语言、多模态、图像与视频生成模型发布及架构论文，附可核实的规格和评测快照。 |
 | 智能体 | 编程与通用智能体、Harness、框架和协议。 |
 | 算力硬件 | GPU、专用加速器、算力系统与本地设备，规格注明具体配置。 |
 | 技术 | 基础方法、计算框架、推理部署、容器与沙箱。 |
@@ -174,3 +174,5 @@ npm run review:candidates -- --from research/candidate-discovery/reviews/<summar
 项目原创源码与原创编辑性文案采用 [MIT 许可证](LICENSE)。Noto Sans SC 字体采用 [SIL Open Font License 1.1](src/assets/OFL.txt)，详见[字体说明](src/assets/FONT-NOTICE.md)；图标来源及已记录的许可见[图标声明](src/assets/icons/NOTICE.md)。
 
 外部数据、评测资料与品牌标识不统一适用 MIT，仍遵循各自权利与条款。本项目独立维护，与所收录机构不存在隶属关系。
+
+Arena 分数快照取自其 [官方数据集](https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset)，适用 CC BY 4.0；展示分数与置信区间经过取整，并保留来源日期。

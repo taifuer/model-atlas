@@ -29,9 +29,10 @@ test('published scores exactly match dated public source snapshots and known rel
     assert.equal(snapshot.records.length, Object.values(scores.entries).filter(e => e[key]).length);
   }
   assert.equal(scores.entries['gemini-4-argon'].arena.preliminary, true);
-  assert.equal(scores.benchmarks.aa.checkedAt, '2026-10-17');
-  assert.equal(scores.checkedAt, '2026-10-11', 'A new AA check must not advance the unchanged Arena review date');
-  assert.equal(scores.benchmarks.arena.publishedAt, '2026-10-08');
+  assert.equal(scores.benchmarks.aa.checkedAt, '2026-10-19');
+  assert.equal(scores.checkedAt, '2026-10-19');
+  assert.equal(scores.benchmarks.arena.checkedAt, '2026-10-19');
+  assert.equal(scores.benchmarks.arena.publishedAt, '2026-10-15', 'Dataset retrieval date is not the leaderboard publication date');
   assert.equal(scores.entries['muse-wonder'].aa.model, 'Muse Wonder Full (max)');
   assert.equal(scores.cardScopes['muse-wonder'], 'variant');
   assert.equal(scores.entries['muse-wonder'].arena, undefined, 'Do not transfer Wonder results to Full without verified metric scope');
@@ -40,8 +41,10 @@ test('published scores exactly match dated public source snapshots and known rel
   assert.equal(scores.entries['gpt-6-sol-luna-chatgpt-october'], undefined, 'Do not transfer September API scores to the ChatGPT October versions');
   assert.equal(scores.entries['qwen-3-8-max-0902'].arena, undefined, 'An undated Max alias must not be assigned to the 0902 snapshot');
   assert.equal(scores.entries['gpt-6-sol-luna'].aa.model, 'GPT-6 Sol (max)', 'A family score identifies its actual evaluated member');
-  assert.equal(scores.entries['deepseek-v4-1-flash'].aa.checkedAt, '2026-10-15', 'An older benchmark must not be relabeled as a check of the 1017 checkpoint');
-  for (const metric of ['aa', 'arena']) {
+  assert.equal(scores.entries['deepseek-v4-1-flash'].aa.model, 'DeepSeek V4.1 Flash 1017 (max)');
+  assert.equal(scores.entries['deepseek-v4-1-flash'].aa.score, 45);
+  assert.equal(models.companyRanking.entries.find(entry => entry.company === 'deepseek').model, scores.entries['deepseek-v4-1-flash'].aa.model);
+  for (const metric of ['arena']) {
     assert.match(scores.entries['deepseek-v4-1-flash'][metric].note, /不能视为 1017/);
     assert.match(scores.entries['deepseek-v4-1-flash'][metric].noteEn, /not a score for the 1017/);
   }

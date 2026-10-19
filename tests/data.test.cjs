@@ -25,7 +25,7 @@ test('release dates are real, sorted, unique events within the research cutoff',
 
 test('every event has valid metadata and a primary source; supporting reports are explicit', () => {
   const companyIds = new Set(data.companies.map(company => company.id));
-  const primaryHosts = new Set(['www.alibabacloud.com', 'help.openai.com', 'cloud.google.com', 'docs.cloud.google.com', 'help.runwayml.com', 'ir.kuaishou.com', 'runway.com', 'openai.com', 'developers.openai.com', 'deploymentsafety.openai.com', 'docs.mistral.ai', 'deepmind.google', 'arxiv.org', 'www.anthropic.com', 'platform.claude.com', 'research.google', 'blog.google', 'dev.meta.ai', 'ai.google.dev', 'ai.meta.com', 'research.meta.ai', 'about.fb.com', 'api-docs.deepseek.com', 'github.com', 'huggingface.co', 'qwenlm.github.io', 'qwen.ai', 'docs.qwencloud.com', 'mistral.ai', 'x.ai', 'platform.kimi.ai', 'www.kimi.com', 'z.ai', 'docs.z.ai', 'www.minimax.io', 'mimo.xiaomi.com', 'mimo.mi.com', 'static.stepfun.com', 'www.stepfun.com', 'news.microsoft.com', 'techcommunity.microsoft.com', 'aws.amazon.com', 'nvidianews.nvidia.com', 'blogs.nvidia.com', 'cloud.tencent.com', 'www.tencent.com', 'seed.bytedance.com']);
+  const primaryHosts = new Set(['bfl.ai', 'docs.bfl.ai', 'www.liquid.ai', 'docs.liquid.ai', 'www.alibabacloud.com', 'help.openai.com', 'cloud.google.com', 'docs.cloud.google.com', 'help.runwayml.com', 'ir.kuaishou.com', 'runway.com', 'openai.com', 'developers.openai.com', 'deploymentsafety.openai.com', 'docs.mistral.ai', 'deepmind.google', 'arxiv.org', 'www.anthropic.com', 'platform.claude.com', 'research.google', 'blog.google', 'dev.meta.ai', 'ai.google.dev', 'ai.meta.com', 'research.meta.ai', 'about.fb.com', 'api-docs.deepseek.com', 'github.com', 'huggingface.co', 'qwenlm.github.io', 'qwen.ai', 'docs.qwencloud.com', 'mistral.ai', 'x.ai', 'platform.kimi.ai', 'www.kimi.com', 'z.ai', 'docs.z.ai', 'www.minimax.io', 'mimo.xiaomi.com', 'mimo.mi.com', 'static.stepfun.com', 'www.stepfun.com', 'news.microsoft.com', 'techcommunity.microsoft.com', 'aws.amazon.com', 'nvidianews.nvidia.com', 'blogs.nvidia.com', 'cloud.tencent.com', 'www.tencent.com', 'seed.bytedance.com']);
   // These additional official/project/author pages were reviewed for the named event.
   // Keep community-hosted articles and personal author archives URL-specific.
   const reviewedPrimarySources = new Map([
@@ -51,6 +51,8 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['https://platform.stepfun.ai/docs/en/guides/models/step-5-preview', 'step-5-preview'],
   ]);
   const reviewedHuggingFacePaths = new Map([
+    ['/black-forest-labs/flux-3-image-klein', 'flux-3-image-klein'],
+    ['/LiquidAI/LFM2.5-24B-A2B', 'lfm-2-5-24b-a2b'],
     ['/deepseek-ai/DeepSeek-V4.1-Flash-1017', 'deepseek-v4-1-flash'],
     ['/stepfun-ai/Step-5-Preview-NVFP4', 'step-5-preview'],
     ['/stepfun-ai/Step-5-Preview/blob/main/LICENSE.txt', 'step-5-preview'],
@@ -186,7 +188,7 @@ test('English content covers every model and retains date clarifications', () =>
 test('agent entries have distinct categories, bilingual descriptions, and primary sources with explicit corroboration', () => {
   vm.runInNewContext(fs.readFileSync(require('node:path').join(__dirname, '../src/data-agents.js'), 'utf8'), context);
   const agents = context.window.AGENT_ATLAS;
-  const hosts = new Set(['developer.cloud.tencent.com', 'docs.factory.com', 'open-vsx.org', 'blog.jetbrains.com', 'blog.kilo.ai', 'www.augmentcode.com', 'zed.dev', 'ampcode.com', 'factory.com', 'earendil.com', 'about.fb.com', 'www.microsoft.com', 'www.langchain.com', 'cognition.com', 'arxiv.org', 'replit.com', 'windsurf.com', 'cursor.com', 'www.anthropic.com', 'openai.com', 'github.blog', 'blog.google', 'antigravity.google', 'claude.com', 'support.claude.com', 'mariozechner.at', 'openclaw.ai', 'nousresearch.com', 'hermes-agent.nousresearch.com', 'www.deepseek.com', 'www.codebuddy.cn', 'cloud.tencent.com', 'qoder.com', 'qwenlm.github.io', 'kiro.dev', 'www.trae.ai', 'aider.chat', 'github.com', 'opencode.ai', 'manus.im', 'huggingface.co', 'goose-docs.ai', 'developers.googleblog.com', 'aws.amazon.com', 'blog.crewai.com', 'www.warp.dev']);
+  const hosts = new Set(['devin.ai', 'docs.devin.ai', 'registry.npmjs.org', 'developer.cloud.tencent.com', 'docs.factory.com', 'open-vsx.org', 'blog.jetbrains.com', 'blog.kilo.ai', 'www.augmentcode.com', 'zed.dev', 'ampcode.com', 'factory.com', 'earendil.com', 'about.fb.com', 'www.microsoft.com', 'www.langchain.com', 'cognition.com', 'arxiv.org', 'replit.com', 'windsurf.com', 'cursor.com', 'www.anthropic.com', 'openai.com', 'github.blog', 'blog.google', 'antigravity.google', 'claude.com', 'support.claude.com', 'mariozechner.at', 'openclaw.ai', 'nousresearch.com', 'hermes-agent.nousresearch.com', 'www.deepseek.com', 'www.codebuddy.cn', 'cloud.tencent.com', 'qoder.com', 'qwenlm.github.io', 'kiro.dev', 'www.trae.ai', 'aider.chat', 'github.com', 'opencode.ai', 'manus.im', 'huggingface.co', 'goose-docs.ai', 'developers.googleblog.com', 'aws.amazon.com', 'blog.crewai.com', 'www.warp.dev']);
   const supportingReports = new Map([['https://www.ithome.com/1/005/046.htm', 'zcode-open-source']]);
   const ids = new Set();
   let previous = '';

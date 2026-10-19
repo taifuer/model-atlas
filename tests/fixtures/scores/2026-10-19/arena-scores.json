@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "retrievedAt": "2026-10-19",
+  "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/resolve/main/text_style_control/latest-00000-of-00001.parquet",
+  "sourceSha256": "ddc12ff6cf1e8e40c2e296a2ea2d81aba17b8841404524ef4e13f7a844730a08",
+  "datasetRevision": "a64ca3b12b6e6fcb9e7747cd56131d8a8047d822",
+  "license": "CC-BY-4.0",
+  "sourceNote": "Arena official dataset, text_style_control/latest, category=overall. Ratings and symmetric 95% confidence interval half-widths rounded to the nearest integer. Model names preserved as supplied; Gemini preliminary flags retained from the leaderboard.",
+  "metric": {
+    "name": "Arena Text · Overall · Style Control",
+    "publishedAt": "2026-10-15",
+    "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+    "category": "text-overall",
+    "adjustments": "style-control",
+    "checkedAt": "2026-10-19"
+  },
+  "records": [
+    {
+      "releaseId": "claude-opus-5-5",
+      "model": "Claude Opus 5.5 (High)",
+      "score": 1508,
+      "confidenceInterval": 7,
+      "votes": 8300,
+      "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "releaseId": "claude-sonnet-5-5",
+      "model": "claude-sonnet-5.5-xhigh",
+      "score": 1475,
+      "confidenceInterval": 8,
+      "votes": 6831,
+      "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "releaseId": "claude-fable-5-1",
+      "model": "Claude Fable 5.1 (Max)",
+      "score": 1502,
+      "confidenceInterval": 6,
+      "votes": 14590,
+      "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "releaseId": "gpt-6-astra",
+      "model": "gpt-6-astra-max",
+      "score": 1477,
+      "confidenceInterval": 6,
+      "votes": 12163,
+      "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "releaseId": "gpt-6-1-sol",
+      "model": "gpt-6.1-sol-max",
+      "score": 1484,
+      "confidenceInterval": 8,
+      "votes": 6320,
+      "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "releaseId": "gemini-4-argon",
+      "model": "Gemini 4 Argon (High)",
+      "score": 1524,
+      "confidenceInterval": 9,
+      "votes": 4904,
+      "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+      "preliminary": true,
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "releaseId": "muse-spark-1-3",
+      "model": "Muse Spark 1.3 (Max)",
+      "score": 1494,
+      "confidenceInterval": 6,
+      "votes": 17561,
+      "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "releaseId": "grok-4-7",
+      "model": "grok-4.7-xhigh",
+      "score": 1444,
+      "confidenceInterval": 6,
+      "votes": 11591,
+      "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "releaseId": "mimo-v2-6",
+      "model": "mimo-v2.6-pro",
+      "score": 1479,
+      "confidenceInterval": 9,
+      "votes": 4075,
+      "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "releaseId": "glm-5-3",
+      "model": "glm-5.3-max",
+      "score": 1479,
+      "confidenceInterval": 5,
+      "votes": 22543,
+      "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "releaseId": "kimi-k3",
+      "model": "Kimi K3 (Max)",
+      "score": 1487,
+      "confidenceInterval": 5,
+      "votes": 32795,
+      "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "releaseId": "glm-5-3-flash",
+      "model": "glm-5.3-flash",
+      "score": 1474,
+      "confidenceInterval": 5,
+      "votes": 32925,
+      "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "releaseId": "gemini-3-8-flash",
+      "model": "Gemini 3.8 Flash (High)",
+      "score": 1496,
+      "confidenceInterval": 5,
+      "votes": 37454,
+      "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+      "preliminary": true,
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "releaseId": "deepseek-v4-1-flash",
+      "model": "deepseek-v4.1-flash-max",
+      "score": 1475,
+      "confidenceInterval": 6,
+      "votes": 12793,
+      "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+      "checkedAt": "2026-10-19"
+    },
+    {
+      "releaseId": "gpt-6-sol-luna",
+      "model": "gpt-6-sol-max",
+      "score": 1459,
+      "confidenceInterval": 6,
+      "votes": 12466,
+      "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset/viewer/text_style_control/latest",
+      "checkedAt": "2026-10-19"
+    }
+  ]
+}

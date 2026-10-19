@@ -1606,6 +1606,26 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       ],
       "note": "仅为 Wonder 的 Standard 模式未缓存文本 API 价格，无长上下文溢价。Wonder Full 仅通过 Muse Code 指定订阅方案提供，未公布按 token 计费的 API 价格。",
       "noteEn": "Standard-mode uncached text API rates for Wonder only, with no long-context premium. Wonder Full is available through eligible Muse Code subscriptions and has no published per-token API price."
+    },
+    "lfm-2-5-24b-a2b": {
+      "checkedAt": "2026-10-19",
+      "variants": [
+        {
+          "name": "LFM2.5-24B-A2B",
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 0.05,
+              "output": 0.7,
+              "label": "标准 API",
+              "labelEn": "Standard API"
+            }
+          ],
+          "sources": [
+            "https://www.liquid.ai/pricing"
+          ]
+        }
+      ]
     }
   }
 });

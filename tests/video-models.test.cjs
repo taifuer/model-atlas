@@ -22,8 +22,12 @@ test('video generation is separate from multimodal understanding and text input'
   assert.equal(get('hunyuan-video').category, 'text', 'Text-to-video does not itself imply multimodal input');
   assert.equal(get('seedance-2-5').category, 'multimodal');
   const language = filters.select(filters.read('?task=language'));
-  assert.equal(videos.length + language.length, data.releases.length);
-  assert.equal(new Set([...videos, ...language].map(entry => entry.id)).size, data.releases.length);
+  const images = filters.select(filters.read('?task=image-generation'));
+  assert.ok(images.includes(get('flux-3-image-klein')));
+  assert.equal(videos.length + language.length + images.length, data.releases.length);
+  assert.equal(new Set([...videos, ...language, ...images].map(entry => entry.id)).size, data.releases.length);
+  assert.equal(context.window.MODEL_ATLAS_PRICES.entries['flux-3-image-klein'], undefined, 'Per-image prices must not be displayed as per-token prices');
+  assert.equal(context.window.MODEL_ATLAS_SCORES.entries['flux-3-image-klein'], undefined, 'Text benchmark results must not be assigned to image models');
   for (const entry of videos) {
     assert.ok(entry.tags.includes('视频生成'), entry.id);
     assert.ok(specs.entries[entry.id].variants.every(variant => variant.output.includes('video')), entry.id);
@@ -33,7 +37,7 @@ test('video generation is separate from multimodal understanding and text input'
 });
 
 test('task filters round-trip, combine with access and input, and keep chart counts consistent', () => {
-  for (const query of ['?task=video-generation', '?task=video-generation&openness=open', '?task=video-generation&category=text', '?task=video-generation&companies=bytedance&year=2026&month=07', '?task=language&category=multimodal']) {
+  for (const query of ['?task=image-generation', '?task=image-generation&openness=open', '?task=image-generation&category=text', '?task=video-generation', '?task=video-generation&openness=open', '?task=video-generation&category=text', '?task=video-generation&companies=bytedance&year=2026&month=07', '?task=language&category=multimodal']) {
     const state = filters.read(query);
     assert.deepEqual(filters.read(filters.serialize(state, 'en')), state);
     assert.ok(filters.hasFilters(state));
