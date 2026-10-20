@@ -1,8 +1,8 @@
 // Primary-source history of AI methods, computing frameworks, and deployment.
 (() => {
   const data = {
-  "asOf": "2026-10-11",
-  "updatedAt": "2026-10-12",
+  "asOf": "2026-10-20",
+  "updatedAt": "2026-10-20",
   "accessFilter": false,
   "companies": [
     {
@@ -39,7 +39,7 @@
       "id": "deepseek",
       "name": "DeepSeek",
       "nameEn": "DeepSeek",
-      "aliases": "深度求索"
+      "aliases": "深度求索 FlashMLA DeepEP DeepGEMM DeepInfer deepseek-recipe"
     },
     {
       "id": "amd",
@@ -214,6 +214,12 @@
       "name": "Kubernetes",
       "nameEn": "Kubernetes",
       "aliases": "Kubernetes SIG Apps Agent Sandbox K8s"
+    },
+    {
+      "id": "llm-d",
+      "name": "llm-d",
+      "nameEn": "llm-d",
+      "aliases": "Red Hat IBM Google Cloud CoreWeave NVIDIA CNCF distributed inference"
     }
   ],
   "categories": {
@@ -2246,10 +2252,203 @@
         "details": "OpenShell is an open-source runtime in NVIDIA Agent Toolkit that can host OpenClaw, Claude Code, and Codex. Its sandbox and policy engine control resource access while inference routing governs data flow. The execution boundary does not by itself guarantee safe agent behavior.",
         "dateNote": "Uses NVIDIA’s GTC 2026 technical announcement, separately from the higher-level NemoClaw integration and later OpenShell releases."
       }
+    },
+    {
+      "id": "llm-d",
+      "date": "2025-05-20",
+      "name": "llm-d",
+      "company": "llm-d",
+      "category": "deployment",
+      "kind": "announcement",
+      "summary": "结合 Kubernetes 与推理引擎，通过缓存感知路由和预填充、解码分离管理分布式推理。",
+      "details": "llm-d 由 Red Hat、Google Cloud、IBM Research、CoreWeave 与 NVIDIA 等共同发起，在模型服务引擎之上协调路由、KV 缓存与集群资源。2026 年 10 月 20 日发布的 1.0 将路由配置接口稳定为 v1，并加入多租户服务质量控制、协调滚动升级和面向智能体的会话调度。",
+      "dateNote": "采用项目公开公告日期；1.0 于 2026 年 10 月 20 日发布。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "url": "https://llm-d.ai/blog/llm-d-announce",
+          "title": "项目公开公告",
+          "titleEn": "Project announcement"
+        },
+        {
+          "url": "https://github.com/llm-d/llm-d/releases/tag/v1.0.0",
+          "title": "1.0 发布说明",
+          "titleEn": "1.0 release notes"
+        },
+        {
+          "url": "https://aws.amazon.com/blogs/machine-learning/introducing-disaggregated-inference-on-aws-powered-by-llm-d/",
+          "title": "AWS 部署方案",
+          "titleEn": "AWS deployment guide"
+        }
+      ],
+      "en": {
+        "summary": "Kubernetes and inference engines coordinate distributed serving through cache-aware routing and prefill/decode disaggregation.",
+        "details": "Founded by Red Hat, Google Cloud, IBM Research, CoreWeave, NVIDIA and others, llm-d coordinates routing, KV caches and cluster resources above model-serving engines. Version 1.0, released on October 20, 2026, stabilizes the router configuration API as v1 and adds multi-tenant quality-of-service controls, coordinated rolling upgrades and agent-aware session scheduling.",
+        "dateNote": "Dated to the public project announcement; version 1.0 was released on October 20, 2026."
+      }
+    },
+    {
+      "id": "flashmla",
+      "date": "2025-02-24",
+      "name": "FlashMLA",
+      "company": "deepseek",
+      "category": "deployment",
+      "kind": "release",
+      "summary": "针对 MLA 解码优化 GPU 内核，支持可变长度序列与分页 KV 缓存。",
+      "details": "首版面向 NVIDIA Hopper GPU，支持 BF16，优化多头潜在注意力的解码执行。它是 MLA 的高效实现，不是新的模型或注意力架构。后续稀疏注意力内核被 vLLM 用于 DeepSeek-V3.2-Exp 部署。",
+      "dateNote": "采用开源周正式公开日期，不采用更早的内部初始提交时间。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "url": "https://github.com/deepseek-ai/FlashMLA/blob/414a2f3eedeb5ad3c4a6e89d8641e059519cacc9/README.md",
+          "title": "首版代码说明",
+          "titleEn": "Initial README"
+        },
+        {
+          "url": "https://www.ithome.com/0/833/112.htm",
+          "title": "首发报道 · IT之家",
+          "titleEn": "Launch report · IT Home",
+          "type": "reporting"
+        },
+        {
+          "url": "https://vllm-project.github.io/2025/09/29/deepseek-v3-2.html",
+          "title": "vLLM 集成记录",
+          "titleEn": "vLLM integration"
+        }
+      ],
+      "en": {
+        "summary": "GPU kernels optimize MLA decoding for variable-length sequences and paged KV caches.",
+        "details": "The initial release targets NVIDIA Hopper GPUs with BF16 support for multi-head latent attention decoding. It implements MLA efficiently rather than introducing a new model or attention architecture. Later sparse-attention kernels were integrated into vLLM for serving DeepSeek-V3.2-Exp.",
+        "dateNote": "Dated to the public Open Source Week launch, rather than an earlier internal initial commit."
+      }
+    },
+    {
+      "id": "deepep",
+      "date": "2025-02-25",
+      "name": "DeepEP",
+      "company": "deepseek",
+      "category": "frameworks",
+      "kind": "release",
+      "summary": "面向 MoE 专家并行，提供高吞吐与低延迟的 GPU 全到全通信。",
+      "details": "DeepEP 为专家派发和结果合并提供通信内核，结合节点内 NVLink 与跨节点 RDMA，并区分训练、预填充和解码的吞吐及延迟需求。vLLM 与 SGLang 已将其用于大规模专家并行推理。",
+      "dateNote": "采用开源周正式公开日期，不采用更早的内部初始提交时间。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "url": "https://github.com/deepseek-ai/DeepEP/blob/ebfe47e46fa86a5b41be96c326a92f62ed6721da/README.md",
+          "title": "首版代码说明",
+          "titleEn": "Initial README"
+        },
+        {
+          "url": "https://www.ithome.com/0/833/413.htm",
+          "title": "首发报道 · IT之家",
+          "titleEn": "Launch report · IT Home",
+          "type": "reporting"
+        },
+        {
+          "url": "https://vllm.ai/blog/2025-12-17-large-scale-serving",
+          "title": "vLLM 集成记录",
+          "titleEn": "vLLM integration"
+        },
+        {
+          "url": "https://www.lmsys.org/blog/2025-05-05-large-scale-ep/",
+          "title": "SGLang 部署记录",
+          "titleEn": "SGLang deployment"
+        }
+      ],
+      "en": {
+        "summary": "High-throughput and low-latency GPU all-to-all communication supports MoE expert parallelism.",
+        "details": "DeepEP provides communication kernels for expert dispatch and result combination, using NVLink within nodes and RDMA across nodes. Separate paths address throughput needs during training and prefill and latency during decoding. vLLM and SGLang integrate it for large-scale expert-parallel serving.",
+        "dateNote": "Dated to the public Open Source Week launch, rather than an earlier internal initial commit."
+      }
+    },
+    {
+      "id": "deepgemm",
+      "date": "2025-02-26",
+      "name": "DeepGEMM",
+      "company": "deepseek",
+      "category": "frameworks",
+      "kind": "release",
+      "summary": "提供细粒度缩放的 FP8 矩阵乘法内核，覆盖稠密计算与 MoE 分组计算。",
+      "details": "首版面向 NVIDIA Hopper GPU，使用即时编译生成通用矩阵乘法内核，支持普通 GEMM 与 MoE 分组 GEMM。后续由 vLLM 和 SGLang 集成，成为低精度大模型推理的计算组件之一。",
+      "dateNote": "采用开源周正式公开日期，不采用更早的内部初始提交时间。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "url": "https://github.com/deepseek-ai/DeepGEMM/blob/a6d97a1c1b48a7a9d7994d0e155ee6f11d0a3f07/README.md",
+          "title": "首版代码说明",
+          "titleEn": "Initial README"
+        },
+        {
+          "url": "https://www.ithome.com/0/833/664.htm",
+          "title": "首发报道 · IT之家",
+          "titleEn": "Launch report · IT Home",
+          "type": "reporting"
+        },
+        {
+          "url": "https://vllm.ai/blog/2025-12-17-large-scale-serving",
+          "title": "vLLM 集成记录",
+          "titleEn": "vLLM integration"
+        },
+        {
+          "url": "https://www.lmsys.org/blog/2025-05-05-large-scale-ep/",
+          "title": "SGLang 部署记录",
+          "titleEn": "SGLang deployment"
+        }
+      ],
+      "en": {
+        "summary": "FP8 matrix-multiplication kernels with fine-grained scaling support dense and grouped MoE computation.",
+        "details": "The initial release targets NVIDIA Hopper GPUs and uses just-in-time compilation for standard and grouped MoE GEMM kernels. Later integration into vLLM and SGLang established it as a compute component for low-precision large-model inference.",
+        "dateNote": "Dated to the public Open Source Week launch, rather than an earlier internal initial commit."
+      }
+    },
+    {
+      "id": "deepinfer",
+      "date": "2026-10-20",
+      "name": "DeepInfer",
+      "company": "deepseek",
+      "category": "deployment",
+      "kind": "release",
+      "milestone": false,
+      "tags": [],
+      "searchAliases": [
+        "deepseek-recipe",
+        "DeepSeek inference framework"
+      ],
+      "summary": "开放支撑 DeepSeek 大规模服务的推理框架核心，支持分布式并行、推测解码和结构化输出。",
+      "details": "首版面向 DeepSeek V4.1 Flash，支持 NVIDIA SM100 GPU 与华为昇腾 950 NPU，采用 Apache 2.0 许可。配套的 deepseek-recipe 以 MIT 许可提供请求格式转换与 token 编解码。发布包提供离线推理核心；完整在线服务还需 KV 缓存系统、分离部署和负载均衡组件。",
+      "dateNote": "采用 2026 年 10 月 20 日公开开源公告日期，并与官方仓库同日的初始提交交叉核对。",
+      "sources": [
+        {
+          "title": "DeepSeek · 推理框架与发布范围",
+          "titleEn": "DeepSeek: Inference framework and release scope",
+          "url": "https://github.com/deepseek-ai/DeepInfer"
+        },
+        {
+          "title": "DeepSeek · API 编解码组件",
+          "titleEn": "DeepSeek: API encoding and decoding components",
+          "url": "https://github.com/deepseek-ai/deepseek-recipe"
+        },
+        {
+          "title": "IT之家 · 开源公告与日期交叉核验",
+          "titleEn": "IT Home: Open-source announcement and date corroboration",
+          "type": "reporting",
+          "url": "https://www.ithome.com/1/015/429.htm"
+        }
+      ],
+      "en": {
+        "summary": "Releases the inference core behind DeepSeek’s large-scale services, with distributed parallelism, speculative decoding and structured outputs.",
+        "details": "The initial release supports DeepSeek V4.1 Flash on NVIDIA SM100 GPUs and Huawei Ascend 950 NPUs under Apache 2.0. The accompanying MIT-licensed deepseek-recipe handles API-format conversion and token encoding and decoding. The release provides offline inference; a complete online service also needs a KV cache system, disaggregated deployment and load balancing.",
+        "dateNote": "Uses the October 20, 2026 public open-source announcement, cross-checked against the official repository’s initial commit on the same date."
+      }
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-11",
+    "checkedAt": "2026-10-20",
     "scope": "算法、计算框架、推理部署与容器沙箱中具有经典性、代表性或影响力的公开节点。",
     "method": "以原始论文、项目公告与发布记录核对日期，区分预览、正式可用和后续更新；不逐条收录常规软件版本。",
     "references": []

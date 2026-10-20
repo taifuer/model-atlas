@@ -67,3 +67,8 @@ Official website and profile marks above were retrieved on 2026-10-11 for identi
 ## Image model foundations · 2026-10-19
 
 - `stability-color.svg`, `midjourney.svg`: copied unchanged from `@lobehub/icons-static-svg` 1.95.1, MIT (see `LICENSE-LOBEHUB.txt`). Used to identify Stability AI and Midjourney.
+
+## October 20, 2026 additions
+
+- `inception.svg`: copied unchanged from `@lobehub/icons-static-svg` 1.95.1, MIT (see `LICENSE-LOBEHUB.txt`).
+- `llm-d.png`: the [official llm-d GitHub organization's profile mark](https://github.com/llm-d.png?size=192), retrieved unchanged at 192 px. Used to identify the project; the mark remains its owner's property.

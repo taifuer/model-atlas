@@ -1653,6 +1653,26 @@
         "https://arxiv.org/abs/2509.20427",
         "https://artificialanalysis.ai/downloads/state-of-ai/2025/Q3-2025-Artificial-Analysis-State-of-AI-Highlights-Report.pdf"
       ]
+    },
+    "minimax-m3-1-flash": {
+      "checkedAt": "2026-10-20",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://platform.minimax.io/docs/guides/text-generation"
+      ]
+    },
+    "mercury-3": {
+      "checkedAt": "2026-10-20",
+      "category": "text",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://docs.inceptionlabs.ai/get-started/models"
+      ]
     }
   }
 };

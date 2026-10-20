@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
-  "asOf": "2026-10-19",
-  "updatedAt": "2026-10-19",
+  "asOf": "2026-10-20",
+  "updatedAt": "2026-10-20",
   "companies": [
     {
       "id": "anthropic",
@@ -12,6 +12,11 @@ window.AGENT_ATLAS = {
       "id": "openai",
       "name": "OpenAI",
       "aliases": "Codex ChatGPT Operator dots"
+    },
+    {
+      "id": "xai",
+      "name": "xAI",
+      "aliases": "Grok SpaceXAI"
     },
     {
       "id": "meta",
@@ -355,7 +360,7 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "preview",
       "summary": "在沙盒中使用编辑器、终端和浏览器，规划并执行软件工程任务。",
-      "details": "首发为早期访问阶段，用户可查看进度并参与协作。",
+      "details": "首发为早期访问阶段，用户可查看进度并参与协作。2026 年 10 月 19 日，Devin Oncall 向所有组织正式开放，可接收 Slack、Teams 与 PagerDuty 的事件，结合代码、遥测和运行手册调查故障并维护事件报告。",
       "dateNote": "",
       "tags": [
         "编程",
@@ -366,11 +371,16 @@ window.AGENT_ATLAS = {
         {
           "title": "官方 · 发布记录",
           "url": "https://cognition.com/blog/introducing-devin"
+        },
+        {
+          "title": "Cognition · Devin 版本日志",
+          "titleEn": "Cognition · Devin release notes",
+          "url": "https://docs.devin.ai/release-notes/overview#october-19-2026"
         }
       ],
       "en": {
         "summary": "A sandboxed agent plans engineering tasks using an editor, terminal, and browser.",
-        "details": "The first announcement offered early access, with progress reporting and user collaboration.",
+        "details": "The first announcement offered early access, with progress reporting and user collaboration. On October 19, 2026, Devin Oncall became generally available to all organizations, investigating events from Slack, Teams and PagerDuty using code, telemetry and runbooks and maintaining incident reports.",
         "dateNote": ""
       }
     },
@@ -1851,6 +1861,77 @@ window.AGENT_ATLAS = {
       }
     },
     {
+      "id": "replit-agent-4",
+      "date": "2026-03-11",
+      "name": "Replit Agent 4",
+      "company": "replit",
+      "category": "coding",
+      "kind": "release",
+      "summary": "将应用开发扩展为共享画布和并行任务，支持多人在同一项目中协作。",
+      "details": "引入设计画布、隔离的并行任务及 Agent 辅助合并，可在同一项目中创建多种应用与内容。发布时并行任务面向 Pro 与 Enterprise，并向 Core 用户限时开放；部分新工作流要求新建项目。",
+      "dateNote": "采用 3 月 11 日官方发布公告日期；3 月 19 日的版本对比文章是后续说明。",
+      "tags": [
+        "编程",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Replit · Agent 4 发布公告",
+          "titleEn": "Replit · Agent 4 announcement",
+          "url": "https://replit.com/blog/introducing-agent-4-built-for-creativity"
+        },
+        {
+          "title": "Replit · Agent 3 与 Agent 4 对比",
+          "titleEn": "Replit · Changes from Agent 3 to Agent 4",
+          "url": "https://replit.com/blog/whats-changed-agent3-to-agent4"
+        }
+      ],
+      "en": {
+        "summary": "App building expands into a shared design canvas and parallel tasks for teams working in one project.",
+        "details": "Introduces a design canvas, isolated parallel tasks and agent-assisted merging, with multiple apps and artifacts in one project. At launch, parallel execution was offered to Pro and Enterprise, with temporary Core access; some new workflows required new projects.",
+        "dateNote": "Uses the March 11 official launch announcement. The March 19 comparison article explains the changes after launch."
+      }
+    },
+    {
+      "id": "grok-build",
+      "date": "2026-05-25",
+      "name": "Grok Build",
+      "company": "xai",
+      "category": "coding",
+      "kind": "preview",
+      "summary": "终端编程 Agent，支持计划审阅、并行子代理和工作树隔离。",
+      "details": "面向 SuperGrok 与 X Premium Plus 订阅用户发布早期测试版，提供非交互运行及 ACP 接入。7 月 15 日开放 Rust 编写的 Agent 运行时、工具、终端界面与扩展系统源码，可连接本地推理服务。",
+      "dateNote": "记录官方 5 月 25 日面向上述订阅用户的早期测试版公告；7 月 15 日是源码开放日期，不是工具首发日。",
+      "tags": [
+        "编程",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "xAI · Grok Build 预览公告",
+          "titleEn": "xAI · Grok Build early-beta announcement",
+          "url": "https://x.ai/news/grok-build-cli"
+        },
+        {
+          "title": "xAI · Grok Build 开源公告",
+          "titleEn": "xAI · Grok Build source-release announcement",
+          "url": "https://x.ai/news/grok-build-open-source"
+        },
+        {
+          "title": "xAI · Grok Build 官方源码",
+          "titleEn": "xAI · Grok Build official source code",
+          "url": "https://github.com/xai-org/grok-build"
+        }
+      ],
+      "en": {
+        "summary": "A terminal coding agent supports plan review, parallel subagents and isolated worktrees.",
+        "details": "An early beta for SuperGrok and X Premium Plus subscribers offered headless execution and ACP integration. On July 15, the Rust agent runtime, tools, terminal interface and extension system were open-sourced, with support for local inference.",
+        "dateNote": "Records the official May 25 early-beta announcement for these subscription plans. July 15 marks the source release, not the original tool launch."
+      }
+    },
+    {
       "id": "deepseek-harness",
       "date": "2026-08-13",
       "name": "DeepSeek Harness",
@@ -2110,7 +2191,7 @@ window.AGENT_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-17",
+    "checkedAt": "2026-10-20",
     "scope": "编程 Agent、通用 Agent、Harness 及重要框架与协议的主要公开节点。",
     "method": "以原始公告、维护者文章与论文核对日期，区分预览、论文公开、改名和正式发布；按经典性、代表性或影响力筛选，不逐条收录常规版本更新。",
     "references": []

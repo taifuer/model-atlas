@@ -1626,6 +1626,51 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
           ]
         }
       ]
+    },
+    "minimax-m3-1-flash": {
+      "checkedAt": "2026-10-20",
+      "variants": [
+        {
+          "name": "MiniMax-M3.1-Flash",
+          "currency": "USD",
+          "sources": [
+            "https://platform.minimax.io/docs/pricing/overview",
+            "https://www.minimax.io/blog/minimax-m31f"
+          ],
+          "tiers": [
+            {
+              "input": 0.15,
+              "output": 0.6,
+              "label": "标准价格",
+              "labelEn": "Standard pricing"
+            }
+          ]
+        }
+      ]
+    },
+    "mercury-3": {
+      "checkedAt": "2026-10-20",
+      "variants": [
+        {
+          "name": "mercury-3",
+          "currency": "USD",
+          "sources": [
+            "https://docs.inceptionlabs.ai/get-started/models",
+            "https://www.inceptionlabs.ai/blog/introducing-mercury-3"
+          ],
+          "promotional": true,
+          "tiers": [
+            {
+              "input": 0.1,
+              "output": 0.35,
+              "label": "首发优惠",
+              "labelEn": "Launch promotion"
+            }
+          ],
+          "note": "首发五折优惠；常规价为输入 $0.20、缓存输入 $0.02、输出 $0.70 / 百万 tokens。截至核对日，官方未公布优惠结束日期。",
+          "noteEn": "Launch promotion at 50% off. Regular rates are $0.20 input, $0.02 cached input and $0.70 output per million tokens. No end date was published as of this review."
+        }
+      ]
     }
   }
 });

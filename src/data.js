@@ -5,6 +5,7 @@
  */
 window.MODEL_ATLAS = (() => {
   const companies = [
+    {"id": "inception", "name": "Inception", "nameEn": "Inception", "aliases": "Inception Labs Mercury 扩散语言模型", "color": "#698b9b"},
     {"id": "stability", "name": "Stability AI", "nameEn": "Stability AI", "aliases": "Stable Diffusion SDXL 稳定扩散 CompVis", "color": "#887b9e"},
     {"id": "midjourney", "name": "Midjourney", "nameEn": "Midjourney", "aliases": "Midjourney MJ 图像生成", "color": "#758879"},
     {"id": "liquid", "name": "Liquid AI", "nameEn": "Liquid AI", "aliases": "LiquidAI LFM 液态人工智能", "color": "#65879a"},
@@ -42,7 +43,7 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    "checkedAt": "2026-10-19",
+    "checkedAt": "2026-10-20",
     "source": "https://artificialanalysis.ai/leaderboards/models",
     "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
     "metric": "Artificial Analysis Intelligence Index",
@@ -105,6 +106,11 @@ window.MODEL_ATLAS = (() => {
         "score": 44
       },
       {
+        "company": "minimax",
+        "model": "MiniMax-M3.1-Flash",
+        "score": 43
+      },
+      {
         "company": "inclusionai",
         "model": "Ling 3.1 Flash",
         "score": 41
@@ -118,11 +124,6 @@ window.MODEL_ATLAS = (() => {
         "company": "reflection",
         "model": "Beam 1.0",
         "score": 30
-      },
-      {
-        "company": "minimax",
-        "model": "MiniMax-M3",
-        "score": 29
       },
       {
         "company": "nvidia",
@@ -145,6 +146,11 @@ window.MODEL_ATLAS = (() => {
         "model": "Nova 2.0 Pro Preview (medium)",
         "score": 14,
         "estimated": true
+      },
+      {
+        "company": "inception",
+        "model": "Mercury 2.5",
+        "score": 12
       },
       {
         "company": "liquid",
@@ -183,6 +189,82 @@ window.MODEL_ATLAS = (() => {
     return { id, date, name, company, kind, summary, tags, sources: Array.isArray(sources) ? sources : [sources], milestone, details, dateNote };
   }
   const releases = [
+    {
+      "id": "minimax-m3-1-flash",
+      "date": "2026-10-19",
+      "name": "MiniMax M3.1 Flash",
+      "company": "minimax",
+      "kind": "release",
+      "milestone": false,
+      "summary": "面向编程、电脑操作和多步骤任务的多模态推理模型，提供百万级上下文与可调思考深度。",
+      "details": "支持文本、图像和视频输入，输出文本，可通过 MiniMax API、M Plan 和 MiniMax Code 使用。正式版强化工具调用与长程任务执行，提供五档思考深度。官方公告明确权重将于后续开放；截至核对日，仍按托管模型记录。",
+      "dateNote": "采用官方公告与发布日志共同标注的 2026 年 10 月 19 日正式版发布日期，区别于此前通过订阅计划提供的 Preview；不将计划开放权重记作已开源。",
+      "tags": [
+        "多模态",
+        "智能体",
+        "长上下文"
+      ],
+      "sources": [
+        {
+          "title": "MiniMax · 官方发布",
+          "titleEn": "MiniMax: Official announcement",
+          "url": "https://www.minimax.io/blog/minimax-m31f"
+        },
+        {
+          "title": "MiniMax · 发布日志",
+          "titleEn": "MiniMax: Release notes",
+          "url": "https://platform.minimax.io/docs/release-notes/models"
+        },
+        {
+          "title": "MiniMax · 模型文档",
+          "titleEn": "MiniMax: Model documentation",
+          "url": "https://platform.minimax.io/docs/guides/text-generation"
+        }
+      ],
+      "searchAliases": [
+        "MiniMax-M3.1-Flash",
+        "MiniMax M3.1 Flash Preview",
+        "Space Bunny"
+      ]
+    },
+    {
+      "id": "mercury-3",
+      "date": "2026-10-19",
+      "name": "Mercury 3",
+      "company": "inception",
+      "kind": "release",
+      "milestone": false,
+      "summary": "以扩散方式生成文本的语言模型，将上下文扩展至百万级，并支持推理、工具调用和结构化输出。",
+      "details": "通过并行去噪逐步生成文本，用于低延迟对话、编程和智能体任务。提供 OpenAI 兼容 API，支持四档推理深度，最大输出 131,072 tokens。发布时可通过 Inception、OpenRouter、Baseten 和 Vercel 使用；该型号仅接受和输出文本。",
+      "dateNote": "采用 Inception 官方公告的 2026 年 10 月 19 日；当日开放 API，区别于此前的 Mercury、Mercury 2 和 2.5。",
+      "tags": [
+        "扩散模型",
+        "推理",
+        "长上下文"
+      ],
+      "sources": [
+        {
+          "title": "Inception · 官方发布",
+          "titleEn": "Inception: Official announcement",
+          "url": "https://www.inceptionlabs.ai/blog/introducing-mercury-3"
+        },
+        {
+          "title": "Inception · 模型与价格",
+          "titleEn": "Inception: Models and pricing",
+          "url": "https://docs.inceptionlabs.ai/get-started/models"
+        },
+        {
+          "title": "Inception · 扩散生成说明",
+          "titleEn": "Inception: Streaming and diffusion",
+          "url": "https://docs.inceptionlabs.ai/capabilities/streaming"
+        }
+      ],
+      "searchAliases": [
+        "mercury-3",
+        "Mercury3"
+      ]
+    },
+
     {
       "id": "dall-e",
       "date": "2021-01-05",
@@ -1479,7 +1561,7 @@ window.MODEL_ATLAS = (() => {
     },
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-10-19',
+    checkedAt: '2026-10-20',
     scope: '主流语言、多模态、图像与视频生成模型，兼顾具有历史影响的架构研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
@@ -1497,5 +1579,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-10-19', updatedAt: '2026-10-19', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-10-20', updatedAt: '2026-10-20', companies, companyRanking, kinds, themes, releases, coverage });
 })();

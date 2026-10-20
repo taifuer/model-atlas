@@ -840,6 +840,46 @@
     "noteEn": "Available through products and APIs; model weights are not public."
   }
 });
+  Object.assign(models, {
+  "minimax-m3-1-flash": {
+    "checkedAt": "2026-10-20",
+    "status": "closed",
+    "source": "https://www.minimax.io/blog/minimax-m31f",
+    "note": "通过 API、M Plan 和 MiniMax Code 提供；官方称权重将稍后发布，截至 2026 年 10 月 20 日未确认公开权重。",
+    "noteEn": "Available through the API, M Plan and MiniMax Code. The announcement says weights will follow; no public weights were confirmed as of October 20, 2026."
+  },
+  "mercury-3": {
+    "checkedAt": "2026-10-20",
+    "status": "closed",
+    "source": "https://docs.inceptionlabs.ai/get-started/models",
+    "note": "通过托管 API 提供，未发布可下载权重。",
+    "noteEn": "Available through hosted APIs; downloadable weights have not been released."
+  }
+});
+  Object.assign(agents, {
+  "grok-build": {
+    "status": "open",
+    "checkedAt": "2026-10-20",
+    "source": "https://github.com/xai-org/grok-build/blob/main/LICENSE",
+    "note": "工具源码于 2026 年 7 月 15 日开放，采用 Apache-2.0；连接的模型和托管服务适用各自条款。",
+    "noteEn": "The tool source was opened on July 15, 2026 under Apache-2.0. Connected models and hosted services retain their own terms.",
+    "licenses": [
+      {
+        "object": "工具代码",
+        "objectEn": "Tool code",
+        "name": "Apache 2.0",
+        "source": "https://github.com/xai-org/grok-build/blob/main/LICENSE"
+      }
+    ]
+  },
+  "replit-agent-4": {
+    "status": "closed",
+    "checkedAt": "2026-10-20",
+    "source": "https://replit.com/blog/introducing-agent-4-built-for-creativity",
+    "note": "Replit 托管商业产品；可访问生成的项目代码不代表 Agent 平台源码开放。",
+    "noteEn": "A hosted Replit product. Access to generated project code does not make the agent platform open source."
+  }
+});
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

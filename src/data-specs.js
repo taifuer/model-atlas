@@ -3797,6 +3797,47 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           "noteEn": "Supports output up to 4K, multiple reference images, and single- or multi-image editing."
         }
       ]
+    },
+    "minimax-m3-1-flash": {
+      "checkedAt": "2026-10-20",
+      "variants": [
+        {
+          "name": "MiniMax-M3.1-Flash",
+          "basis": "api",
+          "contextTokens": 1000000,
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://platform.minimax.io/docs/guides/text-generation"
+          ]
+        }
+      ]
+    },
+    "mercury-3": {
+      "checkedAt": "2026-10-20",
+      "variants": [
+        {
+          "name": "mercury-3",
+          "basis": "api",
+          "contextTokens": "1M",
+          "outputTokens": 131072,
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://docs.inceptionlabs.ai/get-started/models"
+          ]
+        }
+      ]
     }
   }
 });

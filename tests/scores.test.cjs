@@ -29,8 +29,8 @@ test('published scores exactly match dated public source snapshots and known rel
     assert.equal(snapshot.records.length, Object.values(scores.entries).filter(e => e[key]).length);
   }
   assert.equal(scores.entries['gemini-4-argon'].arena.preliminary, true);
-  assert.equal(scores.benchmarks.aa.checkedAt, '2026-10-19');
-  assert.equal(scores.checkedAt, '2026-10-19');
+  assert.equal(scores.benchmarks.aa.checkedAt, '2026-10-20');
+  assert.equal(scores.checkedAt, '2026-10-20');
   assert.equal(scores.benchmarks.arena.checkedAt, '2026-10-19');
   assert.equal(scores.benchmarks.arena.publishedAt, '2026-10-15', 'Dataset retrieval date is not the leaderboard publication date');
   assert.equal(scores.entries['muse-wonder'].aa.model, 'Muse Wonder Full (max)');

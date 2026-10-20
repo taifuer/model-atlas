@@ -1117,6 +1117,16 @@ window.MODEL_ATLAS_EN = {
     "summary": "Unifies image generation and editing, with multi-image references, batch creation and output up to 4K.",
     "details": "Accepts text, images or combined inputs for text-to-image generation, single- and multi-image editing, and image composition. It launched through Jimeng, Doubao and Volcano Engine, with third-party inference integrations also available. The model is offered as a hosted service without public weights.",
     "dateNote": "Uses September 9, 2025 from the official Seed announcement, rather than the September 24 technical report or third-party integration dates."
+  },
+  "minimax-m3-1-flash": {
+    "summary": "A multimodal reasoning model for coding, computer use and multistep tasks, with a million-token context and adjustable reasoning effort.",
+    "details": "Accepts text, images and video and returns text through the MiniMax API, M Plan and MiniMax Code. The production release focuses on tool use and long-running tasks, with five reasoning-effort levels. The launch announcement says weights will be released later; it is recorded as a hosted model as of this review.",
+    "dateNote": "Uses October 19, 2026, the production-release date in the official announcement and release notes, distinct from the earlier subscription preview. Planned weight release is not treated as completed."
+  },
+  "mercury-3": {
+    "summary": "A diffusion language model with a million-token context, reasoning, tool calling and structured outputs.",
+    "details": "Generates text through iterative parallel denoising for low-latency chat, coding and agent tasks. Its OpenAI-compatible API supports four reasoning-effort levels and up to 131,072 output tokens. It launched through Inception, OpenRouter, Baseten and Vercel. This model accepts and returns text only.",
+    "dateNote": "Uses the official Inception announcement dated October 19, 2026, when the API became available. This is distinct from the earlier Mercury, Mercury 2 and 2.5 releases."
   }
 };
 window.ATLAS_TAGS_EN = {
