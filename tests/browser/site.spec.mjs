@@ -33,7 +33,9 @@ for (const language of ['zh', 'en']) {
   test.describe(language, () => {
     test('filters, detail history, milestones and compact view preserve the reading state', async ({ page }) => {
       await ready(page, route(language));
-      await page.locator('[data-company-filter="openai"]').click();
+      const organization = page.locator('[data-company-filter="openai"]');
+      if (!(await organization.isVisible())) await page.locator('#company-disclosure').click();
+      await organization.click();
       await page.locator('#year-select').selectOption('2024');
       const filteredURL = page.url();
       const filteredIDs = await page.locator('.release-card').evaluateAll(cards => cards.map(card => card.id));
