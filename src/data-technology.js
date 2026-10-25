@@ -1,8 +1,8 @@
 // Primary-source history of AI methods, computing frameworks, and deployment.
 (() => {
   const data = {
-  "asOf": "2026-10-20",
-  "updatedAt": "2026-10-20",
+  "asOf": "2026-10-25",
+  "updatedAt": "2026-10-25",
   "accessFilter": false,
   "companies": [
     {
@@ -935,7 +935,7 @@
       "category": "infrastructure",
       "kind": "preview",
       "summary": "以 Rust 构建面向云工作负载的轻量虚拟机监控器。",
-      "details": "Cloud Hypervisor 提供底层虚拟机运行能力，可作为 Kata Containers 的后端。Kubernetes Agent Sandbox 后来的 AKS 部署指南明确使用 Cloud Hypervisor 与 Kata 组成的隔离栈；它与上层智能体框架、沙箱服务接口各有分工。",
+      "details": "提供轻量虚拟机隔离，可作为 Kata Containers 后端。Kubernetes Agent Sandbox 的 AKS 指南使用该隔离栈。Google 于 2026 年 10 月 22 日披露，支撑 Gemini 的 Agent Compute Engine 也采用 Cloud Hypervisor 微型虚拟机；其面向客户的预览仍在后续计划中。",
       "dateNote": "采用官方 GitHub v0.1.0 预发布的时间。项目在 2019 年 5 月已公开，这不是首次宣布或稳定版发布。",
       "tags": [],
       "milestone": false,
@@ -959,11 +959,16 @@
           "title": "AWS · 早期项目报道",
           "titleEn": "AWS · Early project coverage",
           "url": "https://aws.amazon.com/blogs/opensource/firecracker-open-source-update-may-2019/"
+        },
+        {
+          "title": "Google Cloud · Agent Compute Engine 架构与可用性",
+          "titleEn": "Google Cloud · Agent Compute Engine architecture and availability",
+          "url": "https://cloud.google.com/blog/topics/ai-infrastructure/introducing-agent-compute-engine-and-expanded-agent-governance"
         }
       ],
       "en": {
         "summary": "A Rust-based virtual machine monitor provides a compact VM layer for modern cloud workloads.",
-        "details": "Cloud Hypervisor supplies the VM layer and can serve as a Kata Containers backend. Kubernetes Agent Sandbox later documents an AKS deployment using Cloud Hypervisor and Kata. It is distinct from an agent framework or a sandbox-service API.",
+        "details": "Provides lightweight VM isolation and can serve as a Kata Containers backend, as documented in Kubernetes Agent Sandbox’s AKS deployment guide. On October 22, 2026, Google disclosed that Agent Compute Engine, which already powers Gemini workloads, also uses Cloud Hypervisor microVMs. Customer preview access remains planned for later.",
         "dateNote": "Uses the official v0.1.0 pre-release timestamp. The project was already public in May 2019; this is not the first announcement or a stable release."
       }
     },
@@ -2231,7 +2236,7 @@
       "category": "infrastructure",
       "kind": "announcement",
       "summary": "在智能体进程之外执行文件、网络与模型访问策略，提供隔离运行环境。",
-      "details": "OpenShell 是 NVIDIA Agent Toolkit 中的开源运行时，可承载 OpenClaw、Claude Code、Codex 等智能体。沙箱与策略引擎控制资源访问，推理路由约束数据流向；它提供执行边界，不代表智能体行为本身已获安全保证。",
+      "details": "OpenShell 是 NVIDIA Agent Toolkit 中的开源运行时，可承载 OpenClaw、Claude Code、Codex 等智能体。沙箱、策略引擎与推理路由控制资源访问和数据流向。2026 年 10 月 21 日公布的参考架构进一步结合 Vera Rubin、Vera CPU 与运行 Sentry 的 BlueField-4 DPU，在进程之外执行监控和策略；执行边界不代表智能体行为本身已获安全保证。",
       "dateNote": "采用 NVIDIA 于 GTC 2026 发布的技术公告日期，不与 NemoClaw 的上层集成方案或后续 OpenShell 版本混为同一事件。",
       "tags": [],
       "milestone": false,
@@ -2245,11 +2250,16 @@
           "title": "NVIDIA · OpenShell 公开代码",
           "titleEn": "NVIDIA · OpenShell source repository",
           "url": "https://github.com/NVIDIA/OpenShell"
+        },
+        {
+          "title": "NVIDIA · OpenShell 参考架构",
+          "titleEn": "NVIDIA · OpenShell reference architecture",
+          "url": "https://nvidianews.nvidia.com/news/openshell-reference-architecture"
         }
       ],
       "en": {
         "summary": "Enforces file, network, and model-access policies outside the agent process within an isolated runtime.",
-        "details": "OpenShell is an open-source runtime in NVIDIA Agent Toolkit that can host OpenClaw, Claude Code, and Codex. Its sandbox and policy engine control resource access while inference routing governs data flow. The execution boundary does not by itself guarantee safe agent behavior.",
+        "details": "OpenShell is an open-source runtime in NVIDIA Agent Toolkit for agents including OpenClaw, Claude Code and Codex. Its sandbox, policy engine and inference routing govern resource access and data flow. The reference architecture announced October 21, 2026 adds Vera Rubin, Vera CPUs and BlueField-4 DPUs running Sentry for external monitoring and policy enforcement. These execution boundaries do not by themselves guarantee safe agent behavior.",
         "dateNote": "Uses NVIDIA’s GTC 2026 technical announcement, separately from the higher-level NemoClaw integration and later OpenShell releases."
       }
     },
@@ -2445,10 +2455,80 @@
         "details": "The initial release supports DeepSeek V4.1 Flash on NVIDIA SM100 GPUs and Huawei Ascend 950 NPUs under Apache 2.0. The accompanying MIT-licensed deepseek-recipe handles API-format conversion and token encoding and decoding. The release provides offline inference; a complete online service also needs a KV cache system, disaggregated deployment and load balancing.",
         "dateNote": "Uses the October 20, 2026 public open-source announcement, cross-checked against the official repository’s initial commit on the same date."
       }
+    },
+    {
+      "id": "torchtpu",
+      "date": "2026-10-20",
+      "name": "TorchTPU",
+      "company": "google",
+      "category": "frameworks",
+      "kind": "release",
+      "summary": "为 Google TPU 提供原生 PyTorch 后端，连接训练、推理与分布式工具。",
+      "details": "由 Google 与 Meta 的 PyTorch 团队共同开发，支持 eager 执行、torch.compile 和分布式接口，并接入 vLLM、SGLang、TorchTitan 与 Hugging Face。此次以 Apache 2.0 许可公开；官方介绍已用于部分 Google Cloud 客户的训练和推理，模型与算子覆盖仍持续完善。",
+      "dateNote": "采用 PyTorch 于 2026 年 10 月 20 日发布的开源公告；Google Cloud 于次日补充介绍，不以更早的内部研发或预告时间代替。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Google Cloud · 开源公告",
+          "titleEn": "Google Cloud · Open-source announcement",
+          "url": "https://cloud.google.com/blog/topics/ai-infrastructure/torchtpu-is-now-open-source-run-native-pytorch-on-tpus/"
+        },
+        {
+          "title": "PyTorch · TorchTPU 技术介绍",
+          "titleEn": "PyTorch · TorchTPU technical introduction",
+          "url": "https://pytorch.org/blog/introducing-torchtpu/"
+        },
+        {
+          "title": "Google · TorchTPU 代码与许可",
+          "titleEn": "Google · TorchTPU source and license",
+          "url": "https://github.com/google-pytorch/torch_tpu"
+        }
+      ],
+      "en": {
+        "summary": "A native PyTorch backend connects Google TPUs to training, serving and distributed tools.",
+        "details": "Developed by Google with Meta’s PyTorch team, TorchTPU supports eager execution, torch.compile and distributed APIs, with integrations for vLLM, SGLang, TorchTitan and Hugging Face. The Apache 2.0 release follows production use for training and inference at some Google Cloud customers, according to the project. Model and operator coverage continues to expand.",
+        "dateNote": "Uses PyTorch’s October 20, 2026 open-source announcement; Google Cloud published its follow-up the next day. Earlier internal development and previews are not used as the release date."
+      }
+    },
+    {
+      "id": "torchneuron",
+      "date": "2026-10-20",
+      "name": "TorchNeuron",
+      "company": "amazon",
+      "category": "frameworks",
+      "kind": "preview",
+      "summary": "将 Trainium 注册为原生 PyTorch 设备，支持训练与推理的标准开发接口。",
+      "details": "公开测试版支持 Trainium2 与 Trainium3，提供 eager 执行、torch.compile、分布式训练和 NKI 自定义算子，代码采用 Apache 2.0 许可。Hugging Face 的 Transformers、Diffusers 等库已原生接入。它与此前基于 PyTorch/XLA 的同名安装包区分，首版仍不支持动态与符号形状等功能。",
+      "dateNote": "技术介绍于 10 月 19 日发布；节点采用公告明确的 10 月 20 日公开测试日期，并核对公开仓库。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "PyTorch · TorchNeuron 公开测试公告",
+          "titleEn": "PyTorch · TorchNeuron public-beta announcement",
+          "url": "https://pytorch.org/blog/introducing-torchneuron-native-pytorch-backend-for-aws-trainium/"
+        },
+        {
+          "title": "AWS · TorchNeuron 代码与许可",
+          "titleEn": "AWS · TorchNeuron source and license",
+          "url": "https://github.com/aws-neuron/torch-neuronx"
+        },
+        {
+          "title": "Hugging Face · 原生库集成",
+          "titleEn": "Hugging Face · Native library integration",
+          "url": "https://huggingface.co/blog/hf-torchneuron"
+        }
+      ],
+      "en": {
+        "summary": "Trainium becomes a native PyTorch device with standard interfaces for training and inference.",
+        "details": "The public beta supports Trainium2 and Trainium3, eager execution, torch.compile, distributed training and custom NKI kernels under Apache 2.0. Hugging Face libraries including Transformers and Diffusers integrate it natively. This backend is distinct from the older PyTorch/XLA implementation distributed under the same package name. The first release does not support dynamic or symbolic shapes, among other gaps.",
+        "dateNote": "The technical introduction appeared October 19; this entry uses the stated October 20 public-beta date, cross-checked against the public repository."
+      }
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-20",
+    "checkedAt": "2026-10-25",
     "scope": "算法、计算框架、推理部署与容器沙箱中具有经典性、代表性或影响力的公开节点。",
     "method": "以原始论文、项目公告与发布记录核对日期，区分预览、正式可用和后续更新；不逐条收录常规软件版本。",
     "references": []

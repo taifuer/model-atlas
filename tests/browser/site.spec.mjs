@@ -139,7 +139,8 @@ for (const language of ['zh', 'en']) {
       await expect(page.locator('.price-condition').last()).toContainText('> 100K');
       await page.keyboard.press('Escape');
       const mistral = page.locator('#release-mistral-large-4-preview');
-      await expect(mistral.locator('[data-detail-section="pricing"]')).toContainText(language === 'en' ? 'Promo' : '优惠');
+      await expect(mistral.locator('[data-detail-section="pricing"]')).not.toContainText(language === 'en' ? 'Promo' : '优惠');
+      await expect(mistral.locator('[data-detail-section="pricing"]')).toContainText('1.36');
       await mistral.locator('.card-title button').click();
       await expect(page.locator('.dialog-meta')).toContainText(language === 'en' ? 'Preview' : '预览');
       await expect(page.locator('.dialog-meta')).toContainText(language === 'en' ? 'Closed source' : '闭源');

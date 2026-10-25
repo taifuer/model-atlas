@@ -72,3 +72,8 @@ Official website and profile marks above were retrieved on 2026-10-11 for identi
 
 - `inception.svg`: copied unchanged from `@lobehub/icons-static-svg` 1.95.1, MIT (see `LICENSE-LOBEHUB.txt`).
 - `llm-d.png`: the [official llm-d GitHub organization's profile mark](https://github.com/llm-d.png?size=192), retrieved unchanged at 192 px. Used to identify the project; the mark remains its owner's property.
+
+## October 25, 2026 additions
+
+- `canva.ico`: [Canva's official website favicon](https://static.canva.com/static/images/favicon-1.ico), retrieved unchanged on 2026-10-25. Used to identify Canva; the mark remains its owner's property.
+- `fal-color.svg`: copied unchanged from `@lobehub/icons-static-svg` 1.95.1, MIT (see `LICENSE-LOBEHUB.txt`).

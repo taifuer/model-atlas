@@ -35,26 +35,24 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       ]
     },
     "mistral-large-4-preview": {
-      "checkedAt": "2026-10-08",
+      "checkedAt": "2026-10-25",
       "variants": [
         {
           "name": "mistral-large-4",
-          "promotional": true,
           "currency": "USD",
           "tiers": [
             {
-              "input": 0.68,
-              "output": 2.09,
-              "label": "首发优惠",
-              "labelEn": "Launch promotion"
+              "input": 1.36,
+              "output": 4.18,
+              "label": "标准价格",
+              "labelEn": "Standard pricing"
             }
           ],
           "sources": [
-            "https://docs.mistral.ai/models/mistral-large-4-0",
-            "https://docs.mistral.ai/resources/changelogs"
+            "https://docs.mistral.ai/models/mistral-large"
           ],
-          "note": "发布日志说明首发两周五折。此处记录核对日的优惠价；页面列示的常规输入/输出价为每百万 tokens 1.36 / 4.18 美元，未标注确切优惠结束时间。",
-          "noteEn": "The changelog announces 50% off for two launch weeks. These are the promotional rates at the review date. Listed regular input/output rates are $1.36 / $4.18 per million tokens; no exact promotion end time is published."
+          "note": "核对日官方模型页列示常规价格；已移除之前的首发优惠。",
+          "noteEn": "The official model page lists regular rates at this review; the earlier launch promotion is no longer applied."
         }
       ]
     },
@@ -1649,7 +1647,7 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       ]
     },
     "mercury-3": {
-      "checkedAt": "2026-10-20",
+      "checkedAt": "2026-10-25",
       "variants": [
         {
           "name": "mercury-3",
@@ -1671,6 +1669,43 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
           "noteEn": "Launch promotion at 50% off. Regular rates are $0.20 input, $0.02 cached input and $0.70 output per million tokens. No end date was published as of this review."
         }
       ]
+    },
+    "kimi-k3-1-pro": {
+      "checkedAt": "2026-10-25",
+      "variants": [
+        {
+          "name": "kimi-k3.1-pro",
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 2,
+              "output": 10,
+              "label": "国际 API 标准价格",
+              "labelEn": "International API standard pricing"
+            }
+          ],
+          "sources": [
+            "https://platform.kimi.ai/docs/pricing/chat"
+          ]
+        },
+        {
+          "name": "kimi-k3.1-pro-highspeed",
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 4,
+              "output": 20,
+              "label": "国际 API 标准价格",
+              "labelEn": "International API standard pricing"
+            }
+          ],
+          "sources": [
+            "https://platform.kimi.ai/docs/pricing/chat"
+          ]
+        }
+      ],
+      "note": "采用国际站美元价格，未缓存文本输入与输出分别计费；缓存写入与读取另计，不与中国站人民币价格混用。",
+      "noteEn": "Uses international USD rates for uncached text input and output. Cache writes and reads have separate rates; these are not the Chinese-site CNY prices."
     }
   }
 });

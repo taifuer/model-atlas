@@ -1,7 +1,7 @@
 /* Curated hardware history. Event dates and configurations retain explicit source scope. */
 window.HARDWARE_ATLAS = {
-  "asOf": "2026-10-17",
-  "updatedAt": "2026-10-17",
+  "asOf": "2026-10-25",
+  "updatedAt": "2026-10-25",
   "accessFilter": false,
   "companies": [
     {
@@ -2378,12 +2378,17 @@ window.HARDWARE_ATLAS = {
       "category": "edge",
       "kind": "availability",
       "summary": "GB10 与统一内存进入桌面设备，面向本地模型开发。",
-      "details": "128 GB 为 CPU 与 GPU 共享的一致性内存。此处记录交付公告，与此前 Project DIGITS 和 DGX Spark 的产品预告区分。",
+      "details": "最初配置提供 128 GB CPU/GPU 共享的一致性内存。此处记录交付公告，与此前 Project DIGITS 和 DGX Spark 预告区分。NVIDIA 于 2026 年 10 月 21 日宣布合作伙伴从 10 月 23 日起推出 64 GB 配置，并说明手动配置可连接最多八台设备；八台 128 GB 设备的内存容量合计为 1 TB，不代表跨设备统一寻址。",
       "sources": [
         {
           "title": "NVIDIA · DGX Spark 交付公告",
           "titleEn": "NVIDIA · DGX Spark shipping announcement",
           "url": "https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-DGX-Spark-Arrives-for-Worlds-AI-Developers/default.aspx"
+        },
+        {
+          "title": "NVIDIA · 64 GB 配置与集群更新",
+          "titleEn": "NVIDIA · 64 GB configurations and clustering update",
+          "url": "https://blogs.nvidia.com/blog/local-ai-gtc-rtx-dgx-spark-station-sync/"
         }
       ],
       "tags": [],
@@ -2391,12 +2396,12 @@ window.HARDWARE_ATLAS = {
       "dateNote": "记录 10 月 13 日的交付公告；公告说明设备自 10 月 15 日起可订购。",
       "en": {
         "summary": "GB10 and unified memory move into a desktop system for local model development.",
-        "details": "128 GB is coherent memory shared by CPU and GPU. This entry records the shipping announcement separately from earlier Project DIGITS and DGX Spark previews.",
+        "details": "The original configuration provides 128 GB of coherent memory shared by CPU and GPU. This entry records the shipping announcement separately from earlier Project DIGITS and DGX Spark previews. NVIDIA’s October 21, 2026 update announces partner rollout of 64 GB configurations from October 23 and manual clusters of up to eight systems; eight 128 GB systems provide 1 TB of aggregate capacity, not a single unified address space.",
         "dateNote": "Records the October 13 shipping announcement, which states that ordering opens on October 15."
       },
       "hardware": {
-        "variant": "NVIDIA DGX Spark",
-        "checkedAt": "2026-09-30",
+        "variant": "NVIDIA DGX Spark · 128 GB configuration",
+        "checkedAt": "2026-10-25",
         "facts": [
           {
             "label": "统一内存",
@@ -2408,8 +2413,8 @@ window.HARDWARE_ATLAS = {
         "sources": [
           "https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-DGX-Spark-Arrives-for-Worlds-AI-Developers/default.aspx"
         ],
-        "note": "规格对应所注明的芯片、板卡或系统配置；来源为发布资料或有明确出处的报道。",
-        "noteEn": "Specifications apply to the named chip, card, or system configuration and are drawn from the linked announcement or attributed reporting."
+        "note": "标签规格对应最初的 128 GB 系统，不适用于后续 64 GB 配置。八台设备的 1 TB 是集群容量合计，非单机内存或跨设备统一地址空间。",
+        "noteEn": "The displayed specification is for the original 128 GB system, not the later 64 GB configuration. The 1 TB figure is aggregate capacity across eight systems, not single-device memory or a unified cross-device address space."
       }
     },
     {
@@ -2469,7 +2474,7 @@ window.HARDWARE_ATLAS = {
       "category": "gpu",
       "kind": "announcement",
       "summary": "Rubin GPU、Vera CPU 与新一代互连共同构成下一代 AI 计算平台。",
-      "details": "官方同时公布多种协同芯片与系统设计。此节点记录 CES 平台公布，非所有整机同时可购买。 后续应用：NVIDIA 于 2026 年 9 月 30 日确认 CoreWeave 已提供 Vera Rubin NVL72，Cognition 已运行生产工作负载。此处仍保留年初的平台公布日期。",
+      "details": "此节点记录 CES 平台公布，涵盖协同芯片与系统设计，非所有整机同时可购买。2026 年 9 月 30 日，NVIDIA 确认 CoreWeave 已提供 Vera Rubin NVL72，Cognition 已运行生产工作负载。Google Cloud 于 10 月 21 日公布 A5X 进展，其全面开放安排为 11 月；仍保留年初的平台公布日期。",
       "dateNote": "日期为官方公布日；后续供货安排见原始公告。",
       "tags": [
         "GPU"
@@ -2484,11 +2489,16 @@ window.HARDWARE_ATLAS = {
           "title": "NVIDIA · CoreWeave 与 Cognition 实际应用",
           "titleEn": "NVIDIA · CoreWeave and Cognition deployment",
           "url": "https://blogs.nvidia.com/blog/coreweave-agentic-ai-vera-rubin/"
+        },
+        {
+          "title": "Google Cloud · A5X 可用性进展",
+          "titleEn": "Google Cloud · A5X availability update",
+          "url": "https://cloud.google.com/blog/topics/ai-infrastructure/google-cloud-infrastructure-at-nvidia-gtc-berlin-2026"
         }
       ],
       "en": {
         "summary": "Rubin GPUs, Vera CPUs, and new interconnects form a new AI compute platform.",
-        "details": "The announcement covers several coordinated chips and system designs. This entry records the CES platform announcement, rather than universal retail availability. On September 30, 2026, NVIDIA confirmed CoreWeave availability of Vera Rubin NVL72 and Cognition production workloads. This entry retains the original platform announcement date.",
+        "details": "This entry records the CES announcement of coordinated chips and system designs, rather than universal system availability. NVIDIA confirmed CoreWeave availability of Vera Rubin NVL72 and Cognition production workloads on September 30, 2026. Google Cloud’s October 21 A5X update schedules general availability for November. The entry retains the original platform announcement date.",
         "dateNote": "Dated to the official announcement; availability is described in the original source."
       },
       "hardware": {
@@ -3180,7 +3190,7 @@ window.HARDWARE_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-17",
+    "checkedAt": "2026-10-25",
     "scope": "具有代表性的 GPU、专用加速器、算力系统及本地设备；日期优先依据一手资料，辅以署名媒体报道。区分产品公布、公开展示、供应计划与实际部署，规格保留芯片、板卡或系统范围。",
     "scopeEn": "Representative GPUs, custom accelerators, compute systems, and local devices. Dates prioritize primary sources with attributed reporting as needed. Announcements, demonstrations, availability plans, and deployments remain distinct; specifications retain chip, card, or system scope."
   }

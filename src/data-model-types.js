@@ -1673,6 +1673,36 @@
       "sources": [
         "https://docs.inceptionlabs.ai/get-started/models"
       ]
+    },
+    "kimi-k3-1-pro": {
+      "checkedAt": "2026-10-25",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart"
+      ]
+    },
+    "canva-craft": {
+      "checkedAt": "2026-10-25",
+      "category": "text",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://www.canva.com/newsroom/news/canva-craft/"
+      ]
+    },
+    "flux-3-max": {
+      "checkedAt": "2026-10-25",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://fal.ai/flux-3-max"
+      ]
     }
   }
 };

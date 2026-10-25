@@ -11,8 +11,8 @@ const allowedFields = new Set(['name', 'basis', 'sources', ...tokenFields, 'para
 const types = new Set(['text', 'image', 'audio', 'video', 'pdf', 'document']);
 
 test('specifications identify existing entries, exact variants, and first-party evidence', () => {
-  const hosts = new Set(['docs.inceptionlabs.ai', 'platform.minimax.io', 'stability.ai', 'docs.midjourney.com', 'imagen.research.google', 'qwenlm.github.io', 'docs.bfl.ai', 'docs.liquid.ai', 'seed.bytedance.com', 'www.alibabacloud.com', 'openai.com', 'blog.google', 'cloud.google.com', 'docs.cloud.google.com', 'deepmind.google', 'ir.kuaishou.com', 'runway.com', 'help.runwayml.com', 'www.minimax.io', 'dev.meta.ai', 'research.meta.ai', 'developer.ant-ling.com', 'docs.mistral.ai', 'artificialanalysis.ai', 'developers.openai.com', 'cdn.openai.com', 'platform.claude.com', 'ai.google.dev', 'api-docs.deepseek.com', 'huggingface.co', 'docs.x.ai', 'docs.z.ai', 'docs.qwencloud.com', 'www.qwencloud.com', 'arxiv.org', 'github.com', 'aws.amazon.com']);
-  const hfOrganizations = new Set(['CompVis', 'stabilityai', 'black-forest-labs', 'LiquidAI', 'EleutherAI', 'allenai', 'JetBrains', 'deepseek-ai', 'Qwen', 'zai-org', 'MiniMaxAI', 'moonshotai', 'XiaomiMiMo', 'microsoft', 'nvidia', 'stepfun-ai', 'tencent', 'mistralai', 'meta-llama', 'meta-models', 'reflection', 'google']);
+  const hosts = new Set(['platform.kimi.ai', 'www.canva.com', 'fal.ai', 'research.nvidia.com', 'docs.inceptionlabs.ai', 'platform.minimax.io', 'stability.ai', 'docs.midjourney.com', 'imagen.research.google', 'qwenlm.github.io', 'docs.bfl.ai', 'docs.liquid.ai', 'seed.bytedance.com', 'www.alibabacloud.com', 'openai.com', 'blog.google', 'cloud.google.com', 'docs.cloud.google.com', 'deepmind.google', 'ir.kuaishou.com', 'runway.com', 'help.runwayml.com', 'www.minimax.io', 'dev.meta.ai', 'research.meta.ai', 'developer.ant-ling.com', 'docs.mistral.ai', 'artificialanalysis.ai', 'developers.openai.com', 'cdn.openai.com', 'platform.claude.com', 'ai.google.dev', 'api-docs.deepseek.com', 'huggingface.co', 'docs.x.ai', 'docs.z.ai', 'docs.qwencloud.com', 'www.qwencloud.com', 'arxiv.org', 'github.com', 'aws.amazon.com']);
+  const hfOrganizations = new Set(['inclusionAI', 'CompVis', 'stabilityai', 'black-forest-labs', 'LiquidAI', 'EleutherAI', 'allenai', 'JetBrains', 'deepseek-ai', 'Qwen', 'zai-org', 'MiniMaxAI', 'moonshotai', 'XiaomiMiMo', 'microsoft', 'nvidia', 'stepfun-ai', 'tencent', 'mistralai', 'meta-llama', 'meta-models', 'reflection', 'google']);
   const reviewedSources = new Set([
     'https://huggingface.co/docs/diffusers/main/en/using-diffusers/sdxl',
     "https://github.com/CompVis/stable-diffusion",
@@ -110,7 +110,7 @@ test('research configurations, API versions, family variants, and extensions sta
   assert.deepEqual(Array.from(variants('deepseek-v4-pro-0813')[0].input), ['text']);
   assert.equal(specs.entries['deepseek-v4'], undefined, 'Current API limits must not silently backfill the original preview');
   assert.equal(variants('nemotron-3-nano')[0].activeParameters, '3.5B');
-  assert.deepEqual(Array.from(variants('nemotron-3-5-vl-bolt'), variant => variant.contextTokens), ['1M', '256K']);
+  assert.deepEqual(Array.from(variants('nemotron-3-5-vl-bolt'), variant => variant.contextTokens), ['1M', '256K', '64K']);
   assert.equal(specs.entries['nemotron-3-5-vl-bolt'].cardScope, 'variant', 'Family specifications must identify their individual model');
   assert.equal(variants('reflection-beam-1')[0].basis, 'api');
   assert.equal(variants('reflection-beam-1')[0].outputTokens, '128K');

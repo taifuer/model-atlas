@@ -823,7 +823,7 @@ window.MODEL_ATLAS_EN = {
   },
   "ling-3-1-flash": {
     "summary": "InclusionAI releases a hybrid reasoning model for coding, tool use, and multi-step agent tasks.",
-    "details": "The MoE model has approximately 560B total parameters and activates 25B per token. Official documentation lists a 1M model context ceiling, while the current API service exposes 256K. The advertised model ceiling is not treated as an available service limit. The current release is available through APIs; weights are not public.",
+    "details": "Combines hybrid linear attention with MoE, with about 560B total and 25B active parameters per token for extended office, coding and tool-use tasks. Original model weights are public on Hugging Face under the declared MIT license. The model supports up to 1M context, while the current official API exposes 256K.",
     "dateNote": "Uses September 30 from Ant Ling’s official news feed. Dates of third-party catalog integrations are not treated as the original release date."
   },
   "muse-wonder": {
@@ -1029,8 +1029,8 @@ window.MODEL_ATLAS_EN = {
   },
   "nemotron-3-5-vl-bolt": {
     "summary": "NVIDIA releases multimodal agent models for server and local deployment, with weights, training resources and inference support.",
-    "details": "Super VL has 120B total and 12B active parameters and a one-million-token context. Bolt 74B-A9B is compressed from it, supports a 256K context and includes a low-bit version targeting 24GB of GPU memory. Both understand images and video and use OpenMDW 1.1.",
-    "dateNote": "Super VL and Bolt 74B-A9B share one family entry for their same-day release. Bolt E4B was scheduled for October 23 and is not counted as already available."
+    "details": "Super VL 120B-A12B combines MoE and a hybrid Mamba-Transformer architecture with text, image and video input. Bolt 74B-A9B 24GB targets low-memory deployment. On October 23, Bolt E4B added BF16 and 4GB quantized releases post-trained from Gemma 4 E4B for local conversation and tool use. E4B accepts and returns text only.",
+    "dateNote": "Uses the October 15 release of Super VL and Bolt 74B-A9B. Bolt E4B became available on October 23 and is recorded as a later update to the family."
   },
   "kling-4": {
     "summary": "Kling 4.0 extends single-pass video generation to 30 seconds and improves reference control, keyframes and audiovisual consistency.",
@@ -1120,13 +1120,28 @@ window.MODEL_ATLAS_EN = {
   },
   "minimax-m3-1-flash": {
     "summary": "A multimodal reasoning model for coding, computer use and multistep tasks, with a million-token context and adjustable reasoning effort.",
-    "details": "Accepts text, images and video and returns text through the MiniMax API, M Plan and MiniMax Code. The production release focuses on tool use and long-running tasks, with five reasoning-effort levels. The launch announcement says weights will be released later; it is recorded as a hosted model as of this review.",
-    "dateNote": "Uses October 19, 2026, the production-release date in the official announcement and release notes, distinct from the earlier subscription preview. Planned weight release is not treated as completed."
+    "details": "Accepts text, images and video and returns text through the MiniMax API, M Plan and MiniMax Code, with five reasoning-effort levels. Complete weights were subsequently made public for local deployment. The MiniMax Community License includes attribution, notification and additional authorization requirements for commercial use above a specified revenue threshold.",
+    "dateNote": "Uses the October 19 production-release date. The subsequent weight release is recorded within this entry."
   },
   "mercury-3": {
     "summary": "A diffusion language model with a million-token context, reasoning, tool calling and structured outputs.",
     "details": "Generates text through iterative parallel denoising for low-latency chat, coding and agent tasks. Its OpenAI-compatible API supports four reasoning-effort levels and up to 131,072 output tokens. It launched through Inception, OpenRouter, Baseten and Vercel. This model accepts and returns text only.",
     "dateNote": "Uses the official Inception announcement dated October 19, 2026, when the API became available. This is distinct from the earlier Mercury, Mercury 2 and 2.5 releases."
+  },
+  "kimi-k3-1-pro": {
+    "summary": "A million-token model improves coding, spatial reasoning and long-running tasks, with standard and high-speed serving options.",
+    "details": "Accepts text, images and video and returns text through Kimi Code and the API. Reasoning remains enabled with low, high and max effort settings. Highspeed offers the same stated capabilities through faster serving. Full weights are planned by November 4; public weights were not confirmed at this review.",
+    "dateNote": "Uses October 23, the availability date recorded in the Kimi Code release notes. Research-page update timestamps are not treated as first release dates, and planned weight release is not treated as completed."
+  },
+  "canva-craft": {
+    "summary": "A two-stage model plans composition before rendering images, emphasizing text, layout and visual hierarchy for design.",
+    "details": "Available through Canva Dream Lab and its public API, with output up to 2K across more than 30 aspect ratios. Magic Layers can turn generated images into editable elements. Reference-image input, advanced editing and fast or ultrafast variants remain future plans.",
+    "dateNote": "Uses the October 22 date of Canva’s announcement. This entry covers the available text-to-image model, not planned capabilities."
+  },
+  "flux-3-max": {
+    "summary": "A post-trained FLUX 3 variant combines inference optimization with text-, image- and keyframe-driven video generation.",
+    "details": "Developed by fal Research with Black Forest Labs through reinforcement learning and inference optimization for iterative video workflows. The fal API supports 5–20 second clips, native 720p output, 1080p upscaling and optional generated audio. This is a post-trained model variant.",
+    "dateNote": "Uses October 19, the availability date explicitly stated in fal’s release. The post-trained variant is recorded separately from the original FLUX 3 model."
   }
 };
 window.ATLAS_TAGS_EN = {

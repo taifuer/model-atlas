@@ -880,6 +880,83 @@
     "noteEn": "A hosted Replit product. Access to generated project code does not make the agent platform open source."
   }
 });
+  Object.assign(agents, {
+  "claude-duet": {
+    "status": "closed",
+    "checkedAt": "2026-10-25",
+    "source": "https://claude.com/resources/articles/claude-duet",
+    "note": "Anthropic 的托管订阅产品；研究预览与连接开放协议不代表产品源码开放。",
+    "noteEn": "A hosted Anthropic subscription product. Research-preview access and connections to open protocols do not make the product open source."
+  }
+});
+  Object.assign(models, {
+  "kimi-k3-1-pro": {
+    "status": "closed",
+    "checkedAt": "2026-10-25",
+    "source": "https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart",
+    "note": "托管 API 与产品已开放；官方计划后续发布完整权重，截至核对日未确认可下载。",
+    "noteEn": "Hosted API and product access are available; complete weights are planned but were not confirmed as downloadable at the review date."
+  },
+  "canva-craft": {
+    "status": "closed",
+    "checkedAt": "2026-10-25",
+    "source": "https://www.canva.com/newsroom/news/canva-craft/",
+    "note": "通过 Canva 产品与 API 提供，模型权重未公开。",
+    "noteEn": "Available through Canva products and its API; model weights are not public."
+  },
+  "flux-3-max": {
+    "status": "closed",
+    "checkedAt": "2026-10-25",
+    "source": "https://fal.ai/flux-3-max",
+    "note": "fal 与 Black Forest Labs 合作的后训练模型，通过托管 API 提供；未公开该版本权重。",
+    "noteEn": "A post-trained collaboration between fal and Black Forest Labs, offered through a hosted API without public weights for this version."
+  },
+  "minimax-m3-1-flash": {
+    "status": "open",
+    "checkedAt": "2026-10-25",
+    "source": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash/blob/main/LICENSE",
+    "note": "完整权重可下载，采用 MiniMax Community License。商用需注明 Built with MiniMax M3.1-Flash 并发送通知；相关产品或服务年营收超过 2,000 万美元须预先取得书面授权。",
+    "noteEn": "Complete weights are downloadable under the MiniMax Community License. Commercial use requires attribution and notification; products or services exceeding US$20 million in annual revenue require prior written authorization.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "MiniMax Community License",
+        "source": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash/blob/main/LICENSE"
+      }
+    ]
+  },
+  "ling-3-1-flash": {
+    "status": "open",
+    "checkedAt": "2026-10-25",
+    "source": "https://huggingface.co/inclusionAI/Ling-3.1-flash",
+    "note": "原版模型权重已公开，官方模型卡标注 MIT 许可；不能据此认定另行评测的 1019 版本权重也已公开。",
+    "noteEn": "Original weights are public and the official model card declares the MIT license. This does not establish availability of weights for the separately evaluated 1019 version.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "MIT",
+        "source": "https://huggingface.co/inclusionAI/Ling-3.1-flash/blob/main/README.md"
+      }
+    ]
+  },
+  "nemotron-3-5-vl-bolt": {
+    "status": "open",
+    "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4",
+    "checkedAt": "2026-10-25",
+    "note": "Super VL、Bolt 74B-A9B 与后续发布的 Bolt E4B 权重均已公开，采用 OpenMDW 1.1 许可。",
+    "noteEn": "Super VL, Bolt 74B-A9B and the later Bolt E4B weights are all public under OpenMDW 1.1.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "OpenMDW 1.1",
+        "source": "https://github.com/OpenMDW/OpenMDW/blob/main/1.1/LICENSE.OpenMDW-1.1"
+      }
+    ]
+  }
+});
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

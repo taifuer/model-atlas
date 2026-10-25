@@ -5,6 +5,8 @@
  */
 window.MODEL_ATLAS = (() => {
   const companies = [
+    {"id": "fal", "name": "fal", "nameEn": "fal", "aliases": "fal.ai fal Research", "color": "#73826c"},
+    {"id": "canva", "name": "Canva", "nameEn": "Canva", "aliases": "Canva Research 可画 Craft", "color": "#719f9c"},
     {"id": "inception", "name": "Inception", "nameEn": "Inception", "aliases": "Inception Labs Mercury 扩散语言模型", "color": "#698b9b"},
     {"id": "stability", "name": "Stability AI", "nameEn": "Stability AI", "aliases": "Stable Diffusion SDXL 稳定扩散 CompVis", "color": "#887b9e"},
     {"id": "midjourney", "name": "Midjourney", "nameEn": "Midjourney", "aliases": "Midjourney MJ 图像生成", "color": "#758879"},
@@ -43,7 +45,7 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    "checkedAt": "2026-10-20",
+    "checkedAt": "2026-10-25",
     "source": "https://artificialanalysis.ai/leaderboards/models",
     "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
     "metric": "Artificial Analysis Intelligence Index",
@@ -59,6 +61,11 @@ window.MODEL_ATLAS = (() => {
         "company": "meta",
         "model": "Muse Wonder Full (max)",
         "score": 56
+      },
+      {
+        "company": "moonshot",
+        "model": "Kimi K3.1 Pro",
+        "score": 55
       },
       {
         "company": "openai",
@@ -96,24 +103,19 @@ window.MODEL_ATLAS = (() => {
         "score": 45
       },
       {
-        "company": "stepfun",
-        "model": "Step 5 Preview",
+        "company": "inclusionai",
+        "model": "Ling 3.1 Flash 1019",
         "score": 44
       },
       {
-        "company": "moonshot",
-        "model": "Kimi K3 (max)",
+        "company": "stepfun",
+        "model": "Step 5 Preview",
         "score": 44
       },
       {
         "company": "minimax",
         "model": "MiniMax-M3.1-Flash",
         "score": 43
-      },
-      {
-        "company": "inclusionai",
-        "model": "Ling 3.1 Flash",
-        "score": 41
       },
       {
         "company": "mistral",
@@ -190,6 +192,96 @@ window.MODEL_ATLAS = (() => {
   }
   const releases = [
     {
+      "id": "flux-3-max",
+      "date": "2026-10-19",
+      "name": "FLUX 3 Max",
+      "company": "fal",
+      "kind": "release",
+      "milestone": false,
+      "summary": "在 FLUX 3 基础上进行后训练与推理优化，提供文本、图像和关键帧驱动的视频生成。",
+      "details": "由 fal Research 与 Black Forest Labs 合作开发，结合强化学习与模型推理优化，面向需要反复迭代的视频制作。通过 fal API 提供，支持 5–20 秒片段、默认 720p 输出、1080p 放大及可选生成音频；这是模型后训练版本。",
+      "dateNote": "采用 fal 署名发布稿明确的 10 月 19 日开放日期。该版本在 FLUX 3 基础上继续训练，与基础模型首次发布分开记录。",
+      "tags": [
+        "视频生成"
+      ],
+      "sources": [
+        {
+          "title": "fal · FLUX 3 Max",
+          "titleEn": "fal · FLUX 3 Max",
+          "url": "https://fal.ai/flux-3-max"
+        },
+        {
+          "title": "fal · API 规格",
+          "titleEn": "fal · API specifications",
+          "url": "https://fal.ai/models/blackforestlabs/flux-3-max/text-to-video"
+        },
+        {
+          "title": "fal · 署名发布稿（PR Newswire）",
+          "titleEn": "fal · Issuer-authored release (PR Newswire)",
+          "url": "https://www.prnewswire.com/news-releases/fal-launches-flux-3-max-delivering-1-tier-image-to-video-quality-at-industry-leading-speeds-302913033.html"
+        }
+      ]
+    },
+    {
+      "id": "canva-craft",
+      "date": "2026-10-22",
+      "name": "Canva Craft",
+      "company": "canva",
+      "kind": "release",
+      "milestone": false,
+      "summary": "将构图规划与图像渲染分为两阶段，面向设计中的文字、布局和视觉层次生成图像。",
+      "details": "通过 Canva Dream Lab 与公共 API 提供，支持最高 2K 输出和 30 多种宽高比。输出图像可交由 Magic Layers 转为可编辑元素；参考图输入、更深入的编辑以及 fast、ultrafast 版本仍属后续计划。",
+      "dateNote": "采用 Canva 官方新闻稿的 10 月 22 日发布时间；节点记录已经开放的文生图模型，不将后续规划视为已提供能力。",
+      "tags": [
+        "图像生成"
+      ],
+      "sources": [
+        {
+          "title": "Canva · 模型发布",
+          "titleEn": "Canva · Model announcement",
+          "url": "https://www.canva.com/newsroom/news/canva-craft/"
+        },
+        {
+          "title": "Canva · 图像生成 API 公告",
+          "titleEn": "Canva · Image-generation API announcement",
+          "url": "https://community.canva.dev/t/connect-api-canva-craft-is-now-available-for-image-generation/8999"
+        }
+      ]
+    },
+    {
+      "id": "kimi-k3-1-pro",
+      "date": "2026-10-23",
+      "name": "Kimi K3.1 Pro",
+      "company": "moonshot",
+      "kind": "release",
+      "milestone": false,
+      "summary": "强化编程、空间推理和长程任务能力，提供百万级上下文与标准、高速两种服务版本。",
+      "details": "支持文本、图像与视频输入，输出文本，通过 Kimi Code 与 API 提供。始终启用思考，提供 low、high、max 三档推理深度；Highspeed 为同等能力的高速服务版本。官方计划于 11 月 4 日前开放完整权重，截至核对日尚未确认公开。",
+      "dateNote": "采用 Kimi Code 日志明确记录的 10 月 23 日可用日期；研究页更新时间不作为初发日期，计划开放权重也不记作已经完成。",
+      "tags": [
+        "多模态",
+        "推理",
+        "长上下文"
+      ],
+      "sources": [
+        {
+          "title": "Kimi · 产品可用日期",
+          "titleEn": "Kimi · Availability announcement",
+          "url": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html"
+        },
+        {
+          "title": "Kimi · 研究介绍",
+          "titleEn": "Kimi · Research introduction",
+          "url": "https://www.kimi.com/en/blog/kimi-k3-1-pro"
+        },
+        {
+          "title": "Kimi · 模型与调用说明",
+          "titleEn": "Kimi · Model and API guide",
+          "url": "https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart"
+        }
+      ]
+    },
+    {
       "id": "minimax-m3-1-flash",
       "date": "2026-10-19",
       "name": "MiniMax M3.1 Flash",
@@ -197,8 +289,8 @@ window.MODEL_ATLAS = (() => {
       "kind": "release",
       "milestone": false,
       "summary": "面向编程、电脑操作和多步骤任务的多模态推理模型，提供百万级上下文与可调思考深度。",
-      "details": "支持文本、图像和视频输入，输出文本，可通过 MiniMax API、M Plan 和 MiniMax Code 使用。正式版强化工具调用与长程任务执行，提供五档思考深度。官方公告明确权重将于后续开放；截至核对日，仍按托管模型记录。",
-      "dateNote": "采用官方公告与发布日志共同标注的 2026 年 10 月 19 日正式版发布日期，区别于此前通过订阅计划提供的 Preview；不将计划开放权重记作已开源。",
+      "details": "支持文本、图像和视频输入，输出文本，可通过 MiniMax API、M Plan 和 MiniMax Code 使用，提供五档思考深度。随后公开完整权重，支持本地部署。权重采用 MiniMax Community License，商用涉及署名、通知与特定营收条件下的额外授权。",
+      "dateNote": "采用 10 月 19 日正式版发布日期；后续权重开放合入本条，不另建首发节点。",
       "tags": [
         "多模态",
         "智能体",
@@ -219,6 +311,11 @@ window.MODEL_ATLAS = (() => {
           "title": "MiniMax · 模型文档",
           "titleEn": "MiniMax: Model documentation",
           "url": "https://platform.minimax.io/docs/guides/text-generation"
+        },
+        {
+          "title": "MiniMax · 权重与许可",
+          "titleEn": "MiniMax · Weights and license",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"
         }
       ],
       "searchAliases": [
@@ -759,11 +856,40 @@ window.MODEL_ATLAS = (() => {
       [{"title": "Black Forest Labs · 官方发布", "titleEn": "Black Forest Labs: Official announcement", "url": "https://bfl.ai/blog/flux-3-image-klein"}, {"title": "Black Forest Labs · 模型卡与权重", "titleEn": "Black Forest Labs: Model card and weights", "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein"}, {"title": "Black Forest Labs · 发布日志", "titleEn": "Black Forest Labs: Release notes", "url": "https://docs.bfl.ai/release-notes"}], false,
       "图像生成部分为 5.6B 参数，另配 Qwen3-VL 文本编码器；同日提供基础版与蒸馏版。支持最多 10 张参考图和最高 4K 输出，并接入 Diffusers、ComfyUI 等工具。权重采用 FLUX Kommunity License v.1.0，商业使用附带条件。",
       "采用官方公告与 API 发布日志共同标注的 2026 年 10 月 15 日；基础版、蒸馏版和量化文件合并记录。"),
-    event("ling-3-1-flash", "2026-09-30", "Ling-3.1-flash", "inclusionai", "release",
-      "蚂蚁百灵发布混合推理模型，面向编程、工具调用与多步骤智能体任务。", ["推理", "智能体"],
-      [source("蚂蚁百灵 · 官方发布动态", "https://www.ant-ling.com/"), source("蚂蚁百灵 · 模型文档", "https://developer.ant-ling.com/zh-CN/docs/models/ling/"), source("Vercel · AI Gateway 发布日志", "https://vercel.com/changelog/ling-3-1-flash-is-now-available-on-ai-gateway")], false,
-      "采用 MoE 架构，总参数约 560B，每个 token 激活约 25B。官方文档给出 1M 的模型上下文上限，当前 API 服务开放 256K；不将模型上限视为已开放的服务规格。当前通过 API 提供，权重未公开。",
-      "采用蚂蚁百灵官网最新动态标注的 9 月 30 日；第三方模型目录的接入日期不作为首次发布日期。"),
+    {
+      "id": "ling-3-1-flash",
+      "date": "2026-09-30",
+      "name": "Ling-3.1-flash",
+      "company": "inclusionai",
+      "kind": "release",
+      "summary": "蚂蚁百灵发布混合推理模型，面向编程、工具调用与多步骤智能体任务。",
+      "tags": [
+        "推理",
+        "智能体"
+      ],
+      "sources": [
+        {
+          "title": "蚂蚁百灵 · 官方发布动态",
+          "url": "https://www.ant-ling.com/"
+        },
+        {
+          "title": "蚂蚁百灵 · 模型文档",
+          "url": "https://developer.ant-ling.com/zh-CN/docs/models/ling/"
+        },
+        {
+          "title": "Vercel · AI Gateway 发布日志",
+          "url": "https://vercel.com/changelog/ling-3-1-flash-is-now-available-on-ai-gateway"
+        },
+        {
+          "title": "InclusionAI · 原版权重与许可",
+          "titleEn": "InclusionAI · Original weights and license",
+          "url": "https://huggingface.co/inclusionAI/Ling-3.1-flash"
+        }
+      ],
+      "milestone": false,
+      "details": "采用混合线性注意力与 MoE 结构，总参数约 560B、每 token 激活约 25B，面向长流程办公、编程和工具调用。原版权重已在 Hugging Face 公开并标注 MIT 许可，模型窗口上限为 1M；当前官方 API 仍开放 256K 上下文。",
+      "dateNote": "采用蚂蚁百灵官网最新动态标注的 9 月 30 日；第三方模型目录的接入日期不作为首次发布日期。"
+    },
     event("gpt-j-6b", "2021-06-04", "GPT-J-6B", "eleutherai", "weights",
       "开放 60 亿参数的自回归语言模型，为早期可本地运行的通用语言模型提供研究基础。", ["预训练", "开放权重"],
       [source("GPT-J · 作者发布公告", "https://arankomatsuzaki.wordpress.com/2021/06/04/gpt-j/"), source("EleutherAI · 官方模型卡", "https://huggingface.co/EleutherAI/gpt-j-6b")], false,
@@ -1505,8 +1631,8 @@ window.MODEL_ATLAS = (() => {
       "company": "nvidia",
       "kind": "weights",
       "summary": "NVIDIA 同日开放服务器与本地部署两类多模态智能体模型，提供权重、训练资料与推理支持。",
-      "details": "Super VL 为 120B-A12B 模型，支持百万 token 上下文；Bolt 74B-A9B 从其压缩而来，支持 256K 上下文，并提供面向 24GB 显存的低比特版本。两款均支持图像和视频理解，采用 OpenMDW 1.1 许可。",
-      "dateNote": "同日可用的 Super VL 与 Bolt 74B-A9B 合并为家族节点。Bolt E4B 当时计划于 10 月 23 日开放，不计入已发布型号。",
+      "details": "Super VL 120B-A12B 采用 MoE 与 Mamba-Transformer 混合架构，接受文本、图像和视频输入；Bolt 74B-A9B 24GB 面向低显存部署。10 月 23 日追加基于 Gemma 4 E4B 后训练的 Bolt E4B，提供 BF16 与 4GB 量化版本，用于本地对话和工具调用；E4B 仅接受与输出文本。",
+      "dateNote": "采用 Super VL 与 Bolt 74B-A9B 同日公开的 10 月 15 日；10 月 23 日追加开放的 Bolt E4B 合并记录为家族后续更新。",
       "tags": [
         "开放权重",
         "多模态",
@@ -1528,6 +1654,11 @@ window.MODEL_ATLAS = (() => {
           "title": "NVIDIA · Bolt 模型卡",
           "titleEn": "NVIDIA: Bolt model card",
           "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB"
+        },
+        {
+          "title": "NVIDIA · E4B 公开发布",
+          "titleEn": "NVIDIA · E4B release",
+          "url": "https://research.nvidia.com/labs/nemotron/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB/"
         }
       ]
     },
@@ -1561,7 +1692,7 @@ window.MODEL_ATLAS = (() => {
     },
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-10-20',
+    checkedAt: '2026-10-25',
     scope: '主流语言、多模态、图像与视频生成模型，兼顾具有历史影响的架构研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
@@ -1579,5 +1710,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-10-20', updatedAt: '2026-10-20', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-10-25', updatedAt: '2026-10-25', companies, companyRanking, kinds, themes, releases, coverage });
 })();

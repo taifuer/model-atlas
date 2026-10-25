@@ -25,10 +25,13 @@ test('release dates are real, sorted, unique events within the research cutoff',
 
 test('every event has valid metadata and a primary source; supporting reports are explicit', () => {
   const companyIds = new Set(data.companies.map(company => company.id));
-  const primaryHosts = new Set(['docs.inceptionlabs.ai', 'www.inceptionlabs.ai', 'platform.minimax.io', 'stability.ai', 'docs.midjourney.com', 'imagen.research.google', 'artificialanalysis.ai', 'bfl.ai', 'docs.bfl.ai', 'www.liquid.ai', 'docs.liquid.ai', 'www.alibabacloud.com', 'help.openai.com', 'cloud.google.com', 'docs.cloud.google.com', 'help.runwayml.com', 'ir.kuaishou.com', 'runway.com', 'openai.com', 'developers.openai.com', 'deploymentsafety.openai.com', 'docs.mistral.ai', 'deepmind.google', 'arxiv.org', 'www.anthropic.com', 'platform.claude.com', 'research.google', 'blog.google', 'dev.meta.ai', 'ai.google.dev', 'ai.meta.com', 'research.meta.ai', 'about.fb.com', 'api-docs.deepseek.com', 'github.com', 'huggingface.co', 'qwenlm.github.io', 'qwen.ai', 'docs.qwencloud.com', 'mistral.ai', 'x.ai', 'platform.kimi.ai', 'www.kimi.com', 'z.ai', 'docs.z.ai', 'www.minimax.io', 'mimo.xiaomi.com', 'mimo.mi.com', 'static.stepfun.com', 'www.stepfun.com', 'news.microsoft.com', 'techcommunity.microsoft.com', 'aws.amazon.com', 'nvidianews.nvidia.com', 'blogs.nvidia.com', 'cloud.tencent.com', 'www.tencent.com', 'seed.bytedance.com']);
+  const primaryHosts = new Set(['www.canva.com', 'fal.ai', 'docs.inceptionlabs.ai', 'www.inceptionlabs.ai', 'platform.minimax.io', 'stability.ai', 'docs.midjourney.com', 'imagen.research.google', 'artificialanalysis.ai', 'bfl.ai', 'docs.bfl.ai', 'www.liquid.ai', 'docs.liquid.ai', 'www.alibabacloud.com', 'help.openai.com', 'cloud.google.com', 'docs.cloud.google.com', 'help.runwayml.com', 'ir.kuaishou.com', 'runway.com', 'openai.com', 'developers.openai.com', 'deploymentsafety.openai.com', 'docs.mistral.ai', 'deepmind.google', 'arxiv.org', 'www.anthropic.com', 'platform.claude.com', 'research.google', 'blog.google', 'dev.meta.ai', 'ai.google.dev', 'ai.meta.com', 'research.meta.ai', 'about.fb.com', 'api-docs.deepseek.com', 'github.com', 'huggingface.co', 'qwenlm.github.io', 'qwen.ai', 'docs.qwencloud.com', 'mistral.ai', 'x.ai', 'platform.kimi.ai', 'www.kimi.com', 'z.ai', 'docs.z.ai', 'www.minimax.io', 'mimo.xiaomi.com', 'mimo.mi.com', 'static.stepfun.com', 'www.stepfun.com', 'news.microsoft.com', 'techcommunity.microsoft.com', 'aws.amazon.com', 'nvidianews.nvidia.com', 'blogs.nvidia.com', 'cloud.tencent.com', 'www.tencent.com', 'seed.bytedance.com']);
   // These additional official/project/author pages were reviewed for the named event.
   // Keep community-hosted articles and personal author archives URL-specific.
   const reviewedPrimarySources = new Map([
+    ['https://community.canva.dev/t/connect-api-canva-craft-is-now-available-for-image-generation/8999', 'canva-craft'],
+    ['https://www.prnewswire.com/news-releases/fal-launches-flux-3-max-delivering-1-tier-image-to-video-quality-at-industry-leading-speeds-302913033.html', 'flux-3-max'],
+    ['https://research.nvidia.com/labs/nemotron/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB/', 'nemotron-3-5-vl-bolt'],
     ['https://community.openai.com/t/dall-e-3-announcement-coming-soon/385170', 'dall-e-3'],
     ['https://storage.googleapis.com/deepmind-media/Model-Cards/Imagen-4-Model-Card.pdf', 'imagen-4'],
     ['https://reflection.ai/blog/introducing-beam', 'reflection-beam-1'],
@@ -53,6 +56,8 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['https://platform.stepfun.ai/docs/en/guides/models/step-5-preview', 'step-5-preview'],
   ]);
   const reviewedHuggingFacePaths = new Map([
+    ['/MiniMaxAI/MiniMax-M3.1-Flash', 'minimax-m3-1-flash'],
+    ['/inclusionAI/Ling-3.1-flash', 'ling-3-1-flash'],
     ["/CompVis/stable-diffusion-v1-4", "stable-diffusion-1"],
     ["/stabilityai/stable-diffusion-xl-base-1.0", "sdxl-1"],
     ["/black-forest-labs/FLUX.1-dev", "flux-1-open"],
@@ -198,7 +203,7 @@ test('English content covers every model and retains date clarifications', () =>
 test('agent entries have distinct categories, bilingual descriptions, and primary sources with explicit corroboration', () => {
   vm.runInNewContext(fs.readFileSync(require('node:path').join(__dirname, '../src/data-agents.js'), 'utf8'), context);
   const agents = context.window.AGENT_ATLAS;
-  const hosts = new Set(['x.ai', 'devin.ai', 'docs.devin.ai', 'registry.npmjs.org', 'developer.cloud.tencent.com', 'docs.factory.com', 'open-vsx.org', 'blog.jetbrains.com', 'blog.kilo.ai', 'www.augmentcode.com', 'zed.dev', 'ampcode.com', 'factory.com', 'earendil.com', 'about.fb.com', 'www.microsoft.com', 'www.langchain.com', 'cognition.com', 'arxiv.org', 'replit.com', 'windsurf.com', 'cursor.com', 'www.anthropic.com', 'openai.com', 'github.blog', 'blog.google', 'antigravity.google', 'claude.com', 'support.claude.com', 'mariozechner.at', 'openclaw.ai', 'nousresearch.com', 'hermes-agent.nousresearch.com', 'www.deepseek.com', 'www.codebuddy.cn', 'cloud.tencent.com', 'qoder.com', 'qwenlm.github.io', 'kiro.dev', 'www.trae.ai', 'aider.chat', 'github.com', 'opencode.ai', 'manus.im', 'huggingface.co', 'goose-docs.ai', 'developers.googleblog.com', 'aws.amazon.com', 'blog.crewai.com', 'www.warp.dev']);
+  const hosts = new Set(['docs.replit.com', 'x.ai', 'devin.ai', 'docs.devin.ai', 'registry.npmjs.org', 'developer.cloud.tencent.com', 'docs.factory.com', 'open-vsx.org', 'blog.jetbrains.com', 'blog.kilo.ai', 'www.augmentcode.com', 'zed.dev', 'ampcode.com', 'factory.com', 'earendil.com', 'about.fb.com', 'www.microsoft.com', 'www.langchain.com', 'cognition.com', 'arxiv.org', 'replit.com', 'windsurf.com', 'cursor.com', 'www.anthropic.com', 'openai.com', 'github.blog', 'blog.google', 'antigravity.google', 'claude.com', 'support.claude.com', 'mariozechner.at', 'openclaw.ai', 'nousresearch.com', 'hermes-agent.nousresearch.com', 'www.deepseek.com', 'www.codebuddy.cn', 'cloud.tencent.com', 'qoder.com', 'qwenlm.github.io', 'kiro.dev', 'www.trae.ai', 'aider.chat', 'github.com', 'opencode.ai', 'manus.im', 'huggingface.co', 'goose-docs.ai', 'developers.googleblog.com', 'aws.amazon.com', 'blog.crewai.com', 'www.warp.dev']);
   const supportingReports = new Map([['https://www.ithome.com/1/005/046.htm', 'zcode-open-source']]);
   const ids = new Set();
   let previous = '';

@@ -2,6 +2,7 @@
   'use strict';
   // Files are bundled locally. A product without a separate mark uses its organization.
   const companies = {
+    canva: 'canva.ico', fal: 'fal-color',
     inception: 'inception', 'llm-d': 'llm-d.png',
     stability: 'stability-color', midjourney: 'midjourney', bfl: 'bfl', liquid: 'liquid', kuaishou: 'kuaishou.ico', runway: 'runway.png', reflection: 'reflection',
     openai: 'openai', google: 'google-color', anthropic: 'anthropic', meta: 'meta-color',

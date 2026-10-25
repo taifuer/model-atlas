@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
-  "asOf": "2026-10-20",
-  "updatedAt": "2026-10-20",
+  "asOf": "2026-10-25",
+  "updatedAt": "2026-10-25",
   "companies": [
     {
       "id": "anthropic",
@@ -996,7 +996,7 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "product",
       "summary": "通过编辑器和命令行执行编程任务，串联代码检索、文件修改与工具调用。",
-      "details": "Sourcegraph 团队推出的编程 Agent 在早期测试后向所有用户开放，可在 VS Code 或终端使用，围绕代码库组织任务与工具执行。",
+      "details": "Sourcegraph 团队推出的编程 Agent 在早期测试后向所有用户开放，可在 VS Code 或终端使用，围绕代码库组织任务与工具执行。2026 年 10 月 22 日加入自托管 Orbs，可在自有基础设施中运行任务环境，由 Amp 连接并管理创建、暂停和恢复。",
       "dateNote": "采用面向所有用户开放的公告日；此前已有早期测试。",
       "tags": [
         "编程",
@@ -1008,11 +1008,16 @@ window.AGENT_ATLAS = {
           "title": "Amp · 向所有用户开放",
           "titleEn": "Amp · Public availability announcement",
           "url": "https://ampcode.com/notes/how-i-use-amp"
+        },
+        {
+          "title": "Amp · 自托管 Orbs",
+          "titleEn": "Amp · Self-Hosted Orbs",
+          "url": "https://ampcode.com/news/self-hosted-orbs"
         }
       ],
       "en": {
         "summary": "A coding agent connects code search, file edits and tools through an editor extension and command line.",
-        "details": "Built by the Sourcegraph team, Amp opened to all users after early testing, with interfaces in VS Code and the terminal.",
+        "details": "Built by the Sourcegraph team, Amp opened to all users after early testing, with interfaces in VS Code and the terminal. On October 22, 2026, self-hosted Orbs added task environments on users’ infrastructure, connected to Amp for creation, pausing and resumption.",
         "dateNote": "Uses the all-users availability announcement; early testing preceded this date."
       }
     },
@@ -1452,7 +1457,7 @@ window.AGENT_ATLAS = {
       "category": "framework",
       "kind": "release",
       "summary": "把指令、脚本与资源打包，让 Agent 按需加载专业能力。",
-      "details": "记录 Skills 功能首次介绍；跨平台开放标准在后续另行发布。",
+      "details": "记录 Skills 功能首次介绍；跨平台开放标准于 2025 年 12 月另行发布。2026 年 10 月 22 日，Anthropic 宣布将标准的名称、标识、GitHub 组织和域名交由 Linux Foundation 旗下的 Agentic AI Foundation 承接，由来自多家公司的个人维护者共同维护。",
       "dateNote": "",
       "tags": [
         "工作流",
@@ -1463,11 +1468,16 @@ window.AGENT_ATLAS = {
         {
           "title": "官方 · 发布记录",
           "url": "https://claude.com/blog/skills"
+        },
+        {
+          "title": "Anthropic · Agent Skills 交由 AAIF 承接",
+          "titleEn": "Anthropic · Agent Skills donation to AAIF",
+          "url": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation"
         }
       ],
       "en": {
         "summary": "Instructions, scripts, and resources package reusable, on-demand agent expertise.",
-        "details": "Records the feature introduction; the portable open standard followed later.",
+        "details": "Records the feature introduction; the portable open standard followed in December 2025. On October 22, 2026, Anthropic announced the transfer of the standard’s name, logo, GitHub organization and domain to the Agentic AI Foundation under the Linux Foundation, with individual maintainers from multiple companies.",
         "dateNote": ""
       }
     },
@@ -1868,7 +1878,7 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "release",
       "summary": "将应用开发扩展为共享画布和并行任务，支持多人在同一项目中协作。",
-      "details": "引入设计画布、隔离的并行任务及 Agent 辅助合并，可在同一项目中创建多种应用与内容。发布时并行任务面向 Pro 与 Enterprise，并向 Core 用户限时开放；部分新工作流要求新建项目。",
+      "details": "引入设计画布、隔离的并行任务及 Agent 辅助合并，可在同一项目中创建多种应用与内容。发布时并行任务面向 Pro 与 Enterprise，并向 Core 用户限时开放；部分新工作流要求新建项目。10 月 23 日新增 Monitoring Agent，可依据线上日志、指标和代码调查告警并尝试验证修复；自动修复与实验性自动再发布需分别启用。",
       "dateNote": "采用 3 月 11 日官方发布公告日期；3 月 19 日的版本对比文章是后续说明。",
       "tags": [
         "编程",
@@ -1885,11 +1895,21 @@ window.AGENT_ATLAS = {
           "title": "Replit · Agent 3 与 Agent 4 对比",
           "titleEn": "Replit · Changes from Agent 3 to Agent 4",
           "url": "https://replit.com/blog/whats-changed-agent3-to-agent4"
+        },
+        {
+          "title": "Replit · 10 月 23 日更新",
+          "titleEn": "Replit · October 23 changelog",
+          "url": "https://docs.replit.com/updates/2026/10/23/changelog"
+        },
+        {
+          "title": "Replit · Monitoring Agent",
+          "titleEn": "Replit · Monitoring Agent",
+          "url": "https://docs.replit.com/features/publishing/monitoring-agent"
         }
       ],
       "en": {
         "summary": "App building expands into a shared design canvas and parallel tasks for teams working in one project.",
-        "details": "Introduces a design canvas, isolated parallel tasks and agent-assisted merging, with multiple apps and artifacts in one project. At launch, parallel execution was offered to Pro and Enterprise, with temporary Core access; some new workflows required new projects.",
+        "details": "Introduces a design canvas, isolated parallel tasks and agent-assisted merging, with multiple apps and artifacts in one project. At launch, parallel execution was offered to Pro and Enterprise, with temporary Core access; some new workflows required new projects. On October 23, Monitoring Agent added alert investigation using production logs, metrics and code, with attempted and validated fixes. Auto-fix and experimental automatic republishing require separate settings.",
         "dateNote": "Uses the March 11 official launch announcement. The March 19 comparison article explains the changes after launch."
       }
     },
@@ -2188,10 +2208,43 @@ window.AGENT_ATLAS = {
         "details": "Earendil and the Pi community released the terminal agent as version 1.0 under the MIT license, retaining an extensible runtime. Pi Durable, announced the same day, remained an experimental framework rather than part of the stable-release claim.",
         "dateNote": "Uses the 1.0 announcement and GitHub release date. The earlier public Pi release is recorded separately."
       }
+    },
+    {
+      "id": "claude-duet",
+      "date": "2026-10-21",
+      "name": "Claude Duet",
+      "company": "anthropic",
+      "category": "general",
+      "kind": "preview",
+      "milestone": false,
+      "summary": "在独立云端计算机中处理跨应用任务，主动整理待办事项并持续跟进。",
+      "details": "基于 Claude Opus 5.5，沿用账户中的记忆、技能和已连接应用，支持文字与语音交互。首批通过候补名单向美国 Pro、Max 用户提供 iOS、Android 与网页研究预览，与 Claude 共用套餐额度；后台检查也计入用量。",
+      "dateNote": "采用 10 月 21 日官方研究预览公告日期；这是有地区、套餐和候补名单限制的分批开放。",
+      "tags": [
+        "任务规划",
+        "工具使用"
+      ],
+      "sources": [
+        {
+          "title": "Anthropic · Claude Duet 研究预览",
+          "titleEn": "Anthropic · Claude Duet research preview",
+          "url": "https://claude.com/resources/articles/claude-duet"
+        },
+        {
+          "title": "Anthropic · Claude 产品发布记录",
+          "titleEn": "Anthropic · Claude release notes",
+          "url": "https://support.claude.com/en/articles/12138966-release-notes"
+        }
+      ],
+      "en": {
+        "summary": "A dedicated cloud computer handles tasks across apps, surfaces priorities and follows up over time.",
+        "details": "Built around Claude Opus 5.5, Duet carries over account memory, skills and connected apps, with text and voice interaction. The initial research preview offers iOS, Android and web access by waitlist for US Pro and Max subscribers. It shares Claude plan limits, including background checks.",
+        "dateNote": "Uses the October 21 research-preview announcement. Access is staged and restricted by region, subscription and waitlist."
+      }
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-20",
+    "checkedAt": "2026-10-25",
     "scope": "编程 Agent、通用 Agent、Harness 及重要框架与协议的主要公开节点。",
     "method": "以原始公告、维护者文章与论文核对日期，区分预览、论文公开、改名和正式发布；按经典性、代表性或影响力筛选，不逐条收录常规版本更新。",
     "references": []

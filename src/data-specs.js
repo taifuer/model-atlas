@@ -2219,7 +2219,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "ling-3-1-flash": {
-      "checkedAt": "2026-10-11",
+      "checkedAt": "2026-10-25",
       "variants": [
         {
           "name": "Ling-3.1-flash",
@@ -2236,10 +2236,26 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           "sources": [
             "https://developer.ant-ling.com/zh-CN/docs/models/ling/"
           ]
+        },
+        {
+          "name": "Ling-3.1-flash (weights)",
+          "basis": "weights",
+          "contextTokens": "1M",
+          "parameters": "560B",
+          "activeParameters": "25B",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/inclusionAI/Ling-3.1-flash"
+          ]
         }
       ],
-      "note": "官方当前 API 上下文为 256K，模型公布的上限为 1M。第三方服务的上下文与输出限制可能不同。",
-      "noteEn": "The current official API exposes 256K context; the announced model ceiling is 1M. Third-party providers may use different context and output limits."
+      "note": "原版公开权重上限为 1M，当前官方 API 开放 256K；这些规格不对应另行评测的 1019 版本。",
+      "noteEn": "Original public weights support up to 1M, while the current official API exposes 256K. These specifications do not describe the separately evaluated 1019 version."
     },
     "muse-wonder": {
       "checkedAt": "2026-10-15",
@@ -3353,7 +3369,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       "noteEn": "Context and output limits follow the official API documentation; parameter counts follow the weight model card, retaining each source’s notation."
     },
     "nemotron-3-5-vl-bolt": {
-      "checkedAt": "2026-10-17",
+      "checkedAt": "2026-10-25",
       "cardScope": "variant",
       "variants": [
         {
@@ -3393,10 +3409,28 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           ],
           "note": "24GB 是特定低比特部署目标；架构搜索采用单请求、128K 上下文预算，不代表所有 256K 部署都能在 24GB 内运行。",
           "noteEn": "24GB is a target for a specific low-bit deployment. Architecture search used a single-request, 128K-context memory budget; it does not guarantee every 256K deployment fits in 24GB."
+        },
+        {
+          "name": "Nemotron 3.5 Bolt E4B 4GB",
+          "basis": "weights",
+          "contextTokens": "64K",
+          "parameters": "8B",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB",
+            "https://research.nvidia.com/labs/nemotron/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB/"
+          ],
+          "note": "8B 总参数、4B effective；effective 不等同 MoE 每 token 激活参数。4GB 是目标负载下的量化部署范围，不保证长上下文均可在 4GB 内运行。",
+          "noteEn": "8B total with 4B effective parameters; effective is not an MoE active-parameter count. 4GB describes quantized deployment in target workloads, not a guarantee for every long-context configuration."
         }
       ],
-      "note": "上下文上限分别属于两款模型，包含输入、视觉内容与输出。实际配置取决于硬件、精度和并发量。",
-      "noteEn": "Each context limit belongs to its named model and covers input, visual content and output. Practical settings depend on hardware, precision and concurrency."
+      "note": "各规格分别对应具名型号；E4B 为纯文本模型，不能继承 Super VL 的视觉输入能力。实际内存需求随精度、上下文和并发量变化。",
+      "noteEn": "Specifications belong to each named variant. E4B is text-only and does not inherit Super VL visual inputs. Memory requirements vary with precision, context and concurrency."
     },
     "kling-4": {
       "checkedAt": "2026-10-17",
@@ -3799,7 +3833,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "minimax-m3-1-flash": {
-      "checkedAt": "2026-10-20",
+      "checkedAt": "2026-10-25",
       "variants": [
         {
           "name": "MiniMax-M3.1-Flash",
@@ -3815,6 +3849,24 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           ],
           "sources": [
             "https://platform.minimax.io/docs/guides/text-generation"
+          ]
+        },
+        {
+          "name": "MiniMax-M3.1-Flash (weights)",
+          "basis": "weights",
+          "contextTokens": 1000000,
+          "parameters": "≈428B",
+          "activeParameters": "23B",
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"
           ]
         }
       ]
@@ -3836,6 +3888,101 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           "sources": [
             "https://docs.inceptionlabs.ai/get-started/models"
           ]
+        }
+      ]
+    },
+    "kimi-k3-1-pro": {
+      "checkedAt": "2026-10-25",
+      "variants": [
+        {
+          "name": "kimi-k3.1-pro",
+          "basis": "api",
+          "contextTokens": 1048576,
+          "outputTokens": 1048576,
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart"
+          ],
+          "note": "最大生成预算可设为 1,048,576 tokens，默认 131,072；输入与生成仍受总上下文窗口约束。",
+          "noteEn": "The maximum generation budget is 1,048,576 tokens, with a default of 131,072. Input and generated tokens remain subject to the shared context window."
+        },
+        {
+          "name": "kimi-k3.1-pro-highspeed",
+          "basis": "api",
+          "contextTokens": 1048576,
+          "outputTokens": 1048576,
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart"
+          ],
+          "note": "最大生成预算可设为 1,048,576 tokens，默认 131,072；输入与生成仍受总上下文窗口约束。",
+          "noteEn": "The maximum generation budget is 1,048,576 tokens, with a default of 131,072. Input and generated tokens remain subject to the shared context window."
+        }
+      ]
+    },
+    "canva-craft": {
+      "checkedAt": "2026-10-25",
+      "variants": [
+        {
+          "name": "Canva Craft",
+          "basis": "service",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://www.canva.com/newsroom/news/canva-craft/"
+          ],
+          "note": "最高 2K 输出，支持 30 多种宽高比；首版未提供参考图输入，编辑元素由后续 Magic Layers 工具处理。",
+          "noteEn": "Output up to 2K in more than 30 aspect ratios. Reference-image input is not available in the first release; editable elements are handled by the separate Magic Layers tool."
+        }
+      ]
+    },
+    "flux-3-max": {
+      "checkedAt": "2026-10-25",
+      "variants": [
+        {
+          "name": "FLUX 3 Max",
+          "basis": "api",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ],
+          "video": {
+            "maxDurationSeconds": 20,
+            "resolutions": [
+              "720p"
+            ],
+            "upscaledResolutions": [
+              "1080p"
+            ]
+          },
+          "sources": [
+            "https://fal.ai/models/blackforestlabs/flux-3-max/text-to-video",
+            "https://fal.ai/flux-3-max"
+          ],
+          "note": "片段长度为 5–20 秒；1080p 为放大输出，音频可以关闭。",
+          "noteEn": "Clips run 5–20 seconds. 1080p is upscaled output; audio generation is optional."
         }
       ]
     }

@@ -29,15 +29,15 @@ test('published scores exactly match dated public source snapshots and known rel
     assert.equal(snapshot.records.length, Object.values(scores.entries).filter(e => e[key]).length);
   }
   assert.equal(scores.entries['gemini-4-argon'].arena.preliminary, true);
-  assert.equal(scores.benchmarks.aa.checkedAt, '2026-10-20');
-  assert.equal(scores.checkedAt, '2026-10-20');
-  assert.equal(scores.benchmarks.arena.checkedAt, '2026-10-19');
-  assert.equal(scores.benchmarks.arena.publishedAt, '2026-10-15', 'Dataset retrieval date is not the leaderboard publication date');
+  assert.equal(scores.benchmarks.aa.checkedAt, '2026-10-25');
+  assert.equal(scores.checkedAt, '2026-10-25');
+  assert.equal(scores.benchmarks.arena.checkedAt, '2026-10-25');
+  assert.equal(scores.benchmarks.arena.publishedAt, '2026-10-22', 'Dataset retrieval date is not the leaderboard publication date');
   assert.equal(scores.entries['muse-wonder'].aa.model, 'Muse Wonder Full (max)');
   assert.equal(scores.cardScopes['muse-wonder'], 'variant');
   assert.equal(scores.entries['muse-wonder'].arena, undefined, 'Do not transfer Wonder results to Full without verified metric scope');
-  assert.equal(scores.entries['gpt-6-1-sol'].arena.model, 'gpt-6.1-sol-max', 'Use the exact newly evaluated configuration');
-  assert.equal(scores.entries['claude-sonnet-5-5'].arena.model, 'claude-sonnet-5.5-xhigh');
+  assert.equal(scores.entries['gpt-6-1-sol'].arena.model, 'GPT-6.1 Sol (Max)', 'Use the exact newly evaluated configuration');
+  assert.equal(scores.entries['claude-sonnet-5-5'].arena.model, 'Claude Sonnet 5.5 (xHigh)');
   assert.equal(scores.entries['gpt-6-sol-luna-chatgpt-october'], undefined, 'Do not transfer September API scores to the ChatGPT October versions');
   assert.equal(scores.entries['qwen-3-8-max-0902'].arena, undefined, 'An undated Max alias must not be assigned to the 0902 snapshot');
   assert.equal(scores.entries['gpt-6-sol-luna'].aa.model, 'GPT-6 Sol (max)', 'A family score identifies its actual evaluated member');
@@ -75,7 +75,33 @@ test('new releases retain availability and independently dated specifications', 
   const preview = models.releases.find(r => r.id === 'mistral-large-4-preview');
   assert.equal(preview.kind, 'preview');
   assert.equal(context.window.MODEL_ATLAS.releases.find(r => r.id === preview.id).openness.status, 'closed', 'Promised future weights are not available weights');
-  assert.equal(prices.entries[preview.id].variants[0].promotional, true);
-  assert.ok(prices.entries[preview.id].variants[0].tiers.every(tier => !tier.validUntil), 'Do not invent an exact deadline from a two-week promotion');
+  assert.equal(prices.entries[preview.id].variants[0].promotional, undefined, 'A completed launch discount must not remain marked as active');
+  assert.equal(prices.entries[preview.id].variants[0].tiers[0].input, 1.36);
+  assert.equal(prices.entries[preview.id].variants[0].tiers[0].output, 4.18);
+  assert.ok(prices.entries[preview.id].variants[0].tiers.every(tier => !tier.validUntil), 'The current standard price has no promotional deadline');
   assert.equal(context.window.MODEL_ATLAS_SPECS.entries[preview.id].variants[0].parameters, undefined, 'Conflicting official parameter counts remain omitted');
+});
+
+
+test('later weight releases and serving variants preserve their own licenses and scores', () => {
+  const releases = context.window.MODEL_ATLAS.releases;
+  const access = id => releases.find(entry => entry.id === id).openness;
+  const specifications = context.window.MODEL_ATLAS_SPECS.entries;
+  assert.equal(access('minimax-m3-1-flash').status, 'open');
+  assert.ok(access('minimax-m3-1-flash').licenses.some(license => license.name === 'MiniMax Community License'));
+  assert.equal(access('ling-3-1-flash').status, 'open');
+  assert.equal(scores.entries['ling-3-1-flash'].aa.model, 'Ling 3.1 Flash');
+  assert.equal(scores.entries['ling-3-1-flash'].aa.score, 41, 'Original public weights do not inherit the 1019 score');
+  assert.equal(models.companyRanking.entries.find(entry => entry.company === 'inclusionai').model, 'Ling 3.1 Flash 1019');
+  assert.equal(access('kimi-k3-1-pro').status, 'closed', 'Planned weights are not downloadable weights');
+  assert.equal(scores.entries['kimi-k3-1-pro'].arena, undefined, 'K3.1 does not inherit K3 results');
+  assert.doesNotMatch(access('nemotron-3-5-vl-bolt').noteEn, /unreleased/, 'Later weights must not retain an obsolete availability warning');
+  const e4b = specifications['nemotron-3-5-vl-bolt'].variants.find(variant => variant.name.includes('E4B'));
+  assert.deepEqual(Array.from(e4b.input), ['text']);
+  assert.equal(e4b.parameters, '8B');
+  assert.equal(e4b.activeParameters, undefined, 'Effective parameters are not an MoE active count');
+  assert.equal(e4b.contextTokens, '64K', 'Do not add separate input/output limits into an invented context window');
+  assert.deepEqual(Array.from(specifications['canva-craft'].variants[0].input), ['text'], 'Planned reference-image input is not yet available');
+  assert.deepEqual(Array.from(specifications['flux-3-max'].variants[0].video.upscaledResolutions), ['1080p']);
+  assert.equal(specifications['flux-3-max'].variants[0].video.audio, undefined, 'Optional API audio does not establish native model audio');
 });
