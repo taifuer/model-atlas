@@ -1,7 +1,7 @@
 /* Curated hardware history. Event dates and configurations retain explicit source scope. */
 window.HARDWARE_ATLAS = {
-  "asOf": "2026-10-25",
-  "updatedAt": "2026-10-25",
+  "asOf": "2026-10-27",
+  "updatedAt": "2026-10-27",
   "accessFilter": false,
   "companies": [
     {
@@ -2494,6 +2494,11 @@ window.HARDWARE_ATLAS = {
           "title": "Google Cloud · A5X 可用性进展",
           "titleEn": "Google Cloud · A5X availability update",
           "url": "https://cloud.google.com/blog/topics/ai-infrastructure/google-cloud-infrastructure-at-nvidia-gtc-berlin-2026"
+        },
+        {
+          "title": "NVIDIA · 当前产品规格",
+          "titleEn": "NVIDIA · Current product specifications",
+          "url": "https://www.nvidia.com/en-us/data-center/vera-rubin-nvl72/"
         }
       ],
       "en": {
@@ -2502,9 +2507,38 @@ window.HARDWARE_ATLAS = {
         "dateNote": "Dated to the official announcement; availability is described in the original source."
       },
       "hardware": {
-        "variant": "NVIDIA Vera Rubin",
-        "checkedAt": "2026-09-30",
+        "variant": "Rubin GPU · Vera Rubin NVL72 中的单颗 GPU",
+        "variantEn": "Rubin GPU · one GPU in Vera Rubin NVL72",
+        "checkedAt": "2026-10-27",
         "facts": [
+          {
+            "label": "显存",
+            "labelEn": "Memory",
+            "value": "288 GB HBM4",
+            "chip": true
+          },
+          {
+            "label": "显存带宽",
+            "labelEn": "Memory bandwidth",
+            "value": "19.2 TB/s",
+            "chip": true
+          },
+          {
+            "label": "BF16·稠密",
+            "labelEn": "BF16 · Dense",
+            "value": "4 PFLOPS",
+            "chip": true,
+            "metric": "compute",
+            "precision": "BF16",
+            "sparsity": "dense",
+            "scope": "chip"
+          },
+          {
+            "label": "NVLink 双向带宽",
+            "labelEn": "NVLink bidirectional bandwidth",
+            "value": "3 TB/s",
+            "chip": false
+          },
           {
             "label": "架构",
             "labelEn": "Architecture",
@@ -2513,10 +2547,12 @@ window.HARDWARE_ATLAS = {
           }
         ],
         "sources": [
-          "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer"
+          "https://www.nvidia.com/en-us/data-center/vera-rubin-nvl72/",
+          "https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/",
+          "https://www.nvidia.com/en-us/data-center/nvlink/"
         ],
-        "note": "规格对应上述型号，以所列原始资料为准；其他封装与整机配置可能不同。",
-        "noteEn": "Specifications apply to the named configuration in the cited source. Other form factors and complete systems may differ."
+        "note": "规格对应 Vera Rubin NVL72 中的单颗 Rubin GPU，非整柜合计。采用当前产品表中的 19.2 TB/s 显存带宽与 3 TB/s 双向 NVLink 带宽；早期公布值分别为 22 TB/s 与 3.6 TB/s。BF16 为厂商公布的稠密峰值，不与 NVFP4 稀疏推理的 50 PFLOPS 混用，也不代表模型实测吞吐。 NVLink 专页仍将互连规格标为初步规格。",
+        "noteEn": "Specifications apply to one Rubin GPU in Vera Rubin NVL72, not a rack total. The current product table lists 19.2 TB/s memory bandwidth and 3 TB/s bidirectional NVLink bandwidth, versus the earlier 22 TB/s and 3.6 TB/s. BF16 is the vendor-published dense peak; it is distinct from the 50 PFLOPS sparse NVFP4 inference figure and from measured model throughput. The NVLink page still labels its interconnect specifications preliminary."
       }
     },
     {
@@ -3190,7 +3226,7 @@ window.HARDWARE_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-25",
+    "checkedAt": "2026-10-27",
     "scope": "具有代表性的 GPU、专用加速器、算力系统及本地设备；日期优先依据一手资料，辅以署名媒体报道。区分产品公布、公开展示、供应计划与实际部署，规格保留芯片、板卡或系统范围。",
     "scopeEn": "Representative GPUs, custom accelerators, compute systems, and local devices. Dates prioritize primary sources with attributed reporting as needed. Announcements, demonstrations, availability plans, and deployments remain distinct; specifications retain chip, card, or system scope."
   }

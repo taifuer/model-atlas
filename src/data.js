@@ -5,6 +5,7 @@
  */
 window.MODEL_ATLAS = (() => {
   const companies = [
+    {"id": "ideogram", "name": "Ideogram", "nameEn": "Ideogram", "aliases": "Ideogram Vector SVG 矢量图形", "color": "#767b98"},
     {"id": "fal", "name": "fal", "nameEn": "fal", "aliases": "fal.ai fal Research", "color": "#73826c"},
     {"id": "canva", "name": "Canva", "nameEn": "Canva", "aliases": "Canva Research 可画 Craft", "color": "#719f9c"},
     {"id": "inception", "name": "Inception", "nameEn": "Inception", "aliases": "Inception Labs Mercury 扩散语言模型", "color": "#698b9b"},
@@ -45,7 +46,7 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    "checkedAt": "2026-10-25",
+    "checkedAt": "2026-10-27",
     "source": "https://artificialanalysis.ai/leaderboards/models",
     "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
     "metric": "Artificial Analysis Intelligence Index",
@@ -191,6 +192,72 @@ window.MODEL_ATLAS = (() => {
     return { id, date, name, company, kind, summary, tags, sources: Array.isArray(sources) ? sources : [sources], milestone, details, dateNote };
   }
   const releases = [
+    {
+      "id": "gpt-6-1-terra",
+      "date": "2026-10-26",
+      "name": "GPT-6.1 Terra",
+      "company": "openai",
+      "kind": "release",
+      "summary": "面向视觉推理、计算机操作与日常编程任务，以较低价格提供百万级上下文。",
+      "details": "支持文本与图像输入、文本输出，通过 OpenAI API、ChatGPT Work 和 Codex 提供。上下文为 1,050,000 tokens，最大输出 128,000 tokens；可调节推理深度，工具调用需使用 Responses API。标准 API 每百万输入、输出 tokens 分别为 1 美元和 5 美元，长上下文另有费率。",
+      "dateNote": "采用 OpenAI API 发布日志的 2026 年 10 月 26 日；产品分批开放与推理档位不另列为模型节点。",
+      "tags": [
+        "多模态",
+        "计算机操作",
+        "推理"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "OpenAI · 正式发布",
+          "titleEn": "OpenAI · Release announcement",
+          "url": "https://openai.com/index/introducing-gpt-6-1-terra/"
+        },
+        {
+          "title": "OpenAI · API 发布日志",
+          "titleEn": "OpenAI · API changelog",
+          "url": "https://developers.openai.com/api/docs/changelog"
+        },
+        {
+          "title": "OpenAI · 模型规格",
+          "titleEn": "OpenAI · Model specifications",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra"
+        }
+      ]
+    },
+    {
+      "id": "ideogram-vector-1",
+      "date": "2026-10-22",
+      "name": "Ideogram Vector",
+      "company": "ideogram",
+      "kind": "release",
+      "summary": "将文字描述或已有图像转为可编辑 SVG，面向标志、字体图形与插画设计。",
+      "details": "Ideogram 的首个专用矢量模型，可根据提示词和可选参考图生成 SVG，也可将已有位图转换为矢量。输出由可缩放、可分别编辑的形状组成，可在 Figma、Illustrator 等工具中调整。通过 Ideogram 产品与 API 提供，API 依质量按每个 SVG 文件计费。",
+      "dateNote": "采用 Ideogram 官方公告的 2026 年 10 月 22 日；后续合作平台的接入日期不作为模型首发日期。",
+      "tags": [
+        "图像生成",
+        "矢量图形",
+        "SVG"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Ideogram · 模型介绍",
+          "titleEn": "Ideogram · Model introduction",
+          "url": "https://ideogram.ai/models/vector/"
+        },
+        {
+          "title": "Ideogram · 发布公告",
+          "titleEn": "Ideogram · Release announcement",
+          "url": "https://x.com/ideogram_ai/status/2113300317584720259"
+        },
+        {
+          "title": "Ideogram · SVG 生成 API",
+          "titleEn": "Ideogram · SVG generation API",
+          "url": "https://developer.ideogram.ai/v2/api-reference/vectors/generate-svg"
+        }
+      ]
+    },
     {
       "id": "flux-3-max",
       "date": "2026-10-19",
@@ -884,11 +951,16 @@ window.MODEL_ATLAS = (() => {
           "title": "InclusionAI · 原版权重与许可",
           "titleEn": "InclusionAI · Original weights and license",
           "url": "https://huggingface.co/inclusionAI/Ling-3.1-flash"
+        },
+        {
+          "title": "InclusionAI · 1019 权重与许可",
+          "titleEn": "InclusionAI · 1019 weights and license",
+          "url": "https://huggingface.co/inclusionAI/Ling-3.1-flash-1019"
         }
       ],
       "milestone": false,
-      "details": "采用混合线性注意力与 MoE 结构，总参数约 560B、每 token 激活约 25B，面向长流程办公、编程和工具调用。原版权重已在 Hugging Face 公开并标注 MIT 许可，模型窗口上限为 1M；当前官方 API 仍开放 256K 上下文。",
-      "dateNote": "采用蚂蚁百灵官网最新动态标注的 9 月 30 日；第三方模型目录的接入日期不作为首次发布日期。"
+      "details": "结合混合线性注意力与 MoE，总参数约 560B、每个 token 激活 25B，面向持续办公、代码与工具调用任务。原版与后续 1019 版本权重均已公开，模型卡标注 MIT 许可；1019 进一步优化推理和智能体任务。两个权重版本支持 1M 上下文，原版官方 API 的 256K 限制单独记录。",
+      "dateNote": "采用蚂蚁百灵官方动态的 9 月 30 日首发日期。1019 权重于 10 月 27 日公开，作为已有节点的后续更新；不将版本名中的 1019 当作权重开放日期。"
     },
     event("gpt-j-6b", "2021-06-04", "GPT-J-6B", "eleutherai", "weights",
       "开放 60 亿参数的自回归语言模型，为早期可本地运行的通用语言模型提供研究基础。", ["预训练", "开放权重"],
@@ -1669,7 +1741,7 @@ window.MODEL_ATLAS = (() => {
       "company": "kuaishou",
       "kind": "preview",
       "summary": "可灵 4.0 将单次视频生成延长至 30 秒，加强多素材参考、关键帧控制与音画一致性。",
-      "details": "支持最多 15 项参考素材和 10 张关键帧，覆盖图像、视频与主体声音参考。10 月 15 日全面上线；两分钟续写与企业 API 在后续公告中仍为计划，4K 和 HDR 的公布规格不视为已全面开放。",
+      "details": "支持最多 15 项参考素材和 10 张关键帧，覆盖图像、视频与主体声音参考。10 月 15 日全面上线；现已通过 Runway 等合作平台提供 API，已核实的 Runway 接口支持 720p 与 1080p、最长 30 秒并生成声音。两分钟续写、4K 和 HDR 的公布规格不视为已全面开放。",
       "dateNote": "采用 9 月 30 日主模型的官方预览公告。Flash 于 9 月 28 日先向 Ultra 年付用户开放；10 月 15 日全面上线日期由快手公告确认，不以文章发布日期替代。",
       "tags": [
         "视频生成",
@@ -1687,12 +1759,17 @@ window.MODEL_ATLAS = (() => {
           "title": "快手 · 4.0 全面上线",
           "titleEn": "Kuaishou: Kling 4.0 general launch",
           "url": "https://ir.kuaishou.com/news-releases/news-release-details/kling-ai-officially-launches-next-generation-kling-40-raising"
+        },
+        {
+          "title": "Runway · Kling 4.0 API",
+          "titleEn": "Runway · Kling 4.0 API",
+          "url": "https://dev.runway.com/learn/kling-4-0-api"
         }
       ]
     },
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-10-25',
+    checkedAt: '2026-10-27',
     scope: '主流语言、多模态、图像与视频生成模型，兼顾具有历史影响的架构研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
@@ -1710,5 +1787,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-10-25', updatedAt: '2026-10-25', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-10-27', updatedAt: '2026-10-27', companies, companyRanking, kinds, themes, releases, coverage });
 })();

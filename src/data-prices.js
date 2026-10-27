@@ -7,6 +7,35 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
   "inputType": "uncached-text",
   "outputType": "text",
   "entries": {
+    "gpt-6-1-terra": {
+      "checkedAt": "2026-10-27",
+      "variants": [
+        {
+          "name": "gpt-6.1-terra",
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 1,
+              "output": 5,
+              "label": "输入 ≤ 272K tokens",
+              "labelEn": "Input ≤ 272K tokens"
+            },
+            {
+              "input": 2,
+              "output": 7.5,
+              "label": "输入 > 272K tokens",
+              "labelEn": "Input > 272K tokens"
+            }
+          ],
+          "sources": [
+            "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+            "https://developers.openai.com/api/docs/pricing"
+          ],
+          "note": "采用标准 API 未缓存文本费率；输入超过 272K tokens 后，整次请求采用长上下文费率。",
+          "noteEn": "Standard API rates for uncached text. For prompts over 272K input tokens, long-context rates apply to the full request."
+        }
+      ]
+    },
     "claude-haiku-5-5": {
       "checkedAt": "2026-10-08",
       "variants": [
@@ -583,10 +612,14 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
           ],
           "sources": [
             "https://platform.claude.com/docs/en/models/opus-5-5/overview",
-            "https://platform.claude.com/docs/en/about-claude/pricing"
+            "https://platform.claude.com/docs/en/about-claude/pricing",
+            "https://platform.claude.com/docs/en/build-with-claude/fast-mode"
           ]
         }
-      ]
+      ],
+      "checkedAt": "2026-10-27",
+      "note": "卡片采用标准 API 的 4 / 20 美元费率。可选 Fast mode 为每百万输入 / 输出 tokens 8 / 40 美元，覆盖完整上下文；缓存与数据驻留费用另计。",
+      "noteEn": "The card uses standard API rates of $4 / $20. Optional Fast mode costs $8 / $40 per million input / output tokens across the full context window; caching and data-residency modifiers apply separately."
     },
     "claude-opus-5": {
       "variants": [

@@ -5,6 +5,49 @@
 window.MODEL_ATLAS_SPECS = Object.freeze({
   "checkedAt": "2026-10-03",
   "entries": {
+    "gpt-6-1-terra": {
+      "checkedAt": "2026-10-27",
+      "variants": [
+        {
+          "name": "gpt-6.1-terra",
+          "basis": "api",
+          "contextTokens": 1050000,
+          "outputTokens": 128000,
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://developers.openai.com/api/docs/models/gpt-6.1-terra"
+          ]
+        }
+      ]
+    },
+    "ideogram-vector-1": {
+      "checkedAt": "2026-10-27",
+      "variants": [
+        {
+          "name": "ideogram-vector-1",
+          "basis": "api",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://ideogram.ai/models/vector/",
+            "https://developer.ideogram.ai/v2/api-reference/vectors/generate-svg"
+          ],
+          "note": "输出为可编辑 SVG 矢量图，不设位图像素分辨率；支持文字生成和图像矢量化两种接口。",
+          "noteEn": "Produces editable SVG vector artwork rather than a fixed-resolution raster image, through text-to-vector and image-vectorization endpoints."
+        }
+      ]
+    },
     "claude-haiku-5-5": {
       "checkedAt": "2026-10-08",
       "variants": [
@@ -2219,8 +2262,26 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "ling-3-1-flash": {
-      "checkedAt": "2026-10-25",
+      "checkedAt": "2026-10-27",
       "variants": [
+        {
+          "name": "Ling-3.1-flash-1019 (weights)",
+          "basis": "weights",
+          "contextTokens": "1M",
+          "parameters": "560B",
+          "activeParameters": "25B",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/inclusionAI/Ling-3.1-flash-1019"
+          ],
+          "note": "1019 后训练版本的公开权重，区别于原版 checkpoint 与 API。",
+          "noteEn": "Public weights of the 1019 post-trained checkpoint, separate from the original checkpoint and API."
+        },
         {
           "name": "Ling-3.1-flash",
           "basis": "api",
@@ -2254,8 +2315,9 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           ]
         }
       ],
-      "note": "原版公开权重上限为 1M，当前官方 API 开放 256K；这些规格不对应另行评测的 1019 版本。",
-      "noteEn": "Original public weights support up to 1M, while the current official API exposes 256K. These specifications do not describe the separately evaluated 1019 version."
+      "note": "1019 与原版权重均为 1M；原版 API 的 256K 限制单列，不推断其已切换为 1019。",
+      "noteEn": "Both the 1019 and original weights support 1M. The original API’s 256K limit is listed separately, without assuming that endpoint has switched to 1019.",
+      "cardScope": "snapshot"
     },
     "muse-wonder": {
       "checkedAt": "2026-10-15",
@@ -3433,7 +3495,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       "noteEn": "Specifications belong to each named variant. E4B is text-only and does not inherit Super VL visual inputs. Memory requirements vary with precision, context and concurrency."
     },
     "kling-4": {
-      "checkedAt": "2026-10-17",
+      "checkedAt": "2026-10-27",
       "cardScope": "configuration",
       "variants": [
         {
@@ -3459,6 +3521,32 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           ],
           "note": "30 秒为单次生成上限，不是续写总时长。未将仍在计划中的两分钟续写，以及尚未确认全面开放的 4K/HDR 记为可用规格。",
           "noteEn": "30 seconds is the single-generation limit, not an extension total. Planned two-minute extensions and 4K/HDR features without confirmed broad availability are not recorded as available specifications."
+        },
+        {
+          "name": "Kling 4.0 · Runway API",
+          "basis": "api",
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ],
+          "video": {
+            "maxDurationSeconds": 30,
+            "resolutions": [
+              "720p",
+              "1080p"
+            ],
+            "audio": "native"
+          },
+          "sources": [
+            "https://dev.runway.com/learn/kling-4-0-api"
+          ],
+          "note": "合作平台可调用接口的规格；未将 4K/HDR 或两分钟续写视为此 API 的能力。",
+          "noteEn": "Specifications of the available partner API. 4K/HDR and two-minute extensions are not treated as capabilities of this API."
         }
       ]
     },

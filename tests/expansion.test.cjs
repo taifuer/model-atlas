@@ -128,6 +128,10 @@ test('compute facts retain precision, sparsity, scale, and preliminary status', 
     assert.equal(fact.chip, true);
   }
   assert.equal(compute('nvidia-a100').value, '312 TFLOPS');
+  assert.equal(compute('nvidia-rubin').value, '4 PFLOPS');
+  assert.equal(compute('nvidia-rubin').precision, 'BF16');
+  assert.equal(compute('nvidia-rubin').sparsity, 'dense');
+  assert.equal(compute('nvidia-rubin').scope, 'chip', 'A GPU fact must not use the NVL72 rack total');
   assert.equal(compute('nvidia-h100').estimate, true);
   assert.equal(compute('nvidia-h200').sparsity, 'sparse');
   assert.equal(compute('nvidia-h200').estimate, true);

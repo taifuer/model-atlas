@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
-  "asOf": "2026-10-25",
-  "updatedAt": "2026-10-25",
+  "asOf": "2026-10-27",
+  "updatedAt": "2026-10-27",
   "companies": [
     {
       "id": "anthropic",
@@ -2025,7 +2025,7 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "release",
       "summary": "发布第二代开源编程 Agent，重构插件接口、服务端协议与终端配置。",
-      "details": "以 @opencode/cli 2.0.0 发布，采用 MIT 许可。V2 需要迁移旧插件及服务端集成，保留兼容的项目配置、技能与 Agent 定义；V1 与 V2 作为两条版本线维护。",
+      "details": "以 @opencode/cli 2.0.0 发布，采用 MIT 许可。V2 需要迁移旧插件及服务端集成，保留兼容的项目配置、技能与 Agent 定义；V1 与 V2 作为两条版本线维护。2026 年 10 月 27 日的 2.2 更新加入实验性桌面插件，以及面向插件和 SDK 的图像与决策生成接口；这些扩展保留实验状态。",
       "dateNote": "按官方 npm 包 2.0.0 的公开发布时间记为 9 月 11 日 23:44 UTC（北京时间 9 月 12 日），不将持续更新的文档或小版本日期作为首发日。",
       "tags": [
         "编程",
@@ -2047,11 +2047,16 @@ window.AGENT_ATLAS = {
           "title": "npm · 官方包发布记录",
           "titleEn": "npm · Official package publication history",
           "url": "https://registry.npmjs.org/@opencode%2fcli"
+        },
+        {
+          "title": "OpenCode · 2.2 发布记录",
+          "titleEn": "OpenCode · Version 2.2 release notes",
+          "url": "https://github.com/anomalyco/opencode/releases/tag/v2.2.0"
         }
       ],
       "en": {
         "summary": "A second-generation open-source coding agent revises the plugin API, server protocol and terminal configuration.",
-        "details": "Published as @opencode/cli 2.0.0 under the MIT license. V2 requires migration of V1 plugins and server integrations while retaining compatible project configuration, skills and agent definitions. V1 and V2 remain separate release lines.",
+        "details": "Published as @opencode/cli 2.0.0 under the MIT license. V2 requires migration of V1 plugins and server integrations while retaining compatible project configuration, skills and agent definitions. V1 and V2 remain separate release lines. The October 27, 2026 version 2.2 update adds experimental desktop plugins and image- and decision-generation APIs for plugins and the SDK; these additions remain experimental.",
         "dateNote": "Uses the official npm publication of 2.0.0 on September 11 at 23:44 UTC (September 12 in Beijing), not the date of later documentation or patch updates."
       }
     },
@@ -2210,6 +2215,53 @@ window.AGENT_ATLAS = {
       }
     },
     {
+      "id": "cursor-agent-sdk",
+      "date": "2026-10-20",
+      "name": "Cursor Agent SDK",
+      "company": "cursor",
+      "category": "framework",
+      "kind": "announcement",
+      "milestone": false,
+      "summary": "以代码定义、评测和部署 Agent，连接代码托管平台、Slack 与定时任务。",
+      "details": "将指令、TypeScript 工具、技能和评测放入同一项目，支持事件回放、会话延续与子智能体。可部署到 Cursor 或自有基础设施；官方介绍其用于 Bugbot、Security Review、Rollouts 等产品。SDK 采用 Cursor 专有许可。",
+      "dateNote": "采用官方产品公告标注的 10 月 20 日。SDK 版本日志将 0.3.0 的 GA 标为 10 月 23 日；npm 包实际发布于 10 月 25 日 20:04 UTC，三个日期分别保留其含义。",
+      "searchAliases": [
+        "@grok/agent-sdk",
+        "@cursor/bdk"
+      ],
+      "tags": [
+        "工作流",
+        "多智能体"
+      ],
+      "sources": [
+        {
+          "title": "Cursor · Agent SDK 公告",
+          "titleEn": "Cursor · Agent SDK announcement",
+          "url": "https://cursor.com/changelog/agent-sdk"
+        },
+        {
+          "title": "Cursor · SDK 与部署说明",
+          "titleEn": "Cursor · SDK and deployment documentation",
+          "url": "https://cursor.com/docs/agent-sdk"
+        },
+        {
+          "title": "Cursor · SDK 版本日志",
+          "titleEn": "Cursor · SDK version history",
+          "url": "https://cursor.com/docs/agent-sdk/changelog"
+        },
+        {
+          "title": "npm · 官方包发布记录",
+          "titleEn": "npm · Official package publication history",
+          "url": "https://registry.npmjs.org/@grok%2fagent-sdk"
+        }
+      ],
+      "en": {
+        "summary": "Define, evaluate and deploy agents as code, with source-control, Slack and scheduled triggers.",
+        "details": "Instructions, TypeScript tools, skills and evals live in one project, with event replay, persistent sessions and subagents. Agents can run on Cursor or on self-hosted infrastructure; Cursor documents its use in Bugbot, Security Review and Rollouts. The SDK has a proprietary Cursor license.",
+        "dateNote": "Uses October 20 as printed on the official product announcement. The SDK changelog labels 0.3.0 GA October 23; npm published that package October 25 at 20:04 UTC. These dates describe different records."
+      }
+    },
+    {
       "id": "claude-duet",
       "date": "2026-10-21",
       "name": "Claude Duet",
@@ -2244,7 +2296,7 @@ window.AGENT_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-25",
+    "checkedAt": "2026-10-27",
     "scope": "编程 Agent、通用 Agent、Harness 及重要框架与协议的主要公开节点。",
     "method": "以原始公告、维护者文章与论文核对日期，区分预览、论文公开、改名和正式发布；按经典性、代表性或影响力筛选，不逐条收录常规版本更新。",
     "references": []

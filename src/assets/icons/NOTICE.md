@@ -77,3 +77,5 @@ Official website and profile marks above were retrieved on 2026-10-11 for identi
 
 - `canva.ico`: [Canva's official website favicon](https://static.canva.com/static/images/favicon-1.ico), retrieved unchanged on 2026-10-25. Used to identify Canva; the mark remains its owner's property.
 - `fal-color.svg`: copied unchanged from `@lobehub/icons-static-svg` 1.95.1, MIT (see `LICENSE-LOBEHUB.txt`).
+
+- `ideogram.svg`: copied unchanged from `@lobehub/icons-static-svg` 1.95.1, MIT (see `LICENSE-LOBEHUB.txt`).

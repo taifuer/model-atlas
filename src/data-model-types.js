@@ -3,6 +3,27 @@
   const data = {
   "checkedAt": "2026-10-03",
   "entries": {
+    "gpt-6-1-terra": {
+      "checkedAt": "2026-10-27",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://developers.openai.com/api/docs/models/gpt-6.1-terra"
+      ]
+    },
+    "ideogram-vector-1": {
+      "checkedAt": "2026-10-27",
+      "category": "multimodal",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://ideogram.ai/models/vector/",
+        "https://developer.ideogram.ai/v2/api-reference/vectors/generate-svg"
+      ]
+    },
     "mistral-large-4-preview": {
       "checkedAt": "2026-10-08",
       "category": "multimodal",

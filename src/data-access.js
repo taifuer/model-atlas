@@ -957,6 +957,60 @@
     ]
   }
 });
+  Object.assign(agents, {
+  "cursor-agent-sdk": {
+    "status": "closed",
+    "checkedAt": "2026-10-27",
+    "source": "https://cursor.com/terms-of-service",
+    "note": "官方 npm 包内 Cursor SDK License 保留全部权利，使用受 Cursor 服务条款约束；自托管不改变其专有许可。",
+    "noteEn": "The Cursor SDK License in the official npm package reserves all rights and subjects use to Cursor’s Terms of Service. Self-hosting does not change the proprietary license.",
+    "licenses": [
+      {
+        "object": "SDK 软件",
+        "objectEn": "SDK software",
+        "name": "Cursor SDK License",
+        "source": "https://registry.npmjs.org/@grok%2fagent-sdk"
+      }
+    ]
+  }
+});
+  Object.assign(models, {
+  "gpt-6-1-terra": {
+    "status": "closed",
+    "checkedAt": "2026-10-27",
+    "source": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+    "note": "通过官方 API 与产品提供，未开放模型权重。",
+    "noteEn": "Available through the official API and products, without public model weights."
+  },
+  "ideogram-vector-1": {
+    "status": "closed",
+    "checkedAt": "2026-10-27",
+    "source": "https://ideogram.ai/models/vector/",
+    "note": "通过托管产品与 API 提供，未开放模型权重。",
+    "noteEn": "Available through the hosted product and API, without public model weights."
+  },
+  "ling-3-1-flash": {
+    "status": "open",
+    "checkedAt": "2026-10-27",
+    "source": "https://huggingface.co/inclusionAI/Ling-3.1-flash-1019",
+    "note": "原版和后续 1019 权重均可下载，各自官方模型卡声明 MIT 许可。1019 与原版按独立 checkpoint 记录规格和评分。",
+    "noteEn": "Original and later 1019 weights are downloadable, with MIT declared in each official model card. Specifications and scores distinguish the two checkpoints.",
+    "licenses": [
+      {
+        "object": "原版模型权重",
+        "objectEn": "Original model weights",
+        "name": "MIT",
+        "source": "https://huggingface.co/inclusionAI/Ling-3.1-flash/blob/main/README.md"
+      },
+      {
+        "object": "1019 模型权重",
+        "objectEn": "1019 model weights",
+        "name": "MIT",
+        "source": "https://huggingface.co/inclusionAI/Ling-3.1-flash-1019/blob/main/README.md"
+      }
+    ]
+  }
+});
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

@@ -823,8 +823,8 @@ window.MODEL_ATLAS_EN = {
   },
   "ling-3-1-flash": {
     "summary": "InclusionAI releases a hybrid reasoning model for coding, tool use, and multi-step agent tasks.",
-    "details": "Combines hybrid linear attention with MoE, with about 560B total and 25B active parameters per token for extended office, coding and tool-use tasks. Original model weights are public on Hugging Face under the declared MIT license. The model supports up to 1M context, while the current official API exposes 256K.",
-    "dateNote": "Uses September 30 from Ant Ling’s official news feed. Dates of third-party catalog integrations are not treated as the original release date."
+    "details": "Combines hybrid linear attention with MoE, with about 560B total and 25B active parameters per token for extended office, coding and tool-use tasks. Original and later 1019 weights are public under the declared MIT license. The 1019 checkpoint further improves reasoning and agent tasks. Both weight versions support 1M context; the original official API’s 256K limit is recorded separately.",
+    "dateNote": "Uses September 30 from Ant Ling’s official news feed. The 1019 weights became public on October 27 and are recorded as a subsequent update. The version label 1019 is not treated as the weight-release date."
   },
   "muse-wonder": {
     "summary": "Meta’s new multimodal models target sustained coding, computer use, and professional tasks, with cross-session memory and sub-agent delegation.",
@@ -1034,7 +1034,7 @@ window.MODEL_ATLAS_EN = {
   },
   "kling-4": {
     "summary": "Kling 4.0 extends single-pass video generation to 30 seconds and improves reference control, keyframes and audiovisual consistency.",
-    "details": "Supports up to 15 reference assets and 10 keyframes, including images, video and subject voice references. General availability began on October 15. Two-minute extensions and enterprise API access remain planned in the later announcement; announced 4K and HDR specifications are not treated as broadly available.",
+    "details": "Supports up to 15 reference assets and 10 keyframes, including images, video and subject voice references. General availability began on October 15. Partner APIs are now available through services including Runway; the verified Runway interface offers 720p and 1080p clips up to 30 seconds with sound. Announced two-minute extensions, 4K and HDR are not treated as broadly available.",
     "dateNote": "Uses the main model’s September 30 preview announcement. Flash had early access for Ultra annual subscribers on September 28. Kuaishou confirms the October 15 general launch; the article publication date is not substituted for it."
   },
   "flux-3-image-klein": {
@@ -1142,6 +1142,16 @@ window.MODEL_ATLAS_EN = {
     "summary": "A post-trained FLUX 3 variant combines inference optimization with text-, image- and keyframe-driven video generation.",
     "details": "Developed by fal Research with Black Forest Labs through reinforcement learning and inference optimization for iterative video workflows. The fal API supports 5–20 second clips, native 720p output, 1080p upscaling and optional generated audio. This is a post-trained model variant.",
     "dateNote": "Uses October 19, the availability date explicitly stated in fal’s release. The post-trained variant is recorded separately from the original FLUX 3 model."
+  },
+  "gpt-6-1-terra": {
+    "summary": "A lower-cost model for visual reasoning, computer use and everyday coding, with a million-token context.",
+    "details": "Accepts text and images and returns text through the OpenAI API, ChatGPT Work and Codex. It has a 1,050,000-token context and a 128,000-token output limit, with configurable reasoning effort. Tool calling requires the Responses API. Standard API rates are $1 per million input tokens and $5 per million output tokens, with separate long-context rates.",
+    "dateNote": "Uses October 26, 2026 from the OpenAI API changelog. Product rollouts and reasoning settings are not separate model releases."
+  },
+  "ideogram-vector-1": {
+    "summary": "Generates editable SVGs from text or existing images for logos, lettering and illustration.",
+    "details": "Ideogram’s first dedicated vector model generates SVGs from prompts and optional image references, and converts existing raster images into vectors. Its output contains scalable, individually editable shapes for tools such as Figma and Illustrator. Available through the Ideogram product and API, with API generation billed per SVG according to quality.",
+    "dateNote": "Uses October 22, 2026 from Ideogram’s official announcement. Later integrations on partner platforms are not treated as the initial model release."
   }
 };
 window.ATLAS_TAGS_EN = {
@@ -1201,6 +1211,8 @@ window.ATLAS_TAGS_EN = {
   "智能体工程": "Agent engineering",
   "低延迟": "Low latency",
   "计算机操作": "Computer use",
+  "矢量图形": "Vector graphics",
+  "SVG": "SVG",
   "软件工程": "Software engineering",
   "预览模型": "Preview",
   "协作": "Collaboration",

@@ -29,9 +29,9 @@ test('published scores exactly match dated public source snapshots and known rel
     assert.equal(snapshot.records.length, Object.values(scores.entries).filter(e => e[key]).length);
   }
   assert.equal(scores.entries['gemini-4-argon'].arena.preliminary, true);
-  assert.equal(scores.benchmarks.aa.checkedAt, '2026-10-25');
-  assert.equal(scores.checkedAt, '2026-10-25');
-  assert.equal(scores.benchmarks.arena.checkedAt, '2026-10-25');
+  assert.equal(scores.benchmarks.aa.checkedAt, '2026-10-27');
+  assert.equal(scores.checkedAt, '2026-10-27');
+  assert.equal(scores.benchmarks.arena.checkedAt, '2026-10-27');
   assert.equal(scores.benchmarks.arena.publishedAt, '2026-10-22', 'Dataset retrieval date is not the leaderboard publication date');
   assert.equal(scores.entries['muse-wonder'].aa.model, 'Muse Wonder Full (max)');
   assert.equal(scores.cardScopes['muse-wonder'], 'variant');
@@ -90,8 +90,15 @@ test('later weight releases and serving variants preserve their own licenses and
   assert.equal(access('minimax-m3-1-flash').status, 'open');
   assert.ok(access('minimax-m3-1-flash').licenses.some(license => license.name === 'MiniMax Community License'));
   assert.equal(access('ling-3-1-flash').status, 'open');
-  assert.equal(scores.entries['ling-3-1-flash'].aa.model, 'Ling 3.1 Flash');
-  assert.equal(scores.entries['ling-3-1-flash'].aa.score, 41, 'Original public weights do not inherit the 1019 score');
+  assert.equal(scores.entries['ling-3-1-flash'].aa.model, 'Ling 3.1 Flash 1019');
+  assert.equal(scores.cardScopes['ling-3-1-flash'], 'snapshot');
+  assert.equal(specifications['ling-3-1-flash'].variants[0].name, 'Ling-3.1-flash-1019 (weights)');
+  assert.match(scores.entries['ling-3-1-flash'].aa.noteEn, /original.*41.*separate evaluation/);
+  assert.equal(scores.entries['ling-3-1-flash'].aa.score, 44, 'The current score names the newly public 1019 checkpoint');
+  assert.equal(releases.find(entry => entry.id === 'ling-3-1-flash').date, '2026-09-30', 'A later weight release does not rewrite the original event');
+  assert.equal(scores.entries['gpt-6-1-terra'].arena, undefined, 'Terra does not inherit another GPT model’s Arena score');
+  assert.deepEqual(Array.from(specifications['gpt-6-1-terra'].variants[0].output), ['text']);
+  assert.equal(context.window.MODEL_ATLAS_PRICES.entries['ideogram-vector-1'], undefined, 'Per-file SVG pricing is not per-token language pricing');
   assert.equal(models.companyRanking.entries.find(entry => entry.company === 'inclusionai').model, 'Ling 3.1 Flash 1019');
   assert.equal(access('kimi-k3-1-pro').status, 'closed', 'Planned weights are not downloadable weights');
   assert.equal(scores.entries['kimi-k3-1-pro'].arena, undefined, 'K3.1 does not inherit K3 results');

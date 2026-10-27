@@ -1,8 +1,8 @@
 // Primary-source history of AI methods, computing frameworks, and deployment.
 (() => {
   const data = {
-  "asOf": "2026-10-25",
-  "updatedAt": "2026-10-25",
+  "asOf": "2026-10-27",
+  "updatedAt": "2026-10-27",
   "accessFilter": false,
   "companies": [
     {
@@ -1689,7 +1689,7 @@
       "category": "deployment",
       "kind": "release",
       "summary": "通过分页管理 KV 缓存，改善语言模型推理服务的内存利用率。",
-      "details": "vLLM 的公开发布将 PagedAttention 与推理服务系统结合，减少缓存浪费并支持请求之间的高效调度。",
+      "details": "vLLM 的公开发布将 PagedAttention 与推理服务系统结合，减少缓存浪费并支持请求之间的高效调度。2026 年 10 月 23 日，团队介绍了对 DeepSeek 开源内核的集成，并公开 V4.1 Flash 在 GB300 NVL72 上的预填充/解码分离与专家并行部署。",
       "dateNote": "",
       "tags": [],
       "milestone": true,
@@ -1697,11 +1697,16 @@
         {
           "title": "原始资料",
           "url": "https://blog.vllm.ai/2023/06/20/vllm.html"
+        },
+        {
+          "title": "vLLM · DeepSeek 内核与分离部署",
+          "titleEn": "vLLM · DeepSeek kernels and disaggregated serving",
+          "url": "https://vllm.ai/blog/2026-10-23-deepseek-v41-flash-pd-wide-ep"
         }
       ],
       "en": {
         "summary": "Paged KV-cache management improves memory utilization in language-model serving.",
-        "details": "The public vLLM release combines PagedAttention with a serving system to reduce cache waste and schedule requests more efficiently.",
+        "details": "The public vLLM release combines PagedAttention with a serving system to reduce cache waste and schedule requests more efficiently. On October 23, 2026, the team documented its integration of DeepSeek’s open kernels and V4.1 Flash serving on GB300 NVL72 with prefill/decode disaggregation and expert parallelism.",
         "dateNote": ""
       }
     },
@@ -1785,7 +1790,7 @@
       "category": "deployment",
       "kind": "paper",
       "summary": "把结构化生成程序与运行时结合，复用前缀计算与缓存。",
-      "details": "SGLang 提供生成程序接口，并在运行时使用 RadixAttention 等机制管理共享前缀。该节点记录系统论文首次公开。",
+      "details": "SGLang 提供生成程序接口，并在运行时使用 RadixAttention 等机制管理共享前缀。该节点记录系统论文首次公开。2026 年 10 月 24 日，团队公开了 DeepSeek Mega 系列内核、DSpark 推测解码与 SWA 有界重放的集成，并说明其 API 服务、KV 缓存、预填充/解码分离和负载均衡构成完整服务系统。",
       "dateNote": "日期采用 arXiv 首个公开版本。",
       "tags": [],
       "milestone": true,
@@ -1793,11 +1798,16 @@
         {
           "title": "原始资料",
           "url": "https://arxiv.org/abs/2312.07104"
+        },
+        {
+          "title": "SGLang · DeepInfer 优化与服务集成",
+          "titleEn": "SGLang · DeepInfer optimizations and serving integration",
+          "url": "https://www.lmsys.org/blog/2026-10-24-dsv41-deepinfer"
         }
       ],
       "en": {
         "summary": "A structured generation language and runtime reuse prefix computation and cached state.",
-        "details": "SGLang combines a generation-program interface with runtime mechanisms such as RadixAttention for shared prefixes. This entry records the system paper’s first public version.",
+        "details": "SGLang combines a generation-program interface with runtime mechanisms such as RadixAttention for shared prefixes. This entry records the system paper’s first public version. On October 24, 2026, the team documented DeepSeek Mega kernels, DSpark speculative decoding and SWA bounded replay integration, together with an API server, KV-cache management, prefill/decode disaggregation and replica load balancing.",
         "dateNote": "Dated to the first public version on arXiv."
       }
     },
@@ -2525,10 +2535,44 @@
         "details": "The public beta supports Trainium2 and Trainium3, eager execution, torch.compile, distributed training and custom NKI kernels under Apache 2.0. Hugging Face libraries including Transformers and Diffusers integrate it natively. This backend is distinct from the older PyTorch/XLA implementation distributed under the same package name. The first release does not support dynamic or symbolic shapes, among other gaps.",
         "dateNote": "The technical introduction appeared October 19; this entry uses the stated October 20 public-beta date, cross-checked against the public repository."
       }
+    },
+    {
+      "id": "ml-drift",
+      "date": "2026-10-08",
+      "name": "ML Drift",
+      "company": "google",
+      "category": "deployment",
+      "kind": "release",
+      "milestone": false,
+      "tags": [],
+      "searchAliases": [
+        "LiteRT",
+        "TensorFlow Lite GPU delegate"
+      ],
+      "summary": "统一端侧 GPU 计算接口，为移动设备、浏览器和桌面上的模型推理提供加速。",
+      "details": "Google AI Edge 以 Apache 2.0 许可公开 LiteRT 的核心 GPU 引擎，也提供独立 C++ 接口，覆盖 OpenCL、OpenGL ES、Metal 和 WebGPU。Google 介绍其已用于 Chrome、Photos、YouTube Shorts 等产品。桌面大模型支持处于预览阶段；独立 LiteRT 包已可用，Google Play 服务集成尚未推出。",
+      "dateNote": "采用 Google 于 2026 年 10 月 8 日发布的开源公告日期；此前的研究和内部部署，以及后续报道日期分别对待。",
+      "sources": [
+        {
+          "title": "Google · ML Drift 开源与应用",
+          "titleEn": "Google · ML Drift open-source release and deployments",
+          "url": "https://developers.googleblog.com/ml-drift-next-gen-gpu-aiml-inference-at-the-edge/"
+        },
+        {
+          "title": "Google AI Edge · 代码与许可",
+          "titleEn": "Google AI Edge · Source and license",
+          "url": "https://github.com/google-ai-edge/ml-drift"
+        }
+      ],
+      "en": {
+        "summary": "A common GPU compute layer accelerates on-device inference across mobile devices, browsers and desktops.",
+        "details": "Google AI Edge released LiteRT’s core GPU engine under Apache 2.0, also exposing standalone C++ APIs across OpenCL, OpenGL ES, Metal and WebGPU. Google reports production use in Chrome, Photos and YouTube Shorts. Desktop LLM paths are presented as previews, and the new accelerator in Google Play services is still planned; standalone LiteRT packages are already available.",
+        "dateNote": "Uses Google’s October 8, 2026 open-source announcement, distinct from earlier research, internal deployments and subsequent reporting."
+      }
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-25",
+    "checkedAt": "2026-10-27",
     "scope": "算法、计算框架、推理部署与容器沙箱中具有经典性、代表性或影响力的公开节点。",
     "method": "以原始论文、项目公告与发布记录核对日期，区分预览、正式可用和后续更新；不逐条收录常规软件版本。",
     "references": []
