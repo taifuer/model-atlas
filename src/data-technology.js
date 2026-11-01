@@ -2321,7 +2321,7 @@
       "category": "deployment",
       "kind": "release",
       "summary": "针对 MLA 解码优化 GPU 内核，支持可变长度序列与分页 KV 缓存。",
-      "details": "首版面向 NVIDIA Hopper GPU，支持 BF16，优化多头潜在注意力的解码执行。它是 MLA 的高效实现，不是新的模型或注意力架构。后续稀疏注意力内核被 vLLM 用于 DeepSeek-V3.2-Exp 部署。",
+      "details": "首版面向 NVIDIA Hopper GPU，支持 BF16，优化 MLA 解码；后续稀疏注意力内核被 vLLM 用于 DeepSeek-V3.2-Exp。2026 年 9 月 30 日增加昇腾 950 的稀疏注意力预填充与解码内核。该版改用新的 FP8 / FP4 KV 缓存格式，移除 Hopper 与前代模型支持；旧模型需使用历史版本。融合注意力前后操作的内核仍仅支持 CUDA。",
       "dateNote": "采用开源周正式公开日期，不采用更早的内部初始提交时间。",
       "tags": [],
       "milestone": false,
@@ -2341,13 +2341,22 @@
           "url": "https://vllm-project.github.io/2025/09/29/deepseek-v3-2.html",
           "title": "vLLM 集成记录",
           "titleEn": "vLLM integration"
+        },
+        {
+          "title": "DeepSeek · 当前平台支持与兼容性说明",
+          "titleEn": "DeepSeek · Current platform support and compatibility",
+          "url": "https://github.com/deepseek-ai/FlashMLA"
         }
       ],
       "en": {
         "summary": "GPU kernels optimize MLA decoding for variable-length sequences and paged KV caches.",
-        "details": "The initial release targets NVIDIA Hopper GPUs with BF16 support for multi-head latent attention decoding. It implements MLA efficiently rather than introducing a new model or attention architecture. Later sparse-attention kernels were integrated into vLLM for serving DeepSeek-V3.2-Exp.",
+        "details": "The initial Hopper release supports BF16 MLA decoding; later sparse kernels were integrated by vLLM for DeepSeek-V3.2-Exp. On September 30, 2026, sparse prefill and decoding kernels added Ascend 950 support. This release changes the FP8 / FP4 KV-cache format and drops Hopper and earlier models, which require a historical version. The fused attention-adjacent operations kernel remains CUDA-only.",
         "dateNote": "Dated to the public Open Source Week launch, rather than an earlier internal initial commit."
-      }
+      },
+      "searchAliases": [
+        "FlashMLA Ascend",
+        "昇腾稀疏注意力"
+      ]
     },
     {
       "id": "deepep",
@@ -2357,7 +2366,7 @@
       "category": "frameworks",
       "kind": "release",
       "summary": "面向 MoE 专家并行，提供高吞吐与低延迟的 GPU 全到全通信。",
-      "details": "DeepEP 为专家派发和结果合并提供通信内核，结合节点内 NVLink 与跨节点 RDMA，并区分训练、预填充和解码的吞吐及延迟需求。vLLM 与 SGLang 已将其用于大规模专家并行推理。",
+      "details": "首版为 MoE 专家派发和结果合并提供 GPU 通信内核，结合节点内 NVLink 与跨节点 RDMA，后被 vLLM 和 SGLang 用于专家并行推理。另行开放的 DeepEP-Ascend 面向具有 UBMEM 互连的昇腾 950，提供专家派发与合并，并与 NVIDIA 版的公开 buffer API 对齐；流水线、集合通信与 Engram 远端内存相关接口仍属实验功能。",
       "dateNote": "采用开源周正式公开日期，不采用更早的内部初始提交时间。",
       "tags": [],
       "milestone": false,
@@ -2382,13 +2391,22 @@
           "url": "https://www.lmsys.org/blog/2025-05-05-large-scale-ep/",
           "title": "SGLang 部署记录",
           "titleEn": "SGLang deployment"
+        },
+        {
+          "title": "DeepSeek · 昇腾通信实现与支持范围",
+          "titleEn": "DeepSeek · Ascend communication implementation and support scope",
+          "url": "https://github.com/deepseek-ai/DeepEP-Ascend"
         }
       ],
       "en": {
         "summary": "High-throughput and low-latency GPU all-to-all communication supports MoE expert parallelism.",
-        "details": "DeepEP provides communication kernels for expert dispatch and result combination, using NVLink within nodes and RDMA across nodes. Separate paths address throughput needs during training and prefill and latency during decoding. vLLM and SGLang integrate it for large-scale expert-parallel serving.",
+        "details": "The initial GPU release provides MoE expert dispatch and combination using intra-node NVLink and inter-node RDMA, later integrated into vLLM and SGLang. The separately released DeepEP-Ascend targets Ascend 950 with UBMEM connectivity, aligning its public buffer APIs with the NVIDIA version for expert dispatch and combination. Pipeline, collective and Engram remote-memory interfaces remain experimental.",
         "dateNote": "Dated to the public Open Source Week launch, rather than an earlier internal initial commit."
-      }
+      },
+      "searchAliases": [
+        "DeepEP-Ascend",
+        "昇腾专家并行通信"
+      ]
     },
     {
       "id": "deepgemm",
@@ -2398,7 +2416,7 @@
       "category": "frameworks",
       "kind": "release",
       "summary": "提供细粒度缩放的 FP8 矩阵乘法内核，覆盖稠密计算与 MoE 分组计算。",
-      "details": "首版面向 NVIDIA Hopper GPU，使用即时编译生成通用矩阵乘法内核，支持普通 GEMM 与 MoE 分组 GEMM。后续由 vLLM 和 SGLang 集成，成为低精度大模型推理的计算组件之一。",
+      "details": "首版面向 NVIDIA Hopper GPU，使用即时编译生成普通 GEMM 与 MoE 分组 GEMM 内核，后由 vLLM 和 SGLang 集成。2026 年 9 月 30 日另行开放 DeepGEMM-Ascend，面向昇腾 950，支持 BF16、FP8、FP4 矩阵乘法、MQA logits 与 MegaMoE。昇腾实现沿用 DeepGEMM 的 API 和开发流程，底层布局与缩放因子格式按平台处理。",
       "dateNote": "采用开源周正式公开日期，不采用更早的内部初始提交时间。",
       "tags": [],
       "milestone": false,
@@ -2423,13 +2441,22 @@
           "url": "https://www.lmsys.org/blog/2025-05-05-large-scale-ep/",
           "title": "SGLang 部署记录",
           "titleEn": "SGLang deployment"
+        },
+        {
+          "title": "DeepSeek · DeepGEMM 昇腾实现与首发记录",
+          "titleEn": "DeepSeek · DeepGEMM Ascend implementation and release history",
+          "url": "https://github.com/deepseek-ai/DeepGEMM-Ascend"
         }
       ],
       "en": {
         "summary": "FP8 matrix-multiplication kernels with fine-grained scaling support dense and grouped MoE computation.",
-        "details": "The initial release targets NVIDIA Hopper GPUs and uses just-in-time compilation for standard and grouped MoE GEMM kernels. Later integration into vLLM and SGLang established it as a compute component for low-precision large-model inference.",
+        "details": "The initial Hopper release uses just-in-time compilation for standard and grouped MoE GEMM and was later integrated by vLLM and SGLang. DeepGEMM-Ascend followed on September 30, 2026, targeting Ascend 950 with BF16, FP8 and FP4 GEMM, MQA logits and MegaMoE. It retains DeepGEMM APIs and development workflows while using platform-specific layouts and scaling-factor formats.",
         "dateNote": "Dated to the public Open Source Week launch, rather than an earlier internal initial commit."
-      }
+      },
+      "searchAliases": [
+        "DeepGEMM-Ascend",
+        "昇腾矩阵乘法"
+      ]
     },
     {
       "id": "deepinfer",
@@ -2573,6 +2600,214 @@
         "summary": "A common GPU compute layer accelerates on-device inference across mobile devices, browsers and desktops.",
         "details": "Google AI Edge released LiteRT’s core GPU engine under Apache 2.0, also exposing standalone C++ APIs across OpenCL, OpenGL ES, Metal and WebGPU. Google reports production use in Chrome, Photos and YouTube Shorts. Desktop LLM paths are presented as previews, and the new accelerator in Google Play services is still planned; standalone LiteRT packages are already available.",
         "dateNote": "Uses Google’s October 8, 2026 open-source announcement, distinct from earlier research, internal deployments and subsequent reporting."
+      }
+    },
+    {
+      "id": "deepseek-moe",
+      "date": "2024-01-11",
+      "name": "DeepSeekMoE",
+      "company": "deepseek",
+      "category": "methods",
+      "kind": "paper",
+      "summary": "以细粒度专家划分和共享专家，改进混合专家模型的分工与参数利用。",
+      "details": "DeepSeekMoE 将专家拆成更小的单元，并让共享专家承担通用知识，减少路由专家之间的冗余。团队公开 DeepSeekMoE 16B 的基础与对话模型；后续 DeepSeek-V2 明确采用这一架构作为前馈网络。",
+      "dateNote": "采用论文的 arXiv 首次提交日期；后续模型采用与算子实现不改变这一日期。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "原始论文 · arXiv",
+          "titleEn": "Original paper · arXiv",
+          "url": "https://arxiv.org/abs/2401.06066"
+        },
+        {
+          "title": "DeepSeek · DeepSeekMoE 官方仓库",
+          "titleEn": "DeepSeek · Official DeepSeekMoE repository",
+          "url": "https://github.com/deepseek-ai/DeepSeek-MoE"
+        },
+        {
+          "title": "DeepSeek · V2 架构与采用说明",
+          "titleEn": "DeepSeek · V2 architecture and adoption",
+          "url": "https://github.com/deepseek-ai/DeepSeek-V2"
+        }
+      ],
+      "en": {
+        "summary": "Fine-grained and shared experts improve specialization and parameter use in mixture-of-experts models.",
+        "details": "DeepSeekMoE divides routed experts into smaller units and assigns common knowledge to shared experts to reduce redundancy. The team releases DeepSeekMoE 16B base and chat models; DeepSeek-V2 later explicitly adopts this architecture for its feed-forward networks.",
+        "dateNote": "Uses the paper’s first arXiv submission. Later model adoption and kernel implementations do not change this date."
+      },
+      "searchAliases": [
+        "DeepSeek MoE",
+        "细粒度专家划分",
+        "共享专家",
+        "fine-grained expert segmentation",
+        "shared expert isolation"
+      ]
+    },
+    {
+      "id": "deepseek-sparse-attention",
+      "date": "2025-09-29",
+      "name": "DSA · DeepSeek Sparse Attention",
+      "company": "deepseek",
+      "category": "methods",
+      "kind": "paper",
+      "summary": "以轻量索引器筛选相关 token，减少长上下文中的注意力计算。",
+      "details": "DSA 随 DeepSeek-V3.2-Exp 首次公开，在 MLA 上引入轻量索引器与细粒度 token 选择，后续沿用于 DeepSeek-V3.2。公开实现以 DeepGEMM 计算索引分数、以 FlashMLA 执行稀疏注意力，vLLM 与 SGLang 已提供运行支持。",
+      "dateNote": "采用 DeepSeek-V3.2-Exp 于 2025 年 9 月 29 日首次公开 DSA 与技术报告的日期，而非后续 DeepSeek-V3.2 论文日期。",
+      "tags": [],
+      "milestone": false,
+      "searchAliases": [
+        "DSA",
+        "DeepSeek Sparse Attention",
+        "稀疏注意力",
+        "lightning indexer"
+      ],
+      "sources": [
+        {
+          "title": "DeepSeek · DSA 首次发布公告",
+          "titleEn": "DeepSeek · DSA introduction",
+          "url": "https://api-docs.deepseek.com/news/news250929/"
+        },
+        {
+          "title": "DeepSeek-V3.2-Exp · 原始技术报告",
+          "titleEn": "DeepSeek-V3.2-Exp · Original technical report",
+          "url": "https://github.com/deepseek-ai/DeepSeek-V3.2-Exp/blob/main/DeepSeek_V3_2.pdf"
+        },
+        {
+          "title": "DeepSeek · 实现与推理支持",
+          "titleEn": "DeepSeek · Implementations and inference support",
+          "url": "https://github.com/deepseek-ai/DeepSeek-V3.2-Exp"
+        },
+        {
+          "title": "DeepSeek-V3.2 · 方法说明与后续采用",
+          "titleEn": "DeepSeek-V3.2 · Method and subsequent adoption",
+          "url": "https://arxiv.org/abs/2512.02556"
+        }
+      ],
+      "en": {
+        "summary": "A lightweight indexer selects relevant tokens to reduce attention computation over long contexts.",
+        "details": "First published with DeepSeek-V3.2-Exp, DSA adds a lightweight indexer and fine-grained token selection to MLA and is retained in DeepSeek-V3.2. The public implementation uses DeepGEMM for index scores and FlashMLA for sparse attention, with runtime support from vLLM and SGLang.",
+        "dateNote": "Dated to the September 29, 2025 publication of DeepSeek-V3.2-Exp and its DSA technical report, rather than the later DeepSeek-V3.2 paper."
+      }
+    },
+    {
+      "id": "mhc",
+      "date": "2025-12-31",
+      "name": "mHC",
+      "company": "deepseek",
+      "category": "methods",
+      "kind": "paper",
+      "summary": "约束多路残差流之间的混合，改善超连接架构在大规模训练中的稳定性。",
+      "details": "mHC 在 Hyper-Connections 的多路残差结构上加入流形约束，通过双随机矩阵控制信号混合，并优化计算与访存开销。DeepSeek-V4 后续采用该结构；官方 TileKernels 提供相关算子，Hugging Face Transformers 也实现了对应模型组件。",
+      "dateNote": "采用论文在 arXiv 的首次提交日期（2025 年 12 月 31 日），不采用 2026 年修订或后续代码发布的日期。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "原始论文 · arXiv",
+          "titleEn": "Original paper · arXiv",
+          "url": "https://arxiv.org/abs/2512.24880"
+        },
+        {
+          "title": "DeepSeek · TileKernels 官方实现",
+          "titleEn": "DeepSeek · Official TileKernels implementation",
+          "url": "https://github.com/deepseek-ai/TileKernels"
+        },
+        {
+          "title": "Hugging Face · DeepSeek-V4 中的 mHC",
+          "titleEn": "Hugging Face · mHC in DeepSeek-V4",
+          "url": "https://github.com/huggingface/transformers/blob/main/docs/source/en/model_doc/deepseek_v4.md"
+        }
+      ],
+      "en": {
+        "summary": "Constrains mixing between parallel residual streams to stabilize hyper-connections at training scale.",
+        "details": "mHC adds manifold constraints to the parallel residual streams of Hyper-Connections, using doubly stochastic matrices to control signal mixing alongside computation and memory optimizations. DeepSeek-V4 subsequently adopts the structure; official TileKernels operators and corresponding Hugging Face Transformers components provide implementations.",
+        "dateNote": "Uses the first arXiv submission on December 31, 2025, rather than the 2026 revision or later code releases."
+      },
+      "searchAliases": [
+        "Manifold-Constrained Hyper-Connections",
+        "流形约束超连接",
+        "Hyper-Connections",
+        "TileKernels mHC"
+      ]
+    },
+    {
+      "id": "engram",
+      "date": "2026-01-12",
+      "name": "Engram",
+      "company": "deepseek",
+      "category": "methods",
+      "kind": "paper",
+      "summary": "以可扩展的 N-gram 查表记忆补充神经计算，探索模型容量的另一种稀疏分配方式。",
+      "details": "Engram 将静态 N-gram 记忆与当前隐状态融合，并研究记忆容量与 MoE 计算容量的分配。论文在相同参数量与计算量下进行对比实验；官方仓库提供核心逻辑演示，后续 TileKernels 提供用于内部训练与推理的门控算子。",
+      "dateNote": "采用论文的 arXiv 首次提交日期；2026 年 7 月修订及后续算子更新不作为首次发布日期。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "原始论文 · arXiv",
+          "titleEn": "Original paper · arXiv",
+          "url": "https://arxiv.org/abs/2601.07372"
+        },
+        {
+          "title": "DeepSeek · Engram 官方实现",
+          "titleEn": "DeepSeek · Official Engram implementation",
+          "url": "https://github.com/deepseek-ai/Engram"
+        },
+        {
+          "title": "DeepSeek · TileKernels 门控算子与应用说明",
+          "titleEn": "DeepSeek · TileKernels gating operators and usage",
+          "url": "https://github.com/deepseek-ai/TileKernels"
+        }
+      ],
+      "en": {
+        "summary": "Scalable N-gram lookup memory complements neural computation as another way to allocate sparse model capacity.",
+        "details": "Engram combines static N-gram memory with current hidden states and studies how to divide capacity between memory and MoE computation. The paper compares models at equal parameter and FLOP budgets. The official repository demonstrates the core logic, while later TileKernels gating operators are used in internal training and inference workloads.",
+        "dateNote": "Uses the paper’s first arXiv submission. The July 2026 revision and later kernel updates are not the initial release."
+      },
+      "searchAliases": [
+        "Conditional Memory via Scalable Lookup",
+        "条件记忆",
+        "N-gram memory",
+        "Engram-27B"
+      ]
+    },
+    {
+      "id": "deepseek-elastic-compute",
+      "date": "2026-09-19",
+      "name": "DSec · DeepSeek Elastic Compute",
+      "company": "deepseek",
+      "category": "infrastructure",
+      "kind": "paper",
+      "summary": "将容器、microVM 等执行后端统一为沙箱平台，支撑大规模智能体训练与评测。",
+      "details": "DSec 通过统一 SDK 接入函数调用、容器、microVM 与完整虚拟机，将有状态任务执行与 GPU 训练分离。系统结合环境分层、资源调度和 3FS 按需加载镜像；论文介绍了 DeepSeek 智能体训练与评测中的生产部署。节点记录系统论文发表，整个平台未随论文开源。",
+      "dateNote": "采用 arXiv 首个公开版本的 2026 年 9 月 19 日，不以更早的内部部署或后续媒体报道日期代替。",
+      "tags": [],
+      "milestone": false,
+      "searchAliases": [
+        "DSec",
+        "DeepSeek Elastic Compute",
+        "sandbox",
+        "沙箱",
+        "AgentENV",
+        "智能体训练"
+      ],
+      "sources": [
+        {
+          "title": "DSec · 系统论文与首发日期",
+          "titleEn": "DSec · System paper and first publication",
+          "url": "https://arxiv.org/abs/2609.22978"
+        },
+        {
+          "title": "DSec · 架构、生产部署与实现范围",
+          "titleEn": "DSec · Architecture, production deployment and implementation scope",
+          "url": "https://arxiv.org/html/2609.22978v1"
+        }
+      ],
+      "en": {
+        "summary": "A sandbox platform unifies containers, microVMs and other backends for agent training and evaluation at scale.",
+        "details": "DSec exposes function calls, containers, microVMs and full virtual machines through one SDK, separating stateful task execution from GPU training. It combines environment layers, resource scheduling and on-demand image loading from 3FS. The paper describes production use in DeepSeek agent training and evaluation. This entry records the system paper; the complete platform was not open-sourced with it.",
+        "dateNote": "Dated to the first arXiv version on September 19, 2026, rather than earlier internal deployment or later coverage."
       }
     }
   ],
