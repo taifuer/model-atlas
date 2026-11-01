@@ -134,7 +134,7 @@ for (const language of ['zh', 'en']) {
       await page.locator('[data-show-all]').click();
       const haiku = page.locator('#release-claude-haiku-5-5');
       await expect(haiku.locator('[data-detail-section="specs"]')).toContainText('1M');
-      await expect(haiku.locator('[data-detail-section="scores"]')).toContainText('43');
+      await expect(haiku.locator('[data-detail-section="scores"]')).toContainText('36');
       await haiku.locator('[data-detail-section="pricing"]').click();
       await expect(page.locator('.detail-pricing .price-tier')).toHaveCount(2);
       await expect(page.locator('.price-condition').first()).toContainText('≤ 100K');
@@ -142,10 +142,10 @@ for (const language of ['zh', 'en']) {
       await page.keyboard.press('Escape');
       const mistral = page.locator('#release-mistral-large-4-preview');
       await expect(mistral.locator('[data-detail-section="pricing"]')).not.toContainText(language === 'en' ? 'Promo' : '优惠');
-      await expect(mistral.locator('[data-detail-section="pricing"]')).toContainText('1.36');
+      await expect(mistral.locator('[data-detail-section="pricing"]')).toContainText('0.7');
       await mistral.locator('.card-title button').click();
       await expect(page.locator('.dialog-meta')).toContainText(language === 'en' ? 'Preview' : '预览');
-      await expect(page.locator('.dialog-meta')).toContainText(language === 'en' ? 'Closed source' : '闭源');
+      await expect(page.locator('.dialog-meta')).toContainText(language === 'en' ? 'Open source' : '开源');
       await page.keyboard.press('Escape');
       const chatgpt = page.locator('#release-gpt-6-sol-luna-chatgpt-october');
       await expect(chatgpt.locator('.fact-chip')).toHaveCount(0);

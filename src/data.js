@@ -5,6 +5,7 @@
  */
 window.MODEL_ATLAS = (() => {
   const companies = [
+    {"id": "pika", "name": "Pika", "nameEn": "Pika", "aliases": "Pika Labs H3 Flex 视频生成", "color": "#85816d"},
     {"id": "ideogram", "name": "Ideogram", "nameEn": "Ideogram", "aliases": "Ideogram Vector SVG 矢量图形", "color": "#767b98"},
     {"id": "fal", "name": "fal", "nameEn": "fal", "aliases": "fal.ai fal Research", "color": "#73826c"},
     {"id": "canva", "name": "Canva", "nameEn": "Canva", "aliases": "Canva Research 可画 Craft", "color": "#719f9c"},
@@ -46,132 +47,92 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    "checkedAt": "2026-10-27",
+    "checkedAt": "2026-11-01",
     "source": "https://artificialanalysis.ai/leaderboards/models",
     "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
     "metric": "Artificial Analysis Intelligence Index",
-    "version": "4.3.2",
+    "version": "5.0",
     "selection": "highest-listed-score",
     "entries": [
+      {
+        "company": "google",
+        "model": "Gemini 4 Carbon (high)",
+        "score": 59
+      },
       {
         "company": "anthropic",
         "model": "Claude Opus 5.5 (max with fallback)",
         "score": 58
       },
       {
+        "company": "openai",
+        "model": "GPT-6 Astra (max)",
+        "score": 57
+      },
+      {
         "company": "meta",
         "model": "Muse Wonder Full (max)",
-        "score": 56
+        "score": 50
       },
       {
         "company": "moonshot",
         "model": "Kimi K3.1 Pro",
-        "score": 55
-      },
-      {
-        "company": "openai",
-        "model": "GPT-6 Astra (max)",
-        "score": 53
-      },
-      {
-        "company": "google",
-        "model": "Gemini 4 Argon (high)",
-        "score": 53
+        "score": 46
       },
       {
         "company": "xai",
-        "model": "Grok 4.7 (xhigh)",
-        "score": 46
-      },
-      {
-        "company": "xiaomi",
-        "model": "MiMo-V2.6-Pro",
-        "score": 46
+        "model": "Grok 4.7 (high)",
+        "score": 35
       },
       {
         "company": "qwen",
         "model": "Qwen3.8 Max (0902)",
-        "score": 45
+        "score": 34
       },
       {
         "company": "deepseek",
         "model": "DeepSeek V4.1 Flash 1017 (max)",
-        "score": 45
+        "score": 32
       },
       {
         "company": "zhipu",
         "model": "GLM-5.3 (max)",
-        "score": 45
+        "score": 32
+      },
+      {
+        "company": "xiaomi",
+        "model": "MiMo-V2.6-Pro",
+        "score": 30
       },
       {
         "company": "inclusionai",
         "model": "Ling 3.1 Flash 1019",
-        "score": 44
-      },
-      {
-        "company": "stepfun",
-        "model": "Step 5 Preview",
-        "score": 44
+        "score": 29
       },
       {
         "company": "minimax",
         "model": "MiniMax-M3.1-Flash",
-        "score": 43
+        "score": 29
+      },
+      {
+        "company": "stepfun",
+        "model": "Step 5 Preview",
+        "score": 29
       },
       {
         "company": "mistral",
-        "model": "Mistral Large 4 Preview",
-        "score": 38
+        "model": "Mistral Large 4 (high)",
+        "score": 26
       },
       {
         "company": "reflection",
         "model": "Beam 1.0",
-        "score": 30
+        "score": 18
       },
       {
         "company": "nvidia",
         "model": "Nemotron 3.5 Super VL",
-        "score": 26
-      },
-      {
-        "company": "tencent",
-        "model": "Hy3",
-        "score": 25
-      },
-      {
-        "company": "bytedance",
-        "model": "Doubao Seed Code",
-        "score": 17,
-        "estimated": true
-      },
-      {
-        "company": "amazon",
-        "model": "Nova 2.0 Pro Preview (medium)",
-        "score": 14,
-        "estimated": true
-      },
-      {
-        "company": "inception",
-        "model": "Mercury 2.5",
-        "score": 12
-      },
-      {
-        "company": "liquid",
-        "model": "LFM2.5-2.6B",
-        "score": 8,
-        "estimated": true
-      },
-      {
-        "company": "allenai",
-        "model": "Olmo 3.1 32B Think",
-        "score": 7,
-        "estimated": true
-      },
-      {
-        "company": "microsoft",
-        "model": "Phi-4 Mini",
-        "score": 6,
-        "estimated": true
+        "score": 14
       }
     ]
   };
@@ -192,6 +153,146 @@ window.MODEL_ATLAS = (() => {
     return { id, date, name, company, kind, summary, tags, sources: Array.isArray(sources) ? sources : [sources], milestone, details, dateNote };
   }
   const releases = [
+    {
+      "id": "genie-4",
+      "date": "2026-10-27",
+      "name": "Genie 4",
+      "company": "google",
+      "kind": "preview",
+      "milestone": false,
+      "summary": "将实时可交互世界模拟与原生音频结合，支持键盘操作和文字指令改变场景。",
+      "details": "Google DeepMind 的世界模型，结合 Gemini 系列能力维持场景外观、行为与连续性，同时生成环境音、音乐和对话。用户可在模拟过程中导航、调整镜头并改变场景。以研究预览向受信测试者逐步开放；Project Genie 消费者入口和 Gemini API 合作伙伴访问仍为后续计划。",
+      "dateNote": "采用 2026 年 10 月 27 日研究预览公告；受信测试已开始，不等同于面向公众的产品或 API 正式上线。",
+      "tags": [
+        "世界模型",
+        "实时交互",
+        "原生音频"
+      ],
+      "sources": [
+        {
+          "title": "Google DeepMind · Genie 4 研究预览",
+          "titleEn": "Google DeepMind · Genie 4 research preview",
+          "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/"
+        }
+      ]
+    },
+    {
+      "id": "pika-h3-flex",
+      "date": "2026-10-29",
+      "name": "Pika H3 Flex",
+      "company": "pika",
+      "kind": "release",
+      "milestone": false,
+      "summary": "在 MiniMax H3 上后训练，以六步采样生成带音频的视频，并开放参考条件适配器。",
+      "details": "支持文本、首尾帧和图像、视频、音频参考，面向镜头控制与视频编辑。开放包由 MiniMax H3 基础组件和 Pika LoRA 适配器组成，本地生成原生 480p / 768p 视频与混合立体声音频。1080p 至 4K 放大和独立音轨是 Pika 托管 API 的扩展功能；权重适用带地域与商业使用限制的 MiniMax H3 社区许可证。",
+      "dateNote": "采用 Pika 技术公告的 10 月 29 日；这是 H3 的后训练模型版本，基础模型的发布时间另列。",
+      "tags": [
+        "视频生成",
+        "六步采样",
+        "开放权重"
+      ],
+      "sources": [
+        {
+          "title": "Pika · 技术公告",
+          "titleEn": "Pika · Technical announcement",
+          "url": "https://pika.art/blog/pika-h3-flex-research"
+        },
+        {
+          "title": "Pika · 模型卡与权重",
+          "titleEn": "Pika · Model card and weights",
+          "url": "https://huggingface.co/Pika-Labs/Pika-H3-Flex"
+        },
+        {
+          "title": "Pika · 权重许可证",
+          "titleEn": "Pika · Weight license",
+          "url": "https://huggingface.co/Pika-Labs/Pika-H3-Flex/raw/main/LICENSE"
+        },
+        {
+          "title": "Pika · 参考视频 API",
+          "titleEn": "Pika · Reference-to-video API",
+          "url": "https://dev.pika.art/models/pika/pika-h3-flex/reference-to-video"
+        }
+      ]
+    },
+    {
+      "id": "mai-image-2-7",
+      "date": "2026-10-27",
+      "name": "MAI Image 2.7",
+      "company": "microsoft",
+      "kind": "preview",
+      "milestone": false,
+      "summary": "面向图像编辑的预览模型，强化场景重绘、光照调整、文字修改与图像修复。",
+      "details": "可在 MAI Playground、Arena 与 Artificial Analysis 体验编辑功能。重点改进在保持原图关系的同时修改对象、场景、风格和文字；首次预览仅开放图像编辑，文生图仍为后续计划。",
+      "dateNote": "采用 Microsoft AI 于 10 月 27 日发布的预览公告；后续文生图或其他产品接入不视为已上线。",
+      "tags": [
+        "图像编辑",
+        "场景控制",
+        "预览"
+      ],
+      "sources": [
+        {
+          "title": "Microsoft AI · 图像编辑预览",
+          "titleEn": "Microsoft AI · Image-editing preview",
+          "url": "https://microsoft.ai/news/mai-image-2-7-debut/"
+        }
+      ]
+    },
+    {
+      "id": "lfm-3",
+      "date": "2026-10-27",
+      "name": "LFM3",
+      "company": "liquid",
+      "kind": "weights",
+      "milestone": false,
+      "summary": "面向端侧部署的约 2B 参数模型家族，以同一混合架构覆盖文本、视觉、音频与决策任务。",
+      "details": "结合门控短卷积、滑动窗口注意力与全局注意力，开放基础模型及六个后训练型号。文本型号 LFM3-1.7B 提供 256K 上下文；VL 为 128K，Audio 和 Omni 为 32K。Omni 可理解带音轨的视频并输出文本或语音，d1 型号输出结构化决策。各型号采用 LFM Open License v1.0，商用受营收门槛约束。",
+      "dateNote": "采用官方 10 月 27 日家族发布公告；各模态与决策分支合并为本次家族节点，不按权重格式重复计数。",
+      "tags": [
+        "端侧模型",
+        "多模态",
+        "混合架构"
+      ],
+      "sources": [
+        {
+          "title": "Liquid AI · LFM3 发布",
+          "titleEn": "Liquid AI · LFM3 announcement",
+          "url": "https://www.liquid.ai/blog/lfm3"
+        },
+        {
+          "title": "Liquid AI · 文本模型卡",
+          "titleEn": "Liquid AI · Text model card",
+          "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
+        },
+        {
+          "title": "Liquid AI · 多模态模型卡",
+          "titleEn": "Liquid AI · Omni model card",
+          "url": "https://huggingface.co/LiquidAI/LFM3-Omni-2B"
+        }
+      ]
+    },
+    {
+      "id": "gemini-4-carbon",
+      "date": "2026-10-28",
+      "name": "Gemini 4 Carbon",
+      "company": "google",
+      "kind": "announcement",
+      "milestone": false,
+      "summary": "面向复杂编程、长程智能体任务与网络防御的多模态模型，先向受信合作伙伴开放。",
+      "details": "在 Gemini 4 Argon 之后继续改进软件工程、科学任务和多模态理解。公告表示先向部分网络防御团队开放，再通过 Fairwind 计划逐步扩大受信访问；面向普通开发者和消费者的产品上线仍为后续计划。",
+      "dateNote": "采用 10 月 28 日官方公告日期；受限访问不等同于公开 API 正式上线，尚未提供的服务价格不作为当前 API 费率展示。",
+      "tags": [
+        "多模态",
+        "长程任务",
+        "网络防御"
+      ],
+      "sources": [
+        {
+          "title": "Google · Carbon 发布公告",
+          "titleEn": "Google · Carbon announcement",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+        }
+      ]
+    },
     {
       "id": "gpt-6-1-terra",
       "date": "2026-10-26",
@@ -1199,10 +1300,40 @@ window.MODEL_ATLAS = (() => {
     event("claude-fable-5-1", "2026-09-01", "Claude Fable 5.1 / Mythos 5.1", "anthropic", "release",
       "继续强化编码、知识工作和研究能力，Fable 与 Mythos 保持不同开放范围。", ["复杂任务","研究"], [source("Anthropic · Fable 与 Mythos 5.1", "https://www.anthropic.com/claude-fable-and-mythos-5-1"), source("Claude · API 发布日志（2026-09-01）", "https://platform.claude.com/docs/en/release-notes/overview#september-1-2026")], false,
       "Fable 5.1 面向一般可用场景，Mythos 5.1 仍主要面向通过审核的合作伙伴。"),
-    event('gpt-6-astra', '2026-09-03', 'GPT-6 Astra', 'openai', 'release',
-      '将推理、计算机使用和专业工作能力结合，面向更完整的复杂任务。', ['计算机使用', '专业工作'],
-      [oa('gpt-6-astra'), source('OpenAI · 发布当日安全概述', 'https://openai.com/index/safety-overview-gpt-6-astra/')], true,
-      'GPT-6 Astra 的官方发布介绍聚焦浏览器与计算机操作、软件工程和多步骤专业工作。', '发布日期由 9 月 3 日的官方安全概述交叉确认；模型分阶段开放。'),
+    {
+      "id": "gpt-6-astra",
+      "date": "2026-09-03",
+      "name": "GPT-6 Astra",
+      "company": "openai",
+      "kind": "release",
+      "summary": "将推理、计算机使用和专业工作能力结合，面向更完整的复杂任务。",
+      "tags": [
+        "计算机使用",
+        "专业工作"
+      ],
+      "sources": [
+        {
+          "title": "OpenAI · 官方发布",
+          "url": "https://openai.com/index/gpt-6-astra/"
+        },
+        {
+          "title": "OpenAI · 发布当日安全概述",
+          "url": "https://openai.com/index/safety-overview-gpt-6-astra/"
+        },
+        {
+          "title": "OpenAI · GPT-Rosalind-6 系统卡增补",
+          "titleEn": "OpenAI · GPT-Rosalind-6 system-card addendum",
+          "url": "https://deploymentsafety.openai.com/gpt-rosalind-6"
+        }
+      ],
+      "milestone": true,
+      "details": "GPT-6 Astra 的官方发布介绍聚焦浏览器与计算机操作、软件工程和多步骤专业工作。 10 月 30 日公布的 GPT-Rosalind-6 Research 面向获准的生命科学研究者，使用与 Astra 相同的权重，未新增训练数据或额外后训练。",
+      "dateNote": "发布日期由 9 月 3 日的官方安全概述交叉确认；模型分阶段开放。",
+      "searchAliases": [
+        "GPT-Rosalind-6",
+        "GPT-Rosalind-6 Research"
+      ]
+    },
     event('deepseek-v4-1-flash', '2026-09-10', 'DeepSeek-V4.1-Flash', 'deepseek', 'release',
       '新架构加入原生视觉理解，同时改进推理效率与智能体任务能力。', ['视觉理解', '高效推理'], [ds('news260910'), {"title": "DeepSeek · 1017 版本更新", "titleEn": "DeepSeek: 1017 checkpoint update", "url": "https://api-docs.deepseek.com/zh-cn/news/news261017/"}, {"title": "DeepSeek · 1017 开放权重", "titleEn": "DeepSeek: 1017 open weights", "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"}], false,
       '官方介绍这一版本为新架构家族中较小的模型，采用非对称编码器与解码器设计。10 月 17 日更新至 V4.1-Flash-1017，改进编程与智能体任务，网页、App 和 API 同步切换，并以 MIT 开放该快照权重。', '保留 9 月 10 日首次发布；10 月 17 日快照由官方称为小版本更新，作为后续进展合并记录。'),
@@ -1472,11 +1603,46 @@ window.MODEL_ATLAS = (() => {
       "采用官方模型发布日志 9 月 22 日；Pro 的加速服务不作为新模型重复计数。"),
     {"id": "gpt-6-1-sol", "date": "2026-09-29", "name": "GPT-6.1 Sol", "company": "openai", "kind": "release", "summary": "升级编程、计算机操作与专业任务能力，并支持在单次请求中分派子任务。", "details": "GPT-6.1 Sol 延续 Sol 的价格定位，提供 1,050,000 tokens 上下文和图像输入，改进长程工具使用。Multi-agent 以测试功能提供；推理档位与产品接入方式合并在同一节点记录。", "dateNote": "采用 OpenAI API 更新日志的 9 月 29 日。ChatGPT Work 与 Codex 的分批开放不另作模型发布时间。", "tags": ["推理", "多模态", "智能体"], "milestone": false, "sources": [{"title": "OpenAI · API 发布日志", "url": "https://developers.openai.com/api/docs/changelog"}, {"title": "OpenAI · 模型文档", "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol"}]},
     {"id": "gemini-4-argon", "date": "2026-09-30", "name": "Gemini 4 Argon", "company": "google", "kind": "announcement", "summary": "面向复杂编程、知识工作与网络防御的新一代多模态模型，支持长程推理与工具任务。", "details": "9 月 30 日先通过 Fairwind 计划向受邀网络防御团队开放，10 月 13 日转为 Gemini API 正式可用。开发者可使用付费 API；Google AI Ultra 可在 AI Studio 和 Antigravity 使用，Gemini 应用则向 Pro 与 Ultra 订阅用户开放。", "dateNote": "保留 9 月 30 日首次公告日期；10 月 13 日的 API 正式开放与应用上线作为后续进展记录。", "tags": ["多模态", "推理", "智能体"], "milestone": false, "sources": [{"title": "Google · 模型公告", "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/"}, {"title": "Google · API 发布日志", "url": "https://ai.google.dev/gemini-api/docs/changelog"}, {"title": "Google · 开发者开放公告", "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/"}, {"title": "Google · Gemini 应用开放公告", "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability/"}]},
-    event("mistral-large-4-preview", "2026-10-06", "Mistral Large 4 Preview", "mistral", "preview",
-      "公开预览新一代多模态旗舰，结合指令遵循、混合推理与智能体任务能力。", ["多模态", "推理", "智能体"],
-      [source("Mistral · 模型发布", "https://mistral.ai/news/mistral-large-4/"), source("Mistral · 官方发布日志", "https://docs.mistral.ai/resources/changelogs")], false,
-      "首发通过 Mistral Studio API 提供公开预览，支持图像理解与百万 token 上下文。官方计划于月底发布权重；截至本次核对尚未开放，当前按闭源记录。",
-      "采用官方公告与发布日志的 10 月 6 日。此节点记录 API 公开预览，权重开放计划不作为已经发生的事件。"),
+    {
+      "id": "mistral-large-4-preview",
+      "date": "2026-10-06",
+      "name": "Mistral Large 4",
+      "company": "mistral",
+      "kind": "preview",
+      "summary": "多模态旗舰结合指令遵循、推理与智能体任务能力，后续开放百万 token 上下文权重。",
+      "tags": [
+        "多模态",
+        "推理",
+        "开放权重"
+      ],
+      "sources": [
+        {
+          "title": "Mistral · 模型发布",
+          "url": "https://mistral.ai/news/mistral-large-4/"
+        },
+        {
+          "title": "Mistral · 官方发布日志",
+          "url": "https://docs.mistral.ai/resources/changelogs"
+        },
+        {
+          "title": "Mistral · 权重发布",
+          "titleEn": "Mistral · Weight release",
+          "url": "https://mistral.ai/news/mistral-large-4-oss/"
+        },
+        {
+          "title": "Mistral · 正式模型卡与权重",
+          "titleEn": "Mistral · Released model card and weights",
+          "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
+        }
+      ],
+      "milestone": false,
+      "details": "10 月 6 日先提供公开 API 预览，10 月 29 日发布继续后训练的 FP8 与 NVFP4 权重。模型支持文本、图像输入与文本输出，约 1T 总参数、52B 激活参数，提供三档推理深度。采用 Mistral Ecosystem Open-Weight License；经营模型即服务业务的企业商用需另行获得许可。",
+      "dateNote": "保留 10 月 6 日首次公开预览日期；10 月 29 日的权重发布与后训练改进合并记录，当前规格、价格和评分对应后续版本。",
+      "searchAliases": [
+        "Mistral Large 4 Preview",
+        "Le Chonk"
+      ]
+    },
     event("claude-haiku-5-5", "2026-10-07", "Claude Haiku 5.5", "anthropic", "release",
       "Haiku 系列首次支持可调推理力度，面向高频任务、编程及子智能体调用。", ["多模态", "高效推理", "智能体"],
       [source("Anthropic · 模型发布", "https://www.anthropic.com/claude-haiku-5-5"), source("Anthropic · 模型文档", "https://platform.claude.com/docs/en/models/overview")], false,
@@ -1769,8 +1935,8 @@ window.MODEL_ATLAS = (() => {
     },
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-10-27',
-    scope: '主流语言、多模态、图像与视频生成模型，兼顾具有历史影响的架构研究与产品节点。',
+    checkedAt: '2026-11-01',
+    scope: '主流语言、多模态、图像与视频生成及世界模型，兼顾具有历史影响的架构研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
     references: [
@@ -1787,5 +1953,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-10-27', updatedAt: '2026-10-27', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-11-01', updatedAt: '2026-11-01', companies, companyRanking, kinds, themes, releases, coverage });
 })();

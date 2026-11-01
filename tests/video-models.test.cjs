@@ -23,11 +23,14 @@ test('generation tasks stay separate from input modalities and language metrics'
   assert.equal(get('seedance-2-5').category, 'multimodal');
   const language = filters.select(filters.read('?task=language'));
   const images = filters.select(filters.read('?task=image-generation'));
+  const worlds = filters.select(filters.read('?task=world-simulation'));
+  assert.ok(worlds.includes(get('genie-4')));
+  assert.ok(!videos.includes(get('genie-4')), 'Interactive simulation has its own task');
   assert.ok(images.includes(get('flux-3-image-klein')));
-  assert.equal(videos.length + language.length + images.length, data.releases.length);
-  assert.equal(new Set([...videos, ...language, ...images].map(entry => entry.id)).size, data.releases.length);
+  assert.equal(videos.length + language.length + images.length + worlds.length, data.releases.length);
+  assert.equal(new Set([...videos, ...language, ...images, ...worlds].map(entry => entry.id)).size, data.releases.length);
   for (const entry of images) {
-    assert.ok(entry.tags.includes('图像生成'), entry.id);
+    assert.ok(entry.tags.some(tag => ['图像生成', '图像编辑'].includes(tag)), entry.id);
     assert.ok(specs.entries[entry.id].variants.every(variant => variant.output.includes('image')), entry.id);
     assert.ok(specs.entries[entry.id].variants.every(variant => !variant.contextTokens), 'Image prompt limits are not language-model context windows');
     assert.equal(context.window.MODEL_ATLAS_PRICES.entries[entry.id], undefined, 'Per-image prices must not be displayed as per-token prices');
@@ -42,7 +45,7 @@ test('generation tasks stay separate from input modalities and language metrics'
 });
 
 test('task filters round-trip, combine with access and input, and keep chart counts consistent', () => {
-  for (const query of ['?task=image-generation', '?task=image-generation&openness=open', '?task=image-generation&category=text', '?task=video-generation', '?task=video-generation&openness=open', '?task=video-generation&category=text', '?task=video-generation&companies=bytedance&year=2026&month=07', '?task=language&category=multimodal']) {
+  for (const query of ['?task=world-simulation', '?task=world-simulation&category=multimodal', '?task=image-generation', '?task=image-generation&openness=open', '?task=image-generation&category=text', '?task=video-generation', '?task=video-generation&openness=open', '?task=video-generation&category=text', '?task=video-generation&companies=bytedance&year=2026&month=07', '?task=language&category=multimodal']) {
     const state = filters.read(query);
     assert.deepEqual(filters.read(filters.serialize(state, 'en')), state);
     assert.ok(filters.hasFilters(state));

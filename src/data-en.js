@@ -1,9 +1,9 @@
 /* English editorial copy. Original dates and sources remain in data.js. */
 window.MODEL_ATLAS_EN = {
   "mistral-large-4-preview": {
-    "summary": "A public preview of Mistral’s new multimodal flagship combines instruction following, hybrid reasoning, and agent tasks.",
-    "details": "The initial public preview is available through the Mistral Studio API, with image understanding and a one-million-token context. Weights are planned for the end of October but are not yet available at the review date; access is currently classified as closed.",
-    "dateNote": "Uses October 6 from the official announcement and changelog. This entry records the API public preview; the planned weight release is not treated as completed."
+    "summary": "A multimodal flagship combining instruction following, reasoning and agent tasks, with later open weights supporting a million-token context.",
+    "details": "The public API preview opened on October 6; further post-trained FP8 and NVFP4 weights followed on October 29. It supports text and image input, text output, approximately 1T total and 52B active parameters, and three reasoning levels. The Mistral Ecosystem Open-Weight License applies; businesses operating Model-as-a-Service require a separate license for commercial use.",
+    "dateNote": "Retains the October 6 public-preview date. The October 29 weight release and post-training improvements are recorded here; current specifications, pricing and scores refer to the later version."
   },
   "claude-haiku-5-5": {
     "summary": "The first Haiku model with adjustable effort targets high-volume tasks, coding, and subagent calls.",
@@ -723,7 +723,7 @@ window.MODEL_ATLAS_EN = {
   },
   "gpt-6-astra": {
     "summary": "GPT combines reasoning, computer use, and multi-step professional work.",
-    "details": "The official announcement focuses on browser tasks and software engineering.",
+    "details": "The official announcement focuses on browser tasks and software engineering. GPT-Rosalind-6 Research, announced on October 30 for approved life-sciences researchers, uses the same Astra weights, with no added training data or further post-training.",
     "dateNote": "Cross-checked with the September 3 official safety overview; rollout was staged."
   },
   "deepseek-v4-1-flash": {
@@ -1152,9 +1152,65 @@ window.MODEL_ATLAS_EN = {
     "summary": "Generates editable SVGs from text or existing images for logos, lettering and illustration.",
     "details": "Ideogram’s first dedicated vector model generates SVGs from prompts and optional image references, and converts existing raster images into vectors. Its output contains scalable, individually editable shapes for tools such as Figma and Illustrator. Available through the Ideogram product and API, with API generation billed per SVG according to quality.",
     "dateNote": "Uses October 22, 2026 from Ideogram’s official announcement. Later integrations on partner platforms are not treated as the initial model release."
+  },
+  "gemini-4-carbon": {
+    "summary": "A multimodal model for complex coding, long-running agent tasks and cyber defense, initially available to trusted partners.",
+    "details": "Following Gemini 4 Argon, Carbon advances software engineering, scientific tasks and multimodal understanding. Google is starting with selected cyber defenders and expanding trusted access through Fairwind; general developer and consumer availability remains planned.",
+    "dateNote": "Uses the October 28 announcement. Restricted access is distinct from a public API launch, and announced future pricing is not shown as a currently available API rate.",
+    "tags": [
+      "Multimodal",
+      "Long-running tasks",
+      "Cyber defense"
+    ]
+  },
+  "lfm-3": {
+    "summary": "An approximately 2B-parameter family for on-device deployment, sharing a hybrid backbone across text, vision, audio and decision tasks.",
+    "details": "Combines gated short convolutions, sliding-window attention and global attention, with open base weights and six post-trained models. LFM3-1.7B has 256K context; VL has 128K, while Audio and Omni have 32K. Omni understands video with its soundtrack and produces text or speech; d1 variants produce structured decisions. The LFM Open License v1.0 applies, with a revenue threshold for commercial use.",
+    "dateNote": "Uses the October 27 family announcement. Modality and decision branches form one family entry; weight formats are not counted separately.",
+    "tags": [
+      "On-device models",
+      "Multimodal",
+      "Hybrid architecture"
+    ]
+  },
+  "mai-image-2-7": {
+    "summary": "An image-editing preview model for scene restyling, relighting, text changes and image restoration.",
+    "details": "Editing is available in MAI Playground, Arena and Artificial Analysis. It focuses on changing objects, scenes, styles and text while preserving relationships in the source image. The initial preview offers editing; text-to-image generation is still planned.",
+    "dateNote": "Uses Microsoft AI’s October 27 preview announcement. Future text-to-image generation and other product integrations are not treated as available.",
+    "tags": [
+      "Image editing",
+      "Scene control",
+      "Preview"
+    ]
+  },
+  "pika-h3-flex": {
+    "summary": "A post-trained MiniMax H3 model that generates synchronized video and audio in six sampling steps, with open reference-conditioning adapters.",
+    "details": "Supports text, endpoint frames, and image, video and audio references for shot control and editing. The downloadable package combines MiniMax H3 base components with Pika LoRA adapters, producing native 480p / 768p video and mixed stereo audio locally. Upscaling to 1080p–4K and separate audio stems are hosted Pika API extensions. Weights use the MiniMax H3 Community License, with territorial and commercial-use restrictions.",
+    "dateNote": "Uses the October 29 technical announcement. This is a post-trained H3 version; the base model's original release is recorded separately.",
+    "tags": [
+      "Video generation",
+      "Six-step sampling",
+      "Open weights"
+    ]
+  },
+  "genie-4": {
+    "summary": "Combines real-time interactive world simulation with native audio, using keyboard controls and text prompts to steer scenes.",
+    "details": "Google DeepMind's world model combines Gemini capabilities to maintain appearance, behavior and continuity while generating ambient sound, music and dialogue. Users can navigate, move the camera and change a scene during simulation. The research preview is rolling out to trusted testers; consumer access through Project Genie and Gemini API partner access remain future plans.",
+    "dateNote": "Uses the October 27, 2026 research-preview announcement. Trusted testing has begun; this does not imply public product or API availability.",
+    "tags": [
+      "World model",
+      "Real-time interaction",
+      "Native audio"
+    ]
   }
 };
 window.ATLAS_TAGS_EN = {
+  "世界模型": "World model",
+  "场景控制": "Scene control",
+  "预览": "Preview",
+  "长程任务": "Long-horizon tasks",
+  "网络防御": "Cyber defense",
+  "六步采样": "Six-step sampling",
   "对话产品": "Chat product",
   "模型架构": "Architecture",
   "注意力机制": "Attention",

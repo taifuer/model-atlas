@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
-  "asOf": "2026-10-27",
-  "updatedAt": "2026-10-27",
+  "asOf": "2026-11-01",
+  "updatedAt": "2026-11-01",
   "companies": [
     {
       "id": "anthropic",
@@ -655,33 +655,6 @@ window.AGENT_ATLAS = {
       }
     },
     {
-      "id": "operator",
-      "date": "2025-01-23",
-      "name": "Operator",
-      "company": "openai",
-      "category": "general",
-      "kind": "preview",
-      "summary": "通过浏览器界面执行网页任务，以研究预览形式提供。",
-      "details": "记录独立 Operator 产品预览。相关能力后续并入 ChatGPT agent。",
-      "dateNote": "",
-      "tags": [
-        "智能体",
-        "工具使用"
-      ],
-      "milestone": false,
-      "sources": [
-        {
-          "title": "官方 · 发布记录",
-          "url": "https://openai.com/index/introducing-operator/"
-        }
-      ],
-      "en": {
-        "summary": "A research preview carries out tasks through a browser interface.",
-        "details": "Records the standalone Operator preview; its capabilities later became part of ChatGPT agent.",
-        "dateNote": ""
-      }
-    },
-    {
       "id": "junie",
       "date": "2025-01-23",
       "name": "Junie",
@@ -707,6 +680,33 @@ window.AGENT_ATLAS = {
         "summary": "Plans and executes coding tasks inside JetBrains IDEs using project context, code inspections and tests.",
         "details": "JetBrains introduced its coding agent through an Early Access Program, initially for IntelliJ IDEA Ultimate and PyCharm Professional. It could generate code, run inspections and verify tests; access required joining the waitlist.",
         "dateNote": "Records the Early Access Program announcement, not general availability."
+      }
+    },
+    {
+      "id": "operator",
+      "date": "2025-01-23",
+      "name": "Operator",
+      "company": "openai",
+      "category": "general",
+      "kind": "preview",
+      "summary": "通过浏览器界面执行网页任务，以研究预览形式提供。",
+      "details": "记录独立 Operator 产品预览。相关能力后续并入 ChatGPT agent。",
+      "dateNote": "",
+      "tags": [
+        "智能体",
+        "工具使用"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "官方 · 发布记录",
+          "url": "https://openai.com/index/introducing-operator/"
+        }
+      ],
+      "en": {
+        "summary": "A research preview carries out tasks through a browser interface.",
+        "details": "Records the standalone Operator preview; its capabilities later became part of ChatGPT agent.",
+        "dateNote": ""
       }
     },
     {
@@ -879,33 +879,6 @@ window.AGENT_ATLAS = {
       }
     },
     {
-      "id": "google-adk",
-      "date": "2025-04-09",
-      "name": "Google Agent Development Kit",
-      "company": "google",
-      "category": "framework",
-      "kind": "release",
-      "summary": "提供 Agent 开发、编排、评估与部署所需的工具，支持多 Agent 应用。",
-      "details": "Google 在 Cloud Next 发布开源 ADK，将产品中使用的 Agent 开发框架开放给开发者。",
-      "dateNote": "",
-      "tags": [
-        "工作流",
-        "多智能体"
-      ],
-      "milestone": false,
-      "sources": [
-        {
-          "title": "官方 · ADK 发布",
-          "url": "https://developers.googleblog.com/agent-development-kit-easy-to-build-multi-agent-applications/"
-        }
-      ],
-      "en": {
-        "summary": "Tools for building, orchestrating, evaluating and deploying agents, including multi-agent applications.",
-        "details": "Google released the open-source ADK at Cloud Next, making its agent development framework available to developers.",
-        "dateNote": ""
-      }
-    },
-    {
       "id": "a2a",
       "date": "2025-04-09",
       "name": "Agent2Agent · A2A",
@@ -931,6 +904,33 @@ window.AGENT_ATLAS = {
         "summary": "An open protocol supports agent discovery, task delegation and status updates across vendors.",
         "details": "Google and its partners introduce the A2A draft specification and examples. It connects agents across systems and complements MCP’s focus on tools and context.",
         "dateNote": "Records the initial open-protocol announcement and draft, not a later production release."
+      }
+    },
+    {
+      "id": "google-adk",
+      "date": "2025-04-09",
+      "name": "Google Agent Development Kit",
+      "company": "google",
+      "category": "framework",
+      "kind": "release",
+      "summary": "提供 Agent 开发、编排、评估与部署所需的工具，支持多 Agent 应用。",
+      "details": "Google 在 Cloud Next 发布开源 ADK，将产品中使用的 Agent 开发框架开放给开发者。",
+      "dateNote": "",
+      "tags": [
+        "工作流",
+        "多智能体"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "官方 · ADK 发布",
+          "url": "https://developers.googleblog.com/agent-development-kit-easy-to-build-multi-agent-applications/"
+        }
+      ],
+      "en": {
+        "summary": "Tools for building, orchestrating, evaluating and deploying agents, including multi-agent applications.",
+        "details": "Google released the open-source ADK at Cloud Next, making its agent development framework available to developers.",
+        "dateNote": ""
       }
     },
     {
@@ -1083,8 +1083,8 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "preview",
       "summary": "接收 GitHub Issue，在后台修改代码、运行检查并提交 Pull Request。",
-      "details": "使用 GitHub Actions 支持的执行环境处理编码任务。2026 年 10 月 15 日，Agentic autofix 向符合条件的 GitHub Enterprise Cloud 安全产品客户正式开放，可修改代码、重新运行 CodeQL 验证修复并创建草稿 PR。",
-      "dateNote": "节点日期为 coding agent 公开预览；Agentic autofix 于 2026 年 7 月 10 日预览，10 月 15 日正式可用。",
+      "details": "最初在 GitHub Actions 环境中执行编码任务。2026 年 10 月 15 日，Agentic autofix 向符合条件的企业安全产品客户正式开放。10 月 28 日，付费 Copilot 用户获得可跨客户端继续的云会话与可恢复沙箱；Fusion 正式提供模型路由和多模型编排。同期 Copilot App 的 Projects 与 macOS、Windows 计算机操作进入公开预览，后者需用户授权。",
+      "dateNote": "节点日期为 coding agent 的 2025 年公开预览；2026 年的云会话、Fusion 与 App 能力属于后续产品更新，各自保留正式可用或预览的状态。",
       "tags": [
         "编程",
         "工具使用"
@@ -1105,12 +1105,27 @@ window.AGENT_ATLAS = {
           "title": "GitHub · Agentic autofix 正式可用",
           "titleEn": "GitHub · Agentic autofix general availability",
           "url": "https://github.blog/changelog/2026-10-15-agentic-autofix-for-code-scanning-alerts-general-availability/"
+        },
+        {
+          "title": "GitHub · 统一云会话与沙箱正式可用",
+          "titleEn": "GitHub · Connected cloud sessions and sandboxes GA",
+          "url": "https://github.blog/changelog/2026-10-28-work-from-anywhere-with-a-new-connected-copilot-cloud-experience/"
+        },
+        {
+          "title": "GitHub · Copilot Fusion",
+          "titleEn": "GitHub · Copilot Fusion",
+          "url": "https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion/"
+        },
+        {
+          "title": "GitHub · Copilot App 的 Projects 与计算机操作预览",
+          "titleEn": "GitHub · Copilot App Projects and computer-use previews",
+          "url": "https://github.blog/changelog/2026-10-28-github-copilot-app-universe-releases/"
         }
       ],
       "en": {
         "summary": "Assigned issues become background coding tasks and reviewable pull requests.",
-        "details": "Runs coding tasks in environments backed by GitHub Actions. On October 15, 2026, Agentic autofix became generally available to eligible GitHub Enterprise Cloud security customers, editing code, rerunning CodeQL to validate fixes and opening draft pull requests.",
-        "dateNote": "The node dates the coding agent public preview. Agentic autofix entered public preview on July 10, 2026 and became generally available on October 15."
+        "details": "Originally executed coding tasks in GitHub Actions environments. Agentic autofix became generally available to eligible enterprise security customers on October 15, 2026. On October 28, paid Copilot plans gained connected cloud sessions and resumable sandboxes, while Fusion introduced generally available model routing and orchestration. Copilot App Projects and computer use on macOS and Windows entered public preview; computer use requires user approval.",
+        "dateNote": "The node dates the coding agent public preview in 2025. The 2026 cloud, Fusion and App features are subsequent product updates, with general availability and preview status distinguished."
       }
     },
     {
@@ -1809,6 +1824,45 @@ window.AGENT_ATLAS = {
       }
     },
     {
+      "id": "github-agentic-workflows",
+      "date": "2026-02-13",
+      "name": "GitHub Agentic Workflows",
+      "company": "github",
+      "category": "framework",
+      "kind": "preview",
+      "summary": "将自然语言 Markdown 工作流编译为 GitHub Actions，让编程智能体处理仓库维护任务。",
+      "details": "由 GitHub Next、Microsoft Research 与 Azure 团队协作开发，支持 Issue 分流、CI 故障分析、文档更新和测试编写。默认只读执行，写操作通过预先限定的输出机制处理。2026 年 10 月 28 日正式可用，可沿用 Actions 执行器与组织策略，选择 Copilot 或其他编程智能体；使用默认 Copilot CLI 引擎需要相应许可。",
+      "dateNote": "采用官方技术预览公告的 2026 年 2 月 13 日；10 月 28 日为正式可用日期，项目研发与源码历史可能更早。",
+      "tags": [
+        "工作流",
+        "持续集成",
+        "开源"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "GitHub · Agentic Workflows 技术预览",
+          "titleEn": "GitHub · Agentic Workflows technical preview",
+          "url": "https://github.blog/changelog/2026-02-13-github-agentic-workflows-are-now-in-technical-preview/"
+        },
+        {
+          "title": "GitHub · Agentic Workflows 正式可用",
+          "titleEn": "GitHub · Agentic Workflows general availability",
+          "url": "https://github.blog/changelog/2026-10-28-github-agentic-workflows-generally-available/"
+        },
+        {
+          "title": "GitHub · 官方源码与 MIT 许可证",
+          "titleEn": "GitHub · Official source and MIT license",
+          "url": "https://github.com/github/gh-aw"
+        }
+      ],
+      "en": {
+        "summary": "Compiles natural-language Markdown workflows into GitHub Actions for agent-driven repository maintenance.",
+        "details": "Developed by GitHub Next, Microsoft Research and Azure teams for issue triage, CI failure analysis, documentation and tests. Execution is read-only by default, with writes handled through predefined safe outputs. It became generally available on October 28, 2026, reusing Actions runners and organization policies with Copilot or other coding agents. The default Copilot CLI engine requires a Copilot license.",
+        "dateNote": "Uses the official technical-preview announcement on February 13, 2026. October 28 marks general availability; development and source history may predate the preview."
+      }
+    },
+    {
       "id": "hermes-agent",
       "date": "2026-02-25",
       "name": "Hermes Agent",
@@ -1878,8 +1932,8 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "release",
       "summary": "将应用开发扩展为共享画布和并行任务，支持多人在同一项目中协作。",
-      "details": "引入设计画布、隔离的并行任务及 Agent 辅助合并，可在同一项目中创建多种应用与内容。发布时并行任务面向 Pro 与 Enterprise，并向 Core 用户限时开放；部分新工作流要求新建项目。10 月 23 日新增 Monitoring Agent，可依据线上日志、指标和代码调查告警并尝试验证修复；自动修复与实验性自动再发布需分别启用。",
-      "dateNote": "采用 3 月 11 日官方发布公告日期；3 月 19 日的版本对比文章是后续说明。",
+      "details": "引入共享设计画布、隔离的并行任务与辅助合并。10 月 23 日新增 Monitoring Agent，可调查线上告警并验证修复，自动修复与实验性再发布需分别启用。10 月 27 日，面向既有仓库的 Cloud Agents 向 Pro 与 Enterprise 用户开放：在共享配置的云沙箱中修改、测试应用，附带截图与视频提交 GitHub PR 或 GitLab MR。将评审反馈转为团队技能的工作区记忆功能仍处于早期访问阶段，修改需工程师批准。",
+      "dateNote": "采用 3 月 11 日官方发布公告日期；3 月 19 日的版本对比文章是后续说明。10 月 27 日记录 Cloud Agents 的开放范围更新，不作为 Agent 4 或企业仓库接入的首发日期。",
       "tags": [
         "编程",
         "工具使用"
@@ -1905,12 +1959,17 @@ window.AGENT_ATLAS = {
           "title": "Replit · Monitoring Agent",
           "titleEn": "Replit · Monitoring Agent",
           "url": "https://docs.replit.com/features/publishing/monitoring-agent"
+        },
+        {
+          "title": "Replit · Cloud Agents 既有仓库支持",
+          "titleEn": "Replit · Cloud Agents for existing repositories",
+          "url": "https://replit.com/blog/anyone-can-bring-ideas-to-company-codebase"
         }
       ],
       "en": {
         "summary": "App building expands into a shared design canvas and parallel tasks for teams working in one project.",
-        "details": "Introduces a design canvas, isolated parallel tasks and agent-assisted merging, with multiple apps and artifacts in one project. At launch, parallel execution was offered to Pro and Enterprise, with temporary Core access; some new workflows required new projects. On October 23, Monitoring Agent added alert investigation using production logs, metrics and code, with attempted and validated fixes. Auto-fix and experimental automatic republishing require separate settings.",
-        "dateNote": "Uses the March 11 official launch announcement. The March 19 comparison article explains the changes after launch."
+        "details": "Introduces a shared design canvas, isolated parallel tasks and assisted merging. Monitoring Agent added production-alert investigation and fix validation on October 23; auto-fix and experimental republishing require separate settings. On October 27, Cloud Agents for existing repositories became available to Pro and Enterprise customers, testing changes in cloud sandboxes with shared environment configurations and attaching screenshots and video to GitHub pull requests or GitLab merge requests. Workspace memory that turns review feedback into team skills remains in early access, with engineers approving the updates.",
+        "dateNote": "Uses the March 11 official launch announcement. The March 19 comparison article explains the changes after launch. October 27 records expanded Cloud Agents availability, not the initial Agent 4 release or first access to company repositories."
       }
     },
     {
@@ -1959,7 +2018,7 @@ window.AGENT_ATLAS = {
       "category": "harness",
       "kind": "preview",
       "summary": "用插件组合模型、工具、会话、沙箱与执行循环，并记录完整任务轨迹。",
-      "details": "基于 Cordis 的开源 Agent 运行环境，各层能力可替换，支持标准、代码和极简等模式。2026 年 10 月 17 日发布的 0.2.1-rc.2 接入 DeepSeek-V4.1-Flash-1017 及 Search、Fetch API，仍处于预发布阶段。",
+      "details": "基于 Cordis 的开源 Agent 运行环境，各层能力可替换，支持标准、代码和极简等模式。10 月 17 日的 0.2.1-rc.2 接入 DeepSeek-V4.1-Flash-1017 及 Search、Fetch API。10 月 31 日提交的 dsh-superagent-prototype 是其 MIT 许可研究扩展：根据授权的 GitHub 或飞书请求，在独立会话与目录中处理仓库任务。该原型并非正式产品，文章中的部分设想尚未实现。",
       "dateNote": "采用 0.1.0 预览系列与 npm 包公开发布的日期；不把更早的内部标签日期当作公开上线日。",
       "tags": [
         "执行环境",
@@ -1981,11 +2040,21 @@ window.AGENT_ATLAS = {
           "title": "DeepSeek · 0.2.1-rc.2 发布记录",
           "titleEn": "DeepSeek · 0.2.1-rc.2 release",
           "url": "https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.1-rc.2"
+        },
+        {
+          "title": "DeepSeek · Super-agent 研究原型与适用范围",
+          "titleEn": "DeepSeek · Super-agent research prototype and scope",
+          "url": "https://github.com/deepseek-ai/dsh-superagent-prototype"
+        },
+        {
+          "title": "DeepSeek · 原型首次提交",
+          "titleEn": "DeepSeek · Initial prototype commit",
+          "url": "https://github.com/deepseek-ai/dsh-superagent-prototype/commit/6337fc823ce20251c8de8085948165c81aaa701e"
         }
       ],
       "en": {
         "summary": "Plugins compose models, tools, sessions, sandboxes and execution loops, with a recorded task trajectory.",
-        "details": "An open-source agent runtime built on Cordis, with replaceable capabilities and standard, code and minimal modes. Version 0.2.1-rc.2, released October 17, 2026, adds DeepSeek-V4.1-Flash-1017 and Search / Fetch API support; it remains a prerelease.",
+        "details": "An open-source runtime built on Cordis, with replaceable components and standard, code and minimal modes. The October 17 release candidate adds DeepSeek-V4.1-Flash-1017 and Search / Fetch APIs. The MIT-licensed dsh-superagent-prototype, committed October 31, extends Harness with repository work in separate sessions and directories, triggered by authorized GitHub or Feishu requests. It is research code, not an official product; some ideas in the accompanying article are not implemented.",
         "dateNote": "Uses the public 0.1.0 preview-series and npm publication date, rather than earlier internal tag dates."
       }
     },
@@ -2296,7 +2365,7 @@ window.AGENT_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-27",
+    "checkedAt": "2026-11-01",
     "scope": "编程 Agent、通用 Agent、Harness 及重要框架与协议的主要公开节点。",
     "method": "以原始公告、维护者文章与论文核对日期，区分预览、论文公开、改名和正式发布；按经典性、代表性或影响力筛选，不逐条收录常规版本更新。",
     "references": []

@@ -1,8 +1,8 @@
 // Primary-source history of AI methods, computing frameworks, and deployment.
 (() => {
   const data = {
-  "asOf": "2026-10-27",
-  "updatedAt": "2026-10-27",
+  "asOf": "2026-11-01",
+  "updatedAt": "2026-11-01",
   "accessFilter": false,
   "companies": [
     {
@@ -935,7 +935,7 @@
       "category": "infrastructure",
       "kind": "preview",
       "summary": "以 Rust 构建面向云工作负载的轻量虚拟机监控器。",
-      "details": "提供轻量虚拟机隔离，可作为 Kata Containers 后端。Kubernetes Agent Sandbox 的 AKS 指南使用该隔离栈。Google 于 2026 年 10 月 22 日披露，支撑 Gemini 的 Agent Compute Engine 也采用 Cloud Hypervisor 微型虚拟机；其面向客户的预览仍在后续计划中。",
+      "details": "提供轻量虚拟机隔离，可作为 Kata Containers 后端。Kubernetes Agent Sandbox 的 AKS 指南使用该隔离栈。Google 于 2026 年 10 月 22 日披露，支撑 Gemini 的 Agent Compute Engine 也采用 Cloud Hypervisor 微型虚拟机；其面向客户的预览仍在后续计划中。GitHub 10 月 28 日的 Agentic Workflows 正式版公告也将 Cloud Hypervisor 列为智能体微型虚拟机隔离选项。",
       "dateNote": "采用官方 GitHub v0.1.0 预发布的时间。项目在 2019 年 5 月已公开，这不是首次宣布或稳定版发布。",
       "tags": [],
       "milestone": false,
@@ -964,11 +964,16 @@
           "title": "Google Cloud · Agent Compute Engine 架构与可用性",
           "titleEn": "Google Cloud · Agent Compute Engine architecture and availability",
           "url": "https://cloud.google.com/blog/topics/ai-infrastructure/introducing-agent-compute-engine-and-expanded-agent-governance"
+        },
+        {
+          "title": "GitHub · Agentic Workflows 的微型虚拟机隔离",
+          "titleEn": "GitHub · Agentic Workflows microVM isolation",
+          "url": "https://github.blog/changelog/2026-10-28-github-agentic-workflows-generally-available/"
         }
       ],
       "en": {
         "summary": "A Rust-based virtual machine monitor provides a compact VM layer for modern cloud workloads.",
-        "details": "Provides lightweight VM isolation and can serve as a Kata Containers backend, as documented in Kubernetes Agent Sandbox’s AKS deployment guide. On October 22, 2026, Google disclosed that Agent Compute Engine, which already powers Gemini workloads, also uses Cloud Hypervisor microVMs. Customer preview access remains planned for later.",
+        "details": "Provides lightweight VM isolation and can serve as a Kata Containers backend, as documented in Kubernetes Agent Sandbox’s AKS deployment guide. On October 22, 2026, Google disclosed that Agent Compute Engine, which already powers Gemini workloads, also uses Cloud Hypervisor microVMs. Customer preview access remains planned for later. GitHub’s October 28 Agentic Workflows GA announcement also lists Cloud Hypervisor as an agent microVM isolation option.",
         "dateNote": "Uses the official v0.1.0 pre-release timestamp. The project was already public in May 2019; this is not the first announcement or a stable release."
       }
     },
@@ -2572,7 +2577,7 @@
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-27",
+    "checkedAt": "2026-11-01",
     "scope": "算法、计算框架、推理部署与容器沙箱中具有经典性、代表性或影响力的公开节点。",
     "method": "以原始论文、项目公告与发布记录核对日期，区分预览、正式可用和后续更新；不逐条收录常规软件版本。",
     "references": []

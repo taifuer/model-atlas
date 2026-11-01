@@ -70,7 +70,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "mistral-large-4-preview": {
-      "checkedAt": "2026-10-08",
+      "checkedAt": "2026-11-01",
       "variants": [
         {
           "name": "mistral-large-4",
@@ -84,13 +84,31 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
             "text"
           ],
           "sources": [
-            "https://docs.mistral.ai/models/mistral-large-4-0",
-            "https://docs.mistral.ai/resources/changelogs"
+            "https://docs.mistral.ai/models/mistral-large"
           ]
+        },
+        {
+          "name": "Mistral-Large-4-1T-A52B",
+          "basis": "weights",
+          "contextTokens": "1M",
+          "parameters": "≈1T",
+          "activeParameters": "≈52B",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
+          ],
+          "note": "52B 激活参数包含嵌入与输出层；按模型卡约数保留。",
+          "noteEn": "The approximately 52B active count includes embeddings and output layers, following the model card."
         }
       ],
-      "note": "采用当前官方 API 文档的 1M 上下文，区别于榜单中受测配置的窗口。",
-      "noteEn": "Uses the 1M context in the current official API documentation; the benchmarked configuration may use a different window."
+      "note": "当前 API 与 10 月 29 日开放权重的规格；本节点日期保留首次公开预览。",
+      "noteEn": "Current API and October 29 weight-release specifications; the timeline date remains the original public preview."
     },
     "gpt-6-astra": {
       "variants": [
@@ -4071,6 +4089,159 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           ],
           "note": "片段长度为 5–20 秒；1080p 为放大输出，音频可以关闭。",
           "noteEn": "Clips run 5–20 seconds. 1080p is upscaled output; audio generation is optional."
+        }
+      ]
+    },
+    "lfm-3": {
+      "checkedAt": "2026-11-01",
+      "variants": [
+        {
+          "name": "LFM3-1.7B",
+          "basis": "weights",
+          "contextTokens": "256K",
+          "parameters": "1.73B",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/LiquidAI/LFM3-1.7B"
+          ]
+        },
+        {
+          "name": "LFM3-VL-2B",
+          "basis": "weights",
+          "contextTokens": "128K",
+          "parameters": "1.92B",
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/LiquidAI/LFM3-VL-2B"
+          ]
+        },
+        {
+          "name": "LFM3-Audio-2B",
+          "basis": "weights",
+          "contextTokens": "32K",
+          "parameters": "2B",
+          "input": [
+            "text",
+            "audio"
+          ],
+          "output": [
+            "text",
+            "audio"
+          ],
+          "sources": [
+            "https://huggingface.co/LiquidAI/LFM3-Audio-2B"
+          ]
+        },
+        {
+          "name": "LFM3-Omni-2B",
+          "basis": "weights",
+          "contextTokens": "32K",
+          "parameters": "2.17B",
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "output": [
+            "text",
+            "audio"
+          ],
+          "sources": [
+            "https://huggingface.co/LiquidAI/LFM3-Omni-2B"
+          ]
+        }
+      ],
+      "note": "输入与输出共用各型号上下文窗口；d1 决策分支不套用生成模型的上下文规格。",
+      "noteEn": "Input and output share each variant’s context window. Generative-model limits are not applied to the d1 decision branches."
+    },
+    "mai-image-2-7": {
+      "checkedAt": "2026-11-01",
+      "variants": [
+        {
+          "name": "MAI Image 2.7 editing preview",
+          "basis": "service",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://microsoft.ai/news/mai-image-2-7-debut/"
+          ],
+          "note": "当前开放图像编辑，文生图仍为后续计划。",
+          "noteEn": "Image editing is available; text-to-image generation remains planned."
+        }
+      ]
+    },
+    "pika-h3-flex": {
+      "checkedAt": "2026-11-01",
+      "variants": [
+        {
+          "name": "Pika H3 Flex (FL2VA / Ref2VA)",
+          "basis": "weights",
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ],
+          "video": {
+            "resolutions": [
+              "480p",
+              "768p"
+            ],
+            "maxDurationSeconds": 15,
+            "frameRates": [
+              24
+            ],
+            "audio": "native"
+          },
+          "sources": [
+            "https://huggingface.co/Pika-Labs/Pika-H3-Flex"
+          ],
+          "note": "按模式支持不同参考输入，原生输出含混合立体声音频。请求时长为 5–15 秒，实际时长对齐帧网格；1080p–4K 放大与音轨拆分不属于本地权重能力。",
+          "noteEn": "Reference inputs depend on the selected mode. Native output includes mixed stereo audio. Requested duration is 5–15 seconds, rounded to the frame grid; 1080p–4K upscaling and stem separation are not local-weight capabilities."
+        }
+      ]
+    },
+    "genie-4": {
+      "checkedAt": "2026-11-01",
+      "variants": [
+        {
+          "name": "Genie 4 research preview",
+          "basis": "release",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ],
+          "sources": [
+            "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/"
+          ],
+          "note": "实时交互世界模拟，另支持键盘导航与镜头控制；公告未公开标准上下文窗口或固定片段时长上限。",
+          "noteEn": "Interactive world simulation with additional keyboard navigation and camera control. No standard context window or fixed clip-duration limit is disclosed in the announcement."
         }
       ]
     }

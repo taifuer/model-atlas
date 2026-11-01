@@ -79,3 +79,5 @@ Official website and profile marks above were retrieved on 2026-10-11 for identi
 - `fal-color.svg`: copied unchanged from `@lobehub/icons-static-svg` 1.95.1, MIT (see `LICENSE-LOBEHUB.txt`).
 
 - `ideogram.svg`: copied unchanged from `@lobehub/icons-static-svg` 1.95.1, MIT (see `LICENSE-LOBEHUB.txt`).
+
+2026-11-01: `pika.svg` is the unchanged Pika mark from `@lobehub/icons-static-svg` 1.95.1, MIT (see `LICENSE-LOBEHUB.txt`).

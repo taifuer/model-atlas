@@ -64,15 +64,15 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       ]
     },
     "mistral-large-4-preview": {
-      "checkedAt": "2026-10-25",
+      "checkedAt": "2026-11-01",
       "variants": [
         {
           "name": "mistral-large-4",
           "currency": "USD",
           "tiers": [
             {
-              "input": 1.36,
-              "output": 4.18,
+              "input": 0.7,
+              "output": 2.1,
               "label": "标准价格",
               "labelEn": "Standard pricing"
             }
@@ -80,8 +80,8 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
           "sources": [
             "https://docs.mistral.ai/models/mistral-large"
           ],
-          "note": "核对日官方模型页列示常规价格；已移除之前的首发优惠。",
-          "noteEn": "The official model page lists regular rates at this review; the earlier launch promotion is no longer applied."
+          "note": "采用当前官方模型页的未缓存输入与输出费率；缓存输入单独定价。",
+          "noteEn": "Current official uncached input and output rates; cached inputs are priced separately."
         }
       ]
     },

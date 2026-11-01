@@ -31,7 +31,7 @@ test('family context, chosen price and evaluated member retain independent scope
   assert.equal(facts.scopeLabel(spec, spec.variants, 'zh'), '各型号');
   assert.equal(facts.scopeLabel(spec, spec.variants, 'en'), 'Variants');
   assert.equal(facts.scopeLabel(price, [price.variants[0]]), 'gpt-6-luna');
-  assert.equal(facts.scoreLabel(scores.entries['gpt-6-sol-luna'].aa, scores.cardScopes['gpt-6-sol-luna']), 'GPT-6 Sol (max)');
+  assert.equal(facts.scoreLabel(scores.entries['gpt-6-sol-luna'].arena, scores.cardScopes['gpt-6-sol-luna']), 'GPT-6 Sol (Max)');
   assert.equal(facts.scopeLabel(specs.entries['mimo-v2-6']), 'MiMo-V2.6-Pro-RL');
   assert.equal(facts.scopeLabel(prices.entries['glm-4-5']), 'GLM-4.5');
   assert.equal(facts.scopeLabel(prices.entries['muse-wonder']), 'muse-wonder-1.0');

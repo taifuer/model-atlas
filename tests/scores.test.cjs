@@ -28,11 +28,13 @@ test('published scores exactly match dated public source snapshots and known rel
     }
     assert.equal(snapshot.records.length, Object.values(scores.entries).filter(e => e[key]).length);
   }
-  assert.equal(scores.entries['gemini-4-argon'].arena.preliminary, true);
-  assert.equal(scores.benchmarks.aa.checkedAt, '2026-10-27');
-  assert.equal(scores.checkedAt, '2026-10-27');
-  assert.equal(scores.benchmarks.arena.checkedAt, '2026-10-27');
-  assert.equal(scores.benchmarks.arena.publishedAt, '2026-10-22', 'Dataset retrieval date is not the leaderboard publication date');
+  assert.equal(scores.entries['gemini-4-argon'].arena.preliminary, undefined);
+  assert.equal(scores.entries['gemini-4-carbon'].arena.preliminary, true);
+  assert.equal(scores.benchmarks.aa.version, '5.0');
+  assert.equal(scores.benchmarks.aa.checkedAt, '2026-11-01');
+  assert.equal(scores.checkedAt, '2026-11-01');
+  assert.equal(scores.benchmarks.arena.checkedAt, '2026-11-01');
+  assert.equal(scores.benchmarks.arena.publishedAt, '2026-10-28', 'Dataset retrieval date is not the leaderboard publication date');
   assert.equal(scores.entries['muse-wonder'].aa.model, 'Muse Wonder Full (max)');
   assert.equal(scores.cardScopes['muse-wonder'], 'variant');
   assert.equal(scores.entries['muse-wonder'].arena, undefined, 'Do not transfer Wonder results to Full without verified metric scope');
@@ -40,9 +42,10 @@ test('published scores exactly match dated public source snapshots and known rel
   assert.equal(scores.entries['claude-sonnet-5-5'].arena.model, 'Claude Sonnet 5.5 (xHigh)');
   assert.equal(scores.entries['gpt-6-sol-luna-chatgpt-october'], undefined, 'Do not transfer September API scores to the ChatGPT October versions');
   assert.equal(scores.entries['qwen-3-8-max-0902'].arena, undefined, 'An undated Max alias must not be assigned to the 0902 snapshot');
-  assert.equal(scores.entries['gpt-6-sol-luna'].aa.model, 'GPT-6 Sol (max)', 'A family score identifies its actual evaluated member');
+  for (const id of ['gpt-6-sol-luna', 'kimi-k3', 'hunyuan-hy3', 'mistral-medium-3-5']) assert.equal(scores.entries[id]?.aa, undefined, 'Do not carry v4 scores into the v5 snapshot');
+  assert.equal(scores.entries['gpt-6-sol-luna'].arena.model, 'GPT-6 Sol (Max)');
   assert.equal(scores.entries['deepseek-v4-1-flash'].aa.model, 'DeepSeek V4.1 Flash 1017 (max)');
-  assert.equal(scores.entries['deepseek-v4-1-flash'].aa.score, 45);
+  assert.equal(scores.entries['deepseek-v4-1-flash'].aa.score, 32);
   assert.equal(models.companyRanking.entries.find(entry => entry.company === 'deepseek').model, scores.entries['deepseek-v4-1-flash'].aa.model);
   for (const metric of ['arena']) {
     assert.match(scores.entries['deepseek-v4-1-flash'][metric].note, /不能视为 1017/);
@@ -74,12 +77,12 @@ test('new releases retain availability and independently dated specifications', 
   assert.equal(prices.entries[october], undefined, 'ChatGPT access must not inherit API token pricing');
   const preview = models.releases.find(r => r.id === 'mistral-large-4-preview');
   assert.equal(preview.kind, 'preview');
-  assert.equal(context.window.MODEL_ATLAS.releases.find(r => r.id === preview.id).openness.status, 'closed', 'Promised future weights are not available weights');
+  assert.equal(context.window.MODEL_ATLAS.releases.find(r => r.id === preview.id).openness.status, 'open', 'Verify actual published weights before updating access');
   assert.equal(prices.entries[preview.id].variants[0].promotional, undefined, 'A completed launch discount must not remain marked as active');
-  assert.equal(prices.entries[preview.id].variants[0].tiers[0].input, 1.36);
-  assert.equal(prices.entries[preview.id].variants[0].tiers[0].output, 4.18);
+  assert.equal(prices.entries[preview.id].variants[0].tiers[0].input, 0.7);
+  assert.equal(prices.entries[preview.id].variants[0].tiers[0].output, 2.1);
   assert.ok(prices.entries[preview.id].variants[0].tiers.every(tier => !tier.validUntil), 'The current standard price has no promotional deadline');
-  assert.equal(context.window.MODEL_ATLAS_SPECS.entries[preview.id].variants[0].parameters, undefined, 'Conflicting official parameter counts remain omitted');
+  assert.equal(context.window.MODEL_ATLAS_SPECS.entries[preview.id].variants[0].parameters, undefined, 'API limits and released weight specifications retain separate named variants');
 });
 
 
@@ -93,8 +96,8 @@ test('later weight releases and serving variants preserve their own licenses and
   assert.equal(scores.entries['ling-3-1-flash'].aa.model, 'Ling 3.1 Flash 1019');
   assert.equal(scores.cardScopes['ling-3-1-flash'], 'snapshot');
   assert.equal(specifications['ling-3-1-flash'].variants[0].name, 'Ling-3.1-flash-1019 (weights)');
-  assert.match(scores.entries['ling-3-1-flash'].aa.noteEn, /original.*41.*separate evaluation/);
-  assert.equal(scores.entries['ling-3-1-flash'].aa.score, 44, 'The current score names the newly public 1019 checkpoint');
+  assert.doesNotMatch(scores.entries['ling-3-1-flash'].aa.noteEn, /41|44/, 'Earlier index versions are not current scores');
+  assert.equal(scores.entries['ling-3-1-flash'].aa.score, 29, 'The current score names the newly public 1019 checkpoint');
   assert.equal(releases.find(entry => entry.id === 'ling-3-1-flash').date, '2026-09-30', 'A later weight release does not rewrite the original event');
   assert.equal(scores.entries['gpt-6-1-terra'].arena, undefined, 'Terra does not inherit another GPT model’s Arena score');
   assert.deepEqual(Array.from(specifications['gpt-6-1-terra'].variants[0].output), ['text']);

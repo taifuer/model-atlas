@@ -1011,6 +1011,99 @@
     ]
   }
 });
+  // Model availability reviewed on 2026-11-01.
+  Object.assign(models, {
+  "gemini-4-carbon": {
+    "status": "closed",
+    "checkedAt": "2026-11-01",
+    "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+    "note": "公告时仅向受信网络防御团队及 Fairwind 合作伙伴逐步开放，未公开模型权重。",
+    "noteEn": "At announcement, access is rolling out to trusted cyber defenders and Fairwind partners; model weights are not public."
+  },
+  "lfm-3": {
+    "status": "open",
+    "checkedAt": "2026-11-01",
+    "source": "https://huggingface.co/LiquidAI/LFM3-1.7B/blob/main/LICENSE",
+    "note": "基础模型与后训练型号权重已公开，采用 LFM Open License v1.0；商业使用受营收门槛限制，超出许可范围需另行授权。",
+    "noteEn": "Base and post-trained weights are public under LFM Open License v1.0. Commercial use is subject to a revenue threshold; use outside the license requires separate authorization.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "LFM Open License v1.0",
+        "source": "https://huggingface.co/LiquidAI/LFM3-1.7B/blob/main/LICENSE"
+      }
+    ]
+  },
+  "mai-image-2-7": {
+    "status": "closed",
+    "checkedAt": "2026-11-01",
+    "source": "https://microsoft.ai/news/mai-image-2-7-debut/",
+    "note": "通过在线产品提供编辑预览，未公开模型权重。",
+    "noteEn": "An editing preview available through online products, without public model weights."
+  },
+  "mistral-large-4-preview": {
+    "status": "open",
+    "checkedAt": "2026-11-01",
+    "source": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B/blob/main/LICENSE",
+    "note": "FP8 与 NVFP4 权重已于 10 月 29 日开放，采用 Mistral Ecosystem Open-Weight License；经营模型即服务业务的企业商用需取得单独许可。",
+    "noteEn": "FP8 and NVFP4 weights were released on October 29 under the Mistral Ecosystem Open-Weight License. Businesses operating Model-as-a-Service need a separate license for commercial use.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "Mistral Ecosystem Open-Weight License",
+        "source": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B/blob/main/LICENSE"
+      }
+    ]
+  },
+  "kimi-k3-1-pro": {
+    "status": "closed",
+    "checkedAt": "2026-11-01",
+    "source": "https://www.kimi.com/en/blog/kimi-k3-1-pro",
+    "note": "托管 API 与产品已开放；官方仍计划于 11 月 4 日前发布完整权重，截至核对日未确认可下载。",
+    "noteEn": "Hosted API and product access are available. The official announcement still plans full weights by November 4; downloadable weights were not confirmed at this review."
+  },
+  "pika-h3-flex": {
+    "status": "open",
+    "checkedAt": "2026-11-01",
+    "source": "https://huggingface.co/Pika-Labs/Pika-H3-Flex/raw/main/LICENSE",
+    "note": "基础组件与 LoRA 适配器可下载，适用带地域和商业使用限制的 MiniMax H3 社区许可证；高分辨率放大及独立音轨由托管 API 提供。",
+    "noteEn": "Base components and LoRA adapters are downloadable under the MiniMax H3 Community License, with territorial and commercial-use restrictions. Higher-resolution upscaling and separate audio stems require hosted APIs.",
+    "licenses": [
+      {
+        "object": "模型权重与适配器",
+        "objectEn": "Model weights and adapters",
+        "name": "MiniMax H3 Community License",
+        "source": "https://huggingface.co/Pika-Labs/Pika-H3-Flex/raw/main/LICENSE"
+      }
+    ]
+  },
+  "genie-4": {
+    "status": "closed",
+    "checkedAt": "2026-11-01",
+    "source": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+    "note": "研究预览面向受信测试者，未公开模型权重。",
+    "noteEn": "The research preview is limited to trusted testers; model weights are not public."
+  }
+});
+  Object.assign(agents, {
+  "github-agentic-workflows": {
+    "status": "open",
+    "checkedAt": "2026-11-01",
+    "source": "https://github.com/github/gh-aw/blob/main/LICENSE",
+    "note": "工作流编译器与运行工具采用 MIT 许可；所选智能体、模型服务及 GitHub Actions 的许可与使用费用另计。",
+    "noteEn": "The workflow compiler and tooling use the MIT license. The chosen agent, model service and GitHub Actions retain their own licenses and usage costs.",
+    "licenses": [
+      {
+        "object": "工具源码",
+        "objectEn": "Tool code",
+        "name": "MIT",
+        "source": "https://github.com/github/gh-aw/blob/main/LICENSE"
+      }
+    ]
+  }
+});
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

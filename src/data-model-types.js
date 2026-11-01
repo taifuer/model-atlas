@@ -1724,6 +1724,60 @@
       "sources": [
         "https://fal.ai/flux-3-max"
       ]
+    },
+    "gemini-4-carbon": {
+      "checkedAt": "2026-11-01",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+      ]
+    },
+    "lfm-3": {
+      "checkedAt": "2026-11-01",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://www.liquid.ai/blog/lfm3"
+      ],
+      "note": "家族包含文本与多模态分支，具体输入、输出与上下文按型号区分。",
+      "noteEn": "The family includes text-only and multimodal branches; inputs, outputs and context limits differ by variant."
+    },
+    "mai-image-2-7": {
+      "checkedAt": "2026-11-01",
+      "category": "multimodal",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://microsoft.ai/news/mai-image-2-7-debut/"
+      ],
+      "note": "当前仅提供图像编辑预览；归入图像生成任务，不表示文生图已开放。",
+      "noteEn": "Currently an image-editing preview. The image-generation task category does not imply text-to-image availability."
+    },
+    "pika-h3-flex": {
+      "checkedAt": "2026-11-01",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://huggingface.co/Pika-Labs/Pika-H3-Flex"
+      ]
+    },
+    "genie-4": {
+      "checkedAt": "2026-11-01",
+      "category": "multimodal",
+      "tasks": [
+        "world-simulation"
+      ],
+      "sources": [
+        "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/"
+      ]
     }
   }
 };
@@ -1732,8 +1786,8 @@
     ...window.MODEL_ATLAS,
     categories: { text: '文本', multimodal: '多模态' },
     categoriesEn: { text: 'Text', multimodal: 'Multimodal' },
-    tasks: { language: '语言', 'image-generation': '图像生成', 'video-generation': '视频生成' },
-    tasksEn: { language: 'Language', 'image-generation': 'Image generation', 'video-generation': 'Video generation' },
+    tasks: { language: '语言', 'image-generation': '图像生成', 'video-generation': '视频生成', 'world-simulation': '世界模拟' },
+    tasksEn: { language: 'Language', 'image-generation': 'Image generation', 'video-generation': 'Video generation', 'world-simulation': 'World simulation' },
     releases: window.MODEL_ATLAS.releases.map(entry => ({ ...entry, category: data.entries[entry.id]?.category, tasks: data.entries[entry.id]?.tasks || ['language'] })),
   });
 })();

@@ -25,7 +25,7 @@ test('release dates are real, sorted, unique events within the research cutoff',
 
 test('every event has valid metadata and a primary source; supporting reports are explicit', () => {
   const companyIds = new Set(data.companies.map(company => company.id));
-  const primaryHosts = new Set(['ideogram.ai', 'developer.ideogram.ai', 'dev.runway.com', 'www.canva.com', 'fal.ai', 'docs.inceptionlabs.ai', 'www.inceptionlabs.ai', 'platform.minimax.io', 'stability.ai', 'docs.midjourney.com', 'imagen.research.google', 'artificialanalysis.ai', 'bfl.ai', 'docs.bfl.ai', 'www.liquid.ai', 'docs.liquid.ai', 'www.alibabacloud.com', 'help.openai.com', 'cloud.google.com', 'docs.cloud.google.com', 'help.runwayml.com', 'ir.kuaishou.com', 'runway.com', 'openai.com', 'developers.openai.com', 'deploymentsafety.openai.com', 'docs.mistral.ai', 'deepmind.google', 'arxiv.org', 'www.anthropic.com', 'platform.claude.com', 'research.google', 'blog.google', 'dev.meta.ai', 'ai.google.dev', 'ai.meta.com', 'research.meta.ai', 'about.fb.com', 'api-docs.deepseek.com', 'github.com', 'huggingface.co', 'qwenlm.github.io', 'qwen.ai', 'docs.qwencloud.com', 'mistral.ai', 'x.ai', 'platform.kimi.ai', 'www.kimi.com', 'z.ai', 'docs.z.ai', 'www.minimax.io', 'mimo.xiaomi.com', 'mimo.mi.com', 'static.stepfun.com', 'www.stepfun.com', 'news.microsoft.com', 'techcommunity.microsoft.com', 'aws.amazon.com', 'nvidianews.nvidia.com', 'blogs.nvidia.com', 'cloud.tencent.com', 'www.tencent.com', 'seed.bytedance.com']);
+  const primaryHosts = new Set(['microsoft.ai', 'pika.art', 'dev.pika.art', 'ideogram.ai', 'developer.ideogram.ai', 'dev.runway.com', 'www.canva.com', 'fal.ai', 'docs.inceptionlabs.ai', 'www.inceptionlabs.ai', 'platform.minimax.io', 'stability.ai', 'docs.midjourney.com', 'imagen.research.google', 'artificialanalysis.ai', 'bfl.ai', 'docs.bfl.ai', 'www.liquid.ai', 'docs.liquid.ai', 'www.alibabacloud.com', 'help.openai.com', 'cloud.google.com', 'docs.cloud.google.com', 'help.runwayml.com', 'ir.kuaishou.com', 'runway.com', 'openai.com', 'developers.openai.com', 'deploymentsafety.openai.com', 'docs.mistral.ai', 'deepmind.google', 'arxiv.org', 'www.anthropic.com', 'platform.claude.com', 'research.google', 'blog.google', 'dev.meta.ai', 'ai.google.dev', 'ai.meta.com', 'research.meta.ai', 'about.fb.com', 'api-docs.deepseek.com', 'github.com', 'huggingface.co', 'qwenlm.github.io', 'qwen.ai', 'docs.qwencloud.com', 'mistral.ai', 'x.ai', 'platform.kimi.ai', 'www.kimi.com', 'z.ai', 'docs.z.ai', 'www.minimax.io', 'mimo.xiaomi.com', 'mimo.mi.com', 'static.stepfun.com', 'www.stepfun.com', 'news.microsoft.com', 'techcommunity.microsoft.com', 'aws.amazon.com', 'nvidianews.nvidia.com', 'blogs.nvidia.com', 'cloud.tencent.com', 'www.tencent.com', 'seed.bytedance.com']);
   // These additional official/project/author pages were reviewed for the named event.
   // Keep community-hosted articles and personal author archives URL-specific.
   const reviewedPrimarySources = new Map([
@@ -57,6 +57,11 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['https://platform.stepfun.ai/docs/en/guides/models/step-5-preview', 'step-5-preview'],
   ]);
   const reviewedHuggingFacePaths = new Map([
+    ['/LiquidAI/LFM3-1.7B', 'lfm-3'],
+    ['/LiquidAI/LFM3-Omni-2B', 'lfm-3'],
+    ['/mistralai/Mistral-Large-4-1T-A52B', 'mistral-large-4-preview'],
+    ['/Pika-Labs/Pika-H3-Flex', 'pika-h3-flex'],
+    ['/Pika-Labs/Pika-H3-Flex/raw/main/LICENSE', 'pika-h3-flex'],
     ['/inclusionAI/Ling-3.1-flash-1019', 'ling-3-1-flash'],
     ['/MiniMaxAI/MiniMax-M3.1-Flash', 'minimax-m3-1-flash'],
     ['/inclusionAI/Ling-3.1-flash', 'ling-3-1-flash'],
@@ -164,11 +169,11 @@ test('company coverage and research metadata are complete', () => {
   assert.deepEqual([...new Set(Array.from(data.coverage.references, reference => new URL(reference.url).hostname))].sort(), ['arena.ai', 'artificialanalysis.ai', 'crfm.stanford.edu', 'livebench.ai', 'rank.opencompass.org.cn', 'www.swebench.com', 'www.tbench.ai']);
 });
 
-test('organization ranking records a dated, comparable AA snapshot with explicit estimates', () => {
+test('organization ranking records a dated, comparable AA snapshot without scores from earlier index versions', () => {
   const ranking = data.companyRanking;
   assert.equal(ranking.selection, 'highest-listed-score');
   assert.equal(ranking.metric, 'Artificial Analysis Intelligence Index');
-  assert.match(ranking.version, /^\d+\.\d+\.\d+$/);
+  assert.match(ranking.version, /^\d+\.\d+(?:\.\d+)?$/);
   assert.equal(new URL(ranking.source).hostname, 'artificialanalysis.ai');
   assert.equal(new Date(ranking.checkedAt + 'T00:00:00Z').toISOString().slice(0, 10), ranking.checkedAt);
   assert.ok(ranking.checkedAt <= data.updatedAt);
@@ -186,7 +191,8 @@ test('organization ranking records a dated, comparable AA snapshot with explicit
   const find = company => ranking.entries.find(entry => entry.company === company);
   assert.equal(find('openai').model, 'GPT-6 Astra (max)');
   assert.equal(find('anthropic').model, 'Claude Opus 5.5 (max with fallback)');
-  for (const company of ['amazon', 'bytedance', 'microsoft']) assert.equal(find(company).estimated, true);
+  for (const company of ['amazon', 'bytedance', 'microsoft']) assert.equal(find(company), undefined, 'Earlier-version scores cannot fill missing v5 results');
+  assert.equal(find('google').model, 'Gemini 4 Carbon (high)');
 });
 
 test('English content covers every model and retains date clarifications', () => {

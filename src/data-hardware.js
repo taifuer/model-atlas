@@ -1,7 +1,7 @@
 /* Curated hardware history. Event dates and configurations retain explicit source scope. */
 window.HARDWARE_ATLAS = {
-  "asOf": "2026-10-27",
-  "updatedAt": "2026-10-27",
+  "asOf": "2026-11-01",
+  "updatedAt": "2026-11-01",
   "accessFilter": false,
   "companies": [
     {
@@ -2474,7 +2474,7 @@ window.HARDWARE_ATLAS = {
       "category": "gpu",
       "kind": "announcement",
       "summary": "Rubin GPU、Vera CPU 与新一代互连共同构成下一代 AI 计算平台。",
-      "details": "此节点记录 CES 平台公布，涵盖协同芯片与系统设计，非所有整机同时可购买。2026 年 9 月 30 日，NVIDIA 确认 CoreWeave 已提供 Vera Rubin NVL72，Cognition 已运行生产工作负载。Google Cloud 于 10 月 21 日公布 A5X 进展，其全面开放安排为 11 月；仍保留年初的平台公布日期。",
+      "details": "此节点记录 CES 平台公布，涵盖协同芯片与系统设计，非所有整机同时可购买。2026 年 9 月 30 日，NVIDIA 确认 CoreWeave 已提供 Vera Rubin NVL72，Cognition 已运行生产工作负载。10 月 27 日，NVIDIA 与 Oracle 宣布 Vera Rubin NVL72 和 Vera CPU 在 OCI 正式可用；多吉瓦扩容与 HGX Rubin NVL8 仍属后续计划。Google Cloud A5X 的全面开放安排为 11 月。",
       "dateNote": "日期为官方公布日；后续供货安排见原始公告。",
       "tags": [
         "GPU"
@@ -2499,17 +2499,22 @@ window.HARDWARE_ATLAS = {
           "title": "NVIDIA · 当前产品规格",
           "titleEn": "NVIDIA · Current product specifications",
           "url": "https://www.nvidia.com/en-us/data-center/vera-rubin-nvl72/"
+        },
+        {
+          "title": "NVIDIA · OCI 正式可用与后续扩容计划",
+          "titleEn": "NVIDIA · OCI general availability and expansion plans",
+          "url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Oracle-Expand-NVIDIA-Vera-Rubin-to-Multi-Gigawatt-Scale-and-Bring-NVIDIA-Vera-CPU-to-Oracle-Cloud-Infrastructure/default.aspx"
         }
       ],
       "en": {
         "summary": "Rubin GPUs, Vera CPUs, and new interconnects form a new AI compute platform.",
-        "details": "This entry records the CES announcement of coordinated chips and system designs, rather than universal system availability. NVIDIA confirmed CoreWeave availability of Vera Rubin NVL72 and Cognition production workloads on September 30, 2026. Google Cloud’s October 21 A5X update schedules general availability for November. The entry retains the original platform announcement date.",
+        "details": "This entry records the CES announcement of coordinated chips and system designs. NVIDIA confirmed CoreWeave availability of Vera Rubin NVL72 and Cognition production workloads on September 30, 2026. On October 27, NVIDIA and Oracle announced general availability of Vera Rubin NVL72 and Vera CPUs on OCI; multi-gigawatt expansion and HGX Rubin NVL8 remain planned. Google Cloud schedules A5X general availability for November.",
         "dateNote": "Dated to the official announcement; availability is described in the original source."
       },
       "hardware": {
         "variant": "Rubin GPU · Vera Rubin NVL72 中的单颗 GPU",
         "variantEn": "Rubin GPU · one GPU in Vera Rubin NVL72",
-        "checkedAt": "2026-10-27",
+        "checkedAt": "2026-11-01",
         "facts": [
           {
             "label": "显存",

@@ -5,13 +5,13 @@
     models: {
       zh: {
         title: '大模型时间线 · Model Atlas',
-        description: '查阅语言、多模态、图像与视频生成模型的代表性发布，涵盖 GPT、Gemini、Seedance、Veo、Sora、可灵与 Wan。按机构、年份和任务筛选，查看公开来源、开放状态及已核实的模型规格。',
-        keywords: ['大模型时间线', '语言模型', '多模态模型', '图像生成模型', '视频生成模型', '模型发布', '上下文长度', 'API 价格'],
+        description: '查阅语言、多模态、图像与视频生成、世界模型的代表性发布，涵盖 GPT、Gemini、Seedance、Veo、可灵与 Genie。按机构、年份和任务筛选，查看公开来源、开放状态及已核实的模型规格。',
+        keywords: ['大模型时间线', '语言模型', '多模态模型', '图像生成模型', '视频生成模型', '世界模型', '上下文长度', 'API 价格'],
       },
       en: {
         title: 'Large Model Timeline · Model Atlas',
-        description: 'Explore major language, multimodal, image and video model releases, including GPT, Gemini, Seedance, Veo and Wan. Filter by task and trace dates, access and specifications to sources.',
-        keywords: ['large model timeline', 'language models', 'multimodal models', 'image generation models', 'video generation models', 'model releases', 'context window', 'API pricing'],
+        description: 'Explore major language, multimodal, image, video and world model releases, including GPT, Gemini, Seedance, Veo and Genie. Filter by task and trace dates, access and specifications to sources.',
+        keywords: ['large model timeline', 'language models', 'multimodal models', 'image generation models', 'video generation models', 'world models', 'context window', 'API pricing'],
       },
     },
     agents: {
