@@ -264,8 +264,8 @@ for (const language of ['zh', 'en']) {
           if (file === 'about.html') {
             await expect(page.locator('#criteria')).toContainText(language === 'en' ? 'Selection criteria' : '收录标准');
           } else if (file === 'benchmarks.html') {
-            await expect(page.locator('article.benchmark-card')).toHaveCount(7);
-            await expect(page.locator('article.benchmark-card h3 a[href]')).toHaveCount(7);
+            await expect(page.locator('article.benchmark-card')).toHaveCount(12);
+            await expect(page.locator('article.benchmark-card h3 a[href]')).toHaveCount(12);
           } else {
             const entrySelector = file === 'explore.html' ? '#explore-root .journey-event' : '#timeline .release-card';
             const entries = page.locator(entrySelector);

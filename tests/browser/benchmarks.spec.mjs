@@ -6,18 +6,39 @@ const destinations = {
   'benchmark-artificial-analysis': 'https://artificialanalysis.ai/leaderboards/models',
   'benchmark-arena-text': 'https://arena.ai/leaderboard/chat/text',
   'benchmark-livebench': 'https://livebench.ai/',
+  'benchmark-epoch-ai': 'https://epoch.ai/benchmarks',
+  'benchmark-hle': 'https://labs.scale.com/leaderboard/humanitys_last_exam',
+  'benchmark-gdpval-aa': 'https://artificialanalysis.ai/evaluations/gdpval-aa',
   'benchmark-swe-bench': 'https://www.swebench.com/',
   'benchmark-terminal-bench': 'https://www.tbench.ai/',
+  'benchmark-livecodebench': 'https://livecodebench.github.io/leaderboard.html',
+  'benchmark-bfcl': 'https://gorilla.cs.berkeley.edu/leaderboard',
   'benchmark-osworld': 'https://osworld-v2.xlang.ai/',
   'benchmark-arena-agent': 'https://arena.ai/leaderboard/agent',
 };
+const entryCount = Object.keys(destinations).length;
+const groups = ['model-benchmarks', 'reasoning-benchmarks', 'coding-benchmarks', 'agent-benchmarks'];
 const checkTitleLinks = async page => {
-  await expect(page.locator('article.benchmark-card h3 a[href]')).toHaveCount(7);
+  await expect(page.locator('article.benchmark-card h3 a[href]')).toHaveCount(entryCount);
   for (const [id, href] of Object.entries(destinations)) {
     const title = page.locator(`#${id} h3 a`);
     await expect(title).toHaveAttribute('href', href);
     await expect(title).toHaveAttribute('target', '_blank');
     expect((await title.getAttribute('rel')).split(/\s+/)).toEqual(expect.arrayContaining(['noopener', 'noreferrer']));
+  }
+};
+
+const checkCategories = async (page, language) => {
+  const kinds = page.locator('article.benchmark-card .benchmark-kind');
+  await expect(kinds).toHaveCount(entryCount);
+  const labels = (await kinds.allTextContents()).map(label => label.trim());
+  expect([...new Set(labels)].sort()).toEqual((language === 'en'
+    ? ['Evaluation platform', 'Benchmark']
+    : ['评测平台', '基准测试']).sort());
+  await expect(page.locator('section.benchmark-group')).toHaveCount(groups.length);
+  for (const id of groups) {
+    await expect(page.locator(`#${id} h2`)).toBeVisible();
+    expect(await page.locator(`#${id} article.benchmark-card`).count()).toBeGreaterThan(0);
   }
 };
 
@@ -46,13 +67,14 @@ test('the benchmark directory is reachable at phone, tablet and desktop widths a
       await link.click();
       await expect(page).toHaveURL(url => url.pathname === route(language));
       await expect(page.locator('.header-nav a[aria-current="page"]')).toHaveText(language === 'en' ? 'Benchmarks' : '评测');
-      await expect(page.locator('article.benchmark-card')).toHaveCount(7);
+      await expect(page.locator('article.benchmark-card')).toHaveCount(entryCount);
       await noOverflow(page);
     }
     await checkTitleLinks(page);
+    await checkCategories(page, language);
     await page.locator('#page-title').focus();
     const visited = new Set();
-    for (let step = 0; step < 28 && visited.size < 7; step += 1) {
+    for (let step = 0; step < entryCount * 4 && visited.size < entryCount; step += 1) {
       await page.keyboard.press('Tab');
       const id = await page.evaluate(() => document.activeElement.matches('article.benchmark-card h3 a') ? document.activeElement.closest('article').id : null);
       if (id) visited.add(id);
@@ -83,10 +105,11 @@ test.describe('without JavaScript', () => {
     for (const language of ['zh', 'en']) {
       await ready(page, route(language));
       const cards = page.locator('article.benchmark-card');
-      await expect(cards).toHaveCount(7);
+      await expect(cards).toHaveCount(entryCount);
       await checkTitleLinks(page);
+      await checkCategories(page, language);
       const links = await cards.locator('a[href]').evaluateAll(elements => elements.map(link => ({ href: link.href, target: link.target, rel: link.rel })));
-      expect(links.length).toBeGreaterThanOrEqual(7);
+      expect(links.length).toBeGreaterThanOrEqual(entryCount);
       for (const link of links) {
         expect(new URL(link.href).protocol).toBe('https:');
         expect(link.target).toBe('_blank');
@@ -100,7 +123,7 @@ test.describe('without JavaScript', () => {
         });
         expect(copy).not.toMatch(/[\u3400-\u9fff]/);
       }
-      for (const id of ['model-benchmarks', 'coding-benchmarks', 'agent-benchmarks']) {
+      for (const id of groups) {
         await ready(page, route(language) + `#${id}`);
         await expect(page).toHaveURL(url => url.pathname === route(language) && url.hash === `#${id}`);
         await expect(page.locator(`#${id}`)).toBeInViewport();

@@ -6,7 +6,7 @@
 .benchmark-intro-description { margin: 10px 0 0; max-width: 720px; font-size: 15px; color: var(--body); line-height: 1.8; }
 .benchmark-group { padding-top: 34px; scroll-margin-top: 104px; }
 .benchmark-group h2 { margin: 0 0 18px; font-size: 21px; font-weight: 550; letter-spacing: -.015em; }
-.benchmark-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+.benchmark-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .benchmark-card { display: flex; flex-direction: column; min-width: 0; padding: 22px; border: 1px solid var(--line); border-radius: 8px; background: var(--background); }
 .benchmark-card-heading { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 6px 12px; }
 .benchmark-card-heading > div { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; }

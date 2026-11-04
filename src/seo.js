@@ -64,14 +64,14 @@
     },
     benchmarks: {
       zh: {
-        title: '大模型与智能体评测榜单 · Model Atlas',
-        description: '查阅 Artificial Analysis、Arena、LiveBench、SWE-bench、Terminal-Bench 与 OSWorld 等公开评测，了解模型能力、用户偏好、编程和电脑操作的评测对象、方法与比较范围。',
-        keywords: ['大模型评测', '智能体评测', 'Artificial Analysis', 'Arena', 'LiveBench', 'SWE-bench', 'Terminal-Bench', 'OSWorld'],
+        title: '大模型与智能体评测 · Model Atlas',
+        description: '按综合能力、推理与知识工作、编程、工具与智能体分类查阅公开评测平台和基准测试，包括 Artificial Analysis、Arena、Epoch AI、HLE、LiveCodeBench 与 BFCL，了解评测方法和比较范围。',
+        keywords: ['大模型评测', '智能体评测', 'Artificial Analysis', 'Arena', 'Epoch AI', 'HLE', 'LiveCodeBench', 'BFCL'],
       },
       en: {
         title: 'AI Model & Agent Benchmarks · Model Atlas',
-        description: 'Find public AI evaluations including Artificial Analysis, Arena, LiveBench, SWE-bench, Terminal-Bench and OSWorld, with their subjects, methods and limits for comparing model and agent results.',
-        keywords: ['AI model benchmarks', 'agent benchmarks', 'Artificial Analysis', 'Arena', 'LiveBench', 'SWE-bench', 'Terminal-Bench', 'OSWorld'],
+        description: 'Explore AI evaluation platforms and benchmarks by field: general capabilities, reasoning, knowledge work, coding and tool use. Compare methods and scope across Artificial Analysis, Arena, Epoch AI, HLE, LiveCodeBench and BFCL.',
+        keywords: ['AI model benchmarks', 'agent evaluations', 'Artificial Analysis', 'Arena', 'Epoch AI', 'HLE', 'LiveCodeBench', 'BFCL'],
       },
     },
     about: {

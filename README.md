@@ -44,7 +44,7 @@ Entries are selected for historical influence or technical significance. This is
 - Switch between detailed cards and a compact list, with newest entries first.
 - Browse annual and monthly counts for the current selection.
 - Open [Explore](https://ai.taifua.com/explore.html?lang=en) from the compass button in the header. It presents all cataloged events across the four timelines in monthly groups, from newest to oldest, with same-day events shown together and horizontal year and month navigation.
-- Use [Benchmarks](https://ai.taifua.com/en/benchmarks.html) to find model and agent evaluations by task, with their methods, evaluation subjects, and limits of comparison.
+- Use [Benchmarks](https://ai.taifua.com/en/benchmarks.html) to browse evaluation platforms and benchmarks for general capabilities, reasoning and knowledge work, coding, and tool use. Each title links to the official results, with evaluation subjects, methods, and limits of comparison.
 - Open an entry for its release scope, specifications, and sources. Browser Back closes details and Forward reopens them, preserving the selected filters. A correction link opens the existing GitHub issue form with the entry name and URL; it does not submit an issue.
 - Use Chinese or English. The home page initially follows the browser language; manual choices are remembered, with dedicated URLs for each language.
 - Browse on desktop or mobile, with keyboard navigation and reduced-motion support.
