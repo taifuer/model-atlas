@@ -155,6 +155,39 @@ window.MODEL_ATLAS = (() => {
   }
   const releases = [
     {
+      "id": "hunyuan-hy4",
+      "date": "2026-11-04",
+      "name": "混元 Hy4",
+      "company": "tencent",
+      "kind": "release",
+      "milestone": false,
+      "summary": "正式版新增视觉理解与电脑操作，支持命令行和图形界面的多步骤任务。",
+      "details": "支持图像理解、图表分析及跨应用操作，已通过腾讯云 TokenHub 和 WorkBuddy、CodeBuddy 等产品提供。模型权重计划后续发布，截至核验时尚未开放。",
+      "dateNote": "采用腾讯官方公告的 11 月 4 日正式发布日期；8 月 28 日的 Hy4 Preview 保留为独立预览节点。",
+      "tags": [
+        "视觉理解",
+        "计算机操作"
+      ],
+      "searchAliases": [
+        "HY4",
+        "Hunyuan HY4",
+        "混元 HY4 正式版",
+        "Hy4 GA"
+      ],
+      "sources": [
+        {
+          "title": "腾讯 · Hy4 正式发布",
+          "titleEn": "Tencent: Hy4 release announcement",
+          "url": "https://www.tencent.com/zh-cn/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/"
+        },
+        {
+          "title": "腾讯云 · TokenHub 模型规格",
+          "titleEn": "Tencent Cloud: TokenHub model specifications",
+          "url": "https://cloud.tencent.com/document/product/1823/130051"
+        }
+      ]
+    },
+    {
       "id": "nemotron-3-5-transcribe",
       "date": "2026-10-28",
       "name": "Nemotron 3.5 Transcribe",

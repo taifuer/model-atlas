@@ -3,6 +3,16 @@
   const data = {
   "checkedAt": "2026-10-03",
   "entries": {
+    "hunyuan-hy4": {
+      "checkedAt": "2026-11-04",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://cloud.tencent.com/document/product/1823/130051"
+      ]
+    },
     "gpt-6-1-terra": {
       "checkedAt": "2026-10-27",
       "category": "multimodal",

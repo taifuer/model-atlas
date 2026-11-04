@@ -1128,6 +1128,15 @@
     "noteEn": "Available through Krea and partner platforms; the technical report does not release model weights."
   }
 });
+  Object.assign(models, {
+  "hunyuan-hy4": {
+    "status": "closed",
+    "checkedAt": "2026-11-04",
+    "source": "https://www.tencent.com/zh-cn/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/",
+    "note": "正式版已提供 API；官方公告将权重开放列为后续计划，尚未发布可下载权重。预览版的开放状态不适用于正式版。",
+    "noteEn": "The general release is available by API. Tencent describes public weights as a future release; the preview's open weights do not establish access for this version."
+  }
+});
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

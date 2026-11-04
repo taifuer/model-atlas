@@ -5,6 +5,28 @@
 window.MODEL_ATLAS_SPECS = Object.freeze({
   "checkedAt": "2026-10-03",
   "entries": {
+    "hunyuan-hy4": {
+      "checkedAt": "2026-11-04",
+      "variants": [
+        {
+          "name": "hy4",
+          "basis": "api",
+          "contextTokens": "1M",
+          "outputTokens": "64K",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://cloud.tencent.com/document/product/1823/130051"
+          ],
+          "inputTokens": "960K"
+        }
+      ]
+    },
     "gpt-6-1-terra": {
       "checkedAt": "2026-10-27",
       "variants": [

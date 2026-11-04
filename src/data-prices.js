@@ -7,6 +7,30 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
   "inputType": "uncached-text",
   "outputType": "text",
   "entries": {
+    "hunyuan-hy4": {
+      "checkedAt": "2026-11-04",
+      "variants": [
+        {
+          "name": "hy4",
+          "currency": "CNY",
+          "promotional": true,
+          "tiers": [
+            {
+              "input": 3,
+              "output": 9,
+              "label": "限时五折 · 至 2026.12.31",
+              "labelEn": "50% promotion · through Dec 31, 2026",
+              "validUntil": "2026-12-31"
+            }
+          ],
+          "sources": [
+            "https://cloud.tencent.com/document/product/1823/130055"
+          ],
+          "note": "腾讯云 TokenHub 标准目录价为输入 ¥6、输出 ¥18、缓存命中 ¥0.3 / 百万 tokens；自公告发布日起至 2026 年 12 月 31 日 23:59:59（北京时间），实际用量按目录价的 50% 结算，当前未缓存文本输入/输出为 ¥3/¥9。到期恢复目录价。",
+          "noteEn": "Tencent Cloud TokenHub lists regular rates of ¥6 input, ¥18 output and ¥0.3 cached input per million tokens. Usage is billed at 50% of list prices from the announcement until December 31, 2026, 23:59:59 Beijing time: currently ¥3/¥9 for uncached text input/output. Regular rates resume afterward."
+        }
+      ]
+    },
     "gpt-6-1-terra": {
       "checkedAt": "2026-10-27",
       "variants": [

@@ -1,5 +1,11 @@
 /* English editorial copy. Original dates and sources remain in data.js. */
 window.MODEL_ATLAS_EN = {
+  "hunyuan-hy4": {
+    "name": "Hunyuan Hy4",
+    "summary": "The general release adds visual understanding and computer use across command-line and graphical interfaces.",
+    "details": "Supports image understanding, chart analysis and cross-application tasks through Tencent Cloud TokenHub and products including WorkBuddy and CodeBuddy. Public model weights are planned but were not available at the review date.",
+    "dateNote": "Uses Tencent's November 4 release announcement. The August 28 Hy4 Preview remains a separate preview entry."
+  },
   "mistral-large-4-preview": {
     "summary": "A multimodal flagship combining instruction following, reasoning and agent tasks, with later open weights supporting a million-token context.",
     "details": "The public API preview opened on October 6; further post-trained FP8 and NVFP4 weights followed on October 29. It supports text and image input, text output, approximately 1T total and 52B active parameters, and three reasoning levels. The Mistral Ecosystem Open-Weight License applies; businesses operating Model-as-a-Service require a separate license for commercial use.",
