@@ -848,7 +848,7 @@ window.MODEL_ATLAS_EN = {
   },
   "seedance-2-5": {
     "summary": "Extends single-pass generation to 30 seconds with richer references, continuation and targeted editing.",
-    "details": "Supports up to 30 images, 10 video clips and 10 audio clips as references, with timestamp-based audio-video editing. The single-pass limit is 30 seconds; longer videos require successive extensions.",
+    "details": "Supports up to 30 images, 10 video clips and 10 audio clips as references, with timestamp-based audio-video editing. The single-pass limit is 30 seconds; longer videos require successive extensions. On October 27, BytePlus described enterprise trials of a 4K variant with 480p drafts, 4K final output and 10-bit color. These specifications apply to the invited trial variant, not every public endpoint.",
     "dateNote": "Rollout began in Jimeng AI, Doubao Pro and other products on this date. BytePlus ModelArk API access was described as coming soon at launch."
   },
   "wan-2-1": {
@@ -1202,6 +1202,16 @@ window.MODEL_ATLAS_EN = {
       "Real-time interaction",
       "Native audio"
     ]
+  },
+  "nemotron-3-5-transcribe": {
+    "summary": "Natural-language instructions control transcription style in an open-weight model for multilingual transcription, speaker attribution and speech translation.",
+    "details": "Built for offline recordings, it supports transcription in 40 languages, recordings up to one hour and word-level timestamps. Speech and speaker encoders connect to the Nemotron 3.5 Lightning mixture-of-experts backbone, for about 34B total and 4.3B active parameters. BF16, FP8 and NVFP4 weights and fine-tuning tools are public; audio question answering has only been evaluated in English.",
+    "dateNote": "Uses the October 28 publication date on NVIDIA’s research page, rather than earlier repository creation or upload dates. The November 2 NeMo Voice Agent integration is not a separate model launch."
+  },
+  "krea-3": {
+    "summary": "Native 2K image editing uses multiple references to preserve characters, products and text across changes.",
+    "details": "Krea’s image-editing model offers configurations including Fast and Ultra, combining reference images and text instructions to change scenes, materials and composition. The November 3 technical report describes its architecture, multi-reference training, reinforcement learning and inference optimizations. Ultra appears on AA and Arena image-editing leaderboards; speed, pricing and reference limits differ by configuration.",
+    "dateNote": "Uses the October 12 launch date explicitly stated in Krea’s press kit. The product article is dated October 15 and also uses launch language; the technical report was published November 3. These dates are retained separately."
   }
 };
 window.ATLAS_TAGS_EN = {
@@ -1315,7 +1325,9 @@ window.ATLAS_TAGS_EN = {
   "图像参考": "Image prompting",
   "多图参考": "Multi-image references",
   "文字渲染": "Text rendering",
-  "提示词遵循": "Prompt adherence"
+  "提示词遵循": "Prompt adherence",
+  "语音识别": "Speech recognition",
+  "音频理解": "Audio understanding"
 };
 window.MODEL_THEMES_EN = {
   "2017": "The Transformer architecture",

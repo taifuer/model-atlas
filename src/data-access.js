@@ -1104,6 +1104,30 @@
     ]
   }
 });
+  Object.assign(models, {
+  "nemotron-3-5-transcribe": {
+    "status": "open",
+    "checkedAt": "2026-11-04",
+    "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B/blob/main/LICENSE",
+    "note": "公开模型权重，采用 OpenMDW-1.1 许可；原始模型的完整训练配置与部分训练流程未随权重公开。",
+    "noteEn": "Weights are public under OpenMDW-1.1. The exact production training configuration and some training stages are not included.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "OpenMDW-1.1",
+        "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B/blob/main/LICENSE"
+      }
+    ]
+  },
+  "krea-3": {
+    "status": "closed",
+    "checkedAt": "2026-11-04",
+    "source": "https://www.krea.ai/blog/krea-3-technical-report",
+    "note": "通过 Krea 及合作平台提供，技术报告未发布模型权重。",
+    "noteEn": "Available through Krea and partner platforms; the technical report does not release model weights."
+  }
+});
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

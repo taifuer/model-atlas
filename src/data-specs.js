@@ -2456,7 +2456,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "seedance-2-5": {
-      "checkedAt": "2026-10-15",
+      "checkedAt": "2026-11-04",
       "variants": [
         {
           "name": "Seedance 2.5",
@@ -2478,6 +2478,28 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           "sources": [
             "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5"
           ]
+        },
+        {
+          "name": "Seedance 2.5 4K (enterprise trial)",
+          "basis": "release",
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "video"
+          ],
+          "video": {
+            "resolutions": [
+              "4K"
+            ]
+          },
+          "sources": [
+            "https://www.byteplus.com/en/blog/seedance%202.5"
+          ],
+          "note": "BytePlus 介绍受邀企业试用，支持 480p 草稿与 10-bit 色深；公告未确认公开 API 的全面开放或价格。",
+          "noteEn": "BytePlus describes invited enterprise trials with 480p drafts and 10-bit color. The announcement does not establish general public API availability or pricing."
         }
       ]
     },
@@ -4242,6 +4264,52 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           ],
           "note": "实时交互世界模拟，另支持键盘导航与镜头控制；公告未公开标准上下文窗口或固定片段时长上限。",
           "noteEn": "Interactive world simulation with additional keyboard navigation and camera control. No standard context window or fixed clip-duration limit is disclosed in the announcement."
+        }
+      ]
+    },
+    "nemotron-3-5-transcribe": {
+      "checkedAt": "2026-11-04",
+      "variants": [
+        {
+          "name": "NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+          "basis": "weights",
+          "contextTokens": 65536,
+          "parameters": "≈34B",
+          "activeParameters": "≈4.3B",
+          "input": [
+            "text",
+            "audio"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
+          ],
+          "note": "支持最长一小时录音，属于离线模型；音频问答仅在英语上评测，转写支持 40 种语言。",
+          "noteEn": "An offline model for recordings up to one hour. Audio question answering is evaluated only in English; transcription supports 40 languages."
+        }
+      ]
+    },
+    "krea-3": {
+      "checkedAt": "2026-11-04",
+      "variants": [
+        {
+          "name": "Krea 3",
+          "basis": "release",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://www.krea.ai/blog/introducing-krea-3",
+            "https://www.krea.ai/blog/krea-3-technical-report"
+          ],
+          "note": "原生 2K 图像编辑，提供多参考图能力；参考数量及费用依具体档位和接口区分。",
+          "noteEn": "Native 2K image editing with multiple references. Reference counts and pricing depend on the configuration and endpoint."
         }
       ]
     }

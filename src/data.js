@@ -5,6 +5,7 @@
  */
 window.MODEL_ATLAS = (() => {
   const companies = [
+    {"id": "krea", "name": "Krea", "nameEn": "Krea", "aliases": "Krea AI 图像编辑", "color": "#727b73"},
     {"id": "pika", "name": "Pika", "nameEn": "Pika", "aliases": "Pika Labs H3 Flex 视频生成", "color": "#85816d"},
     {"id": "ideogram", "name": "Ideogram", "nameEn": "Ideogram", "aliases": "Ideogram Vector SVG 矢量图形", "color": "#767b98"},
     {"id": "fal", "name": "fal", "nameEn": "fal", "aliases": "fal.ai fal Research", "color": "#73826c"},
@@ -47,22 +48,22 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    "checkedAt": "2026-11-01",
+    "checkedAt": "2026-11-04",
     "source": "https://artificialanalysis.ai/leaderboards/models",
     "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
     "metric": "Artificial Analysis Intelligence Index",
-    "version": "5.0",
+    "version": "5.0.1",
     "selection": "highest-listed-score",
     "entries": [
       {
         "company": "google",
         "model": "Gemini 4 Carbon (high)",
-        "score": 59
+        "score": 60
       },
       {
         "company": "anthropic",
         "model": "Claude Opus 5.5 (max with fallback)",
-        "score": 58
+        "score": 59
       },
       {
         "company": "openai",
@@ -81,7 +82,7 @@ window.MODEL_ATLAS = (() => {
       },
       {
         "company": "xai",
-        "model": "Grok 4.7 (high)",
+        "model": "Grok 4.7 (xhigh)",
         "score": 35
       },
       {
@@ -92,7 +93,7 @@ window.MODEL_ATLAS = (() => {
       {
         "company": "deepseek",
         "model": "DeepSeek V4.1 Flash 1017 (max)",
-        "score": 32
+        "score": 33
       },
       {
         "company": "zhipu",
@@ -107,7 +108,7 @@ window.MODEL_ATLAS = (() => {
       {
         "company": "inclusionai",
         "model": "Ling 3.1 Flash 1019",
-        "score": 29
+        "score": 30
       },
       {
         "company": "minimax",
@@ -153,6 +154,85 @@ window.MODEL_ATLAS = (() => {
     return { id, date, name, company, kind, summary, tags, sources: Array.isArray(sources) ? sources : [sources], milestone, details, dateNote };
   }
   const releases = [
+    {
+      "id": "nemotron-3-5-transcribe",
+      "date": "2026-10-28",
+      "name": "Nemotron 3.5 Transcribe",
+      "company": "nvidia",
+      "kind": "weights",
+      "milestone": false,
+      "summary": "以自然语言指令控制转写方式，将多语言转写、说话人标注与语音翻译整合到开放权重模型。",
+      "details": "面向离线录音处理，支持 40 种语言转写、最长一小时录音与词级时间戳。结合语音编码器、说话人编码器和 Nemotron 3.5 Lightning 混合专家骨干，总参数约 34B、激活约 4.3B。公开 BF16、FP8、NVFP4 权重和微调工具；音频问答目前仅在英语上评测。",
+      "dateNote": "采用 NVIDIA 研究页明确的 10 月 28 日发布日期；不采用更早的仓库创建或上传日期，11 月 2 日的 NeMo Voice Agent 接入也不另计为模型首发。",
+      "tags": [
+        "语音识别",
+        "音频理解",
+        "多语言"
+      ],
+      "searchAliases": [
+        "NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+        "Nemotron Transcribe",
+        "SALM"
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA · 模型发布与技术报告",
+          "titleEn": "NVIDIA · Model announcement and technical report",
+          "url": "https://research.nvidia.com/labs/nemotron/NVIDIA-Nemotron-3.5-Transcribe/"
+        },
+        {
+          "title": "NVIDIA · 模型卡与开放权重",
+          "titleEn": "NVIDIA · Model card and weights",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
+        },
+        {
+          "title": "NVIDIA · NeMo 训练与部署支持",
+          "titleEn": "NVIDIA · NeMo training and deployment support",
+          "url": "https://docs.nvidia.com/nemotron/nightly/nemotron/transcribe35/README.html"
+        }
+      ]
+    },
+    {
+      "id": "krea-3",
+      "date": "2026-10-12",
+      "name": "Krea 3",
+      "company": "krea",
+      "kind": "release",
+      "milestone": false,
+      "summary": "以原生 2K 图像编辑与多图参考，保持人物、产品和文字在修改中的一致性。",
+      "details": "Krea 的图像编辑模型提供 Fast 与 Ultra 等配置，可结合参考图和文字指令修改场景、材质与构图。11 月 3 日的技术报告披露了模型架构、多参考图训练、强化学习与推理优化。Ultra 已进入 AA 与 Arena 图像编辑榜单；各档位的速度、价格与参考图限制分别计算。",
+      "dateNote": "采用官方新闻资料明确列出的 10 月 12 日首发日期。产品介绍文章标注 10 月 15 日并使用发布措辞，技术报告发表于 11 月 3 日；这三个日期分别保留。",
+      "tags": [
+        "图像编辑",
+        "多图参考"
+      ],
+      "sources": [
+        {
+          "title": "Krea · 官方新闻资料与首发日期",
+          "titleEn": "Krea · Official press kit and launch date",
+          "url": "https://www.krea.ai/press"
+        },
+        {
+          "title": "Krea · 产品介绍",
+          "titleEn": "Krea · Product introduction",
+          "url": "https://www.krea.ai/blog/introducing-krea-3"
+        },
+        {
+          "title": "Krea · 技术报告",
+          "titleEn": "Krea · Technical report",
+          "url": "https://www.krea.ai/blog/krea-3-technical-report"
+        },
+        {
+          "title": "Artificial Analysis · 图像编辑评测",
+          "titleEn": "Artificial Analysis · Image editing evaluation",
+          "url": "https://artificialanalysis.ai/image/leaderboard/editing"
+        }
+      ],
+      "searchAliases": [
+        "Krea 3 Ultra",
+        "Krea 3 Fast"
+      ]
+    },
     {
       "id": "genie-4",
       "date": "2026-10-27",
@@ -1789,8 +1869,8 @@ window.MODEL_ATLAS = (() => {
       "33B 参数单流 Transformer 接受文字、图像、视频和音频参考。开放的基础模型生成 768p 音画片段，托管完整工作流可输出 2K。",
       "模型于 7 月 31 日发布，8 月 3 日官方宣布开放权重；许可证标注的 8 月 2 日不作为首次发布日期。"),
     event("seedance-2-5", "2026-07-31", "Seedance 2.5", "bytedance", "release",
-      "单次生成延长至 30 秒，并加强多素材参考、视频续写与定点编辑。", ["视频生成", "音视频生成"], [{"title": "Seedance 2.5 官方发布", "titleEn": "Seedance 2.5 official release", "url": "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5"}], false,
-      "支持最多 30 张图像、10 段视频和 10 段音频作为参考，并可按时间戳编辑音视频。单次生成上限为 30 秒，多轮续写形成的总时长不计作单次上限。",
+      "单次生成延长至 30 秒，并加强多素材参考、视频续写与定点编辑。", ["视频生成", "音视频生成"], [{"title": "Seedance 2.5 官方发布", "titleEn": "Seedance 2.5 official release", "url": "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5"}, {"title": "BytePlus · Seedance 2.5 4K 企业试用", "titleEn": "BytePlus · Seedance 2.5 4K enterprise trials", "url": "https://www.byteplus.com/en/blog/seedance%202.5"}], false,
+      "支持最多 30 张图像、10 段视频和 10 段音频作为参考，并可按时间戳编辑音视频。单次生成上限为 30 秒，多轮续写形成的总时长不计作单次上限。 10 月 27 日 BytePlus 介绍同代 4K 型号的企业试用，提供 480p 草稿、4K 成片和 10-bit 色深；这些规格属于受邀试用型号，不适用于全部公开接口。",
       "当日开始在即梦、豆包 Pro 等产品上线；发布时 BytePlus ModelArk API 仍注明即将开放。"),
     event("wan-3-0-video", "2026-08-06", "Wan 3.0", "qwen", "preview",
       "统一视频生成与编辑，单次生成最长 30 秒，并可引用文档和网页内容。", ["视频生成", "音视频生成"], [{"title": "阿里云官方模型更新记录", "titleEn": "Alibaba Cloud official model changelog", "url": "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"}, {"title": "Wan 3.0 测试公告", "titleEn": "Wan 3.0 beta announcement", "url": "https://www.alibabacloud.com/blog/alibaba-unveils-wan3-0-with-twice-as-long-video-outputs-from-a-richer-variety-of-inputs_603439"}, {"title": "Wan 3.0 正式上线公告", "titleEn": "Wan 3.0 general launch announcement", "url": "https://www.alibabacloud.com/en/news/product/video-generation-model-wan30-officially-launched-nsb"}, {"title": "Wan 3.0 官方规格", "titleEn": "Wan 3.0 official model information", "url": "https://www.alibabacloud.com/help/en/model-studio/wan3-0-video"}], false,
@@ -1935,7 +2015,7 @@ window.MODEL_ATLAS = (() => {
     },
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-11-01',
+    checkedAt: '2026-11-04',
     scope: '主流语言、多模态、图像与视频生成及世界模型，兼顾具有历史影响的架构研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
@@ -1953,5 +2033,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-11-01', updatedAt: '2026-11-01', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-11-04', updatedAt: '2026-11-04', companies, companyRanking, kinds, themes, releases, coverage });
 })();

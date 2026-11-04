@@ -14,6 +14,9 @@ test('specifications identify existing entries, exact variants, and first-party 
   const hosts = new Set(['microsoft.ai', 'ideogram.ai', 'developer.ideogram.ai', 'dev.runway.com', 'platform.kimi.ai', 'www.canva.com', 'fal.ai', 'research.nvidia.com', 'docs.inceptionlabs.ai', 'platform.minimax.io', 'stability.ai', 'docs.midjourney.com', 'imagen.research.google', 'qwenlm.github.io', 'docs.bfl.ai', 'docs.liquid.ai', 'seed.bytedance.com', 'www.alibabacloud.com', 'openai.com', 'blog.google', 'cloud.google.com', 'docs.cloud.google.com', 'deepmind.google', 'ir.kuaishou.com', 'runway.com', 'help.runwayml.com', 'www.minimax.io', 'dev.meta.ai', 'research.meta.ai', 'developer.ant-ling.com', 'docs.mistral.ai', 'artificialanalysis.ai', 'developers.openai.com', 'cdn.openai.com', 'platform.claude.com', 'ai.google.dev', 'api-docs.deepseek.com', 'huggingface.co', 'docs.x.ai', 'docs.z.ai', 'docs.qwencloud.com', 'www.qwencloud.com', 'arxiv.org', 'github.com', 'aws.amazon.com']);
   const hfOrganizations = new Set(['Pika-Labs', 'inclusionAI', 'CompVis', 'stabilityai', 'black-forest-labs', 'LiquidAI', 'EleutherAI', 'allenai', 'JetBrains', 'deepseek-ai', 'Qwen', 'zai-org', 'MiniMaxAI', 'moonshotai', 'XiaomiMiMo', 'microsoft', 'nvidia', 'stepfun-ai', 'tencent', 'mistralai', 'meta-llama', 'meta-models', 'reflection', 'google']);
   const reviewedSources = new Set([
+    'https://www.krea.ai/blog/introducing-krea-3',
+    'https://www.krea.ai/blog/krea-3-technical-report',
+    'https://www.byteplus.com/en/blog/seedance%202.5',
     'https://huggingface.co/docs/diffusers/main/en/using-diffusers/sdxl',
     "https://github.com/CompVis/stable-diffusion",
     "https://github.com/openai/dalle-2-preview/blob/main/system-card.md",

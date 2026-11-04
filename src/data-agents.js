@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
-  "asOf": "2026-11-01",
-  "updatedAt": "2026-11-01",
+  "asOf": "2026-11-04",
+  "updatedAt": "2026-11-04",
   "companies": [
     {
       "id": "anthropic",
@@ -771,7 +771,7 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "preview",
       "summary": "把代码阅读、修改、测试与命令行操作放进终端中的 Agent 工作流。",
-      "details": "与 Claude 3.7 Sonnet 同期推出，但作为工具产品单独收录，最初为有限研究预览。",
+      "details": "与 Claude 3.7 Sonnet 同期推出，最初为有限研究预览。2026 年 11 月 2 日，Anthropic 在 Messages API 公测 message threads，并确认多数 Claude Code 用户已默认启用：后续请求仅上传新增消息，减少长会话的传输延迟；模型仍读取完整上下文，token 用量不变。",
       "dateNote": "",
       "tags": [
         "编程",
@@ -782,11 +782,16 @@ window.AGENT_ATLAS = {
         {
           "title": "官方 · 发布记录",
           "url": "https://www.anthropic.com/news/claude-3-7-sonnet"
+        },
+        {
+          "title": "Anthropic · Message threads 与 Claude Code",
+          "titleEn": "Anthropic · Message threads in Claude Code",
+          "url": "https://claude.com/resources/articles/message-threads"
         }
       ],
       "en": {
         "summary": "A terminal agent reads code, edits files, runs tests, and uses command-line tools.",
-        "details": "Launched alongside Claude 3.7 Sonnet as a separate tool in limited research preview.",
+        "details": "Launched alongside Claude 3.7 Sonnet in limited research preview. On November 2, 2026, Anthropic introduced message threads in public beta on the Messages API and confirmed they were enabled by default for most Claude Code users. Later requests transmit only new messages to reduce latency in long sessions; the model still reads the full context and token usage is unchanged.",
         "dateNote": ""
       }
     },
@@ -1136,7 +1141,7 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "preview",
       "summary": "在云端虚拟机中读取仓库、修改代码与运行测试，完成后交付变更供审阅。",
-      "details": "Google 将异步编程 Agent Jules 开放公测，任务在隔离的云端环境运行，可与用户手头工作并行。",
+      "details": "Google 将异步编程 Agent Jules 开放公测，任务在隔离的云端环境运行，可与用户手头工作并行。2026 年 10 月 29 日，Google 公告计划于 12 月 31 日关闭 Jules，11 月 11 日后转为只读，并提供会话、设置与仓库资料的导出方式。相关经验将用于 Antigravity 等产品。",
       "dateNote": "记录 2025 年公测；Google 已在 2024 年 12 月预先介绍 Jules。",
       "tags": [
         "编程",
@@ -1147,11 +1152,16 @@ window.AGENT_ATLAS = {
         {
           "title": "官方 · Jules 公测公告",
           "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/jules/"
+        },
+        {
+          "title": "Google · Jules 停服计划与导出说明",
+          "titleEn": "Google · Jules wind-down schedule and data export",
+          "url": "https://jules.google/docs/changelog/2026-10-29"
         }
       ],
       "en": {
         "summary": "An asynchronous agent reads repositories, edits code and runs tests in a cloud VM, then presents changes for review.",
-        "details": "Google opened Jules to public beta, running tasks in isolated cloud environments alongside the user’s own work.",
+        "details": "Google opened Jules to public beta, running tasks in isolated cloud environments alongside the user’s own work. On October 29, 2026, Google announced plans to close Jules on December 31 and make it read-only after November 11, with export instructions for sessions, settings and repository data. Lessons from Jules will inform products including Antigravity.",
         "dateNote": "Records the public beta; Google first previewed Jules in December 2024.",
         "name": "Jules"
       }
@@ -1632,7 +1642,7 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "release",
       "summary": "Kiro IDE 正式可用，同时推出命令行版本，延续规格文档与任务执行流程。",
-      "details": "此次发布覆盖终端入口、检查点和团队管理，也引入基于属性的测试以检查实现与规格的一致性。",
+      "details": "首次正式发布覆盖终端入口、检查点、团队管理与基于属性的测试。2026 年 11 月 3 日，CLI 3.0 在兼容主机的新交互会话中默认采用 V3 Harness，支持可恢复云会话、可选记忆、沙箱及工作流；既有 V2 用户会先收到切换提示。CLI 改为独立程序，停止提供 Classic 界面、旧 CLI 桌面应用与终端内联补全。",
       "dateNote": "",
       "tags": [
         "编程",
@@ -1643,11 +1653,16 @@ window.AGENT_ATLAS = {
         {
           "title": "官方 · Kiro GA 与 CLI",
           "url": "https://kiro.dev/blog/general-availability/"
+        },
+        {
+          "title": "Kiro · CLI 3.0 与 V3 Harness",
+          "titleEn": "Kiro · CLI 3.0 and V3 harness",
+          "url": "https://kiro.dev/changelog/cli/3-0/"
         }
       ],
       "en": {
         "summary": "Kiro reaches general availability and introduces a CLI for specification-driven development in the terminal.",
-        "details": "The release added checkpoints, team management and property-based testing of implementation against specifications.",
+        "details": "The initial general release added the terminal interface, checkpoints, team management and property-based tests. On November 3, 2026, CLI 3.0 made the V3 harness the default for new interactive sessions on supported hosts, with resumable cloud sessions, opt-in memory, sandboxing and workflows. Existing V2 users are prompted before switching. The CLI becomes a standalone binary and retires Classic, its former desktop app and inline shell autocomplete.",
         "dateNote": ""
       }
     },
@@ -2018,7 +2033,7 @@ window.AGENT_ATLAS = {
       "category": "harness",
       "kind": "preview",
       "summary": "用插件组合模型、工具、会话、沙箱与执行循环，并记录完整任务轨迹。",
-      "details": "基于 Cordis 的开源 Agent 运行环境，各层能力可替换，支持标准、代码和极简等模式。10 月 17 日的 0.2.1-rc.2 接入 DeepSeek-V4.1-Flash-1017 及 Search、Fetch API。10 月 31 日提交的 dsh-superagent-prototype 是其 MIT 许可研究扩展：根据授权的 GitHub 或飞书请求，在独立会话与目录中处理仓库任务。该原型并非正式产品，文章中的部分设想尚未实现。",
+      "details": "基于 Cordis 的开源运行环境，组件可替换，支持标准、代码与极简模式。2026 年 11 月 4 日的 0.2.2-rc.1 增加实验性 subagent_oar，可把任务交给本机 Codex 或 Claude CLI；实验性变更请求与工作树功能可在独立 Git 工作树中运行会话并审阅差异。10 月 31 日提交的 MIT 研究扩展 dsh-superagent-prototype 支持授权的 GitHub、飞书仓库任务；仍非正式产品，部分设想尚未实现。",
       "dateNote": "采用 0.1.0 预览系列与 npm 包公开发布的日期；不把更早的内部标签日期当作公开上线日。",
       "tags": [
         "执行环境",
@@ -2050,11 +2065,16 @@ window.AGENT_ATLAS = {
           "title": "DeepSeek · 原型首次提交",
           "titleEn": "DeepSeek · Initial prototype commit",
           "url": "https://github.com/deepseek-ai/dsh-superagent-prototype/commit/6337fc823ce20251c8de8085948165c81aaa701e"
+        },
+        {
+          "title": "DeepSeek · 0.2.2-rc.1 发布记录",
+          "titleEn": "DeepSeek · 0.2.2-rc.1 release notes",
+          "url": "https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-rc.1"
         }
       ],
       "en": {
         "summary": "Plugins compose models, tools, sessions, sandboxes and execution loops, with a recorded task trajectory.",
-        "details": "An open-source runtime built on Cordis, with replaceable components and standard, code and minimal modes. The October 17 release candidate adds DeepSeek-V4.1-Flash-1017 and Search / Fetch APIs. The MIT-licensed dsh-superagent-prototype, committed October 31, extends Harness with repository work in separate sessions and directories, triggered by authorized GitHub or Feishu requests. It is research code, not an official product; some ideas in the accompanying article are not implemented.",
+        "details": "An open-source runtime built on Cordis, with replaceable components and standard, code and minimal modes. The November 4, 2026 release candidate 0.2.2-rc.1 adds experimental subagent_oar delegation to a locally installed Codex or Claude CLI, plus experimental change-request and worktree workflows for isolated Git sessions and diff review. The MIT-licensed dsh-superagent-prototype, committed October 31, handles authorized GitHub and Feishu repository tasks. It remains research code; some proposed ideas are not implemented.",
         "dateNote": "Uses the public 0.1.0 preview-series and npm publication date, rather than earlier internal tag dates."
       }
     },
@@ -2365,7 +2385,7 @@ window.AGENT_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-01",
+    "checkedAt": "2026-11-04",
     "scope": "编程 Agent、通用 Agent、Harness 及重要框架与协议的主要公开节点。",
     "method": "以原始公告、维护者文章与论文核对日期，区分预览、论文公开、改名和正式发布；按经典性、代表性或影响力筛选，不逐条收录常规版本更新。",
     "references": []

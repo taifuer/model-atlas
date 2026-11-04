@@ -1,8 +1,8 @@
 // Primary-source history of AI methods, computing frameworks, and deployment.
 (() => {
   const data = {
-  "asOf": "2026-11-01",
-  "updatedAt": "2026-11-01",
+  "asOf": "2026-11-04",
+  "updatedAt": "2026-11-04",
   "accessFilter": false,
   "companies": [
     {
@@ -1795,7 +1795,7 @@
       "category": "deployment",
       "kind": "paper",
       "summary": "把结构化生成程序与运行时结合，复用前缀计算与缓存。",
-      "details": "SGLang 提供生成程序接口，并在运行时使用 RadixAttention 等机制管理共享前缀。该节点记录系统论文首次公开。2026 年 10 月 24 日，团队公开了 DeepSeek Mega 系列内核、DSpark 推测解码与 SWA 有界重放的集成，并说明其 API 服务、KV 缓存、预填充/解码分离和负载均衡构成完整服务系统。",
+      "details": "SGLang 提供生成程序接口，并以 RadixAttention 管理共享前缀。2026 年 10 月集成 DeepSeek Mega 内核、DSpark 推测解码和 SWA 有界重放。11 月 2 日，团队介绍 HiCache 在兼容的多种并行配置与预填充/解码分离部署中的缓存复用，将 KV 缓存扩展到主机内存和外部存储；讯飞 Astron MaaS 已将其用于 GLM CodingPlan 服务。",
       "dateNote": "日期采用 arXiv 首个公开版本。",
       "tags": [],
       "milestone": true,
@@ -1808,13 +1808,23 @@
           "title": "SGLang · DeepInfer 优化与服务集成",
           "titleEn": "SGLang · DeepInfer optimizations and serving integration",
           "url": "https://www.lmsys.org/blog/2026-10-24-dsv41-deepinfer"
+        },
+        {
+          "title": "SGLang · HiCache 分布式缓存与生产应用",
+          "titleEn": "SGLang · HiCache distributed caching and production use",
+          "url": "https://www.lmsys.org/blog/2026-11-02-hicache-distributed-serving"
         }
       ],
       "en": {
         "summary": "A structured generation language and runtime reuse prefix computation and cached state.",
-        "details": "SGLang combines a generation-program interface with runtime mechanisms such as RadixAttention for shared prefixes. This entry records the system paper’s first public version. On October 24, 2026, the team documented DeepSeek Mega kernels, DSpark speculative decoding and SWA bounded replay integration, together with an API server, KV-cache management, prefill/decode disaggregation and replica load balancing.",
+        "details": "SGLang combines a generation-program interface with RadixAttention for shared prefixes. Its October 2026 integrations include DeepSeek Mega kernels, DSpark speculative decoding and SWA bounded replay. On November 2, the team documented HiCache reuse across compatible parallel configurations and prefill/decode disaggregation, extending KV caching to host memory and external storage. The report describes production use by iFlytek Astron MaaS for GLM CodingPlan serving.",
         "dateNote": "Dated to the first public version on arXiv."
-      }
+      },
+      "searchAliases": [
+        "HiCache",
+        "hierarchical KV cache",
+        "分层 KV 缓存"
+      ]
     },
     {
       "id": "grpo",
@@ -2812,7 +2822,7 @@
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-01",
+    "checkedAt": "2026-11-04",
     "scope": "算法、计算框架、推理部署与容器沙箱中具有经典性、代表性或影响力的公开节点。",
     "method": "以原始论文、项目公告与发布记录核对日期，区分预览、正式可用和后续更新；不逐条收录常规软件版本。",
     "references": []

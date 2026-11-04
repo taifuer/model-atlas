@@ -29,6 +29,12 @@ test('every event has valid metadata and a primary source; supporting reports ar
   // These additional official/project/author pages were reviewed for the named event.
   // Keep community-hosted articles and personal author archives URL-specific.
   const reviewedPrimarySources = new Map([
+    ['https://www.krea.ai/press', 'krea-3'],
+    ['https://www.krea.ai/blog/introducing-krea-3', 'krea-3'],
+    ['https://www.krea.ai/blog/krea-3-technical-report', 'krea-3'],
+    ['https://research.nvidia.com/labs/nemotron/NVIDIA-Nemotron-3.5-Transcribe/', 'nemotron-3-5-transcribe'],
+    ['https://docs.nvidia.com/nemotron/nightly/nemotron/transcribe35/README.html', 'nemotron-3-5-transcribe'],
+    ['https://www.byteplus.com/en/blog/seedance%202.5', 'seedance-2-5'],
     ['https://x.com/ideogram_ai/status/2113300317584720259', 'ideogram-vector-1'],
     ['https://community.canva.dev/t/connect-api-canva-craft-is-now-available-for-image-generation/8999', 'canva-craft'],
     ['https://www.prnewswire.com/news-releases/fal-launches-flux-3-max-delivering-1-tier-image-to-video-quality-at-industry-leading-speeds-302913033.html', 'flux-3-max'],
@@ -57,6 +63,7 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['https://platform.stepfun.ai/docs/en/guides/models/step-5-preview', 'step-5-preview'],
   ]);
   const reviewedHuggingFacePaths = new Map([
+    ['/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B', 'nemotron-3-5-transcribe'],
     ['/LiquidAI/LFM3-1.7B', 'lfm-3'],
     ['/LiquidAI/LFM3-Omni-2B', 'lfm-3'],
     ['/mistralai/Mistral-Large-4-1T-A52B', 'mistral-large-4-preview'],
@@ -211,7 +218,7 @@ test('English content covers every model and retains date clarifications', () =>
 test('agent entries have distinct categories, bilingual descriptions, and primary sources with explicit corroboration', () => {
   vm.runInNewContext(fs.readFileSync(require('node:path').join(__dirname, '../src/data-agents.js'), 'utf8'), context);
   const agents = context.window.AGENT_ATLAS;
-  const hosts = new Set(['docs.replit.com', 'x.ai', 'devin.ai', 'docs.devin.ai', 'registry.npmjs.org', 'developer.cloud.tencent.com', 'docs.factory.com', 'open-vsx.org', 'blog.jetbrains.com', 'blog.kilo.ai', 'www.augmentcode.com', 'zed.dev', 'ampcode.com', 'factory.com', 'earendil.com', 'about.fb.com', 'www.microsoft.com', 'www.langchain.com', 'cognition.com', 'arxiv.org', 'replit.com', 'windsurf.com', 'cursor.com', 'www.anthropic.com', 'openai.com', 'github.blog', 'blog.google', 'antigravity.google', 'claude.com', 'support.claude.com', 'mariozechner.at', 'openclaw.ai', 'nousresearch.com', 'hermes-agent.nousresearch.com', 'www.deepseek.com', 'www.codebuddy.cn', 'cloud.tencent.com', 'qoder.com', 'qwenlm.github.io', 'kiro.dev', 'www.trae.ai', 'aider.chat', 'github.com', 'opencode.ai', 'manus.im', 'huggingface.co', 'goose-docs.ai', 'developers.googleblog.com', 'aws.amazon.com', 'blog.crewai.com', 'www.warp.dev']);
+  const hosts = new Set(['jules.google', 'docs.replit.com', 'x.ai', 'devin.ai', 'docs.devin.ai', 'registry.npmjs.org', 'developer.cloud.tencent.com', 'docs.factory.com', 'open-vsx.org', 'blog.jetbrains.com', 'blog.kilo.ai', 'www.augmentcode.com', 'zed.dev', 'ampcode.com', 'factory.com', 'earendil.com', 'about.fb.com', 'www.microsoft.com', 'www.langchain.com', 'cognition.com', 'arxiv.org', 'replit.com', 'windsurf.com', 'cursor.com', 'www.anthropic.com', 'openai.com', 'github.blog', 'blog.google', 'antigravity.google', 'claude.com', 'support.claude.com', 'mariozechner.at', 'openclaw.ai', 'nousresearch.com', 'hermes-agent.nousresearch.com', 'www.deepseek.com', 'www.codebuddy.cn', 'cloud.tencent.com', 'qoder.com', 'qwenlm.github.io', 'kiro.dev', 'www.trae.ai', 'aider.chat', 'github.com', 'opencode.ai', 'manus.im', 'huggingface.co', 'goose-docs.ai', 'developers.googleblog.com', 'aws.amazon.com', 'blog.crewai.com', 'www.warp.dev']);
   const supportingReports = new Map([['https://www.ithome.com/1/005/046.htm', 'zcode-open-source']]);
   const ids = new Set();
   let previous = '';

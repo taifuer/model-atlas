@@ -1778,6 +1778,30 @@
       "sources": [
         "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/"
       ]
+    },
+    "nemotron-3-5-transcribe": {
+      "checkedAt": "2026-11-04",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
+      ],
+      "note": "接受文本指令与音频，输出转写、翻译或问答文本，不生成语音。",
+      "noteEn": "Accepts text instructions and audio, returning transcripts, translations or answers in text; it does not generate speech."
+    },
+    "krea-3": {
+      "checkedAt": "2026-11-04",
+      "category": "multimodal",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://www.krea.ai/blog/krea-3-technical-report"
+      ],
+      "note": "归入图像生成任务中的图像编辑；不表示开放独立文生图接口。",
+      "noteEn": "Image editing is grouped under image generation; this does not imply a standalone text-to-image endpoint."
     }
   }
 };
