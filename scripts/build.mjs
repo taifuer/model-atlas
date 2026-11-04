@@ -1,5 +1,5 @@
 import seo from '../src/seo.js';
-import { renderPage, renderSitemap, renderRobots } from './seo.mjs';
+import { PAGE_FILES, renderPage, renderSitemap, renderRobots } from './seo.mjs';
 import { loadCatalog, prerenderPage } from './prerender.mjs';
 import { mkdir, copyFile, readFile, writeFile, readdir, rm } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
@@ -7,8 +7,8 @@ import { createHash } from 'node:crypto';
 const root = new URL('../', import.meta.url);
 const sourceRoot = new URL('src/', root);
 const output = new URL('dist/', root);
-const pages = ['index.html', 'agents.html', 'hardware.html', 'technology.html', 'about.html', 'explore.html'];
-const assets = ['explore-periods.js', 'seo.js', 'catalog.js', 'details.js', 'workspace.js', 'explore.js', 'workspace.css', 'explore.css', 'styles.css', 'site.js', 'app.js', 'facts.js', 'filters.js', 'icons.js', 'data.js', 'data-en.js', 'data-agents.js', 'data-hardware.js', 'data-technology.js', 'data-access.js', 'data-specs.js', 'data-prices.js', 'data-scores.js', 'data-model-types.js', 'favicon.svg', 'assets/noto-sans-sc.css', 'assets/OFL.txt', 'assets/FONT-NOTICE.md'];
+const pages = Object.entries(PAGE_FILES);
+const assets = ['explore-periods.js', 'seo.js', 'catalog.js', 'details.js', 'workspace.js', 'explore.js', 'workspace.css', 'explore.css', 'benchmarks.css', 'styles.css', 'site.js', 'app.js', 'facts.js', 'filters.js', 'icons.js', 'data.js', 'data-en.js', 'data-agents.js', 'data-hardware.js', 'data-technology.js', 'data-access.js', 'data-specs.js', 'data-prices.js', 'data-scores.js', 'data-model-types.js', 'favicon.svg', 'assets/noto-sans-sc.css', 'assets/OFL.txt', 'assets/FONT-NOTICE.md'];
 for (const name of (await readdir(new URL('assets/', sourceRoot))).sort()) {
   if (/^atlas-sans-[a-z]+\.woff2$/.test(name)) assets.push(`assets/${name}`);
 }
@@ -27,9 +27,8 @@ for (const file of assets) {
   await copyFile(new URL(file, sourceRoot), new URL(file, output));
 }
 // Static servers may cache scripts and styles. New content gets a new asset URL.
-for (const page of pages) for (const language of ['zh', 'en']) {
+for (const [section, page] of pages) for (const language of ['zh', 'en']) {
   const source = await readFile(new URL(page, sourceRoot), 'utf8');
-  const section = page === 'index.html' ? 'models' : page.replace('.html', '');
   const localized = prerenderPage(renderPage(source, { page: section, language, origin, seo }), { page: section, language, window: catalog });
   const html = localized.replace(/\b(src|href)="([^"?#]+\.(?:js|css|svg))"/g, (match, attribute, file) => {
     if (!versions.has(file)) throw new Error(`Unbundled asset in ${page}: ${file}`);

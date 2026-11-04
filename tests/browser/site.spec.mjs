@@ -14,7 +14,7 @@ const test = base.extend({
   }, { auto: true }],
 });
 
-const pages = ['index.html', 'agents.html', 'hardware.html', 'technology.html', 'explore.html', 'about.html'];
+const pages = ['index.html', 'agents.html', 'hardware.html', 'technology.html', 'explore.html', 'benchmarks.html', 'about.html'];
 const route = (language, file = 'index.html') => `${language === 'en' ? '/en/' : '/'}${file}`;
 const noOverflow = async page => {
   expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth), 'Page must not scroll sideways').toBeLessThanOrEqual(1);
@@ -263,6 +263,9 @@ for (const language of ['zh', 'en']) {
           await expect(page.locator('html')).toHaveAttribute('lang', language === 'en' ? 'en' : 'zh-CN');
           if (file === 'about.html') {
             await expect(page.locator('#criteria')).toContainText(language === 'en' ? 'Selection criteria' : '收录标准');
+          } else if (file === 'benchmarks.html') {
+            await expect(page.locator('article.benchmark-card')).toHaveCount(7);
+            await expect(page.locator('article.benchmark-card h3 a[href]')).toHaveCount(7);
           } else {
             const entrySelector = file === 'explore.html' ? '#explore-root .journey-event' : '#timeline .release-card';
             const entries = page.locator(entrySelector);

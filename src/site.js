@@ -20,6 +20,7 @@
     hardware: { file: 'hardware.html', zh: '算力', en: 'Hardware', title: ['算力硬件时间线', 'AI hardware timeline'], data: window.HARDWARE_ATLAS },
     technology: { file: 'technology.html', zh: '技术', en: 'Technology', title: ['AI 技术演进', 'AI technology timeline'], data: window.TECHNOLOGY_ATLAS },
     explore: { file: 'explore.html', zh: '探索', en: 'Explore', title: ['探索', 'Explore'], data: window.MODEL_ATLAS },
+    benchmarks: { file: 'benchmarks.html', zh: '评测', en: 'Benchmarks', title: ['评测', 'Benchmarks'], data: window.MODEL_ATLAS },
     about: { file: 'about.html', zh: '关于', en: 'About', title: ['关于', 'About'], data: window.MODEL_ATLAS },
   };
   const raw = pages[page].data;
@@ -88,7 +89,7 @@
   });
   const header = document.querySelector('.site-header');
   const menuToggle = document.querySelector('#menu-toggle');
-  const mobileHeader = matchMedia('(max-width: 760px)');
+  const mobileHeader = matchMedia('(max-width: 1024px)');
   const languageToggle = document.querySelector('#language-toggle');
   const languageOptions = document.querySelector('#language-options');
   const languageControl = document.querySelector('.language-control');

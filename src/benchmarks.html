@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff"><meta name="description" content="查阅大模型与智能体公开评测榜单，了解 Artificial Analysis、Arena、LiveBench、SWE-bench、Terminal-Bench 和 OSWorld 的评测对象、方法与比较范围。">
+  <meta name="keywords" content="AI 评测, 大模型榜单, 智能体评测, Artificial Analysis, Arena, LiveBench, SWE-bench, Terminal-Bench, OSWorld">
+  <title>大模型与智能体评测榜单 · Model Atlas</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="assets/noto-sans-sc.css"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="benchmarks.css">
+
+  <script src="data.js" defer></script><script src="data-en.js" defer></script><script src="data-agents.js" defer></script><script src="data-access.js" defer></script><script src="data-specs.js" defer></script><script src="data-prices.js" defer></script><script src="data-scores.js" defer></script><script src="data-model-types.js" defer></script><script src="data-hardware.js" defer></script><script src="data-technology.js" defer></script><script src="filters.js" defer></script><script src="seo.js" defer></script><script src="site.js" defer></script><script src="icons.js" defer></script><script src="catalog.js" defer></script><script src="details.js" defer></script><script src="facts.js" defer></script><script src="workspace.js" defer></script>
+</head>
+<body data-page="benchmarks">
+  <a class="skip-link" href="#main" data-zh="跳到主要内容" data-en="Skip to content">跳到主要内容</a>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="index.html" data-local aria-label="Model Atlas"><svg class="brand-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 7v10M12 3v18M19 9v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Model Atlas</span></a>
+      <div id="header-menu" class="header-menu">
+        <nav class="header-nav" aria-label="主导航" data-aria-zh="主导航" data-aria-en="Main navigation">
+        <a href="index.html" data-local><span data-zh="大模型" data-en="Models">大模型</span></a>
+        <a href="agents.html" data-local><span data-zh="智能体" data-en="Agent">智能体</span></a>
+        <a href="hardware.html" data-local><span data-zh="算力" data-en="Hardware">算力</span></a>
+        <a href="technology.html" data-local><span data-zh="技术" data-en="Technology">技术</span></a>
+        <a href="benchmarks.html" data-local aria-current="page"><span data-zh="评测" data-en="Benchmarks">评测</span></a>
+        <a href="about.html" data-local><span data-zh="关于" data-en="About">关于</span></a>
+      </nav>
+        <div class="mobile-language"><span data-zh="语言" data-en="Language">语言</span><div class="language-inline"><a href="?lang=zh" data-language="zh" lang="zh-CN" hreflang="zh-CN">简体中文</a><a href="?lang=en" data-language="en" lang="en" hreflang="en">English</a></div></div>
+      </div>
+      <div class="header-actions">
+        <a class="explore-launch" href="explore.html" data-local aria-label="探索" data-aria-zh="探索" data-aria-en="Explore" title="探索" data-title-zh="探索" data-title-en="Explore"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.5"/><path d="m15.8 8.2-2.4 5.2-5.2 2.4 2.4-5.2 5.2-2.4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></a>
+        <button id="search-toggle" class="icon-button" type="button" aria-label="搜索" data-aria-zh="搜索" data-aria-en="Search" aria-haspopup="dialog" aria-controls="search-dialog"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+        <div class="language-control">
+          <button id="language-toggle" class="icon-button" type="button" aria-label="选择语言" data-aria-zh="选择语言" data-aria-en="Choose language" aria-expanded="false" aria-controls="language-options"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M4 12h16M12 4c2.4 2.3 3.6 5 3.6 8s-1.2 5.7-3.6 8c-2.4-2.3-3.6-5-3.6-8s1.2-5.7 3.6-8Z" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <div id="language-options" class="language-options" hidden><a href="?lang=zh" data-language="zh" lang="zh-CN" hreflang="zh-CN">简体中文</a><a href="?lang=en" data-language="en" lang="en" hreflang="en">English</a></div>
+        </div>
+        <button id="menu-toggle" class="icon-button menu-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="header-menu">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="menu-line-top" d="M5 8h14"/><path class="menu-line-bottom" d="M5 16h14"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+<main id="main" class="wrap benchmarks-page">
+  <div class="benchmark-intro"><div class="intro-copy"><h1 id="page-title" tabindex="-1" data-zh="评测" data-en="Benchmarks">评测</h1><p class="intro-meta" data-zh="7 个榜单" data-en="7 leaderboards">7 个榜单</p></div><p class="benchmark-intro-description" data-zh="模型与智能体的公开评测入口，按任务说明评测对象、方法与可比范围。" data-en="Public evaluations for models and agents, with their tasks, methods and scope of comparison.">模型与智能体的公开评测入口，按任务说明评测对象、方法与可比范围。</p></div>
+<section class="benchmark-group" id="model-benchmarks" aria-labelledby="model-benchmarks-title"><h2 id="model-benchmarks-title" data-zh="模型能力与偏好" data-en="Model capabilities &amp; preferences">模型能力与偏好</h2><div class="benchmark-grid"><article class="benchmark-card" id="benchmark-artificial-analysis" aria-labelledby="benchmark-artificial-analysis-title">
+  <div class="benchmark-card-heading"><div><h3 id="benchmark-artificial-analysis-title"><a href="https://artificialanalysis.ai/leaderboards/models" target="_blank" rel="noopener noreferrer">Artificial Analysis</a></h3><span class="benchmark-version">Index v5.0.1</span></div><span class="benchmark-kind" data-zh="综合能力" data-en="General capabilities">综合能力</span></div>
+  <p class="benchmark-summary" data-zh="通过多类基准任务比较模型综合能力，并提供 API 成本、速度和上下文等信息。" data-en="Compares model capabilities across benchmark tasks, alongside API costs, speed and context limits.">通过多类基准任务比较模型综合能力，并提供 API 成本、速度和上下文等信息。</p>
+  <dl class="benchmark-facts"><div><dt data-zh="评测对象" data-en="Evaluates">评测对象</dt><dd data-zh="特定模型版本与推理配置" data-en="Specific model versions and reasoning settings">特定模型版本与推理配置</dd></div><div><dt data-zh="评测方法" data-en="Method">评测方法</dt><dd data-zh="Intelligence Index 汇总多类任务成绩；成本与运行效率单独展示。" data-en="The Intelligence Index combines results across task categories; costs and runtime efficiency are reported separately.">Intelligence Index 汇总多类任务成绩；成本与运行效率单独展示。</dd></div></dl>
+  <div class="benchmark-scope"><h4 data-zh="比较范围" data-en="Comparison scope">比较范围</h4><p data-zh="指数版本与推理配置影响结果，应在相同口径下比较；综合能力指数不代表图像或视频生成质量。" data-en="Compare the same index version and reasoning settings. The intelligence score does not measure image or video generation quality.">指数版本与推理配置影响结果，应在相同口径下比较；综合能力指数不代表图像或视频生成质量。</p></div>
+  <div class="benchmark-links"><a href="https://artificialanalysis.ai/methodology/intelligence-benchmarking" target="_blank" rel="noopener noreferrer"><span data-zh="方法与资料" data-en="Methods &amp; resources">方法与资料</span></a></div>
+</article><article class="benchmark-card" id="benchmark-arena-text" aria-labelledby="benchmark-arena-text-title">
+  <div class="benchmark-card-heading"><div><h3 id="benchmark-arena-text-title"><a href="https://arena.ai/leaderboard/chat/text" target="_blank" rel="noopener noreferrer">Arena · Text</a></h3></div><span class="benchmark-kind" data-zh="用户偏好" data-en="User preferences">用户偏好</span></div>
+  <p class="benchmark-summary" data-zh="依据用户对模型回答的偏好投票形成排名，可按任务类别查看结果及置信区间。" data-en="Ranks model responses using user preference votes, with task categories and confidence intervals.">依据用户对模型回答的偏好投票形成排名，可按任务类别查看结果及置信区间。</p>
+  <dl class="benchmark-facts"><div><dt data-zh="评测对象" data-en="Evaluates">评测对象</dt><dd data-zh="模型在文本对话中的回答" data-en="Model responses in text conversations">模型在文本对话中的回答</dd></div><div><dt data-zh="评测方法" data-en="Method">评测方法</dt><dd data-zh="比较成对回答的用户偏好，并提供风格控制、样本量与不确定性信息。" data-en="Uses pairwise response preferences, with style controls, sample counts and uncertainty estimates.">比较成对回答的用户偏好，并提供风格控制、样本量与不确定性信息。</dd></div></dl>
+  <div class="benchmark-scope"><h4 data-zh="比较范围" data-en="Comparison scope">比较范围</h4><p data-zh="偏好分数不等于客观正确率，用户与问题分布会影响结果；比较时需核对任务类别与风格控制设置。" data-en="Preference is not factual accuracy. Users and prompts affect results; check the task category and style-control setting.">偏好分数不等于客观正确率，用户与问题分布会影响结果；比较时需核对任务类别与风格控制设置。</p></div>
+  <div class="benchmark-links"><a href="https://arena.ai/how-it-works" target="_blank" rel="noopener noreferrer"><span data-zh="方法与资料" data-en="Methods &amp; resources">方法与资料</span></a></div>
+</article><article class="benchmark-card" id="benchmark-livebench" aria-labelledby="benchmark-livebench-title">
+  <div class="benchmark-card-heading"><div><h3 id="benchmark-livebench-title"><a href="https://livebench.ai/" target="_blank" rel="noopener noreferrer">LiveBench 2.0</a></h3></div><span class="benchmark-kind" data-zh="多步任务" data-en="Multi-step tasks">多步任务</span></div>
+  <p class="benchmark-summary" data-zh="覆盖推理、数据分析，以及编程、浏览器操作等多步任务，按版本提供分项成绩。" data-en="Covers reasoning, data analysis and multi-step work such as coding and browser use, with results by release.">覆盖推理、数据分析，以及编程、浏览器操作等多步任务，按版本提供分项成绩。</p>
+  <dl class="benchmark-facts"><div><dt data-zh="评测对象" data-en="Evaluates">评测对象</dt><dd data-zh="模型在指定工具环境中的表现" data-en="Models in the benchmark&#x27;s tool environment">模型在指定工具环境中的表现</dd></div><div><dt data-zh="评测方法" data-en="Method">评测方法</dt><dd data-zh="结合标准答案、任务产出检查与评分规则，评估问答和工具任务。" data-en="Evaluates questions and tool tasks using reference answers, output checks and scoring rubrics.">结合标准答案、任务产出检查与评分规则，评估问答和工具任务。</dd></div></dl>
+  <div class="benchmark-scope"><h4 data-zh="比较范围" data-en="Comparison scope">比较范围</h4><p data-zh="各套件为单次运行；缺项与版本权重影响总分。当前权重说明存在差异，宜结合分项阅读。" data-en="Each suite uses one run. Missing suites and release weights affect Overall; current weight descriptions differ, so review the suite scores too.">各套件为单次运行；缺项与版本权重影响总分。当前权重说明存在差异，宜结合分项阅读。</p></div>
+  <div class="benchmark-links"><a href="https://livebench.ai/#/methodology" target="_blank" rel="noopener noreferrer"><span data-zh="方法与资料" data-en="Methods &amp; resources">方法与资料</span></a></div>
+</article></div></section>
+<section class="benchmark-group" id="coding-benchmarks" aria-labelledby="coding-benchmarks-title"><h2 id="coding-benchmarks-title" data-zh="编程与终端" data-en="Coding &amp; terminal tasks">编程与终端</h2><div class="benchmark-grid"><article class="benchmark-card" id="benchmark-swe-bench" aria-labelledby="benchmark-swe-bench-title">
+  <div class="benchmark-card-heading"><div><h3 id="benchmark-swe-bench-title"><a href="https://www.swebench.com/" target="_blank" rel="noopener noreferrer">SWE-bench</a></h3></div><span class="benchmark-kind" data-zh="编程" data-en="Coding">编程</span></div>
+  <p class="benchmark-summary" data-zh="通过真实代码仓库的问题修复任务评估编程表现，按测试结果统计问题解决比例。" data-en="Evaluates coding on issues from real repositories, measuring the share resolved according to tests.">通过真实代码仓库的问题修复任务评估编程表现，按测试结果统计问题解决比例。</p>
+  <dl class="benchmark-facts"><div><dt data-zh="评测对象" data-en="Evaluates">评测对象</dt><dd data-zh="固定执行框架中的模型或完整智能体" data-en="Models in a fixed harness or complete agents">固定执行框架中的模型或完整智能体</dd></div><div><dt data-zh="评测方法" data-en="Method">评测方法</dt><dd data-zh="在指定仓库提交补丁并运行测试；不同子集与执行方式分别呈现。" data-en="Applies patches to specified repositories and runs tests, with distinct subsets and execution setups.">在指定仓库提交补丁并运行测试；不同子集与执行方式分别呈现。</dd></div></dl>
+  <div class="benchmark-scope"><h4 data-zh="比较范围" data-en="Comparison scope">比较范围</h4><p data-zh="Verified 的 Bash Only 使用固定执行框架；完整智能体提交另有配置。子集、工具和预算不同，成绩不可直接混比。" data-en="Verified&#x27;s Bash Only uses a fixed harness; full-agent submissions have their own setups. Subsets, tools and budgets must match for comparison.">Verified 的 Bash Only 使用固定执行框架；完整智能体提交另有配置。子集、工具和预算不同，成绩不可直接混比。</p></div>
+  <div class="benchmark-links"><a href="https://github.com/SWE-bench/SWE-bench" target="_blank" rel="noopener noreferrer"><span data-zh="方法与资料" data-en="Methods &amp; resources">方法与资料</span></a></div>
+</article><article class="benchmark-card" id="benchmark-terminal-bench" aria-labelledby="benchmark-terminal-bench-title">
+  <div class="benchmark-card-heading"><div><h3 id="benchmark-terminal-bench-title"><a href="https://www.tbench.ai/" target="_blank" rel="noopener noreferrer">Terminal-Bench</a></h3><span class="benchmark-version">4.0</span></div><span class="benchmark-kind" data-zh="终端" data-en="Terminal">终端</span></div>
+  <p class="benchmark-summary" data-zh="在隔离终端环境中测试智能体完成复杂任务的能力，同时列出模型与执行框架。" data-en="Tests agents on complex tasks in isolated terminal environments, identifying both the model and agent harness.">在隔离终端环境中测试智能体完成复杂任务的能力，同时列出模型与执行框架。</p>
+  <dl class="benchmark-facts"><div><dt data-zh="评测对象" data-en="Evaluates">评测对象</dt><dd data-zh="模型与终端智能体的组合" data-en="Model and terminal-agent combinations">模型与终端智能体的组合</dd></div><div><dt data-zh="评测方法" data-en="Method">评测方法</dt><dd data-zh="依据任务验证器计算完成率，并提供成本、资源用量和置信区间。" data-en="Uses task verifiers to measure completion, alongside costs, resource usage and confidence intervals.">依据任务验证器计算完成率，并提供成本、资源用量和置信区间。</dd></div></dl>
+  <div class="benchmark-scope"><h4 data-zh="比较范围" data-en="Comparison scope">比较范围</h4><p data-zh="基准版本、资源限额和执行框架会影响结果；比较时还需核对试验次数，避免混用不同版本成绩。" data-en="Benchmark versions, resource limits and harnesses affect results. Check trial counts and compare within the same benchmark version.">基准版本、资源限额和执行框架会影响结果；比较时还需核对试验次数，避免混用不同版本成绩。</p></div>
+  <div class="benchmark-links"><a href="https://www.tbench.ai/benchmarks" target="_blank" rel="noopener noreferrer"><span data-zh="方法与资料" data-en="Methods &amp; resources">方法与资料</span></a></div>
+</article></div></section>
+<section class="benchmark-group" id="agent-benchmarks" aria-labelledby="agent-benchmarks-title"><h2 id="agent-benchmarks-title" data-zh="电脑与智能体任务" data-en="Computer use &amp; agent tasks">电脑与智能体任务</h2><div class="benchmark-grid"><article class="benchmark-card" id="benchmark-osworld" aria-labelledby="benchmark-osworld-title">
+  <div class="benchmark-card-heading"><div><h3 id="benchmark-osworld-title"><a href="https://osworld-v2.xlang.ai/" target="_blank" rel="noopener noreferrer">OSWorld</a></h3><span class="benchmark-version">2.x</span></div><span class="benchmark-kind" data-zh="电脑操作" data-en="Computer use">电脑操作</span></div>
+  <p class="benchmark-summary" data-zh="评估智能体在桌面应用和浏览器中完成长程工作流的能力，区分完整完成与部分得分。" data-en="Evaluates long workflows across desktop apps and browsers, distinguishing full completion from partial credit.">评估智能体在桌面应用和浏览器中完成长程工作流的能力，区分完整完成与部分得分。</p>
+  <dl class="benchmark-facts"><div><dt data-zh="评测对象" data-en="Evaluates">评测对象</dt><dd data-zh="电脑操作智能体及其交互配置" data-en="Computer-use agents and their interaction settings">电脑操作智能体及其交互配置</dd></div><div><dt data-zh="评测方法" data-en="Method">评测方法</dt><dd data-zh="检查实际操作后的任务状态，并报告完成情况、步骤、时间与成本。" data-en="Checks task state after execution and reports completion, steps, elapsed time and costs.">检查实际操作后的任务状态，并报告完成情况、步骤、时间与成本。</dd></div></dl>
+  <div class="benchmark-scope"><h4 data-zh="比较范围" data-en="Comparison scope">比较范围</h4><p data-zh="原版与 2.x 的任务集不同，完整完成率与部分得分也需分别阅读；步数预算、交互方式和环境版本须一致。" data-en="The original and 2.x use different task sets. Read full completion and partial credit separately, matching step budgets, interaction modes and environments.">原版与 2.x 的任务集不同，完整完成率与部分得分也需分别阅读；步数预算、交互方式和环境版本须一致。</p></div>
+  <div class="benchmark-links"><a href="https://github.com/xlang-ai/OSWorld-V2" target="_blank" rel="noopener noreferrer"><span data-zh="方法与资料" data-en="Methods &amp; resources">方法与资料</span></a></div>
+</article><article class="benchmark-card" id="benchmark-arena-agent" aria-labelledby="benchmark-arena-agent-title">
+  <div class="benchmark-card-heading"><div><h3 id="benchmark-arena-agent-title"><a href="https://arena.ai/leaderboard/agent" target="_blank" rel="noopener noreferrer">Arena · Agent</a></h3></div><span class="benchmark-kind" data-zh="真实会话" data-en="Real-world sessions">真实会话</span></div>
+  <p class="benchmark-summary" data-zh="利用真实会话中的反馈、纠错和工具执行信号，评估调度模型相对基线的改善。" data-en="Uses feedback, correction handling and tool execution signals from real sessions to estimate gains over a baseline.">利用真实会话中的反馈、纠错和工具执行信号，评估调度模型相对基线的改善。</p>
+  <dl class="benchmark-facts"><div><dt data-zh="评测对象" data-en="Evaluates">评测对象</dt><dd data-zh="Arena 环境中的调度模型" data-en="Orchestrator models in Arena&#x27;s environment">Arena 环境中的调度模型</dd></div><div><dt data-zh="评测方法" data-en="Method">评测方法</dt><dd data-zh="采用因果估计汇总相对改善，展示各类信号与置信区间。" data-en="Uses causal estimation to measure relative improvement, with signal breakdowns and confidence intervals.">采用因果估计汇总相对改善，展示各类信号与置信区间。</dd></div></dl>
+  <div class="benchmark-scope"><h4 data-zh="比较范围" data-en="Comparison scope">比较范围</h4><p data-zh="百分比表示相对基线的净改善，不是任务成功率；结果针对调度模型，不能直接当作商业智能体产品排名。" data-en="The percentage is a net gain over a baseline, not a task success rate. It compares orchestrator models, not complete commercial agent products.">百分比表示相对基线的净改善，不是任务成功率；结果针对调度模型，不能直接当作商业智能体产品排名。</p></div>
+  <div class="benchmark-links"><a href="https://arena.ai/blog/agent-arena-methodology" target="_blank" rel="noopener noreferrer"><span data-zh="方法与资料" data-en="Methods &amp; resources">方法与资料</span></a></div>
+</article></div></section>
+</main>
+  <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="dialog-title"><div class="dialog-controls"><button class="close-dialog" id="close-dialog" aria-label="关闭详情" data-aria-zh="关闭详情" data-aria-en="Close details">×</button></div><div id="dialog-content"></div></dialog>
+  <footer class="site-footer">
+    <div class="wrap footer-bottom"><p>© 2026 <a class="footer-project-link" href="https://github.com/taifuer/model-atlas" target="_blank" rel="noopener noreferrer" aria-label="Model Atlas on GitHub" data-aria-zh="Model Atlas 的 GitHub 仓库" data-aria-en="Model Atlas on GitHub">Model Atlas</a></p><p><span data-zh="最后更新于" data-en="Last updated" >最后更新于</span> <time data-updated datetime="2026-10-12">2026.10.12</time></p></div>
+  </footer>
+  <dialog id="search-dialog" class="search-dialog" aria-label="搜索" data-aria-zh="搜索" data-aria-en="Search">
+      <form class="search-box" id="search-form" action="explore.html" method="get" role="search">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <label class="sr-only" for="search" data-zh="搜索全部时间线" data-en="Search all timelines">搜索全部时间线</label>
+        <input id="search" name="q" type="search" placeholder="搜索全部内容…" data-placeholder-zh="搜索全部内容…" data-placeholder-en="Search all timelines…" autocomplete="off" maxlength="300">
+        <button class="search-dismiss" id="search-dismiss" type="button" aria-label="关闭搜索" data-aria-zh="关闭搜索" data-aria-en="Close search">Esc</button>
+      </form>
+    <div id="search-results" class="search-results"></div><p class="search-help" id="search-help" data-zh="搜索全部时间线中的名称、机构或关键词。" data-en="Search names, organizations, or keywords across all timelines.">搜索全部时间线中的名称、机构或关键词。</p>
+  </dialog>
+  <button class="back-to-top icon-button" id="back-to-top" type="button" hidden aria-label="返回顶部" data-aria-zh="返回顶部" data-aria-en="Back to top" title="返回顶部"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body></html>

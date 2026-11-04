@@ -44,6 +44,7 @@ Entries are selected for historical influence or technical significance. This is
 - Switch between detailed cards and a compact list, with newest entries first.
 - Browse annual and monthly counts for the current selection.
 - Open [Explore](https://ai.taifua.com/explore.html?lang=en) from the compass button in the header. It presents all cataloged events across the four timelines in monthly groups, from newest to oldest, with same-day events shown together and horizontal year and month navigation.
+- Use [Benchmarks](https://ai.taifua.com/en/benchmarks.html) to find model and agent evaluations by task, with their methods, evaluation subjects, and limits of comparison.
 - Open an entry for its release scope, specifications, and sources. Browser Back closes details and Forward reopens them, preserving the selected filters. A correction link opens the existing GitHub issue form with the entry name and URL; it does not submit an issue.
 - Use Chinese or English. The home page initially follows the browser language; manual choices are remembered, with dedicated URLs for each language.
 - Browse on desktop or mobile, with keyboard navigation and reduced-motion support.
@@ -80,7 +81,7 @@ npm test
 npm run build
 ```
 
-The build creates `dist/` with six page types in Chinese and English, a sitemap, and local assets. Deploy that directory to any static host; no Node.js process or backend is needed in production. Asset URLs include content hashes for cache updates. CI runs the same checks on Node.js 22 and 24, plus a separate Chromium browser regression job.
+The build creates `dist/` with seven page types in Chinese and English, a sitemap, and local assets. Deploy that directory to any static host; no Node.js process or backend is needed in production. Asset URLs include content hashes for cache updates. CI runs the same checks on Node.js 22 and 24, plus a separate Chromium browser regression job.
 
 To run browser checks for the first time:
 
@@ -151,7 +152,7 @@ Decisions are `represented`, `deferred`, `rejected`, or `needs_review`. Every de
 
 | Files | Purpose |
 | --- | --- |
-| `src/` | Website source: six page templates, frontend JavaScript, CSS, data, and favicon. |
+| `src/` | Website source: seven page templates, frontend JavaScript, CSS, data, and favicon. |
 | `src/data*.js` | Bilingual entries, classifications, specifications, prices, and scores. |
 | `src/app.js`, `src/filters.js`, `src/site.js`, `src/icons.js`, `src/styles.css` | Rendering, filtering, navigation, language, and layout. |
 | `src/assets/` | Local font, icons, and their notices. |

@@ -1,5 +1,5 @@
 import seo from '../src/seo.js';
-import { renderPage, renderSitemap, renderRobots } from './seo.mjs';
+import { PAGE_FILES, renderPage, renderSitemap, renderRobots } from './seo.mjs';
 import { loadCatalog, prerenderPage } from './prerender.mjs';
 import http from 'node:http';
 import { createReadStream } from 'node:fs';
@@ -17,16 +17,15 @@ const host = flag('--host', '0.0.0.0');
 const files = new Map([
   ['explore-periods.js', ['explore-periods.js', 'text/javascript']],
   ['seo.js', ['seo.js', 'text/javascript']],
-  ['explore.html', ['explore.html', 'text/html']],
   ['catalog.js', ['catalog.js', 'text/javascript']],
   ['details.js', ['details.js', 'text/javascript']],
   ['workspace.js', ['workspace.js', 'text/javascript']],
   ['explore.js', ['explore.js', 'text/javascript']],
   ['workspace.css', ['workspace.css', 'text/css']],
   ['explore.css', ['explore.css', 'text/css']],
-  ['/', ['index.html', 'text/html']], ['index.html', ['index.html', 'text/html']],
-  ['agents.html', ['agents.html', 'text/html']], ['about.html', ['about.html', 'text/html']],
-  ['hardware.html', ['hardware.html', 'text/html']], ['technology.html', ['technology.html', 'text/html']],
+  ['benchmarks.css', ['benchmarks.css', 'text/css']],
+  ['/', [PAGE_FILES.models, 'text/html']],
+  ...Object.values(PAGE_FILES).map(file => [file, [file, 'text/html']]),
   ['data-hardware.js', ['data-hardware.js', 'text/javascript']], ['data-technology.js', ['data-technology.js', 'text/javascript']],
   ['site.js', ['site.js', 'text/javascript']], ['data-en.js', ['data-en.js', 'text/javascript']], ['data-agents.js', ['data-agents.js', 'text/javascript']],
   ['styles.css', ['styles.css', 'text/css']], ['app.js', ['app.js', 'text/javascript']],

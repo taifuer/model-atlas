@@ -6,6 +6,7 @@ export const PAGE_FILES = Object.freeze({
   hardware: 'hardware.html',
   technology: 'technology.html',
   explore: 'explore.html',
+  benchmarks: 'benchmarks.html',
   about: 'about.html',
 });
 
@@ -288,7 +289,7 @@ export function renderPage(source, { page, language = 'zh', origin = DEFAULT_ORI
   return output.join('');
 }
 
-/** Twelve canonical URLs, each with reciprocal language alternatives. */
+/** Canonical URLs for every page, with reciprocal language alternatives. */
 export function renderSitemap(origin = DEFAULT_ORIGIN) {
   const base = siteBase(origin);
   const entries = [];

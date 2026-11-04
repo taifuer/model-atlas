@@ -86,9 +86,13 @@ function exploreHTML(window, language) {
 }
 
 function fallbackNavigation(page, language) {
-  const labels = language === 'en' ? ['Models', 'Agent', 'Hardware', 'Technology', 'Explore', 'About'] : ['大模型', '智能体', '算力', '技术', '探索', '关于'];
+  const labels = {
+    models: ['大模型', 'Models'], agents: ['智能体', 'Agent'], hardware: ['算力', 'Hardware'],
+    technology: ['技术', 'Technology'], explore: ['探索', 'Explore'],
+    benchmarks: ['评测', 'Benchmarks'], about: ['关于', 'About'],
+  };
   const prefix = language === 'en' ? 'en/' : '';
-  const links = Object.keys(PAGE_FILES).map((key, index) => `<a href="${prefix}${PAGE_FILES[key]}">${labels[index]}</a>`);
+  const links = Object.keys(PAGE_FILES).map(key => `<a href="${prefix}${PAGE_FILES[key]}">${labels[key][language === 'en' ? 1 : 0]}</a>`);
   links.push(`<a href="${language === 'en' ? '' : 'en/'}${PAGE_FILES[page]}" lang="${language === 'en' ? 'zh-CN' : 'en'}">${language === 'en' ? '简体中文' : 'English'}</a>`);
   return `<noscript><nav class="static-navigation" aria-label="${language === 'en' ? 'Site navigation' : '站点导航'}" style="display:flex;flex-wrap:wrap;gap:12px 20px;margin-bottom:24px;font-size:13px">${links.join('')}</nav></noscript>`;
 }
@@ -103,7 +107,7 @@ export function prerenderPage(html, { page, language, window }) {
     const date = field === 'data-updated' ? updatedAt : cutoff;
     return `<time${attributes.replace(/\sdatetime="[^"]*"/, '')} datetime="${date}">${date.replaceAll('-', '.')}</time>`;
   });
-  if (page !== 'about') {
+  if (page === 'explore' || Object.hasOwn(sections, page)) {
     if (page === 'explore') html = replaceContainer(html, 'explore-root', exploreHTML(window, language));
     else {
       const { raw, markup, navigation } = timelineHTML(window, page, language);

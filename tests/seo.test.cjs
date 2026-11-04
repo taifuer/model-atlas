@@ -7,7 +7,7 @@ const { pathToFileURL } = require('node:url');
 
 const sourceRoot = path.join(__dirname, '..', 'src');
 const seo = require(path.join(sourceRoot, 'seo.js'));
-const pages = ['models', 'agents', 'hardware', 'technology', 'explore', 'about'];
+const pages = ['models', 'agents', 'hardware', 'technology', 'explore', 'benchmarks', 'about'];
 const languages = ['zh', 'en'];
 const plain = value => JSON.parse(JSON.stringify(value));
 
@@ -70,7 +70,7 @@ test('keywords remain short, readable topic lists without duplicates or packed p
 
 const pageFiles = {
   models: 'index.html', agents: 'agents.html', hardware: 'hardware.html',
-  technology: 'technology.html', explore: 'explore.html', about: 'about.html',
+  technology: 'technology.html', explore: 'explore.html', benchmarks: 'benchmarks.html', about: 'about.html',
 };
 const origin = 'https://atlas.example';
 const expectedPath = (page, language) => `${language === 'en' ? '/en/' : '/'}${page === 'models' ? '' : pageFiles[page]}`;
@@ -82,7 +82,7 @@ const canonicalPath = pathname => pathname.replace(/\/index\.html$/, '/');
 const renderers = () => import(pathToFileURL(path.join(__dirname, '..', 'scripts', 'seo.mjs')).href);
 
 for (const language of languages) {
-  test(`the six static ${language} editions publish their own metadata and language alternatives`, async () => {
+  test(`the static ${language} editions publish their own metadata and language alternatives`, async () => {
     const { renderPage } = await renderers();
     for (const page of pages) {
       const source = fs.readFileSync(path.join(sourceRoot, pageFiles[page]), 'utf8');
@@ -125,7 +125,7 @@ for (const language of languages) {
       assert.ok(nav, `${page}: primary navigation`);
       const visibleNav = textContent(nav[1]);
       if (language === 'en') assert.doesNotMatch(visibleNav, /[\u3400-\u9fff]/, `${page}: translated navigation`);
-      else assert.match(visibleNav, /大模型.*智能体.*关于/, `${page}: Chinese navigation`);
+      else assert.match(visibleNav, /大模型.*智能体.*技术.*评测.*关于/, `${page}: Chinese navigation`);
       for (const link of tags(nav[1], 'a')) {
         const target = new URL(link.href, baseUrl);
         assert.equal(target.origin, origin, `${page}: internal navigation`);
@@ -154,7 +154,7 @@ for (const language of languages) {
   });
 }
 
-test('the sitemap lists twelve canonical editions and robots links to that sitemap', async () => {
+test('the sitemap lists every canonical edition and robots links to that sitemap', async () => {
   const { renderSitemap, renderRobots } = await renderers();
   const xml = renderSitemap(origin);
   const blocks = [...xml.matchAll(/<url\b[^>]*>([\s\S]*?)<\/url>/g)].map(match => match[1]);
