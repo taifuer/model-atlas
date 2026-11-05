@@ -66,12 +66,12 @@
       zh: {
         title: '大模型与智能体评测 · Model Atlas',
         description: '按综合能力、推理与知识工作、编程、工具与智能体分类查阅公开评测平台和基准测试，包括 Artificial Analysis、Arena、LiveBench、Terminal-Bench 与 OSWorld，了解评测方法和比较范围。',
-        keywords: ['大模型评测', '智能体评测', 'Artificial Analysis', 'Arena', 'LiveBench', 'Epoch AI', 'HLE', 'GDPval-AA', 'Terminal-Bench', 'OSWorld'],
+        keywords: ['大模型评测', '智能体评测', 'Artificial Analysis', 'Arena', 'LiveBench', 'Epoch AI', 'Terminal-Bench', 'OSWorld'],
       },
       en: {
         title: 'AI Model & Agent Benchmarks · Model Atlas',
         description: 'Explore model and agent evaluations by field, including Artificial Analysis, Arena, LiveBench, Terminal-Bench and OSWorld. Read their methods and limits of comparison.',
-        keywords: ['AI model benchmarks', 'agent evaluations', 'Artificial Analysis', 'Arena', 'LiveBench', 'Epoch AI', 'HLE', 'GDPval-AA', 'Terminal-Bench', 'OSWorld'],
+        keywords: ['AI model benchmarks', 'agent evaluations', 'Artificial Analysis', 'Arena', 'LiveBench', 'Epoch AI', 'Terminal-Bench', 'OSWorld'],
       },
     },
     about: {

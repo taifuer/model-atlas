@@ -173,7 +173,7 @@ test('company coverage and research metadata are complete', () => {
     assert.ok(data.companies.some(company => company.id === id), `Missing provider: ${id}`);
   }
   assert.equal(data.coverage.checkedAt, data.asOf);
-  assert.deepEqual([...new Set(Array.from(data.coverage.references, reference => new URL(reference.url).hostname))].sort(), ['arena.ai', 'artificialanalysis.ai', 'crfm.stanford.edu', 'livebench.ai', 'rank.opencompass.org.cn', 'www.swebench.com', 'www.tbench.ai']);
+  assert.deepEqual([...new Set(Array.from(data.coverage.references, reference => new URL(reference.url).hostname))].sort(), ['arena.ai', 'artificialanalysis.ai', 'crfm.stanford.edu', 'livebench.ai', 'rank.opencompass.org.cn', 'www.tbench.ai']);
 });
 
 test('organization ranking records a dated, comparable AA snapshot without scores from earlier index versions', () => {
