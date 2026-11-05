@@ -7,8 +7,8 @@
 .benchmark-group { padding-top: 34px; scroll-margin-top: 104px; }
 .benchmark-group h2 { margin: 0 0 18px; font-size: 21px; font-weight: 550; letter-spacing: -.015em; }
 .benchmark-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.benchmark-card { display: flex; flex-direction: column; min-width: 0; padding: 22px; border: 1px solid var(--line); border-radius: 8px; background: var(--background); }
-.benchmark-card-heading { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 6px 12px; }
+.benchmark-card { display: flex; flex-direction: column; min-width: 0; padding: 22px 22px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--background); }
+.benchmark-card-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; }
 .benchmark-card-heading > div { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; }
 .benchmark-card h3 { font-size: 18px; line-height: 1.5; font-weight: 600; margin: 0; letter-spacing: -.01em; }
 .benchmark-card h3 a { text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 1px; text-underline-offset: 4px; }
@@ -22,7 +22,7 @@
 .benchmark-scope { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
 .benchmark-scope h4 { font-size: 11px; color: var(--muted); font-weight: 400; margin: 0 0 3px; }
 .benchmark-scope p { font-size: 12px; color: var(--body); line-height: 1.85; margin: 0; }
-.benchmark-links { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 18px; margin-top: auto; padding-top: 18px; font-size: 12px; }
+.benchmark-links { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 18px; margin-top: auto; padding-top: 8px; font-size: 12px; }
 .benchmark-links a { display: inline-flex; align-items: center; min-height: 36px; color: var(--accent); text-decoration: underline; text-decoration-color: #c4d1c8; text-underline-offset: 4px; }
 .benchmark-links a:hover { color: var(--accent); text-decoration-color: currentColor; }
 @media (max-width: 760px) {
@@ -32,12 +32,11 @@
   .benchmark-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .benchmark-group { padding-top: 28px; scroll-margin-top: 88px; }
   .benchmark-group h2 { font-size: 19px; margin-bottom: 14px; }
-  .benchmark-card { padding: 18px; }
+  .benchmark-card { padding: 18px 18px 10px; }
   .benchmark-card h3 { font-size: 17px; }
   .benchmark-summary { margin-block: 10px 14px; }
   .benchmark-facts { gap: 10px; }
   .benchmark-scope { margin-top: 14px; padding-top: 12px; }
-  .benchmark-links { padding-top: 12px; }
 }
 @media print {
   .benchmarks-page { padding-top: 0; }
