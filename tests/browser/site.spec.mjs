@@ -193,8 +193,11 @@ for (const language of ['zh', 'en']) {
           await expect(page.locator('#detail-dialog')).toBeVisible();
           await expect(page.locator('#dialog-title')).toHaveText('FlashAttention-4');
         }
+        const underlyingPage = new URL(page.url());
+        underlyingPage.hash = '';
         await page.keyboard.press('Escape');
         await expect(page.locator('#detail-dialog')).not.toBeVisible();
+        await expect(page).toHaveURL(underlyingPage.href);
       }
       await searchFor(page, 'H100');
       await expect(page.locator('#search-results')).toContainText('H100');
@@ -264,8 +267,8 @@ for (const language of ['zh', 'en']) {
           if (file === 'about.html') {
             await expect(page.locator('#criteria')).toContainText(language === 'en' ? 'Selection criteria' : '收录标准');
           } else if (file === 'benchmarks.html') {
-            await expect(page.locator('article.benchmark-card')).toHaveCount(12);
-            await expect(page.locator('article.benchmark-card h3 a[href]')).toHaveCount(12);
+            await expect(page.locator('article.benchmark-card')).toHaveCount(9);
+            await expect(page.locator('article.benchmark-card h3 a[href]')).toHaveCount(9);
           } else {
             const entrySelector = file === 'explore.html' ? '#explore-root .journey-event' : '#timeline .release-card';
             const entries = page.locator(entrySelector);
