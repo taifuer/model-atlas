@@ -2053,8 +2053,8 @@ window.MODEL_ATLAS = (() => {
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
     references: [
-      source('Artificial Analysis · Intelligence', 'https://artificialanalysis.ai/models#intelligence'),
-      source('Arena · Text leaderboard', 'https://arena.ai/leaderboard/text'),
+      source('Artificial Analysis · Intelligence', 'https://artificialanalysis.ai/leaderboards/models'),
+      source('Arena · Text leaderboard', 'https://arena.ai/leaderboard/chat/text'),
       source('Artificial Analysis · Image', 'https://artificialanalysis.ai/image/leaderboard/text-to-image'),
       source('Arena · Text-to-Image', 'https://arena.ai/leaderboard/image/text-to-image'),
       source('Artificial Analysis · Video', 'https://artificialanalysis.ai/video/leaderboard/text-to-video'),
@@ -2062,7 +2062,6 @@ window.MODEL_ATLAS = (() => {
       source('LiveBench', 'https://livebench.ai/'),
       source('HELM Capabilities', 'https://crfm.stanford.edu/helm/capabilities/latest/'),
       source('OpenCompass', 'https://rank.opencompass.org.cn/'),
-      source('SWE-bench', 'https://www.swebench.com/'),
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };

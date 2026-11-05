@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff"><meta name="description" content="按综合能力、推理与知识工作、编程、工具与智能体分类查阅公开评测平台和基准测试，了解 Artificial Analysis、Arena、Epoch AI、HLE、LiveCodeBench 与 BFCL 等评测的方法和比较范围。">
-  <meta name="keywords" content="大模型评测, 智能体评测, Artificial Analysis, Arena, Epoch AI, HLE, LiveCodeBench, BFCL">
+  <meta name="theme-color" content="#ffffff"><meta name="description" content="按综合能力、推理与知识工作、编程、工具与智能体分类查阅公开评测平台和基准测试，了解 Artificial Analysis、Arena、LiveBench、Terminal-Bench 与 OSWorld 等评测的方法和比较范围。">
+  <meta name="keywords" content="大模型评测, 智能体评测, Artificial Analysis, Arena, LiveBench, Epoch AI, HLE, GDPval-AA, Terminal-Bench, OSWorld">
   <title>大模型与智能体评测 · Model Atlas</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="assets/noto-sans-sc.css"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="benchmarks.css">
@@ -40,7 +40,7 @@
     </div>
   </header>
 <main id="main" class="wrap benchmarks-page">
-  <div class="benchmark-intro"><div class="intro-copy"><h1 id="page-title" tabindex="-1" data-zh="评测" data-en="Benchmarks">评测</h1><p class="intro-meta" data-zh="12 项评测" data-en="12 evaluations">12 项评测</p></div><p class="benchmark-intro-description" data-zh="按领域整理模型与智能体的公开评测平台和基准测试，提供方法说明与比较范围。" data-en="Public evaluation platforms and benchmarks for models and agents, grouped by field with methods and comparison scope.">按领域整理模型与智能体的公开评测平台和基准测试，提供方法说明与比较范围。</p></div>
+  <div class="benchmark-intro"><div class="intro-copy"><h1 id="page-title" tabindex="-1" data-zh="评测" data-en="Benchmarks">评测</h1><p class="intro-meta" data-zh="9 项评测" data-en="9 evaluations">9 项评测</p></div><p class="benchmark-intro-description" data-zh="按领域整理模型与智能体的公开评测平台和基准测试，提供方法说明与比较范围。" data-en="Public evaluation platforms and benchmarks for models and agents, grouped by field with methods and comparison scope.">按领域整理模型与智能体的公开评测平台和基准测试，提供方法说明与比较范围。</p></div>
 <section class="benchmark-group" id="model-benchmarks" aria-labelledby="model-benchmarks-title"><h2 id="model-benchmarks-title" data-zh="综合能力" data-en="General capabilities">综合能力</h2><div class="benchmark-grid">
 <article class="benchmark-card" id="benchmark-artificial-analysis" aria-labelledby="benchmark-artificial-analysis-title">
   <div class="benchmark-card-heading"><div><h3 id="benchmark-artificial-analysis-title"><a href="https://artificialanalysis.ai/leaderboards/models" target="_blank" rel="noopener noreferrer">Artificial Analysis</a></h3><span class="benchmark-version">Index v5.0.1</span></div><span class="benchmark-kind" data-zh="评测平台" data-en="Evaluation platform">评测平台</span></div>
@@ -60,7 +60,7 @@
   <div class="benchmark-card-heading"><div><h3 id="benchmark-livebench-title"><a href="https://livebench.ai/" target="_blank" rel="noopener noreferrer">LiveBench 2.0</a></h3></div><span class="benchmark-kind" data-zh="基准测试" data-en="Benchmark">基准测试</span></div>
   <p class="benchmark-summary" data-zh="覆盖推理、数据分析，以及编程、浏览器操作等多步任务，按版本提供分项成绩。" data-en="Covers reasoning, data analysis and multi-step work such as coding and browser use, with results by release.">覆盖推理、数据分析，以及编程、浏览器操作等多步任务，按版本提供分项成绩。</p>
   <dl class="benchmark-facts"><div><dt data-zh="评测对象" data-en="Evaluates">评测对象</dt><dd data-zh="模型在指定工具环境中的表现" data-en="Models in the benchmark&#x27;s tool environment">模型在指定工具环境中的表现</dd></div><div><dt data-zh="评测方法" data-en="Method">评测方法</dt><dd data-zh="结合标准答案、任务产出检查与评分规则，评估问答和工具任务。" data-en="Evaluates questions and tool tasks using reference answers, output checks and scoring rubrics.">结合标准答案、任务产出检查与评分规则，评估问答和工具任务。</dd></div></dl>
-  <div class="benchmark-scope"><h4 data-zh="比较范围" data-en="Comparison scope">比较范围</h4><p data-zh="各套件为单次运行；缺项与版本权重影响总分。当前权重说明存在差异，宜结合分项阅读。" data-en="Each suite uses one run. Missing suites and release weights affect Overall; current weight descriptions differ, so review the suite scores too.">各套件为单次运行；缺项与版本权重影响总分。当前权重说明存在差异，宜结合分项阅读。</p></div>
+  <div class="benchmark-scope"><h4 data-zh="比较范围" data-en="Comparison scope">比较范围</h4><p data-zh="各套件为单次运行；缺项与版本权重影响总分。当前权重说明存在差异，建议优先参考分项成绩。" data-en="Each suite uses one run. Missing suites and release weights affect Overall; current weight descriptions differ, so prioritize suite-level results.">各套件为单次运行；缺项与版本权重影响总分。当前权重说明存在差异，建议优先参考分项成绩。</p></div>
   <div class="benchmark-links"><a href="https://livebench.ai/#/methodology" target="_blank" rel="noopener noreferrer"><span data-zh="方法与资料" data-en="Methods &amp; resources">方法与资料</span></a></div>
 </article>
 <article class="benchmark-card" id="benchmark-epoch-ai" aria-labelledby="benchmark-epoch-ai-title">
@@ -88,13 +88,6 @@
 </article>
 </div></section>
 <section class="benchmark-group" id="coding-benchmarks" aria-labelledby="coding-benchmarks-title"><h2 id="coding-benchmarks-title" data-zh="编程与终端" data-en="Coding &amp; terminal tasks">编程与终端</h2><div class="benchmark-grid">
-<article class="benchmark-card" id="benchmark-swe-bench" aria-labelledby="benchmark-swe-bench-title">
-  <div class="benchmark-card-heading"><div><h3 id="benchmark-swe-bench-title"><a href="https://www.swebench.com/" target="_blank" rel="noopener noreferrer">SWE-bench</a></h3></div><span class="benchmark-kind" data-zh="基准测试" data-en="Benchmark">基准测试</span></div>
-  <p class="benchmark-summary" data-zh="通过真实代码仓库的问题修复任务评估编程表现，按测试结果统计问题解决比例。" data-en="Evaluates coding on issues from real repositories, measuring the share resolved according to tests.">通过真实代码仓库的问题修复任务评估编程表现，按测试结果统计问题解决比例。</p>
-  <dl class="benchmark-facts"><div><dt data-zh="评测对象" data-en="Evaluates">评测对象</dt><dd data-zh="固定执行框架中的模型或完整智能体" data-en="Models in a fixed harness or complete agents">固定执行框架中的模型或完整智能体</dd></div><div><dt data-zh="评测方法" data-en="Method">评测方法</dt><dd data-zh="在指定仓库提交补丁并运行测试；不同子集与执行方式分别呈现。" data-en="Applies patches to specified repositories and runs tests, with distinct subsets and execution setups.">在指定仓库提交补丁并运行测试；不同子集与执行方式分别呈现。</dd></div></dl>
-  <div class="benchmark-scope"><h4 data-zh="比较范围" data-en="Comparison scope">比较范围</h4><p data-zh="Verified 的 Bash Only 使用固定执行框架；完整智能体提交另有配置。子集、工具和预算不同，成绩不可直接混比。" data-en="Verified&#x27;s Bash Only uses a fixed harness; full-agent submissions have their own setups. Subsets, tools and budgets must match for comparison.">Verified 的 Bash Only 使用固定执行框架；完整智能体提交另有配置。子集、工具和预算不同，成绩不可直接混比。</p></div>
-  <div class="benchmark-links"><a href="https://github.com/SWE-bench/SWE-bench" target="_blank" rel="noopener noreferrer"><span data-zh="方法与资料" data-en="Methods &amp; resources">方法与资料</span></a></div>
-</article>
 <article class="benchmark-card" id="benchmark-terminal-bench" aria-labelledby="benchmark-terminal-bench-title">
   <div class="benchmark-card-heading"><div><h3 id="benchmark-terminal-bench-title"><a href="https://www.tbench.ai/" target="_blank" rel="noopener noreferrer">Terminal-Bench</a></h3><span class="benchmark-version">4.0</span></div><span class="benchmark-kind" data-zh="基准测试" data-en="Benchmark">基准测试</span></div>
   <p class="benchmark-summary" data-zh="在隔离终端环境中测试智能体完成复杂任务的能力，同时列出模型与执行框架。" data-en="Tests agents on complex tasks in isolated terminal environments, identifying both the model and agent harness.">在隔离终端环境中测试智能体完成复杂任务的能力，同时列出模型与执行框架。</p>
@@ -102,27 +95,13 @@
   <div class="benchmark-scope"><h4 data-zh="比较范围" data-en="Comparison scope">比较范围</h4><p data-zh="基准版本、资源限额和执行框架会影响结果；比较时还需核对试验次数，避免混用不同版本成绩。" data-en="Benchmark versions, resource limits and harnesses affect results. Check trial counts and compare within the same benchmark version.">基准版本、资源限额和执行框架会影响结果；比较时还需核对试验次数，避免混用不同版本成绩。</p></div>
   <div class="benchmark-links"><a href="https://www.tbench.ai/benchmarks" target="_blank" rel="noopener noreferrer"><span data-zh="方法与资料" data-en="Methods &amp; resources">方法与资料</span></a></div>
 </article>
-<article class="benchmark-card" id="benchmark-livecodebench" aria-labelledby="benchmark-livecodebench-title">
-  <div class="benchmark-card-heading"><div><h3 id="benchmark-livecodebench-title"><a href="https://livecodebench.github.io/leaderboard.html" target="_blank" rel="noopener noreferrer">LiveCodeBench</a></h3></div><span class="benchmark-kind" data-zh="基准测试" data-en="Benchmark">基准测试</span></div>
-  <p class="benchmark-summary" data-zh="利用持续收集的编程竞赛题，评估模型生成正确代码的能力。" data-en="Evaluates code generation using programming contest problems collected over time.">利用持续收集的编程竞赛题，评估模型生成正确代码的能力。</p>
-  <dl class="benchmark-facts"><div><dt data-zh="评测对象" data-en="Evaluates">评测对象</dt><dd data-zh="模型生成的编程题解" data-en="Model-generated programming solutions">模型生成的编程题解</dd></div><div><dt data-zh="评测方法" data-en="Method">评测方法</dt><dd data-zh="运行测试用例，按题目时间范围和难度展示 Pass@1 等成绩。" data-en="Runs test cases and reports Pass@1 and difficulty breakdowns for selected problem date ranges.">运行测试用例，按题目时间范围和难度展示 Pass@1 等成绩。</dd></div></dl>
-  <div class="benchmark-scope"><h4 data-zh="比较范围" data-en="Comparison scope">比较范围</h4><p data-zh="应统一题目时间范围、数据版本和推理预算；编程题成绩不代表完整软件项目的开发能力。" data-en="Match problem dates, dataset versions and reasoning budgets. Contest scores do not measure complete software development workflows.">应统一题目时间范围、数据版本和推理预算；编程题成绩不代表完整软件项目的开发能力。</p></div>
-  <div class="benchmark-links"><a href="https://github.com/LiveCodeBench/LiveCodeBench" target="_blank" rel="noopener noreferrer"><span data-zh="方法与资料" data-en="Methods &amp; resources">方法与资料</span></a></div>
-</article>
 </div></section>
 <section class="benchmark-group" id="agent-benchmarks" aria-labelledby="agent-benchmarks-title"><h2 id="agent-benchmarks-title" data-zh="工具与智能体" data-en="Tool use &amp; agents">工具与智能体</h2><div class="benchmark-grid">
-<article class="benchmark-card" id="benchmark-bfcl" aria-labelledby="benchmark-bfcl-title">
-  <div class="benchmark-card-heading"><div><h3 id="benchmark-bfcl-title"><a href="https://gorilla.cs.berkeley.edu/leaderboard" target="_blank" rel="noopener noreferrer">BFCL</a></h3><span class="benchmark-version">V4</span></div><span class="benchmark-kind" data-zh="基准测试" data-en="Benchmark">基准测试</span></div>
-  <p class="benchmark-summary" data-zh="评估模型调用工具的能力，覆盖多轮交互、网页检索与记忆等任务。" data-en="Evaluates model tool use across multi-turn interactions, web search and memory tasks.">评估模型调用工具的能力，覆盖多轮交互、网页检索与记忆等任务。</p>
-  <dl class="benchmark-facts"><div><dt data-zh="评测对象" data-en="Evaluates">评测对象</dt><dd data-zh="模型的函数调用与工具交互" data-en="Model function calling and tool interactions">模型的函数调用与工具交互</dd></div><div><dt data-zh="评测方法" data-en="Method">评测方法</dt><dd data-zh="按任务检查调用结构、执行状态或答案，并展示各项准确率。" data-en="Checks call structure, execution state or answers by task, with accuracy breakdowns.">按任务检查调用结构、执行状态或答案，并展示各项准确率。</dd></div></dl>
-  <div class="benchmark-scope"><h4 data-zh="比较范围" data-en="Comparison scope">比较范围</h4><p data-zh="需区分原生函数调用与提示词模式，并核对版本和配置；结果不等同于完整智能体产品排名。" data-en="Distinguish native function calling from prompted calls and match versions and settings. Results do not rank complete agent products.">需区分原生函数调用与提示词模式，并核对版本和配置；结果不等同于完整智能体产品排名。</p></div>
-  <div class="benchmark-links"><a href="https://gorilla.cs.berkeley.edu/blogs/15_bfcl_v4_web_search.html" target="_blank" rel="noopener noreferrer"><span data-zh="方法与资料" data-en="Methods &amp; resources">方法与资料</span></a></div>
-</article>
 <article class="benchmark-card" id="benchmark-osworld" aria-labelledby="benchmark-osworld-title">
   <div class="benchmark-card-heading"><div><h3 id="benchmark-osworld-title"><a href="https://osworld-v2.xlang.ai/" target="_blank" rel="noopener noreferrer">OSWorld</a></h3><span class="benchmark-version">2.x</span></div><span class="benchmark-kind" data-zh="基准测试" data-en="Benchmark">基准测试</span></div>
   <p class="benchmark-summary" data-zh="评估智能体在桌面应用和浏览器中完成长程工作流的能力，区分完整完成与部分得分。" data-en="Evaluates long workflows across desktop apps and browsers, distinguishing full completion from partial credit.">评估智能体在桌面应用和浏览器中完成长程工作流的能力，区分完整完成与部分得分。</p>
   <dl class="benchmark-facts"><div><dt data-zh="评测对象" data-en="Evaluates">评测对象</dt><dd data-zh="电脑操作智能体及其交互配置" data-en="Computer-use agents and their interaction settings">电脑操作智能体及其交互配置</dd></div><div><dt data-zh="评测方法" data-en="Method">评测方法</dt><dd data-zh="检查实际操作后的任务状态，并报告完成情况、步骤、时间与成本。" data-en="Checks task state after execution and reports completion, steps, elapsed time and costs.">检查实际操作后的任务状态，并报告完成情况、步骤、时间与成本。</dd></div></dl>
-  <div class="benchmark-scope"><h4 data-zh="比较范围" data-en="Comparison scope">比较范围</h4><p data-zh="原版与 2.x 的任务集不同，完整完成率与部分得分也需分别阅读；步数预算、交互方式和环境版本须一致。" data-en="The original and 2.x use different task sets. Read full completion and partial credit separately, matching step budgets, interaction modes and environments.">原版与 2.x 的任务集不同，完整完成率与部分得分也需分别阅读；步数预算、交互方式和环境版本须一致。</p></div>
+  <div class="benchmark-scope"><h4 data-zh="比较范围" data-en="Comparison scope">比较范围</h4><p data-zh="模型覆盖仍有限。原版与 2.x、完整与离线任务集须分别比较；核对交互配置与步数预算，并区分完成率与部分得分。" data-en="Model coverage remains limited. Compare within the same version and full or offline task set. Match interaction settings and step budgets, and distinguish completion from partial credit.">模型覆盖仍有限。原版与 2.x、完整与离线任务集须分别比较；核对交互配置与步数预算，并区分完成率与部分得分。</p></div>
   <div class="benchmark-links"><a href="https://github.com/xlang-ai/OSWorld-V2" target="_blank" rel="noopener noreferrer"><span data-zh="方法与资料" data-en="Methods &amp; resources">方法与资料</span></a></div>
 </article>
 <article class="benchmark-card" id="benchmark-arena-agent" aria-labelledby="benchmark-arena-agent-title">

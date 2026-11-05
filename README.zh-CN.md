@@ -53,7 +53,7 @@ AI 模型、智能体、算力硬件与关键技术的发展时间线。
 
 移动端机构筛选根据屏幕宽度默认展示两行，已选机构保持可见，必要时可超过两行；其他机构可展开查看；桌面端显示全部机构。开启“只看里程碑”时，没有匹配节点的机构会直接隐藏。
 
-全站搜索采用统一匹配规则，兼容常见连字符写法；选择结果打开详情，按 Enter 在探索页查看所有匹配记录。时间线首次显示约 30 条，同日发布不拆开；“显示更多”继续展开，“显示全部”展示完整列表。明确筛选时显示全部匹配项，图表始终统计完整结果。探索页按完整月份分批展示，默认最新优先；点击年月会展开并定位，搜索则展开全部并高亮匹配。静态 HTML 保留完整记录，供搜索引擎和未启用 JavaScript 的浏览器阅读。类别标签区分大模型、智能体、算力硬件与技术；来源和日期说明区分论文展示、软件包发布与商用部署等事件口径。跨板块重复的 Transformer 事件只展示一次。评测参考提供 AA、Arena、SWE-bench 和 MLPerf 的原榜入口，模型详情复用已核对的评分，并分别标注核对日期与榜单日期。
+全站搜索采用统一匹配规则，兼容常见连字符写法；选择结果打开详情，按 Enter 在探索页查看所有匹配记录。时间线首次显示约 30 条，同日发布不拆开；“显示更多”继续展开，“显示全部”展示完整列表。明确筛选时显示全部匹配项，图表始终统计完整结果。探索页按完整月份分批展示，默认最新优先；点击年月会展开并定位，搜索则展开全部并高亮匹配。静态 HTML 保留完整记录，供搜索引擎和未启用 JavaScript 的浏览器阅读。类别标签区分大模型、智能体、算力硬件与技术；来源和日期说明区分论文展示、软件包发布与商用部署等事件口径。跨板块重复的 Transformer 事件只展示一次。评测参考提供 AA、Arena、Terminal-Bench 和 MLPerf 的原榜入口，模型详情复用已核对的评分，并分别标注核对日期与榜单日期。
 
 字体与图标均在本地加载，拉丁文字与中文字体子集按页面字符请求。仓库源码与默认构建不含访问统计、运行时 API 请求或第三方脚本。线上站点的访问统计在部署时单独配置，不随源码分发；语言和视图偏好保存在浏览器本地。
 
@@ -99,7 +99,7 @@ npm run test:browser
 
 数据由人工维护，不自动同步。论文、公告、预览、正式发布和实际可用日期分别记录；规格与价格对应明确的版本和配置，榜单成绩保留指标口径、核对日期及可获取的榜单日期。无法核实的信息不补猜测值。
 
-参考榜单包括 [Artificial Analysis](https://artificialanalysis.ai/leaderboards/models)、[Arena](https://arena.ai/leaderboard/text)、[LiveBench](https://livebench.ai/)、[HELM](https://crfm.stanford.edu/helm/capabilities/latest/)、[OpenCompass](https://rank.opencompass.org.cn/)、[SWE-bench](https://www.swebench.com/)、[Terminal-Bench](https://www.tbench.ai/) 和 [MLPerf](https://mlcommons.org/benchmarks/inference-datacenter/)。不同榜单分数不混算。
+模型与智能体的 9 项评测入口、方法及比较范围见[评测页](https://ai.taifua.com/benchmarks.html)；算力评测参考 [MLPerf](https://mlcommons.org/benchmarks/inference-datacenter/)。不同榜单分数分别记录，不混算。
 
 页面中的“开源 / 闭源”是对所收录模型与工具的编辑分类，与本项目的源码许可证无关，也不能替代各产品的实际许可条款。详细口径见[关于页](https://ai.taifua.com/about.html?lang=zh)。
 

@@ -9,10 +9,7 @@ const destinations = {
   'benchmark-epoch-ai': 'https://epoch.ai/benchmarks',
   'benchmark-hle': 'https://labs.scale.com/leaderboard/humanitys_last_exam',
   'benchmark-gdpval-aa': 'https://artificialanalysis.ai/evaluations/gdpval-aa',
-  'benchmark-swe-bench': 'https://www.swebench.com/',
   'benchmark-terminal-bench': 'https://www.tbench.ai/',
-  'benchmark-livecodebench': 'https://livecodebench.github.io/leaderboard.html',
-  'benchmark-bfcl': 'https://gorilla.cs.berkeley.edu/leaderboard',
   'benchmark-osworld': 'https://osworld-v2.xlang.ai/',
   'benchmark-arena-agent': 'https://arena.ai/leaderboard/agent',
 };
