@@ -83,3 +83,5 @@ Official website and profile marks above were retrieved on 2026-10-11 for identi
 2026-11-01: `pika.svg` is the unchanged Pika mark from `@lobehub/icons-static-svg` 1.95.1, MIT (see `LICENSE-LOBEHUB.txt`).
 
 2026-11-04: `krea.svg` is the unchanged [Krea mark from the official press kit](https://www.krea.ai/press/krea/krea-icon-black.svg), provided for editorial identification. The mark remains its owner’s property.
+
+2026-11-09: `thinking-machines.png` is the unchanged [Thinking Machines website icon](https://thinkingmachines.ai/images/apple-touch-icon.png), used for editorial identification. The mark remains its owner’s property.

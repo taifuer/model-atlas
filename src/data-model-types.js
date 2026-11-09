@@ -1812,6 +1812,46 @@
       ],
       "note": "归入图像生成任务中的图像编辑；不表示开放独立文生图接口。",
       "noteEn": "Image editing is grouped under image generation; this does not imply a standalone text-to-image endpoint."
+    },
+    "gpt-image-2-6": {
+      "checkedAt": "2026-11-09",
+      "category": "multimodal",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst"
+      ]
+    },
+    "gemini-omni-1-2-flash": {
+      "checkedAt": "2026-11-09",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/"
+      ]
+    },
+    "inkling-2-small": {
+      "checkedAt": "2026-11-09",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://thinkingmachines.ai/model-card/inkling-2-small/"
+      ]
+    },
+    "gpt-6-cyber": {
+      "checkedAt": "2026-11-09",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://developers.openai.com/api/docs/models/gpt-6-cyber"
+      ]
     }
   }
 };

@@ -29,6 +29,9 @@ test('every event has valid metadata and a primary source; supporting reports ar
   // These additional official/project/author pages were reviewed for the named event.
   // Keep community-hosted articles and personal author archives URL-specific.
   const reviewedPrimarySources = new Map([
+    ['https://thinkingmachines.ai/news/inkling-2-small/', 'inkling-2-small'],
+    ['https://thinkingmachines.ai/model-card/inkling-2-small/', 'inkling-2-small'],
+    ['https://tinker-docs.thinkingmachines.ai/tinker/models/models_and_pricing/', 'inkling-2-small'],
     ['https://www.krea.ai/press', 'krea-3'],
     ['https://www.krea.ai/blog/introducing-krea-3', 'krea-3'],
     ['https://www.krea.ai/blog/krea-3-technical-report', 'krea-3'],
@@ -63,6 +66,8 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['https://platform.stepfun.ai/docs/en/guides/models/step-5-preview', 'step-5-preview'],
   ]);
   const reviewedHuggingFacePaths = new Map([
+    ['/moonshotai/Kimi-K3.1-Pro', 'kimi-k3-1-pro'],
+    ['/moonshotai/Kimi-K3.1-Pro/blob/main/LICENSE', 'kimi-k3-1-pro'],
     ['/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B', 'nemotron-3-5-transcribe'],
     ['/LiquidAI/LFM3-1.7B', 'lfm-3'],
     ['/LiquidAI/LFM3-Omni-2B', 'lfm-3'],

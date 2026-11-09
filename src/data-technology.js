@@ -1,8 +1,8 @@
 // Primary-source history of AI methods, computing frameworks, and deployment.
 (() => {
   const data = {
-  "asOf": "2026-11-04",
-  "updatedAt": "2026-11-04",
+  "asOf": "2026-11-09",
+  "updatedAt": "2026-11-09",
   "accessFilter": false,
   "companies": [
     {
@@ -2426,7 +2426,7 @@
       "category": "frameworks",
       "kind": "release",
       "summary": "提供细粒度缩放的 FP8 矩阵乘法内核，覆盖稠密计算与 MoE 分组计算。",
-      "details": "首版面向 NVIDIA Hopper GPU，使用即时编译生成普通 GEMM 与 MoE 分组 GEMM 内核，后由 vLLM 和 SGLang 集成。2026 年 9 月 30 日另行开放 DeepGEMM-Ascend，面向昇腾 950，支持 BF16、FP8、FP4 矩阵乘法、MQA logits 与 MegaMoE。昇腾实现沿用 DeepGEMM 的 API 和开发流程，底层布局与缩放因子格式按平台处理。",
+      "details": "首版面向 NVIDIA Hopper GPU，使用即时编译生成普通 GEMM 与 MoE 分组 GEMM 内核，后由 vLLM 和 SGLang 集成。2026 年 9 月 30 日另行开放 DeepGEMM-Ascend，面向昇腾 950，支持 BF16、FP8、FP4 矩阵乘法、MQA logits 与 MegaMoE。昇腾实现沿用 DeepGEMM 的 API 和开发流程，底层布局与缩放因子格式按平台处理。 其依赖的独立编译运行时 DeepJIT 于 2026 年 11 月 5 日加入昇腾 AICPU JIT 与按需初始化支持；这是配套编译工具的更新，不代表所有 DeepGEMM 内核均已适配 AICPU。",
       "dateNote": "采用开源周正式公开日期，不采用更早的内部初始提交时间。",
       "tags": [],
       "milestone": false,
@@ -2456,16 +2456,27 @@
           "title": "DeepSeek · DeepGEMM 昇腾实现与首发记录",
           "titleEn": "DeepSeek · DeepGEMM Ascend implementation and release history",
           "url": "https://github.com/deepseek-ai/DeepGEMM-Ascend"
+        },
+        {
+          "title": "DeepGEMM · DeepJIT 依赖记录",
+          "titleEn": "DeepGEMM: DeepJIT dependency",
+          "url": "https://github.com/deepseek-ai/DeepGEMM/blob/main/.gitmodules"
+        },
+        {
+          "title": "DeepJIT · 昇腾 AICPU 支持",
+          "titleEn": "DeepJIT: Ascend AICPU support",
+          "url": "https://github.com/deepseek-ai/DeepJIT/commit/6e4bba88ee9e73a0986714f7f6bb45590ebeb04d"
         }
       ],
       "en": {
         "summary": "FP8 matrix-multiplication kernels with fine-grained scaling support dense and grouped MoE computation.",
-        "details": "The initial Hopper release uses just-in-time compilation for standard and grouped MoE GEMM and was later integrated by vLLM and SGLang. DeepGEMM-Ascend followed on September 30, 2026, targeting Ascend 950 with BF16, FP8 and FP4 GEMM, MQA logits and MegaMoE. It retains DeepGEMM APIs and development workflows while using platform-specific layouts and scaling-factor formats.",
+        "details": "The initial Hopper release uses just-in-time compilation for standard and grouped MoE GEMM and was later integrated by vLLM and SGLang. DeepGEMM-Ascend followed on September 30, 2026, targeting Ascend 950 with BF16, FP8 and FP4 GEMM, MQA logits and MegaMoE. It retains DeepGEMM APIs and development workflows while using platform-specific layouts and scaling-factor formats. Its separate compilation-runtime dependency, DeepJIT, added Ascend AICPU JIT and on-demand bootstrap support on November 5, 2026. This updates the supporting compiler runtime; it does not establish AICPU support for every DeepGEMM kernel.",
         "dateNote": "Dated to the public Open Source Week launch, rather than an earlier internal initial commit."
       },
       "searchAliases": [
         "DeepGEMM-Ascend",
-        "昇腾矩阵乘法"
+        "昇腾矩阵乘法",
+        "DeepJIT"
       ]
     },
     {
@@ -2822,7 +2833,7 @@
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-04",
+    "checkedAt": "2026-11-09",
     "scope": "算法、计算框架、推理部署与容器沙箱中具有经典性、代表性或影响力的公开节点。",
     "method": "以原始论文、项目公告与发布记录核对日期，区分预览、正式可用和后续更新；不逐条收录常规软件版本。",
     "references": []

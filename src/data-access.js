@@ -891,11 +891,19 @@
 });
   Object.assign(models, {
   "kimi-k3-1-pro": {
-    "status": "closed",
-    "checkedAt": "2026-10-25",
-    "source": "https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart",
-    "note": "托管 API 与产品已开放；官方计划后续发布完整权重，截至核对日未确认可下载。",
-    "noteEn": "Hosted API and product access are available; complete weights are planned but were not confirmed as downloadable at the review date."
+    "status": "open",
+    "checkedAt": "2026-11-09",
+    "source": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+    "note": "官方完整权重已公开，采用 Kimi K3.1-Pro 自定义许可；特定商业用途有附加条件。开源标签按本站公开权重口径使用，首发日期保持不变。",
+    "noteEn": "Full official weights are public under the custom Kimi K3.1-Pro license, with conditions for certain commercial uses. The open-source label follows this site’s public-weights convention; the launch date is unchanged.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "Kimi K3.1-Pro License",
+        "source": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro/blob/main/LICENSE"
+      }
+    ]
   },
   "canva-craft": {
     "status": "closed",
@@ -1058,11 +1066,19 @@
     ]
   },
   "kimi-k3-1-pro": {
-    "status": "closed",
-    "checkedAt": "2026-11-01",
-    "source": "https://www.kimi.com/en/blog/kimi-k3-1-pro",
-    "note": "托管 API 与产品已开放；官方仍计划于 11 月 4 日前发布完整权重，截至核对日未确认可下载。",
-    "noteEn": "Hosted API and product access are available. The official announcement still plans full weights by November 4; downloadable weights were not confirmed at this review."
+    "status": "open",
+    "checkedAt": "2026-11-09",
+    "source": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+    "note": "官方完整权重已公开，采用 Kimi K3.1-Pro 自定义许可；特定商业用途有附加条件。开源标签按本站公开权重口径使用，首发日期保持不变。",
+    "noteEn": "Full official weights are public under the custom Kimi K3.1-Pro license, with conditions for certain commercial uses. The open-source label follows this site’s public-weights convention; the launch date is unchanged.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "Kimi K3.1-Pro License",
+        "source": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro/blob/main/LICENSE"
+      }
+    ]
   },
   "pika-h3-flex": {
     "status": "open",
@@ -1135,6 +1151,36 @@
     "source": "https://www.tencent.com/zh-cn/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/",
     "note": "正式版已提供 API；官方公告将权重开放列为后续计划，尚未发布可下载权重。预览版的开放状态不适用于正式版。",
     "noteEn": "The general release is available by API. Tencent describes public weights as a future release; the preview's open weights do not establish access for this version."
+  }
+});
+  Object.assign(models, {
+  "gpt-image-2-6": {
+    "checkedAt": "2026-11-09",
+    "status": "closed",
+    "source": "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst",
+    "note": "通过托管 API 提供，未公开模型权重。",
+    "noteEn": "Available through hosted APIs without released model weights."
+  },
+  "gemini-omni-1-2-flash": {
+    "checkedAt": "2026-11-09",
+    "status": "closed",
+    "source": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/",
+    "note": "通过 Google 托管服务提供，未公开模型权重。",
+    "noteEn": "Available through Google hosted services without released model weights."
+  },
+  "inkling-2-small": {
+    "checkedAt": "2026-11-09",
+    "status": "closed",
+    "source": "https://thinkingmachines.ai/news/inkling-2-small/",
+    "note": "当前通过 Tinker 提供；官方计划在外部测试完成后开放权重，截至核对日尚未发布。",
+    "noteEn": "Currently available through Tinker. Public weights are planned after external testing but had not been released at this review."
+  },
+  "gpt-6-cyber": {
+    "checkedAt": "2026-11-09",
+    "status": "closed",
+    "source": "https://developers.openai.com/api/docs/models/gpt-6-cyber",
+    "note": "仅向获批的 Daybreak Red 用户提供托管访问，未公开模型权重。",
+    "noteEn": "Hosted access is limited to approved Daybreak Red customers; weights are not public."
   }
 });
   const apply = (dataset, metadata) => Object.freeze({

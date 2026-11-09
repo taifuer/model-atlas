@@ -2,6 +2,7 @@
   'use strict';
   // Files are bundled locally. A product without a separate mark uses its organization.
   const companies = {
+    'thinking-machines': 'thinking-machines.png',
     krea: 'krea',
     canva: 'canva.ico', fal: 'fal-color', ideogram: 'ideogram', pika: 'pika',
     inception: 'inception', 'llm-d': 'llm-d.png',

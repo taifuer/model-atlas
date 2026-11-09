@@ -1763,6 +1763,52 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       ],
       "note": "采用国际站美元价格，未缓存文本输入与输出分别计费；缓存写入与读取另计，不与中国站人民币价格混用。",
       "noteEn": "Uses international USD rates for uncached text input and output. Cache writes and reads have separate rates; these are not the Chinese-site CNY prices."
+    },
+    "inkling-2-small": {
+      "checkedAt": "2026-11-09",
+      "variants": [
+        {
+          "name": "Inkling 2 Small · Tinker 64K / 256K",
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 0.3,
+              "output": 1,
+              "label": "Tinker 推理 · 未缓存输入",
+              "labelEn": "Tinker inference · uncached input"
+            }
+          ],
+          "sources": [
+            "https://tinker-docs.thinkingmachines.ai/tinker/models/models_and_pricing/"
+          ],
+          "note": "按 prefill 与 sampling 费率记录；缓存输入为 $0.03 / 百万 tokens。微调训练与检查点存储单独收费。",
+          "noteEn": "Records prefill and sampling rates. Cached input is $0.03 per million tokens; training and checkpoint storage are billed separately."
+        }
+      ]
+    },
+    "gpt-6-cyber": {
+      "checkedAt": "2026-11-09",
+      "variants": [
+        {
+          "name": "gpt-6-cyber · Short context",
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 20,
+              "output": 100,
+              "label": "标准短上下文费率",
+              "labelEn": "Standard short-context rates"
+            }
+          ],
+          "sources": [
+            "https://developers.openai.com/api/docs/models/gpt-6-cyber",
+            "https://developers.openai.com/api/docs/pricing"
+          ],
+          "note": "采用官方列出的标准短上下文未缓存文本费率；其他上下文档位、缓存和工具费用另计。模型访问需获批。",
+          "noteEn": "Uses the documented standard short-context rates for uncached text. Other context tiers, caching and tools are priced separately. Model access requires approval."
+        }
+      ],
+      "cardScope": "configuration"
     }
   }
 });

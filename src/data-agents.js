@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
-  "asOf": "2026-11-04",
-  "updatedAt": "2026-11-04",
+  "asOf": "2026-11-09",
+  "updatedAt": "2026-11-09",
   "companies": [
     {
       "id": "anthropic",
@@ -1885,8 +1885,8 @@ window.AGENT_ATLAS = {
       "category": "general",
       "kind": "release",
       "summary": "在本地或服务器持续运行，结合记忆、可复用技能与工具执行多步骤任务。",
-      "details": "Nous Research 的开源 Agent，可通过命令行与消息渠道使用，并将任务中的经验保存为后续可用的技能。",
-      "dateNote": "",
+      "details": "Nous Research 的开源 Agent，可将任务经验保存为可复用技能。2026 年 11 月 5 日的 v0.23.0 加入 Desktop 工作区，由统一网关管理命令行、桌面、编辑器和消息渠道的会话，并支持连接多台主机及工具调用预算。",
+      "dateNote": "保留 2 月 25 日首次公开发布；v0.23.0 的工作区和会话架构更新记录于此。",
       "tags": [
         "任务规划",
         "工具使用"
@@ -1900,12 +1900,17 @@ window.AGENT_ATLAS = {
         {
           "title": "官方 · Hermes Agent",
           "url": "https://hermes-agent.nousresearch.com/"
+        },
+        {
+          "title": "Hermes · v0.23.0 发布说明",
+          "titleEn": "Hermes: v0.23.0 release notes",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.23.0"
         }
       ],
       "en": {
         "summary": "A persistent agent combines memory, reusable skills and tools to carry out tasks locally or on a server.",
-        "details": "Nous Research’s open-source agent works through the terminal and messaging channels, preserving useful task experience as skills.",
-        "dateNote": ""
+        "details": "The open-source Nous Research agent preserves task experience as reusable skills. Version 0.23.0, released November 5, 2026, adds a Desktop workspace and a unified gateway for terminal, desktop, editor and messaging sessions, with connections to multiple hosts and tool-spending limits.",
+        "dateNote": "Retains the February 25 first public release; the v0.23.0 workspace and session architecture update is recorded here."
       }
     },
     {
@@ -2385,7 +2390,7 @@ window.AGENT_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-04",
+    "checkedAt": "2026-11-09",
     "scope": "编程 Agent、通用 Agent、Harness 及重要框架与协议的主要公开节点。",
     "method": "以原始公告、维护者文章与论文核对日期，区分预览、论文公开、改名和正式发布；按经典性、代表性或影响力筛选，不逐条收录常规版本更新。",
     "references": []

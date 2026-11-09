@@ -1136,8 +1136,8 @@ window.MODEL_ATLAS_EN = {
   },
   "kimi-k3-1-pro": {
     "summary": "A million-token model improves coding, spatial reasoning and long-running tasks, with standard and high-speed serving options.",
-    "details": "Accepts text, images and video and returns text through Kimi Code and the API. Reasoning remains enabled with low, high and max effort settings. Highspeed offers the same stated capabilities through faster serving. Full weights are planned by November 4; public weights were not confirmed at this review.",
-    "dateNote": "Uses October 23, the availability date recorded in the Kimi Code release notes. Research-page update timestamps are not treated as first release dates, and planned weight release is not treated as completed."
+    "details": "Supports text, image and video input with text output through Kimi Code and the API. Thinking is always enabled with low, high and max effort; Highspeed is a faster service variant with equivalent capabilities. Full weights are now public under the custom Kimi K3.1-Pro license, with additional conditions for some commercial uses.",
+    "dateNote": "Retains the October 23 first-availability date recorded in the Kimi Code log. The later public weight release updates this entry without changing its original date."
   },
   "canva-craft": {
     "summary": "A two-stage model plans composition before rendering images, emphasizing text, layout and visual hierarchy for design.",
@@ -1218,6 +1218,26 @@ window.MODEL_ATLAS_EN = {
     "summary": "Native 2K image editing uses multiple references to preserve characters, products and text across changes.",
     "details": "Krea’s image-editing model offers configurations including Fast and Ultra, combining reference images and text instructions to change scenes, materials and composition. The November 3 technical report describes its architecture, multi-reference training, reinforcement learning and inference optimizations. Ultra appears on AA and Arena image-editing leaderboards; speed, pricing and reference limits differ by configuration.",
     "dateNote": "Uses the October 12 launch date explicitly stated in Krea’s press kit. The product article is dated October 15 and also uses launch language; the technical report was published November 3. These dates are retained separately."
+  },
+  "gpt-image-2-6": {
+    "summary": "Image generation and editing gain complexity controls, SVG and animated GIF output, and markup-guided edits.",
+    "details": "Sunburst targets detailed composition and editing, while Flare targets interactive generation. Both accept text and image inputs. Standard API rates are $5 per million uncached text-input tokens and $8/$30 per million image-input/output tokens; per-image cost varies with size and quality.",
+    "dateNote": "Uses November 4 from the OpenAI API changelog. The two models launched together are grouped into one family entry."
+  },
+  "gemini-omni-1-2-flash": {
+    "summary": "Native video generation reaches 15 seconds, with improved conversational editing, reference following and production availability.",
+    "details": "Generates 3–15 seconds per request, with 360p drafts and 720p output; 1080p and 4K use upscaling. 720p generation costs $0.07 per second, 30% less than version 1.1. Generally available through the Gemini API and Google Cloud.",
+    "dateNote": "Uses the November 5 version announcement and general release, recording the substantive changes in 1.2."
+  },
+  "inkling-2-small": {
+    "summary": "The second-generation mixture-of-experts model combines vision, coding and long-running tasks with fine-tuning through Tinker.",
+    "details": "Has 594B total and 17B active parameters, accepting text and images and producing text. The model card lists up to 1M context; current Tinker configurations provide 64K or 256K. Inference and fine-tuning are available through Tinker, while public weights remain a future release.",
+    "dateNote": "Uses the official November 5 launch announcement. Planned weight availability is not recorded as a completed release."
+  },
+  "gpt-6-cyber": {
+    "summary": "A specialized security model investigates vulnerabilities, reproduces issues in authorized environments and verifies fixes.",
+    "details": "Accepts text and images and produces text, with a 1,050,000-token context and up to 128,000 output tokens. API and Codex access is available to approved Daybreak Red customers.",
+    "dateNote": "Uses the official November 5 announcement of availability for approved customers."
   }
 };
 window.ATLAS_TAGS_EN = {
@@ -1333,7 +1353,9 @@ window.ATLAS_TAGS_EN = {
   "文字渲染": "Text rendering",
   "提示词遵循": "Prompt adherence",
   "语音识别": "Speech recognition",
-  "音频理解": "Audio understanding"
+  "音频理解": "Audio understanding",
+  "网络安全": "Cybersecurity",
+  "漏洞研究": "Vulnerability research"
 };
 window.MODEL_THEMES_EN = {
   "2017": "The Transformer architecture",

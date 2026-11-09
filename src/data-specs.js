@@ -4334,6 +4334,151 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           "noteEn": "Native 2K image editing with multiple references. Reference counts and pricing depend on the configuration and endpoint."
         }
       ]
+    },
+    "gpt-image-2-6": {
+      "checkedAt": "2026-11-09",
+      "variants": [
+        {
+          "name": "gpt-image-2.6-sunburst",
+          "basis": "api",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst"
+          ]
+        },
+        {
+          "name": "gpt-image-2.6-flare",
+          "basis": "api",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://developers.openai.com/api/docs/models/gpt-image-2.6-flare"
+          ]
+        }
+      ]
+    },
+    "gemini-omni-1-2-flash": {
+      "checkedAt": "2026-11-09",
+      "cardScope": "configuration",
+      "variants": [
+        {
+          "name": "gemini-omni-1.2-flash · Gemini API",
+          "basis": "api",
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ],
+          "sources": [
+            "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/"
+          ],
+          "video": {
+            "maxDurationSeconds": 15,
+            "resolutions": [
+              "360p",
+              "720p"
+            ],
+            "upscaledResolutions": [
+              "1080p",
+              "4K"
+            ],
+            "audio": "native"
+          },
+          "note": "单次生成 3–15 秒；1080p 和 4K 是升采样输出。",
+          "noteEn": "Generates 3–15 seconds per request; 1080p and 4K are upscaled outputs."
+        }
+      ]
+    },
+    "inkling-2-small": {
+      "checkedAt": "2026-11-09",
+      "cardScope": "configuration",
+      "variants": [
+        {
+          "name": "Inkling 2 Small · Model card",
+          "basis": "paper",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://thinkingmachines.ai/model-card/inkling-2-small/"
+          ],
+          "contextTokens": "1M",
+          "parameters": "594B",
+          "activeParameters": "17B",
+          "note": "模型卡公布的最大窗口，不等于当前 Tinker 服务的限制。",
+          "noteEn": "The model-card maximum is distinct from current Tinker service limits."
+        },
+        {
+          "name": "thinkingmachines/Inkling-2-Small · Tinker",
+          "basis": "api",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://tinker-docs.thinkingmachines.ai/tinker/models/models_and_pricing/"
+          ],
+          "contextTokens": "64K"
+        },
+        {
+          "name": "thinkingmachines/Inkling-2-Small:peft:262144 · Tinker",
+          "basis": "api",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://tinker-docs.thinkingmachines.ai/tinker/models/models_and_pricing/"
+          ],
+          "contextTokens": "256K"
+        }
+      ]
+    },
+    "gpt-6-cyber": {
+      "checkedAt": "2026-11-09",
+      "variants": [
+        {
+          "name": "gpt-6-cyber",
+          "basis": "api",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://developers.openai.com/api/docs/models/gpt-6-cyber"
+          ],
+          "contextTokens": 1050000,
+          "outputTokens": 128000
+        }
+      ]
     }
   }
 });

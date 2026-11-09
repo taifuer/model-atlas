@@ -31,10 +31,10 @@ test('published scores exactly match dated public source snapshots and known rel
   assert.equal(scores.entries['gemini-4-argon'].arena.preliminary, undefined);
   assert.equal(scores.entries['gemini-4-carbon'].arena.preliminary, true);
   assert.equal(scores.benchmarks.aa.version, '5.0.1');
-  assert.equal(scores.benchmarks.aa.checkedAt, '2026-11-04');
-  assert.equal(scores.checkedAt, '2026-11-04');
-  assert.equal(scores.benchmarks.arena.checkedAt, '2026-11-04');
-  assert.equal(scores.benchmarks.arena.publishedAt, '2026-10-28', 'Dataset retrieval date is not the leaderboard publication date');
+  assert.equal(scores.benchmarks.aa.checkedAt, '2026-11-09');
+  assert.equal(scores.checkedAt, '2026-11-09');
+  assert.equal(scores.benchmarks.arena.checkedAt, '2026-11-09');
+  assert.equal(scores.benchmarks.arena.publishedAt, '2026-11-08', 'Dataset retrieval date is not the leaderboard publication date');
   assert.equal(scores.entries['muse-wonder'].aa.model, 'Muse Wonder Full (max)');
   assert.equal(scores.cardScopes['muse-wonder'], 'variant');
   assert.equal(scores.entries['muse-wonder'].arena, undefined, 'Do not transfer Wonder results to Full without verified metric scope');
@@ -103,7 +103,9 @@ test('later weight releases and serving variants preserve their own licenses and
   assert.deepEqual(Array.from(specifications['gpt-6-1-terra'].variants[0].output), ['text']);
   assert.equal(context.window.MODEL_ATLAS_PRICES.entries['ideogram-vector-1'], undefined, 'Per-file SVG pricing is not per-token language pricing');
   assert.equal(models.companyRanking.entries.find(entry => entry.company === 'inclusionai').model, 'Ling 3.1 Flash 1019');
-  assert.equal(access('kimi-k3-1-pro').status, 'closed', 'Planned weights are not downloadable weights');
+  assert.equal(access('kimi-k3-1-pro').status, 'open', 'Public official weights update access without moving the launch date');
+  assert.ok(access('kimi-k3-1-pro').licenses.some(license => license.name === 'Kimi K3.1-Pro License'));
+  assert.equal(releases.find(entry => entry.id === 'kimi-k3-1-pro').date, '2026-10-23');
   assert.equal(scores.entries['kimi-k3-1-pro'].arena, undefined, 'K3.1 does not inherit K3 results');
   assert.doesNotMatch(access('nemotron-3-5-vl-bolt').noteEn, /unreleased/, 'Later weights must not retain an obsolete availability warning');
   const e4b = specifications['nemotron-3-5-vl-bolt'].variants.find(variant => variant.name.includes('E4B'));

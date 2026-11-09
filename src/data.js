@@ -5,6 +5,7 @@
  */
 window.MODEL_ATLAS = (() => {
   const companies = [
+    {"id": "thinking-machines", "name": "Thinking Machines", "nameEn": "Thinking Machines", "aliases": "Thinking Machines Lab Inkling Tinker", "color": "#8b7968"},
     {"id": "krea", "name": "Krea", "nameEn": "Krea", "aliases": "Krea AI 图像编辑", "color": "#727b73"},
     {"id": "pika", "name": "Pika", "nameEn": "Pika", "aliases": "Pika Labs H3 Flex 视频生成", "color": "#85816d"},
     {"id": "ideogram", "name": "Ideogram", "nameEn": "Ideogram", "aliases": "Ideogram Vector SVG 矢量图形", "color": "#767b98"},
@@ -48,7 +49,7 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    "checkedAt": "2026-11-04",
+    "checkedAt": "2026-11-09",
     "source": "https://artificialanalysis.ai/leaderboards/models",
     "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
     "metric": "Artificial Analysis Intelligence Index",
@@ -99,6 +100,11 @@ window.MODEL_ATLAS = (() => {
         "company": "zhipu",
         "model": "GLM-5.3 (max)",
         "score": 32
+      },
+      {
+        "company": "thinking-machines",
+        "model": "Inkling 2 Small",
+        "score": 31
       },
       {
         "company": "xiaomi",
@@ -154,6 +160,131 @@ window.MODEL_ATLAS = (() => {
     return { id, date, name, company, kind, summary, tags, sources: Array.isArray(sources) ? sources : [sources], milestone, details, dateNote };
   }
   const releases = [
+    {
+      "id": "gpt-image-2-6",
+      "date": "2026-11-04",
+      "name": "GPT Image 2.6 Sunburst / Flare",
+      "company": "openai",
+      "kind": "release",
+      "milestone": false,
+      "summary": "图像生成与编辑加入复杂度控制，支持 SVG、动画 GIF 和标注引导编辑。",
+      "details": "Sunburst 面向精细构图与编辑，Flare 面向交互式生成。两个型号均接受文本和图像输入；标准 API 的未缓存文本输入为 $5 / 百万 tokens，图像输入和输出分别为 $8 / $30 / 百万图像 tokens，单张费用随尺寸与质量变化。",
+      "dateNote": "采用 OpenAI API 更新日志的 11 月 4 日；同日发布的两个型号合并为一个家族节点。",
+      "tags": [
+        "图像生成",
+        "图像编辑"
+      ],
+      "sources": [
+        {
+          "title": "OpenAI · API 发布记录",
+          "titleEn": "OpenAI: API release log",
+          "url": "https://developers.openai.com/api/docs/changelog"
+        },
+        {
+          "title": "OpenAI · Sunburst 模型规格",
+          "titleEn": "OpenAI: Sunburst specifications",
+          "url": "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst"
+        },
+        {
+          "title": "OpenAI · Flare 模型规格",
+          "titleEn": "OpenAI: Flare specifications",
+          "url": "https://developers.openai.com/api/docs/models/gpt-image-2.6-flare"
+        },
+        {
+          "title": "Artificial Analysis · 文生图评测",
+          "titleEn": "Artificial Analysis: Text-to-image evaluation",
+          "url": "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+        }
+      ]
+    },
+    {
+      "id": "gemini-omni-1-2-flash",
+      "date": "2026-11-05",
+      "name": "Gemini Omni 1.2 Flash",
+      "company": "google",
+      "kind": "release",
+      "milestone": false,
+      "summary": "原生视频生成延长至 15 秒，改进多轮编辑与参考一致性，并正式开放生产服务。",
+      "details": "单次生成时长为 3–15 秒，提供 360p 草稿和 720p 输出，1080p 与 4K 为升采样。720p 生成价格为 $0.07 / 秒，比 1.1 降低 30%；已面向 Gemini API 与 Google Cloud 正式开放。",
+      "dateNote": "采用 11 月 5 日的版本发布与正式开放公告，记录 1.2 的实质能力更新。",
+      "tags": [
+        "视频生成",
+        "对话编辑",
+        "原生音频"
+      ],
+      "sources": [
+        {
+          "title": "Google · Omni 1.2 发布与规格",
+          "titleEn": "Google: Omni 1.2 release and specifications",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/"
+        }
+      ]
+    },
+    {
+      "id": "inkling-2-small",
+      "date": "2026-11-05",
+      "name": "Inkling 2 Small",
+      "company": "thinking-machines",
+      "kind": "release",
+      "milestone": false,
+      "summary": "第二代混合专家模型结合视觉理解、编程与长程任务，支持通过 Tinker 微调。",
+      "details": "总参数 594B、激活参数 17B，接受文本与图像并输出文本。模型卡列出最高 1M 上下文，当前 Tinker 服务分别提供 64K 和 256K 配置。首发通过 Tinker 提供推理与微调；公开权重仍属后续计划。",
+      "dateNote": "采用官方 11 月 5 日发布公告；计划中的权重开放不记作已完成。",
+      "tags": [
+        "多模态",
+        "MoE",
+        "智能体"
+      ],
+      "sources": [
+        {
+          "title": "Thinking Machines · 发布公告",
+          "titleEn": "Thinking Machines: Release announcement",
+          "url": "https://thinkingmachines.ai/news/inkling-2-small/"
+        },
+        {
+          "title": "Thinking Machines · 模型卡",
+          "titleEn": "Thinking Machines: Model card",
+          "url": "https://thinkingmachines.ai/model-card/inkling-2-small/"
+        },
+        {
+          "title": "Tinker · 服务规格与价格",
+          "titleEn": "Tinker: Service specifications and pricing",
+          "url": "https://tinker-docs.thinkingmachines.ai/tinker/models/models_and_pricing/"
+        },
+        {
+          "title": "Artificial Analysis · 独立评测",
+          "titleEn": "Artificial Analysis: Independent evaluation",
+          "url": "https://artificialanalysis.ai/models/inkling-2-small"
+        }
+      ]
+    },
+    {
+      "id": "gpt-6-cyber",
+      "date": "2026-11-05",
+      "name": "GPT-6 Cyber",
+      "company": "openai",
+      "kind": "release",
+      "milestone": false,
+      "summary": "面向安全研究的专用模型，用于发现漏洞、在授权环境中复现问题及验证修复。",
+      "details": "支持文本与图像输入、文本输出，提供 1,050,000 token 上下文和最多 128,000 token 输出。已向获批的 Daybreak Red 用户提供 API 与 Codex 访问。",
+      "dateNote": "采用官方 11 月 5 日公告，记录面向获批客户的模型发布。",
+      "tags": [
+        "网络安全",
+        "漏洞研究"
+      ],
+      "sources": [
+        {
+          "title": "OpenAI · GPT-6 Cyber 发布",
+          "titleEn": "OpenAI: GPT-6 Cyber release",
+          "url": "https://openai.com/index/introducing-gpt-6-cyber/"
+        },
+        {
+          "title": "OpenAI · 模型规格与访问条件",
+          "titleEn": "OpenAI: Model specifications and access requirements",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-cyber"
+        }
+      ]
+    },
     {
       "id": "hunyuan-hy4",
       "date": "2026-11-04",
@@ -537,8 +668,8 @@ window.MODEL_ATLAS = (() => {
       "kind": "release",
       "milestone": false,
       "summary": "强化编程、空间推理和长程任务能力，提供百万级上下文与标准、高速两种服务版本。",
-      "details": "支持文本、图像与视频输入，输出文本，通过 Kimi Code 与 API 提供。始终启用思考，提供 low、high、max 三档推理深度；Highspeed 为同等能力的高速服务版本。官方计划于 11 月 4 日前开放完整权重，截至核对日尚未确认公开。",
-      "dateNote": "采用 Kimi Code 日志明确记录的 10 月 23 日可用日期；研究页更新时间不作为初发日期，计划开放权重也不记作已经完成。",
+      "details": "支持文本、图像与视频输入，输出文本，通过 Kimi Code 与 API 提供。始终启用思考，提供 low、high、max 三档推理深度；Highspeed 为同等能力的高速服务版本。完整权重现已公开，采用 Kimi K3.1-Pro 自定义许可，部分商业使用需遵守附加条件。",
+      "dateNote": "保留 Kimi Code 日志记录的 10 月 23 日首次可用日期；后续权重公开更新于本条目，不改写首发日期。",
       "tags": [
         "多模态",
         "推理",
@@ -559,6 +690,16 @@ window.MODEL_ATLAS = (() => {
           "title": "Kimi · 模型与调用说明",
           "titleEn": "Kimi · Model and API guide",
           "url": "https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart"
+        },
+        {
+          "title": "Kimi · 官方开放权重",
+          "titleEn": "Kimi: Official model weights",
+          "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
+        },
+        {
+          "title": "Kimi · 权重许可证",
+          "titleEn": "Kimi: Model license",
+          "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro/blob/main/LICENSE"
         }
       ]
     },
@@ -2048,7 +2189,7 @@ window.MODEL_ATLAS = (() => {
     },
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-11-04',
+    checkedAt: '2026-11-09',
     scope: '主流语言、多模态、图像与视频生成及世界模型，兼顾具有历史影响的架构研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
@@ -2065,5 +2206,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-11-04', updatedAt: '2026-11-04', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-11-09', updatedAt: '2026-11-09', companies, companyRanking, kinds, themes, releases, coverage });
 })();
