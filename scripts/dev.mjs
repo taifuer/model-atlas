@@ -14,6 +14,9 @@ const flag = (name, fallback) => {
 };
 const port = Number(flag('--port', process.env.PORT || '5173'));
 const host = flag('--host', '0.0.0.0');
+// Exercise the consent UI locally without loading an analytics service.
+const previewAnalytics = process.argv.includes('--preview-analytics');
+const analyticsPreview = '<script>window.ATLAS_ANALYTICS = { start() {}, stop() {}, clear() {} };</script>';
 const files = new Map([
   ['explore-periods.js', ['explore-periods.js', 'text/javascript']],
   ['seo.js', ['seo.js', 'text/javascript']],
@@ -27,7 +30,7 @@ const files = new Map([
   ['/', [PAGE_FILES.models, 'text/html']],
   ...Object.values(PAGE_FILES).map(file => [file, [file, 'text/html']]),
   ['data-hardware.js', ['data-hardware.js', 'text/javascript']], ['data-technology.js', ['data-technology.js', 'text/javascript']],
-  ['site.js', ['site.js', 'text/javascript']], ['data-en.js', ['data-en.js', 'text/javascript']], ['data-agents.js', ['data-agents.js', 'text/javascript']],
+  ['site.js', ['site.js', 'text/javascript']], ['privacy.js', ['privacy.js', 'text/javascript']], ['data-en.js', ['data-en.js', 'text/javascript']], ['data-agents.js', ['data-agents.js', 'text/javascript']],
   ['styles.css', ['styles.css', 'text/css']], ['app.js', ['app.js', 'text/javascript']],
   ['facts.js', ['facts.js', 'text/javascript']],
   ['icons.js', ['icons.js', 'text/javascript']],
@@ -70,7 +73,8 @@ const server = http.createServer(async (req, res) => {
       const source = await readFile(path, 'utf8');
       const page = name === 'index.html' ? 'models' : name.replace('.html', '');
       const language = english ? 'en' : 'zh';
-      const body = prerenderPage(renderPage(source, { page, language, origin, seo }), { page, language, window: await loadCatalog(sourceRoot) });
+      const html = prerenderPage(renderPage(source, { page, language, origin, seo }), { page, language, window: await loadCatalog(sourceRoot) });
+      const body = previewAnalytics ? html.replace('</head>', analyticsPreview + '</head>') : html;
       res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': Buffer.byteLength(body), 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' });
       return res.end(req.method === 'HEAD' ? undefined : body);
     }
@@ -83,4 +87,7 @@ const server = http.createServer(async (req, res) => {
   } catch { res.writeHead(500); res.end('Unable to load asset'); }
 });
 server.on('error', error => { console.error(error.message); process.exitCode = 1; });
-server.listen(port, host, () => console.log(`Model Atlas is available at http://localhost:${server.address().port}`));
+server.listen(port, host, () => {
+  console.log(`Model Atlas is available at http://localhost:${server.address().port}`);
+  if (previewAnalytics) console.log('Analytics consent preview enabled; no analytics service is loaded.');
+});

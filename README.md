@@ -1,6 +1,6 @@
 # Model Atlas
 
-A curated timeline of AI models, agents, hardware, and key technologies.
+A bilingual history of AI models, agents, hardware and key technologies, with verified dates and sources.
 
 English · [简体中文](README.zh-CN.md)
 
@@ -32,30 +32,25 @@ Left: models in detailed view. Right: agents in compact view.
 | Timeline | Coverage |
 | --- | --- |
 | [Large Model Timeline](https://ai.taifua.com/en/) | Language, multimodal, image and video generation, world simulation, and robot-action model releases, with architecture papers, verified specifications and dated evaluation snapshots. |
-| Agents | Coding and general-purpose agents, harnesses, frameworks, and protocols. |
-| Hardware | GPUs, dedicated accelerators, systems, and local devices, with configuration-specific specifications. |
-| Technology | Foundational methods, frameworks, inference tools, containers, and sandboxes. |
+| [Agents](https://ai.taifua.com/en/agents.html) | Coding and general-purpose agents, harnesses, frameworks, and protocols. |
+| [Hardware](https://ai.taifua.com/en/hardware.html) | GPUs, dedicated accelerators, systems, and local devices, with configuration-specific specifications. |
+| [Technology](https://ai.taifua.com/en/technology.html) | Foundational methods, frameworks, inference tools, containers, and sandboxes. |
 
 Entries are selected for historical influence or technical significance. This is a curated reference, with source links and explicit date conventions, rather than an exhaustive release feed.
 
-## Explore
+## Browse
 
-- Filter by organization, year, task, and input type; share the resulting URL. Header search covers all timelines, prioritizing exact names, then model or series names, then descriptive matches. Organization selection is single by default, with a multi-select switch for comparisons.
-- Switch between detailed cards and a compact list, with newest entries first.
-- Browse annual and monthly counts for the current selection.
-- Open [Explore](https://ai.taifua.com/explore.html?lang=en) from the compass button in the header. It presents all cataloged events across the four timelines in monthly groups, from newest to oldest, with same-day events shown together and horizontal year and month navigation.
-- Use [Benchmarks](https://ai.taifua.com/en/benchmarks.html) to browse evaluation platforms and benchmarks for general capabilities, reasoning and knowledge work, coding, and tool use. Each title links to the official results, with evaluation subjects, methods, and limits of comparison.
-- Open an entry for its release scope, specifications, and sources. Browser Back closes details and Forward reopens them, preserving the selected filters. A correction link opens the existing GitHub issue form with the entry name and URL; it does not submit an issue.
-- Use Chinese or English. The home page initially follows the browser language; manual choices are remembered, with dedicated URLs for each language.
-- Browse on desktop or mobile, with keyboard navigation and reduced-motion support.
+- Search all four timelines and filter by organization, year, task or type. Filters can be shared by URL.
+- Read detailed cards or a compact list, newest first. Entries include sources, dates and verified specifications, prices or evaluation snapshots where available.
+- Use annual and monthly charts to browse the current selection. Lists load in batches; selecting a year or a filter reveals the matching entries.
+- Open [Explore](https://ai.taifua.com/en/explore.html) from the compass icon for a combined chronology, grouped by month and day. [Benchmarks](https://ai.taifua.com/en/benchmarks.html) organizes public evaluations by field, with their methods and comparison limits.
+- Browse in Chinese or English on desktop and mobile, with keyboard navigation, reduced-motion support and dedicated language URLs.
 
-Switching multi-select off keeps the most recently selected organization. Existing links with several organizations open in multi-select mode. Paper entries prefer project or product marks, then official organization logos; arXiv or NeurIPS marks provide a fallback when no such logo is available.
+The site is static: search, filters and charts run in the browser. Every entry is also included in the generated HTML for reading without JavaScript. Fonts and icons are served locally.
 
-Mobile organization filters initially fit two rows, adapting to the screen width. Selected organizations remain visible and may exceed that limit. Additional organizations are available through the disclosure control. Desktop shows all organizations. The Milestones filter hides organizations with no matching entries.
+## Privacy
 
-Timelines initially show about 30 entries, keeping releases from the same day together. Show more reveals the next batch; Show all expands the full list. Explicit filters show every match, and charts always count the complete selection. Explore follows the same approach with complete monthly groups, newest first. Year and month navigation reveals the requested period; search expands the chronology and highlights matches. Static HTML retains every entry for search engines and browsers without JavaScript. Category badges distinguish models, agents, hardware and technology. Sources and date notes explain whether an event records a paper presentation, package release or commercial deployment. The Transformer event appears once across timelines. Evaluation references link to AA, Arena, Terminal-Bench, and MLPerf; model details retain reviewed scores with separate verification and leaderboard dates.
-
-The website uses local fonts and icons, with Latin and CJK font subsets requested according to the characters on the page. The source and default build contain no analytics, runtime API calls, or third-party scripts. Analytics for the hosted site is configured separately during deployment and is not distributed with the source. Language and view preferences are saved locally in the browser.
+The source and default build include no tracking scripts or analytics service calls. Language and view preferences are stored in the browser. On [ai.taifua.com](https://ai.taifua.com), website analytics is configured separately at deployment and loads only after consent. Declining leaves the site fully usable; the [About page](https://ai.taifua.com/en/about.html#privacy) explains privacy and lets visitors change their choice. Analytics choices are saved for 180 days.
 
 ## Run locally
 
@@ -72,6 +67,8 @@ Open [localhost:5173](http://localhost:5173). To choose an address or port:
 ```bash
 npm run dev -- --host 127.0.0.1 --port 5173
 ```
+
+Run `npm run dev -- --preview-analytics` to preview the consent prompt and About-page controls. This mode only demonstrates the interaction; it loads no analytics service and sends no analytics data.
 
 ## Check and build
 
@@ -91,19 +88,20 @@ npx playwright install chromium
 npm run test:browser
 ```
 
-The tests build and serve the site locally, covering Chinese/English desktop and mobile flows, detail history, global search, short-screen dialogs, static content, and font requests. Test dependencies are not included in the published site.
+The tests build and serve the site locally, covering Chinese/English desktop and mobile flows, detail history, global search, short-screen dialogs, static content, font requests and optional analytics consent. Test dependencies are not included in the published site.
 
 Chinese pages are served from the site root, with English editions under `/en/`. Each static page includes localized titles, descriptions, keywords, canonical and hreflang links, and social metadata. The build also generates `sitemap.xml` and `robots.txt`. For another deployment domain, use `BASE_URL=https://example.com npm run build`. Existing `?lang=en` / `?lang=zh` links remain supported.
-
-The build writes default entries, dates, summaries, sources, and counts directly into HTML. The timelines remain readable without JavaScript; browser scripts add filters, search, and detail dialogs. Header search uses the same matching rules everywhere, including typographic hyphens. Selecting a result opens its details; Enter shows all matches in Explore.
 
 ## Data and sources
 
 Records are maintained manually. Dates distinguish papers, announcements, previews, releases, and availability. Specifications and prices apply to the named version and configuration; leaderboard results retain their metric, verification date, and available leaderboard date. Missing information stays absent.
 
-The [benchmark directory](https://ai.taifua.com/en/benchmarks.html) lists nine model and agent evaluations, with their methods and limits of comparison. Hardware references include [MLPerf](https://mlcommons.org/benchmarks/inference-datacenter/). Scores from different benchmarks are kept separate.
+The [benchmark directory](https://ai.taifua.com/en/benchmarks.html) covers model and agent evaluations, with their methods and limits of comparison. Hardware references include [MLPerf](https://mlcommons.org/benchmarks/inference-datacenter/). Scores from different benchmarks are kept separate.
 
 The site's “open / closed” filter is an editorial classification of the listed models and tools. It does not describe this repository's license or replace each product's license terms. The [About page](https://ai.taifua.com/about.html?lang=en) explains the conventions.
+
+<details>
+<summary>Maintainer tools: source checks and candidate review</summary>
 
 Maintainers can manually check the sources already cited in the catalog:
 
@@ -147,6 +145,8 @@ npm run review:candidates -- --from research/candidate-discovery/reviews/<summar
 The review command's `--since` means **first observed or content changed**, not released. Summaries include full IDs, source excerpts, publication-date precision, previous reasons, and possible catalog matches. New observations, changed content, and possible matches can overlap. Default status is `needs_review`; `--status all` includes prior decisions. JSON and Markdown summaries stay in the private `reviews/` directory.
 
 Decisions are `represented`, `deferred`, `rejected`, or `needs_review`. Every decision requires a reason; represented entries require an explicit catalog mapping, and represented/rejected decisions require evidence URLs. Generate a fresh summary after each decision batch. Unknown IDs, invalid mappings, concurrent writes, and a queue changed since the summary are refused. Meaningful source changes reopen review, preserve earlier decisions, mappings, and evidence in `reviewHistory`, and retain the date of the change; repeated observations do not create duplicate entries. An observation is a research lead, not a new or approved release. These tools do not import scores, add website entries, schedule checks, or send notifications. Publication still requires editorial review and the normal project checks.
+
+</details>
 
 ## Project structure
 

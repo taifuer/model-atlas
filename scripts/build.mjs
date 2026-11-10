@@ -8,7 +8,7 @@ const root = new URL('../', import.meta.url);
 const sourceRoot = new URL('src/', root);
 const output = new URL('dist/', root);
 const pages = Object.entries(PAGE_FILES);
-const assets = ['explore-periods.js', 'seo.js', 'catalog.js', 'details.js', 'workspace.js', 'explore.js', 'workspace.css', 'explore.css', 'benchmarks.css', 'styles.css', 'site.js', 'app.js', 'facts.js', 'filters.js', 'icons.js', 'data.js', 'data-en.js', 'data-agents.js', 'data-hardware.js', 'data-technology.js', 'data-access.js', 'data-specs.js', 'data-prices.js', 'data-scores.js', 'data-model-types.js', 'favicon.svg', 'assets/noto-sans-sc.css', 'assets/OFL.txt', 'assets/FONT-NOTICE.md'];
+const assets = ['explore-periods.js', 'seo.js', 'catalog.js', 'details.js', 'workspace.js', 'explore.js', 'workspace.css', 'explore.css', 'benchmarks.css', 'styles.css', 'site.js', 'privacy.js', 'app.js', 'facts.js', 'filters.js', 'icons.js', 'data.js', 'data-en.js', 'data-agents.js', 'data-hardware.js', 'data-technology.js', 'data-access.js', 'data-specs.js', 'data-prices.js', 'data-scores.js', 'data-model-types.js', 'favicon.svg', 'assets/noto-sans-sc.css', 'assets/OFL.txt', 'assets/FONT-NOTICE.md'];
 for (const name of (await readdir(new URL('assets/', sourceRoot))).sort()) {
   if (/^atlas-sans-[a-z]+\.woff2$/.test(name)) assets.push(`assets/${name}`);
 }
