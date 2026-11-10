@@ -1,8 +1,8 @@
 // Primary-source history of AI methods, computing frameworks, and deployment.
 (() => {
   const data = {
-  "asOf": "2026-11-09",
-  "updatedAt": "2026-11-09",
+  "asOf": "2026-11-10",
+  "updatedAt": "2026-11-10",
   "accessFilter": false,
   "companies": [
     {
@@ -249,6 +249,42 @@
   "themes": {},
   "themesEn": {},
   "releases": [
+    {
+      "id": "isaac-lab-3",
+      "date": "2026-10-20",
+      "name": "Isaac Lab 3.0",
+      "company": "nvidia",
+      "category": "frameworks",
+      "kind": "release",
+      "milestone": false,
+      "summary": "统一多种物理与渲染后端，支持机器人策略训练、评估与部署。",
+      "details": "3.0 正式版通过同一任务 API 连接 Newton、PhysX 与多种渲染后端；支持不依赖完整 Isaac Sim 的执行方式、基于 Warp 的数据传递，以及强化学习和基础模型后训练工作流。Newton 集成扩展了对柔性物体和复杂接触的仿真能力。",
+      "dateNote": "采用 GitHub v3.0.0 正式版的 10 月 20 日发布时间；9 月 16 日为 Early Access，11 月 9 日 CoRL 文章为后续介绍。",
+      "tags": [],
+      "sources": [
+        {
+          "title": "Isaac Lab · 3.0 正式版",
+          "titleEn": "Isaac Lab: Version 3.0 release",
+          "url": "https://github.com/isaac-sim/IsaacLab/releases/tag/v3.0.0"
+        },
+        {
+          "title": "NVIDIA · CoRL 仿真应用",
+          "titleEn": "NVIDIA: Simulation applications at CoRL",
+          "url": "https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl/"
+        }
+      ],
+      "searchAliases": [
+        "IsaacLab",
+        "Newton",
+        "机器人仿真",
+        "robot learning"
+      ],
+      "en": {
+        "summary": "One interface across physics and rendering backends supports robot-policy training, evaluation and deployment.",
+        "details": "The 3.0 release connects Newton, PhysX and multiple renderers through a common task API. It supports execution without the full Isaac Sim stack, Warp-native data paths, and workflows for reinforcement learning and foundation-model post-training. Newton integration expands simulation of deformable objects and complex contact.",
+        "dateNote": "Uses the October 20 publication timestamp of the GitHub v3.0.0 release. September 16 was Early Access; the November 9 CoRL article is a later introduction."
+      }
+    },
     {
       "id": "cuda-sdk",
       "date": "2007-02-15",
@@ -881,8 +917,8 @@
       "category": "infrastructure",
       "kind": "announcement",
       "summary": "AWS 公开轻量 microVM 技术，以独立内核隔离短时、多租户工作负载。",
-      "details": "Firecracker 基于 KVM，最初用于 Lambda 与 Fargate 的隔离执行。它后来成为 E2B 等智能体沙箱的底层组件，代表通过微虚拟机运行生成代码的技术路线。",
-      "dateNote": "采用 AWS What’s New 公告的 11 月 26 日；AWS 开源博客介绍发表于次日。这里记录技术公开，而非智能体服务的诞生。",
+      "details": "Firecracker 基于 KVM，最初用于 Lambda 与 Fargate 的隔离执行。它后来成为 E2B 等智能体沙箱的底层组件，代表通过微虚拟机运行生成代码的技术路线。 2026 年 11 月 9 日发布的 v1.18.0 新增 Nitro Sandboxes 支持，可通过 Nitro Enclaves 驱动管理 Nitro Hypervisor 隔离出的虚拟机，并保留既有 API、jailer 与 virtio 设备模型。",
+      "dateNote": "采用 AWS What’s New 公告的 11 月 26 日；AWS 开源博客介绍发表于次日。这里记录技术公开，而非智能体服务的诞生。 v1.18.0 的后续更新补充于详情，不改写首次公开日期。",
       "sources": [
         {
           "title": "AWS · Firecracker 公告",
@@ -892,15 +928,23 @@
           "title": "E2B · microVM 沙箱架构",
           "url": "https://e2b.dev/enterprise",
           "titleEn": "E2B · microVM sandbox architecture"
+        },
+        {
+          "title": "Firecracker · v1.18.0 发布说明",
+          "titleEn": "Firecracker: v1.18.0 release notes",
+          "url": "https://github.com/firecracker-microvm/firecracker/releases/tag/v1.18.0"
         }
       ],
       "en": {
         "summary": "AWS releases lightweight microVM technology to isolate short-lived, multi-tenant workloads with separate kernels.",
-        "details": "Built on KVM, Firecracker initially supports isolation for Lambda and Fargate. It later underpins agent sandboxes such as E2B, representing the microVM approach to running generated code.",
-        "dateNote": "Uses November 26 from AWS What’s New; the Open Source Blog follows on November 27. This records the virtualization release, not an agent-service launch."
+        "details": "Built on KVM, Firecracker initially supports isolation for Lambda and Fargate. It later underpins agent sandboxes such as E2B, representing the microVM approach to running generated code. Version 1.18.0, released November 9, 2026, adds Nitro Sandboxes support. It manages VMs isolated by the Nitro Hypervisor through the Nitro Enclaves driver, while retaining the existing API, jailer and virtio device model.",
+        "dateNote": "Uses November 26 from AWS What’s New; the Open Source Blog follows on November 27. This records the virtualization release, not an agent-service launch. The later v1.18.0 update is recorded in the details without changing the first public date."
       },
       "tags": [],
-      "milestone": false
+      "milestone": false,
+      "searchAliases": [
+        "Nitro Sandboxes"
+      ]
     },
     {
       "id": "onnx-runtime",
@@ -2833,7 +2877,7 @@
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-09",
+    "checkedAt": "2026-11-10",
     "scope": "算法、计算框架、推理部署与容器沙箱中具有经典性、代表性或影响力的公开节点。",
     "method": "以原始论文、项目公告与发布记录核对日期，区分预览、正式可用和后续更新；不逐条收录常规软件版本。",
     "references": []

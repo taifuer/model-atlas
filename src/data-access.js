@@ -1183,6 +1183,29 @@
     "noteEn": "Hosted access is limited to approved Daybreak Red customers; weights are not public."
   }
 });
+  Object.assign(models, {
+  "claude-fable-5-2": {
+    "status": "closed",
+    "checkedAt": "2026-11-10",
+    "source": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+    "note": "提供托管服务，未公开模型权重；Mythos 5.2 需要通过指定验证计划。",
+    "noteEn": "Hosted services without public model weights. Mythos 5.2 requires approval through designated verification programs."
+  },
+  "muse-ember": {
+    "status": "closed",
+    "checkedAt": "2026-11-10",
+    "source": "https://research.meta.ai/blog/muse-ember",
+    "note": "通过 Meta Model API 和 Muse Code 提供，未公开模型权重。",
+    "noteEn": "Available through the Meta Model API and Muse Code without public model weights."
+  },
+  "groot-2": {
+    "status": "closed",
+    "checkedAt": "2026-11-10",
+    "source": "https://research.nvidia.com/labs/gear/gr00t-2/",
+    "note": "项目目前为研究公告，代码计划于 12 月公开；不将计划中的开放状态记为已开源。",
+    "noteEn": "Currently a research announcement, with code scheduled for December. Planned availability is not recorded as an existing open release."
+  }
+});
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

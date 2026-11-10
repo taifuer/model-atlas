@@ -1238,6 +1238,24 @@ window.MODEL_ATLAS_EN = {
     "summary": "A specialized security model investigates vulnerabilities, reproduces issues in authorized environments and verifies fixes.",
     "details": "Accepts text and images and produces text, with a 1,050,000-token context and up to 128,000 output tokens. API and Codex access is available to approved Daybreak Red customers.",
     "dateNote": "Uses the official November 5 announcement of availability for approved customers."
+  },
+  "claude-fable-5-2": {
+    "name": "Claude Fable 5.2 / Mythos 5.2",
+    "summary": "New Fable and restricted-access Mythos versions target coding, reasoning and research.",
+    "details": "Fable and Mythos share an underlying model, with different safeguards and access requirements. Fable 5.2 is available to general users and developers; Mythos 5.2 serves organizations approved through cybersecurity or life-sciences verification programs. Standard API input and output cost $8 and $40 per million tokens; fast mode has separate rates.",
+    "dateNote": "Uses the November 9 official announcement and groups the two service versions. The context and output limits below describe the Fable API, not an inferred Mythos service limit."
+  },
+  "muse-ember": {
+    "name": "Muse Ember",
+    "summary": "A low-cost multimodal model for tool calls, coding subtasks and document processing.",
+    "details": "Available through Muse Code and the Meta Model API as muse-ember-1.0. It natively accepts text, images, audio and video and can work alongside Muse Wonder and Muse Spark on multi-step tasks. Meta specifies a 1M-token context window and up to 512K output tokens; prompts above 200K tokens use a higher price tier.",
+    "dateNote": "Uses the November 9 date on Meta's official research announcement. Reasoning settings share one entry; aggregator listing dates do not replace the launch date."
+  },
+  "groot-2": {
+    "name": "GR00T 2",
+    "summary": "Predicts future video and robot actions together for grippers, dexterous hands and humanoids.",
+    "details": "NVIDIA builds this world-action model (WAM) on Cosmos, learning physical interactions from human video and robot demonstrations. A WAM API lets higher-level agents sequence its skills. NVIDIA reports trials by Foxconn, Siemens and other teams; the Turbo variant targets real-time control on robots. The project schedules code availability for December, so this entry records the model and research announcement.",
+    "dateNote": "Uses NVIDIA's November 9 CoRL announcement. Planned release does not establish public code or weights; robot-trial success rates are not language-model intelligence scores."
   }
 };
 window.ATLAS_TAGS_EN = {
@@ -1355,7 +1373,9 @@ window.ATLAS_TAGS_EN = {
   "语音识别": "Speech recognition",
   "音频理解": "Audio understanding",
   "网络安全": "Cybersecurity",
-  "漏洞研究": "Vulnerability research"
+  "漏洞研究": "Vulnerability research",
+  "具身智能": "Embodied AI",
+  "机器人动作": "Robot actions"
 };
 window.MODEL_THEMES_EN = {
   "2017": "The Transformer architecture",

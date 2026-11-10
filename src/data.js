@@ -49,7 +49,7 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    "checkedAt": "2026-11-09",
+    "checkedAt": "2026-11-10",
     "source": "https://artificialanalysis.ai/leaderboards/models",
     "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
     "metric": "Artificial Analysis Intelligence Index",
@@ -57,14 +57,14 @@ window.MODEL_ATLAS = (() => {
     "selection": "highest-listed-score",
     "entries": [
       {
+        "company": "anthropic",
+        "model": "Claude Fable 5.2 (max)",
+        "score": 65
+      },
+      {
         "company": "google",
         "model": "Gemini 4 Carbon (high)",
         "score": 60
-      },
-      {
-        "company": "anthropic",
-        "model": "Claude Opus 5.5 (max with fallback)",
-        "score": 59
       },
       {
         "company": "openai",
@@ -84,6 +84,11 @@ window.MODEL_ATLAS = (() => {
       {
         "company": "xai",
         "model": "Grok 4.7 (xhigh)",
+        "score": 35
+      },
+      {
+        "company": "tencent",
+        "model": "Tencent Hy4",
         "score": 35
       },
       {
@@ -160,6 +165,87 @@ window.MODEL_ATLAS = (() => {
     return { id, date, name, company, kind, summary, tags, sources: Array.isArray(sources) ? sources : [sources], milestone, details, dateNote };
   }
   const releases = [
+    {
+      "id": "claude-fable-5-2",
+      "date": "2026-11-09",
+      "name": "Claude Fable 5.2 / Mythos 5.2",
+      "company": "anthropic",
+      "kind": "release",
+      "milestone": false,
+      "summary": "发布新版 Fable 与受限提供的 Mythos，面向编码、推理和研究任务。",
+      "tags": [
+        "推理",
+        "智能体"
+      ],
+      "details": "Fable 与 Mythos 使用同一底层模型，通过不同的安全措施和准入范围提供服务。Fable 5.2 面向常规用户和开发者；Mythos 5.2 面向通过网络安全或生命科学验证计划的机构。标准 API 输入、输出价格分别为每百万 token 8 和 40 美元，快速模式另行计费。",
+      "dateNote": "采用官方 11 月 9 日发布公告；两种服务版本合并记录。下列上下文和输出上限仅对应 Fable API，不推定为 Mythos 的服务规格。",
+      "sources": [
+        {
+          "title": "Anthropic · Fable 与 Mythos 5.2",
+          "titleEn": "Anthropic: Fable and Mythos 5.2",
+          "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+        },
+        {
+          "title": "Claude · 模型规格",
+          "titleEn": "Claude: Model specifications",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        }
+      ]
+    },
+    {
+      "id": "muse-ember",
+      "date": "2026-11-09",
+      "name": "Muse Ember",
+      "company": "meta",
+      "kind": "release",
+      "milestone": false,
+      "summary": "面向工具调用、编码子任务和文档处理的低成本多模态模型。",
+      "tags": [
+        "多模态",
+        "智能体"
+      ],
+      "details": "通过 Muse Code 与 Meta Model API 提供，模型标识为 muse-ember-1.0。原生支持文本、图像、音频和视频输入，可与 Muse Wonder、Muse Spark 配合执行多步骤任务。官方标注 1M token 上下文和最多 512K token 输出；输入超过 200K token 时采用更高价格。",
+      "dateNote": "采用 Meta 官方研究博客的 11 月 9 日发布日期；不同推理力度合并记录，不以聚合站的上架日期替代首发日期。",
+      "sources": [
+        {
+          "title": "Meta · Muse Ember 发布",
+          "titleEn": "Meta: Muse Ember announcement",
+          "url": "https://research.meta.ai/blog/muse-ember"
+        },
+        {
+          "title": "Meta · Muse Ember 开发指南",
+          "titleEn": "Meta: Building with Muse Ember",
+          "url": "https://dev.meta.ai/resources/blog/build-with-muse-ember"
+        }
+      ]
+    },
+    {
+      "id": "groot-2",
+      "date": "2026-11-09",
+      "name": "GR00T 2",
+      "company": "nvidia",
+      "kind": "announcement",
+      "milestone": false,
+      "summary": "联合预测未来视频与机器人动作，支持机械臂、灵巧手和人形机器人。",
+      "tags": [
+        "具身智能",
+        "机器人动作"
+      ],
+      "details": "NVIDIA 基于 Cosmos 构建世界动作模型（WAM），结合人类视频与机器人示范学习物理交互，并通过 WAM API 接受上层智能体的任务调度。官方披露富士康、Siemens 等团队正在试用；同系列 Turbo 面向机器人本地实时控制。项目页计划于 12 月公开代码，当前记录的是模型与研究公告。",
+      "dateNote": "采用 NVIDIA 11 月 9 日 CoRL 公告。计划公开不等于已经公开；不将机器人实验成功率作为语言模型的综合评分。",
+      "sources": [
+        {
+          "title": "NVIDIA · CoRL 机器人模型与仿真进展",
+          "titleEn": "NVIDIA: Robotics models and simulation at CoRL",
+          "url": "https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl/"
+        },
+        {
+          "title": "NVIDIA Research · GR00T 2",
+          "titleEn": "NVIDIA Research: GR00T 2",
+          "url": "https://research.nvidia.com/labs/gear/gr00t-2/"
+        }
+      ]
+    },
     {
       "id": "gpt-image-2-6",
       "date": "2026-11-04",
@@ -2189,7 +2275,7 @@ window.MODEL_ATLAS = (() => {
     },
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-11-09',
+    checkedAt: '2026-11-10',
     scope: '主流语言、多模态、图像与视频生成及世界模型，兼顾具有历史影响的架构研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
@@ -2206,5 +2292,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-11-09', updatedAt: '2026-11-09', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-11-10', updatedAt: '2026-11-10', companies, companyRanking, kinds, themes, releases, coverage });
 })();

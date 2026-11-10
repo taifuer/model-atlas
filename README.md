@@ -31,7 +31,7 @@ Left: models in detailed view. Right: agents in compact view.
 
 | Timeline | Coverage |
 | --- | --- |
-| [Large Model Timeline](https://ai.taifua.com/en/) | Language, multimodal, image- and video-generation model releases, with architecture papers, verified specifications and dated evaluation snapshots. |
+| [Large Model Timeline](https://ai.taifua.com/en/) | Language, multimodal, image and video generation, world simulation, and robot-action model releases, with architecture papers, verified specifications and dated evaluation snapshots. |
 | Agents | Coding and general-purpose agents, harnesses, frameworks, and protocols. |
 | Hardware | GPUs, dedicated accelerators, systems, and local devices, with configuration-specific specifications. |
 | Technology | Foundational methods, frameworks, inference tools, containers, and sandboxes. |

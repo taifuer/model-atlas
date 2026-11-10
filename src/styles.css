@@ -688,6 +688,7 @@ body.modal-open .back-to-top { display: none; }
   .explorer:has(#active-filter-row[hidden]) .results-meta { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
 }
 @media (max-width: 360px) {
+  .page-intro { gap: 8px; padding-block: 14px 6px; }
   .results-actions { width: 100%; }
 }
 

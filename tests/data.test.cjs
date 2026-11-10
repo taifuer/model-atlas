@@ -29,6 +29,7 @@ test('every event has valid metadata and a primary source; supporting reports ar
   // These additional official/project/author pages were reviewed for the named event.
   // Keep community-hosted articles and personal author archives URL-specific.
   const reviewedPrimarySources = new Map([
+    ['https://research.nvidia.com/labs/gear/gr00t-2/', 'groot-2'],
     ['https://thinkingmachines.ai/news/inkling-2-small/', 'inkling-2-small'],
     ['https://thinkingmachines.ai/model-card/inkling-2-small/', 'inkling-2-small'],
     ['https://tinker-docs.thinkingmachines.ai/tinker/models/models_and_pricing/', 'inkling-2-small'],
@@ -202,7 +203,9 @@ test('organization ranking records a dated, comparable AA snapshot without score
   }
   const find = company => ranking.entries.find(entry => entry.company === company);
   assert.equal(find('openai').model, 'GPT-6 Astra (max)');
-  assert.equal(find('anthropic').model, 'Claude Opus 5.5 (max with fallback)');
+  assert.equal(find('anthropic').model, 'Claude Fable 5.2 (max)');
+  assert.equal(ranking.entries[0].company, 'anthropic');
+  assert.equal(find('tencent').model, 'Tencent Hy4');
   for (const company of ['amazon', 'bytedance', 'microsoft']) assert.equal(find(company), undefined, 'Earlier-version scores cannot fill missing v5 results');
   assert.equal(find('google').model, 'Gemini 4 Carbon (high)');
 });

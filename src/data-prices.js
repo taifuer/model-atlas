@@ -1809,6 +1809,63 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
         }
       ],
       "cardScope": "configuration"
+    },
+    "claude-fable-5-2": {
+      "checkedAt": "2026-11-10",
+      "cardScope": "variant",
+      "variants": [
+        {
+          "name": "Claude Fable 5.2",
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 8,
+              "output": 40,
+              "label": "标准 API",
+              "labelEn": "Standard API"
+            },
+            {
+              "input": 16,
+              "output": 80,
+              "label": "快速模式",
+              "labelEn": "Fast mode"
+            }
+          ],
+          "sources": [
+            "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+          ]
+        }
+      ],
+      "note": "未缓存文本输入与文本输出价格；快速模式的可用平台与配额按官方说明执行。",
+      "noteEn": "Uncached text input and text output rates. Fast-mode availability and quotas depend on the documented platform."
+    },
+    "muse-ember": {
+      "checkedAt": "2026-11-10",
+      "variants": [
+        {
+          "name": "muse-ember-1.0",
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 0.1,
+              "output": 0.5,
+              "label": "输入 ≤ 200K tokens",
+              "labelEn": "Input ≤ 200K tokens"
+            },
+            {
+              "input": 0.3,
+              "output": 1.5,
+              "label": "输入 > 200K tokens",
+              "labelEn": "Input > 200K tokens"
+            }
+          ],
+          "sources": [
+            "https://dev.meta.ai/resources/blog/build-with-muse-ember"
+          ]
+        }
+      ],
+      "note": "仅列未缓存文本 token 价格；长上下文档位同时提高输入与输出单价，不使用缓存命中价格作为起价。",
+      "noteEn": "Uncached text-token rates only. The long-context tier raises both input and output rates; cache-hit prices are not used as the starting price."
     }
   }
 });

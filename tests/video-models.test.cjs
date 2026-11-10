@@ -24,11 +24,18 @@ test('generation tasks stay separate from input modalities and language metrics'
   const language = filters.select(filters.read('?task=language'));
   const images = filters.select(filters.read('?task=image-generation'));
   const worlds = filters.select(filters.read('?task=world-simulation'));
+  const robots = filters.select(filters.read('?task=robot-action'));
+  assert.deepEqual(Array.from(robots, entry => entry.id), ['groot-2']);
+  assert.ok(!language.includes(get('groot-2')) && !videos.includes(get('groot-2')));
+  assert.equal(get('groot-2').kind, 'announcement');
+  assert.equal(get('groot-2').openness.status, 'closed', 'Planned December code does not establish public weights');
+  assert.equal(context.window.MODEL_ATLAS_SCORES.entries['groot-2'], undefined);
+  assert.equal(context.window.MODEL_ATLAS_PRICES.entries['groot-2'], undefined);
   assert.ok(worlds.includes(get('genie-4')));
   assert.ok(!videos.includes(get('genie-4')), 'Interactive simulation has its own task');
   assert.ok(images.includes(get('flux-3-image-klein')));
-  assert.equal(videos.length + language.length + images.length + worlds.length, data.releases.length);
-  assert.equal(new Set([...videos, ...language, ...images, ...worlds].map(entry => entry.id)).size, data.releases.length);
+  assert.equal(videos.length + language.length + images.length + worlds.length + robots.length, data.releases.length);
+  assert.equal(new Set([...videos, ...language, ...images, ...worlds, ...robots].map(entry => entry.id)).size, data.releases.length);
   for (const entry of images) {
     assert.ok(entry.tags.some(tag => ['图像生成', '图像编辑'].includes(tag)), entry.id);
     assert.ok(specs.entries[entry.id].variants.every(variant => variant.output.includes('image')), entry.id);
@@ -45,7 +52,7 @@ test('generation tasks stay separate from input modalities and language metrics'
 });
 
 test('task filters round-trip, combine with access and input, and keep chart counts consistent', () => {
-  for (const query of ['?task=world-simulation', '?task=world-simulation&category=multimodal', '?task=image-generation', '?task=image-generation&openness=open', '?task=image-generation&category=text', '?task=video-generation', '?task=video-generation&openness=open', '?task=video-generation&category=text', '?task=video-generation&companies=bytedance&year=2026&month=07', '?task=language&category=multimodal']) {
+  for (const query of ['?task=robot-action', '?task=robot-action&category=multimodal', '?task=robot-action&openness=closed', '?task=world-simulation', '?task=world-simulation&category=multimodal', '?task=image-generation', '?task=image-generation&openness=open', '?task=image-generation&category=text', '?task=video-generation', '?task=video-generation&openness=open', '?task=video-generation&category=text', '?task=video-generation&companies=bytedance&year=2026&month=07', '?task=language&category=multimodal']) {
     const state = filters.read(query);
     assert.deepEqual(filters.read(filters.serialize(state, 'en')), state);
     assert.ok(filters.hasFilters(state));

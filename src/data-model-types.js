@@ -1852,6 +1852,36 @@
       "sources": [
         "https://developers.openai.com/api/docs/models/gpt-6-cyber"
       ]
+    },
+    "claude-fable-5-2": {
+      "checkedAt": "2026-11-10",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://platform.claude.com/docs/en/models/overview"
+      ]
+    },
+    "muse-ember": {
+      "checkedAt": "2026-11-10",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://research.meta.ai/blog/muse-ember"
+      ]
+    },
+    "groot-2": {
+      "checkedAt": "2026-11-10",
+      "category": "multimodal",
+      "tasks": [
+        "robot-action"
+      ],
+      "sources": [
+        "https://research.nvidia.com/labs/gear/gr00t-2/"
+      ]
     }
   }
 };
@@ -1860,8 +1890,8 @@
     ...window.MODEL_ATLAS,
     categories: { text: '文本', multimodal: '多模态' },
     categoriesEn: { text: 'Text', multimodal: 'Multimodal' },
-    tasks: { language: '语言', 'image-generation': '图像生成', 'video-generation': '视频生成', 'world-simulation': '世界模拟' },
-    tasksEn: { language: 'Language', 'image-generation': 'Image generation', 'video-generation': 'Video generation', 'world-simulation': 'World simulation' },
+    tasks: { language: '语言', 'image-generation': '图像生成', 'video-generation': '视频生成', 'world-simulation': '世界模拟', 'robot-action': '机器人动作' },
+    tasksEn: { language: 'Language', 'image-generation': 'Image generation', 'video-generation': 'Video generation', 'world-simulation': 'World simulation', 'robot-action': 'Robot actions' },
     releases: window.MODEL_ATLAS.releases.map(entry => ({ ...entry, category: data.entries[entry.id]?.category, tasks: data.entries[entry.id]?.tasks || ['language'] })),
   });
 })();

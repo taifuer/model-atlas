@@ -4479,6 +4479,55 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           "outputTokens": 128000
         }
       ]
+    },
+    "claude-fable-5-2": {
+      "checkedAt": "2026-11-10",
+      "cardScope": "variant",
+      "variants": [
+        {
+          "name": "Claude Fable 5.2",
+          "basis": "api",
+          "contextTokens": "1M",
+          "outputTokens": "128K",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://platform.claude.com/docs/en/models/overview"
+          ]
+        }
+      ],
+      "note": "仅列 Fable 5.2 的公开 API 规格，不适用于同节点的 Mythos 5.2。",
+      "noteEn": "These are public API specifications for Fable 5.2 only, not Mythos 5.2 in the same entry."
+    },
+    "muse-ember": {
+      "checkedAt": "2026-11-10",
+      "variants": [
+        {
+          "name": "Muse Ember (muse-ember-1.0)",
+          "basis": "release",
+          "contextTokens": "1M",
+          "outputTokens": "512K",
+          "input": [
+            "text",
+            "image",
+            "audio",
+            "video"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://research.meta.ai/blog/muse-ember"
+          ]
+        }
+      ],
+      "note": "保留官方公告的 1M 和 512K 标注，不自行换算为未经公布的精确 token 上限。",
+      "noteEn": "Retains the announcement's 1M and 512K labels without inventing exact token counts."
     }
   }
 });

@@ -1,6 +1,29 @@
 import { test, expect } from '@playwright/test';
 
 for (const language of ['zh', 'en']) {
+  test(`${language}: robot actions retain their task and announcement scope`, async ({ page }) => {
+    await page.goto(`${language === 'en' ? '/en/' : '/'}index.html?task=robot-action`);
+    await expect(page.locator('#task-select')).toHaveValue('robot-action');
+    const release = page.locator('#release-groot-2');
+    await expect(release).toBeVisible();
+    await expect(page.locator('.release-card')).toHaveCount(1);
+    await expect(release.locator('.fact-chip')).toHaveCount(0);
+    const chartTotal = await page.locator('.annual-bar').evaluateAll(bars => bars.reduce((sum, bar) => sum + Number(bar.dataset.count), 0));
+    expect(chartTotal).toBe(1);
+    await release.locator('.card-title button').click();
+    await expect(page.locator('.detail-overview')).toContainText(language === 'en' ? 'December' : '12 月');
+    await expect(page.locator('.detail-overview')).toContainText(language === 'en' ? 'announcement' : '公告');
+    await page.keyboard.press('Escape');
+    await page.locator('#openness-select').selectOption('open');
+    await expect(release).toHaveCount(0);
+    await page.locator('#openness-select').selectOption('closed');
+    await expect(release).toBeVisible();
+    await page.reload();
+    await expect(page.locator('#task-select')).toHaveValue('robot-action');
+    await expect(release).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
+  });
+
   test(`${language}: video task, chart, input and access filters share URL state`, async ({ page }) => {
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));

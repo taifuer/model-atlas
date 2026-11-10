@@ -31,10 +31,10 @@ test('published scores exactly match dated public source snapshots and known rel
   assert.equal(scores.entries['gemini-4-argon'].arena.preliminary, undefined);
   assert.equal(scores.entries['gemini-4-carbon'].arena.preliminary, true);
   assert.equal(scores.benchmarks.aa.version, '5.0.1');
-  assert.equal(scores.benchmarks.aa.checkedAt, '2026-11-09');
-  assert.equal(scores.checkedAt, '2026-11-09');
-  assert.equal(scores.benchmarks.arena.checkedAt, '2026-11-09');
-  assert.equal(scores.benchmarks.arena.publishedAt, '2026-11-08', 'Dataset retrieval date is not the leaderboard publication date');
+  assert.equal(scores.benchmarks.aa.checkedAt, '2026-11-10');
+  assert.equal(scores.checkedAt, '2026-11-10');
+  assert.equal(scores.benchmarks.arena.checkedAt, '2026-11-10');
+  assert.equal(scores.benchmarks.arena.publishedAt, '2026-11-09', 'Dataset retrieval date is not the leaderboard publication date');
   assert.equal(scores.entries['muse-wonder'].aa.model, 'Muse Wonder Full (max)');
   assert.equal(scores.cardScopes['muse-wonder'], 'variant');
   assert.equal(scores.entries['muse-wonder'].arena, undefined, 'Do not transfer Wonder results to Full without verified metric scope');
