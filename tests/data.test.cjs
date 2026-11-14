@@ -29,6 +29,9 @@ test('every event has valid metadata and a primary source; supporting reports ar
   // These additional official/project/author pages were reviewed for the named event.
   // Keep community-hosted articles and personal author archives URL-specific.
   const reviewedPrimarySources = new Map([
+    ['https://aistudio.google.com/docs/models/gemini-4-hydrogen', 'gemini-4-hydrogen'],
+    ['https://help.aliyun.com/zh/model-studio/qwen4-max-preview', 'qwen-4-max-preview'],
+    ['https://help.aliyun.com/zh/model-studio/newly-released-models', 'qwen-4-max-preview'],
     ['https://research.nvidia.com/labs/gear/gr00t-2/', 'groot-2'],
     ['https://thinkingmachines.ai/news/inkling-2-small/', 'inkling-2-small'],
     ['https://thinkingmachines.ai/model-card/inkling-2-small/', 'inkling-2-small'],
@@ -67,6 +70,7 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['https://platform.stepfun.ai/docs/en/guides/models/step-5-preview', 'step-5-preview'],
   ]);
   const reviewedHuggingFacePaths = new Map([
+    ['/MiniMaxAI/MiniMax-H3-Image', 'minimax-h3-image'],
     ['/moonshotai/Kimi-K3.1-Pro', 'kimi-k3-1-pro'],
     ['/moonshotai/Kimi-K3.1-Pro/blob/main/LICENSE', 'kimi-k3-1-pro'],
     ['/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B', 'nemotron-3-5-transcribe'],
@@ -105,7 +109,7 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['/zai-org/GLM-4.5', 'glm-4-5'],
     ['/stepfun-ai/Step-3.5-Flash', 'step-3-5-flash'],
   ]);
-  const reviewedImageRepositories = new Map([["/openai/DALL-E", "dall-e"], ["/openai/dalle-2-preview/blob/main/system-card.md", "dall-e-2"], ["/CompVis/stable-diffusion", "stable-diffusion-1"], ["/Stability-AI/generative-models", "sdxl-1"], ["/QwenLM/Qwen-Image", "qwen-image"]]);
+  const reviewedImageRepositories = new Map([["/MiniMax-AI/MiniMax-H3-Image/blob/main/LICENSE", "minimax-h3-image"], ["/openai/DALL-E", "dall-e"], ["/openai/dalle-2-preview/blob/main/system-card.md", "dall-e-2"], ["/CompVis/stable-diffusion", "stable-diffusion-1"], ["/Stability-AI/generative-models", "sdxl-1"], ["/QwenLM/Qwen-Image", "qwen-image"]]);
   const isPrimary = source => primaryHosts.has(new URL(source.url).hostname) || reviewedPrimarySources.has(source.url);
   const supportingReports = new Set(['https://www.ithome.com/1/004/705.htm']);
   for (const release of data.releases) {
@@ -203,7 +207,7 @@ test('organization ranking records a dated, comparable AA snapshot without score
   }
   const find = company => ranking.entries.find(entry => entry.company === company);
   assert.equal(find('openai').model, 'GPT-6 Astra (max)');
-  assert.equal(find('anthropic').model, 'Claude Fable 5.2 (max)');
+  assert.equal(find('anthropic').model, 'Claude Fable 5.2 (max with fallback)');
   assert.equal(ranking.entries[0].company, 'anthropic');
   assert.equal(find('tencent').model, 'Tencent Hy4');
   for (const company of ['amazon', 'bytedance', 'microsoft']) assert.equal(find(company), undefined, 'Earlier-version scores cannot fill missing v5 results');

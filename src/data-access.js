@@ -1206,6 +1206,40 @@
     "noteEn": "Currently a research announcement, with code scheduled for December. Planned availability is not recorded as an existing open release."
   }
 });
+  Object.assign(models, {
+  "gemini-4-hydrogen": {
+    "status": "closed",
+    "checkedAt": "2026-11-14",
+    "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
+  },
+  "qwen-4-max-preview": {
+    "status": "closed",
+    "checkedAt": "2026-11-14",
+    "source": "https://help.aliyun.com/zh/model-studio/qwen4-max-preview",
+    "note": "仅 Token Plan 限期预览，官方安排于 2026 年 11 月 25 日结束后下线。",
+    "noteEn": "Limited-time Token Plan preview, scheduled to retire after November 25, 2026."
+  },
+  "minimax-h3-image": {
+    "status": "open",
+    "checkedAt": "2026-11-14",
+    "source": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "MiniMax-H3-Image Community License",
+        "source": "https://github.com/MiniMax-AI/MiniMax-H3-Image/blob/main/LICENSE"
+      }
+    ],
+    "note": "权重已开放下载；社区许可包含地区、收入门槛和托管服务授权条件，具体以原始许可为准。",
+    "noteEn": "Weights are downloadable. The community license includes territorial, revenue-threshold and hosted-service authorization conditions; consult the original license."
+  },
+  "seedream-5-5": {
+    "status": "closed",
+    "checkedAt": "2026-11-14",
+    "source": "https://seed.bytedance.com/en/blog/more-realistic-images-more-stable-editing-across-100-rounds-introducing-seedream-5-5"
+  }
+});
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

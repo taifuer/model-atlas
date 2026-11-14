@@ -1,8 +1,8 @@
 // Primary-source history of AI methods, computing frameworks, and deployment.
 (() => {
   const data = {
-  "asOf": "2026-11-10",
-  "updatedAt": "2026-11-10",
+  "asOf": "2026-11-14",
+  "updatedAt": "2026-11-14",
   "accessFilter": false,
   "companies": [
     {
@@ -249,6 +249,46 @@
   "themes": {},
   "themesEn": {},
   "releases": [
+    {
+      "id": "agent-substrate-1-0",
+      "date": "2026-11-05",
+      "name": "Agent Substrate 1.0",
+      "company": "google",
+      "category": "infrastructure",
+      "kind": "release",
+      "summary": "将有状态智能体与执行资源分离，通过暂停、恢复和共享资源池运行大规模沙箱。",
+      "details": "Google 发起的开源运行时在 Kubernetes 上管理智能体的内存、文件与身份，空闲时保存状态并释放执行资源，恢复时分配可复用 Worker。11 月 5 日公告确认 1.0 和 GKE 托管服务全面可用，并说明项目已进入 CNCF Sandbox。官方披露的应用包括 Hermes Enterprise 与 kagent；NVIDIA 随后介绍了与 Dynamo、KAI Scheduler 和 OpenShell 的集成。",
+      "dateNote": "采用 1.0 与 GKE 全面可用公告日期；公开开发始于 2026 年 5 月，不将此日期作为项目首次开源日。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Google Cloud · 1.0 与 GKE 全面可用",
+          "titleEn": "Google Cloud: 1.0 and GKE general availability",
+          "url": "https://cloud.google.com/blog/products/containers-kubernetes/open-infrastructure-for-autonomous-agents-comes-to-cncf"
+        },
+        {
+          "title": "Agent Substrate · 公开代码",
+          "titleEn": "Agent Substrate: Source repository",
+          "url": "https://github.com/agent-substrate/substrate"
+        },
+        {
+          "title": "NVIDIA · 生态集成",
+          "titleEn": "NVIDIA: Ecosystem integration",
+          "url": "https://blogs.nvidia.com/blog/open-source-openshell-infrastructure/"
+        }
+      ],
+      "searchAliases": [
+        "Substrate",
+        "智能体沙箱",
+        "stateful actors"
+      ],
+      "en": {
+        "summary": "Separates stateful agents from compute, using suspension, restoration and shared workers to run large sandbox fleets.",
+        "details": "This Google-originated open-source runtime manages agent memory, files and identity on Kubernetes. It persists idle state and releases compute, restoring agents onto reusable workers when needed. The November 5 announcement confirms version 1.0 and general availability on GKE, and reports CNCF Sandbox acceptance. Named applications include Hermes Enterprise and kagent; NVIDIA later describes integrations with Dynamo, KAI Scheduler and OpenShell.",
+        "dateNote": "Uses the announcement of version 1.0 and GKE general availability. Public development began in May 2026; this is not the project's first source-release date."
+      }
+    },
     {
       "id": "isaac-lab-3",
       "date": "2026-10-20",
@@ -828,7 +868,7 @@
       "category": "infrastructure",
       "kind": "announcement",
       "summary": "Google 公开用户态内核沙箱，为容器中的不受信任代码提供额外隔离。",
-      "details": "gVisor 拦截应用的系统调用，减少代码直接接触宿主内核的机会，并与容器工具集成。它后来用于智能体代码执行和强化学习环境；腾讯工程团队公开记录了每日数百万个 Agentic-RL 沙箱的生产使用。",
+      "details": "gVisor 拦截应用的系统调用，减少代码直接接触宿主内核的机会，并与容器工具集成。它后来用于智能体代码执行和强化学习环境；腾讯工程团队公开记录了每日数百万个 Agentic-RL 沙箱的生产使用。 2026 年 11 月 5 日，Google 宣布向 CNCF 捐赠 gVisor，并介绍其在 Agent Substrate 中的隔离用途。",
       "dateNote": "采用 Google Cloud 公开介绍文章的日期。2018 年记录的是通用隔离技术公开，智能体应用属于后续影响，不倒置为当年的发布用途。",
       "sources": [
         {
@@ -839,11 +879,16 @@
           "title": "腾讯工程团队 · Agentic-RL 沙箱部署",
           "url": "https://gvisor.dev/blog/2026/04/23/scaling-agentic-rl-sandboxes-to-the-millions-with-gvisor-at-tencent/",
           "titleEn": "Tencent engineers · Agentic-RL deployment"
+        },
+        {
+          "title": "Google Cloud · CNCF 与智能体基础设施",
+          "titleEn": "Google Cloud: CNCF and agent infrastructure",
+          "url": "https://cloud.google.com/blog/products/containers-kubernetes/open-infrastructure-for-autonomous-agents-comes-to-cncf"
         }
       ],
       "en": {
         "summary": "Google introduces a user-space kernel sandbox that adds isolation for untrusted code in containers.",
-        "details": "gVisor intercepts application system calls and reduces direct exposure to the host kernel. Later uses include agent code execution and reinforcement-learning environments; Tencent engineers report millions of daily production Agentic-RL sandboxes.",
+        "details": "gVisor intercepts application system calls and reduces direct exposure to the host kernel. Later uses include agent code execution and reinforcement-learning environments; Tencent engineers report millions of daily production Agentic-RL sandboxes. On November 5, 2026, Google announced the donation of gVisor to CNCF and described its isolation role in Agent Substrate.",
         "dateNote": "Uses the Google Cloud introduction date. The 2018 event is a general-purpose isolation release; agent uses are later evidence of influence."
       },
       "tags": [],
@@ -2305,7 +2350,7 @@
       "category": "infrastructure",
       "kind": "announcement",
       "summary": "在智能体进程之外执行文件、网络与模型访问策略，提供隔离运行环境。",
-      "details": "OpenShell 是 NVIDIA Agent Toolkit 中的开源运行时，可承载 OpenClaw、Claude Code、Codex 等智能体。沙箱、策略引擎与推理路由控制资源访问和数据流向。2026 年 10 月 21 日公布的参考架构进一步结合 Vera Rubin、Vera CPU 与运行 Sentry 的 BlueField-4 DPU，在进程之外执行监控和策略；执行边界不代表智能体行为本身已获安全保证。",
+      "details": "OpenShell 是 NVIDIA Agent Toolkit 中的开源运行时，可承载 OpenClaw、Claude Code、Codex 等智能体。沙箱、策略引擎与推理路由控制资源访问和数据流向。2026 年 10 月 21 日公布的参考架构进一步结合 Vera Rubin、Vera CPU 与运行 Sentry 的 BlueField-4 DPU，在进程之外执行监控和策略；执行边界不代表智能体行为本身已获安全保证。 11 月 10 日，NVIDIA 宣布将 OpenShell 贡献至 CNCF Sandbox，并与 Google 推进 Agent Substrate 集成。",
       "dateNote": "采用 NVIDIA 于 GTC 2026 发布的技术公告日期，不与 NemoClaw 的上层集成方案或后续 OpenShell 版本混为同一事件。",
       "tags": [],
       "milestone": false,
@@ -2324,11 +2369,16 @@
           "title": "NVIDIA · OpenShell 参考架构",
           "titleEn": "NVIDIA · OpenShell reference architecture",
           "url": "https://nvidianews.nvidia.com/news/openshell-reference-architecture"
+        },
+        {
+          "title": "NVIDIA · CNCF 与 Agent Substrate 集成",
+          "titleEn": "NVIDIA: CNCF and Agent Substrate integration",
+          "url": "https://blogs.nvidia.com/blog/open-source-openshell-infrastructure/"
         }
       ],
       "en": {
         "summary": "Enforces file, network, and model-access policies outside the agent process within an isolated runtime.",
-        "details": "OpenShell is an open-source runtime in NVIDIA Agent Toolkit for agents including OpenClaw, Claude Code and Codex. Its sandbox, policy engine and inference routing govern resource access and data flow. The reference architecture announced October 21, 2026 adds Vera Rubin, Vera CPUs and BlueField-4 DPUs running Sentry for external monitoring and policy enforcement. These execution boundaries do not by themselves guarantee safe agent behavior.",
+        "details": "OpenShell is an open-source runtime in NVIDIA Agent Toolkit for agents including OpenClaw, Claude Code and Codex. Its sandbox, policy engine and inference routing govern resource access and data flow. The reference architecture announced October 21, 2026 adds Vera Rubin, Vera CPUs and BlueField-4 DPUs running Sentry for external monitoring and policy enforcement. These execution boundaries do not by themselves guarantee safe agent behavior. On November 10, NVIDIA announced its contribution of OpenShell to CNCF Sandbox and collaboration with Google on Agent Substrate integration.",
         "dateNote": "Uses NVIDIA’s GTC 2026 technical announcement, separately from the higher-level NemoClaw integration and later OpenShell releases."
       }
     },
@@ -2877,7 +2927,7 @@
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-10",
+    "checkedAt": "2026-11-14",
     "scope": "算法、计算框架、推理部署与容器沙箱中具有经典性、代表性或影响力的公开节点。",
     "method": "以原始论文、项目公告与发布记录核对日期，区分预览、正式可用和后续更新；不逐条收录常规软件版本。",
     "references": []

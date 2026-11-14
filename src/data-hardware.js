@@ -1,7 +1,7 @@
 /* Curated hardware history. Event dates and configurations retain explicit source scope. */
 window.HARDWARE_ATLAS = {
-  "asOf": "2026-11-01",
-  "updatedAt": "2026-11-01",
+  "asOf": "2026-11-14",
+  "updatedAt": "2026-11-14",
   "accessFilter": false,
   "companies": [
     {
@@ -2800,13 +2800,13 @@ window.HARDWARE_ATLAS = {
     {
       "id": "tpu-8",
       "date": "2026-04-22",
-      "name": "Google TPU 8t / 8i",
+      "name": "Google TPU 8 系列",
       "company": "google",
       "category": "accelerator",
       "kind": "announcement",
       "summary": "第八代 TPU 分为面向训练的 8t 与面向推理的 8i。",
-      "details": "两种芯片针对不同计算与通信瓶颈设计。所列 288 GB HBM 对应 TPU 8i，不能套用到 TPU 8t。",
-      "dateNote": "日期为官方公布日；后续供货安排见原始公告。",
+      "details": "两种芯片针对不同计算与通信瓶颈设计。2026 年 11 月 9 日，Google 扩展第八代系列：8tx 面向机密推理，8i Max 将两颗 8i 芯片封装在一起，提供相对单颗 8i 两倍的计算能力、SRAM 和 HBM 带宽。下列 288 GB HBM 与 384 MB SRAM 仍对应单颗 TPU 8i，不是 8i Max 系统规格。",
+      "dateNote": "保留 8t / 8i 的首次公布日期；11 月 9 日的 8tx / 8i Max 系统配置合并记录，供货安排以原始公告为准。",
       "tags": [
         "AI 加速器"
       ],
@@ -2815,12 +2815,18 @@ window.HARDWARE_ATLAS = {
         {
           "title": "官方发布资料",
           "url": "https://cloud.google.com/blog/products/compute/ai-infrastructure-at-next26"
+        },
+        {
+          "title": "Google Cloud · TPU 8tx 与 8i Max",
+          "titleEn": "Google Cloud: TPU 8tx and 8i Max",
+          "url": "https://cloud.google.com/blog/topics/ai-infrastructure/tpu-8tx-and-tpu-8i-max"
         }
       ],
       "en": {
         "summary": "Eighth-generation TPUs split into training-oriented 8t and inference-oriented 8i.",
-        "details": "The chips address different compute and communication bottlenecks. The listed 288 GB HBM capacity belongs to TPU 8i and must not be applied to TPU 8t.",
-        "dateNote": "Dated to the official announcement; availability is described in the original source."
+        "details": "The chips address different compute and communication bottlenecks. On November 9, 2026, Google expanded the eighth-generation family: 8tx targets confidential inference, while 8i Max packages two 8i chips together for twice the compute, SRAM and HBM bandwidth of a single 8i. The listed 288 GB HBM and 384 MB SRAM remain specifications of one TPU 8i chip, not an 8i Max system.",
+        "dateNote": "Retains the original 8t / 8i announcement. The November 9 system configurations, 8tx and 8i Max, are recorded here; consult the original sources for availability.",
+        "name": "Google TPU 8 family"
       },
       "hardware": {
         "variant": "TPU 8i · 1 chip",
@@ -2844,7 +2850,13 @@ window.HARDWARE_ATLAS = {
         ],
         "note": "规格对应上述型号，以所列原始资料为准；其他封装与整机配置可能不同。",
         "noteEn": "Specifications apply to the named configuration in the cited source. Other form factors and complete systems may differ."
-      }
+      },
+      "searchAliases": [
+        "TPU 8t",
+        "TPU 8i",
+        "TPU 8tx",
+        "TPU 8i Max"
+      ]
     },
     {
       "id": "nvidia-rtx-spark",
@@ -3231,7 +3243,7 @@ window.HARDWARE_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-10-27",
+    "checkedAt": "2026-11-14",
     "scope": "具有代表性的 GPU、专用加速器、算力系统及本地设备；日期优先依据一手资料，辅以署名媒体报道。区分产品公布、公开展示、供应计划与实际部署，规格保留芯片、板卡或系统范围。",
     "scopeEn": "Representative GPUs, custom accelerators, compute systems, and local devices. Dates prioritize primary sources with attributed reporting as needed. Announcements, demonstrations, availability plans, and deployments remain distinct; specifications retain chip, card, or system scope."
   }

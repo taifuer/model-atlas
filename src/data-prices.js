@@ -1866,6 +1866,28 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
       ],
       "note": "仅列未缓存文本 token 价格；长上下文档位同时提高输入与输出单价，不使用缓存命中价格作为起价。",
       "noteEn": "Uncached text-token rates only. The long-context tier raises both input and output rates; cache-hit prices are not used as the starting price."
+    },
+    "gemini-4-hydrogen": {
+      "checkedAt": "2026-11-14",
+      "variants": [
+        {
+          "name": "gemini-4-hydrogen",
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 1.5,
+              "output": 7.5,
+              "label": "标准",
+              "labelEn": "Standard"
+            }
+          ],
+          "sources": [
+            "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
+          ],
+          "note": "标准 API 未缓存输入与输出价格；整个上下文窗口使用同一费率，输出包含思考 tokens。",
+          "noteEn": "Standard API rates for uncached input and output. Pricing is flat across the context window; output includes thinking tokens."
+        }
+      ]
     }
   }
 });

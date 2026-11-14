@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
-  "asOf": "2026-11-09",
-  "updatedAt": "2026-11-09",
+  "asOf": "2026-11-14",
+  "updatedAt": "2026-11-14",
   "companies": [
     {
       "id": "anthropic",
@@ -1674,7 +1674,7 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "preview",
       "summary": "让 Agent 在编辑器、终端与浏览器中执行开发任务，并用产物呈现进度和验证结果。",
-      "details": "Google 发布公开预览，提供代码编辑视图与任务管理界面，可查看计划、截图和浏览器操作记录。",
+      "details": "Google 发布公开预览，提供代码编辑视图与任务管理界面，可查看计划、截图和浏览器操作记录。 2026 年 11 月 12 日引入的 Orchestrator 在同一会话中组合 Gemini 4 Carbon 或 Argon 的规划与审阅，以及 Hydrogen 的执行；这是模型间的任务调度，与多个智能体并行执行不同。",
       "dateNote": "",
       "tags": [
         "编程",
@@ -1690,11 +1690,21 @@ window.AGENT_ATLAS = {
         {
           "title": "官方 · Antigravity 发布",
           "url": "https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/"
+        },
+        {
+          "title": "Google · Hydrogen 与 Orchestrator",
+          "titleEn": "Google: Hydrogen and Orchestrator",
+          "url": "https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity"
+        },
+        {
+          "title": "Google · Antigravity 模型说明",
+          "titleEn": "Google: Antigravity model documentation",
+          "url": "https://antigravity.google/docs/models"
         }
       ],
       "en": {
         "summary": "Agents work across the editor, terminal and browser, presenting artifacts that document progress and verification.",
-        "details": "Google launched a public preview with an editor and agent management surface for reviewing plans, screenshots and browser recordings.",
+        "details": "Google launched a public preview with an editor and agent management surface for reviewing plans, screenshots and browser recordings. Orchestrator, introduced on November 12, 2026, combines Gemini 4 Carbon or Argon for planning and review with Hydrogen for execution within one conversation. It routes work between models, separately from running multiple agents in parallel.",
         "dateNote": ""
       }
     },
@@ -2038,7 +2048,7 @@ window.AGENT_ATLAS = {
       "category": "harness",
       "kind": "preview",
       "summary": "用插件组合模型、工具、会话、沙箱与执行循环，并记录完整任务轨迹。",
-      "details": "基于 Cordis 的开源运行环境，组件可替换，支持标准、代码与极简模式。2026 年 11 月 4 日的 0.2.2-rc.1 增加实验性 subagent_oar，可把任务交给本机 Codex 或 Claude CLI；实验性变更请求与工作树功能可在独立 Git 工作树中运行会话并审阅差异。10 月 31 日提交的 MIT 研究扩展 dsh-superagent-prototype 支持授权的 GitHub、飞书仓库任务；仍非正式产品，部分设想尚未实现。",
+      "details": "基于 Cordis 的开源运行环境，组件可替换，支持标准、代码与极简模式。2026 年 11 月 11 日的 0.2.2-rc.2 支持具名、多层子智能体协作，并完善 Git Worktree 与 GitHub 评审流程；11 月 13 日的 rc.3 增加实验性 DeepSeek App 和网页版历史会话导入。另有 MIT 研究扩展 dsh-superagent-prototype，用于授权的 GitHub、飞书仓库任务，仍属研究原型。",
       "dateNote": "采用 0.1.0 预览系列与 npm 包公开发布的日期；不把更早的内部标签日期当作公开上线日。",
       "tags": [
         "执行环境",
@@ -2075,11 +2085,21 @@ window.AGENT_ATLAS = {
           "title": "DeepSeek · 0.2.2-rc.1 发布记录",
           "titleEn": "DeepSeek · 0.2.2-rc.1 release notes",
           "url": "https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-rc.1"
+        },
+        {
+          "title": "DeepSeek · 0.2.2-rc.2 发布记录",
+          "titleEn": "DeepSeek: 0.2.2-rc.2 release notes",
+          "url": "https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-rc.2"
+        },
+        {
+          "title": "DeepSeek · 0.2.2-rc.3 发布记录",
+          "titleEn": "DeepSeek: 0.2.2-rc.3 release notes",
+          "url": "https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-rc.3"
         }
       ],
       "en": {
         "summary": "Plugins compose models, tools, sessions, sandboxes and execution loops, with a recorded task trajectory.",
-        "details": "An open-source runtime built on Cordis, with replaceable components and standard, code and minimal modes. The November 4, 2026 release candidate 0.2.2-rc.1 adds experimental subagent_oar delegation to a locally installed Codex or Claude CLI, plus experimental change-request and worktree workflows for isolated Git sessions and diff review. The MIT-licensed dsh-superagent-prototype, committed October 31, handles authorized GitHub and Feishu repository tasks. It remains research code; some proposed ideas are not implemented.",
+        "details": "An open-source runtime built on Cordis, with replaceable components and standard, code and minimal modes. Release candidate 0.2.2-rc.2 on November 11, 2026 supports named, nested subagents and improves Git Worktree and GitHub review workflows. The November 13 rc.3 adds experimental history import from the DeepSeek app and website. The separate MIT-licensed dsh-superagent-prototype handles authorized GitHub and Feishu repository tasks and remains a research prototype.",
         "dateNote": "Uses the public 0.1.0 preview-series and npm publication date, rather than earlier internal tag dates."
       }
     },
@@ -2390,7 +2410,7 @@ window.AGENT_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-09",
+    "checkedAt": "2026-11-14",
     "scope": "编程 Agent、通用 Agent、Harness 及重要框架与协议的主要公开节点。",
     "method": "以原始公告、维护者文章与论文核对日期，区分预览、论文公开、改名和正式发布；按经典性、代表性或影响力筛选，不逐条收录常规版本更新。",
     "references": []

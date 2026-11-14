@@ -4528,6 +4528,99 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ],
       "note": "保留官方公告的 1M 和 512K 标注，不自行换算为未经公布的精确 token 上限。",
       "noteEn": "Retains the announcement's 1M and 512K labels without inventing exact token counts."
+    },
+    "gemini-4-hydrogen": {
+      "checkedAt": "2026-11-14",
+      "variants": [
+        {
+          "name": "gemini-4-hydrogen",
+          "basis": "api",
+          "contextTokens": 1048576,
+          "outputTokens": 65536,
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://aistudio.google.com/docs/models/gemini-4-hydrogen"
+          ]
+        }
+      ],
+      "note": "输入、思考和输出共享 1,048,576 token 窗口。65,536 为默认同步输出上限；long decode 可延长生成，但仍须扣除输入占用，不能额外获得 1M 输出空间。",
+      "noteEn": "Input, thinking and output share a 1,048,576-token window. The default synchronous output limit is 65,536. Long decode allows longer generation within the remaining window; it does not add another 1M tokens of output capacity."
+    },
+    "qwen-4-max-preview": {
+      "checkedAt": "2026-11-14",
+      "variants": [
+        {
+          "name": "qwen4-max-preview · Token Plan",
+          "basis": "api",
+          "contextTokens": "1M",
+          "outputTokens": 393216,
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://help.aliyun.com/zh/model-studio/qwen4-max-preview"
+          ],
+          "note": "思考和最终回答共享输出预算；预览期至 2026 年 11 月 25 日。",
+          "noteEn": "Thinking and the final answer share the output budget. The preview ends on November 25, 2026."
+        }
+      ]
+    },
+    "seedream-5-5": {
+      "checkedAt": "2026-11-14",
+      "variants": [
+        {
+          "name": "Seedream 5.5",
+          "basis": "service",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://seed.bytedance.com/en/blog/more-realistic-images-more-stable-editing-across-100-rounds-introducing-seedream-5-5",
+            "https://seed.bytedance.com/en/seedream5_5"
+          ],
+          "note": "支持原生 RGBA 图像生成、透明与半透明素材，以及连续图像编辑。",
+          "noteEn": "Supports native RGBA image generation, transparent and translucent assets, and multi-turn image editing."
+        }
+      ]
+    },
+    "minimax-h3-image": {
+      "checkedAt": "2026-11-14",
+      "variants": [
+        {
+          "name": "MiniMax-H3-Image · weights",
+          "basis": "weights",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
+          ],
+          "note": "直接生成约 1600 万像素图像（方形为 4096 × 4096），支持最多 16 张参考图。33.1B 为 DiT 参数量，不包含另行加载的文本编码器。",
+          "noteEn": "Directly generates roughly 16-megapixel images (4096 × 4096 when square), with up to 16 reference images. The 33.1B DiT parameter count excludes the separately loaded text encoder."
+        }
+      ]
     }
   }
 });

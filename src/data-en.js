@@ -734,7 +734,7 @@ window.MODEL_ATLAS_EN = {
   },
   "deepseek-v4-1-flash": {
     "summary": "A new architecture adds native vision and more efficient agent reasoning.",
-    "details": "An asymmetric encoder-decoder design underlies this smaller family model. The October 17 snapshot, V4.1-Flash-1017, improves coding and agent tasks and replaces the model in the web app, mobile app and API. Its weights are available under MIT.",
+    "details": "An asymmetric encoder-decoder design underlies this smaller family model. The October 17 snapshot, V4.1-Flash-1017, improves coding and agent tasks and replaces the model in the web app, mobile app and API. Its weights are available under MIT. On November 13, the hosted service added application APIs for search, files and URL reading. These are service-side tools, not a new model checkpoint.",
     "dateNote": "Retains the September 10 model release. The October 17 checkpoint is described by DeepSeek as a minor update and is recorded here as a subsequent development."
   },
   "kimi-k2-8-preview": {
@@ -1256,6 +1256,26 @@ window.MODEL_ATLAS_EN = {
     "summary": "Predicts future video and robot actions together for grippers, dexterous hands and humanoids.",
     "details": "NVIDIA builds this world-action model (WAM) on Cosmos, learning physical interactions from human video and robot demonstrations. A WAM API lets higher-level agents sequence its skills. NVIDIA reports trials by Foxconn, Siemens and other teams; the Turbo variant targets real-time control on robots. The project schedules code availability for December, so this entry records the model and research announcement.",
     "dateNote": "Uses NVIDIA's November 9 CoRL announcement. Planned release does not establish public code or weights; robot-trial success rates are not language-model intelligence scores."
+  },
+  "gemini-4-hydrogen": {
+    "summary": "Four reasoning levels and a shared million-token context for everyday coding and tool execution.",
+    "details": "Gemini 4 Hydrogen accepts text, images, audio, video and PDFs and produces text. Google began rolling it out to the Gemini API, AI Studio, the Gemini app and other surfaces on November 12. Developers can select low, medium, high or xhigh reasoning. Input, thinking and output share a 1,048,576-token window, with a default synchronous output limit of 65,536.",
+    "dateNote": "Uses Google's official release announcement; availability rolls out across product surfaces."
+  },
+  "qwen-4-max-preview": {
+    "summary": "A preview of Qwen's next flagship multimodal model, with image and video understanding and tool use.",
+    "details": "Qwen4-Max-Preview is a limited-time preview available only through Token Plan, without pay-as-you-go billing. The preview runs from November 11, 2026 at 10:00 through November 25 at 24:00 Beijing time, after which the endpoint is scheduled to retire. It supports a 1M-token context and a shared 393,216-token budget for thinking and answers, with Chat Completions, Responses and Messages compatibility.",
+    "dateNote": "Uses the preview availability date recorded by Alibaba Cloud, separately from any later general release."
+  },
+  "minimax-h3-image": {
+    "summary": "Open weights for image generation and editing, with about 16-megapixel output and up to 16 reference images.",
+    "details": "H3-Image unifies text-to-image generation and multi-image editing in one checkpoint, directly producing roughly 16-megapixel images, including 4096 × 4096 square output. Official weights, deployment instructions and a hosted API are available. Standard and Highspeed serving modes share this entry. The MiniMax-H3-Image Community License includes territorial and commercial-authorization conditions.",
+    "dateNote": "Uses November 11 from the official release article. The license itself is dated November 10."
+  },
+  "seedream-5-5": {
+    "summary": "More consistent multi-turn image editing with native transparent and translucent RGBA output.",
+    "details": "Seedream 5.5 improves preservation of unedited regions, typography and image detail across successive edits. Native RGBA output creates standalone assets for further compositing. It is available in Dreamina and has entered Artificial Analysis image evaluations; the vendor's editing demonstrations and internal comparisons are distinct from independent benchmark results.",
+    "dateNote": "Uses November 9 from the ByteDance Seed release article."
   }
 };
 window.ATLAS_TAGS_EN = {

@@ -49,7 +49,7 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    "checkedAt": "2026-11-10",
+    "checkedAt": "2026-11-14",
     "source": "https://artificialanalysis.ai/leaderboards/models",
     "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
     "metric": "Artificial Analysis Intelligence Index",
@@ -58,7 +58,7 @@ window.MODEL_ATLAS = (() => {
     "entries": [
       {
         "company": "anthropic",
-        "model": "Claude Fable 5.2 (max)",
+        "model": "Claude Fable 5.2 (max with fallback)",
         "score": 65
       },
       {
@@ -165,6 +165,147 @@ window.MODEL_ATLAS = (() => {
     return { id, date, name, company, kind, summary, tags, sources: Array.isArray(sources) ? sources : [sources], milestone, details, dateNote };
   }
   const releases = [
+    {
+      "id": "gemini-4-hydrogen",
+      "date": "2026-11-12",
+      "name": "Gemini 4 Hydrogen",
+      "company": "google",
+      "kind": "release",
+      "summary": "面向日常编程与工具执行，提供四档推理力度和统一百万 token 上下文。",
+      "details": "Gemini 4 Hydrogen 支持文本、图像、音频、视频及 PDF 输入，输出文本。Google 于 11 月 12 日开始向 Gemini API、AI Studio、Gemini 应用等入口推出；开发者可选择 low、medium、high 或 xhigh 推理力度。输入、思考和输出共享 1,048,576 token 窗口，默认同步输出上限为 65,536。",
+      "dateNote": "采用 Google 正式发布公告日期；各产品入口逐步开放。",
+      "tags": [
+        "推理",
+        "多模态"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Google · Hydrogen 发布",
+          "titleEn": "Google: Hydrogen release",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
+        },
+        {
+          "title": "Google · 模型规格",
+          "titleEn": "Google: Model specifications",
+          "url": "https://aistudio.google.com/docs/models/gemini-4-hydrogen"
+        },
+        {
+          "title": "Artificial Analysis · Hydrogen 评测",
+          "titleEn": "Artificial Analysis: Hydrogen evaluation",
+          "url": "https://artificialanalysis.ai/models/gemini-4-hydrogen"
+        }
+      ]
+    },
+    {
+      "id": "qwen-4-max-preview",
+      "date": "2026-11-11",
+      "name": "Qwen4-Max-Preview",
+      "company": "qwen",
+      "kind": "preview",
+      "summary": "千问新一代旗舰多模态预览，支持图像、视频理解和复杂工具调用。",
+      "details": "Qwen4-Max-Preview 仅通过 Token Plan 提供限期预览，不支持按量计费。预览期为 2026 年 11 月 11 日 10:00 至 11 月 25 日 24:00（北京时间），官方注明预览结束后下线。模型支持 1M token 上下文，思考与回答共享 393,216 token 输出预算，并兼容 Chat Completions、Responses 和 Messages 接口。",
+      "dateNote": "采用阿里云记录的预览开放日期；不等同于后续正式版发布。",
+      "tags": [
+        "推理",
+        "多模态"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "阿里云 · Qwen4-Max-Preview 规格与期限",
+          "titleEn": "Alibaba Cloud: Qwen4-Max-Preview specifications and availability",
+          "url": "https://help.aliyun.com/zh/model-studio/qwen4-max-preview"
+        },
+        {
+          "title": "阿里云 · 模型更新记录",
+          "titleEn": "Alibaba Cloud: Model changelog",
+          "url": "https://help.aliyun.com/zh/model-studio/newly-released-models"
+        }
+      ],
+      "searchAliases": [
+        "Qwen 4",
+        "千问4"
+      ]
+    },
+    {
+      "id": "minimax-h3-image",
+      "date": "2026-11-11",
+      "name": "MiniMax H3-Image",
+      "company": "minimax",
+      "kind": "release",
+      "summary": "开放权重的图像生成与编辑模型，支持约 1600 万像素输出及最多 16 张参考图。",
+      "details": "H3-Image 将文本生成和多图编辑统一在同一检查点中，直接生成约 1600 万像素图像，包括 4096 × 4096 的方形输出。官方提供模型权重、部署说明和托管 API；Standard 与 Highspeed 为服务模式，合并记录。权重采用 MiniMax-H3-Image 社区许可，包含地区及商业授权条件。",
+      "dateNote": "采用官方发布文章的 11 月 11 日；许可证标注日期为 11 月 10 日。",
+      "tags": [
+        "图像生成",
+        "图像编辑",
+        "开放权重"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "MiniMax · H3-Image 发布",
+          "titleEn": "MiniMax: H3-Image release",
+          "url": "https://www.minimax.io/blog/minimax-h3-image"
+        },
+        {
+          "title": "MiniMax · 官方模型卡与权重",
+          "titleEn": "MiniMax: Official model card and weights",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
+        },
+        {
+          "title": "MiniMax · H3-Image 社区许可",
+          "titleEn": "MiniMax: H3-Image Community License",
+          "url": "https://github.com/MiniMax-AI/MiniMax-H3-Image/blob/main/LICENSE"
+        },
+        {
+          "title": "Artificial Analysis · 文生图评测",
+          "titleEn": "Artificial Analysis: Text-to-image evaluation",
+          "url": "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+        }
+      ],
+      "searchAliases": [
+        "H3 Image",
+        "海螺图像"
+      ]
+    },
+    {
+      "id": "seedream-5-5",
+      "date": "2026-11-09",
+      "name": "Seedream 5.5",
+      "company": "bytedance",
+      "kind": "release",
+      "summary": "加强连续图像编辑，支持直接生成带透明或半透明背景的 RGBA 图像。",
+      "details": "Seedream 5.5 改进多轮编辑时未修改区域的保留、文字排版和图像细节，并引入原生 RGBA 输出，用于生成可继续合成的独立素材。已接入 Dreamina，并进入 Artificial Analysis 图像评测；官方展示的连续编辑案例与内部对比结果不等同于独立基准成绩。",
+      "dateNote": "采用 ByteDance Seed 官方发布文章的 11 月 9 日。",
+      "tags": [
+        "图像生成",
+        "图像编辑"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "ByteDance Seed · Seedream 5.5 发布",
+          "titleEn": "ByteDance Seed: Seedream 5.5 release",
+          "url": "https://seed.bytedance.com/en/blog/more-realistic-images-more-stable-editing-across-100-rounds-introducing-seedream-5-5"
+        },
+        {
+          "title": "ByteDance Seed · 模型介绍",
+          "titleEn": "ByteDance Seed: Model overview",
+          "url": "https://seed.bytedance.com/en/seedream5_5"
+        },
+        {
+          "title": "Artificial Analysis · 文生图评测",
+          "titleEn": "Artificial Analysis: Text-to-image evaluation",
+          "url": "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+        }
+      ],
+      "searchAliases": [
+        "豆包图像5.5",
+        "即梦5.5"
+      ]
+    },
     {
       "id": "claude-fable-5-2",
       "date": "2026-11-09",
@@ -1675,8 +1816,8 @@ window.MODEL_ATLAS = (() => {
       ]
     },
     event('deepseek-v4-1-flash', '2026-09-10', 'DeepSeek-V4.1-Flash', 'deepseek', 'release',
-      '新架构加入原生视觉理解，同时改进推理效率与智能体任务能力。', ['视觉理解', '高效推理'], [ds('news260910'), {"title": "DeepSeek · 1017 版本更新", "titleEn": "DeepSeek: 1017 checkpoint update", "url": "https://api-docs.deepseek.com/zh-cn/news/news261017/"}, {"title": "DeepSeek · 1017 开放权重", "titleEn": "DeepSeek: 1017 open weights", "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"}], false,
-      '官方介绍这一版本为新架构家族中较小的模型，采用非对称编码器与解码器设计。10 月 17 日更新至 V4.1-Flash-1017，改进编程与智能体任务，网页、App 和 API 同步切换，并以 MIT 开放该快照权重。', '保留 9 月 10 日首次发布；10 月 17 日快照由官方称为小版本更新，作为后续进展合并记录。'),
+      '新架构加入原生视觉理解，同时改进推理效率与智能体任务能力。', ['视觉理解', '高效推理'], [ds('news260910'), {"title": "DeepSeek · 1017 版本更新", "titleEn": "DeepSeek: 1017 checkpoint update", "url": "https://api-docs.deepseek.com/zh-cn/news/news261017/"}, {"title": "DeepSeek · 1017 开放权重", "titleEn": "DeepSeek: 1017 open weights", "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"}, {"title": "DeepSeek · API 更新记录", "titleEn": "DeepSeek: API changelog", "url": "https://api-docs.deepseek.com/updates/"}], false,
+      '官方介绍这一版本为新架构家族中较小的模型，采用非对称编码器与解码器设计。10 月 17 日更新至 V4.1-Flash-1017，改进编程与智能体任务，网页、App 和 API 同步切换，并以 MIT 开放该快照权重。 11 月 13 日，托管服务新增搜索、文件与 URL 阅读等应用 API；这些是服务端工具能力，不代表新的模型快照。', '保留 9 月 10 日首次发布；10 月 17 日快照由官方称为小版本更新，作为后续进展合并记录。'),
     event('claude-opus-5-5', '2026-09-22', 'Claude Opus 5.5', 'anthropic', 'release',
       '新一代 Opus 面向复杂知识工作、编程与需要审慎判断的任务。', ['编程', '知识工作'],
       source('Anthropic · Claude Opus 5.5', 'https://www.anthropic.com/claude-opus-5-5'), false,
@@ -2275,7 +2416,7 @@ window.MODEL_ATLAS = (() => {
     },
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-11-10',
+    checkedAt: '2026-11-14',
     scope: '主流语言、多模态、图像与视频生成及世界模型，兼顾具有历史影响的架构研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
@@ -2292,5 +2433,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-11-10', updatedAt: '2026-11-10', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-11-14', updatedAt: '2026-11-14', companies, companyRanking, kinds, themes, releases, coverage });
 })();

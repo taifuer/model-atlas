@@ -1882,6 +1882,46 @@
       "sources": [
         "https://research.nvidia.com/labs/gear/gr00t-2/"
       ]
+    },
+    "gemini-4-hydrogen": {
+      "checkedAt": "2026-11-14",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
+      ]
+    },
+    "qwen-4-max-preview": {
+      "checkedAt": "2026-11-14",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://help.aliyun.com/zh/model-studio/qwen4-max-preview"
+      ]
+    },
+    "minimax-h3-image": {
+      "checkedAt": "2026-11-14",
+      "category": "multimodal",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://www.minimax.io/blog/minimax-h3-image"
+      ]
+    },
+    "seedream-5-5": {
+      "checkedAt": "2026-11-14",
+      "category": "multimodal",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://seed.bytedance.com/en/blog/more-realistic-images-more-stable-editing-across-100-rounds-introducing-seedream-5-5"
+      ]
     }
   }
 };

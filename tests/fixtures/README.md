@@ -7,6 +7,9 @@ the October 8 fixtures use its October 2 publication from the official Hugging F
 The October 15 and October 17 AA fixtures update AA only; Arena retains its separately dated October 11 snapshot.
 The October 17 fixture keeps DeepSeek V4.1 Flash's October 15 record because the source does not identify the 1017 checkpoint. Editorial notes explaining that distinction are checked separately from source facts.
 The newer AA fixtures include the current leaderboard and a separately checked deprecated model page.
+The November 14 fixtures use AA's current table and Arena's November 11 style-control publication.
+Their `sourceEvidence` fields record source checksums and the pinned Arena dataset revision;
+AA models absent from the current table retain their earlier verification dates.
 Each file records its source URL, retrieval
 date, source checksum, metric, model configuration, and selected results; no
 original source pages are included.

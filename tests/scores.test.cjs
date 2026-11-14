@@ -31,10 +31,10 @@ test('published scores exactly match dated public source snapshots and known rel
   assert.equal(scores.entries['gemini-4-argon'].arena.preliminary, undefined);
   assert.equal(scores.entries['gemini-4-carbon'].arena.preliminary, true);
   assert.equal(scores.benchmarks.aa.version, '5.0.1');
-  assert.equal(scores.benchmarks.aa.checkedAt, '2026-11-10');
-  assert.equal(scores.checkedAt, '2026-11-10');
-  assert.equal(scores.benchmarks.arena.checkedAt, '2026-11-10');
-  assert.equal(scores.benchmarks.arena.publishedAt, '2026-11-09', 'Dataset retrieval date is not the leaderboard publication date');
+  assert.equal(scores.benchmarks.aa.checkedAt, '2026-11-14');
+  assert.equal(scores.checkedAt, '2026-11-14');
+  assert.equal(scores.benchmarks.arena.checkedAt, '2026-11-14');
+  assert.equal(scores.benchmarks.arena.publishedAt, '2026-11-11', 'Dataset retrieval date is not the leaderboard publication date');
   assert.equal(scores.entries['muse-wonder'].aa.model, 'Muse Wonder Full (max)');
   assert.equal(scores.cardScopes['muse-wonder'], 'variant');
   assert.equal(scores.entries['muse-wonder'].arena, undefined, 'Do not transfer Wonder results to Full without verified metric scope');
@@ -106,7 +106,7 @@ test('later weight releases and serving variants preserve their own licenses and
   assert.equal(access('kimi-k3-1-pro').status, 'open', 'Public official weights update access without moving the launch date');
   assert.ok(access('kimi-k3-1-pro').licenses.some(license => license.name === 'Kimi K3.1-Pro License'));
   assert.equal(releases.find(entry => entry.id === 'kimi-k3-1-pro').date, '2026-10-23');
-  assert.equal(scores.entries['kimi-k3-1-pro'].arena, undefined, 'K3.1 does not inherit K3 results');
+  assert.equal(scores.entries['kimi-k3-1-pro'].arena.model, 'Kimi K3.1 Pro (Max)', 'Use the independently evaluated K3.1 configuration, not a K3 result');
   assert.doesNotMatch(access('nemotron-3-5-vl-bolt').noteEn, /unreleased/, 'Later weights must not retain an obsolete availability warning');
   const e4b = specifications['nemotron-3-5-vl-bolt'].variants.find(variant => variant.name.includes('E4B'));
   assert.deepEqual(Array.from(e4b.input), ['text']);
