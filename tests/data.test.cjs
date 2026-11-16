@@ -29,6 +29,10 @@ test('every event has valid metadata and a primary source; supporting reports ar
   // These additional official/project/author pages were reviewed for the named event.
   // Keep community-hosted articles and personal author archives URL-specific.
   const reviewedPrimarySources = new Map([
+    ['https://www.qwencloud.com/models/qwen4-max', 'qwen-4-max'],
+    ['https://longcat.ai/platform/docs/ChangeLog.html', 'longcat-2-5'],
+    ['https://vercel.com/changelog/longcat-2-5-now-available-on-ai-gateway', 'longcat-2-5'],
+
     ['https://aistudio.google.com/docs/models/gemini-4-hydrogen', 'gemini-4-hydrogen'],
     ['https://help.aliyun.com/zh/model-studio/qwen4-max-preview', 'qwen-4-max-preview'],
     ['https://help.aliyun.com/zh/model-studio/newly-released-models', 'qwen-4-max-preview'],
@@ -70,6 +74,7 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['https://platform.stepfun.ai/docs/en/guides/models/step-5-preview', 'step-5-preview'],
   ]);
   const reviewedHuggingFacePaths = new Map([
+    ['/meituan-longcat/LongCat-2.5', 'longcat-2-5'],
     ['/MiniMaxAI/MiniMax-H3-Image', 'minimax-h3-image'],
     ['/moonshotai/Kimi-K3.1-Pro', 'kimi-k3-1-pro'],
     ['/moonshotai/Kimi-K3.1-Pro/blob/main/LICENSE', 'kimi-k3-1-pro'],

@@ -4621,6 +4621,68 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           "noteEn": "Directly generates roughly 16-megapixel images (4096 × 4096 when square), with up to 16 reference images. The 33.1B DiT parameter count excludes the separately loaded text encoder."
         }
       ]
+    },
+    "qwen-4-max": {
+      "checkedAt": "2026-11-16",
+      "variants": [
+        {
+          "name": "qwen4-max · API",
+          "basis": "api",
+          "contextTokens": "1M",
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://www.alibabacloud.com/help/en/model-studio/qwen4-max",
+            "https://www.qwencloud.com/models/qwen4-max"
+          ]
+        },
+        {
+          "name": "Qwen4-Max · architecture",
+          "basis": "release",
+          "parameters": "2.4T",
+          "activeParameters": "71B",
+          "sources": [
+            "https://www.alibabacloud.com/en/press-room/alibaba-unveils-qwen4-max?_p_lc=1"
+          ]
+        }
+      ]
+    },
+    "longcat-2-5": {
+      "checkedAt": "2026-11-16",
+      "variants": [
+        {
+          "name": "LongCat-2.5 · API",
+          "basis": "api",
+          "contextTokens": 1048576,
+          "outputTokens": 262144,
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://longcat.ai/platform/docs/api/model-params",
+            "https://huggingface.co/meituan-longcat/LongCat-2.5"
+          ]
+        },
+        {
+          "name": "LongCat-2.5 · weights",
+          "basis": "weights",
+          "parameters": "1.6T",
+          "activeParameters": "48B",
+          "sources": [
+            "https://huggingface.co/meituan-longcat/LongCat-2.5"
+          ]
+        }
+      ]
     }
   }
 });

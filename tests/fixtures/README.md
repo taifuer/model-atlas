@@ -8,6 +8,8 @@ The October 15 and October 17 AA fixtures update AA only; Arena retains its sepa
 The October 17 fixture keeps DeepSeek V4.1 Flash's October 15 record because the source does not identify the 1017 checkpoint. Editorial notes explaining that distinction are checked separately from source facts.
 The newer AA fixtures include the current leaderboard and a separately checked deprecated model page.
 The November 14 fixtures use AA's current table and Arena's November 11 style-control publication.
+The November 16 AA fixture adds Qwen4-Max and retains Qwen3.8-Max-0902 at its earlier verification date.
+Arena remains on the November 14 retrieval of the November 11 publication because the later download is byte-identical.
 Their `sourceEvidence` fields record source checksums and the pinned Arena dataset revision;
 AA models absent from the current table retain their earlier verification dates.
 Each file records its source URL, retrieval

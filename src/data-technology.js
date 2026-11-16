@@ -1,8 +1,8 @@
 // Primary-source history of AI methods, computing frameworks, and deployment.
 (() => {
   const data = {
-  "asOf": "2026-11-14",
-  "updatedAt": "2026-11-14",
+  "asOf": "2026-11-16",
+  "updatedAt": "2026-11-16",
   "accessFilter": false,
   "companies": [
     {
@@ -1884,7 +1884,7 @@
       "category": "deployment",
       "kind": "paper",
       "summary": "把结构化生成程序与运行时结合，复用前缀计算与缓存。",
-      "details": "SGLang 提供生成程序接口，并以 RadixAttention 管理共享前缀。2026 年 10 月集成 DeepSeek Mega 内核、DSpark 推测解码和 SWA 有界重放。11 月 2 日，团队介绍 HiCache 在兼容的多种并行配置与预填充/解码分离部署中的缓存复用，将 KV 缓存扩展到主机内存和外部存储；讯飞 Astron MaaS 已将其用于 GLM CodingPlan 服务。",
+      "details": "SGLang 提供生成程序接口，并以 RadixAttention 管理共享前缀。2026 年 10 月集成 DeepSeek Mega 内核、DSpark 推测解码和 SWA 有界重放。11 月 2 日，团队介绍 HiCache 在兼容的多种并行配置与预填充/解码分离部署中的缓存复用，将 KV 缓存扩展到主机内存和外部存储；讯飞 Astron MaaS 已将其用于 GLM CodingPlan 服务。11 月 12 日，LMSYS 成立 SGLang 联盟，NVIDIA、AMD、Intel、Google、Meta、Cloudflare、Modal 与 RadixArk 共同参与推理优化与工程协作，技术决策仍由项目维护者负责。",
       "dateNote": "日期采用 arXiv 首个公开版本。",
       "tags": [],
       "milestone": true,
@@ -1902,11 +1902,16 @@
           "title": "SGLang · HiCache 分布式缓存与生产应用",
           "titleEn": "SGLang · HiCache distributed caching and production use",
           "url": "https://www.lmsys.org/blog/2026-11-02-hicache-distributed-serving"
+        },
+        {
+          "title": "LMSYS · SGLang 联盟",
+          "titleEn": "LMSYS: SGLang Consortium",
+          "url": "https://www.lmsys.org/blog/2026-11-12-sglang-consortium/"
         }
       ],
       "en": {
         "summary": "A structured generation language and runtime reuse prefix computation and cached state.",
-        "details": "SGLang combines a generation-program interface with RadixAttention for shared prefixes. Its October 2026 integrations include DeepSeek Mega kernels, DSpark speculative decoding and SWA bounded replay. On November 2, the team documented HiCache reuse across compatible parallel configurations and prefill/decode disaggregation, extending KV caching to host memory and external storage. The report describes production use by iFlytek Astron MaaS for GLM CodingPlan serving.",
+        "details": "SGLang combines a generation-program interface with RadixAttention for shared prefixes. Its October 2026 integrations include DeepSeek Mega kernels, DSpark speculative decoding and SWA bounded replay. On November 2, the team documented HiCache reuse across compatible parallel configurations and prefill/decode disaggregation, extending KV caching to host memory and external storage. The report describes production use by iFlytek Astron MaaS for GLM CodingPlan serving. On November 12, LMSYS launched the SGLang Consortium with NVIDIA, AMD, Intel, Google, Meta, Cloudflare, Modal and RadixArk for inference optimization and engineering collaboration. Project maintainers retain responsibility for technical decisions.",
         "dateNote": "Dated to the first public version on arXiv."
       },
       "searchAliases": [
@@ -2927,7 +2932,7 @@
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-14",
+    "checkedAt": "2026-11-16",
     "scope": "算法、计算框架、推理部署与容器沙箱中具有经典性、代表性或影响力的公开节点。",
     "method": "以原始论文、项目公告与发布记录核对日期，区分预览、正式可用和后续更新；不逐条收录常规软件版本。",
     "references": []

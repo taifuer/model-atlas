@@ -1276,6 +1276,16 @@ window.MODEL_ATLAS_EN = {
     "summary": "More consistent multi-turn image editing with native transparent and translucent RGBA output.",
     "details": "Seedream 5.5 improves preservation of unedited regions, typography and image detail across successive edits. Native RGBA output creates standalone assets for further compositing. It is available in Dreamina and has entered Artificial Analysis image evaluations; the vendor's editing demonstrations and internal comparisons are distinct from independent benchmark results.",
     "dateNote": "Uses November 9 from the ByteDance Seed release article."
+  },
+  "qwen-4-max": {
+    "summary": "The Qwen flagship enters general API availability with native vision, a million-token context and multi-step tool use.",
+    "details": "Qwen4-Max uses a mixture-of-experts architecture with 2.4T total parameters and approximately 71B active per token. It accepts text, images and video and produces text. The November 16 release is available through QwenCloud API, Token Plan, QwenWork and Qwen Studio. The formal API supports pay-as-you-go billing; Token Plan is a subscription option.",
+    "dateNote": "Uses the November 16 Alibaba Cloud release announcement. Qwen4-Max-Preview, opened on November 11, remains a separate preview entry."
+  },
+  "longcat-2-5": {
+    "summary": "Meituan’s native multimodal MoE model combines visual understanding with long-horizon coding and tool use.",
+    "details": "The LongCat 2.5 API launched on November 2 and was integrated into Vercel AI Gateway. The model has 1.6T total parameters and approximately 48B active per token; discrete visual tokens are jointly modeled with text for codebase development, visual coding and multi-step tasks. Official weights are available under MIT as of November 16.",
+    "dateNote": "Uses November 2, the formal API launch in the official changelog. Preview access began September 25; weight availability is recorded separately at its review date."
   }
 };
 window.ATLAS_TAGS_EN = {

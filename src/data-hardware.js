@@ -1,7 +1,7 @@
 /* Curated hardware history. Event dates and configurations retain explicit source scope. */
 window.HARDWARE_ATLAS = {
-  "asOf": "2026-11-14",
-  "updatedAt": "2026-11-14",
+  "asOf": "2026-11-16",
+  "updatedAt": "2026-11-16",
   "accessFilter": false,
   "companies": [
     {
@@ -2986,7 +2986,7 @@ window.HARDWARE_ATLAS = {
       "category": "gpu",
       "kind": "announcement",
       "summary": "MI400 GPU 与 Helios 机架系统共同推进大规模 AI 基础设施。",
-      "details": "MI455X 面向 AI，MI430X 面向高精度计算。AMD 于 2026 年 10 月 12 日确认 Helios 正在提升量产规模，首批系统已在 OpenAI、Meta、Microsoft 和 Oracle 安装运行。",
+      "details": "MI455X 面向 AI，MI430X 面向高精度计算。AMD 于 2026 年 10 月 12 日确认 Helios 正在提升量产规模，首批系统已在 OpenAI、Meta、Microsoft 和 Oracle 安装运行。11 月 12 日新增 MI450X，单卡配备 288 GB HBM4；官方规格列明峰值内存带宽 23.3 TB/s、BF16 稠密矩阵算力 5 PFLOPS。面向科学计算的 MI430X 则配备 432 GB HBM4，并支持原生 FP64；两者规格分别记录。",
       "dateNote": "采用 Advancing AI 2026 的产品公布日；初始部署不代表所有云平台均已开放使用。",
       "tags": [
         "GPU"
@@ -3002,12 +3002,68 @@ window.HARDWARE_ATLAS = {
           "title": "AMD · Helios 量产与客户部署进展",
           "titleEn": "AMD · Helios production and customer deployments",
           "url": "https://newsroom.amd.com/news/ocp-2026-amd-ceo-lisa-su-keynote-takeaways/"
+        },
+        {
+          "title": "AMD · MI400 系列扩展",
+          "titleEn": "AMD: MI400 family expansion",
+          "url": "https://newsroom.amd.com/news/amd-advances-instinct-mi400-series-ai-scientific-computing/"
+        },
+        {
+          "title": "AMD · MI450X 产品规格",
+          "titleEn": "AMD: MI450X specifications",
+          "url": "https://www.amd.com/en/products/accelerators/instinct/mi400/mi450x.html"
         }
       ],
       "en": {
         "summary": "MI400 GPUs and Helios rack systems extend AMD large-scale AI infrastructure.",
-        "details": "MI455X targets AI while MI430X targets high-precision computing. On October 12, 2026, AMD reported that Helios was ramping production, with initial systems installed and running at OpenAI, Meta, Microsoft and Oracle.",
+        "details": "MI455X targets AI while MI430X targets high-precision computing. On October 12, 2026, AMD reported that Helios was ramping production, with initial systems installed and running at OpenAI, Meta, Microsoft and Oracle. MI450X was added on November 12 with 288 GB of HBM4 per GPU. Its specifications list 23.3 TB/s peak memory bandwidth and 5 PFLOPS of dense BF16 matrix compute. The scientific-computing MI430X instead has 432 GB of HBM4 and native FP64; its specifications are kept separate.",
         "dateNote": "Dated to the Advancing AI 2026 announcement; initial deployments do not establish general cloud availability."
+      },
+      "searchAliases": [
+        "MI430X",
+        "MI450X",
+        "MI455X",
+        "Helios"
+      ],
+      "hardware": {
+        "variant": "MI450X · 1 GPU",
+        "checkedAt": "2026-11-16",
+        "facts": [
+          {
+            "label": "显存",
+            "labelEn": "Memory",
+            "value": "288 GB HBM4",
+            "chip": true
+          },
+          {
+            "label": "带宽",
+            "labelEn": "Bandwidth",
+            "value": "23.3 TB/s",
+            "chip": true
+          },
+          {
+            "label": "BF16·稠密",
+            "labelEn": "BF16 · Dense",
+            "value": "5 PFLOPS",
+            "chip": true,
+            "metric": "compute",
+            "precision": "BF16",
+            "sparsity": "dense",
+            "scope": "accelerator",
+            "estimate": false
+          },
+          {
+            "label": "架构",
+            "labelEn": "Architecture",
+            "value": "CDNA 5",
+            "chip": false
+          }
+        ],
+        "sources": [
+          "https://www.amd.com/en/products/accelerators/instinct/mi400/mi450x.html"
+        ],
+        "note": "以上为 MI450X 单卡的官方峰值规格，不代表 MI430X、MI455X 或整机架；实际吞吐量取决于模型与运行配置。",
+        "noteEn": "Official peak specifications for one MI450X GPU, not MI430X, MI455X or a complete rack. Actual throughput depends on the model and runtime configuration."
       }
     },
     {
@@ -3243,7 +3299,7 @@ window.HARDWARE_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-14",
+    "checkedAt": "2026-11-16",
     "scope": "具有代表性的 GPU、专用加速器、算力系统及本地设备；日期优先依据一手资料，辅以署名媒体报道。区分产品公布、公开展示、供应计划与实际部署，规格保留芯片、板卡或系统范围。",
     "scopeEn": "Representative GPUs, custom accelerators, compute systems, and local devices. Dates prioritize primary sources with attributed reporting as needed. Announcements, demonstrations, availability plans, and deployments remain distinct; specifications retain chip, card, or system scope."
   }

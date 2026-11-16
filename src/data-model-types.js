@@ -1922,6 +1922,26 @@
       "sources": [
         "https://seed.bytedance.com/en/blog/more-realistic-images-more-stable-editing-across-100-rounds-introducing-seedream-5-5"
       ]
+    },
+    "qwen-4-max": {
+      "checkedAt": "2026-11-16",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://www.alibabacloud.com/en/press-room/alibaba-unveils-qwen4-max?_p_lc=1"
+      ]
+    },
+    "longcat-2-5": {
+      "checkedAt": "2026-11-16",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://huggingface.co/meituan-longcat/LongCat-2.5"
+      ]
     }
   }
 };

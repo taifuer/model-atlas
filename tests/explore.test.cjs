@@ -336,7 +336,7 @@ for (const language of ['zh', 'en']) {
       const checkedRecords = Array.from(scoreHtml.matchAll(/<div class="benchmark-record">[\s\S]*?<\/a><\/div>/g), match => match[0]);
       for (const [key, score] of Object.entries(scores)) {
         const expected = score.checkedAt || current.MODEL_ATLAS_SCORES.benchmarks[key].checkedAt || current.MODEL_ATLAS_SCORES.checkedAt;
-        const content = checkedRecords.find(record => record.includes(escape(score.model)));
+        const content = checkedRecords.find(record => record.includes(escape(score.model)) && record.includes(`href="${escape(score.source)}"`));
         assert.ok(content?.includes(`datetime="${expected}"`), `${record.key}: ${key} keeps its own check date`);
       }
       const headings = Array.from(scoreHtml.matchAll(/<div class="benchmark-heading">[\s\S]*?<\/strong><\/div>/g), match => match[0]);

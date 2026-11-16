@@ -3,7 +3,7 @@
   // Files are bundled locally. A product without a separate mark uses its organization.
   const companies = {
     'thinking-machines': 'thinking-machines.png',
-    krea: 'krea',
+    krea: 'krea', meituan: 'meituan',
     canva: 'canva.ico', fal: 'fal-color', ideogram: 'ideogram', pika: 'pika',
     inception: 'inception', 'llm-d': 'llm-d.png',
     stability: 'stability-color', midjourney: 'midjourney', bfl: 'bfl', liquid: 'liquid', kuaishou: 'kuaishou.ico', runway: 'runway.png', reflection: 'reflection',
@@ -45,7 +45,7 @@
   };
   const families = [
     [/^claude-/, 'claude-color'], [/^gemini-/, 'gemini-color'], [/^gemma-/, 'gemma-color'],
-    [/^qwen-/, 'qwen-color'], [/^grok-/, 'grok'], [/^kimi-/, 'kimi'],
+    [/^longcat-/, 'longcat-color'], [/^qwen-/, 'qwen-color'], [/^grok-/, 'grok'], [/^kimi-/, 'kimi'],
     [/^hunyuan-/, 'hunyuan-color'], [/^(amazon-nova|nova-)/, 'nova-color']
   ];
   const path = name => name ? `assets/icons/${name.includes('.') ? name : name + '.svg'}` : '';

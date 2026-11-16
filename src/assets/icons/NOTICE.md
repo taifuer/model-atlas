@@ -85,3 +85,8 @@ Official website and profile marks above were retrieved on 2026-10-11 for identi
 2026-11-04: `krea.svg` is the unchanged [Krea mark from the official press kit](https://www.krea.ai/press/krea/krea-icon-black.svg), provided for editorial identification. The mark remains its owner’s property.
 
 2026-11-09: `thinking-machines.png` is the unchanged [Thinking Machines website icon](https://thinkingmachines.ai/images/apple-touch-icon.png), used for editorial identification. The mark remains its owner’s property.
+
+## November 16, 2026 additions
+
+- `meituan.svg`: copied unchanged from [Simple Icons](https://github.com/simple-icons/simple-icons/blob/develop/icons/meituan.svg), CC0 1.0 (see `LICENSE-SIMPLE-ICONS.txt`).
+- `longcat-color.svg`: copied unchanged from `@lobehub/icons-static-svg` 1.95.1, MIT (see `LICENSE-LOBEHUB.txt`). Used to identify the LongCat model family.

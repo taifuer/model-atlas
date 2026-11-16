@@ -5,6 +5,7 @@
  */
 window.MODEL_ATLAS = (() => {
   const companies = [
+    {"id": "meituan", "name": "美团", "nameEn": "Meituan", "aliases": "LongCat 龙猫 美团", "color": "#9d8b52"},
     {"id": "thinking-machines", "name": "Thinking Machines", "nameEn": "Thinking Machines", "aliases": "Thinking Machines Lab Inkling Tinker", "color": "#8b7968"},
     {"id": "krea", "name": "Krea", "nameEn": "Krea", "aliases": "Krea AI 图像编辑", "color": "#727b73"},
     {"id": "pika", "name": "Pika", "nameEn": "Pika", "aliases": "Pika Labs H3 Flex 视频生成", "color": "#85816d"},
@@ -49,7 +50,7 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    "checkedAt": "2026-11-14",
+    "checkedAt": "2026-11-16",
     "source": "https://artificialanalysis.ai/leaderboards/models",
     "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
     "metric": "Artificial Analysis Intelligence Index",
@@ -82,6 +83,11 @@ window.MODEL_ATLAS = (() => {
         "score": 46
       },
       {
+        "company": "qwen",
+        "model": "Qwen4 Max",
+        "score": 43
+      },
+      {
         "company": "xai",
         "model": "Grok 4.7 (xhigh)",
         "score": 35
@@ -90,11 +96,6 @@ window.MODEL_ATLAS = (() => {
         "company": "tencent",
         "model": "Tencent Hy4",
         "score": 35
-      },
-      {
-        "company": "qwen",
-        "model": "Qwen3.8 Max (0902)",
-        "score": 34
       },
       {
         "company": "deepseek",
@@ -165,6 +166,81 @@ window.MODEL_ATLAS = (() => {
     return { id, date, name, company, kind, summary, tags, sources: Array.isArray(sources) ? sources : [sources], milestone, details, dateNote };
   }
   const releases = [
+    {
+      "id": "qwen-4-max",
+      "date": "2026-11-16",
+      "name": "Qwen4-Max",
+      "company": "qwen",
+      "kind": "release",
+      "summary": "千问旗舰正式开放 API，结合原生视觉理解、百万 token 上下文与多步工具执行。",
+      "details": "Qwen4-Max 采用 2.4T 总参数、每 token 激活约 71B 参数的专家混合架构，支持文本、图像与视频输入，输出文本。正式版于 11 月 16 日接入 QwenCloud API、Token Plan、QwenWork 和 Qwen Studio。正式 API 支持按量计费，Token Plan 为订阅入口。",
+      "dateNote": "采用阿里云 11 月 16 日正式发布公告；11 月 11 日开放的 Qwen4-Max-Preview 保留为独立预览节点。",
+      "tags": [
+        "推理",
+        "多模态"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "阿里云 · Qwen4-Max 正式发布",
+          "titleEn": "Alibaba Cloud: Qwen4-Max release",
+          "url": "https://www.alibabacloud.com/en/press-room/alibaba-unveils-qwen4-max?_p_lc=1"
+        },
+        {
+          "title": "QwenCloud · 模型与价格",
+          "titleEn": "QwenCloud: Model and pricing",
+          "url": "https://www.qwencloud.com/models/qwen4-max"
+        },
+        {
+          "title": "阿里云 · 模型规格",
+          "titleEn": "Alibaba Cloud: Model specifications",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/qwen4-max"
+        }
+      ],
+      "searchAliases": [
+        "Qwen 4 Max",
+        "千问4",
+        "通义千问4"
+      ]
+    },
+    {
+      "id": "longcat-2-5",
+      "date": "2026-11-02",
+      "name": "LongCat 2.5",
+      "company": "meituan",
+      "kind": "release",
+      "summary": "美团原生多模态 MoE 模型，将视觉理解与长流程编程、工具调用结合。",
+      "details": "LongCat 2.5 的正式 API 于 11 月 2 日上线，并接入 Vercel AI Gateway。模型具有 1.6T 总参数，每 token 激活约 48B 参数；视觉信息经离散化后与文本共同建模，用于代码库开发、视觉编程和多步任务。截至 11 月 16 日，官方已以 MIT 许可开放模型权重。",
+      "dateNote": "采用官方变更记录中的 11 月 2 日正式 API 上线日期；预览版于 9 月 25 日开放，权重开放状态另按核对日期记录。",
+      "tags": [
+        "多模态",
+        "编程",
+        "开放权重"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "LongCat · API 发布记录",
+          "titleEn": "LongCat: API release history",
+          "url": "https://longcat.ai/platform/docs/ChangeLog.html"
+        },
+        {
+          "title": "LongCat · 官方模型卡与权重",
+          "titleEn": "LongCat: Official model card and weights",
+          "url": "https://huggingface.co/meituan-longcat/LongCat-2.5"
+        },
+        {
+          "title": "Vercel · AI Gateway 接入",
+          "titleEn": "Vercel: AI Gateway integration",
+          "url": "https://vercel.com/changelog/longcat-2-5-now-available-on-ai-gateway"
+        }
+      ],
+      "searchAliases": [
+        "LongCat-2.5",
+        "美团龙猫",
+        "Meituan LongCat"
+      ]
+    },
     {
       "id": "gemini-4-hydrogen",
       "date": "2026-11-12",
@@ -2416,7 +2492,7 @@ window.MODEL_ATLAS = (() => {
     },
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-11-14',
+    checkedAt: '2026-11-16',
     scope: '主流语言、多模态、图像与视频生成及世界模型，兼顾具有历史影响的架构研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
@@ -2433,5 +2509,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-11-14', updatedAt: '2026-11-14', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-11-16', updatedAt: '2026-11-16', companies, companyRanking, kinds, themes, releases, coverage });
 })();

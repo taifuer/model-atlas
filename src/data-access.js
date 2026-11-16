@@ -1240,6 +1240,28 @@
     "source": "https://seed.bytedance.com/en/blog/more-realistic-images-more-stable-editing-across-100-rounds-introducing-seedream-5-5"
   }
 });
+  Object.assign(models, {
+  "qwen-4-max": {
+    "status": "closed",
+    "checkedAt": "2026-11-16",
+    "source": "https://www.alibabacloud.com/en/press-room/alibaba-unveils-qwen4-max?_p_lc=1"
+  },
+  "longcat-2-5": {
+    "status": "open",
+    "checkedAt": "2026-11-16",
+    "source": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "MIT",
+        "source": "https://huggingface.co/meituan-longcat/LongCat-2.5"
+      }
+    ],
+    "note": "开放状态按核对时已公开的官方权重记录；API 上线日期不等同于首次公开权重的日期。",
+    "noteEn": "Access reflects the official weights available at review time; the API launch date does not establish when weights first became public."
+  }
+});
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

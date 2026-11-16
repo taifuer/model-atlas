@@ -1888,6 +1888,51 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
           "noteEn": "Standard API rates for uncached input and output. Pricing is flat across the context window; output includes thinking tokens."
         }
       ]
+    },
+    "qwen-4-max": {
+      "checkedAt": "2026-11-16",
+      "variants": [
+        {
+          "name": "qwen4-max · QwenCloud",
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 1.5,
+              "output": 4.5,
+              "label": "标准 API",
+              "labelEn": "Standard API"
+            }
+          ],
+          "sources": [
+            "https://www.qwencloud.com/models/qwen4-max"
+          ],
+          "note": "按每百万 token 记录标准未缓存输入与输出价格；缓存命中输入为 $0.075。Token Plan 订阅费用另计。",
+          "noteEn": "Standard uncached input and output rates per million tokens. Cached input is $0.075. Token Plan subscriptions are priced separately."
+        }
+      ]
+    },
+    "longcat-2-5": {
+      "checkedAt": "2026-11-16",
+      "variants": [
+        {
+          "name": "LongCat-2.5 · API",
+          "currency": "USD",
+          "promotional": true,
+          "tiers": [
+            {
+              "input": 0.3,
+              "output": 1.2,
+              "label": "限时优惠",
+              "labelEn": "Limited-time offer"
+            }
+          ],
+          "sources": [
+            "https://longcat.ai/platform/docs/pricing/longcat-2.5"
+          ],
+          "note": "官方列为限时优惠，未注明结束日期；缓存命中输入为 $0.006 / 百万 tokens。以服务平台与账单中的有效价格为准。",
+          "noteEn": "Listed as a limited-time offer without a stated end date. Cached input costs $0.006 per million tokens. Effective platform and billing rates apply."
+        }
+      ]
     }
   }
 });
