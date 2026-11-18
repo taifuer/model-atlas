@@ -65,24 +65,24 @@
     benchmarks: {
       zh: {
         title: '大模型与智能体评测 · Model Atlas',
-        description: '按综合能力、推理与知识工作、编程、工具与智能体分类查阅公开评测平台和基准测试，包括 Artificial Analysis、Arena、LiveBench、Terminal-Bench 与 OSWorld，了解评测方法和比较范围。',
+        description: '按综合能力、推理与知识、编程和智能体任务查阅 8 项公开评测，包括 Artificial Analysis、HLE、Terminal-Bench 与 OSWorld。各项注明版本、评测方法和比较范围。',
         keywords: ['大模型评测', '智能体评测', 'Artificial Analysis', 'Arena', 'LiveBench', 'Epoch AI', 'Terminal-Bench', 'OSWorld'],
       },
       en: {
         title: 'AI Model & Agent Benchmarks · Model Atlas',
-        description: 'Explore model and agent evaluations by field, including Artificial Analysis, Arena, LiveBench, Terminal-Bench and OSWorld. Read their methods and limits of comparison.',
+        description: 'Explore eight public model and agent evaluations, including Artificial Analysis, HLE, Terminal-Bench and OSWorld. Compare benchmark versions, methods and testing conditions.',
         keywords: ['AI model benchmarks', 'agent evaluations', 'Artificial Analysis', 'Arena', 'LiveBench', 'Epoch AI', 'Terminal-Bench', 'OSWorld'],
       },
     },
     about: {
       zh: {
         title: '关于与收录标准 · Model Atlas',
-        description: '了解 Model Atlas 的收录标准、日期约定和资料核验方法，以及开放状态、模型规格、API 价格与评测分数的记录口径。查阅参考榜单、数据维护方式与项目说明。',
+        description: '了解 Model Atlas 如何收录有历史或技术意义的发布、核验实际应用、合并同一家族的阶段，并查阅日期、模型规格、API 价格、开放状态、评测分数与历史榜单的资料来源。',
         keywords: ['Model Atlas', '收录标准', '数据来源', '评测口径', '数据维护'],
       },
       en: {
         title: 'About and Selection Criteria · Model Atlas',
-        description: 'Read the selection criteria, date conventions and source-review methods behind Model Atlas, including how model access, specifications, prices and scores are recorded.',
+        description: 'Read how Model Atlas selects releases, verifies real-world use and groups stages within a family. Find sources for dates, access, specifications, prices, scores and historical benchmarks.',
         keywords: ['Model Atlas', 'selection criteria', 'data sources', 'benchmark methodology', 'data maintenance'],
       },
     },

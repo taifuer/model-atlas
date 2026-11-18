@@ -38,6 +38,9 @@ test('source inventory deduplicates documents and preserves exact entry identiti
   for (const section of ['models', 'agents', 'hardware', 'technology']) assert.ok(actual.some(source => source.references.some(ref => ref.section === section)));
   for (const scope of ['specifications.', 'prices.', 'scores.', 'types.']) assert.ok(actual.some(source => source.references.some(ref => ref.field.startsWith(scope))), scope);
   assert.ok(actual.some(source => source.references.some(ref => ref.entryId === 'zcode' || ref.entryId?.startsWith('zcode-'))));
+  const sol = actual.find(source => source.url === 'https://developers.openai.com/api/docs/models/gpt-6.2-sol');
+  assert.ok(sol.references.some(ref => ref.entryId === 'gpt-6-2-sol' && ref.field.startsWith('release.sources[')));
+  assert.ok(!sol.references.some(ref => ref.field.startsWith('release.history')));
 });
 
 test('review priorities follow mutable field scopes, not paper dates', async () => {

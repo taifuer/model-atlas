@@ -19,8 +19,8 @@ test('release dates are real, sorted, unique events within the research cutoff',
     assert.ok(release.date <= data.asOf, `Future event: ${release.name}`);
     previousDate = release.date;
   }
-  assert.equal(data.releases[0].id, 'transformer');
-  assert.equal(data.releases[1].id, 'gpt-1');
+  assert.equal(data.releases[0].id, 'gpt-1');
+  assert.equal(data.releases[0].date, '2018-06-11');
 });
 
 test('every event has valid metadata and a primary source; supporting reports are explicit', () => {
@@ -67,7 +67,8 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['https://arankomatsuzaki.wordpress.com/2021/06/04/gpt-j/', 'gpt-j-6b'],
     ['https://university.chatglm.cn/blog', 'chatglm-6b'],
     ['https://allenai.org/blog/hello-olmo-a-truly-open-llm-43f7e7359222', 'olmo'],
-    ['https://blog.jetbrains.com/ai/2026/10/mellum2-1-gets-to-work-a-fast-open-model-for-coding-agents/', 'mellum-2-1-thinking'],
+    ['https://aclanthology.org/2024.acl-long.841/', 'olmo'],
+    ['https://proceedings.neurips.cc/paper_files/paper/2023/file/43e9d647ccd3e4b7b5baab53f0368686-Paper-Conference.pdf', 'starcoder'],
     ['https://crfm.stanford.edu/2023/03/13/alpaca.html', 'stanford-alpaca'],
     ['https://llava-vl.github.io/', 'llava'],
     ['https://ai.google.dev/gemma/docs/get_started', 'gemma-3'],
@@ -112,7 +113,9 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['/EleutherAI/gpt-j-6b', 'gpt-j-6b'],
     ['/blog/starcoder', 'starcoder'],
     ['/allenai/OLMo-7B', 'olmo'],
-    ['/JetBrains/Mellum2.1-12B-A2.5B-Thinking', 'mellum-2-1-thinking'],
+    ['/nomic-ai/gpt4all-j', 'gpt-j-6b'],
+    ['/datasets/open-llm-leaderboard/allenai__OLMo-7B-hf-details', 'olmo'],
+    ['/thinkingmachines/Inkling-2-Small', 'inkling-2-small'],
     ['/blog/bloom', 'bloom'],
     ['/Qwen/Qwen3-Next-80B-A3B-Instruct', 'qwen-3-next'],
     ['/zai-org/GLM-4.5', 'glm-4-5'],
@@ -158,9 +161,8 @@ test('every event has valid metadata and a primary source; supporting reports ar
 
 test('research, product launches, and previews retain their distinct date meanings', () => {
   const find = id => data.releases.find(release => release.id === id);
-  assert.equal(find('transformer').date, '2017-06-12');
-  assert.equal(find('transformer').kind, 'paper');
-  assert.ok(find('transformer').dateNote && find('transformer').milestone);
+  assert.equal(find('gpt-1').kind, 'paper');
+  assert.ok(find('gpt-1').dateNote && find('gpt-1').milestone);
   assert.equal(find('gpt-3').date, '2020-05-28');
   assert.equal(find('gpt-3').kind, 'paper');
   assert.equal(find('chatgpt').kind, 'product');
@@ -264,7 +266,7 @@ test('agent entries have distinct categories, bilingual descriptions, and primar
       }
     }
   }
-  for (const id of ['hermes-agent', 'workbuddy', 'deepseek-harness', 'aider', 'cline-2', 'opencode-1', 'qwen-code', 'kimi-cli-1', 'goose', 'kiro', 'qoder', 'trae-solo', 'google-antigravity']) assert.ok(ids.has(id), `Missing agent: ${id}`);
+  for (const id of ['hermes-agent', 'workbuddy', 'deepseek-harness', 'aider', 'cline-2', 'opencode-1', 'qwen-code', 'kimi-cli-1', 'goose', 'kiro', 'qoder', 'zcode-open-source', 'google-antigravity']) assert.ok(ids.has(id), `Missing agent: ${id}`);
   assert.equal(agents.releases.find(entry => entry.id === 'workbuddy').date, '2026-03-04');
   assert.equal(agents.releases.find(entry => entry.id === 'deepseek-harness').kind, 'preview');
   for (const category of Object.keys(agents.categories)) assert.ok(agents.releases.some(entry => entry.category === category));

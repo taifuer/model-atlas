@@ -11,7 +11,7 @@
     if (target[id]) throw new Error(`Duplicate access classification: ${id}`);
     target[id] = { status };
   });
-  add(models, 'open', 'transformer llama-1 grok-1 qwen-3-8-flash qwen-3-8-max bloom stanford-alpaca llava');
+  add(models, 'open', 'llama-1 grok-1 qwen-3-8-flash qwen-3-8-max bloom stanford-alpaca llava');
   add(models, 'open', `
     gpt-1 gpt-2 bert t5 phi-3 phi-4
     llama-2 qwen-7b mistral-7b mixtral-8x7b gemma-1 llama-3 deepseek-v2 qwen-2 gemma-2
@@ -31,7 +31,7 @@
     mistral-medium-3 claude-4 grok-4 claude-opus-4-1 gpt-5 claude-sonnet-4-5 claude-haiku-4-5
     gpt-5-1 gemini-3 claude-opus-4-5 nova-2-lite gpt-5-2 gemini-3-flash
     claude-opus-4-6 gpt-5-3-codex gpt-5-3-codex-spark seed-2 claude-sonnet-4-6 gemini-3-1
-    gpt-5-4 mimo-v2-pro muse-spark claude-opus-4-7 qwen-3-6-max-preview gpt-5-5
+    gpt-5-4 mimo-v2-pro muse-spark claude-opus-4-7 gpt-5-5
     gemini-3-5-flash qwen-3-7-max claude-opus-4-8 claude-fable-5 claude-sonnet-5
     gpt-5-6 muse-spark-1-1 grok-4-5 gemini-3-6-flash claude-opus-5
     grok-4-6 gemini-3-7-flash claude-fable-5-1 gemini-3-8-flash muse-spark-1-3 qwen-3-8-max-0902
@@ -54,7 +54,6 @@
     'hunyuan-t1': 'https://cloud.tencent.com/document/product/1729/131925',
     'palm': 'https://developers.googleblog.com/en/palm-api-makersuite-an-approachable-way-to-start-prototyping-and-building-generative-ai-applications/',
     'gpt-3': 'https://openai.com/index/openai-api/',
-    transformer: 'https://github.com/tensorflow/tensor2tensor',
     'grok-1': 'https://x.ai/news/grok-os',
     'qwen-3-8-flash': 'https://www.qwencloud.com/models/qwen3.8-flash',
     'qwen-3-8-max': 'https://www.qwencloud.com/models/qwen3.8-max',
@@ -91,7 +90,6 @@
   };
   Object.entries(modelSources).forEach(([id, source]) => { models[id].source = source; });
   const note = (target, id, zh, en) => Object.assign(target[id], { note: zh, noteEn: en });
-  note(models, 'transformer', '此节点记录架构论文；开源指 Tensor2Tensor 参考实现，不表示论文公开当天已开放模型权重。', 'This entry records the architecture paper. Open source refers to the Tensor2Tensor reference implementation, not weight availability on the paper publication date.');
   note(models, 'llama-1', '初代采用申请式研究访问与非商业研究许可。', 'The original release required research access approval and a non-commercial research license.');
   note(models, 'grok-1', '开源指 2024 年 3 月开放的 Grok-1 基础模型；托管产品另行提供。时间线保留首次预览日期。', 'Open source refers to the Grok-1 base weights released in March 2024. The hosted product is separate; the timeline retains the original preview date.');
   note(models, 'phi-4', '当前已开放权重；时间线仍采用原始首发日期。', 'Weights are now available; the timeline retains the original announcement date.');
@@ -116,7 +114,7 @@
   `);
   add(agents, 'closed', `
     devin replit-agent windsurf cursor-agent operator deep-research claude-code codex-cloud
-    copilot-coding-agent jules kiro chatgpt-agent trae-solo qoder manus-1-5 kiro-cli
+    copilot-coding-agent jules kiro chatgpt-agent qoder manus-1-5 kiro-cli
     google-antigravity kiro-autonomous cowork codex-app workbuddy cowork-unified
   `);
   const agentSources = {
@@ -181,11 +179,6 @@
     "status": "open",
     "checkedAt": "2026-10-11",
     "source": "https://huggingface.co/allenai/OLMo-7B"
-  },
-  "mellum-2-1-thinking": {
-    "status": "open",
-    "checkedAt": "2026-10-11",
-    "source": "https://huggingface.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking"
   }
 });
   Object.assign(agents, {
@@ -216,20 +209,10 @@
     "note": "Zed 编辑器代码采用 GPL 3.0；连接的模型与托管服务适用各自条款。",
     "noteEn": "The Zed editor code uses GPL 3.0; connected models and hosted services retain their own terms."
   },
-  "amp": {
-    "status": "closed",
-    "checkedAt": "2026-10-11",
-    "source": "https://ampcode.com/notes/how-i-use-amp"
-  },
   "factory-droids": {
     "status": "closed",
     "checkedAt": "2026-10-11",
     "source": "https://factory.com/news/factory-is-ga"
-  },
-  "codebuddy-code": {
-    "status": "closed",
-    "checkedAt": "2026-10-11",
-    "source": "https://developer.cloud.tencent.com/article/2566993"
   },
   "zcode-open-source": {
     "status": "open",
@@ -857,21 +840,6 @@
   }
 });
   Object.assign(agents, {
-  "grok-build": {
-    "status": "open",
-    "checkedAt": "2026-10-20",
-    "source": "https://github.com/xai-org/grok-build/blob/main/LICENSE",
-    "note": "工具源码于 2026 年 7 月 15 日开放，采用 Apache-2.0；连接的模型和托管服务适用各自条款。",
-    "noteEn": "The tool source was opened on July 15, 2026 under Apache-2.0. Connected models and hosted services retain their own terms.",
-    "licenses": [
-      {
-        "object": "工具代码",
-        "objectEn": "Tool code",
-        "name": "Apache 2.0",
-        "source": "https://github.com/xai-org/grok-build/blob/main/LICENSE"
-      }
-    ]
-  },
   "replit-agent-4": {
     "status": "closed",
     "checkedAt": "2026-10-20",
@@ -881,13 +849,6 @@
   }
 });
   Object.assign(agents, {
-  "claude-duet": {
-    "status": "closed",
-    "checkedAt": "2026-10-25",
-    "source": "https://claude.com/resources/articles/claude-duet",
-    "note": "Anthropic 的托管订阅产品；研究预览与连接开放协议不代表产品源码开放。",
-    "noteEn": "A hosted Anthropic subscription product. Research-preview access and connections to open protocols do not make the product open source."
-  }
 });
   Object.assign(models, {
   "kimi-k3-1-pro": {
@@ -1169,11 +1130,19 @@
     "noteEn": "Available through Google hosted services without released model weights."
   },
   "inkling-2-small": {
-    "checkedAt": "2026-11-09",
-    "status": "closed",
-    "source": "https://thinkingmachines.ai/news/inkling-2-small/",
-    "note": "当前通过 Tinker 提供；官方计划在外部测试完成后开放权重，截至核对日尚未发布。",
-    "noteEn": "Currently available through Tinker. Public weights are planned after external testing but had not been released at this review."
+    "checkedAt": "2026-11-18",
+    "status": "open",
+    "source": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+    "note": "11 月 12 日起，模型权重可按 Apache 2.0 许可下载。",
+    "noteEn": "The weights have been available for download under Apache 2.0 since November 12.",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "Apache 2.0",
+        "source": "https://thinkingmachines.ai/model-card/inkling-2-small/"
+      }
+    ]
   },
   "gpt-6-cyber": {
     "checkedAt": "2026-11-09",

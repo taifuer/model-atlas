@@ -110,7 +110,7 @@ test('research configurations, API versions, family variants, and extensions sta
   assert.equal(variants('gpt-4o')[0].name, 'gpt-4o-2024-08-06');
   assert.equal(variants('gpt-4o')[0].parameters, undefined);
   assert.equal(variants('gpt-1')[0].trainingTokens, 512);
-  assert.ok(variants('transformer').every(variant => !variant.contextTokens && variant.basis === 'paper'));
+  assert.equal(specs.entries.transformer, undefined, 'The architecture paper has no model context-window specification');
   assert.equal(variants('gemini-3-8-flash')[0].contextTokens, undefined);
   assert.equal(variants('gemini-3-8-flash')[0].inputTokens, 1048576);
   assert.equal(variants('qwen-3')[0].contextTokens, 32768);

@@ -9,7 +9,6 @@
   const firstInYear = new Map(years.map(year => [year.year, periodIndex.get(year.periods[0].key)]));
   const lastInYear = new Map(years.map(year => [year.year, periodIndex.get(year.periods.at(-1).key)]));
   const batchSize = 30;
-  const canonicalKey = key => key === 'models:transformer' ? 'technology:transformer' : key;
   const root = document.querySelector('#explore-root');
   const sections = Object.keys(catalog.sections);
   const label = key => key === 'hardware' ? L('算力硬件', 'Hardware') : english ? catalog.sections[key].en : catalog.sections[key].zh;
@@ -18,27 +17,29 @@
   const periodName = period => period.month ? L(`${period.year} 年 ${Number(period.month)} 月`, `${monthName(period.month)} ${period.year}`) : L(`${period.year} 年`, period.year);
   function locationState() {
     const params = new URLSearchParams(location.search);
-    let hashKey;
-    try { if (location.hash.startsWith('#entry=')) hashKey = canonicalKey(decodeURIComponent(location.hash.slice(7))); } catch { /* Ignore malformed legacy links. */ }
-    const key = periodByEntry.has(hashKey) ? hashKey : canonicalKey(params.get('at'));
+    let record;
+    try { if (location.hash.startsWith('#entry=')) record = catalog.get(decodeURIComponent(location.hash.slice(7))); } catch { /* Ignore malformed legacy links. */ }
+    record ||= catalog.get(params.get('at'));
     const requestedPeriod = params.get('period');
     const legacyYear = /^(\d{4})-unknown$/.exec(requestedPeriod)?.[1];
     const requestedYear = legacyYear || params.get('year') || params.get('from');
-    const entryOrPeriod = periodByEntry.get(key) ?? periodIndex.get(requestedPeriod);
+    const entryOrPeriod = periodByEntry.get(record?.parentKey) ?? periodIndex.get(requestedPeriod);
     const index = entryOrPeriod ?? firstInYear.get(requestedYear);
     const revealIndex = entryOrPeriod ?? lastInYear.get(requestedYear);
-    return { index: index ?? 0, revealIndex: revealIndex ?? 0, key: periodByEntry.has(key) ? key : null, query: (params.get('q') || '').slice(0, 300), positioned: index !== undefined };
+    return { index: index ?? 0, revealIndex: revealIndex ?? 0, key: record?.key || null, query: (params.get('q') || '').slice(0, 300), positioned: index !== undefined };
   }
   const initial = locationState();
   let query = initial.query, matches = [], matchCursor = -1;
+  let matchKeys = new Set(), matchedParents = new Set();
   let active = -1, activeYear, currentIndex = initial.index, selectedKey = initial.key;
   let scrollFrame = 0, navigatingUntil = 0;
   let interacted = false, offsets = [];
   const search = document.querySelector('#search');
   function eventHTML(entry) {
     const release = catalog.text(entry, language);
+    const title = catalog.title(entry, language);
     const icon = window.ATLAS_ICONS.release(entry.release);
-    return `<article class="journey-event" data-entry-key="${escape(entry.key)}" style="--event-color:var(--lane-${entry.section})"><h3><button data-open-entry="${escape(entry.key)}" aria-label="${escape(L('查看详情：', 'View details: ') + release.name)}">${icon ? `<img class="brand-icon" src="${escape(icon)}" width="23" height="23" alt="" loading="lazy" decoding="async">` : ''}<span>${escape(release.name)}</span></button></h3><div class="journey-event-meta"><span>${escape(companyName(entry.company))}</span>${entry.sections.map(section => `<span class="journey-category" data-category="${section}">${label(section)}</span>`).join('')}</div><p class="journey-summary">${escape(release.summary)}</p></article>`;
+    return `<article class="journey-event" data-entry-key="${escape(entry.key)}" style="--event-color:var(--lane-${entry.section})"><h3><button data-open-entry="${escape(entry.key)}" aria-label="${escape(L('查看详情：', 'View details: ') + title)}">${icon ? `<img class="brand-icon" src="${escape(icon)}" width="23" height="23" alt="" loading="lazy" decoding="async">` : ''}<span>${escape(title)}</span></button></h3><div class="journey-event-meta"><span>${escape(companyName(entry.company))}</span>${entry.sections.map(section => `<span class="journey-category" data-category="${section}">${label(section)}</span>`).join('')}</div><p class="journey-summary">${escape(release.summary)}</p></article>`;
   }
   function dayHTML(day) {
     const dated = day.date.length === 10;
@@ -61,6 +62,30 @@
   controls.append(root.querySelector('#journey-search'));
   const yearNav = root.querySelector('.journey-years');
   const monthsNav = root.querySelector('#journey-months');
+  function updateCardMatches(key) {
+    const record = catalog.get(key);
+    const card = cards.get(record?.parentKey);
+    if (!card) return false;
+    const parent = catalog.get(record.parentKey);
+    card.classList.toggle('is-match', matchedParents.has(parent.key));
+    const children = (parent.release.history || []).map(child => catalog.get(`${parent.section}:${child.id}`))
+      .filter(child => matchKeys.has(child.key) || child.key === selectedKey);
+    let group = card.querySelector('[data-history-matches]');
+    if (!children.length) {
+      group?.remove();
+      return Boolean(group);
+    }
+    const keys = children.map(child => child.key).join(' ');
+    if (group?.dataset.historyMatches === keys) return false;
+    if (!group) {
+      group = document.createElement('div');
+      group.className = 'card-tags';
+      card.append(group);
+    }
+    group.dataset.historyMatches = keys;
+    group.innerHTML = children.map(child => `<a class="source-link" data-history-match data-open-entry="${escape(child.key)}" href="${escape(catalog.timelineUrl(child, language))}">${escape(catalog.title(child, language))} · ${child.release.date.replaceAll('-', '.')}</a>`).join('');
+    return true;
+  }
   function nextBatchEnd() {
     let added = 0, index = periodNodes.length;
     while (index < periods.length && added < batchSize) added += periods[index++].entries.length;
@@ -80,7 +105,10 @@
     eventRoot.insertAdjacentHTML('beforeend', periods.slice(first, end + 1).map((period, offset) => periodHTML(period, first + offset)).join(''));
     const added = [...eventRoot.children].slice(first);
     periodNodes.push(...added);
-    for (const node of added) for (const card of node.querySelectorAll('[data-entry-key]')) cards.set(card.dataset.entryKey, card);
+    for (const node of added) for (const card of node.querySelectorAll('[data-entry-key]')) {
+      cards.set(card.dataset.entryKey, card);
+      updateCardMatches(card.dataset.entryKey);
+    }
     visibleCount = cards.size;
     updateDisclosure();
     // Keep the existing reading position when new months push the controls below.
@@ -113,7 +141,9 @@
     offsets = periodNodes.map(node => node.getBoundingClientRect().top + scrollY);
   }
   function follow(index, key = null) {
-    const node = key ? cards.get(key) : periodNodes[index];
+    const record = catalog.get(key);
+    const card = cards.get(record?.parentKey);
+    const node = card && record.key !== record.parentKey ? card.querySelector(`[data-open-entry="${CSS.escape(key)}"]`) : card || periodNodes[index];
     if (!node) return;
     const destination = index === 0 && !key ? 0 : Math.min(document.documentElement.scrollHeight - innerHeight, Math.max(0, scrollY + node.getBoundingClientRect().top - readingTop()));
     navigatingUntil = performance.now() + 100;
@@ -149,8 +179,14 @@
     if (!Number.isFinite(index)) return;
     interacted = true;
     currentIndex = Math.max(0, Math.min(periods.length - 1, Math.trunc(index)));
+    const previousKey = selectedKey;
     selectedKey = key;
     appendThrough(currentIndex);
+    if (key !== previousKey) {
+      const changed = updateCardMatches(previousKey);
+      if (updateCardMatches(key) || changed) measure();
+    }
+    if (key && matchKeys.has(key)) matchCursor = matches.indexOf(key);
     update(); writeLocation();
     if (scroll) follow(currentIndex, key);
   }
@@ -159,13 +195,20 @@
     if (button) { appendThrough(lastInYear.get(button.dataset.year)); goTo(firstInYear.get(button.dataset.year)); }
   });
   monthsNav.addEventListener('click', event => { const button = event.target.closest('[data-period]'); if (button) goTo(periodIndex.get(button.dataset.period)); });
-  function goToEntry(key, scroll = true) { const canonical = canonicalKey(key), index = periodByEntry.get(canonical); if (index !== undefined) goTo(index, scroll, canonical); }
+  function goToEntry(key, scroll = true) {
+    const record = catalog.get(key);
+    const index = periodByEntry.get(record?.parentKey);
+    if (index !== undefined) goTo(index, scroll, record.key);
+  }
   function applyQuery(value, navigate = true) {
     query = value.trim().slice(0, 300); matchCursor = -1;
     if (query) appendThrough(periods.length - 1);
-    matches = catalog.search(query, language).map(entry => entry.key);
-    const matchingKeys = new Set(matches);
-    for (const [key, card] of cards) card.classList.toggle('is-match', matchingKeys.has(key));
+    const results = catalog.search(query);
+    matches = results.map(entry => entry.key);
+    matchKeys = new Set(matches);
+    matchedParents = new Set(results.map(entry => entry.parentKey));
+    if (navigate && !matchKeys.has(selectedKey)) selectedKey = null;
+    for (const key of cards.keys()) updateCardMatches(key);
     search.value = query; search.dispatchEvent(new Event('input'));
     root.querySelector('#journey-search').hidden = !query;
     root.querySelector('#journey-search-status').textContent = L(`“${query}” · ${matches.length} 条匹配`, `“${query}” · ${matches.length} ${matches.length === 1 ? 'match' : 'matches'}`);
@@ -174,7 +217,11 @@
     if (navigate && matches.length) { matchCursor = 0; goToEntry(matches[0]); }
     else if (navigate) { markInteraction(); writeLocation(); }
   }
-  root.querySelector('#journey-search-clear').addEventListener('click', () => { applyQuery('', false); writeLocation(); root.querySelector('#journey-months [aria-current]')?.focus({ preventScroll: true }); });
+  root.querySelector('#journey-search-clear').addEventListener('click', () => {
+    selectedKey = catalog.get(selectedKey)?.parentKey || null;
+    applyQuery('', false); writeLocation();
+    root.querySelector('#journey-months [aria-current]')?.focus({ preventScroll: true });
+  });
   function jumpMatch(direction) {
     if (!matches.length) return;
     matchCursor = matchCursor < 0 ? (direction > 0 ? 0 : matches.length - 1) : (matchCursor + direction + matches.length) % matches.length;
@@ -195,7 +242,7 @@
       const box = event.target.getBoundingClientRect();
       // Pointer focus must not move the button between pointerdown and click.
       const reveal = event.target.matches(':focus-visible') && (box.top < readingTop() || box.bottom > innerHeight - 22);
-      goToEntry(card.dataset.entryKey, reveal);
+      goToEntry(event.target.closest('[data-open-entry]')?.dataset.openEntry || card.dataset.entryKey, reveal);
     }
   });
   document.addEventListener('keydown', markInteraction);

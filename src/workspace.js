@@ -24,32 +24,47 @@
     } else if (previousFocus?.dataset.openEntry) previousSelector = `[data-open-entry="${CSS.escape(previousFocus.dataset.openEntry)}"]`;
   }
   function openEntry(key, update = true, section = '') {
-    const record = catalog.get(key);
+    if (typeof update === 'string') { section = update; update = true; }
+    let record = catalog.get(key);
     if (!record) return;
+    const parent = catalog.get(record.parentKey);
+    if (section.startsWith('history-')) {
+      const child = catalog.get(`${record.section}:${section.slice(8)}`);
+      if (child?.parentKey === parent.key) record = child;
+      section = '';
+    }
     const alreadyOpen = dialog.open;
     if (!alreadyOpen) rememberFocus();
-    document.dispatchEvent(new CustomEvent('atlas:entry-open', { detail: key }));
+    document.dispatchEvent(new CustomEvent('atlas:entry-open', { detail: record.key }));
     activeEntry = record;
     if (searchDialog.open) searchDialog.close();
     if (update) {
       const url = new URL(location.href);
-      url.hash = record.section === page ? `release-${record.release.id}` : `entry=${encodeURIComponent(key)}`;
+      url.hash = record.section === page ? `release-${record.release.id}` : `entry=${encodeURIComponent(record.key)}`;
       if (url.href !== location.href) {
-        const state = { ...history.state, atlasDetail: { key } };
+        const state = { ...history.state, atlasDetail: { key: record.key } };
         history[alreadyOpen ? 'replaceState' : 'pushState'](state, '', url);
       }
     }
-    content.innerHTML = window.ATLAS_DETAILS.render(record.section, record.raw, record.release.id, language);
+    content.innerHTML = window.ATLAS_DETAILS.render(parent.section, parent.raw, parent.release.id, language);
     document.body.classList.add('modal-open');
     window.scrollTo({ top: scrollY, behavior: 'instant' });
     if (!alreadyOpen) dialog.showModal();
     content.scrollTop = 0;
-    if (['specs', 'pricing', 'scores'].includes(section)) {
-      const heading = content.querySelector(`#${section}-title`);
-      if (heading) {
-        heading.focus({ preventScroll: true });
-        content.scrollTop = heading.getBoundingClientRect().top - content.getBoundingClientRect().top - 12;
+    let heading;
+    if (parent !== record) {
+      const item = content.querySelector(`#history-${CSS.escape(record.release.id)}`);
+      if (item) {
+        window.ATLAS_DETAILS.expandHistory(item);
+        heading = ['specs', 'pricing', 'scores'].includes(section) && item.querySelector(`#${CSS.escape(item.id)}-${section}-title`);
+        if (!heading) heading = item.querySelector('summary');
       }
+    } else if (['specs', 'pricing', 'scores', 'history'].includes(section)) {
+      heading = content.querySelector(`#${section}-title`);
+    }
+    if (heading) {
+      heading.focus({ preventScroll: true });
+      content.scrollTop = heading.getBoundingClientRect().top - content.getBoundingClientRect().top - 12;
     }
   }
   function openHash() {
@@ -89,11 +104,13 @@
     const query = search.value.trim().slice(0, 300);
     results = catalog.search(query, language);
     document.querySelector('#search-results').innerHTML = results.slice(0, 8).map(entry => {
-      const text = catalog.text(entry, language), src = window.ATLAS_ICONS.release(entry.release);
-      return `<button class="search-result" type="button" data-open-entry="${escape(entry.key)}"><div class="search-result-identity">${src ? `<img class="brand-icon" src="${escape(src)}" width="22" height="22" alt="">` : ''}<div><strong>${escape(text.name)}</strong><span>${escape(companyName(entry.company))} · ${escape(english ? catalog.sections[entry.section].en : catalog.sections[entry.section].zh)}</span></div></div><span class="search-result-date">${entry.release.date.replaceAll('-', '.')}</span></button>`;
+      const src = window.ATLAS_ICONS.release(entry.release);
+      const labels = [companyName(entry.company), english ? catalog.sections[entry.section].en : catalog.sections[entry.section].zh];
+      if (entry.parentKey !== entry.key) labels.push(catalog.title(catalog.get(entry.parentKey), language));
+      return `<button class="search-result" type="button" data-open-entry="${escape(entry.key)}"><div class="search-result-identity">${src ? `<img class="brand-icon" src="${escape(src)}" width="22" height="22" alt="">` : ''}<div><strong>${escape(catalog.title(entry, language))}</strong><span>${escape(labels.join(' · '))}</span></div></div><span class="search-result-date">${entry.release.date.replaceAll('-', '.')}</span></button>`;
     }).join('');
     document.querySelector('#search-help').textContent = query
-      ? L(`${results.length} 个匹配节点 · Enter 查看全部结果`, `${results.length} matching entries · Enter to view all results`)
+      ? L(`${results.length} 个匹配结果 · Enter 查看全部结果`, `${results.length} ${results.length === 1 ? 'match' : 'matches'} · Enter to view all results`)
       : L('搜索全部时间线中的名称、机构或关键词。', 'Search names, organizations, or keywords across all timelines.');
   }
   search.addEventListener('input', event => { if (!event.isComposing) renderSearch(); });
@@ -113,13 +130,15 @@
   document.addEventListener('click', async event => {
     const trigger = event.target.closest('[data-open-entry], [data-detail]');
     if (trigger) {
+      if (trigger.matches('a[href]') && (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey)) return;
       event.preventDefault();
       openEntry(trigger.dataset.openEntry || `${page}:${trigger.dataset.detail}`, true, trigger.dataset.detailSection);
     }
     const copy = event.target.closest('[data-copy]');
     if (copy && activeEntry) {
-      const url = localPage(catalog.sections[activeEntry.section].file);
-      url.searchParams.set('lang', language); url.hash = `release-${activeEntry.release.id}`;
+      const record = catalog.get(`${activeEntry.section}:${copy.dataset.copy}`);
+      if (!record) return;
+      const url = new URL(catalog.timelineUrl(record, language), document.baseURI);
       try { await navigator.clipboard.writeText(url.href); toast(L('节点链接已复制', 'Entry link copied')); }
       catch {
         let input = content.querySelector('.copy-link-input');

@@ -1,6 +1,7 @@
 (() => {
   'use strict';
   const { raw, page, pages, english, language, L, escape, formattedDate, companyName, releaseText, kinds, tag, toast } = window.ATLAS_UI;
+  const catalog = window.ATLAS_CATALOG;
   const extended = page === 'hardware' || page === 'technology';
   const allOrganizations = page === 'technology' ? L('全部机构', 'All organizations') : L('全部厂商', 'All organizations');
   const entryNoun = count => count === 1 ? 'entry' : 'entries';
@@ -26,12 +27,12 @@
     const label = short ? `<span class="sr-only">${release.date.slice(0, 4)} </span>${formattedDate(release.date).slice(5)}` : formattedDate(release.date);
     return `<time${classes} datetime="${release.date}"${short ? ` title="${formattedDate(release.date)}"` : ''}>${label}</time>`;
   }
-  const companyById = new Map(companies.map(company => [company.id, company]));
-  const releaseById = new Map(releases.map(release => [release.id, release]));
+  const companyById = new Map((raw.allCompanies || companies).map(company => [company.id, company]));
+  const primaryCompanies = new Set(companies.map(company => company.id));
   const categoryName = id => english ? raw.categoriesEn?.[id] : raw.categories?.[id];
   const taskName = id => english ? raw.tasksEn?.[id] : raw.tasks?.[id];
-  const searchIndex = window.ATLAS_CATALOG.searchIndex(page);
-  const filters = window.ATLAS_FILTERS.create(raw, searchIndex);
+  const searchIndex = catalog.searchIndex(page);
+  const filters = window.ATLAS_FILTERS.create(raw, searchIndex, catalog.get);
   const accessLabels = { open: L('开源', 'Open source'), closed: L('闭源', 'Closed source') };
   const accessFilterLabel = value => accessLabels[value];
   let state = readState();
@@ -45,6 +46,7 @@
   const savedLimit = () => Number.isInteger(history.state?.atlasTimelineLimit) && history.state.atlasTimelineLimit >= batchSize ? Math.min(history.state.atlasTimelineLimit, releases.length) : batchSize;
   let visibleLimit = savedLimit();
   let orderedEntries = [], visibleCount = 0;
+  let searchRanks = new Map();
 
   function batchEnd(entries, limit) {
     let end = Math.min(limit, entries.length);
@@ -134,15 +136,17 @@
   const tokenSize = value => typeof value === 'number' ? value : parseFloat(value) * (value.endsWith('M') ? 1e6 : 1000);
   const money = (value, currency) => `${currency === 'USD' ? '$' : '¥'}${value.toLocaleString('en-US', { maximumFractionDigits: 6 })}`;
   function cardFacts(release) {
+    const familyTitle = release.familyName || release.familyNameEn;
     if (page === 'hardware' && release.hardware) {
       const fields = release.hardware.facts.filter(fact => fact.chip);
       const variant = L(release.hardware.variant, release.hardware.variantEn || release.hardware.variant);
-      return fields.length ? `<div class="card-facts">${fields.map(fact => `<button class="fact-chip" type="button" data-detail="${release.id}" data-detail-section="specs" aria-haspopup="dialog" title="${escape(variant)}" aria-label="${escape(`${variant} · ${L(fact.label, fact.labelEn)} ${L(fact.value, fact.valueEn || fact.value)} · ${L('查看规格与来源', 'View specifications and sources')}`)}"><span class="fact-label">${escape(L(fact.label, fact.labelEn))}</span><span>${escape(L(fact.value, fact.valueEn || fact.value))}</span></button>`).join('')}</div>` : '';
+      return fields.length ? `<div class="card-facts">${fields.map(fact => `<button class="fact-chip" type="button" data-detail="${release.id}" data-detail-section="specs" aria-haspopup="dialog" title="${escape(variant)}" aria-label="${escape(`${variant} · ${L(fact.label, fact.labelEn)} ${L(fact.value, fact.valueEn || fact.value)} · ${L('查看规格与来源', 'View specifications and sources')}`)}">${familyTitle ? `<span class="fact-model">${escape(variant)}</span>` : ''}<span class="fact-label">${escape(L(fact.label, fact.labelEn))}</span><span>${escape(L(fact.value, fact.valueEn || fact.value))}</span></button>`).join('')}</div>` : '';
     }
     if (page !== 'models') return '';
     const specs = window.MODEL_ATLAS_SPECS?.entries[release.id];
     const prices = window.MODEL_ATLAS_PRICES?.entries[release.id];
     const facts = window.ATLAS_FACTS;
+    const scopeLabel = (entry, variants) => familyTitle ? variants.map(variant => variant.name).join(' / ') : facts.scopeLabel(entry, variants, language);
     const variantLabel = name => name ? `<span class="fact-model">${escape(name)}</span>` : '';
     const chips = [];
     const chip = (section, content, description) => `<button class="fact-chip" type="button" data-detail="${release.id}" data-detail-section="${section}" aria-haspopup="dialog" aria-label="${escape(`${release.name} · ${description}`)}" title="${escape(description)}">${content}</button>`;
@@ -152,7 +156,7 @@
       const videoVariant = specs.variants.find(variant => variant.video);
       if (videoVariant) {
         const video = videoVariant.video;
-        const scope = facts.scopeLabel(specs, [videoVariant], language);
+        const scope = scopeLabel(specs, [videoVariant]);
         const values = [];
         if (video.maxDurationSeconds) values.push([L('最长', 'Up to'), `${video.maxDurationSeconds} ${L('秒', 's')}`]);
         if (video.resolutions?.length) values.push([L('分辨率', 'Resolution'), video.resolutions.join(' / ')]);
@@ -165,11 +169,11 @@
         const label = field === 'inputTokens' ? L('输入上限', 'Input limit') : field === 'trainingTokens' ? L('训练长度', 'Training length') : variants.every(variant => variant.basis === 'benchmark') ? L('评测上下文', 'Eval context') : variants.some(variant => variant.extendedContextTokens) ? L('原生上下文', 'Native context') : L('上下文', 'Context');
         const range = values.length > 1 ? `${tokenCount(values[0])}–${tokenCount(values.at(-1))}` : tokenCount(values[0]);
         const description = `${label} ${range} tokens · ${variants.map(variant => variant.name).join(' / ')} · ${L('查看完整规格', 'View full specifications')}`;
-        const scope = facts.scopeLabel(specs, variants, language);
+        const scope = scopeLabel(specs, variants);
         chips.push(chip('specs', `${variantLabel(scope)}<span class="fact-label">${label}</span><span>${escape(range)}</span><span class="fact-unit">tokens</span>`, description));
       } else if (specs.variants.some(variant => variant.parameters)) {
         const values = [...new Set(specs.variants.filter(variant => variant.parameters).map(variant => variant.parameters))];
-        chips.push(chip('specs', `${variantLabel(facts.scopeLabel(specs, specs.variants.filter(variant => variant.parameters), language))}<span class="fact-label">${L('参数量', 'Parameters')}</span><span>${escape(values.join(' / '))}</span>`, L('查看研究配置与模型参数', 'View research configurations and parameter counts')));
+        chips.push(chip('specs', `${variantLabel(scopeLabel(specs, specs.variants.filter(variant => variant.parameters)))}<span class="fact-label">${L('参数量', 'Parameters')}</span><span>${escape(values.join(' / '))}</span>`, L('查看研究配置与模型参数', 'View research configurations and parameter counts')));
       }
     }
     if (prices) {
@@ -179,7 +183,7 @@
       const qualifier = facts.pricingQualifier(prices, language);
       const input = money(rate.input, variant.currency), output = money(rate.output, variant.currency);
       const description = `${variant.name} · ${rate[english ? 'labelEn' : 'label']} · ${L('输入', 'Input')} ${input} · ${L('输出', 'Output')} ${output} · ${variant.currency} / 1M tokens · ${L('查看计价条件与来源', 'View conditions and source')}`;
-      chips.push(chip('pricing', `${variantLabel(facts.scopeLabel(prices, [variant], language))}<span class="fact-label">${L('输入', 'In')}</span><span>${input}</span><span class="fact-separator" aria-hidden="true">·</span><span class="fact-label">${L('输出', 'Out')}</span><span>${output}</span><span class="fact-unit">${variant.currency} / 1M tokens${qualifier ? ` · ${qualifier}` : ''}</span>`, description));
+      chips.push(chip('pricing', `${variantLabel(scopeLabel(prices, [variant]))}<span class="fact-label">${L('输入', 'In')}</span><span>${input}</span><span class="fact-separator" aria-hidden="true">·</span><span class="fact-label">${L('输出', 'Out')}</span><span>${output}</span><span class="fact-unit">${variant.currency} / 1M tokens${qualifier ? ` · ${qualifier}` : ''}</span>`, description));
     }
     const scores = window.MODEL_ATLAS_SCORES?.entries[release.id];
     for (const key of ['aa', 'arena']) {
@@ -192,22 +196,38 @@
       const publishedAt = score.publishedAt || metric.publishedAt;
       const published = publishedAt ? ` · ${L('榜单日期', 'Leaderboard date')} ${formattedDate(publishedAt)}` : '';
       const description = `${window.MODEL_ATLAS_SCORES.benchmarks[key].name} · ${score.model} · ${score.score}${mark}${published} · ${L('核对日期', 'Checked')} ${formattedDate(checkedAt)} · ${L('查看配置与评测口径', 'View configuration and methodology')}`;
-      chips.push(chip('scores', `${variantLabel(facts.scoreLabel(score, window.MODEL_ATLAS_SCORES.cardScopes?.[release.id]))}<span class="fact-label">${label}</span><span>${score.score}${mark}</span>`, description));
+      chips.push(chip('scores', `${variantLabel(familyTitle ? score.model : facts.scoreLabel(score, window.MODEL_ATLAS_SCORES.cardScopes?.[release.id]))}<span class="fact-label">${label}</span><span>${score.score}${mark}</span>`, description));
     }
     return chips.length ? `<div class="card-facts">${chips.join('')}</div>` : '';
   }
   function card(original) {
     const release = releaseText(original);
+    const record = catalog.get(`${page}:${release.id}`);
+    const title = catalog.title(record, language);
+    const historyCount = original.history?.length || 0;
+    const savedCompany = original.history?.some(child => !primaryCompanies.has(child.company) && state.companies.has(child.company));
+    const matching = historyCount && (state.query || savedCompany) ? filters.matchingReleases(original, state)
+      .filter(item => state.query || state.companies.has(item.company))
+      .sort((a, b) => (searchRanks.get(a.id) ?? searchRanks.size) - (searchRanks.get(b.id) ?? searchRanks.size)) : [];
     const categoryTag = release.category ? `<span class="tag">${escape(categoryName(release.category))}</span>` : '';
     const featureTags = !release.category || page === 'models' ? original.tags.filter(value => !['开放权重', '文本', '多模态', '原生多模态'].includes(value)).map(value => `<span class="tag">${escape(tag(value))}</span>`).join('') : '';
-    if (state.view === 'compact') return `<article id="release-${release.id}" class="release-card compact-card" data-company="${release.company}" data-date="${release.date}" aria-labelledby="title-${release.id}">${dateMarkup(release, 'entry-date', true)}<div class="compact-identity"><h3 id="title-${release.id}"><button data-detail="${release.id}" title="${escape(release.name)}" aria-label="${escape(L('查看发布详情：', 'View release details: ') + release.name)}">${releaseIcon(release, 20, true)}<span>${escape(release.name)}</span></button></h3>${companyLabel(release.company)}</div></article>`;
+    if (state.view === 'compact') {
+      const target = matching[0] || original;
+      const targetTitle = target === original ? title : releaseText(target).name;
+      return `<article id="release-${release.id}" class="release-card compact-card" data-company="${release.company}" data-date="${release.date}" aria-labelledby="title-${release.id}">${dateMarkup(release, 'entry-date', true)}<div class="compact-identity"><h3 id="title-${release.id}"><button data-detail="${target.id}" title="${escape(targetTitle)}" aria-label="${escape(L('查看发布详情：', 'View release details: ') + targetTitle)}">${releaseIcon(release, 20, true)}<span>${escape(title)}</span></button></h3>${companyLabel(release.company)}</div></article>`;
+    }
+    const historyLink = historyCount ? `<a class="tag source-link" href="${escape(catalog.timelineUrl(record, language))}" data-detail="${release.id}" data-detail-section="history" aria-haspopup="dialog">${L(`相关发布 ${historyCount}`, `${historyCount} related ${historyCount === 1 ? 'release' : 'releases'}`)}</a>` : '';
+    const childLinks = matching.filter(item => item !== original).map(item => {
+      const link = catalog.timelineUrl(catalog.get(`${page}:${item.id}`), language);
+      return `<a class="tag source-link" href="${escape(link)}" data-history-match data-detail="${item.id}" aria-haspopup="dialog">${escape(releaseText(item).name)} · ${formattedDate(item.date)}</a>`;
+    }).join('');
     return `<article id="release-${release.id}" class="release-card${release.milestone ? ' is-milestone' : ''}" data-company="${release.company}" data-date="${release.date}" data-category="${release.category || ''}" aria-labelledby="title-${release.id}">
       ${dateMarkup(release, 'card-date', true)}
       <div class="release-body">
-        <div class="card-heading"><h3 class="card-title" id="title-${release.id}"><button data-detail="${release.id}" aria-label="${escape(L('查看发布详情：', 'View release details: ') + release.name)}">${releaseIcon(release, 23, true)}<span>${escape(release.name)}</span></button></h3><div class="card-meta">${companyLabel(release.company)}${release.milestone ? `<span class="milestone-badge">${L('里程碑', 'Milestone')}</span>` : ''}</div></div>
+        <div class="card-heading"><h3 class="card-title" id="title-${release.id}"><button data-detail="${release.id}" aria-label="${escape(L('查看发布详情：', 'View release details: ') + title)}">${releaseIcon(release, 23, true)}<span>${escape(title)}</span></button></h3><div class="card-meta">${companyLabel(release.company)}${release.milestone ? `<span class="milestone-badge">${L('里程碑', 'Milestone')}</span>` : ''}</div></div>
         <p class="card-summary">${escape(release.summary)}</p>
         ${cardFacts(release)}
-        <div class="card-bottom"><div class="card-tags"><span class="tag event-kind">${kinds[release.kind]}</span>${raw.accessFilter !== false && original.openness ? `<span class="tag access-tag">${accessLabels[original.openness.status]}</span>` : ''}${categoryTag}${featureTags}</div><a class="source-link" href="${escape(release.sources[0].url)}" target="_blank" rel="noopener noreferrer">${L('资料来源', 'Source')}</a></div>
+        <div class="card-bottom"><div class="card-tags"><span class="tag event-kind">${kinds[release.kind]}</span>${raw.accessFilter !== false && original.openness ? `<span class="tag access-tag">${accessLabels[original.openness.status]}</span>` : ''}${categoryTag}${featureTags}${historyLink}${childLinks}</div><a class="source-link" href="${escape(release.sources[0].url)}" target="_blank" rel="noopener noreferrer">${L('资料来源', 'Source')}</a></div>
       </div></article>`;
   }
   function renderChart() {
@@ -264,6 +284,7 @@
     $('#active-filter-row').hidden = !chips.length;
   }
   function render() {
+    searchRanks = new Map(catalog.search(state.query).filter(entry => entry.section === page).map((entry, index) => [entry.release.id, index]));
     const filtered = filters.select(state).sort((a, b) => (state.sort === 'desc' ? -1 : 1) * a.date.localeCompare(b.date));
     orderedEntries = filtered;
     const availableYears = filters.annualCounts(state).filter(({ count }) => count > 0).map(({ year }) => year);
@@ -434,8 +455,8 @@
     else if (button.hasAttribute('data-show-all')) showMore(true);
   });
   document.addEventListener('atlas:entry-open', event => {
-    const prefix = `${page}:`;
-    if (event.detail.startsWith(prefix)) revealEntry(event.detail.slice(prefix.length));
+    const record = catalog.get(event.detail);
+    if (record?.section === page) revealEntry(catalog.get(record.parentKey).release.id);
   });
   window.addEventListener('hashchange', revealYearHash);
   window.addEventListener('beforeprint', () => { visibleLimit = orderedEntries.length; renderTimeline(); });

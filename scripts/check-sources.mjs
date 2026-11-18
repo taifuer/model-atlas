@@ -57,7 +57,10 @@ export function collectSources(window, sections = SECTIONS) {
   }
   for (const section of sections) {
     const data = window.ATLAS_CATALOG.sections[section].data;
-    for (const release of data.releases) visit(release, { section, entryId: release.id }, 'release');
+    for (const { history = [], ...release } of data.releases) {
+      visit(release, { section, entryId: release.id }, 'release');
+      for (const related of history) visit(related, { section, entryId: related.id }, 'release');
+    }
     if (data.companyRanking) visit(data.companyRanking, { section, entryId: null }, 'companyRanking');
   }
   if (sections.includes('models')) {

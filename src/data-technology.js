@@ -250,39 +250,78 @@
   "themesEn": {},
   "releases": [
     {
-      "id": "microsoft-copilot-sdk-2",
-      "date": "2026-11-17",
-      "name": "Microsoft Copilot SDK 2.0",
-      "company": "microsoft",
+      "id": "rocm-1",
+      "name": "ROCm 1.0",
+      "date": "2016-04",
+      "company": "amd",
       "category": "frameworks",
       "kind": "release",
-      "summary": "把 Copilot 智能体运行时嵌入应用，在同一进程内运行多个会话。",
-      "details": "2.0 以 Rust 重写运行时，每个会话单独管理身份、工具、文件和历史记录。开发者可以将运行时嵌入宿主进程，也可以让多个应用连接共享服务。SDK 提供 C ABI，并支持 TypeScript、Python、Go、.NET、Java 和 Rust。",
-      "dateNote": "11 月 17 日为 2.0 版本公布日期。此前的 GitHub Copilot SDK 已于 6 月 2 日正式可用。",
-      "tags": [],
-      "milestone": false,
+      "milestone": true,
+      "summary": "AMD 发布首版 ROCm，以开放的编译器、运行时和 HIP 接口支持 GPU 通用计算。",
+      "details": "ROCm 面向 Linux 上的 GPU 计算。开发者可以用 HIP 编写和移植 C++ 内核。后来，PyTorch 等机器学习框架通过 ROCm 在 AMD GPU 上训练和运行模型。",
+      "dateNote": "AMD 的平台回顾将 1.0 的正式发布记为 2016 年 4 月。",
+      "tags": [
+        "GPU 计算",
+        "训练框架",
+        "开源"
+      ],
       "sources": [
         {
-          "title": "微软 · Copilot SDK 2.0 发布说明",
-          "titleEn": "Microsoft · Copilot SDK 2.0 release",
-          "url": "https://commandline.microsoft.com/microsoft-copilot-sdk-2-0-github/"
+          "title": "AMD · ROCm 十周年回顾",
+          "titleEn": "AMD · Ten years of ROCm",
+          "url": "https://rocm.blogs.amd.com/ecosystems-and-partners/rocm-x-blog/README.html"
         },
         {
-          "title": "GitHub · 早期 SDK 正式可用",
-          "titleEn": "GitHub · Earlier SDK general availability",
-          "url": "https://github.blog/changelog/2026-06-02-copilot-sdk-is-now-generally-available/"
+          "title": "AMD · 同期安装文档",
+          "titleEn": "AMD · Contemporaneous installation guide",
+          "url": "https://github.com/ROCm/ROCm/tree/828cbe03462b95ede946b0e2cac67af3e87a2ad5"
+        },
+        {
+          "title": "PyTorch · HIP 后端",
+          "titleEn": "PyTorch · HIP backend",
+          "url": "https://docs.pytorch.org/docs/stable/notes/hip.html"
         }
       ],
-      "searchAliases": [
-        "GitHub Copilot SDK",
-        "Copilot Harness",
-        "Microsoft Copilot SDK 2.0",
-        "智能体运行时"
-      ],
       "en": {
-        "summary": "Embeds the Copilot agent runtime in applications and runs multiple sessions in one process.",
-        "details": "Version 2.0 introduces a Rust runtime with identities, tools, files and history scoped to each session. Applications can embed it in-process or connect to a shared service. The SDK exposes a C ABI and supports TypeScript, Python, Go, .NET, Java and Rust.",
-        "dateNote": "Version 2.0 was announced on November 17. The earlier GitHub Copilot SDK reached general availability on June 2."
+        "summary": "AMD released ROCm 1.0, an open GPU computing stack with a compiler, runtime and HIP programming interface.",
+        "details": "ROCm brought general-purpose GPU computing to Linux with HIP for writing and porting C++ kernels. Machine learning frameworks including PyTorch later used ROCm to train and run models on AMD GPUs.",
+        "dateNote": "AMD’s platform history dates the 1.0 release to April 2016."
+      }
+    },
+    {
+      "id": "transformer",
+      "date": "2017-06-12",
+      "name": "Transformer",
+      "company": "google",
+      "kind": "paper",
+      "summary": "Google 团队在《Attention Is All You Need》中提出 Transformer，以注意力机制构建序列模型。",
+      "tags": [
+        "模型架构",
+        "注意力机制"
+      ],
+      "sources": [
+        {
+          "title": "原始论文 · arXiv",
+          "url": "https://arxiv.org/abs/1706.03762"
+        },
+        {
+          "title": "Google Research · 论文页面",
+          "url": "https://research.google/pubs/attention-is-all-you-need/"
+        },
+        {
+          "title": "Tensor2Tensor · 参考实现",
+          "titleEn": "Tensor2Tensor · Reference implementation",
+          "url": "https://github.com/tensorflow/tensor2tensor"
+        }
+      ],
+      "milestone": true,
+      "details": "论文提出基于注意力机制的编码器—解码器架构，使用多头注意力与位置编码，在机器翻译任务中验证效果。这一研究为后来的 GPT、BERT 等预训练模型提供了架构基础。 论文表 3 给出的英德翻译配置分别为 Base 6500 万参数、Big 2.13 亿参数。",
+      "dateNote": "采用 arXiv 第一版于 2017 年 6 月 12 日公开的日期；此节点记录基础架构论文，不是聊天产品或后续大模型的发布。",
+      "category": "methods",
+      "en": {
+        "summary": "Google researchers introduce the Transformer, an attention-based sequence model, in Attention Is All You Need.",
+        "details": "The paper presents an encoder–decoder architecture using multi-head attention and positional encoding, evaluated on machine translation. It provided the architectural foundation for later pretrained models including GPT and BERT. Table 3 reports 65M parameters for the Base configuration and 213M for Big on English–German translation.",
+        "dateNote": "Uses the first arXiv submission on June 12, 2017. This entry records the architecture paper, not a chat product or a later language-model release."
       }
     },
     {
@@ -2106,30 +2145,6 @@
       }
     },
     {
-      "id": "rocm-7",
-      "date": "2025-06-12",
-      "name": "ROCm 7",
-      "company": "amd",
-      "category": "frameworks",
-      "kind": "preview",
-      "summary": "AMD 公布 ROCm 7 预览，更新面向 Instinct 加速器的软件支持。",
-      "details": "ROCm 提供 GPU 计算所需的编译器、运行时与库。第七代预览随 MI350 系列公布，面向训练与推理软件栈的升级。",
-      "dateNote": "采用官方预览公告日期，不等同于后续稳定版供应日期。",
-      "tags": [],
-      "milestone": false,
-      "sources": [
-        {
-          "title": "原始资料",
-          "url": "https://www.amd.com/en/blogs/2025/amd-instinct-mi350-series-and-beyond-accelerating-the-future-of-ai-and-hpc.html"
-        }
-      ],
-      "en": {
-        "summary": "AMD previews ROCm 7 with updated software support for Instinct accelerators.",
-        "details": "ROCm provides compilers, runtimes, and libraries for GPU computing. Its seventh-generation preview accompanies MI350 and updates the training and inference software stack.",
-        "dateNote": "Dated to the official preview announcement rather than later stable availability."
-      }
-    },
-    {
       "id": "flashattention-4",
       "date": "2026-03-05",
       "name": "FlashAttention-4",
@@ -2615,46 +2630,6 @@
       ]
     },
     {
-      "id": "deepinfer",
-      "date": "2026-10-20",
-      "name": "DeepInfer",
-      "company": "deepseek",
-      "category": "deployment",
-      "kind": "release",
-      "milestone": false,
-      "tags": [],
-      "searchAliases": [
-        "deepseek-recipe",
-        "DeepSeek inference framework"
-      ],
-      "summary": "开放支撑 DeepSeek 大规模服务的推理框架核心，支持分布式并行、推测解码和结构化输出。",
-      "details": "首版面向 DeepSeek V4.1 Flash，支持 NVIDIA SM100 GPU 与华为昇腾 950 NPU，采用 Apache 2.0 许可。配套的 deepseek-recipe 以 MIT 许可提供请求格式转换与 token 编解码。发布包提供离线推理核心；完整在线服务还需 KV 缓存系统、分离部署和负载均衡组件。",
-      "dateNote": "采用 2026 年 10 月 20 日公开开源公告日期，并与官方仓库同日的初始提交交叉核对。",
-      "sources": [
-        {
-          "title": "DeepSeek · 推理框架与发布范围",
-          "titleEn": "DeepSeek: Inference framework and release scope",
-          "url": "https://github.com/deepseek-ai/DeepInfer"
-        },
-        {
-          "title": "DeepSeek · API 编解码组件",
-          "titleEn": "DeepSeek: API encoding and decoding components",
-          "url": "https://github.com/deepseek-ai/deepseek-recipe"
-        },
-        {
-          "title": "IT之家 · 开源公告与日期交叉核验",
-          "titleEn": "IT Home: Open-source announcement and date corroboration",
-          "type": "reporting",
-          "url": "https://www.ithome.com/1/015/429.htm"
-        }
-      ],
-      "en": {
-        "summary": "Releases the inference core behind DeepSeek’s large-scale services, with distributed parallelism, speculative decoding and structured outputs.",
-        "details": "The initial release supports DeepSeek V4.1 Flash on NVIDIA SM100 GPUs and Huawei Ascend 950 NPUs under Apache 2.0. The accompanying MIT-licensed deepseek-recipe handles API-format conversion and token encoding and decoding. The release provides offline inference; a complete online service also needs a KV cache system, disaggregated deployment and load balancing.",
-        "dateNote": "Uses the October 20, 2026 public open-source announcement, cross-checked against the official repository’s initial commit on the same date."
-      }
-    },
-    {
       "id": "torchtpu",
       "date": "2026-10-20",
       "name": "TorchTPU",
@@ -2974,9 +2949,6 @@
     "references": []
   }
 };
-  // One canonical Transformer record, shared with the Models timeline.
-  const transformer = window.MODEL_ATLAS.releases.find(entry => entry.id === 'transformer');
-  data.releases.push({ ...transformer, category: 'methods', en: window.MODEL_ATLAS_EN.transformer });
   data.releases.sort((a, b) => a.date.localeCompare(b.date));
   window.TECHNOLOGY_ATLAS = data;
 })();

@@ -5,7 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const { create } = require('../src/filters.js');
 const context = { window: {} };
-for (const file of ['data.js', 'data-agents.js', 'data-access.js']) vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'src', file), 'utf8'), context);
+for (const file of ['data.js', 'data-en.js', 'data-agents.js', 'data-access.js']) vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', 'src', file), 'utf8'), context);
 const { MODEL_ATLAS: models, AGENT_ATLAS: agents, ATLAS_ACCESS: access } = context.window;
 
 test('every model and agent has one explicit binary classification and dated evidence', () => {
@@ -68,6 +68,14 @@ test('public base models and later weight releases preserve version scope and ev
   }
   assert.equal(model('qwen-3-8-max-0902').openness.status, 'closed');
   assert.equal(model('grok-1').date, '2023-11-03');
+  const inkling = model('inkling-2-small');
+  assert.equal(inkling.date, '2026-11-05');
+  assert.equal(inkling.openness.status, 'open');
+  assert.equal(inkling.openness.licenses.find(item => item.objectEn === 'Model weights').name, 'Apache 2.0');
+  assert.equal(inkling.openness.source, 'https://huggingface.co/thinkingmachines/Inkling-2-Small');
+  assert.ok(inkling.sources.some(source => source.url === inkling.openness.source));
+  assert.match(inkling.dateNote, /11 月 12 日/);
+  assert.match(context.window.MODEL_ATLAS_EN[inkling.id].dateNote, /November 12/);
   assert.equal(agents.releases.find(release => release.id === 'agent-skills').openness.status, 'open');
   const jules = agents.releases.find(release => release.id === 'jules');
   assert.equal(jules.name, 'Jules');

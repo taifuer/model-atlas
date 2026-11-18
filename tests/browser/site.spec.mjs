@@ -147,23 +147,32 @@ for (const language of ['zh', 'en']) {
       await expect(page.locator('.dialog-meta')).toContainText(language === 'en' ? 'Preview' : '预览');
       await expect(page.locator('.dialog-meta')).toContainText(language === 'en' ? 'Open source' : '开源');
       await page.keyboard.press('Escape');
-      const chatgpt = page.locator('#release-gpt-6-sol-luna-chatgpt-october');
-      await expect(chatgpt.locator('.fact-chip')).toHaveCount(0);
-      await chatgpt.locator('.card-title button').click();
-      await expect(page.locator('#dialog-title')).toContainText('ChatGPT');
-      await expect(page.locator('.detail-specs, .detail-pricing, .detail-scores')).toHaveCount(0);
+      await expect(page.locator('#release-gpt-6-sol-luna-chatgpt-october')).toHaveCount(0);
+      await page.locator('#release-gpt-6-sol-luna [data-detail-section="history"]').click();
+      await expect(page.locator('#dialog-title')).toHaveText('GPT-6 Sol / Luna');
+      await expect(page.locator('#dialog-content > .detail-pricing')).toBeAttached();
+      const chatgpt = page.locator('#history-gpt-6-sol-luna-chatgpt-october');
+      await chatgpt.locator('summary').click();
+      await expect(chatgpt.locator('.history-name')).toContainText('ChatGPT');
+      await expect(chatgpt.locator('.history-date time')).toHaveAttribute('datetime', '2026-10-07');
+      await expect(chatgpt.locator('.detail-sources a').first()).toHaveAttribute('href', 'https://deploymentsafety.openai.com/gpt-6-october');
+      await expect(chatgpt.locator('.detail-specs, .detail-pricing, .detail-scores')).toHaveCount(0);
       await page.keyboard.press('Escape');
       await noOverflow(page);
 
       for (const [file, id, icon, date] of [
         ['agents.html', 'meta-muse', 'meta-color.svg', '2026-09-08'],
         ['agents.html', 'openai-dots', 'openai.svg', '2026-09-29'],
-        ['hardware.html', 'ascend-960-supernode', 'huawei.svg', '2026-09-17'],
+        ['hardware.html', 'atlas-950-superpod', 'huawei.svg', '2026-07-17'],
         ['technology.html', 'microsoft-execution-containers', 'microsoft-color.svg', '2026-10-07'],
       ]) {
         await ready(page, route(language, file) + '#release-' + id);
         await expect(page.locator('.dialog-title-row .brand-icon')).toHaveAttribute('src', 'assets/icons/' + icon);
         await expect(page.locator('.dialog-meta time')).toHaveAttribute('datetime', date);
+        if (id === 'atlas-950-superpod') {
+          await expect(page.locator('.detail-overview')).toContainText(language === 'en' ? 'commercial deployment' : '规模商用');
+          await expect(page.locator('.detail-specs .spec-grid')).toContainText('1024');
+        }
         await noOverflow(page);
       }
     });
@@ -183,15 +192,20 @@ for (const language of ['zh', 'en']) {
         await expect(result).toHaveCount(1);
         expect(page.url(), 'Typing in global search must not filter the current timeline').toBe(beforeSearch);
         await result.click();
-        await expect(page.locator('#dialog-title')).toHaveText('FlashAttention-4');
-        await expect(page.locator('#dialog-content .detail-sources a').first()).toHaveAttribute('href', /^https:\/\//);
+        await expect(page.locator('#dialog-title')).toHaveText('FlashAttention');
+        const fourth = page.locator('#history-flashattention-4[open]');
+        await expect(fourth.locator('.history-name')).toHaveText('FlashAttention-4');
+        await expect(fourth.locator('.history-date time')).toHaveAttribute('datetime', '2026-03-05');
+        await expect(fourth.locator('.detail-sources a').first()).toHaveAttribute('href', 'https://arxiv.org/abs/2603.05451');
         if (file === 'index.html') {
           await page.goBack();
           await expect(page.locator('#detail-dialog')).not.toBeVisible();
           await expect(page).toHaveURL(beforeSearch);
           await page.goForward();
           await expect(page.locator('#detail-dialog')).toBeVisible();
-          await expect(page.locator('#dialog-title')).toHaveText('FlashAttention-4');
+          await expect(page.locator('#dialog-title')).toHaveText('FlashAttention');
+          await expect(fourth.locator('summary')).toBeFocused();
+          await expect(fourth.locator('.detail-overview')).toBeVisible();
         }
         const underlyingPage = new URL(page.url());
         underlyingPage.hash = '';
@@ -267,8 +281,8 @@ for (const language of ['zh', 'en']) {
           if (file === 'about.html') {
             await expect(page.locator('#criteria')).toContainText(language === 'en' ? 'Selection criteria' : '收录标准');
           } else if (file === 'benchmarks.html') {
-            await expect(page.locator('article.benchmark-card')).toHaveCount(9);
-            await expect(page.locator('article.benchmark-card h3 a[href]')).toHaveCount(9);
+            await expect(page.locator('article.benchmark-card')).toHaveCount(8);
+            await expect(page.locator('article.benchmark-card h3 a[href]')).toHaveCount(8);
           } else {
             const entrySelector = file === 'explore.html' ? '#explore-root .journey-event' : '#timeline .release-card';
             const entries = page.locator(entrySelector);

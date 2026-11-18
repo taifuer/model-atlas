@@ -35,14 +35,15 @@ test('new timelines have ordered, source-linked, bilingual entries with explicit
   assert.ok(technology.releases.length >= 40);
 });
 
-test('Transformer shares its canonical event and monthly counts respect date precision', () => {
-  const original = models.releases.find(r => r.id === 'transformer');
-  const linked = technology.releases.find(r => r.id === 'transformer');
-  assert.equal(linked.date, original.date);
-  assert.equal(linked.sources, original.sources);
-  assert.equal(linked.summary, original.summary);
-  assert.equal(original.category, 'text');
-  assert.equal(linked.category, 'methods');
+test('Transformer is counted under technology and monthly counts respect date precision', () => {
+  assert.equal(models.releases.some(r => r.id === 'transformer'), false);
+  const original = technology.releases.find(r => r.id === 'transformer');
+  assert.equal(original.date, '2017-06-12');
+  assert.equal(original.kind, 'paper');
+  assert.equal(original.milestone, true);
+  assert.equal(original.category, 'methods');
+  assert.ok(original.sources.some(source => source.url === 'https://arxiv.org/abs/1706.03762'));
+  assert.match(original.en.details, /65M.*213M/);
   const filters = ATLAS_FILTERS.create(technology, new Map(technology.releases.map(r => [r.id, r.name.toLowerCase()])));
   const state = filters.read('?year=2012');
   assert.equal(filters.select(state).length, 1);

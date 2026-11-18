@@ -8,7 +8,7 @@ const sourceRoot = path.join(__dirname, '..', 'src');
 const scripts = [
   'data.js', 'data-en.js', 'data-agents.js', 'data-hardware.js', 'data-technology.js',
   'data-access.js', 'data-specs.js', 'data-prices.js', 'data-scores.js', 'data-model-types.js',
-  'filters.js', 'catalog.js', 'details.js',
+  'data-history.js', 'filters.js', 'catalog.js', 'details.js',
 ];
 const escape = value => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 const definitions = {
@@ -85,13 +85,13 @@ test('organization names remain bilingual across sections and filters use the sa
       for (const entry of catalog.events.filter(entry => entry.release.company === company)) assert.ok(found.has(entry.key), `${query}: ${entry.key}`);
     }
   }
-  for (const query of ['BERT', 'Transformer', 'Qwen 3.8', '通义千问', 'Google', '谷歌', 'H100', 'gpt-4o-2024-08-06', 'FlashAttention‑4']) {
+  for (const query of ['BERT', 'Transformer', 'Qwen 3.8', '通义千问', 'Google', '谷歌', 'H100', 'gpt-4o-2024-08-06', 'FlashAttention‑4', 'models:transformer', 'technology:flashattention-4', 'flashattention-3 2023-07-17', 'flashattention-3 2024-07-11']) {
     const results = catalog.search(query);
     for (const [section, raw] of Object.entries(datasets)) {
-      const filters = globals.ATLAS_FILTERS.create(raw, catalog.searchIndex(section));
+      const filters = globals.ATLAS_FILTERS.create(raw, catalog.searchIndex(section), catalog.get);
       const state = filters.read(new URLSearchParams({ q: query }).toString());
       const selected = Array.from(filters.select(state), entry => entry.id).sort();
-      const expected = Array.from(results.filter(entry => entry.sections.includes(section)), entry => entry.release.id).sort();
+      const expected = [...new Set(results.filter(entry => entry.section === section).map(entry => catalog.get(entry.parentKey).release.id))].sort();
       assert.deepEqual(selected, expected, `${section}: ${query}`);
     }
   }
@@ -130,7 +130,7 @@ function section(html, className) {
   return new RegExp(`<section class="${className}"[^>]*>[\\s\\S]*?<\\/section>`).exec(html)?.[0] || '';
 }
 
-test('the catalog preserves every source entry and its section-qualified identity', () => {
+test('the chronology contains primary releases and the catalog resolves each historical identity', () => {
   const expectedCount = Object.values(datasets).reduce((total, dataset) => total + dataset.releases.length, 0);
   assert.equal(catalog.entries.length, expectedCount);
   assert.equal(new Set(catalog.entries.map(record => record.key)).size, expectedCount);
@@ -140,37 +140,67 @@ test('the catalog preserves every source entry and its section-qualified identit
       const record = catalog.get(key);
       assert.ok(record, key);
       assert.equal(record.key, key);
+      assert.equal(record.parentKey, key);
       assert.equal(record.section, section);
       assert.equal(record.raw, raw, key);
       assert.equal(record.release, release, key);
       assert.equal(record.company, raw.companies.find(company => company.id === release.company), key);
       assert.ok(record.company, `${key}: organization is available to search and details`);
       assert.ok(catalog.entries.includes(record), key);
+      for (const child of release.history || []) {
+        const childKey = `${section}:${child.id}`;
+        const saved = catalog.get(childKey);
+        assert.equal(saved.release, child, childKey);
+        assert.equal(saved.parentKey, key, childKey);
+        assert.equal(saved.company, raw.allCompanies.find(company => company.id === child.company), childKey);
+        assert.ok(saved.company, childKey);
+        assert.ok(!catalog.events.includes(saved), childKey);
+        assert.equal(catalog.search(childKey)[0], saved, childKey);
+        assert.equal(catalog.search(child.id).find(entry => entry.key === childKey), saved, childKey);
+        for (const lang of ['zh', 'en']) assert.ok(catalog.timelineUrl(saved, lang).endsWith(`${definitions[section][1]}?lang=${lang}#release-${child.id}`));
+      }
     }
   }
   assert.equal(catalog.get('models:not-a-release'), undefined);
   assert.equal(catalog.get('transformer'), undefined, 'Bare IDs must not silently choose a timeline');
 });
 
-test('Explore deduplicates the shared Transformer event without losing either timeline record', () => {
+test('old model Transformer identifiers resolve to the single technology entry', () => {
   const model = catalog.get('models:transformer');
   const technology = catalog.get('technology:transformer');
   assert.ok(model && technology);
-  assert.notEqual(model, technology);
-  assert.equal(model.release.date, technology.release.date);
-  assert.equal(model.release.sources, technology.release.sources);
-  assert.equal(model.release.category, 'text');
+  assert.equal(model, technology);
   assert.equal(technology.release.category, 'methods');
   const shared = catalog.events.filter(record => record.release.id === 'transformer');
   assert.equal(shared.length, 1);
   assert.equal(shared[0].key, 'technology:transformer');
-  assert.deepEqual(Array.from(shared[0].sections).sort(), ['models', 'technology']);
-  assert.equal(catalog.events.length, catalog.entries.length - 1);
-  assert.deepEqual(
-    new Set(catalog.events.map(record => record.key)),
-    new Set(catalog.entries.filter(record => record.key !== model.key).map(record => record.key)),
-    'No independent release may disappear during deduplication',
-  );
+  assert.deepEqual(Array.from(shared[0].sections), ['technology']);
+  assert.deepEqual(Array.from(catalog.search('models:transformer')), [technology]);
+  assert.deepEqual(catalog.events, catalog.entries);
+});
+
+test('family titles and old organization filters keep exact models addressable', () => {
+  const astra = catalog.get('models:gpt-6-2-astra'), sol = catalog.get('models:gpt-6-2-sol');
+  for (const language of ['zh', 'en']) {
+    assert.equal(catalog.title(astra, language), 'GPT-6.2 Astra / Sol');
+    assert.equal(catalog.title(sol, language), catalog.text(sol, language).name);
+    assert.equal(catalog.search(catalog.title(astra, language))[0], astra);
+    assert.equal(catalog.search(catalog.title(sol, language))[0], sol);
+  }
+  for (const [section, company, childId, parentId] of [
+    ['agents', 'kilo', 'kilo-code', 'roo-code-3-2'],
+    ['technology', 'cloud-hypervisor', 'cloud-hypervisor', 'kata-containers'],
+  ]) {
+    const child = catalog.get(`${section}:${childId}`), raw = datasets[section];
+    assert.ok(!raw.companies.includes(child.company));
+    for (const name of [child.company.name, child.company.nameEn].filter(Boolean)) assert.ok(catalog.search(name).includes(child));
+    const filters = globals.ATLAS_FILTERS.create(raw, catalog.searchIndex(section));
+    const state = filters.read(`?companies=${company}`);
+    assert.ok(state.companies.has(company));
+    assert.deepEqual(Array.from(filters.select(state), release => release.id), [parentId]);
+    assert.deepEqual(Array.from(filters.matchingReleases(catalog.get(child.parentKey).release, state), release => release.id), [childId]);
+    assert.equal(filters.annualCounts(state).reduce((sum, row) => sum + row.count, 0), 1);
+  }
 });
 
 test('catalog text translates descriptive fields without changing dates, identities or source data', () => {
@@ -200,7 +230,7 @@ test('timeline links target the original page and release, retaining the request
       assert.equal(link.hash, `#release-${record.release.id}`, record.key);
     }
   }
-  assert.notEqual(catalog.timelineUrl(catalog.get('models:transformer'), 'en'), catalog.timelineUrl(catalog.get('technology:transformer'), 'en'));
+  assert.equal(catalog.timelineUrl(catalog.get('models:transformer'), 'en'), catalog.timelineUrl(catalog.get('technology:transformer'), 'en'));
 });
 
 for (const language of ['zh', 'en']) {

@@ -2,16 +2,17 @@
 (() => {
   'use strict';
   const normalize = value => String(value).normalize('NFKC').toLowerCase().replace(/[\s\-‐‑–—_.·/]+/g, '');
-  function create(raw, searchIndex) {
+  function create(raw, searchIndex, getEntry) {
     const releases = raw.releases;
     const firstYear = Math.min(...releases.map(release => Number(release.date.slice(0, 4))));
     const lastYear = Number(raw.asOf.slice(0, 4));
     const years = Array.from({ length: lastYear - firstYear + 1 }, (_, index) => String(lastYear - index));
     const companyIds = new Set(raw.companies.map(company => company.id));
+    const knownCompanyIds = new Set((raw.allCompanies || raw.companies).map(company => company.id));
     const accessTypes = new Set(['all', 'open', 'closed']);
     function read(search, savedView = 'detail') {
       const params = new URLSearchParams(search);
-      const companies = new Set(params.getAll('companies').flatMap(value => value.split(',')).map(id => id.trim()).filter(id => companyIds.has(id)));
+      const companies = new Set(params.getAll('companies').flatMap(value => value.split(',')).map(id => id.trim()).filter(id => knownCompanyIds.has(id)));
       const year = years.includes(params.get('year')) ? params.get('year') : 'all';
       const requestedMonth = params.get('month') || '';
       const month = year !== 'all' && /^(0[1-9]|1[0-2])$/.test(requestedMonth) && `${year}-${requestedMonth}` <= raw.asOf.slice(0, 7) ? requestedMonth : 'all';
@@ -50,18 +51,29 @@
       }
       return { ...state, companies, multiSelect };
     }
+    function matchingReleases(release, state, omitted = []) {
+      const ownCompany = omitted.includes('companies') || !state.companies.size || state.companies.has(release.company);
+      const query = omitted.includes('query') ? '' : state.query.trim();
+      const terms = query.split(/\s+/).map(normalize).filter(Boolean);
+      const exact = query.includes(':') && getEntry?.(query.toLowerCase());
+      return [release, ...(release.history || [])].filter(item => {
+        // A saved filter can name an organization whose only releases now live in history.
+        if (!ownCompany && (companyIds.has(item.company) || !state.companies.has(item.company))) return false;
+        if (exact) return item === exact.release;
+        const haystack = searchIndex.get(item.id) || '';
+        return !query || (terms.length > 0 && terms.every(term => haystack.includes(term)));
+      });
+    }
     function matches(release, state, omitted = []) {
       const ignore = key => omitted.includes(key);
-      const terms = state.query.trim().split(/\s+/).filter(Boolean).map(normalize);
       const openness = release.openness?.status;
-      return (ignore('companies') || !state.companies.size || state.companies.has(release.company)) &&
-        (ignore('year') || state.year === 'all' || release.date.startsWith(state.year)) &&
+      return (ignore('year') || state.year === 'all' || release.date.startsWith(state.year)) &&
         (ignore('month') || state.month === 'all' || release.date.slice(5, 7) === state.month) &&
         (ignore('category') || state.category === 'all' || release.category === state.category) &&
         (ignore('task') || !state.task || state.task === 'all' || release.tasks?.includes(state.task)) &&
         (ignore('openness') || state.openness === 'all' || state.openness === openness) &&
         (ignore('milestones') || !state.milestones || release.milestone) &&
-        (ignore('query') || terms.every(term => (searchIndex.get(release.id) || '').includes(term)));
+        (((ignore('companies') || !state.companies.size) && (ignore('query') || !state.query)) || matchingReleases(release, state, omitted).length > 0);
     }
     function select(state, omitted = []) {
       return releases.filter(release => matches(release, state, omitted));
@@ -104,7 +116,7 @@
     function hasFilters(state) {
       return Boolean(state.companies.size || state.year !== 'all' || state.category !== 'all' || (state.task && state.task !== 'all') || state.openness !== 'all' || state.query || state.milestones);
     }
-    return { years, read, chooseCompany, setMultiSelect, select, matches, annualCounts, monthlyCounts, companyCounts, serialize, hasFilters };
+    return { years, read, chooseCompany, setMultiSelect, select, matches, matchingReleases, annualCounts, monthlyCounts, companyCounts, serialize, hasFilters };
   }
   const api = { create, normalize };
   if (typeof window !== 'undefined') window.ATLAS_FILTERS = api;

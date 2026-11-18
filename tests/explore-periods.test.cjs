@@ -109,7 +109,7 @@ test('invalid dates or identities fail clearly instead of inventing a period or 
 test('browser export groups the real catalog with every event present exactly once', () => {
   const sourceRoot = path.join(__dirname, '..', 'src');
   const context = { window: {} };
-  for (const file of ['data.js', 'data-en.js', 'data-agents.js', 'data-hardware.js', 'data-technology.js', 'catalog.js', 'explore-periods.js']) {
+  for (const file of ['data.js', 'data-en.js', 'data-agents.js', 'data-hardware.js', 'data-technology.js', 'data-history.js', 'catalog.js', 'explore-periods.js']) {
     vm.runInNewContext(fs.readFileSync(path.join(sourceRoot, file), 'utf8'), context, { filename: file });
   }
   const events = context.window.ATLAS_CATALOG.events;

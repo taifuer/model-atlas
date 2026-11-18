@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
-  "asOf": "2026-11-14",
-  "updatedAt": "2026-11-14",
+  "asOf": "2026-11-18",
+  "updatedAt": "2026-11-18",
   "companies": [
     {
       "id": "anthropic",
@@ -12,11 +12,6 @@ window.AGENT_ATLAS = {
       "id": "openai",
       "name": "OpenAI",
       "aliases": "Codex ChatGPT Operator dots"
-    },
-    {
-      "id": "xai",
-      "name": "xAI",
-      "aliases": "Grok SpaceXAI"
     },
     {
       "id": "meta",
@@ -119,12 +114,6 @@ window.AGENT_ATLAS = {
       "aliases": "AWS Kiro Strands 亚马逊"
     },
     {
-      "id": "bytedance",
-      "name": "字节跳动",
-      "nameEn": "ByteDance",
-      "aliases": "TRAE SOLO 豆包"
-    },
-    {
       "id": "aider",
       "name": "Aider",
       "aliases": "Paul Gauthier"
@@ -199,11 +188,6 @@ window.AGENT_ATLAS = {
       "id": "zed",
       "name": "Zed Industries",
       "aliases": "Zed Agent Panel"
-    },
-    {
-      "id": "amp",
-      "name": "Amp",
-      "aliases": "Sourcegraph Amp Frontier"
     },
     {
       "id": "factory",
@@ -994,39 +978,6 @@ window.AGENT_ATLAS = {
       }
     },
     {
-      "id": "amp",
-      "date": "2025-05-15",
-      "name": "Amp",
-      "company": "amp",
-      "category": "coding",
-      "kind": "product",
-      "summary": "通过编辑器和命令行执行编程任务，串联代码检索、文件修改与工具调用。",
-      "details": "Sourcegraph 团队推出的编程 Agent 在早期测试后向所有用户开放，可在 VS Code 或终端使用，围绕代码库组织任务与工具执行。2026 年 10 月 22 日加入自托管 Orbs，可在自有基础设施中运行任务环境，由 Amp 连接并管理创建、暂停和恢复。",
-      "dateNote": "采用面向所有用户开放的公告日；此前已有早期测试。",
-      "tags": [
-        "编程",
-        "工具使用"
-      ],
-      "milestone": false,
-      "sources": [
-        {
-          "title": "Amp · 向所有用户开放",
-          "titleEn": "Amp · Public availability announcement",
-          "url": "https://ampcode.com/notes/how-i-use-amp"
-        },
-        {
-          "title": "Amp · 自托管 Orbs",
-          "titleEn": "Amp · Self-Hosted Orbs",
-          "url": "https://ampcode.com/news/self-hosted-orbs"
-        }
-      ],
-      "en": {
-        "summary": "A coding agent connects code search, file edits and tools through an editor extension and command line.",
-        "details": "Built by the Sourcegraph team, Amp opened to all users after early testing, with interfaces in VS Code and the terminal. On October 22, 2026, self-hosted Orbs added task environments on users’ infrastructure, connected to Amp for creation, pausing and resumption.",
-        "dateNote": "Uses the all-users availability announcement; early testing preceded this date."
-      }
-    },
-    {
       "id": "codex-cloud",
       "date": "2025-05-16",
       "name": "Codex Cloud",
@@ -1308,33 +1259,6 @@ window.AGENT_ATLAS = {
       }
     },
     {
-      "id": "trae-solo",
-      "date": "2025-07-17",
-      "name": "TRAE SOLO",
-      "company": "bytedance",
-      "category": "coding",
-      "kind": "release",
-      "summary": "把需求整理、代码编写、浏览器验证和部署放在连续的开发任务中。",
-      "details": "SOLO 在 TRAE 中加入更完整的任务执行模式，工作界面连接编辑器、终端、文档和浏览器。",
-      "dateNote": "记录 SOLO 模式的官方介绍日期，不是 TRAE IDE 首发。",
-      "tags": [
-        "编程",
-        "工具使用"
-      ],
-      "milestone": false,
-      "sources": [
-        {
-          "title": "官方 · SOLO 发布介绍",
-          "url": "https://www.trae.ai/blog/product_solo"
-        }
-      ],
-      "en": {
-        "summary": "Connects requirements, coding, browser validation and deployment within one development task.",
-        "details": "SOLO added a task execution mode to TRAE, combining the editor, terminal, documents and browser.",
-        "dateNote": "Records the SOLO introduction, not the original TRAE IDE launch."
-      }
-    },
-    {
       "id": "qwen-code",
       "date": "2025-07-22",
       "name": "Qwen Code",
@@ -1417,34 +1341,6 @@ window.AGENT_ATLAS = {
         "summary": "Plans and executes development tasks with repository context; Quest mode supports longer delegated work.",
         "details": "Qoder introduced a coding platform combining interactive editing with task delegation and review.",
         "dateNote": ""
-      }
-    },
-    {
-      "id": "codebuddy-code",
-      "date": "2025-09-09",
-      "name": "CodeBuddy Code / IDE",
-      "company": "tencent",
-      "category": "coding",
-      "kind": "product",
-      "summary": "推出终端编程 Agent，并向所有用户开放 IDE，连接代码修改、命令执行与应用部署。",
-      "details": "CodeBuddy Code 提供文件编辑、终端命令和提交创建，可通过 MCP 扩展工具。同日开放的 CodeBuddy IDE 与 CloudBase、EdgeOne Pages 集成，衔接开发与部署。",
-      "dateNote": "采用腾讯公告正文的 9 月 9 日；文章转载日期为 9 月 11 日，IDE 此前已有内测。",
-      "tags": [
-        "编程",
-        "工具使用"
-      ],
-      "milestone": false,
-      "sources": [
-        {
-          "title": "腾讯 · CodeBuddy Code 与 IDE 发布公告",
-          "titleEn": "Tencent · CodeBuddy Code and IDE announcement",
-          "url": "https://developer.cloud.tencent.com/article/2566993"
-        }
-      ],
-      "en": {
-        "summary": "A terminal coding agent launches alongside public IDE access, connecting edits, command execution and application deployment.",
-        "details": "CodeBuddy Code provides file editing, terminal commands and commit creation, with MCP extensions. CodeBuddy IDE opened the same day and integrated CloudBase and EdgeOne Pages for development and deployment.",
-        "dateNote": "Uses the September 9 event date in Tencent’s announcement, not its September 11 republication. The IDE had earlier private testing."
       }
     },
     {
@@ -2003,44 +1899,6 @@ window.AGENT_ATLAS = {
       }
     },
     {
-      "id": "grok-build",
-      "date": "2026-05-25",
-      "name": "Grok Build",
-      "company": "xai",
-      "category": "coding",
-      "kind": "preview",
-      "summary": "终端编程 Agent，支持计划审阅、并行子代理和工作树隔离。",
-      "details": "面向 SuperGrok 与 X Premium Plus 订阅用户发布早期测试版，提供非交互运行及 ACP 接入。7 月 15 日开放 Rust 编写的 Agent 运行时、工具、终端界面与扩展系统源码，可连接本地推理服务。",
-      "dateNote": "记录官方 5 月 25 日面向上述订阅用户的早期测试版公告；7 月 15 日是源码开放日期，不是工具首发日。",
-      "tags": [
-        "编程",
-        "工具使用"
-      ],
-      "milestone": false,
-      "sources": [
-        {
-          "title": "xAI · Grok Build 预览公告",
-          "titleEn": "xAI · Grok Build early-beta announcement",
-          "url": "https://x.ai/news/grok-build-cli"
-        },
-        {
-          "title": "xAI · Grok Build 开源公告",
-          "titleEn": "xAI · Grok Build source-release announcement",
-          "url": "https://x.ai/news/grok-build-open-source"
-        },
-        {
-          "title": "xAI · Grok Build 官方源码",
-          "titleEn": "xAI · Grok Build official source code",
-          "url": "https://github.com/xai-org/grok-build"
-        }
-      ],
-      "en": {
-        "summary": "A terminal coding agent supports plan review, parallel subagents and isolated worktrees.",
-        "details": "An early beta for SuperGrok and X Premium Plus subscribers offered headless execution and ACP integration. On July 15, the Rust agent runtime, tools, terminal interface and extension system were open-sourced, with support for local inference.",
-        "dateNote": "Records the official May 25 early-beta announcement for these subscription plans. July 15 marks the source release, not the original tool launch."
-      }
-    },
-    {
       "id": "deepseek-harness",
       "date": "2026-08-13",
       "name": "DeepSeek Harness",
@@ -2304,7 +2162,7 @@ window.AGENT_ATLAS = {
       "kind": "release",
       "summary": "发布稳定版编程 Harness，整合 Codemode、MCP、延迟工具加载与可扩展模型路由。",
       "details": "Earendil 与 Pi 社区将经过持续迭代的终端 Agent 发布为 1.0，保持可扩展的运行核心，采用 MIT 许可。同日另行推出的 Pi Durable 为实验性框架。",
-      "dateNote": "记录 1.0 稳定版公告与 GitHub 发布日；Pi 的早期公开版本单独收录。",
+      "dateNote": "Mario Zechner 于 2025 年 11 月 30 日公开介绍了当时已在使用的 Pi。1.0 稳定版公告与 GitHub 发布日期均为 2026 年 10 月 1 日。",
       "tags": [
         "执行环境",
         "工具使用"
@@ -2325,7 +2183,7 @@ window.AGENT_ATLAS = {
       "en": {
         "summary": "A stable coding harness brings together Codemode, MCP, deferred tool loading and extensible model routing.",
         "details": "Earendil and the Pi community released the terminal agent as version 1.0 under the MIT license, retaining an extensible runtime. Pi Durable, announced the same day, remained an experimental framework rather than part of the stable-release claim.",
-        "dateNote": "Uses the 1.0 announcement and GitHub release date. The earlier public Pi release is recorded separately."
+        "dateNote": "Mario Zechner publicly described the existing Pi project on November 30, 2025. The version 1.0 announcement and GitHub release are both dated October 1, 2026."
       }
     },
     {
@@ -2373,39 +2231,6 @@ window.AGENT_ATLAS = {
         "summary": "Define, evaluate and deploy agents as code, with source-control, Slack and scheduled triggers.",
         "details": "Instructions, TypeScript tools, skills and evals live in one project, with event replay, persistent sessions and subagents. Agents can run on Cursor or on self-hosted infrastructure; Cursor documents its use in Bugbot, Security Review and Rollouts. The SDK has a proprietary Cursor license.",
         "dateNote": "Uses October 20 as printed on the official product announcement. The SDK changelog labels 0.3.0 GA October 23; npm published that package October 25 at 20:04 UTC. These dates describe different records."
-      }
-    },
-    {
-      "id": "claude-duet",
-      "date": "2026-10-21",
-      "name": "Claude Duet",
-      "company": "anthropic",
-      "category": "general",
-      "kind": "preview",
-      "milestone": false,
-      "summary": "在独立云端计算机中处理跨应用任务，主动整理待办事项并持续跟进。",
-      "details": "基于 Claude Opus 5.5，沿用账户中的记忆、技能和已连接应用，支持文字与语音交互。首批通过候补名单向美国 Pro、Max 用户提供 iOS、Android 与网页研究预览，与 Claude 共用套餐额度；后台检查也计入用量。",
-      "dateNote": "采用 10 月 21 日官方研究预览公告日期；这是有地区、套餐和候补名单限制的分批开放。",
-      "tags": [
-        "任务规划",
-        "工具使用"
-      ],
-      "sources": [
-        {
-          "title": "Anthropic · Claude Duet 研究预览",
-          "titleEn": "Anthropic · Claude Duet research preview",
-          "url": "https://claude.com/resources/articles/claude-duet"
-        },
-        {
-          "title": "Anthropic · Claude 产品发布记录",
-          "titleEn": "Anthropic · Claude release notes",
-          "url": "https://support.claude.com/en/articles/12138966-release-notes"
-        }
-      ],
-      "en": {
-        "summary": "A dedicated cloud computer handles tasks across apps, surfaces priorities and follows up over time.",
-        "details": "Built around Claude Opus 5.5, Duet carries over account memory, skills and connected apps, with text and voice interaction. The initial research preview offers iOS, Android and web access by waitlist for US Pro and Max subscribers. It shares Claude plan limits, including background checks.",
-        "dateNote": "Uses the October 21 research-preview announcement. Access is staged and restricted by region, subscription and waitlist."
       }
     }
   ],

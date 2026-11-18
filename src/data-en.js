@@ -4,7 +4,7 @@ window.MODEL_ATLAS_EN = {
     "name": "Hunyuan Hy4",
     "summary": "The general release adds visual understanding and computer use across command-line and graphical interfaces.",
     "details": "Supports image understanding, chart analysis and cross-application tasks through Tencent Cloud TokenHub and products including WorkBuddy and CodeBuddy. Public model weights are planned but were not available at the review date.",
-    "dateNote": "Uses Tencent's November 4 release announcement. The August 28 Hy4 Preview remains a separate preview entry."
+    "dateNote": "Tencent introduced Hy4 Preview on August 28 and announced the general release of Hy4 on November 4."
   },
   "mistral-large-4-preview": {
     "summary": "A multimodal flagship combining instruction following, reasoning and agent tasks, with later open weights supporting a million-token context.",
@@ -20,12 +20,7 @@ window.MODEL_ATLAS_EN = {
     "name": "GPT-6 Sol / Luna (ChatGPT)",
     "summary": "October versions of GPT-6 Sol and Luna arrive in ChatGPT for free and paid users.",
     "details": "These versions replace GPT-5.6 Sol and Luna in ChatGPT and include updated safety training. OpenAI distinguishes them from the September versions then used in Codex and ChatGPT Work. The October rollout is for ChatGPT.",
-    "dateNote": "Uses October 7 from the official system card for the ChatGPT October release. The original September launch remains a separate entry."
-  },
-  "transformer": {
-    "summary": "Google researchers introduce the Transformer, an attention-based sequence model, in Attention Is All You Need.",
-    "details": "The paper presents an encoder–decoder architecture using multi-head attention and positional encoding, evaluated on machine translation. It provided the architectural foundation for later pretrained models including GPT and BERT.",
-    "dateNote": "Uses the first arXiv submission on June 12, 2017. This entry records the architecture paper, not a chat product or a later language-model release."
+    "dateNote": "Sol and Luna first launched on September 22. OpenAI’s system card dates the October ChatGPT release to October 7."
   },
   "gpt-1": {
     "summary": "Unsupervised language pretraining and task-specific fine-tuning support transfer across tasks.",
@@ -310,7 +305,7 @@ window.MODEL_ATLAS_EN = {
   },
   "deepseek-r1-0528": {
     "summary": "A major R1 update improves reasoning, coding, structured output, and tool calls.",
-    "details": "It is recorded separately because it has an independent official release announcement.",
+    "details": "DeepSeek introduced R1 on January 20 and announced the R1-0528 update on May 28.",
     "dateNote": ""
   },
   "minimax-m1": {
@@ -340,7 +335,7 @@ window.MODEL_ATLAS_EN = {
   },
   "claude-opus-4-1": {
     "summary": "Opus improves coding, practical reasoning, and agent performance.",
-    "details": "A distinct update between Opus 4 and Opus 4.5.",
+    "details": "Anthropic released this update after Opus 4 and before Opus 4.5.",
     "dateNote": ""
   },
   "gpt-oss": {
@@ -440,7 +435,7 @@ window.MODEL_ATLAS_EN = {
   },
   "glm-4-7": {
     "summary": "GLM improves coding and long-context task execution.",
-    "details": "The lightweight Flash model is recorded separately.",
+    "details": "The lighter GLM-4.7-Flash followed on January 19, 2026.",
     "dateNote": ""
   },
   "minimax-m2-1": {
@@ -450,7 +445,7 @@ window.MODEL_ATLAS_EN = {
   },
   "glm-4-7-flash": {
     "summary": "A lightweight model extends the GLM-4.7 family.",
-    "details": "The entry follows the official platform release log.",
+    "details": "Z.ai’s platform changelog dates the GLM-4.7-Flash release to January 19.",
     "dateNote": ""
   },
   "kimi-k2-5": {
@@ -551,11 +546,6 @@ window.MODEL_ATLAS_EN = {
   "claude-opus-4-7": {
     "summary": "Opus improves difficult engineering and visual understanding.",
     "details": "Long tasks gain stronger self-checking; this is a released model update.",
-    "dateNote": ""
-  },
-  "qwen-3-6-max-preview": {
-    "summary": "A flagship preview strengthens coding and complex task execution.",
-    "details": "The Preview label is retained rather than implying a stable release.",
     "dateNote": ""
   },
   "gpt-5-5": {
@@ -661,7 +651,7 @@ window.MODEL_ATLAS_EN = {
   },
   "qwen-3-8-max": {
     "summary": "A native vision-language flagship supports a one-million-token context.",
-    "details": "The date records first availability in the QwenCloud model log.",
+    "details": "The QwenCloud model log dates initial availability to August 3 and the updated snapshot to September 2.",
     "dateNote": ""
   },
   "grok-4-6": {
@@ -677,7 +667,7 @@ window.MODEL_ATLAS_EN = {
   },
   "deepseek-v4-pro-0813": {
     "summary": "V4 Pro reaches general availability with stronger agents and Responses API support.",
-    "details": "The August 13 model snapshot is separate from the April preview.",
+    "details": "DeepSeek introduced the V4 preview in April. Its release log dates general availability of the V4-Pro 0813 snapshot to August 13.",
     "dateNote": "",
     "name": "DeepSeek-V4-Pro (GA)"
   },
@@ -821,11 +811,6 @@ window.MODEL_ATLAS_EN = {
     "summary": "Ai2 releases weights, training code, data and checkpoints to support reproducible research into language-model training and evaluation.",
     "details": "The first OLMo release provides 1B and 7B base models alongside the Dolma dataset, training materials and evaluation tools. Its release extends beyond weights to the resources needed to study training, representing transparent, reproducible LLM research. Models and code use Apache 2.0.",
     "dateNote": "Uses Ai2’s initial February 1, 2024 announcement, separate from later checkpoints and OLMo 2."
-  },
-  "mellum-2-1-thinking": {
-    "summary": "JetBrains releases a reasoning model for coding agents that handles repository tasks with a relatively small active parameter count.",
-    "details": "Mellum2.1-12B-A2.5B-Thinking is a mixture-of-experts model with 12B total parameters, about 2.5B active per token and a 131,072-token context. Reinforcement learning uses real repositories and sandbox tools. Apache 2.0 weights support local coding tools and subagents.",
-    "dateNote": "Uses October 8, 2026 from the JetBrains announcement. This records the Thinking weight release; later quantized formats and multi-token prediction heads are not treated as simultaneously available."
   },
   "ling-3-1-flash": {
     "summary": "InclusionAI releases a hybrid reasoning model for coding, tool use, and multi-step agent tasks.",
@@ -1231,8 +1216,8 @@ window.MODEL_ATLAS_EN = {
   },
   "inkling-2-small": {
     "summary": "The second-generation mixture-of-experts model combines vision, coding and long-running tasks with fine-tuning through Tinker.",
-    "details": "Has 594B total and 17B active parameters, accepting text and images and producing text. The model card lists up to 1M context; current Tinker configurations provide 64K or 256K. Inference and fine-tuning are available through Tinker, while public weights remain a future release.",
-    "dateNote": "Uses the official November 5 launch announcement. Planned weight availability is not recorded as a completed release."
+    "details": "The model has 594B total parameters with 17B active per token. It takes text and images as input and produces text. The model card lists a 1M-token context window, and Tinker offers 64K and 256K configurations. Thinking Machines released the weights on Hugging Face under Apache 2.0.",
+    "dateNote": "Tinker launched inference and fine-tuning on November 5. Thinking Machines released the model weights on November 12. The timeline uses the initial service date."
   },
   "gpt-6-cyber": {
     "summary": "A specialized security model investigates vulnerabilities, reproduces issues in authorized environments and verifies fixes.",
@@ -1280,7 +1265,7 @@ window.MODEL_ATLAS_EN = {
   "qwen-4-max": {
     "summary": "The Qwen flagship enters general API availability with native vision, a million-token context and multi-step tool use.",
     "details": "Qwen4-Max uses a mixture-of-experts architecture with 2.4T total parameters and approximately 71B active per token. It accepts text, images and video and produces text. The November 16 release is available through QwenCloud API, Token Plan, QwenWork and Qwen Studio. The formal API supports pay-as-you-go billing; Token Plan is a subscription option.",
-    "dateNote": "Uses the November 16 Alibaba Cloud release announcement. Qwen4-Max-Preview, opened on November 11, remains a separate preview entry."
+    "dateNote": "Alibaba Cloud opened Qwen4-Max-Preview to Token Plan subscribers on November 11 and announced general availability for Qwen4-Max on November 16."
   },
   "longcat-2-5": {
     "summary": "Meituan’s native multimodal MoE model combines visual understanding with long-horizon coding and tool use.",
@@ -1288,7 +1273,7 @@ window.MODEL_ATLAS_EN = {
     "dateNote": "Uses November 2, the formal API launch in the official changelog. Preview access began September 25; weight availability is recorded separately at its review date."
   },
   "gpt-6-2-astra": {
-    "summary": "Handles complex reasoning and professional work across documents, code and computer interfaces.",
+    "summary": "Astra and Sol launched together. Astra handles complex reasoning and professional work. Sol focuses on everyday coding and lower-latency tool use.",
     "details": "Astra accepts text and images and produces text. It can analyze source material, write and test code, and prepare documents in one task. The API, ChatGPT Work and Codex offered access at launch.",
     "dateNote": "OpenAI announced GPT-6.2 Astra and Sol on November 17."
   },
@@ -1435,7 +1420,6 @@ window.ATLAS_TAGS_EN = {
   "机器人动作": "Robot actions"
 };
 window.MODEL_THEMES_EN = {
-  "2017": "The Transformer architecture",
   "2018": "Pretraining research",
   "2019": "Scale and transfer learning",
   "2020": "Few-shot learning",

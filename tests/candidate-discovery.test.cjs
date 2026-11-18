@@ -16,6 +16,15 @@ async function fixture(t, handler) {
   return `http://127.0.0.1:${server.address().port}`;
 }
 
+test('discovery recognizes the original title and date of a grouped release', async () => {
+  const { catalogEntries, matchCatalog } = await modulePromise;
+  const { loadCatalog } = await import('../scripts/prerender.mjs');
+  const entries = catalogEntries(await loadCatalog());
+  const matches = matchCatalog({ title: 'GPT-6.2 Sol', url: '' }, entries);
+  assert.deepEqual(matches.map(match => [match.section, match.entryId, match.reason]), [['models', 'gpt-6-2-sol', 'exact-title']]);
+  assert.equal(matches[0].date, entries.find(entry => entry.id === 'gpt-6-2-astra').date);
+});
+
 test('RSS publication and GitHub Atom modification dates remain distinct', async () => {
   const { parseCandidates } = await modulePromise;
   const [news] = parseCandidates(rss, source('rss'));

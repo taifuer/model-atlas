@@ -2001,40 +2001,6 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
         }
       ]
     },
-    "transformer": {
-      "variants": [
-        {
-          "name": "Transformer Base",
-          "basis": "paper",
-          "parameters": "65M",
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ],
-          "sources": [
-            "https://arxiv.org/abs/1706.03762"
-          ]
-        },
-        {
-          "name": "Transformer Big",
-          "basis": "paper",
-          "parameters": "213M",
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ],
-          "sources": [
-            "https://arxiv.org/abs/1706.03762"
-          ]
-        }
-      ],
-      "note": "参数量来自论文表 3 的英德翻译配置。Transformer 是架构，本身没有统一的上下文窗口。",
-      "noteEn": "Parameter counts describe the English–German translation configurations in Table 3. The Transformer architecture itself has no universal context limit."
-    },
     "gpt-1": {
       "variants": [
         {
@@ -2276,27 +2242,6 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           ],
           "sources": [
             "https://huggingface.co/allenai/OLMo-7B"
-          ]
-        }
-      ]
-    },
-    "mellum-2-1-thinking": {
-      "checkedAt": "2026-10-11",
-      "variants": [
-        {
-          "name": "Mellum2.1-12B-A2.5B-Thinking",
-          "contextTokens": 131072,
-          "parameters": "12B",
-          "activeParameters": "2.5B",
-          "basis": "weights",
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ],
-          "sources": [
-            "https://huggingface.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking"
           ]
         }
       ]

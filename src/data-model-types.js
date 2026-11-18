@@ -56,14 +56,6 @@
         "https://deploymentsafety.openai.com/gpt-6-october"
       ]
     },
-    "transformer": {
-      "category": "text",
-      "sources": [
-        "https://arxiv.org/abs/1706.03762"
-      ],
-      "note": "按论文中的文本翻译配置分类；Transformer 架构本身也可用于其他模态。",
-      "noteEn": "Classified by the paper’s text-translation configuration. The architecture can also support other modalities."
-    },
     "gpt-1": {
       "category": "text",
       "sources": [
@@ -723,12 +715,6 @@
         "https://platform.claude.com/docs/en/models/opus-4-7/overview"
       ]
     },
-    "qwen-3-6-max-preview": {
-      "category": "text",
-      "sources": [
-        "https://www.qwencloud.com/models/qwen3.6-max-preview"
-      ]
-    },
     "gpt-5-5": {
       "category": "multimodal",
       "sources": [
@@ -1061,13 +1047,6 @@
       "category": "text",
       "sources": [
         "https://huggingface.co/allenai/OLMo-7B"
-      ]
-    },
-    "mellum-2-1-thinking": {
-      "checkedAt": "2026-10-11",
-      "category": "text",
-      "sources": [
-        "https://huggingface.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking"
       ]
     },
     "ling-3-1-flash": {

@@ -8,12 +8,30 @@
     ['technology', '技术', 'Technology', 'technology.html', window.TECHNOLOGY_ATLAS],
   ];
   const sections = Object.fromEntries(definitions.map(([id, zh, en, file, data]) => [id, { id, zh, en, file, data }]));
-  const entries = definitions.flatMap(([section, , , , raw]) => (raw?.releases || []).map(release => ({ key: `${section}:${release.id}`, section, sections: [section], release, raw, company: raw.companies.find(company => company.id === release.company) })));
-  const byKey = new Map(entries.map(entry => [entry.key, entry]));
-  // Transformer is explicitly shared by the source datasets; do not infer other relationships.
-  const events = entries.filter(entry => entry.key !== 'models:transformer').map(entry => entry.key === 'technology:transformer' && byKey.has('models:transformer') ? { ...entry, sections: ['models', 'technology'] } : entry);
+  const entries = [];
+  const byKey = new Map();
+  for (const [section, , , , raw] of definitions) {
+    if (!raw) continue;
+    const companies = new Map((raw.allCompanies || raw.companies).map(company => [company.id, company]));
+    function register(release, parentKey) {
+      const key = `${section}:${release.id}`;
+      const record = { key, parentKey: parentKey || key, section, sections: [section], release, raw, company: companies.get(release.company) };
+      byKey.set(key, record);
+      return record;
+    }
+    for (const release of raw.releases) {
+      const primary = register(release);
+      entries.push(primary);
+      for (const child of release.history || []) register(child, primary.key);
+    }
+  }
+  const get = key => byKey.get(key === 'models:transformer' ? 'technology:transformer' : key);
   const language = value => value === 'en' ? 'en' : 'zh';
   const text = (entry, lang) => lang === 'en' ? { ...entry.release, ...(entry.release.en || window.MODEL_ATLAS_EN?.[entry.release.id]) } : entry.release;
+  function title(entry, lang) {
+    const family = entry.key === entry.parentKey && (lang === 'en' ? entry.release.familyNameEn : entry.release.familyName);
+    return family || text(entry, lang).name;
+  }
   const normalize = value => window.ATLAS_FILTERS.normalize(value);
   // Legacy company.aliases mixes organization names with all of their products.
   // Keep organization synonyms here; a product name only indexes its own entries.
@@ -49,7 +67,7 @@
     ['kling', '可灵'], ['hailuo', '海螺'],
   ];
   const organizationNames = new Map();
-  for (const [, , , , raw] of definitions) for (const company of raw?.companies || []) {
+  for (const [, , , , raw] of definitions) for (const company of raw?.allCompanies || raw?.companies || []) {
     const names = organizationNames.get(company.id) || new Set(organizationAliases[company.id] || []);
     for (const name of [company.name, company.nameEn]) if (name) names.add(name);
     organizationNames.set(company.id, names);
@@ -58,9 +76,9 @@
   let searchRecords;
   function records() {
     if (searchRecords) return searchRecords;
-    searchRecords = new Map(entries.map(entry => {
+    searchRecords = Array.from(byKey.values(), entry => {
       const { release, raw, section } = entry, en = text(entry, 'en');
-      const titles = normalizedFields([release.name, en.name]);
+      const titles = normalizedFields([release.name, en.name, release.familyName, release.familyNameEn]);
       const variants = section === 'models' ? [
         ...(window.MODEL_ATLAS_SPECS?.entries[release.id]?.variants || []),
         ...(window.MODEL_ATLAS_PRICES?.entries[release.id]?.variants || []),
@@ -78,11 +96,13 @@
         ...(release.tasks || []).flatMap(task => [raw.tasks?.[task], raw.tasksEn?.[task]]),
         ...(release.tags || []), ...(release.tags || []).map(tag => raw.tagsEn?.[tag] || window.ATLAS_TAGS_EN?.[tag]),
       ]);
-      return [entry.key, { entry, titles, names, identity: [...titles, ...names].join('\0'), organization: organization.join('\0'), haystack: [...titles, ...names, ...organization, ...body].join('\0') }];
-    }));
+      return { entry, titles, names, identity: [...titles, ...names].join('\0'), organization: organization.join('\0'), haystack: [...titles, ...names, ...organization, ...body].join('\0') };
+    });
     return searchRecords;
   }
   function search(query) {
+    const exactKey = get(String(query || '').trim().toLowerCase());
+    if (exactKey) return [exactKey];
     const terms = String(query || '').trim().split(/\s+/).map(normalize).filter(Boolean);
     if (!terms.length) return [];
     const phrase = normalize(query);
@@ -95,20 +115,17 @@
       if (all(record.identity + '\0' + record.organization)) return 2;
       return 1;
     }
-    const index = records();
-    return events.map(entry => ({ ...index.get(entry.key), entry }))
+    return records()
       .filter(record => all(record.haystack))
       .sort((a, b) => relevance(b) - relevance(a) || b.entry.release.date.localeCompare(a.entry.release.date) || a.entry.key.localeCompare(b.entry.key))
       .map(({ entry }) => entry);
   }
   function searchIndex(section) {
-    const index = records();
-    return new Map(entries.filter(entry => entry.section === section).map(entry => [entry.release.id, index.get(entry.key).haystack]));
+    return new Map(records().filter(({ entry }) => entry.section === section).map(({ entry, haystack }) => [entry.release.id, haystack]));
   }
   window.ATLAS_CATALOG = Object.freeze({
-    entries, events, sections,
-    get: key => byKey.get(key),
-    text, search, searchIndex,
+    entries, events: entries, sections, get,
+    text, title, search, searchIndex,
     timelineUrl: (entry, lang) => `${language(lang) === 'en' ? 'en/' : ''}${sections[entry.section].file}?lang=${language(lang)}#release-${entry.release.id}`,
   });
 })();

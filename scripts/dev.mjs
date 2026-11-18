@@ -20,6 +20,7 @@ const analyticsPreview = '<script>window.ATLAS_ANALYTICS = { start() {}, stop() 
 const files = new Map([
   ['explore-periods.js', ['explore-periods.js', 'text/javascript']],
   ['seo.js', ['seo.js', 'text/javascript']],
+  ['data-history.js', ['data-history.js', 'text/javascript']],
   ['catalog.js', ['catalog.js', 'text/javascript']],
   ['details.js', ['details.js', 'text/javascript']],
   ['workspace.js', ['workspace.js', 'text/javascript']],

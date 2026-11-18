@@ -412,31 +412,6 @@ window.HARDWARE_ATLAS = {
       }
     },
     {
-      "id": "instinct-mi60",
-      "date": "2018-11-06",
-      "name": "AMD Radeon Instinct MI60 / MI50",
-      "company": "amd",
-      "category": "gpu",
-      "kind": "announcement",
-      "summary": "7 nm Vega 加速器引入 PCIe 4.0，扩展深度学习与高性能计算。",
-      "details": "MI60 与 MI50 同日公布，归为一个代际节点；内存容量与供货时间随型号区分。",
-      "sources": [
-        {
-          "url": "https://ir.amd.com/news-events/press-releases/detail/859/amd-unveils-worlds-first-7nm-datacenter-gpus----powering-the-next-era-of-artificial-intelligence-cloud-computing-and-high-performance-computing-hpc",
-          "title": "官方发布资料",
-          "titleEn": "Official announcement"
-        }
-      ],
-      "tags": [],
-      "milestone": false,
-      "dateNote": "日期为所列资料中的产品公布日，后续供应安排见详情。",
-      "en": {
-        "summary": "7 nm Vega accelerators introduce PCIe 4.0 for deep learning and HPC.",
-        "details": "MI60 and MI50 share one generational entry. Memory capacity and availability vary by model.",
-        "dateNote": "Dated to the product announcement in the cited source; availability is described separately."
-      }
-    },
-    {
       "id": "habana-gaudi",
       "date": "2019-06-17",
       "name": "Habana Gaudi",
@@ -511,7 +486,7 @@ window.HARDWARE_ATLAS = {
       "category": "accelerator",
       "kind": "announcement",
       "summary": "昇腾 910 正式发布，为神经网络训练提供专用处理器。",
-      "details": "这一节点记录 2019 年的产品发布，与 2018 年昇腾系列的首次公布分别保留。",
+      "details": "华为在 2018 年全联接大会上首次公布昇腾系列，2019 年 8 月 23 日正式发布昇腾 910。",
       "sources": [
         {
           "url": "https://spanish.xinhuanet.com/2019-08/23/c_138332419.htm",
@@ -525,7 +500,7 @@ window.HARDWARE_ATLAS = {
       "dateNote": "日期依据新华社 2019-08-23 当日报道，报道明确该产品于当天发布。",
       "en": {
         "summary": "Ascend 910 launches as a dedicated processor for neural-network training.",
-        "details": "This records the 2019 product launch, separately from the Ascend family announcement in 2018.",
+        "details": "Huawei introduced the Ascend family at HUAWEI CONNECT in 2018 and launched Ascend 910 on August 23, 2019.",
         "dateNote": "Xinhua’s report dated 2019-08-23 explicitly states that the product launched that day.",
         "name": "Ascend 910"
       }
@@ -1337,7 +1312,7 @@ window.HARDWARE_ATLAS = {
       "category": "accelerator",
       "kind": "announcement",
       "summary": "第五代 TPU 的经济型路线同时支持训练和推理。",
-      "details": "v5e 与侧重高性能训练的 v5p 分别记录。首发为预览阶段，正式可用在 2023 年 11 月。",
+      "details": "v5e 于 2023 年 8 月进入预览，11 月正式可用。v5p 侧重大规模训练。",
       "sources": [
         {
           "url": "https://cloud.google.com/blog/products/compute/announcing-cloud-tpu-v5e-and-a3-gpus-in-ga",
@@ -1355,7 +1330,7 @@ window.HARDWARE_ATLAS = {
       "dateNote": "日期为所列资料中的产品公布日，后续供应安排见详情。",
       "en": {
         "summary": "The cost-focused fifth-generation TPU supports both training and inference.",
-        "details": "v5e is distinct from the training-focused v5p. It debuts in preview, with general availability following in November 2023.",
+        "details": "Google introduced v5e in preview in August 2023 and made it generally available in November. The v5p targets large-scale training.",
         "dateNote": "Dated to the product announcement in the cited source; availability is described separately."
       }
     },
@@ -2042,55 +2017,6 @@ window.HARDWARE_ATLAS = {
         ],
         "note": "按单芯片记录，非 Trn2 实例或 UltraServer 的总算力。 算力为所列配置的理论峰值，非模型训练或推理的实测吞吐。稠密与稀疏算力分别标注，显存带宽不等同于芯片互联带宽；功耗为上限或板卡规格。",
         "noteEn": "Per chip, not the total of a Trn2 instance or UltraServer. Compute is the theoretical peak for the named configuration, not measured model throughput. Dense and sparse values are labeled separately. Memory bandwidth is distinct from chip interconnect bandwidth; power is the stated maximum or board rating."
-      }
-    },
-    {
-      "id": "jetson-orin-nano-super",
-      "date": "2024-12-17",
-      "name": "Jetson Orin Nano Super",
-      "company": "nvidia",
-      "category": "edge",
-      "kind": "availability",
-      "summary": "开发套件通过软件升级与价格调整，扩展边缘端生成式 AI 的使用范围。",
-      "details": "Super 是开发套件与性能模式更新，已有 Orin Nano 开发套件也可通过 JetPack 升级获得性能提升。",
-      "dateNote": "日期为该产品或云服务的正式供应公告日。",
-      "tags": [
-        "本地与边缘"
-      ],
-      "milestone": false,
-      "sources": [
-        {
-          "title": "官方发布资料",
-          "url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/"
-        }
-      ],
-      "en": {
-        "summary": "A developer kit combines a software upgrade and lower pricing for edge generative AI.",
-        "details": "Super updates the developer-kit offering and performance mode. Existing Orin Nano kit owners can also gain performance through a JetPack update.",
-        "dateNote": "Dated to the official availability announcement for this product or cloud service."
-      },
-      "hardware": {
-        "variant": "Jetson Orin Nano Super Developer Kit",
-        "checkedAt": "2026-09-30",
-        "facts": [
-          {
-            "label": "带宽",
-            "labelEn": "Bandwidth",
-            "value": "102 GB/s",
-            "chip": true
-          },
-          {
-            "label": "发布起价",
-            "labelEn": "Launch price",
-            "value": "US$249",
-            "chip": true
-          }
-        ],
-        "sources": [
-          "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/"
-        ],
-        "note": "规格对应上述型号，以所列原始资料为准；其他封装与整机配置可能不同。",
-        "noteEn": "Specifications apply to the named configuration in the cited source. Other form factors and complete systems may differ."
       }
     },
     {
@@ -2806,67 +2732,6 @@ window.HARDWARE_ATLAS = {
       }
     },
     {
-      "id": "tpu-8",
-      "date": "2026-04-22",
-      "name": "Google TPU 8 系列",
-      "company": "google",
-      "category": "accelerator",
-      "kind": "announcement",
-      "summary": "第八代 TPU 分为面向训练的 8t 与面向推理的 8i。",
-      "details": "两种芯片针对不同计算与通信瓶颈设计。2026 年 11 月 9 日，Google 扩展第八代系列：8tx 面向机密推理，8i Max 将两颗 8i 芯片封装在一起，提供相对单颗 8i 两倍的计算能力、SRAM 和 HBM 带宽。下列 288 GB HBM 与 384 MB SRAM 仍对应单颗 TPU 8i，不是 8i Max 系统规格。",
-      "dateNote": "保留 8t / 8i 的首次公布日期；11 月 9 日的 8tx / 8i Max 系统配置合并记录，供货安排以原始公告为准。",
-      "tags": [
-        "AI 加速器"
-      ],
-      "milestone": false,
-      "sources": [
-        {
-          "title": "官方发布资料",
-          "url": "https://cloud.google.com/blog/products/compute/ai-infrastructure-at-next26"
-        },
-        {
-          "title": "Google Cloud · TPU 8tx 与 8i Max",
-          "titleEn": "Google Cloud: TPU 8tx and 8i Max",
-          "url": "https://cloud.google.com/blog/topics/ai-infrastructure/tpu-8tx-and-tpu-8i-max"
-        }
-      ],
-      "en": {
-        "summary": "Eighth-generation TPUs split into training-oriented 8t and inference-oriented 8i.",
-        "details": "The chips address different compute and communication bottlenecks. On November 9, 2026, Google expanded the eighth-generation family: 8tx targets confidential inference, while 8i Max packages two 8i chips together for twice the compute, SRAM and HBM bandwidth of a single 8i. The listed 288 GB HBM and 384 MB SRAM remain specifications of one TPU 8i chip, not an 8i Max system.",
-        "dateNote": "Retains the original 8t / 8i announcement. The November 9 system configurations, 8tx and 8i Max, are recorded here; consult the original sources for availability.",
-        "name": "Google TPU 8 family"
-      },
-      "hardware": {
-        "variant": "TPU 8i · 1 chip",
-        "checkedAt": "2026-09-30",
-        "facts": [
-          {
-            "label": "显存",
-            "labelEn": "Memory",
-            "value": "288 GB HBM",
-            "chip": true
-          },
-          {
-            "label": "片上 SRAM",
-            "labelEn": "On-chip SRAM",
-            "value": "384 MB",
-            "chip": false
-          }
-        ],
-        "sources": [
-          "https://cloud.google.com/blog/products/compute/tpu-8t-and-tpu-8i-technical-deep-dive"
-        ],
-        "note": "规格对应上述型号，以所列原始资料为准；其他封装与整机配置可能不同。",
-        "noteEn": "Specifications apply to the named configuration in the cited source. Other form factors and complete systems may differ."
-      },
-      "searchAliases": [
-        "TPU 8t",
-        "TPU 8i",
-        "TPU 8tx",
-        "TPU 8i Max"
-      ]
-    },
-    {
       "id": "nvidia-rtx-spark",
       "date": "2026-05-31",
       "name": "NVIDIA RTX Spark",
@@ -3075,54 +2940,6 @@ window.HARDWARE_ATLAS = {
       }
     },
     {
-      "id": "cerebras-cs4",
-      "date": "2026-08-18",
-      "name": "Cerebras CS-4",
-      "company": "cerebras",
-      "category": "systems",
-      "kind": "announcement",
-      "summary": "采用三颗 WSE-3 Turbo 与 Nexus 机架架构，面向低延迟推理及分离式部署。",
-      "details": "模块化设计整合计算、供电和 I/O，支持由其他平台完成预填充、由 CS-4 完成解码的分离式推理。CS-4 是系统代际名称，处理器为 WSE-3 Turbo。",
-      "dateNote": "采用官方 8 月 18 日公告日期；公告计划当季开始交付，未据此确认实际客户交付日。",
-      "tags": [],
-      "milestone": false,
-      "sources": [
-        {
-          "title": "CS-4 系统公告",
-          "titleEn": "CS-4 system announcement",
-          "url": "https://www.cerebras.ai/blog/introducing-cerebras-cs-4"
-        }
-      ],
-      "en": {
-        "summary": "Combines three WSE-3 Turbo processors with the Nexus rack architecture for low-latency and disaggregated inference.",
-        "details": "Its modular design integrates compute, power, and I/O. Other platforms can handle prefill while CS-4 handles decoding. CS-4 names the system generation; the processors are WSE-3 Turbo.",
-        "dateNote": "Uses the August 18 announcement. Shipments were scheduled to begin that quarter; a customer delivery date is not established here."
-      },
-      "hardware": {
-        "variant": "Cerebras CS-4 · Nexus",
-        "checkedAt": "2026-10-08",
-        "facts": [
-          {
-            "label": "处理器",
-            "labelEn": "Processors",
-            "value": "3 × WSE-3 Turbo",
-            "chip": true
-          },
-          {
-            "label": "机架架构",
-            "labelEn": "Rack architecture",
-            "value": "Nexus",
-            "chip": false
-          }
-        ],
-        "sources": [
-          "https://www.cerebras.ai/blog/introducing-cerebras-cs-4"
-        ],
-        "note": "规格对应 CS-4 系统；官方性能倍率含特定模型测试与推算，不作为通用算力指标。",
-        "noteEn": "Specifications describe the CS-4 system. Published speedups include model-specific tests and projections, not general compute metrics."
-      }
-    },
-    {
       "id": "apple-m5-ultra",
       "date": "2026-08-25",
       "name": "Apple M5 Ultra",
@@ -3170,139 +2987,6 @@ window.HARDWARE_ATLAS = {
         ],
         "note": "512 GB 为公布的最高统一内存配置，计划 2026 年 10 月下旬供应；截至 10 月 8 日不记作该配置已交付。",
         "noteEn": "512 GB is the announced maximum unified-memory configuration, scheduled for late October 2026; it is not recorded as delivered as of October 8."
-      }
-    },
-    {
-      "id": "ascend-960-supernode",
-      "date": "2026-09-17",
-      "name": "昇腾 960 超节点",
-      "company": "huawei",
-      "category": "systems",
-      "kind": "announcement",
-      "summary": "以灵衢互连与 Hi-ONE NPO 光引擎连接最高 4096 张加速卡。",
-      "details": "采用统一内存编址与全液冷设计，厂商公布的系统聚合峰值为 8 EFLOPS FP8、16 EFLOPS FP4，不代表单卡算力。同场芯片路线图计划 960DT 于 2027 年第一季度、960PR 于第三季度就绪。",
-      "dateNote": "记录 9 月 17 日超节点产品公布，不代表昇腾 960 芯片或整机已经供货。",
-      "tags": [],
-      "milestone": false,
-      "sources": [
-        {
-          "title": "昇腾 960 超节点公告",
-          "titleEn": "Ascend 960 Supernode announcement",
-          "url": "https://www.huawei.com/cn/news/2026/9/hc-ascend960-supernode"
-        },
-        {
-          "title": "芯片路线图与系统架构",
-          "titleEn": "Chip roadmap and system architecture",
-          "url": "https://www.huawei.com/cn/news/2026/9/hc-wang-keynote"
-        }
-      ],
-      "en": {
-        "name": "Ascend 960 Supernode",
-        "summary": "Uses UnifiedBus interconnects and Hi-ONE near-packaged optics to link up to 4,096 accelerator cards.",
-        "details": "Features unified memory addressing and liquid cooling. Vendor-stated aggregate system peaks are 8 EFLOPS FP8 and 16 EFLOPS FP4, not per-card figures. The accompanying chip roadmap targets readiness for 960DT in Q1 2027 and 960PR in Q3 2027.",
-        "dateNote": "Records the September 17 system announcement, not confirmed availability of Ascend 960 chips or complete systems."
-      },
-      "hardware": {
-        "variant": "昇腾 960 超节点 · 公布配置",
-        "variantEn": "Ascend 960 Supernode · announced configuration",
-        "checkedAt": "2026-10-08",
-        "facts": [
-          {
-            "label": "加速卡上限",
-            "labelEn": "Max accelerator cards",
-            "value": "4096",
-            "chip": true
-          },
-          {
-            "label": "互连",
-            "labelEn": "Interconnect",
-            "value": "灵衢 + Hi-ONE NPO",
-            "valueEn": "UnifiedBus + Hi-ONE NPO",
-            "chip": false
-          }
-        ],
-        "sources": [
-          "https://www.huawei.com/cn/news/2026/9/hc-ascend960-supernode",
-          "https://www.huawei.com/cn/news/2026/9/hc-wang-keynote"
-        ],
-        "note": "规格对应官方公布的完整超节点配置；芯片就绪时间另见路线图，系统规模与峰值不等于已交付性能。",
-        "noteEn": "Specifications describe the announced complete Supernode. Chip readiness follows the roadmap; system scale and peaks do not establish delivered performance."
-      }
-    },
-    {
-      "id": "microsoft-maia-300",
-      "date": "2026-10-12",
-      "name": "Microsoft Azure Maia 300",
-      "company": "microsoft",
-      "category": "accelerator",
-      "kind": "announcement",
-      "summary": "以多芯粒与 HBM4 提升内存带宽，面向长上下文和多步智能体推理。",
-      "details": "将计算、内存控制与 I/O 分置于不同芯粒，通过软件管理数据位置和搬运。公布的单颗规格为 288 GB HBM4、18 TB/s；机架包含 96 颗加速器。微软计划于 2027 年开始生产部署。",
-      "dateNote": "记录芯片与系统架构公布日期；2027 年是计划部署时间。",
-      "tags": [
-        "AI 加速器"
-      ],
-      "milestone": false,
-      "sources": [
-        {
-          "title": "Microsoft · Maia 300 公布与部署计划",
-          "titleEn": "Microsoft · Maia 300 announcement and deployment plan",
-          "url": "https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/"
-        },
-        {
-          "title": "Microsoft Azure · 架构与规格",
-          "titleEn": "Microsoft Azure · Architecture and specifications",
-          "url": "https://azure.microsoft.com/en-us/blog/deep-dive-into-azure-maia-300-architecture/"
-        }
-      ],
-      "en": {
-        "summary": "Chiplets and HBM4 increase memory bandwidth for long-context and multi-step agent inference.",
-        "details": "Compute, memory control, and I/O occupy separate chiplets, with software coordinating data placement and movement. Announced per-accelerator specifications are 288 GB HBM4 and 18 TB/s; a rack contains 96 accelerators. Microsoft plans production deployment from 2027.",
-        "dateNote": "Records the chip and system architecture announcement. Production deployment is planned for 2027."
-      },
-      "hardware": {
-        "variant": "Maia 300 · 单颗公布规格",
-        "variantEn": "Maia 300 · announced per-accelerator specifications",
-        "checkedAt": "2026-10-15",
-        "facts": [
-          {
-            "label": "内存",
-            "labelEn": "Memory",
-            "value": "288 GB HBM4",
-            "chip": true
-          },
-          {
-            "label": "内存带宽",
-            "labelEn": "Memory bandwidth",
-            "value": "18 TB/s",
-            "chip": true
-          },
-          {
-            "label": "FP4·峰值",
-            "labelEn": "FP4 · Peak",
-            "value": "13.8 POPS（公布）",
-            "chip": true,
-            "valueEn": "13.8 POPS (announced)",
-            "metric": "compute",
-            "precision": "FP4",
-            "sparsity": "not-stated",
-            "scope": "accelerator",
-            "estimate": true
-          },
-          {
-            "label": "芯片 TDP",
-            "labelEn": "Chip TDP",
-            "value": "950 W",
-            "chip": true
-          }
-        ],
-        "sources": [
-          "https://azure.microsoft.com/en-us/blog/deep-dive-into-azure-maia-300-architecture/",
-          "https://azure.microsoft.com/en-us/blog/wp-content/uploads/2026/10/Maia-300-Specifications.webp",
-          "https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/"
-        ],
-        "note": "规格适用于单颗加速器。FP4 使用原表的 POPS 单位，未标明稠密或稀疏条件；属厂商公布峰值，非模型实测吞吐。生产部署计划为 2027 年。",
-        "noteEn": "Specifications apply to one accelerator. FP4 retains the table’s POPS unit with dense/sparse conditions unspecified. This is an announced vendor peak, not measured model throughput. Production deployment is planned for 2027."
       }
     }
   ],

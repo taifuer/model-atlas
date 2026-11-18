@@ -7,8 +7,7 @@ const destinations = {
   'benchmark-arena-text': 'https://arena.ai/leaderboard/chat/text',
   'benchmark-livebench': 'https://livebench.ai/',
   'benchmark-epoch-ai': 'https://epoch.ai/benchmarks',
-  'benchmark-hle': 'https://labs.scale.com/leaderboard/humanitys_last_exam',
-  'benchmark-gdpval-aa': 'https://artificialanalysis.ai/evaluations/gdpval-aa',
+  'benchmark-hle': 'https://www.lastexam.ai/',
   'benchmark-terminal-bench': 'https://www.tbench.ai/',
   'benchmark-osworld': 'https://osworld-v2.xlang.ai/',
   'benchmark-arena-agent': 'https://arena.ai/leaderboard/agent',
@@ -23,9 +22,21 @@ const checkTitleLinks = async page => {
     await expect(title).toHaveAttribute('target', '_blank');
     expect((await title.getAttribute('rel')).split(/\s+/)).toEqual(expect.arrayContaining(['noopener', 'noreferrer']));
   }
+  const hle = page.locator('#benchmark-hle');
+  await expect(hle.locator('.benchmark-summary')).toHaveText(/2,500.*HLE-Rolling.*HLE-Diamond.*1,000/);
+  const methods = await hle.locator('.benchmark-links a').evaluateAll(links => links.map(link => link.href));
+  expect(methods).toEqual(expect.arrayContaining([
+    'https://arxiv.org/abs/2501.14249',
+    'https://github.com/centerforaisafety/hle/blob/main/hle-rolling-changes.txt',
+    'https://www.lastexam.ai/blog/hle-diamond',
+  ]));
+  const terminal = page.locator('#benchmark-terminal-bench');
+  await expect(terminal.locator('.benchmark-version')).toHaveText('4.1');
+  await expect(terminal.locator('.benchmark-scope')).toContainText(/v5\.0\.1.*4\.0/);
 };
 
 const checkCategories = async (page, language) => {
+  await expect(page.locator('.benchmark-intro .intro-meta')).toHaveText(`${entryCount} ${language === 'en' ? 'evaluations' : '项评测'}`);
   const kinds = page.locator('article.benchmark-card .benchmark-kind');
   await expect(kinds).toHaveCount(entryCount);
   const labels = (await kinds.allTextContents()).map(label => label.trim());
@@ -100,6 +111,11 @@ test.describe('without JavaScript', () => {
   test.use({ javaScriptEnabled: false });
   test('benchmark titles, sources and group links remain accessible in both static editions', async ({ page }) => {
     for (const language of ['zh', 'en']) {
+      await ready(page, route(language, 'about.html') + '#historical-evaluations');
+      await expect(page.locator('#historical-evaluations')).toBeInViewport();
+      const legacy = page.getByRole('link', { name: /GDPval-AA v2\.1/ });
+      await expect(legacy).toHaveAttribute('href', 'https://artificialanalysis.ai/evaluations/gdpval-aa');
+      await expect(legacy).toContainText(/Legacy.*v5\.0/);
       await ready(page, route(language));
       const cards = page.locator('article.benchmark-card');
       await expect(cards).toHaveCount(entryCount);

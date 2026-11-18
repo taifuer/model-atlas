@@ -36,7 +36,7 @@ Left: models in detailed view. Right: agents in compact view.
 | [Hardware](https://ai.taifua.com/en/hardware.html) | GPUs, dedicated accelerators, systems, and local devices, with configuration-specific specifications. |
 | [Technology](https://ai.taifua.com/en/technology.html) | Foundational methods, frameworks, inference tools, containers, and sandboxes. |
 
-Entries are selected for historical influence or technical significance. This is a curated reference, with source links and explicit date conventions, rather than an exhaustive release feed.
+Entries are selected for historical influence, a specific technical contribution, independent evaluation results or documented use. Each entry links to the evidence for its date and significance. Related stages of a release share one timeline entry, with dates, specifications, prices, licenses and scores kept with the variant they describe.
 
 ## Browse
 
@@ -96,7 +96,7 @@ Chinese pages are served from the site root, with English editions under `/en/`.
 
 Records are maintained manually. Dates distinguish papers, announcements, previews, releases, and availability. Specifications and prices apply to the named version and configuration; leaderboard results retain their metric, verification date, and available leaderboard date. Missing information stays absent.
 
-The [benchmark directory](https://ai.taifua.com/en/benchmarks.html) covers model and agent evaluations, with their methods and limits of comparison. Hardware references include [MLPerf](https://mlcommons.org/benchmarks/inference-datacenter/). Scores from different benchmarks are kept separate.
+The [benchmark directory](https://ai.taifua.com/en/benchmarks.html) gives the task, version and method for each model or agent evaluation. Scores are compared within the same benchmark and version. Artificial Analysis labels GDPval-AA v2.1 Legacy, so its results are linked under [historical evaluations](https://ai.taifua.com/en/about.html#historical-evaluations). Hardware references include [MLPerf](https://mlcommons.org/benchmarks/inference-datacenter/).
 
 The site's “open / closed” filter is an editorial classification of the listed models and tools. It does not describe this repository's license or replace each product's license terms. The [About page](https://ai.taifua.com/about.html?lang=en) explains the conventions.
 
@@ -154,6 +154,7 @@ Decisions are `represented`, `deferred`, `rejected`, or `needs_review`. Every de
 | --- | --- |
 | `src/` | Website source: seven page templates, frontend JavaScript, CSS, data, and favicon. |
 | `src/data*.js` | Bilingual entries, classifications, specifications, prices, and scores. |
+| `src/data-history.js` | Groups related releases by their existing IDs. Charts count the main entry. Each related release keeps its date, sources and direct link. |
 | `src/app.js`, `src/filters.js`, `src/site.js`, `src/icons.js`, `src/styles.css` | Rendering, filtering, navigation, language, and layout. |
 | `src/assets/` | Local font, icons, and their notices. |
 | `scripts/` | Development server, static build, manual source checks, candidate discovery and review, and optional font-subsetting tool. |

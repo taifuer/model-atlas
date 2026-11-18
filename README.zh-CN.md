@@ -36,7 +36,7 @@ AI 模型、智能体、算力硬件与关键技术的发展时间线。
 | [算力硬件](https://ai.taifua.com/hardware.html) | GPU、专用加速器、算力系统与本地设备，规格注明具体配置。 |
 | [技术](https://ai.taifua.com/technology.html) | 基础方法、计算框架、推理部署、容器与沙箱。 |
 
-优先收录经典、具有技术代表性或可验证影响力的事件。每个节点保留来源与日期口径，以资料质量为先。
+根据历史影响、明确的技术贡献、独立评测结果或有记录的实际应用选择条目。每条记录注明事件日期及收录依据。同一家族的相关阶段合并展示，各型号保留自己的日期、规格、价格、许可与评测结果。
 
 ## 浏览功能
 
@@ -96,7 +96,7 @@ npm run test:browser
 
 数据由人工维护，不自动同步。论文、公告、预览、正式发布和实际可用日期分别记录；规格与价格对应明确的版本和配置，榜单成绩保留指标口径、核对日期及可获取的榜单日期。无法核实的信息不补猜测值。
 
-模型与智能体的评测入口、方法及比较范围见[评测页](https://ai.taifua.com/benchmarks.html)；算力评测参考 [MLPerf](https://mlcommons.org/benchmarks/inference-datacenter/)。不同榜单分数分别记录，不混算。
+[评测页](https://ai.taifua.com/benchmarks.html)注明模型与智能体评测的任务、版本和方法，分数在同一基准和版本内比较。Artificial Analysis 已将 GDPval-AA v2.1 标为 Legacy，其结果保留在[历史评测资料](https://ai.taifua.com/about.html#historical-evaluations)中。算力评测参考 [MLPerf](https://mlcommons.org/benchmarks/inference-datacenter/)。
 
 页面中的“开源 / 闭源”是对所收录模型与工具的编辑分类，与本项目的源码许可证无关，也不能替代各产品的实际许可条款。详细口径见[关于页](https://ai.taifua.com/about.html?lang=zh)。
 
@@ -154,6 +154,7 @@ npm run review:candidates -- --from research/candidate-discovery/reviews/<summar
 | --- | --- |
 | `src/` | 站点源码：七个页面模板、前端 JavaScript、CSS、数据及 favicon。 |
 | `src/data*.js` | 双语节点、分类、规格、价格及榜单快照。 |
+| `src/data-history.js` | 按原有 ID 归并相关发布。图表只计主条目，各次发布仍保留日期、来源和直达链接。 |
 | `src/app.js`、`src/filters.js`、`src/site.js`、`src/icons.js`、`src/styles.css` | 渲染、筛选、导航、语言与排版。 |
 | `src/assets/` | 本地字体、图标及许可声明。 |
 | `scripts/` | 开发服务器、静态构建、手动来源巡检、候选采集与审核，以及可选的字体子集工具。 |

@@ -33,7 +33,19 @@ for (const language of ['zh', 'en']) {
         assert.ok(article.includes(`datetime="${original.date}"`), `${page}/${id}: exact date precision`);
         assert.ok(article.includes(`href="${escape(entry.sources[0].url)}"`), `${page}/${id}: usable source`);
         assert.doesNotMatch(article, /<button\b/, `${page}/${id}: links work without scripts`);
+        for (const related of original.history || []) {
+          const item = language === 'en' ? { ...related, ...(related.en || window.MODEL_ATLAS_EN?.[related.id]) } : related;
+          const row = article.match(new RegExp(`<li id="release-${item.id}">([\\s\\S]*?)</li>`))?.[1];
+          assert.ok(row, `${page}/${id}: anchor for ${item.id}`);
+          assert.ok(row.includes(`datetime="${item.date}"`), item.id);
+          assert.ok(row.includes(`>${escape(item.name)}</a>`), item.id);
+          assert.ok(row.includes(`href="${escape(item.sources[0].url)}"`), item.id);
+        }
         dates.push(original.date);
+      }
+      if (page === 'models') {
+        assert.ok(!articles.some(match => match[1] === 'transformer'));
+        assert.match(html, /href="[^"]*technology\.html#release-transformer"/);
       }
       assert.deepEqual(dates, [...dates].sort().reverse(), `${page}: latest first`);
       assert.doesNotMatch(html, /请启用 JavaScript|Enable JavaScript to (?:browse|explore)/);

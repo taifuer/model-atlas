@@ -145,7 +145,7 @@ export function parseCandidates(body, source) {
 }
 
 export function catalogEntries(window) {
-  return Object.entries(window.ATLAS_CATALOG.sections).flatMap(([section, { data }]) => data.releases.map(entry => ({
+  return Object.entries(window.ATLAS_CATALOG.sections).flatMap(([section, { data }]) => data.releases.flatMap(release => [release, ...(release.history || [])]).map(entry => ({
     section, id: entry.id, name: entry.name, names: [...new Set([entry.name, entry.en?.name, window.MODEL_ATLAS_EN?.[entry.id]?.name].filter(Boolean))],
     date: entry.date, urls: (entry.sources || []).map(source => sourceURL(source.url)),
   })));
