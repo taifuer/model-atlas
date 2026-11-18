@@ -1180,12 +1180,12 @@ window.MODEL_ATLAS_EN = {
     ]
   },
   "mai-image-2-7": {
-    "summary": "An image-editing preview model for scene restyling, relighting, text changes and image restoration.",
-    "details": "Editing is available in MAI Playground, Arena and Artificial Analysis. It focuses on changing objects, scenes, styles and text while preserving relationships in the source image. The initial preview offers editing; text-to-image generation is still planned.",
-    "dateNote": "Uses Microsoft AI’s October 27 preview announcement. Future text-to-image generation and other product integrations are not treated as available.",
+    "summary": "The editing preview expands to text-to-image generation, with standard and Flash variants.",
+    "details": "Image editing first opened on October 27. Both variants entered public preview on Microsoft Foundry on November 17 for generation and editing. On November 18 the standard model had 1,215 Elo from 5,478 votes on the Artificial Analysis image editing leaderboard.",
+    "dateNote": "The entry is dated to the first public preview on October 27. Foundry access and text-to-image generation followed on November 17.",
     "tags": [
+      "Image generation",
       "Image editing",
-      "Scene control",
       "Preview"
     ]
   },
@@ -1286,6 +1286,33 @@ window.MODEL_ATLAS_EN = {
     "summary": "Meituan’s native multimodal MoE model combines visual understanding with long-horizon coding and tool use.",
     "details": "The LongCat 2.5 API launched on November 2 and was integrated into Vercel AI Gateway. The model has 1.6T total parameters and approximately 48B active per token; discrete visual tokens are jointly modeled with text for codebase development, visual coding and multi-step tasks. Official weights are available under MIT as of November 16.",
     "dateNote": "Uses November 2, the formal API launch in the official changelog. Preview access began September 25; weight availability is recorded separately at its review date."
+  },
+  "gpt-6-2-astra": {
+    "summary": "Handles complex reasoning and professional work across documents, code and computer interfaces.",
+    "details": "Astra accepts text and images and produces text. It can analyze source material, write and test code, and prepare documents in one task. The API, ChatGPT Work and Codex offered access at launch.",
+    "dateNote": "OpenAI announced GPT-6.2 Astra and Sol on November 17."
+  },
+  "gpt-6-2-sol": {
+    "summary": "Supports everyday coding and tool use with faster task completion and lower inference costs.",
+    "details": "Sol accepts text and images and produces text. It keeps the standard API rates of GPT-6.1 Sol and launched in ChatGPT Work, Codex and the API on the same day.",
+    "dateNote": "OpenAI made Sol and Astra available on November 17."
+  },
+  "kling-image-4": {
+    "summary": "Generates native 8K images and uses text or reference images to control typography, edit scenes and create image sets.",
+    "details": "Kling Creative Studio and the developer API support text-to-image generation and editing. On November 18 it ranked seventh by point estimate on the Artificial Analysis text-to-image preference leaderboard and sixth on image editing.",
+    "dateNote": "The API changelog records availability on November 17. The English launch article followed on November 18.",
+    "name": "Kling Image 4.0"
+  },
+  "mai-code-2": {
+    "summary": "Microsoft’s coding models join GitHub Copilot for multi-file development and low-latency edits.",
+    "details": "Both models accept text and images. Code 2 and Flash are selectable in GitHub Copilot, and Flash also entered limited preview in Microsoft Foundry. GitHub’s promotional Copilot usage rates per million input/output tokens are $0.50/$2.50 for Code 2 and $0.05/$0.25 for Flash. Regular rates begin May 17, 2027.",
+    "dateNote": "Microsoft and GitHub announced both models on November 17. The release groups the two variants."
+  },
+  "hunyuan-hy4-flash": {
+    "summary": "Tencent’s lower-cost multimodal model brings a million-token context to Yuanbao, WorkBuddy and Tencent Cloud.",
+    "details": "Hy4 flash activates about 12 billion parameters per token and supports image understanding and tool calls. Tencent published base and post-trained weights, including an FP8 version. Tencent Cloud TokenHub bills uncached input and output separately.",
+    "dateNote": "Tencent announced Hy4 flash on November 16. The flagship Hy4 launched on November 4.",
+    "name": "Hunyuan Hy4 flash"
   }
 };
 window.ATLAS_TAGS_EN = {

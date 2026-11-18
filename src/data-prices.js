@@ -1933,6 +1933,86 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
           "noteEn": "Listed as a limited-time offer without a stated end date. Cached input costs $0.006 per million tokens. Effective platform and billing rates apply."
         }
       ]
+    },
+    "gpt-6-2-astra": {
+      "checkedAt": "2026-11-18",
+      "variants": [
+        {
+          "name": "gpt-6.2-astra",
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 8,
+              "output": 40,
+              "label": "标准档 · 输入 ≤ 272K tokens",
+              "labelEn": "Standard · Input ≤ 272K tokens"
+            },
+            {
+              "input": 16,
+              "output": 60.0,
+              "label": "长上下文 · 输入 > 272K tokens",
+              "labelEn": "Long context · Input > 272K tokens"
+            }
+          ],
+          "sources": [
+            "https://developers.openai.com/api/docs/models/gpt-6.2-astra"
+          ],
+          "note": "标准档缓存命中输入为 $0.40 / 百万 tokens。超过 272K 输入 tokens 时，整次请求适用长上下文价格。",
+          "noteEn": "Standard cached input costs $0.40 per million tokens. Above 272K input tokens the long-context rates apply to the entire request."
+        }
+      ]
+    },
+    "gpt-6-2-sol": {
+      "checkedAt": "2026-11-18",
+      "variants": [
+        {
+          "name": "gpt-6.2-sol",
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 2,
+              "output": 10,
+              "label": "标准档 · 输入 ≤ 272K tokens",
+              "labelEn": "Standard · Input ≤ 272K tokens"
+            },
+            {
+              "input": 4,
+              "output": 15.0,
+              "label": "长上下文 · 输入 > 272K tokens",
+              "labelEn": "Long context · Input > 272K tokens"
+            }
+          ],
+          "sources": [
+            "https://developers.openai.com/api/docs/models/gpt-6.2-sol"
+          ],
+          "note": "标准档缓存命中输入为 $0.10 / 百万 tokens。超过 272K 输入 tokens 时，整次请求适用长上下文价格。",
+          "noteEn": "Standard cached input costs $0.10 per million tokens. Above 272K input tokens the long-context rates apply to the entire request."
+        }
+      ]
+    },
+    "hunyuan-hy4-flash": {
+      "checkedAt": "2026-11-18",
+      "variants": [
+        {
+          "name": "hy4-flash · TokenHub",
+          "currency": "CNY",
+          "promotional": true,
+          "tiers": [
+            {
+              "input": 0.25,
+              "output": 1,
+              "label": "五折 · 至 11 月 30 日 12:00（北京时间）",
+              "labelEn": "50% discount · until Nov 30 at 12:00 Beijing time",
+              "validUntil": "2026-11-30"
+            }
+          ],
+          "sources": [
+            "https://cloud.tencent.com/document/product/1823/130055"
+          ],
+          "note": "腾讯云目录价为每百万 token 输入 ¥0.50、输出 ¥2、缓存命中 ¥0.02。2026 年 11 月 30 日 12:00（北京时间）前按五折结算，之后恢复目录价。",
+          "noteEn": "List prices per million tokens are ¥0.50 for input, ¥2 for output and ¥0.02 for cached input. The 50% discount ends at 12:00 Beijing time on November 30, 2026."
+        }
+      ]
     }
   }
 });

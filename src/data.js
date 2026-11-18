@@ -50,7 +50,7 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    "checkedAt": "2026-11-16",
+    "checkedAt": "2026-11-18",
     "source": "https://artificialanalysis.ai/leaderboards/models",
     "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
     "metric": "Artificial Analysis Intelligence Index",
@@ -63,14 +63,14 @@ window.MODEL_ATLAS = (() => {
         "score": 65
       },
       {
+        "company": "openai",
+        "model": "GPT-6.2 Astra (max)",
+        "score": 62
+      },
+      {
         "company": "google",
         "model": "Gemini 4 Carbon (high)",
         "score": 60
-      },
-      {
-        "company": "openai",
-        "model": "GPT-6 Astra (max)",
-        "score": 57
       },
       {
         "company": "meta",
@@ -146,6 +146,11 @@ window.MODEL_ATLAS = (() => {
         "company": "nvidia",
         "model": "Nemotron 3.5 Super VL",
         "score": 14
+      },
+      {
+        "company": "liquid",
+        "model": "LFM3-1.7B",
+        "score": 6
       }
     ]
   };
@@ -166,6 +171,194 @@ window.MODEL_ATLAS = (() => {
     return { id, date, name, company, kind, summary, tags, sources: Array.isArray(sources) ? sources : [sources], milestone, details, dateNote };
   }
   const releases = [
+    {
+      "id": "gpt-6-2-astra",
+      "date": "2026-11-17",
+      "name": "GPT-6.2 Astra",
+      "company": "openai",
+      "kind": "release",
+      "summary": "面向复杂推理与专业工作，可跨文档整合证据、修改代码并操作计算机。",
+      "details": "Astra 接受文本和图像，输出文本。它可在同一任务中分析资料、编写并验证代码、制作工作文档，发布当天开放 API，并接入 ChatGPT Work 和 Codex。",
+      "dateNote": "采用 OpenAI 公布 GPT-6.2 Astra 和 Sol 的日期。",
+      "tags": [
+        "推理",
+        "多模态",
+        "编程"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "OpenAI · 发布公告",
+          "titleEn": "OpenAI · Release announcement",
+          "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
+        },
+        {
+          "title": "OpenAI · 模型与价格",
+          "titleEn": "OpenAI · Model and pricing",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.2-astra"
+        }
+      ],
+      "searchAliases": [
+        "GPT 6.2 Astra",
+        "gpt-6.2-astra"
+      ]
+    },
+    {
+      "id": "gpt-6-2-sol",
+      "date": "2026-11-17",
+      "name": "GPT-6.2 Sol",
+      "company": "openai",
+      "kind": "release",
+      "summary": "面向日常编程与工具调用，侧重缩短完成任务的时间、降低推理成本。",
+      "details": "Sol 接受文本和图像，输出文本。模型沿用 GPT-6.1 Sol 的标准 API 单价，发布当天同步接入 ChatGPT Work 和 Codex。",
+      "dateNote": "采用 OpenAI 同日开放 Sol 和 Astra 的日期。",
+      "tags": [
+        "编程",
+        "多模态",
+        "智能体"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "OpenAI · 发布公告",
+          "titleEn": "OpenAI · Release announcement",
+          "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
+        },
+        {
+          "title": "OpenAI · 模型与价格",
+          "titleEn": "OpenAI · Model and pricing",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.2-sol"
+        }
+      ],
+      "searchAliases": [
+        "GPT 6.2 Sol",
+        "gpt-6.2-sol"
+      ]
+    },
+    {
+      "id": "kling-image-4",
+      "date": "2026-11-17",
+      "name": "可灵 Image 4.0",
+      "company": "kuaishou",
+      "kind": "release",
+      "summary": "支持原生 8K 图像生成，可通过文字和参考图控制排版、编辑画面或生成系列图。",
+      "details": "可灵创意工作室和开发者 API 均已提供文生图与图像编辑。11 月 18 日核对时，Artificial Analysis 文生图与图像编辑偏好榜的点估计排名分别为第 7 和第 6。",
+      "dateNote": "采用可灵 API 更新日志中的 11 月 17 日上线日期。英文发布文章发表于 11 月 18 日。",
+      "tags": [
+        "图像生成",
+        "图像编辑",
+        "文字渲染"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "可灵 · API 更新日志",
+          "titleEn": "Kling · API changelog",
+          "url": "https://kling.ai/document-api/updates/api"
+        },
+        {
+          "title": "可灵 · 模型发布说明",
+          "titleEn": "Kling · Release announcement",
+          "url": "https://kling.ai/blog/kling-image-4-stunningly-realistic-sharp-precise?tab=all"
+        },
+        {
+          "title": "Artificial Analysis · 文生图偏好榜",
+          "titleEn": "Artificial Analysis · Text-to-image leaderboard",
+          "url": "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+        },
+        {
+          "title": "Artificial Analysis · 图像编辑偏好榜",
+          "titleEn": "Artificial Analysis · Image editing leaderboard",
+          "url": "https://artificialanalysis.ai/image/leaderboard/editing"
+        }
+      ],
+      "searchAliases": [
+        "Kling Image 4.0",
+        "可灵图像 4.0",
+        "Kling Image 4"
+      ]
+    },
+    {
+      "id": "mai-code-2",
+      "date": "2026-11-17",
+      "name": "MAI Code 2 / Code 2 Flash",
+      "company": "microsoft",
+      "kind": "release",
+      "summary": "微软的新一代编程模型接入 GitHub Copilot，分别面向跨文件开发和低延迟代码修改。",
+      "details": "两个型号都接受文本和图像。在 GitHub Copilot 可选用 Code 2 或 Flash，Flash 也进入 Microsoft Foundry 限量预览。按 GitHub 公布的 Copilot 用量优惠价，每百万 token 的输入和输出分别为 Code 2 的 $0.50 / $2.50、Flash 的 $0.05 / $0.25，2027 年 5 月 17 日起恢复常规价。",
+      "dateNote": "采用微软发布公告及 GitHub Copilot 上线记录的 11 月 17 日，同日推出的两个型号合并记录。",
+      "tags": [
+        "编程",
+        "多模态",
+        "智能体"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Microsoft AI · 模型发布",
+          "titleEn": "Microsoft AI · Model announcement",
+          "url": "https://microsoft.ai/news/introducing-mai-code-2-and-mai-code-2-flash/"
+        },
+        {
+          "title": "Microsoft AI · 模型卡",
+          "titleEn": "Microsoft AI · Model card",
+          "url": "https://microsoft.ai/pdf/MAI-Code-2-And-MAI-Code-2-Flash-Model-Card.pdf"
+        },
+        {
+          "title": "GitHub · Copilot 上线记录",
+          "titleEn": "GitHub · Copilot release",
+          "url": "https://github.blog/changelog/2026-11-17-mai-code-2-and-mai-code-2-flash-in-github-copilot/"
+        },
+        {
+          "title": "GitHub · Copilot 用量价格",
+          "titleEn": "GitHub · Copilot usage pricing",
+          "url": "https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing"
+        }
+      ],
+      "searchAliases": [
+        "MAI Code 2 Flash",
+        "MAI-Code-2",
+        "MAI-Code-2-Flash",
+        "微软编程模型"
+      ]
+    },
+    {
+      "id": "hunyuan-hy4-flash",
+      "date": "2026-11-16",
+      "name": "混元 Hy4 flash",
+      "company": "tencent",
+      "kind": "release",
+      "summary": "腾讯混元的低成本多模态型号，提供百万 token 上下文，已接入元宝、WorkBuddy 和腾讯云。",
+      "details": "Hy4 flash 每个 token 约激活 120 亿参数，支持图像理解和工具调用。腾讯公开了基础版与后训练模型权重，并提供 FP8 版本。腾讯云 TokenHub 按未缓存输入与输出分别计费。",
+      "dateNote": "采用腾讯 11 月 16 日的 Hy4 flash 发布公告。旗舰型号 Hy4 于 11 月 4 日发布。",
+      "tags": [
+        "多模态",
+        "开放权重"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "腾讯 · Hy4 flash 正式发布",
+          "titleEn": "Tencent · Hy4 flash announcement",
+          "url": "https://www.tencent.com/zh-cn/tencent-launches-hy4-flash-to-power-high-speed-cost-efficient-ai-deployment-for-everyday-workflows/"
+        },
+        {
+          "title": "腾讯混元 · 权重与模型卡",
+          "titleEn": "Tencent Hy · Weights and model card",
+          "url": "https://github.com/Tencent-Hunyuan/Hy4-flash"
+        },
+        {
+          "title": "腾讯云 · 接口规格",
+          "titleEn": "Tencent Cloud · API limits",
+          "url": "https://cloud.tencent.com/document/product/1823/130051"
+        }
+      ],
+      "searchAliases": [
+        "Hunyuan Hy4 flash",
+        "腾讯混元 Hy4 flash",
+        "hy4-flash"
+      ]
+    },
     {
       "id": "qwen-4-max",
       "date": "2026-11-16",
@@ -768,12 +961,12 @@ window.MODEL_ATLAS = (() => {
       "company": "microsoft",
       "kind": "preview",
       "milestone": false,
-      "summary": "面向图像编辑的预览模型，强化场景重绘、光照调整、文字修改与图像修复。",
-      "details": "可在 MAI Playground、Arena 与 Artificial Analysis 体验编辑功能。重点改进在保持原图关系的同时修改对象、场景、风格和文字；首次预览仅开放图像编辑，文生图仍为后续计划。",
-      "dateNote": "采用 Microsoft AI 于 10 月 27 日发布的预览公告；后续文生图或其他产品接入不视为已上线。",
+      "summary": "从图像编辑预览扩展到文生图，提供标准版与 Flash 版。",
+      "details": "10 月 27 日首先开放图像编辑。11 月 17 日，标准版与 Flash 版在 Microsoft Foundry 公开预览，均支持文生图和编辑。11 月 18 日核对的 Artificial Analysis 图像编辑偏好榜中，标准版获 1215 Elo，基于 5478 次投票。",
+      "dateNote": "时间线保留 10 月 27 日首次公开预览的日期。Foundry 上线和新增文生图功能记于 11 月 17 日。",
       "tags": [
+        "图像生成",
         "图像编辑",
-        "场景控制",
         "预览"
       ],
       "sources": [
@@ -781,7 +974,21 @@ window.MODEL_ATLAS = (() => {
           "title": "Microsoft AI · 图像编辑预览",
           "titleEn": "Microsoft AI · Image-editing preview",
           "url": "https://microsoft.ai/news/mai-image-2-7-debut/"
+        },
+        {
+          "title": "Microsoft AI · Foundry 公开预览",
+          "titleEn": "Microsoft AI · Foundry public preview",
+          "url": "https://microsoft.ai/news/introducing-mai-image-2-7/"
+        },
+        {
+          "title": "Artificial Analysis · 图像编辑偏好榜",
+          "titleEn": "Artificial Analysis · Image editing leaderboard",
+          "url": "https://artificialanalysis.ai/image/leaderboard/editing"
         }
+      ],
+      "searchAliases": [
+        "MAI Image 2.7 Flash",
+        "MAI-Image-2.7"
       ]
     },
     {
@@ -2492,7 +2699,7 @@ window.MODEL_ATLAS = (() => {
     },
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-11-16',
+    checkedAt: '2026-11-18',
     scope: '主流语言、多模态、图像与视频生成及世界模型，兼顾具有历史影响的架构研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
@@ -2509,5 +2716,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-11-16', updatedAt: '2026-11-16', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-11-18', updatedAt: '2026-11-18', companies, companyRanking, kinds, themes, releases, coverage });
 })();

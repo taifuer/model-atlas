@@ -29,6 +29,10 @@ test('every event has valid metadata and a primary source; supporting reports ar
   // These additional official/project/author pages were reviewed for the named event.
   // Keep community-hosted articles and personal author archives URL-specific.
   const reviewedPrimarySources = new Map([
+    ['https://kling.ai/document-api/updates/api', 'kling-image-4'],
+    ['https://kling.ai/blog/kling-image-4-stunningly-realistic-sharp-precise?tab=all', 'kling-image-4'],
+    ['https://github.blog/changelog/2026-11-17-mai-code-2-and-mai-code-2-flash-in-github-copilot/', 'mai-code-2'],
+    ['https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing', 'mai-code-2'],
     ['https://www.qwencloud.com/models/qwen4-max', 'qwen-4-max'],
     ['https://longcat.ai/platform/docs/ChangeLog.html', 'longcat-2-5'],
     ['https://vercel.com/changelog/longcat-2-5-now-available-on-ai-gateway', 'longcat-2-5'],
@@ -114,7 +118,7 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['/zai-org/GLM-4.5', 'glm-4-5'],
     ['/stepfun-ai/Step-3.5-Flash', 'step-3-5-flash'],
   ]);
-  const reviewedImageRepositories = new Map([["/MiniMax-AI/MiniMax-H3-Image/blob/main/LICENSE", "minimax-h3-image"], ["/openai/DALL-E", "dall-e"], ["/openai/dalle-2-preview/blob/main/system-card.md", "dall-e-2"], ["/CompVis/stable-diffusion", "stable-diffusion-1"], ["/Stability-AI/generative-models", "sdxl-1"], ["/QwenLM/Qwen-Image", "qwen-image"]]);
+  const reviewedRepositories = new Map([["/Tencent-Hunyuan/Hy4-flash", "hunyuan-hy4-flash"], ["/MiniMax-AI/MiniMax-H3-Image/blob/main/LICENSE", "minimax-h3-image"], ["/openai/DALL-E", "dall-e"], ["/openai/dalle-2-preview/blob/main/system-card.md", "dall-e-2"], ["/CompVis/stable-diffusion", "stable-diffusion-1"], ["/Stability-AI/generative-models", "sdxl-1"], ["/QwenLM/Qwen-Image", "qwen-image"]]);
   const isPrimary = source => primaryHosts.has(new URL(source.url).hostname) || reviewedPrimarySources.has(source.url);
   const supportingReports = new Set(['https://www.ithome.com/1/004/705.htm']);
   for (const release of data.releases) {
@@ -139,7 +143,7 @@ test('every event has valid metadata and a primary source; supporting reports ar
       }
       assert.ok(source.title);
       if (url.hostname === 'github.com') {
-        if (reviewedImageRepositories.has(url.pathname)) assert.equal(release.id, reviewedImageRepositories.get(url.pathname));
+        if (reviewedRepositories.has(url.pathname)) assert.equal(release.id, reviewedRepositories.get(url.pathname));
         else if (url.pathname === '/zai-org/ChatGLM-6B') assert.equal(release.id, 'chatglm-6b');
         else if (url.pathname.startsWith('/Wan-Video/')) assert.ok(new RegExp('^/Wan-Video/Wan2\\.[12](?:/|$)').test(url.pathname) && /^wan-2-[12]$/.test(release.id), source.url);
         else if (url.pathname.startsWith('/Tencent-Hunyuan/')) assert.ok(/^\/Tencent-Hunyuan\/HunyuanVideo(?:-1\.5)?(?:\/|$)/.test(url.pathname) && /^hunyuan-video(?:-1-5)?$/.test(release.id), source.url);
@@ -211,7 +215,9 @@ test('organization ranking records a dated, comparable AA snapshot without score
     previousScore = entry.score;
   }
   const find = company => ranking.entries.find(entry => entry.company === company);
-  assert.equal(find('openai').model, 'GPT-6 Astra (max)');
+  assert.equal(find('openai').model, 'GPT-6.2 Astra (max)');
+  assert.equal(find('openai').score, 62);
+  assert.equal(find('liquid').model, 'LFM3-1.7B');
   assert.equal(find('anthropic').model, 'Claude Fable 5.2 (max with fallback)');
   assert.equal(ranking.entries[0].company, 'anthropic');
   assert.equal(find('tencent').model, 'Tencent Hy4');

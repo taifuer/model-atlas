@@ -1758,16 +1758,14 @@
       "noteEn": "The family includes text-only and multimodal branches; inputs, outputs and context limits differ by variant."
     },
     "mai-image-2-7": {
-      "checkedAt": "2026-11-01",
+      "checkedAt": "2026-11-18",
       "category": "multimodal",
       "tasks": [
         "image-generation"
       ],
       "sources": [
-        "https://microsoft.ai/news/mai-image-2-7-debut/"
-      ],
-      "note": "当前仅提供图像编辑预览；归入图像生成任务，不表示文生图已开放。",
-      "noteEn": "Currently an image-editing preview. The image-generation task category does not imply text-to-image availability."
+        "https://microsoft.ai/news/introducing-mai-image-2-7/"
+      ]
     },
     "pika-h3-flex": {
       "checkedAt": "2026-11-01",
@@ -1941,6 +1939,56 @@
       ],
       "sources": [
         "https://huggingface.co/meituan-longcat/LongCat-2.5"
+      ]
+    },
+    "gpt-6-2-astra": {
+      "checkedAt": "2026-11-18",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://developers.openai.com/api/docs/models/gpt-6.2-astra"
+      ]
+    },
+    "gpt-6-2-sol": {
+      "checkedAt": "2026-11-18",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://developers.openai.com/api/docs/models/gpt-6.2-sol"
+      ]
+    },
+    "kling-image-4": {
+      "checkedAt": "2026-11-18",
+      "category": "multimodal",
+      "tasks": [
+        "image-generation"
+      ],
+      "sources": [
+        "https://kling.ai/quickstart/kling-image-4-user-guide"
+      ]
+    },
+    "mai-code-2": {
+      "checkedAt": "2026-11-18",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://microsoft.ai/pdf/MAI-Code-2-And-MAI-Code-2-Flash-Model-Card.pdf"
+      ]
+    },
+    "hunyuan-hy4-flash": {
+      "checkedAt": "2026-11-18",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://cloud.tencent.com/document/product/1823/130051"
       ]
     }
   }

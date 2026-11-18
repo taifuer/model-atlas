@@ -4212,10 +4212,10 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       "noteEn": "Input and output share each variant’s context window. Generative-model limits are not applied to the d1 decision branches."
     },
     "mai-image-2-7": {
-      "checkedAt": "2026-11-01",
+      "checkedAt": "2026-11-18",
       "variants": [
         {
-          "name": "MAI Image 2.7 editing preview",
+          "name": "MAI Image 2.7",
           "basis": "service",
           "input": [
             "text",
@@ -4225,10 +4225,22 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
             "image"
           ],
           "sources": [
-            "https://microsoft.ai/news/mai-image-2-7-debut/"
+            "https://microsoft.ai/news/introducing-mai-image-2-7/"
+          ]
+        },
+        {
+          "name": "MAI Image 2.7 Flash",
+          "basis": "service",
+          "input": [
+            "text",
+            "image"
           ],
-          "note": "当前开放图像编辑，文生图仍为后续计划。",
-          "noteEn": "Image editing is available; text-to-image generation remains planned."
+          "output": [
+            "image"
+          ],
+          "sources": [
+            "https://microsoft.ai/news/introducing-mai-image-2-7/"
+          ]
         }
       ]
     },
@@ -4680,6 +4692,134 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           "activeParameters": "48B",
           "sources": [
             "https://huggingface.co/meituan-longcat/LongCat-2.5"
+          ]
+        }
+      ]
+    },
+    "gpt-6-2-astra": {
+      "checkedAt": "2026-11-18",
+      "variants": [
+        {
+          "name": "gpt-6.2-astra",
+          "basis": "api",
+          "contextTokens": 1050000,
+          "outputTokens": 128000,
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://developers.openai.com/api/docs/models/gpt-6.2-astra"
+          ]
+        }
+      ]
+    },
+    "gpt-6-2-sol": {
+      "checkedAt": "2026-11-18",
+      "variants": [
+        {
+          "name": "gpt-6.2-sol",
+          "basis": "api",
+          "contextTokens": 1050000,
+          "outputTokens": 128000,
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://developers.openai.com/api/docs/models/gpt-6.2-sol"
+          ]
+        }
+      ]
+    },
+    "mai-code-2": {
+      "checkedAt": "2026-11-18",
+      "variants": [
+        {
+          "name": "MAI Code 2",
+          "basis": "release",
+          "contextTokens": 1050000,
+          "inputTokens": 922000,
+          "outputTokens": 128000,
+          "parameters": "≈2.8T",
+          "activeParameters": "77B",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://microsoft.ai/pdf/MAI-Code-2-And-MAI-Code-2-Flash-Model-Card.pdf"
+          ]
+        },
+        {
+          "name": "MAI Code 2 Flash",
+          "basis": "release",
+          "contextTokens": 1050000,
+          "inputTokens": 922000,
+          "outputTokens": 128000,
+          "parameters": "≈398B",
+          "activeParameters": "12B",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://microsoft.ai/pdf/MAI-Code-2-And-MAI-Code-2-Flash-Model-Card.pdf"
+          ]
+        }
+      ]
+    },
+    "hunyuan-hy4-flash": {
+      "checkedAt": "2026-11-18",
+      "variants": [
+        {
+          "name": "hy4-flash",
+          "basis": "api",
+          "contextTokens": "1M",
+          "inputTokens": "960K",
+          "outputTokens": "64K",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://cloud.tencent.com/document/product/1823/130051"
+          ]
+        }
+      ]
+    },
+    "kling-image-4": {
+      "checkedAt": "2026-11-18",
+      "variants": [
+        {
+          "name": "Kling Image 4.0",
+          "basis": "service",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "image"
+          ],
+          "note": "支持原生 8K 图像生成、组图生成和图像编辑。",
+          "noteEn": "Supports native 8K generation, image sets and image editing.",
+          "sources": [
+            "https://kling.ai/quickstart/kling-image-4-user-guide"
           ]
         }
       ]

@@ -34,8 +34,14 @@ test('published scores exactly match dated public source snapshots and known rel
   assert.equal(scores.entries['qwen-4-max'].aa.score, 43);
   assert.equal(scores.entries['qwen-4-max-preview'], undefined, 'Formal-release scores must not be assigned to the preview');
   assert.equal(scores.entries['qwen-3-8-max-0902'].aa.checkedAt, '2026-11-14', 'An absent current row retains its historical score date');
-  assert.equal(scores.benchmarks.aa.checkedAt, '2026-11-16');
-  assert.equal(scores.checkedAt, '2026-11-16');
+  assert.equal(scores.benchmarks.aa.checkedAt, '2026-11-18');
+  assert.equal(scores.checkedAt, '2026-11-18');
+  assert.equal(scores.entries['gpt-6-2-astra'].aa.score, 62);
+  assert.equal(scores.entries['gpt-6-2-sol'].aa.score, 57);
+  assert.equal(scores.entries['gpt-6-astra'].aa.checkedAt, '2026-11-16');
+  assert.equal(scores.entries['gpt-6-2-astra'].arena, undefined);
+  assert.equal(scores.entries['lfm-3'].aa.model, 'LFM3-1.7B');
+  assert.equal(scores.cardScopes['lfm-3'], 'variant');
   assert.equal(scores.benchmarks.arena.checkedAt, '2026-11-14');
   assert.equal(scores.benchmarks.arena.publishedAt, '2026-11-11', 'Dataset retrieval date is not the leaderboard publication date');
   assert.equal(scores.entries['muse-wonder'].aa.model, 'Muse Wonder Full (max)');

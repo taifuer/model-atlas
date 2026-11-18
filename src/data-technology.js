@@ -1,8 +1,8 @@
 // Primary-source history of AI methods, computing frameworks, and deployment.
 (() => {
   const data = {
-  "asOf": "2026-11-16",
-  "updatedAt": "2026-11-16",
+  "asOf": "2026-11-18",
+  "updatedAt": "2026-11-18",
   "accessFilter": false,
   "companies": [
     {
@@ -249,6 +249,42 @@
   "themes": {},
   "themesEn": {},
   "releases": [
+    {
+      "id": "microsoft-copilot-sdk-2",
+      "date": "2026-11-17",
+      "name": "Microsoft Copilot SDK 2.0",
+      "company": "microsoft",
+      "category": "frameworks",
+      "kind": "release",
+      "summary": "把 Copilot 智能体运行时嵌入应用，在同一进程内运行多个会话。",
+      "details": "2.0 以 Rust 重写运行时，每个会话单独管理身份、工具、文件和历史记录。开发者可以将运行时嵌入宿主进程，也可以让多个应用连接共享服务。SDK 提供 C ABI，并支持 TypeScript、Python、Go、.NET、Java 和 Rust。",
+      "dateNote": "11 月 17 日为 2.0 版本公布日期。此前的 GitHub Copilot SDK 已于 6 月 2 日正式可用。",
+      "tags": [],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "微软 · Copilot SDK 2.0 发布说明",
+          "titleEn": "Microsoft · Copilot SDK 2.0 release",
+          "url": "https://commandline.microsoft.com/microsoft-copilot-sdk-2-0-github/"
+        },
+        {
+          "title": "GitHub · 早期 SDK 正式可用",
+          "titleEn": "GitHub · Earlier SDK general availability",
+          "url": "https://github.blog/changelog/2026-06-02-copilot-sdk-is-now-generally-available/"
+        }
+      ],
+      "searchAliases": [
+        "GitHub Copilot SDK",
+        "Copilot Harness",
+        "Microsoft Copilot SDK 2.0",
+        "智能体运行时"
+      ],
+      "en": {
+        "summary": "Embeds the Copilot agent runtime in applications and runs multiple sessions in one process.",
+        "details": "Version 2.0 introduces a Rust runtime with identities, tools, files and history scoped to each session. Applications can embed it in-process or connect to a shared service. The SDK exposes a C ABI and supports TypeScript, Python, Go, .NET, Java and Rust.",
+        "dateNote": "Version 2.0 was announced on November 17. The earlier GitHub Copilot SDK reached general availability on June 2."
+      }
+    },
     {
       "id": "agent-substrate-1-0",
       "date": "2026-11-05",
@@ -2932,7 +2968,7 @@
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-16",
+    "checkedAt": "2026-11-18",
     "scope": "算法、计算框架、推理部署与容器沙箱中具有经典性、代表性或影响力的公开节点。",
     "method": "以原始论文、项目公告与发布记录核对日期，区分预览、正式可用和后续更新；不逐条收录常规软件版本。",
     "references": []

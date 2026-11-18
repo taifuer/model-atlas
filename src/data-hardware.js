@@ -1,7 +1,7 @@
 /* Curated hardware history. Event dates and configurations retain explicit source scope. */
 window.HARDWARE_ATLAS = {
-  "asOf": "2026-11-16",
-  "updatedAt": "2026-11-16",
+  "asOf": "2026-11-18",
+  "updatedAt": "2026-11-18",
   "accessFilter": false,
   "companies": [
     {
@@ -2474,7 +2474,7 @@ window.HARDWARE_ATLAS = {
       "category": "gpu",
       "kind": "announcement",
       "summary": "Rubin GPU、Vera CPU 与新一代互连共同构成下一代 AI 计算平台。",
-      "details": "此节点记录 CES 平台公布，涵盖协同芯片与系统设计，非所有整机同时可购买。2026 年 9 月 30 日，NVIDIA 确认 CoreWeave 已提供 Vera Rubin NVL72，Cognition 已运行生产工作负载。10 月 27 日，NVIDIA 与 Oracle 宣布 Vera Rubin NVL72 和 Vera CPU 在 OCI 正式可用；多吉瓦扩容与 HGX Rubin NVL8 仍属后续计划。Google Cloud A5X 的全面开放安排为 11 月。",
+      "details": "此节点记录 CES 平台公布，涵盖协同芯片与系统设计，非所有整机同时可购买。2026 年 9 月 30 日，NVIDIA 确认 CoreWeave 已提供 Vera Rubin NVL72，Cognition 已运行生产工作负载。10 月 27 日，NVIDIA 与 Oracle 宣布 Vera Rubin NVL72 和 Vera CPU 在 OCI 正式可用；多吉瓦扩容与 HGX Rubin NVL8 仍属后续计划。Google Cloud A5X 的全面开放安排为 11 月。 11 月 16 日，NVIDIA 在 SC26 公布面向科学模拟和数据分析的 Rubin HPC GPU，预计 2028 年供货。",
       "dateNote": "日期为官方公布日；后续供货安排见原始公告。",
       "tags": [
         "GPU"
@@ -2504,11 +2504,16 @@ window.HARDWARE_ATLAS = {
           "title": "NVIDIA · OCI 正式可用与后续扩容计划",
           "titleEn": "NVIDIA · OCI general availability and expansion plans",
           "url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Oracle-Expand-NVIDIA-Vera-Rubin-to-Multi-Gigawatt-Scale-and-Bring-NVIDIA-Vera-CPU-to-Oracle-Cloud-Infrastructure/default.aspx"
+        },
+        {
+          "title": "NVIDIA · Rubin HPC 公告与供货预期",
+          "titleEn": "NVIDIA · Rubin HPC announcement and projected availability",
+          "url": "https://blogs.nvidia.com/blog/rubin-hpc/"
         }
       ],
       "en": {
         "summary": "Rubin GPUs, Vera CPUs, and new interconnects form a new AI compute platform.",
-        "details": "This entry records the CES announcement of coordinated chips and system designs. NVIDIA confirmed CoreWeave availability of Vera Rubin NVL72 and Cognition production workloads on September 30, 2026. On October 27, NVIDIA and Oracle announced general availability of Vera Rubin NVL72 and Vera CPUs on OCI; multi-gigawatt expansion and HGX Rubin NVL8 remain planned. Google Cloud schedules A5X general availability for November.",
+        "details": "This entry records the CES announcement of coordinated chips and system designs. NVIDIA confirmed CoreWeave availability of Vera Rubin NVL72 and Cognition production workloads on September 30, 2026. On October 27, NVIDIA and Oracle announced general availability of Vera Rubin NVL72 and Vera CPUs on OCI; multi-gigawatt expansion and HGX Rubin NVL8 remain planned. Google Cloud schedules A5X general availability for November. On November 16 at SC26, NVIDIA announced the Rubin HPC GPU for scientific simulation and data analysis, with availability expected in 2028.",
         "dateNote": "Dated to the official announcement; availability is described in the original source."
       },
       "hardware": {
@@ -2558,7 +2563,10 @@ window.HARDWARE_ATLAS = {
         ],
         "note": "规格对应 Vera Rubin NVL72 中的单颗 Rubin GPU，非整柜合计。采用当前产品表中的 19.2 TB/s 显存带宽与 3 TB/s 双向 NVLink 带宽；早期公布值分别为 22 TB/s 与 3.6 TB/s。BF16 为厂商公布的稠密峰值，不与 NVFP4 稀疏推理的 50 PFLOPS 混用，也不代表模型实测吞吐。 NVLink 专页仍将互连规格标为初步规格。",
         "noteEn": "Specifications apply to one Rubin GPU in Vera Rubin NVL72, not a rack total. The current product table lists 19.2 TB/s memory bandwidth and 3 TB/s bidirectional NVLink bandwidth, versus the earlier 22 TB/s and 3.6 TB/s. BF16 is the vendor-published dense peak; it is distinct from the 50 PFLOPS sparse NVFP4 inference figure and from measured model throughput. The NVLink page still labels its interconnect specifications preliminary."
-      }
+      },
+      "searchAliases": [
+        "Rubin HPC"
+      ]
     },
     {
       "id": "microsoft-maia-200",
@@ -3299,7 +3307,7 @@ window.HARDWARE_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-16",
+    "checkedAt": "2026-11-18",
     "scope": "具有代表性的 GPU、专用加速器、算力系统及本地设备；日期优先依据一手资料，辅以署名媒体报道。区分产品公布、公开展示、供应计划与实际部署，规格保留芯片、板卡或系统范围。",
     "scopeEn": "Representative GPUs, custom accelerators, compute systems, and local devices. Dates prioritize primary sources with attributed reporting as needed. Announcements, demonstrations, availability plans, and deployments remain distinct; specifications retain chip, card, or system scope."
   }

@@ -1045,10 +1045,10 @@
   },
   "mai-image-2-7": {
     "status": "closed",
-    "checkedAt": "2026-11-01",
-    "source": "https://microsoft.ai/news/mai-image-2-7-debut/",
-    "note": "通过在线产品提供编辑预览，未公开模型权重。",
-    "noteEn": "An editing preview available through online products, without public model weights."
+    "checkedAt": "2026-11-18",
+    "source": "https://microsoft.ai/news/introducing-mai-image-2-7/",
+    "note": "标准版和 Flash 版通过 Microsoft Foundry 提供公开预览。",
+    "noteEn": "The standard and Flash variants are available in public preview on Microsoft Foundry."
   },
   "mistral-large-4-preview": {
     "status": "open",
@@ -1241,6 +1241,39 @@
   }
 });
   Object.assign(models, {
+  "gpt-6-2-astra": {
+    "status": "closed",
+    "checkedAt": "2026-11-18",
+    "source": "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
+  },
+  "gpt-6-2-sol": {
+    "status": "closed",
+    "checkedAt": "2026-11-18",
+    "source": "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
+  },
+  "kling-image-4": {
+    "status": "closed",
+    "checkedAt": "2026-11-18",
+    "source": "https://kling.ai/document-api/updates/api"
+  },
+  "mai-code-2": {
+    "status": "closed",
+    "checkedAt": "2026-11-18",
+    "source": "https://microsoft.ai/news/introducing-mai-code-2-and-mai-code-2-flash/"
+  },
+  "hunyuan-hy4-flash": {
+    "status": "open",
+    "checkedAt": "2026-11-18",
+    "source": "https://github.com/Tencent-Hunyuan/Hy4-flash",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "Tencent Hy License 1.0",
+        "source": "https://github.com/Tencent-Hunyuan/Hy4-flash/blob/main/LICENSE"
+      }
+    ]
+  },
   "qwen-4-max": {
     "status": "closed",
     "checkedAt": "2026-11-16",

@@ -1,13 +1,13 @@
 // Curated public benchmark snapshot. Exact configurations only; not launch scores.
 window.MODEL_ATLAS_SCORES = Object.freeze({
-  "checkedAt": "2026-11-16",
+  "checkedAt": "2026-11-18",
   "benchmarks": {
     "aa": {
       "name": "Artificial Analysis Intelligence Index",
       "version": "5.0.1",
       "source": "https://artificialanalysis.ai/leaderboards/models",
       "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
-      "checkedAt": "2026-11-16"
+      "checkedAt": "2026-11-18"
     },
     "arena": {
       "name": "Arena Text · Overall · Style Control",
@@ -27,7 +27,8 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
     "deepseek-v4-1-flash": "snapshot",
     "ling-3-1-flash": "snapshot",
     "mistral-large-4-preview": "snapshot",
-    "claude-fable-5-2": "variant"
+    "claude-fable-5-2": "variant",
+    "lfm-3": "variant"
   },
   "entries": {
     "claude-opus-5-5": {
@@ -35,7 +36,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Claude Opus 5.5 (max with fallback)",
         "score": 59,
         "source": "https://artificialanalysis.ai/models/claude-opus-5-5",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       },
       "arena": {
         "model": "Claude Opus 5.5 (High)",
@@ -51,7 +52,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Claude Sonnet 5.5 (max with fallback)",
         "score": 55,
         "source": "https://artificialanalysis.ai/models/claude-sonnet-5-5",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       },
       "arena": {
         "model": "Claude Sonnet 5.5 (xHigh)",
@@ -117,7 +118,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Gemini 4 Argon (high)",
         "score": 50,
         "source": "https://artificialanalysis.ai/models/gemini-4-argon",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       },
       "arena": {
         "model": "Gemini 4 Argon (High)",
@@ -151,7 +152,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Grok 4.7 (xhigh)",
         "score": 35,
         "source": "https://artificialanalysis.ai/models/grok-4-7",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       },
       "arena": {
         "model": "Grok 4.7 (xHigh)",
@@ -167,7 +168,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "MiMo-V2.6-Pro",
         "score": 30,
         "source": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       },
       "arena": {
         "model": "MiMo-V2.6-Pro",
@@ -193,7 +194,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "GLM-5.3 (max)",
         "score": 32,
         "source": "https://artificialanalysis.ai/models/glm-5-3",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       },
       "arena": {
         "model": "GLM-5.3 (Max)",
@@ -209,7 +210,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Step 5 Preview",
         "score": 29,
         "source": "https://artificialanalysis.ai/models/step-5",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       }
     },
     "kimi-k3": {
@@ -227,7 +228,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "GLM-5.3-Flash",
         "score": 28,
         "source": "https://artificialanalysis.ai/models/glm-5-3-flash",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       },
       "arena": {
         "model": "GLM-5.3-Flash",
@@ -260,7 +261,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "DeepSeek V4.1 Flash 1017 (max)",
         "score": 33,
         "source": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017",
-        "checkedAt": "2026-11-16",
+        "checkedAt": "2026-11-18",
         "note": "对应 2026 年 10 月 17 日的 1017 快照。",
         "noteEn": "Evaluated on the October 17, 2026 (1017) checkpoint."
       },
@@ -280,7 +281,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "DeepSeek V4 Pro 0813 (max)",
         "score": 23,
         "source": "https://artificialanalysis.ai/models/deepseek-v4-pro",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       }
     },
     "minimax-m3": {
@@ -288,7 +289,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "MiniMax-M3",
         "score": 19,
         "source": "https://artificialanalysis.ai/models/minimax-m3",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       }
     },
     "gpt-6-sol-luna": {
@@ -306,7 +307,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Claude Haiku 5.5 (max)",
         "score": 36,
         "source": "https://artificialanalysis.ai/models/claude-haiku-5-5",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       }
     },
     "mistral-large-4-preview": {
@@ -314,7 +315,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Mistral Large 4 (high)",
         "score": 26,
         "source": "https://artificialanalysis.ai/models/mistral-large-4",
-        "checkedAt": "2026-11-16",
+        "checkedAt": "2026-11-18",
         "note": "对应正式发布的 Mistral Large 4（high），不代表 10 月 6 日原始预览配置的成绩。",
         "noteEn": "Result for the released Mistral Large 4 (high), not the original October 6 preview configuration."
       }
@@ -324,7 +325,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Ling 3.1 Flash 1019",
         "score": 30,
         "source": "https://artificialanalysis.ai/models/ling-3-1-flash-1019",
-        "checkedAt": "2026-11-16",
+        "checkedAt": "2026-11-18",
         "note": "对应 1019 后训练版本的 v5.0.1 成绩，不用于原版 Ling 3.1 Flash。",
         "noteEn": "The v5.0.1 result for the 1019 post-trained checkpoint, not the original Ling 3.1 Flash."
       }
@@ -334,7 +335,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Muse Wonder Full (max)",
         "score": 50,
         "source": "https://artificialanalysis.ai/models/muse-wonder-full",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       }
     },
     "muse-spark-open": {
@@ -342,7 +343,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Muse Spark Open (xhigh)",
         "score": 25,
         "source": "https://artificialanalysis.ai/models/muse-spark-open",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       }
     },
     "reflection-beam-1": {
@@ -350,7 +351,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Beam 1.0",
         "score": 18,
         "source": "https://artificialanalysis.ai/models/reflection-beam",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       }
     },
     "nemotron-3-5-vl-bolt": {
@@ -358,7 +359,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Nemotron 3.5 Super VL",
         "score": 14,
         "source": "https://artificialanalysis.ai/models/nemotron-3-5-super-vl",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       }
     },
     "minimax-m3-1-flash": {
@@ -366,7 +367,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "MiniMax-M3.1-Flash",
         "score": 29,
         "source": "https://artificialanalysis.ai/models/minimax-m3-1-flash",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       }
     },
     "kimi-k3-1-pro": {
@@ -374,7 +375,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Kimi K3.1 Pro",
         "score": 46,
         "source": "https://artificialanalysis.ai/models/kimi-k3-1-pro",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       },
       "arena": {
         "model": "Kimi K3.1 Pro (Max)",
@@ -391,7 +392,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "GPT-6.1 Terra (max)",
         "score": 51,
         "source": "https://artificialanalysis.ai/models/gpt-6-1-terra",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       }
     },
     "gemini-4-carbon": {
@@ -399,7 +400,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Gemini 4 Carbon (high)",
         "score": 60,
         "source": "https://artificialanalysis.ai/models/gemini-4-carbon",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       },
       "arena": {
         "model": "Gemini 4 Carbon (High)",
@@ -416,7 +417,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Inkling 2 Small",
         "score": 31,
         "source": "https://artificialanalysis.ai/models/inkling-2-small",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       }
     },
     "claude-fable-5-2": {
@@ -424,7 +425,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Claude Fable 5.2 (max with fallback)",
         "score": 65,
         "source": "https://artificialanalysis.ai/models/claude-fable-5-2",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       }
     },
     "muse-ember": {
@@ -432,7 +433,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Muse Ember (max)",
         "score": 36,
         "source": "https://artificialanalysis.ai/models/muse-ember",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       }
     },
     "hunyuan-hy4": {
@@ -440,7 +441,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Tencent Hy4",
         "score": 35,
         "source": "https://artificialanalysis.ai/models/tencent-hy4",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       }
     },
     "gemini-4-hydrogen": {
@@ -448,7 +449,7 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Gemini 4 Hydrogen (xhigh)",
         "score": 54,
         "source": "https://artificialanalysis.ai/models/gemini-4-hydrogen",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
       },
       "arena": {
         "model": "Gemini 4 Hydrogen (High)",
@@ -465,7 +466,33 @@ window.MODEL_ATLAS_SCORES = Object.freeze({
         "model": "Qwen4 Max",
         "score": 43,
         "source": "https://artificialanalysis.ai/models/qwen4-max",
-        "checkedAt": "2026-11-16"
+        "checkedAt": "2026-11-18"
+      }
+    },
+    "gpt-6-2-astra": {
+      "aa": {
+        "model": "GPT-6.2 Astra (max)",
+        "score": 62,
+        "source": "https://artificialanalysis.ai/models/gpt-6-2-astra",
+        "checkedAt": "2026-11-18"
+      }
+    },
+    "gpt-6-2-sol": {
+      "aa": {
+        "model": "GPT-6.2 Sol (max)",
+        "score": 57,
+        "source": "https://artificialanalysis.ai/models/gpt-6-2-sol",
+        "checkedAt": "2026-11-18"
+      }
+    },
+    "lfm-3": {
+      "aa": {
+        "model": "LFM3-1.7B",
+        "score": 6,
+        "source": "https://artificialanalysis.ai/models/lfm3-1-7b",
+        "checkedAt": "2026-11-18",
+        "note": "此成绩对应 LFM3-1.7B 文本型号。",
+        "noteEn": "This score is for the LFM3-1.7B text model."
       }
     }
   }
