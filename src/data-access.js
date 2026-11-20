@@ -984,10 +984,10 @@
   Object.assign(models, {
   "gemini-4-carbon": {
     "status": "closed",
-    "checkedAt": "2026-11-01",
-    "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
-    "note": "公告时仅向受信网络防御团队及 Fairwind 合作伙伴逐步开放，未公开模型权重。",
-    "noteEn": "At announcement, access is rolling out to trusted cyber defenders and Fairwind partners; model weights are not public."
+    "checkedAt": "2026-11-20",
+    "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
+    "note": "提供付费 API 和订阅产品访问，模型权重未公开。",
+    "noteEn": "Available through the paid API and subscription products. Model weights are private."
   },
   "lfm-3": {
     "status": "open",
@@ -1058,13 +1058,26 @@
   },
   "genie-4": {
     "status": "closed",
-    "checkedAt": "2026-11-01",
-    "source": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
-    "note": "研究预览面向受信测试者，未公开模型权重。",
-    "noteEn": "The research preview is limited to trusted testers; model weights are not public."
+    "checkedAt": "2026-11-20",
+    "source": "https://blog.google/innovation-and-ai/technology/developers-tools/genie-4-in-gemini-api/",
+    "note": "可通过 Project Genie 和 Gemini API 使用，模型权重未公开。",
+    "noteEn": "Available through Project Genie and the Gemini API. Model weights are private."
   }
 });
   Object.assign(agents, {
+  "sashiko": {
+    "status": "open",
+    "checkedAt": "2026-11-20",
+    "source": "https://github.com/sashiko-dev/sashiko/blob/main/LICENSE",
+    "licenses": [
+      {
+        "object": "工具源码",
+        "objectEn": "Tool code",
+        "name": "Apache 2.0",
+        "source": "https://github.com/sashiko-dev/sashiko/blob/main/LICENSE"
+      }
+    ]
+  },
   "github-agentic-workflows": {
     "status": "open",
     "checkedAt": "2026-11-01",
@@ -1106,12 +1119,43 @@
   }
 });
   Object.assign(models, {
-  "hunyuan-hy4": {
+  "aion-instruct": {
+    "status": "open",
+    "checkedAt": "2026-11-20",
+    "source": "https://huggingface.co/microsoft/Aion-1.0-Instruct-2.3B",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "MIT",
+        "source": "https://huggingface.co/microsoft/Aion-1.0-Instruct-2.3B/blob/main/LICENSE"
+      }
+    ]
+  },
+  "gemini-4-neon": {
     "status": "closed",
-    "checkedAt": "2026-11-04",
-    "source": "https://www.tencent.com/zh-cn/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/",
-    "note": "正式版已提供 API；官方公告将权重开放列为后续计划，尚未发布可下载权重。预览版的开放状态不适用于正式版。",
-    "noteEn": "The general release is available by API. Tencent describes public weights as a future release; the preview's open weights do not establish access for this version."
+    "checkedAt": "2026-11-20",
+    "source": "https://aistudio.google.com/docs/models/gemini-4-neon"
+  },
+  "seedrealtime": {
+    "status": "closed",
+    "checkedAt": "2026-11-20",
+    "source": "https://docs.volcengine.com/docs/doubao-voice/seedrealtime?lang=zh"
+  },
+  "hunyuan-hy4": {
+    "status": "open",
+    "checkedAt": "2026-11-20",
+    "source": "https://github.com/Tencent-Hunyuan/Hy4",
+    "licenses": [
+      {
+        "object": "模型权重",
+        "objectEn": "Model weights",
+        "name": "Tencent Hy License 1.0",
+        "source": "https://github.com/Tencent-Hunyuan/Hy4/blob/main/LICENSE"
+      }
+    ],
+    "note": "11 月 20 日，腾讯公开 Hy4、Hy4-FP8 和 Hy4-base 权重。",
+    "noteEn": "Tencent published the Hy4, Hy4-FP8 and Hy4-base weights on November 20."
   }
 });
   Object.assign(models, {

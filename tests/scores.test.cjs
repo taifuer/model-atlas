@@ -16,6 +16,8 @@ test('published scores exactly match dated public source snapshots and known rel
   for (const key of ['aa', 'arena']) {
     const snapshot = JSON.parse(fs.readFileSync(path.join(__dirname, 'fixtures', 'scores', scores.benchmarks[key].checkedAt || scores.checkedAt, `${key}-scores.json`)));
     assert.deepEqual(JSON.parse(JSON.stringify(scores.benchmarks[key])), snapshot.metric);
+    const publishedIds = Object.keys(scores.entries).filter(id => scores.entries[id][key]);
+    assert.deepEqual(snapshot.records.map(row => row.releaseId).sort(), publishedIds.sort());
     for (const row of snapshot.records) {
       const { releaseId, ...record } = row;
       assert.ok(ids.has(releaseId), releaseId);
@@ -26,24 +28,29 @@ test('published scores exactly match dated public source snapshots and known rel
       assert.equal(new URL(record.source).protocol, 'https:');
       if (key === 'arena') assert.ok(record.confidenceInterval > 0 && record.votes > 0);
     }
-    assert.equal(snapshot.records.length, Object.values(scores.entries).filter(e => e[key]).length);
   }
-  assert.equal(scores.entries['gemini-4-argon'].arena.preliminary, undefined);
-  assert.equal(scores.entries['gemini-4-carbon'].arena.preliminary, true);
+  assert.equal(scores.entries['gemini-4-carbon'].arena.preliminary, undefined, 'The November 19 text dataset does not publish a preliminary label');
   assert.equal(scores.benchmarks.aa.version, '5.0.1');
   assert.equal(scores.entries['qwen-4-max'].aa.score, 43);
   assert.equal(scores.entries['qwen-4-max-preview'], undefined, 'Formal-release scores must not be assigned to the preview');
   assert.equal(scores.entries['qwen-3-8-max-0902'].aa.checkedAt, '2026-11-14', 'An absent current row retains its historical score date');
-  assert.equal(scores.benchmarks.aa.checkedAt, '2026-11-18');
-  assert.equal(scores.checkedAt, '2026-11-18');
+  assert.equal(scores.benchmarks.aa.checkedAt, '2026-11-20');
+  assert.equal(scores.checkedAt, '2026-11-20');
+  assert.equal(models.companyRanking.checkedAt, scores.benchmarks.aa.checkedAt);
+  assert.equal(scores.entries['gemini-4-neon'].aa.model, 'Gemini 4 Neon (xhigh)');
+  assert.equal(scores.entries['gemini-4-neon'].aa.score, 61);
+  assert.equal(scores.entries['gemini-4-neon'].arena.model, 'Gemini 4 Neon (High)');
+  assert.equal(scores.entries['gemini-4-neon'].arena.score, 1513);
   assert.equal(scores.entries['gpt-6-2-astra'].aa.score, 62);
   assert.equal(scores.entries['gpt-6-2-sol'].aa.score, 57);
   assert.equal(scores.entries['gpt-6-astra'].aa.checkedAt, '2026-11-16');
-  assert.equal(scores.entries['gpt-6-2-astra'].arena, undefined);
+  assert.equal(scores.entries['gpt-6-2-astra'].arena.model, 'GPT-6.2 Astra (Max)');
+  assert.equal(scores.entries['gpt-6-2-sol'].arena.model, 'GPT-6.2 Sol (Max)');
+  assert.equal(scores.entries['claude-fable-5-2'].arena.model, 'Claude Fable 5.2 (Max)');
   assert.equal(scores.entries['lfm-3'].aa.model, 'LFM3-1.7B');
   assert.equal(scores.cardScopes['lfm-3'], 'variant');
-  assert.equal(scores.benchmarks.arena.checkedAt, '2026-11-14');
-  assert.equal(scores.benchmarks.arena.publishedAt, '2026-11-11', 'Dataset retrieval date is not the leaderboard publication date');
+  assert.equal(scores.benchmarks.arena.checkedAt, '2026-11-20');
+  assert.equal(scores.benchmarks.arena.publishedAt, '2026-11-19', 'Dataset retrieval date is not the leaderboard publication date');
   assert.equal(scores.entries['muse-wonder'].aa.model, 'Muse Wonder Full (max)');
   assert.equal(scores.cardScopes['muse-wonder'], 'variant');
   assert.equal(scores.entries['muse-wonder'].arena, undefined, 'Do not transfer Wonder results to Full without verified metric scope');
@@ -108,7 +115,7 @@ test('later weight releases and serving variants preserve their own licenses and
   assert.doesNotMatch(scores.entries['ling-3-1-flash'].aa.noteEn, /41|44/, 'Earlier index versions are not current scores');
   assert.equal(scores.entries['ling-3-1-flash'].aa.score, 30, 'The current score names the newly public 1019 checkpoint');
   assert.equal(releases.find(entry => entry.id === 'ling-3-1-flash').date, '2026-09-30', 'A later weight release does not rewrite the original event');
-  assert.equal(scores.entries['gpt-6-1-terra'].arena, undefined, 'Terra does not inherit another GPT model’s Arena score');
+  assert.equal(scores.entries['gpt-6-1-terra'].arena.model, 'GPT-6.1 Terra (Max)', 'Only the exact Terra configuration supplies its Arena score');
   assert.deepEqual(Array.from(specifications['gpt-6-1-terra'].variants[0].output), ['text']);
   assert.equal(context.window.MODEL_ATLAS_PRICES.entries['ideogram-vector-1'], undefined, 'Per-file SVG pricing is not per-token language pricing');
   assert.equal(models.companyRanking.entries.find(entry => entry.company === 'inclusionai').model, 'Ling 3.1 Flash 1019');

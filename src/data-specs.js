@@ -5,8 +5,78 @@
 window.MODEL_ATLAS_SPECS = Object.freeze({
   "checkedAt": "2026-10-03",
   "entries": {
+    "aion-instruct": {
+      "checkedAt": "2026-11-20",
+      "variants": [
+        {
+          "name": "Aion-1.0-Instruct-2.3B",
+          "basis": "weights",
+          "contextTokens": 32768,
+          "parameters": "≈2.29B",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/microsoft/Aion-1.0-Instruct-2.3B"
+          ]
+        }
+      ]
+    },
+    "gemini-4-neon": {
+      "checkedAt": "2026-11-20",
+      "variants": [
+        {
+          "name": "gemini-4-neon",
+          "basis": "api",
+          "contextTokens": 1048576,
+          "outputTokens": 65536,
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://aistudio.google.com/docs/models/gemini-4-neon"
+          ]
+        }
+      ],
+      "note": "输入、思考和回答共用 1,048,576 token。65,536 为默认同步输出上限，长输出模式可使用同一窗口内的剩余容量。",
+      "noteEn": "Input, thinking and answers share 1,048,576 tokens. The default synchronous output limit is 65,536. Long decode can use the space left in the same window."
+    },
+    "seedrealtime": {
+      "checkedAt": "2026-11-20",
+      "variants": [
+        {
+          "name": "Doubao-Seed-Realtime-1.0",
+          "basis": "api",
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "output": [
+            "text",
+            "audio"
+          ],
+          "sources": [
+            "https://docs.volcengine.com/docs/doubao-voice/seedrealtime?lang=zh"
+          ],
+          "note": "客户端以最高每秒 2 帧发送摄像头或屏幕画面，API 流式返回回复文本与语音。",
+          "noteEn": "Clients send camera or screen frames at up to 2 fps. The API streams response text and speech."
+        }
+      ]
+    },
     "hunyuan-hy4": {
-      "checkedAt": "2026-11-04",
+      "checkedAt": "2026-11-20",
       "variants": [
         {
           "name": "hy4",
@@ -24,6 +94,26 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
             "https://cloud.tencent.com/document/product/1823/130051"
           ],
           "inputTokens": "960K"
+        },
+        {
+          "name": "Hy4",
+          "basis": "weights",
+          "contextTokens": 1048576,
+          "parameters": "770B",
+          "activeParameters": "49B",
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://github.com/Tencent-Hunyuan/Hy4"
+          ],
+          "note": "参数量仅指语言骨干，未计入视觉编码器、适配器及 DFly2 推测解码模块。",
+          "noteEn": "Parameter counts cover the language backbone and exclude the vision encoder, adapter and DFly2 speculative decoder."
         }
       ]
     },
@@ -2137,6 +2227,32 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
         }
       ]
     },
+    "gemini-4-carbon": {
+      "checkedAt": "2026-11-20",
+      "variants": [
+        {
+          "name": "gemini-4-carbon",
+          "basis": "api",
+          "contextTokens": 1048576,
+          "outputTokens": 65536,
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://aistudio.google.com/docs/models/gemini-4-carbon"
+          ]
+        }
+      ],
+      "note": "输入与输出共用 1,048,576 tokens 窗口。默认同步输出上限为 65,536 tokens，长输出模式可使用剩余窗口。",
+      "noteEn": "Input and output share a 1,048,576-token window. Synchronous output defaults to a maximum of 65,536 tokens. Long decode can use the remaining window."
+    },
     "gemini-4-argon": {
       "checkedAt": "2026-10-15",
       "variants": [
@@ -2423,11 +2539,11 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "seedance-2-5": {
-      "checkedAt": "2026-11-04",
+      "checkedAt": "2026-11-20",
       "variants": [
         {
-          "name": "Seedance 2.5",
-          "basis": "release",
+          "name": "doubao-seedance-2-5-260628",
+          "basis": "api",
           "input": [
             "text",
             "image",
@@ -2440,33 +2556,46 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           ],
           "video": {
             "maxDurationSeconds": 30,
+            "resolutions": [
+              "480p",
+              "720p",
+              "1080p",
+              "4K"
+            ],
             "audio": "native"
           },
           "sources": [
-            "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5"
-          ]
+            "https://console.volcengine.com/ark/region%3Acn-beijing/docs/seedance-2-5",
+            "https://console.volcengine.com/ark/region%3Acn-beijing/docs/create-video-generation-task-api"
+          ],
+          "note": "火山方舟标准版的 1080p 与 4K 输出采用 10-bit HEVC。",
+          "noteEn": "The standard Ark model encodes 1080p and 4K video in 10-bit HEVC."
         },
         {
-          "name": "Seedance 2.5 4K (enterprise trial)",
-          "basis": "release",
+          "name": "doubao-seedance-2-5-flash-261115",
+          "basis": "api",
           "input": [
             "text",
             "image",
-            "video"
+            "video",
+            "audio"
           ],
           "output": [
-            "video"
+            "video",
+            "audio"
           ],
           "video": {
+            "maxDurationSeconds": 30,
             "resolutions": [
-              "4K"
-            ]
+              "480p",
+              "720p"
+            ],
+            "audio": "native"
           },
           "sources": [
-            "https://www.byteplus.com/en/blog/seedance%202.5"
-          ],
-          "note": "BytePlus 介绍受邀企业试用，支持 480p 草稿与 10-bit 色深；公告未确认公开 API 的全面开放或价格。",
-          "noteEn": "BytePlus describes invited enterprise trials with 480p drafts and 10-bit color. The announcement does not establish general public API availability or pricing."
+            "https://console.volcengine.com/ark/region%3Acn-beijing/docs/seedance-2-5",
+            "https://console.volcengine.com/ark/region%3Acn-beijing/docs/create-video-generation-task-api"
+          ]
         }
       ]
     },
@@ -4225,11 +4354,11 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "genie-4": {
-      "checkedAt": "2026-11-01",
+      "checkedAt": "2026-11-20",
       "variants": [
         {
-          "name": "Genie 4 research preview",
-          "basis": "release",
+          "name": "genie-4",
+          "basis": "api",
           "input": [
             "text",
             "image"
@@ -4238,11 +4367,21 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
             "video",
             "audio"
           ],
+          "video": {
+            "resolutions": [
+              "720p"
+            ],
+            "frameRates": [
+              24
+            ],
+            "audio": "native"
+          },
           "sources": [
-            "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/"
+            "https://blog.google/innovation-and-ai/technology/developers-tools/genie-4-in-gemini-api/",
+            "https://aistudio.google.com/docs/genie"
           ],
-          "note": "实时交互世界模拟，另支持键盘导航与镜头控制；公告未公开标准上下文窗口或固定片段时长上限。",
-          "noteEn": "Interactive world simulation with additional keyboard navigation and camera control. No standard context window or fixed clip-duration limit is disclosed in the announcement."
+          "note": "支持在生成过程中使用键盘导航，也可以输入文字改变场景。",
+          "noteEn": "Keyboard controls steer the simulation. Text prompts can change the scene during generation."
         }
       ]
     },

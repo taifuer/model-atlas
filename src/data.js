@@ -49,7 +49,7 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    "checkedAt": "2026-11-18",
+    "checkedAt": "2026-11-20",
     "source": "https://artificialanalysis.ai/leaderboards/models",
     "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
     "metric": "Artificial Analysis Intelligence Index",
@@ -68,8 +68,8 @@ window.MODEL_ATLAS = (() => {
       },
       {
         "company": "google",
-        "model": "Gemini 4 Carbon (high)",
-        "score": 60
+        "model": "Gemini 4 Neon (xhigh)",
+        "score": 61
       },
       {
         "company": "meta",
@@ -170,6 +170,76 @@ window.MODEL_ATLAS = (() => {
   }
   const releases = [
     {
+      "id": "aion-instruct",
+      "date": "2026-11-19",
+      "name": "Aion Instruct",
+      "company": "microsoft",
+      "kind": "release",
+      "summary": "微软将 Aion Instruct 设为 Edge 的内置语言模型，可在设备上完成文本摘要、改写和结构化提取。",
+      "details": "Aion-1.0-Instruct-2.3B 约有 23 亿参数，上下文为 32,768 token，采用 MIT 许可证。它接替了 Edge 内置的 Phi-4-mini。网站可参加同期开放的 Prompt API 试用计划，让符合条件的设备在本地运行模型。",
+      "dateNote": "模型此前已向开发者预览，11 月 19 日在 Edge 正式发布。",
+      "tags": [
+        "端侧部署",
+        "开放权重"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Microsoft Edge · 正式发布",
+          "titleEn": "Microsoft Edge · General availability",
+          "url": "https://blogs.windows.com/msedgedev/2026/11/19/hybrid-intelligence-on-the-web-introducing-aion-instruct-and-prompt-api-in-microsoft-edge/"
+        },
+        {
+          "title": "Microsoft · 模型卡与权重",
+          "titleEn": "Microsoft · Model card and weights",
+          "url": "https://huggingface.co/microsoft/Aion-1.0-Instruct-2.3B"
+        }
+      ],
+      "searchAliases": [
+        "Aion-1.0-Instruct-2.3B",
+        "Aion 1.0 Instruct",
+        "Microsoft Aion Instruct",
+        "微软 Aion"
+      ]
+    },
+    {
+      "id": "gemini-4-neon",
+      "date": "2026-11-18",
+      "name": "Gemini 4 Neon",
+      "company": "google",
+      "kind": "release",
+      "summary": "Google 推出面向软件工程、科学推理和知识工作的多模态模型，输入、推理和回答共享百万 token 窗口。",
+      "details": "Gemini API 接受文本、图像、视频、音频和 PDF，输出文本。默认同步输出上限为 65,536 token，长输出模式可用剩余上下文继续生成。Google 同日开始在 AI Studio、Gemini 应用和 Antigravity 推出 Neon。",
+      "dateNote": "采用 Google 发布公告标注的 11 月 18 日。",
+      "tags": [
+        "推理",
+        "多模态",
+        "编程"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Google · Neon 发布公告",
+          "titleEn": "Google · Neon announcement",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/"
+        },
+        {
+          "title": "Google · 模型规格",
+          "titleEn": "Google · Model specifications",
+          "url": "https://aistudio.google.com/docs/models/gemini-4-neon"
+        },
+        {
+          "title": "Artificial Analysis · Neon 评测",
+          "titleEn": "Artificial Analysis · Neon evaluation",
+          "url": "https://artificialanalysis.ai/models/gemini-4-neon"
+        }
+      ],
+      "searchAliases": [
+        "gemini-4-neon",
+        "谷歌 Gemini 4 Neon"
+      ]
+    },
+    {
       "id": "gpt-6-2-astra",
       "familyName": "GPT-6.2 Astra / Sol",
       "familyNameEn": "GPT-6.2 Astra / Sol",
@@ -178,7 +248,7 @@ window.MODEL_ATLAS = (() => {
       "company": "openai",
       "kind": "release",
       "summary": "同日推出 Astra 和 Sol。Astra 面向复杂推理与专业工作，Sol 侧重日常编程和低延迟工具调用。",
-      "details": "Astra 接受文本和图像，输出文本。它可在同一任务中分析资料、编写并验证代码、制作工作文档，发布当天开放 API，并接入 ChatGPT Work 和 Codex。",
+      "details": "Astra 接受文本和图像，输出文本。它可在同一任务中分析资料、编写并验证代码、制作工作文档，发布当天开放 API，并接入 ChatGPT Work 和 Codex。同日公布的 Astra for Law 6.2 是面向法律工作的配置，配有专用指令和法律检索索引。",
       "dateNote": "采用 OpenAI 公布 GPT-6.2 Astra 和 Sol 的日期。",
       "tags": [
         "推理",
@@ -196,6 +266,11 @@ window.MODEL_ATLAS = (() => {
           "title": "OpenAI · 模型与价格",
           "titleEn": "OpenAI · Model and pricing",
           "url": "https://developers.openai.com/api/docs/models/gpt-6.2-astra"
+        },
+        {
+          "title": "OpenAI · Astra for Law 6.2",
+          "titleEn": "OpenAI · Astra for Law 6.2",
+          "url": "https://openai.com/index/astra-law-6-2/"
         }
       ],
       "searchAliases": [
@@ -794,11 +869,12 @@ window.MODEL_ATLAS = (() => {
       "kind": "release",
       "milestone": false,
       "summary": "正式版新增视觉理解与电脑操作，支持命令行和图形界面的多步骤任务。",
-      "details": "支持图像理解、图表分析及跨应用操作，已通过腾讯云 TokenHub 和 WorkBuddy、CodeBuddy 等产品提供。模型权重计划后续发布，截至核验时尚未开放。",
-      "dateNote": "腾讯于 8 月 28 日推出 Hy4 Preview，11 月 4 日发布 Hy4 正式版。",
+      "details": "Hy4 已接入腾讯云 TokenHub、WorkBuddy 和 CodeBuddy，支持图表分析和跨应用操作。11 月 20 日，腾讯按 Tencent Hy License 1.0 公开指令模型、FP8 量化版和基础模型权重。语言骨干约 7700 亿参数，每个 token 激活约 490 亿参数。",
+      "dateNote": "Hy4 正式版于 11 月 4 日发布，11 月 20 日开放权重。8 月 28 日推出的 Hy4 Preview 单独收录。",
       "tags": [
         "视觉理解",
-        "计算机操作"
+        "计算机操作",
+        "开放权重"
       ],
       "searchAliases": [
         "HY4",
@@ -816,6 +892,16 @@ window.MODEL_ATLAS = (() => {
           "title": "腾讯云 · TokenHub 模型规格",
           "titleEn": "Tencent Cloud: TokenHub model specifications",
           "url": "https://cloud.tencent.com/document/product/1823/130051"
+        },
+        {
+          "title": "腾讯混元 · 权重与架构",
+          "titleEn": "Tencent Hunyuan · Weights and architecture",
+          "url": "https://github.com/Tencent-Hunyuan/Hy4"
+        },
+        {
+          "title": "IT之家 · 权重开放日期交叉核验",
+          "titleEn": "IT Home · Weight release date",
+          "url": "https://www.ithome.com/1/029/841.htm"
         }
       ]
     },
@@ -906,8 +992,8 @@ window.MODEL_ATLAS = (() => {
       "kind": "preview",
       "milestone": false,
       "summary": "将实时可交互世界模拟与原生音频结合，支持键盘操作和文字指令改变场景。",
-      "details": "Google DeepMind 的世界模型，结合 Gemini 系列能力维持场景外观、行为与连续性，同时生成环境音、音乐和对话。用户可在模拟过程中导航、调整镜头并改变场景。以研究预览向受信测试者逐步开放；Project Genie 消费者入口和 Gemini API 合作伙伴访问仍为后续计划。",
-      "dateNote": "采用 2026 年 10 月 27 日研究预览公告；受信测试已开始，不等同于面向公众的产品或 API 正式上线。",
+      "details": "Google DeepMind 的世界模型，结合 Gemini 系列能力维持场景外观、行为与连续性，同时生成环境音、音乐和对话。用户可在模拟过程中导航、调整镜头并改变场景。11 月 18 日，Project Genie 向符合条件的 Google AI Ultra 订阅者开放。11 月 19 日，开发者可通过 Gemini Interactions API 和 AI Studio 生成 720p、24 帧/秒的交互世界。视频输出含同步音频，标准费率约为每分钟 6.05 美元。",
+      "dateNote": "10 月 27 日首次公布研究预览。产品与开发者接口分别于 11 月 18 日和 19 日开放。",
       "tags": [
         "世界模型",
         "实时交互",
@@ -918,6 +1004,21 @@ window.MODEL_ATLAS = (() => {
           "title": "Google DeepMind · Genie 4 研究预览",
           "titleEn": "Google DeepMind · Genie 4 research preview",
           "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/"
+        },
+        {
+          "title": "Google · Project Genie",
+          "titleEn": "Google · Project Genie",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/"
+        },
+        {
+          "title": "Google · Genie 4 开发者访问",
+          "titleEn": "Google · Genie 4 developer access",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/genie-4-in-gemini-api/"
+        },
+        {
+          "title": "Google · 视频输出计费",
+          "titleEn": "Google · Video output pricing",
+          "url": "https://aistudio.google.com/docs/pricing#genie-4"
         }
       ]
     },
@@ -1037,8 +1138,8 @@ window.MODEL_ATLAS = (() => {
       "kind": "announcement",
       "milestone": false,
       "summary": "面向复杂编程、长程智能体任务与网络防御的多模态模型，先向受信合作伙伴开放。",
-      "details": "在 Gemini 4 Argon 之后继续改进软件工程、科学任务和多模态理解。公告表示先向部分网络防御团队开放，再通过 Fairwind 计划逐步扩大受信访问；面向普通开发者和消费者的产品上线仍为后续计划。",
-      "dateNote": "采用 10 月 28 日官方公告日期；受限访问不等同于公开 API 正式上线，尚未提供的服务价格不作为当前 API 费率展示。",
+      "details": "在 Gemini 4 Argon 之后继续改进软件工程、科学任务和多模态理解。10 月先向部分网络防御团队开放。11 月 10 日起，付费开发者和企业可通过 API 使用，Google AI Ultra 订阅者也开始在 Gemini 应用等产品中获得访问权限。",
+      "dateNote": "10 月 28 日公布模型并开始受限访问，11 月 10 日向付费开发者开放 API。",
       "tags": [
         "多模态",
         "长程任务",
@@ -1049,6 +1150,11 @@ window.MODEL_ATLAS = (() => {
           "title": "Google · Carbon 发布公告",
           "titleEn": "Google · Carbon announcement",
           "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+        },
+        {
+          "title": "Google · API 与产品开放",
+          "titleEn": "Google · API and product rollout",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/"
         }
       ]
     },
@@ -2107,8 +2213,8 @@ window.MODEL_ATLAS = (() => {
       ]
     },
     event('deepseek-v4-1-flash', '2026-09-10', 'DeepSeek-V4.1-Flash', 'deepseek', 'release',
-      '新架构加入原生视觉理解，同时改进推理效率与智能体任务能力。', ['视觉理解', '高效推理'], [ds('news260910'), {"title": "DeepSeek · 1017 版本更新", "titleEn": "DeepSeek: 1017 checkpoint update", "url": "https://api-docs.deepseek.com/zh-cn/news/news261017/"}, {"title": "DeepSeek · 1017 开放权重", "titleEn": "DeepSeek: 1017 open weights", "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"}, {"title": "DeepSeek · API 更新记录", "titleEn": "DeepSeek: API changelog", "url": "https://api-docs.deepseek.com/updates/"}], false,
-      '官方介绍这一版本为新架构家族中较小的模型，采用非对称编码器与解码器设计。10 月 17 日更新至 V4.1-Flash-1017，改进编程与智能体任务，网页、App 和 API 同步切换，并以 MIT 开放该快照权重。 11 月 13 日，托管服务新增搜索、文件与 URL 阅读等应用 API；这些是服务端工具能力，不代表新的模型快照。', '保留 9 月 10 日首次发布；10 月 17 日快照由官方称为小版本更新，作为后续进展合并记录。'),
+      '新架构加入原生视觉理解，同时改进推理效率与智能体任务能力。', ['视觉理解', '高效推理'], [ds('news260910'), {"title": "DeepSeek · 1017 版本更新", "titleEn": "DeepSeek: 1017 checkpoint update", "url": "https://api-docs.deepseek.com/zh-cn/news/news261017/"}, {"title": "DeepSeek · 1017 开放权重", "titleEn": "DeepSeek: 1017 open weights", "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"}, {"title": "DeepSeek · API 更新记录", "titleEn": "DeepSeek: API changelog", "url": "https://api-docs.deepseek.com/updates/"}, {"title": "DeepSeek · 工具计费", "titleEn": "DeepSeek · Tool pricing", "url": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/"}], false,
+      '官方介绍这一版本为新架构家族中较小的模型，采用非对称编码器与解码器设计。10 月 17 日更新至 V4.1-Flash-1017，改进编程与智能体任务，网页、App 和 API 同步切换，并以 MIT 许可发布该快照权重。11 月 13 日托管服务新增搜索、文件与网页读取接口。11 月 18 日起，由模型触发的搜索和网页抓取免收单次调用费，返回内容按模型 token 计费。', '保留 9 月 10 日首次发布；10 月 17 日快照由官方称为小版本更新，作为后续进展合并记录。'),
     event('claude-opus-5-5', '2026-09-22', 'Claude Opus 5.5', 'anthropic', 'release',
       '新一代 Opus 面向复杂知识工作、编程与需要审慎判断的任务。', ['编程', '知识工作'],
       source('Anthropic · Claude Opus 5.5', 'https://www.anthropic.com/claude-opus-5-5'), false,
@@ -2322,6 +2428,49 @@ window.MODEL_ATLAS = (() => {
     event("qwen-3-8-max", "2026-08-03", "Qwen3.8-Max", "qwen", "release",
       "推出原生视觉语言旗舰，支持百万 token 上下文。", ["多模态","智能体"], [source("Qwen · 官方发布", "https://docs.qwencloud.com/changelog/models")], false,
       "QwenCloud 模型日志记载，Qwen3.8-Max 于 8 月 3 日首次开放，9 月 2 日发布更新快照。"),
+    {
+      "id": "seedrealtime",
+      "date": "2026-08-05",
+      "name": "SeedRealtime",
+      "company": "bytedance",
+      "kind": "release",
+      "summary": "字节跳动在豆包 App 上线原生全双工音视频模型。它能一边回答，一边听取用户补充并跟随画面变化。",
+      "details": "模型联合处理音频、视频和文本，可结合镜头或屏幕画面与用户实时对话。11 月 19 日，火山引擎开放 Doubao-Seed-Realtime-1.0 API，支持语音和文本回复。按量后付费的语音通话为 ¥0.20/分钟，视频通话为 ¥0.40/分钟，视频费率已含语音。",
+      "dateNote": "采用 Seed 团队 8 月 5 日公布模型并确认豆包 App 全量上线的日期。11 月 19 日为开发者 API 上线日。",
+      "tags": [
+        "原生多模态",
+        "实时交互"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "字节跳动 Seed · 首次发布",
+          "titleEn": "ByteDance Seed · Original release",
+          "url": "https://seed.bytedance.com/zh/blog/seedrealtime-audio-visual-full-duplex-llm-released-toward-omni-modal-natural-interaction"
+        },
+        {
+          "title": "火山引擎 · 实时通话 API",
+          "titleEn": "Volcengine · Realtime calling API",
+          "url": "https://docs.volcengine.com/docs/doubao-voice/seedrealtime?lang=zh"
+        },
+        {
+          "title": "火山引擎 · 通话计费",
+          "titleEn": "Volcengine · Call pricing",
+          "url": "https://docs.volcengine.com/docs/doubao-voice/billing-instructions?lang=zh"
+        },
+        {
+          "title": "IT之家 · API 上线日期交叉核验",
+          "titleEn": "IT Home · API launch date",
+          "url": "https://www.ithome.com/1/029/406.htm"
+        }
+      ],
+      "searchAliases": [
+        "Seed Realtime",
+        "Doubao-Seed-Realtime-1.0",
+        "豆包实时音视频通话模型",
+        "豆包实时音视频模型"
+      ]
+    },
     event("grok-4-6", "2026-08-12", "Grok 4.6", "xai", "announcement",
       "加强长程智能体、互动应用和视觉工作中的持续执行能力。", ["智能体","视觉理解"], [source("xAI · 官方发布", "https://x.ai/news/grok-4-6"), source("xAI · API 发布日志", "https://docs.x.ai/developers/release-notes")], false,
       "记录 Grok 4.6 的模型技术公告与 API 发布。", "官方技术文章与 API 发布日志均记为 8 月 12 日。"),
@@ -2560,8 +2709,8 @@ window.MODEL_ATLAS = (() => {
       "33B 参数单流 Transformer 接受文字、图像、视频和音频参考。开放的基础模型生成 768p 音画片段，托管完整工作流可输出 2K。",
       "模型于 7 月 31 日发布，8 月 3 日官方宣布开放权重；许可证标注的 8 月 2 日不作为首次发布日期。"),
     event("seedance-2-5", "2026-07-31", "Seedance 2.5", "bytedance", "release",
-      "单次生成延长至 30 秒，并加强多素材参考、视频续写与定点编辑。", ["视频生成", "音视频生成"], [{"title": "Seedance 2.5 官方发布", "titleEn": "Seedance 2.5 official release", "url": "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5"}, {"title": "BytePlus · Seedance 2.5 4K 企业试用", "titleEn": "BytePlus · Seedance 2.5 4K enterprise trials", "url": "https://www.byteplus.com/en/blog/seedance%202.5"}], false,
-      "支持最多 30 张图像、10 段视频和 10 段音频作为参考，并可按时间戳编辑音视频。单次生成上限为 30 秒，多轮续写形成的总时长不计作单次上限。 10 月 27 日 BytePlus 介绍同代 4K 型号的企业试用，提供 480p 草稿、4K 成片和 10-bit 色深；这些规格属于受邀试用型号，不适用于全部公开接口。",
+      "单次生成延长至 30 秒，并加强多素材参考、视频续写与定点编辑。", ["视频生成", "音视频生成"], [{"title": "Seedance 2.5 官方发布", "titleEn": "Seedance 2.5 official release", "url": "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5"}, {"title": "BytePlus · Seedance 2.5 4K 企业试用", "titleEn": "BytePlus · Seedance 2.5 4K enterprise trials", "url": "https://www.byteplus.com/en/blog/seedance%202.5"}, {"title": "火山方舟 · Seedance 2.5 型号与规格", "titleEn": "Volcengine Ark · Seedance 2.5 models and specifications", "url": "https://console.volcengine.com/ark/region%3Acn-beijing/docs/seedance-2-5"}, {"title": "IT之家 · 4K 开放日期交叉核验", "titleEn": "IT Home · 4K rollout date", "url": "https://www.ithome.com/1/027/736.htm"}], false,
+      "支持最多 30 张图像、10 段视频和 10 段音频作为参考，并可按时间戳编辑音视频。10 月 27 日，BytePlus 介绍了面向企业的 4K 试用。火山方舟于 11 月 16 日开放标准版的 4K 输出，沿用原 API 型号。标准版最高输出 4K，Flash 支持 480p 和 720p。",
       "当日开始在即梦、豆包 Pro 等产品上线；发布时 BytePlus ModelArk API 仍注明即将开放。"),
     event("wan-3-0-video", "2026-08-06", "Wan 3.0", "qwen", "preview",
       "统一视频生成与编辑，单次生成最长 30 秒，并可引用文档和网页内容。", ["视频生成", "音视频生成"], [{"title": "阿里云官方模型更新记录", "titleEn": "Alibaba Cloud official model changelog", "url": "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"}, {"title": "Wan 3.0 测试公告", "titleEn": "Wan 3.0 beta announcement", "url": "https://www.alibabacloud.com/blog/alibaba-unveils-wan3-0-with-twice-as-long-video-outputs-from-a-richer-variety-of-inputs_603439"}, {"title": "Wan 3.0 正式上线公告", "titleEn": "Wan 3.0 general launch announcement", "url": "https://www.alibabacloud.com/en/news/product/video-generation-model-wan30-officially-launched-nsb"}, {"title": "Wan 3.0 官方规格", "titleEn": "Wan 3.0 official model information", "url": "https://www.alibabacloud.com/help/en/model-studio/wan3-0-video"}], false,
@@ -2706,7 +2855,7 @@ window.MODEL_ATLAS = (() => {
     },
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-11-18',
+    checkedAt: '2026-11-20',
     scope: '主流语言、多模态、图像与视频生成及世界模型，兼顾具有历史影响的架构研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
@@ -2723,5 +2872,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-11-18', updatedAt: '2026-11-18', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-11-20', updatedAt: '2026-11-20', companies, companyRanking, kinds, themes, releases, coverage });
 })();

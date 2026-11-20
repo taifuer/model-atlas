@@ -90,3 +90,7 @@ Official website and profile marks above were retrieved on 2026-10-11 for identi
 
 - `meituan.svg`: copied unchanged from [Simple Icons](https://github.com/simple-icons/simple-icons/blob/develop/icons/meituan.svg), CC0 1.0 (see `LICENSE-SIMPLE-ICONS.txt`).
 - `longcat-color.svg`: copied unchanged from `@lobehub/icons-static-svg` 1.95.1, MIT (see `LICENSE-LOBEHUB.txt`). Used to identify the LongCat model family.
+
+## November 20, 2026 additions
+
+- `sashiko.ico` is the unchanged [Sashiko project favicon](https://sashiko.dev/static/favicon.ico), used to identify the project.

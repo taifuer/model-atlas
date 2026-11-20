@@ -111,10 +111,13 @@ export function prerenderPage(html, { page, language, window }) {
   if (!PAGE_FILES[page]) throw new Error(`Unknown page: ${page}`);
   if (!['en', 'zh'].includes(language)) throw new Error(`Unknown language: ${language}`);
   const sections = window.ATLAS_CATALOG.sections;
-  const updatedAt = Object.values(sections).map(({ data }) => data.updatedAt || data.asOf).sort().at(-1);
-  const cutoff = (sections[page]?.data || window.MODEL_ATLAS).asOf;
-  html = html.replace(/<time\b([^>]*\b(data-updated|data-cutoff)\b[^>]*)>[^<]*<\/time>/g, (_, attributes, field) => {
-    const date = field === 'data-updated' ? updatedAt : cutoff;
+  const dates = {
+    'data-updated': Object.values(sections).map(({ data }) => data.updatedAt || data.asOf).sort().at(-1),
+    'data-cutoff': (sections[page]?.data || window.MODEL_ATLAS).asOf,
+    'data-ranking-date': window.MODEL_ATLAS.companyRanking.checkedAt,
+  };
+  html = html.replace(/<time\b([^>]*\b(data-updated|data-cutoff|data-ranking-date)\b[^>]*)>[^<]*<\/time>/g, (_, attributes, field) => {
+    const date = dates[field];
     return `<time${attributes.replace(/\sdatetime="[^"]*"/, '')} datetime="${date}">${date.replaceAll('-', '.')}</time>`;
   });
   if (page === 'explore' || Object.hasOwn(sections, page)) {

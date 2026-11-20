@@ -7,8 +7,31 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
   "inputType": "uncached-text",
   "outputType": "text",
   "entries": {
+    "gemini-4-neon": {
+      "checkedAt": "2026-11-20",
+      "variants": [
+        {
+          "name": "gemini-4-neon",
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 3,
+              "output": 15,
+              "label": "标准 API",
+              "labelEn": "Standard API"
+            }
+          ],
+          "sources": [
+            "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
+            "https://ai.google.dev/gemini-api/docs/pricing#gemini-4-neon"
+          ],
+          "note": "标准 API 按每百万 token 计费。未缓存输入为 $3，缓存命中为 $0.15，输出为 $15，包含思考 token。",
+          "noteEn": "Per million tokens on the Standard API, uncached input costs $3, cached input $0.15 and output $15, including thinking tokens."
+        }
+      ]
+    },
     "hunyuan-hy4": {
-      "checkedAt": "2026-11-04",
+      "checkedAt": "2026-11-20",
       "variants": [
         {
           "name": "hy4",
@@ -1043,13 +1066,14 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
             }
           ],
           "sources": [
-            "https://api-docs.deepseek.com/quick_start/pricing/"
+            "https://api-docs.deepseek.com/quick_start/pricing/",
+            "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/"
           ]
         }
       ],
-      "note": "未命中缓存的输入价格。高峰为周一至周五 UTC 01:00–04:00、06:00–10:00（北京时间 09:00–12:00、14:00–18:00），中国法定节假日除外；其余时段按低峰计费。",
-      "noteEn": "Uncached input rates. Peak hours are Monday–Friday, 01:00–04:00 and 06:00–10:00 UTC, excluding Chinese public holidays. All other hours are off-peak.",
-      "checkedAt": "2026-10-17",
+      "note": "未命中缓存的输入价格。高峰为周一至周五 UTC 01:00–04:00、06:00–10:00（北京时间 09:00–12:00、14:00–18:00），中国法定节假日除外；其余时段按低峰计费。11 月 18 日起，由模型调用的搜索和抓取仅按返回内容的 token 计费。直接使用 Search（文字）或 Fetch API 时，两者均按每千次成功请求 5 元人民币或 0.75 美元计费。",
+      "noteEn": "Uncached input rates. Peak hours are Monday–Friday, 01:00–04:00 and 06:00–10:00 UTC, excluding Chinese public holidays. All other hours are off-peak. From November 18, model-triggered web searches and fetches are charged only for the returned tokens. Direct text Search and Fetch API calls each cost CNY 5 or USD 0.75 per 1,000 successful requests.",
+      "checkedAt": "2026-11-20",
       "cardScope": "snapshot"
     },
     "deepseek-v4-pro-0813": {
@@ -1610,6 +1634,31 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
           "sources": [
             "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
           ]
+        }
+      ]
+    },
+    "gemini-4-carbon": {
+      "checkedAt": "2026-11-20",
+      "variants": [
+        {
+          "name": "gemini-4-carbon",
+          "currency": "USD",
+          "promotional": true,
+          "tiers": [
+            {
+              "input": 2,
+              "output": 10,
+              "label": "首发优惠 · 至 2026.11.30",
+              "labelEn": "Introductory rate · through Nov 30, 2026",
+              "validUntil": "2026-11-30"
+            }
+          ],
+          "sources": [
+            "https://aistudio.google.com/docs/pricing#gemini-4-carbon",
+            "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/"
+          ],
+          "note": "输出价格包含思考 tokens。Google 公布的 12 月 1 日起标准费率为每百万 tokens 输入 4 美元、输出 20 美元。",
+          "noteEn": "Output includes thinking tokens. Google lists rates of $4 per million input tokens and $20 per million output tokens from December 1."
         }
       ]
     },

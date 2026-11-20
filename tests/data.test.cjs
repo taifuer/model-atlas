@@ -29,6 +29,12 @@ test('every event has valid metadata and a primary source; supporting reports ar
   // These additional official/project/author pages were reviewed for the named event.
   // Keep community-hosted articles and personal author archives URL-specific.
   const reviewedPrimarySources = new Map([
+    ['https://aistudio.google.com/docs/pricing#genie-4', 'genie-4'],
+    ['https://console.volcengine.com/ark/region%3Acn-beijing/docs/seedance-2-5', 'seedance-2-5'],
+    ['https://blogs.windows.com/msedgedev/2026/11/19/hybrid-intelligence-on-the-web-introducing-aion-instruct-and-prompt-api-in-microsoft-edge/', 'aion-instruct'],
+    ['https://aistudio.google.com/docs/models/gemini-4-neon', 'gemini-4-neon'],
+    ['https://docs.volcengine.com/docs/doubao-voice/seedrealtime?lang=zh', 'seedrealtime'],
+    ['https://docs.volcengine.com/docs/doubao-voice/billing-instructions?lang=zh', 'seedrealtime'],
     ['https://kling.ai/document-api/updates/api', 'kling-image-4'],
     ['https://kling.ai/blog/kling-image-4-stunningly-realistic-sharp-precise?tab=all', 'kling-image-4'],
     ['https://github.blog/changelog/2026-11-17-mai-code-2-and-mai-code-2-flash-in-github-copilot/', 'mai-code-2'],
@@ -79,6 +85,7 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['https://platform.stepfun.ai/docs/en/guides/models/step-5-preview', 'step-5-preview'],
   ]);
   const reviewedHuggingFacePaths = new Map([
+    ['/microsoft/Aion-1.0-Instruct-2.3B', 'aion-instruct'],
     ['/meituan-longcat/LongCat-2.5', 'longcat-2-5'],
     ['/MiniMaxAI/MiniMax-H3-Image', 'minimax-h3-image'],
     ['/moonshotai/Kimi-K3.1-Pro', 'kimi-k3-1-pro'],
@@ -121,9 +128,14 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['/zai-org/GLM-4.5', 'glm-4-5'],
     ['/stepfun-ai/Step-3.5-Flash', 'step-3-5-flash'],
   ]);
-  const reviewedRepositories = new Map([["/Tencent-Hunyuan/Hy4-flash", "hunyuan-hy4-flash"], ["/MiniMax-AI/MiniMax-H3-Image/blob/main/LICENSE", "minimax-h3-image"], ["/openai/DALL-E", "dall-e"], ["/openai/dalle-2-preview/blob/main/system-card.md", "dall-e-2"], ["/CompVis/stable-diffusion", "stable-diffusion-1"], ["/Stability-AI/generative-models", "sdxl-1"], ["/QwenLM/Qwen-Image", "qwen-image"]]);
+  const reviewedRepositories = new Map([["/Tencent-Hunyuan/Hy4", "hunyuan-hy4"], ["/Tencent-Hunyuan/Hy4-flash", "hunyuan-hy4-flash"], ["/MiniMax-AI/MiniMax-H3-Image/blob/main/LICENSE", "minimax-h3-image"], ["/openai/DALL-E", "dall-e"], ["/openai/dalle-2-preview/blob/main/system-card.md", "dall-e-2"], ["/CompVis/stable-diffusion", "stable-diffusion-1"], ["/Stability-AI/generative-models", "sdxl-1"], ["/QwenLM/Qwen-Image", "qwen-image"]]);
   const isPrimary = source => primaryHosts.has(new URL(source.url).hostname) || reviewedPrimarySources.has(source.url);
-  const supportingReports = new Set(['https://www.ithome.com/1/004/705.htm']);
+  const supportingReports = new Map([
+    ['https://www.ithome.com/1/004/705.htm', 'step-5-preview'],
+    ['https://www.ithome.com/1/027/736.htm', 'seedance-2-5'],
+    ['https://www.ithome.com/1/029/406.htm', 'seedrealtime'],
+    ['https://www.ithome.com/1/029/841.htm', 'hunyuan-hy4'],
+  ]);
   for (const release of data.releases) {
     assert.ok(companyIds.has(release.company), release.name);
     assert.ok(data.kinds[release.kind], release.name);
@@ -140,7 +152,7 @@ test('every event has valid metadata and a primary source; supporting reports ar
         if (url.hostname === 'shital.com') assert.match(source.title, /Phi.*作者/);
       }
       if (!isPrimary(source)) {
-        assert.ok(supportingReports.has(source.url), `Unreviewed supporting source: ${source.url}`);
+        assert.equal(supportingReports.get(source.url), release.id, `Unreviewed supporting source for ${release.id}: ${source.url}`);
         assert.match(source.title, /交叉核验/);
         assert.ok(release.dateNote, 'Supporting reports must explain their date role');
       }
@@ -224,7 +236,8 @@ test('organization ranking records a dated, comparable AA snapshot without score
   assert.equal(ranking.entries[0].company, 'anthropic');
   assert.equal(find('tencent').model, 'Tencent Hy4');
   for (const company of ['amazon', 'bytedance', 'microsoft']) assert.equal(find(company), undefined, 'Earlier-version scores cannot fill missing v5 results');
-  assert.equal(find('google').model, 'Gemini 4 Carbon (high)');
+  assert.equal(find('google').model, 'Gemini 4 Neon (xhigh)');
+  assert.equal(find('google').score, 61);
 });
 
 test('English content covers every model and retains date clarifications', () => {
@@ -243,7 +256,7 @@ test('English content covers every model and retains date clarifications', () =>
 test('agent entries have distinct categories, bilingual descriptions, and primary sources with explicit corroboration', () => {
   vm.runInNewContext(fs.readFileSync(require('node:path').join(__dirname, '../src/data-agents.js'), 'utf8'), context);
   const agents = context.window.AGENT_ATLAS;
-  const hosts = new Set(['jules.google', 'docs.replit.com', 'x.ai', 'devin.ai', 'docs.devin.ai', 'registry.npmjs.org', 'developer.cloud.tencent.com', 'docs.factory.com', 'open-vsx.org', 'blog.jetbrains.com', 'blog.kilo.ai', 'www.augmentcode.com', 'zed.dev', 'ampcode.com', 'factory.com', 'earendil.com', 'about.fb.com', 'www.microsoft.com', 'www.langchain.com', 'cognition.com', 'arxiv.org', 'replit.com', 'windsurf.com', 'cursor.com', 'www.anthropic.com', 'openai.com', 'github.blog', 'blog.google', 'antigravity.google', 'claude.com', 'support.claude.com', 'mariozechner.at', 'openclaw.ai', 'nousresearch.com', 'hermes-agent.nousresearch.com', 'www.deepseek.com', 'www.codebuddy.cn', 'cloud.tencent.com', 'qoder.com', 'qwenlm.github.io', 'kiro.dev', 'www.trae.ai', 'aider.chat', 'github.com', 'opencode.ai', 'manus.im', 'huggingface.co', 'goose-docs.ai', 'developers.googleblog.com', 'aws.amazon.com', 'blog.crewai.com', 'www.warp.dev']);
+  const hosts = new Set(['lkml.rescloud.iu.edu', 'cloud.google.com', 'jules.google', 'docs.replit.com', 'x.ai', 'devin.ai', 'docs.devin.ai', 'registry.npmjs.org', 'developer.cloud.tencent.com', 'docs.factory.com', 'open-vsx.org', 'blog.jetbrains.com', 'blog.kilo.ai', 'www.augmentcode.com', 'zed.dev', 'ampcode.com', 'factory.com', 'earendil.com', 'about.fb.com', 'www.microsoft.com', 'www.langchain.com', 'cognition.com', 'arxiv.org', 'replit.com', 'windsurf.com', 'cursor.com', 'www.anthropic.com', 'openai.com', 'github.blog', 'blog.google', 'antigravity.google', 'claude.com', 'support.claude.com', 'mariozechner.at', 'openclaw.ai', 'nousresearch.com', 'hermes-agent.nousresearch.com', 'www.deepseek.com', 'www.codebuddy.cn', 'cloud.tencent.com', 'qoder.com', 'qwenlm.github.io', 'kiro.dev', 'www.trae.ai', 'aider.chat', 'github.com', 'opencode.ai', 'manus.im', 'huggingface.co', 'goose-docs.ai', 'developers.googleblog.com', 'aws.amazon.com', 'blog.crewai.com', 'www.warp.dev']);
   const supportingReports = new Map([['https://www.ithome.com/1/005/046.htm', 'zcode-open-source']]);
   const ids = new Set();
   let previous = '';

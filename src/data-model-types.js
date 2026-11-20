@@ -3,14 +3,46 @@
   const data = {
   "checkedAt": "2026-10-03",
   "entries": {
-    "hunyuan-hy4": {
-      "checkedAt": "2026-11-04",
+    "aion-instruct": {
+      "checkedAt": "2026-11-20",
+      "category": "text",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://huggingface.co/microsoft/Aion-1.0-Instruct-2.3B"
+      ]
+    },
+    "gemini-4-neon": {
+      "checkedAt": "2026-11-20",
       "category": "multimodal",
       "tasks": [
         "language"
       ],
       "sources": [
-        "https://cloud.tencent.com/document/product/1823/130051"
+        "https://aistudio.google.com/docs/models/gemini-4-neon"
+      ]
+    },
+    "seedrealtime": {
+      "checkedAt": "2026-11-20",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://seed.bytedance.com/zh/blog/seedrealtime-audio-visual-full-duplex-llm-released-toward-omni-modal-natural-interaction",
+        "https://docs.volcengine.com/docs/doubao-voice/seedrealtime?lang=zh"
+      ]
+    },
+    "hunyuan-hy4": {
+      "checkedAt": "2026-11-20",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://cloud.tencent.com/document/product/1823/130051",
+        "https://github.com/Tencent-Hunyuan/Hy4"
       ]
     },
     "gpt-6-1-terra": {

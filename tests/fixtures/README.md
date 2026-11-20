@@ -9,8 +9,9 @@ The October 17 fixture keeps DeepSeek V4.1 Flash's October 15 record because the
 The newer AA fixtures include the current leaderboard and a separately checked deprecated model page.
 The November 14 fixtures use AA's current table and Arena's November 11 style-control publication.
 The November 16 AA fixture adds Qwen4-Max and retains Qwen3.8-Max-0902 at its earlier verification date.
-Arena remains on the November 14 retrieval of the November 11 publication because the later download is byte-identical.
+The Arena download on November 16 was byte-identical to the November 14 retrieval.
 The November 18 AA fixture adds the two GPT-6.2 Max configurations and the LFM3-1.7B text variant. The previous GPT-6 Astra, GPT-6.1 Sol and Gemini 3.8 Flash configurations retain their November 16 scores.
+The November 20 fixtures include Gemini 4 Neon at Xhigh on AA and High on Text Arena. The November 19 Arena publication supplies ratings, intervals and vote counts for 23 configurations. Its dataset omits preliminary status.
 Their `sourceEvidence` fields record source checksums and the pinned Arena dataset revision;
 AA models absent from the current table retain their earlier verification dates.
 Each file records its source URL, retrieval

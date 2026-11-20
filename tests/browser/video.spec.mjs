@@ -62,6 +62,11 @@ for (const language of ['zh', 'en']) {
     await seedance.locator('.fact-chip').first().click();
     await expect(page.locator('#specs-title')).toBeFocused();
     await expect(page.locator('.detail-specs')).toContainText(language === 'en' ? 'Maximum generation duration' : '单次生成时长上限');
+    const standard = page.locator('.spec-variant').filter({ hasText: 'doubao-seedance-2-5-260628' });
+    const flash = page.locator('.spec-variant').filter({ hasText: 'doubao-seedance-2-5-flash-261115' });
+    const resolution = language === 'en' ? 'Output resolution' : '输出分辨率';
+    await expect(standard.locator('.spec-grid > div').filter({ hasText: resolution }).locator('dd')).toHaveText('480p · 720p · 1080p · 4K');
+    await expect(flash.locator('.spec-grid > div').filter({ hasText: resolution }).locator('dd')).toHaveText('480p · 720p');
     await page.keyboard.press('Escape');
     const hailuo = page.locator('#release-hailuo-01');
     await expect(hailuo.locator('.fact-chip .fact-model')).toHaveText(['Video-01', 'Video-01']);

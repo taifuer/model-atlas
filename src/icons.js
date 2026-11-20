@@ -8,7 +8,7 @@
     inception: 'inception', 'llm-d': 'llm-d.png',
     stability: 'stability-color', midjourney: 'midjourney', bfl: 'bfl', liquid: 'liquid', kuaishou: 'kuaishou.ico', runway: 'runway.png', reflection: 'reflection',
     openai: 'openai', google: 'google-color', anthropic: 'anthropic', meta: 'meta-color',
-    deepseek: 'deepseek-color', qwen: 'alibaba-color', mistral: 'mistral-color', xai: 'xai',
+    deepseek: 'deepseek-color', qwen: 'alibaba-color', thead: 'alibaba-color', mistral: 'mistral-color', xai: 'xai',
     moonshot: 'moonshot', zhipu: 'zai', minimax: 'minimax-color', xiaomi: 'xiaomi',
     stepfun: 'stepfun-color', microsoft: 'microsoft-color', amazon: 'aws-color',
     nvidia: 'nvidia-color', tencent: 'tencent-color', bytedance: 'bytedance-color',
@@ -38,7 +38,7 @@
     'claude-code': 'claudecode-color', 'codex-cli': 'codex', 'codex-cloud': 'codex',
     'codex-app': 'codex', 'copilot-coding-agent': 'githubcopilot',
     'agent-skills': 'claude-color', cowork: 'claude-color', 'cowork-unified': 'claude-color',
-    'hermes-agent': 'hermesagent', workbuddy: 'workbuddy', goose: 'goose',
+    'hermes-agent': 'hermesagent', workbuddy: 'workbuddy', goose: 'goose', sashiko: 'sashiko.ico',
     kiro: 'kiro-color', 'kiro-cli': 'kiro-color', 'kiro-autonomous': 'kiro-color',
     qoder: 'qoder-color', 'trae-solo': 'trae-color', 'google-antigravity': 'antigravity-color',
     tensorflow: 'tensorflow', onnx: 'onnx'

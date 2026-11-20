@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
-  "asOf": "2026-11-18",
-  "updatedAt": "2026-11-18",
+  "asOf": "2026-11-20",
+  "updatedAt": "2026-11-20",
   "companies": [
     {
       "id": "anthropic",
@@ -1899,6 +1899,43 @@ window.AGENT_ATLAS = {
       }
     },
     {
+      "id": "sashiko",
+      "date": "2026-03-17",
+      "name": "Sashiko",
+      "company": "google",
+      "category": "coding",
+      "kind": "release",
+      "summary": "审阅发往 Linux 内核邮件列表的补丁，结合源码核实问题，向维护者反馈结果。",
+      "details": "Google 的 AI 与基础设施团队开发了 Sashiko，并将项目移交 Linux 基金会。Google 在 11 月 18 日的回顾中报告，Sashiko 已完成 24.1 万次补丁审阅，超过 2,000 个内核主线提交致谢其发现问题。",
+      "dateNote": "3 月 17 日，开发者在 Linux 内核邮件列表公开介绍了已运行的审阅服务及其源代码。",
+      "tags": [
+        "Linux"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Linux 内核邮件列表 · 开发者发布公告",
+          "titleEn": "Linux kernel mailing list · Developer announcement",
+          "url": "https://lkml.rescloud.iu.edu/hypermail/linux/kernel/2603.2/03802.html"
+        },
+        {
+          "title": "Sashiko · 项目仓库",
+          "titleEn": "Sashiko · Project repository",
+          "url": "https://github.com/sashiko-dev/sashiko"
+        },
+        {
+          "title": "Google Cloud · Linux 内核补丁审阅的实际使用情况",
+          "titleEn": "Google Cloud · Adoption in Linux kernel patch review",
+          "url": "https://cloud.google.com/blog/products/application-development/lessons-from-building-sashiko-an-agentic-code-review-system"
+        }
+      ],
+      "en": {
+        "summary": "Reviews patches sent to Linux kernel mailing lists, checks findings against the source code and reports them to maintainers.",
+        "details": "Google’s AI and Infrastructure team developed Sashiko and donated the project to the Linux Foundation. On November 18, Google reported 241,000 completed patch reviews and more than 2,000 mainline kernel commits that credit Sashiko for finding bugs.",
+        "dateNote": "On March 17 a developer announced the running review service and its source code on the Linux kernel mailing list."
+      }
+    },
+    {
       "id": "deepseek-harness",
       "date": "2026-08-13",
       "name": "DeepSeek Harness",
@@ -2235,7 +2272,7 @@ window.AGENT_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-14",
+    "checkedAt": "2026-11-20",
     "scope": "编程 Agent、通用 Agent、Harness 及重要框架与协议的主要公开节点。",
     "method": "以原始公告、维护者文章与论文核对日期，区分预览、论文公开、改名和正式发布；按经典性、代表性或影响力筛选，不逐条收录常规版本更新。",
     "references": []

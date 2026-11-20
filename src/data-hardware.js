@@ -1,7 +1,7 @@
 /* Curated hardware history. Event dates and configurations retain explicit source scope. */
 window.HARDWARE_ATLAS = {
-  "asOf": "2026-11-18",
-  "updatedAt": "2026-11-18",
+  "asOf": "2026-11-20",
+  "updatedAt": "2026-11-20",
   "accessFilter": false,
   "companies": [
     {
@@ -33,6 +33,12 @@ window.HARDWARE_ATLAS = {
       "name": "华为",
       "nameEn": "Huawei",
       "aliases": "昇腾 Ascend 华为 达芬奇 Atlas CloudMatrix 灵衢 950PR 950DT 960 超节点 Hi-ONE"
+    },
+    {
+      "id": "thead",
+      "name": "阿里巴巴平头哥",
+      "nameEn": "Alibaba T-Head",
+      "aliases": "T-Head Semiconductor Alibaba Pingtouge 平头哥半导体 真武 Zhenwu M890"
     },
     {
       "id": "intel",
@@ -2400,7 +2406,7 @@ window.HARDWARE_ATLAS = {
       "category": "gpu",
       "kind": "announcement",
       "summary": "Rubin GPU、Vera CPU 与新一代互连共同构成下一代 AI 计算平台。",
-      "details": "此节点记录 CES 平台公布，涵盖协同芯片与系统设计，非所有整机同时可购买。2026 年 9 月 30 日，NVIDIA 确认 CoreWeave 已提供 Vera Rubin NVL72，Cognition 已运行生产工作负载。10 月 27 日，NVIDIA 与 Oracle 宣布 Vera Rubin NVL72 和 Vera CPU 在 OCI 正式可用；多吉瓦扩容与 HGX Rubin NVL8 仍属后续计划。Google Cloud A5X 的全面开放安排为 11 月。 11 月 16 日，NVIDIA 在 SC26 公布面向科学模拟和数据分析的 Rubin HPC GPU，预计 2028 年供货。",
+      "details": "NVIDIA 在 CES 公布平台设计。9 月 30 日，NVIDIA 确认 CoreWeave 已提供 Vera Rubin NVL72，Cognition 已运行生产工作负载。10 月 27 日，Vera Rubin NVL72 和 Vera CPU 在 Oracle Cloud 正式供应，多吉瓦扩容和 HGX Rubin NVL8 列入后续计划。11 月 6 日，Google Cloud 宣布搭载 NVL72 的 A5X 实例正式供应。11 月 16 日，NVIDIA 在 SC26 公布面向科学计算的 Rubin HPC GPU，预计 2028 年供货。11 月 19 日，NVIDIA 确认 Vera Rubin NVL72 已在 Azure 数据中心运行，微软正在扩大相应虚拟机的预览范围。",
       "dateNote": "日期为官方公布日；后续供货安排见原始公告。",
       "tags": [
         "GPU"
@@ -2417,8 +2423,8 @@ window.HARDWARE_ATLAS = {
           "url": "https://blogs.nvidia.com/blog/coreweave-agentic-ai-vera-rubin/"
         },
         {
-          "title": "Google Cloud · A5X 可用性进展",
-          "titleEn": "Google Cloud · A5X availability update",
+          "title": "Google Cloud · A5X 发布与正式供应",
+          "titleEn": "Google Cloud · A5X announcement and general availability",
           "url": "https://cloud.google.com/blog/topics/ai-infrastructure/google-cloud-infrastructure-at-nvidia-gtc-berlin-2026"
         },
         {
@@ -2435,11 +2441,16 @@ window.HARDWARE_ATLAS = {
           "title": "NVIDIA · Rubin HPC 公告与供货预期",
           "titleEn": "NVIDIA · Rubin HPC announcement and projected availability",
           "url": "https://blogs.nvidia.com/blog/rubin-hpc/"
+        },
+        {
+          "title": "NVIDIA · Azure 部署与虚拟机预览",
+          "titleEn": "NVIDIA · Azure deployment and VM preview",
+          "url": "https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs/"
         }
       ],
       "en": {
         "summary": "Rubin GPUs, Vera CPUs, and new interconnects form a new AI compute platform.",
-        "details": "This entry records the CES announcement of coordinated chips and system designs. NVIDIA confirmed CoreWeave availability of Vera Rubin NVL72 and Cognition production workloads on September 30, 2026. On October 27, NVIDIA and Oracle announced general availability of Vera Rubin NVL72 and Vera CPUs on OCI; multi-gigawatt expansion and HGX Rubin NVL8 remain planned. Google Cloud schedules A5X general availability for November. On November 16 at SC26, NVIDIA announced the Rubin HPC GPU for scientific simulation and data analysis, with availability expected in 2028.",
+        "details": "NVIDIA unveiled the platform at CES. On September 30 it confirmed that CoreWeave offered Vera Rubin NVL72 and Cognition was running production workloads on it. Vera Rubin NVL72 and Vera CPUs became generally available on Oracle Cloud on October 27, with multi-gigawatt expansion and HGX Rubin NVL8 planned. On November 6, Google Cloud announced general availability of its NVL72-based A5X instances. NVIDIA announced the Rubin HPC GPU for scientific computing at SC26 on November 16, with shipments expected in 2028. On November 19, NVIDIA confirmed that Vera Rubin NVL72 systems were running in Azure data centers and Microsoft was expanding access to the VM preview.",
         "dateNote": "Dated to the official announcement; availability is described in the original source."
       },
       "hardware": {
@@ -2732,6 +2743,69 @@ window.HARDWARE_ATLAS = {
       }
     },
     {
+      "id": "thead-zhenwu-m890",
+      "date": "2026-05-20",
+      "name": "真武 M890",
+      "company": "thead",
+      "category": "accelerator",
+      "kind": "announcement",
+      "summary": "平头哥为模型训练和推理设计的加速器。阿里云于 8 月推出搭载 M890 的超节点实例。",
+      "details": "M890 与平头哥的 ICN Switch 1.0 互连芯片共同用于磐久 AL128 超节点服务器。阿里巴巴在季度业绩公告中披露，8 月推出的 M890 超节点实例可支持超过两万亿参数模型的推理。",
+      "dateNote": "5 月 20 日为芯片公布日。阿里巴巴按月份披露了云实例的上线时间。",
+      "tags": [
+        "AI 加速器"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "阿里巴巴 · 真武 M890 发布与芯片规格",
+          "titleEn": "Alibaba · M890 announcement and chip specifications",
+          "url": "https://www.alibabagroup.com/en-US/document-1994119844504535040"
+        },
+        {
+          "title": "阿里巴巴季度业绩公告 · M890 超节点实例上线",
+          "titleEn": "Alibaba quarterly results · M890 supernode instance launch",
+          "url": "https://www.sec.gov/Archives/edgar/data/1577552/000110465926130115/tm2630263d1_ex99-1.htm"
+        }
+      ],
+      "en": {
+        "name": "Zhenwu M890",
+        "summary": "T-Head designed the accelerator for model training and inference. Alibaba Cloud launched an M890 supernode instance in August.",
+        "details": "The Panjiu AL128 supernode server pairs M890 accelerators with T-Head’s ICN Switch 1.0. Alibaba’s quarterly results say the M890 supernode instance launched in August can run inference for models with more than two trillion parameters.",
+        "dateNote": "May 20 marks the chip announcement. Alibaba reported the cloud instance launch by month."
+      },
+      "hardware": {
+        "variant": "真武 M890 · 单颗芯片",
+        "variantEn": "Zhenwu M890 · one chip",
+        "checkedAt": "2026-11-20",
+        "facts": [
+          {
+            "label": "内存容量",
+            "labelEn": "Memory",
+            "value": "144 GB",
+            "chip": true
+          },
+          {
+            "label": "芯片间互连带宽",
+            "labelEn": "Chip-to-chip bandwidth",
+            "value": "800 GB/s",
+            "chip": true
+          },
+          {
+            "label": "原生浮点精度范围",
+            "labelEn": "Native floating-point range",
+            "value": "FP4–FP32",
+            "chip": false
+          }
+        ],
+        "sources": [
+          "https://www.alibabagroup.com/en-US/document-1994119844504535040"
+        ],
+        "note": "800 GB/s 衡量芯片之间的数据传输。超节点的整机规格另计。",
+        "noteEn": "The 800 GB/s figure measures data transfer between chips. The supernode has separate system-level specifications."
+      }
+    },
+    {
       "id": "nvidia-rtx-spark",
       "date": "2026-05-31",
       "name": "NVIDIA RTX Spark",
@@ -2739,8 +2813,8 @@ window.HARDWARE_ATLAS = {
       "category": "edge",
       "kind": "announcement",
       "summary": "将 Blackwell RTX GPU 与 Grace CPU 集成到 Windows 电脑平台，支持本地模型与智能体。",
-      "details": "通过 NVLink-C2C 连接 GPU 与 CPU，提供最高 128 GB 统一内存。笔记本于 2026 年 10 月 16 日开始供应，首批厂商包括 ASUS、Dell、HP、Lenovo、Microsoft 和 MSI；紧凑台式机此前计划于 11 月供应。",
-      "dateNote": "日期为 5 月 31 日产品公布；笔记本于 10 月 7 日预售，10 月 16 日正式供应。",
+      "details": "通过 NVLink-C2C 连接 GPU 与 CPU，提供最高 128 GB 统一内存。10 月 16 日，ASUS、Dell、HP、Lenovo、Microsoft 和 MSI 开始供应笔记本。11 月 18 日，ASUS、Dell 和 MSI 率先发售紧凑型台式机。",
+      "dateNote": "5 月 31 日为平台公布日。笔记本从 10 月 7 日开始预售。",
       "tags": [
         "本地与边缘"
       ],
@@ -2760,12 +2834,17 @@ window.HARDWARE_ATLAS = {
           "title": "NVIDIA · RTX Spark 笔记本正式供应",
           "titleEn": "NVIDIA · RTX Spark laptop availability",
           "url": "https://nvidianews.nvidia.com/news/nvidia-rtx-spark-pcs-available-today-a-new-beginning-for-windows-pcs/"
+        },
+        {
+          "title": "NVIDIA · 首批 RTX Spark 紧凑型台式机发售",
+          "titleEn": "NVIDIA · First RTX Spark compact desktops on sale",
+          "url": "https://blogs.nvidia.com/blog/rtx-spark-desktop-local-ai-available-now/"
         }
       ],
       "en": {
         "summary": "Combines a Blackwell RTX GPU and Grace CPU in a Windows PC platform for local models and agents.",
-        "details": "NVLink-C2C connects the GPU and CPU, with up to 128 GB of unified memory. Laptops became available on October 16, 2026 from ASUS, Dell, HP, Lenovo, Microsoft and MSI; compact desktops were previously scheduled for November.",
-        "dateNote": "Dated to the May 31 announcement. Laptop preorders opened October 7, followed by availability on October 16."
+        "details": "NVLink-C2C connects the GPU and CPU, with up to 128 GB of unified memory. ASUS, Dell, HP, Lenovo, Microsoft and MSI began offering laptops on October 16. The first compact desktops went on sale on November 18 from ASUS, Dell and MSI.",
+        "dateNote": "May 31 marks the platform announcement. Laptop preorders opened on October 7."
       },
       "hardware": {
         "variant": "NVIDIA RTX Spark · 1 superchip",
@@ -2991,7 +3070,7 @@ window.HARDWARE_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-18",
+    "checkedAt": "2026-11-20",
     "scope": "具有代表性的 GPU、专用加速器、算力系统及本地设备；日期优先依据一手资料，辅以署名媒体报道。区分产品公布、公开展示、供应计划与实际部署，规格保留芯片、板卡或系统范围。",
     "scopeEn": "Representative GPUs, custom accelerators, compute systems, and local devices. Dates prioritize primary sources with attributed reporting as needed. Announcements, demonstrations, availability plans, and deployments remain distinct; specifications retain chip, card, or system scope."
   }

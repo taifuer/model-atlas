@@ -1,10 +1,25 @@
 /* English editorial copy. Original dates and sources remain in data.js. */
 window.MODEL_ATLAS_EN = {
+  "aion-instruct": {
+    "summary": "Microsoft made Aion Instruct the built-in language model in Edge for on-device summarization, rewriting and structured text extraction.",
+    "details": "Aion-1.0-Instruct-2.3B has about 2.3 billion parameters and a 32,768-token context window. Microsoft released the weights under MIT. The model succeeds Phi-4-mini in Edge, where developers can use the Prompt API origin trial to run it on supported devices.",
+    "dateNote": "Microsoft announced general availability in Edge on November 19, following an earlier developer preview."
+  },
+  "gemini-4-neon": {
+    "summary": "Google introduced a multimodal reasoning model for software engineering, science and knowledge work, with a shared million-token window for input, thinking and answers.",
+    "details": "The Gemini API accepts text, images, video, audio and PDFs and returns text. Synchronous requests default to a 65,536-token output limit. Long decode can use the remaining context window. The rollout began in AI Studio, the Gemini app and Antigravity on the same day.",
+    "dateNote": "Google dated the launch announcement November 18."
+  },
+  "seedrealtime": {
+    "summary": "ByteDance rolled out a full-duplex audiovisual model in Doubao that can keep listening and following a live scene while it speaks.",
+    "details": "The model processes audio, video and text together and can discuss a live camera or screen feed. Volcengine opened the Doubao-Seed-Realtime-1.0 API on November 19 with speech and text responses. Pay-as-you-go calls cost ¥0.20 per audio minute or ¥0.40 per video minute, including audio.",
+    "dateNote": "ByteDance Seed announced the model on August 5 and confirmed its rollout across the Doubao app. November 19 marks the subsequent developer API launch."
+  },
   "hunyuan-hy4": {
     "name": "Hunyuan Hy4",
     "summary": "The general release adds visual understanding and computer use across command-line and graphical interfaces.",
-    "details": "Supports image understanding, chart analysis and cross-application tasks through Tencent Cloud TokenHub and products including WorkBuddy and CodeBuddy. Public model weights are planned but were not available at the review date.",
-    "dateNote": "Tencent introduced Hy4 Preview on August 28 and announced the general release of Hy4 on November 4."
+    "details": "Tencent offers Hy4 through TokenHub, WorkBuddy and CodeBuddy for tasks including chart analysis and work across applications. On November 20 it published the instruction-tuned weights, an FP8 version and the base model under the Tencent Hy License 1.0. The language backbone has about 770 billion parameters, with 49 billion active per token.",
+    "dateNote": "Hy4 reached general availability on November 4 and its weights became public on November 20. The August 28 Hy4 Preview has its own entry."
   },
   "mistral-large-4-preview": {
     "summary": "A multimodal flagship combining instruction following, reasoning and agent tasks, with later open weights supporting a million-token context.",
@@ -724,7 +739,7 @@ window.MODEL_ATLAS_EN = {
   },
   "deepseek-v4-1-flash": {
     "summary": "A new architecture adds native vision and more efficient agent reasoning.",
-    "details": "An asymmetric encoder-decoder design underlies this smaller family model. The October 17 snapshot, V4.1-Flash-1017, improves coding and agent tasks and replaces the model in the web app, mobile app and API. Its weights are available under MIT. On November 13, the hosted service added application APIs for search, files and URL reading. These are service-side tools, not a new model checkpoint.",
+    "details": "An asymmetric encoder-decoder design underlies this smaller family model. The October 17 snapshot, V4.1-Flash-1017, improves coding and agent tasks and replaces the model in the web app, mobile app and API. Its weights are available under MIT. On November 13, the hosted service added application APIs for search, files and URL reading. From November 18, model-triggered searches and web fetches carry no per-call charge. The returned content is billed as model tokens.",
     "dateNote": "Retains the September 10 model release. The October 17 checkpoint is described by DeepSeek as a minor update and is recorded here as a subsequent development."
   },
   "kimi-k2-8-preview": {
@@ -839,7 +854,7 @@ window.MODEL_ATLAS_EN = {
   },
   "seedance-2-5": {
     "summary": "Extends single-pass generation to 30 seconds with richer references, continuation and targeted editing.",
-    "details": "Supports up to 30 images, 10 video clips and 10 audio clips as references, with timestamp-based audio-video editing. The single-pass limit is 30 seconds; longer videos require successive extensions. On October 27, BytePlus described enterprise trials of a 4K variant with 480p drafts, 4K final output and 10-bit color. These specifications apply to the invited trial variant, not every public endpoint.",
+    "details": "Supports up to 30 images, 10 video clips and 10 audio clips as references, with timestamp-based audio-video editing. BytePlus described an enterprise 4K trial on October 27. On November 16, Volcengine Ark enabled 4K output on the existing standard API model. The standard model supports up to 4K, while Flash offers 480p and 720p.",
     "dateNote": "Rollout began in Jimeng AI, Doubao Pro and other products on this date. BytePlus ModelArk API access was described as coming soon at launch."
   },
   "wan-2-1": {
@@ -1146,8 +1161,8 @@ window.MODEL_ATLAS_EN = {
   },
   "gemini-4-carbon": {
     "summary": "A multimodal model for complex coding, long-running agent tasks and cyber defense, initially available to trusted partners.",
-    "details": "Following Gemini 4 Argon, Carbon advances software engineering, scientific tasks and multimodal understanding. Google is starting with selected cyber defenders and expanding trusted access through Fairwind; general developer and consumer availability remains planned.",
-    "dateNote": "Uses the October 28 announcement. Restricted access is distinct from a public API launch, and announced future pricing is not shown as a currently available API rate.",
+    "details": "Following Gemini 4 Argon, Carbon advances software engineering, scientific tasks and multimodal understanding. Access began with selected cyber defenders in October. On November 10, Google opened the API to paying developers and enterprises and began rolling Carbon out to AI Ultra subscribers in the Gemini app and other products.",
+    "dateNote": "Google announced Carbon and began restricted access on October 28. The API opened to paying developers on November 10.",
     "tags": [
       "Multimodal",
       "Long-running tasks",
@@ -1186,8 +1201,8 @@ window.MODEL_ATLAS_EN = {
   },
   "genie-4": {
     "summary": "Combines real-time interactive world simulation with native audio, using keyboard controls and text prompts to steer scenes.",
-    "details": "Google DeepMind's world model combines Gemini capabilities to maintain appearance, behavior and continuity while generating ambient sound, music and dialogue. Users can navigate, move the camera and change a scene during simulation. The research preview is rolling out to trusted testers; consumer access through Project Genie and Gemini API partner access remain future plans.",
-    "dateNote": "Uses the October 27, 2026 research-preview announcement. Trusted testing has begun; this does not imply public product or API availability.",
+    "details": "Google DeepMind's world model combines Gemini capabilities to maintain appearance, behavior and continuity while generating ambient sound, music and dialogue. Users can navigate, move the camera and change a scene during simulation. Project Genie opened to eligible Google AI Ultra subscribers on November 18. On November 19, the Gemini Interactions API and AI Studio added interactive 720p video at 24 fps. Standard video output includes synchronized audio and costs about $6.05 per minute.",
+    "dateNote": "The research preview was announced on October 27. Product and developer access followed on November 18 and 19 respectively.",
     "tags": [
       "World model",
       "Real-time interaction",
@@ -1274,7 +1289,7 @@ window.MODEL_ATLAS_EN = {
   },
   "gpt-6-2-astra": {
     "summary": "Astra and Sol launched together. Astra handles complex reasoning and professional work. Sol focuses on everyday coding and lower-latency tool use.",
-    "details": "Astra accepts text and images and produces text. It can analyze source material, write and test code, and prepare documents in one task. The API, ChatGPT Work and Codex offered access at launch.",
+    "details": "Astra accepts text and images and produces text. It can analyze source material, write and test code, and prepare documents in one task. The API, ChatGPT Work and Codex offered access at launch. OpenAI also introduced Astra for Law 6.2, a configuration with legal research instructions and a dedicated search index.",
     "dateNote": "OpenAI announced GPT-6.2 Astra and Sol on November 17."
   },
   "gpt-6-2-sol": {

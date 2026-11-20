@@ -74,6 +74,17 @@ for (const language of ['zh', 'en']) {
   });
 }
 
+test('static About pages get their ranking date from the independently dated leaderboard', async () => {
+  const [{ renderPage }, { loadCatalog, prerenderPage }] = await modules;
+  const window = await loadCatalog();
+  window.MODEL_ATLAS.companyRanking.checkedAt = '2026-01-02';
+  const source = fs.readFileSync(path.join(sourceRoot, 'about.html'), 'utf8');
+  for (const language of ['zh', 'en']) {
+    const html = prerenderPage(renderPage(source, { page: 'about', language, seo }), { page: 'about', language, window });
+    assert.ok(html.includes('<time data-ranking-date datetime="2026-01-02">2026.01.02</time>'));
+  }
+});
+
 test('prerendered content escapes source text and preserves the script enhancement containers', async () => {
   const [{ renderPage }, { loadCatalog, prerenderPage }] = await modules;
   const window = await loadCatalog();

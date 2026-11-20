@@ -9,7 +9,7 @@ const { MODEL_ATLAS: models, MODEL_ATLAS_PRICES: prices } = context.window;
 
 test('documented rates retain currency, units, exact versions, and first-party evidence', () => {
   const ids = new Set(models.releases.map(model => model.id));
-  const hosts = new Set(['longcat.ai', 'thinkingmachines.ai', 'tinker-docs.thinkingmachines.ai', 'cloud.tencent.com', 'platform.kimi.ai', 'docs.inceptionlabs.ai', 'www.inceptionlabs.ai', 'www.minimax.io', 'www.liquid.ai', 'dev.meta.ai', 'docs.mistral.ai', 'www.anthropic.com', 'blog.google', 'developers.openai.com', 'platform.claude.com', 'ai.google.dev', 'api-docs.deepseek.com', 'docs.x.ai', 'docs.z.ai', 'www.qwencloud.com', 'docs.qwencloud.com', 'platform.minimax.io', 'mimo.mi.com']);
+  const hosts = new Set(['longcat.ai', 'thinkingmachines.ai', 'tinker-docs.thinkingmachines.ai', 'cloud.tencent.com', 'platform.kimi.ai', 'docs.inceptionlabs.ai', 'www.inceptionlabs.ai', 'www.minimax.io', 'www.liquid.ai', 'dev.meta.ai', 'docs.mistral.ai', 'www.anthropic.com', 'blog.google', 'aistudio.google.com', 'developers.openai.com', 'platform.claude.com', 'ai.google.dev', 'api-docs.deepseek.com', 'docs.x.ai', 'docs.z.ai', 'www.qwencloud.com', 'docs.qwencloud.com', 'platform.minimax.io', 'mimo.mi.com']);
   assert.equal(prices.unitTokens, 1000000);
   assert.equal(prices.inputType, 'uncached-text');
   assert.equal(prices.outputType, 'text');
@@ -85,6 +85,9 @@ test('new availability and API replacements preserve variant and historical pric
   assert.equal(argon.announced, undefined);
   assert.equal(argon.tiers[0].validUntil, '2026-11-30');
   assert.match(argon.noteEn, /December 1/);
+  const carbon = prices.entries['gemini-4-carbon'].variants[0];
+  assert.deepEqual(Array.from(carbon.tiers, tier => [tier.input, tier.output, tier.validUntil]), [[2, 10, '2026-11-30']]);
+  assert.match(carbon.noteEn, /December 1/);
   for (const id of ['gemini-3-5-flash', 'gemini-3-7-flash', 'mimo-v2-5']) {
     for (const variant of prices.entries[id].variants) {
       assert.equal(variant.archived, true, id);

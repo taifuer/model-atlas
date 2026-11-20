@@ -33,6 +33,11 @@ const checkTitleLinks = async page => {
   const terminal = page.locator('#benchmark-terminal-bench');
   await expect(terminal.locator('.benchmark-version')).toHaveText('4.1');
   await expect(terminal.locator('.benchmark-scope')).toContainText(/v5\.0\.1.*4\.0/);
+  const agent = page.locator('#benchmark-arena-agent');
+  await expect(agent.locator('h3 a')).toHaveText('Agent Arena Index');
+  await expect(agent.locator('.benchmark-facts')).toContainText(/锚点|anchored/);
+  await expect(agent.locator('.benchmark-scope')).toContainText(/指数点.*六个分项|index points.*Six subindices/);
+  await expect(agent.locator('.benchmark-links a')).toHaveAttribute('href', 'https://arena.ai/blog/introducing-the-agent-arena-index');
 };
 
 const checkCategories = async (page, language) => {

@@ -1,8 +1,8 @@
 // Primary-source history of AI methods, computing frameworks, and deployment.
 (() => {
   const data = {
-  "asOf": "2026-11-18",
-  "updatedAt": "2026-11-18",
+  "asOf": "2026-11-20",
+  "updatedAt": "2026-11-20",
   "accessFilter": false,
   "companies": [
     {
@@ -1712,20 +1712,26 @@
       "category": "deployment",
       "kind": "release",
       "summary": "用 C/C++ 在本地设备运行 LLaMA，并支持量化推理。",
-      "details": "项目从轻量本地推理出发，围绕 ggml 张量计算实现模型执行。这里记录代码仓库的 Initial release 提交。",
-      "dateNote": "日期取自官方代码仓库首个发布提交，不等同于后续软件包版本。",
+      "details": "llama.cpp 使用 ggml 张量库在本地执行模型。2026 年 11 月 13 日，团队发布 libllama 与 libggml 的 v1.0.0，开始使用语义化版本。今后若更改导致公共接口或二进制接口不兼容，库的主版本号会随之递增。",
+      "dateNote": "2023 年 3 月 10 日是项目仓库首次发布代码的日期。",
       "tags": [],
       "milestone": true,
       "sources": [
         {
-          "title": "原始资料",
+          "title": "llama.cpp · 首次发布代码",
+          "titleEn": "llama.cpp · Initial release commit",
           "url": "https://github.com/ggml-org/llama.cpp/commit/26c0846"
+        },
+        {
+          "title": "ggml-org · v1.0.0 发布与版本规则",
+          "titleEn": "ggml-org · v1.0.0 release and versioning rules",
+          "url": "https://huggingface.co/blog/ggml-org/llama-cpp-v1"
         }
       ],
       "en": {
         "summary": "A C/C++ implementation runs LLaMA locally with quantized inference.",
-        "details": "The project builds lightweight local model execution on ggml tensor computation. This entry records the repository’s initial release commit.",
-        "dateNote": "Dated to the initial release commit in the official repository, rather than a later packaged version."
+        "details": "llama.cpp uses the ggml tensor library to run models locally. On November 13, 2026, the team released v1.0.0 of libllama and libggml and adopted semantic versioning. Changes that break the public API or binary compatibility now require a new major version.",
+        "dateNote": "March 10, 2023 marks the initial code release in the project repository."
       }
     },
     {
@@ -2943,7 +2949,7 @@
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-18",
+    "checkedAt": "2026-11-20",
     "scope": "算法、计算框架、推理部署与容器沙箱中具有经典性、代表性或影响力的公开节点。",
     "method": "以原始论文、项目公告与发布记录核对日期，区分预览、正式可用和后续更新；不逐条收录常规软件版本。",
     "references": []
