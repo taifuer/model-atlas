@@ -3,6 +3,7 @@ import { test, expect } from '@playwright/test';
 for (const language of ['zh', 'en']) {
   test(`${language}: robot actions retain their task and announcement scope`, async ({ page }) => {
     await page.goto(`${language === 'en' ? '/en/' : '/'}index.html?task=robot-action`);
+    const listURL = page.url();
     await expect(page.locator('#task-select')).toHaveValue('robot-action');
     const release = page.locator('#release-groot-2');
     await expect(release).toBeVisible();
@@ -14,6 +15,8 @@ for (const language of ['zh', 'en']) {
     await expect(page.locator('.detail-overview')).toContainText(language === 'en' ? 'December' : '12 月');
     await expect(page.locator('.detail-overview')).toContainText(language === 'en' ? 'announcement' : '公告');
     await page.keyboard.press('Escape');
+    await expect(page).toHaveURL(listURL);
+    await expect(page.locator('#detail-dialog')).not.toBeVisible();
     await page.locator('#openness-select').selectOption('open');
     await expect(release).toHaveCount(0);
     await page.locator('#openness-select').selectOption('closed');
