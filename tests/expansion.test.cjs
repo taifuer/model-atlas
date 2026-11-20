@@ -35,7 +35,7 @@ test('new timelines have ordered, source-linked, bilingual entries with explicit
   assert.ok(technology.releases.length >= 40);
 });
 
-test('Transformer is counted under technology and monthly counts respect date precision', () => {
+test('Transformer has a single source record in technology and monthly counts respect date precision', () => {
   assert.equal(models.releases.some(r => r.id === 'transformer'), false);
   const original = technology.releases.find(r => r.id === 'transformer');
   assert.equal(original.date, '2017-06-12');

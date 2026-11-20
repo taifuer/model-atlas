@@ -40,7 +40,7 @@
     if (searchDialog.open) searchDialog.close();
     if (update) {
       const url = new URL(location.href);
-      url.hash = record.section === page ? `release-${record.release.id}` : `entry=${encodeURIComponent(record.key)}`;
+      url.hash = record.sections.includes(page) ? `release-${record.release.id}` : `entry=${encodeURIComponent(record.key)}`;
       if (url.href !== location.href) {
         const state = { ...history.state, atlasDetail: { key: record.key } };
         history[alreadyOpen ? 'replaceState' : 'pushState'](state, '', url);

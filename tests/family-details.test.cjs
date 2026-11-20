@@ -34,7 +34,8 @@ test('grouping represents every original release exactly once and keeps its date
   const sections = { models: 'MODEL_ATLAS', agents: 'AGENT_ATLAS', hardware: 'HARDWARE_ATLAS', technology: 'TECHNOLOGY_ATLAS' };
   for (const [section, name] of Object.entries(sections)) {
     const originals = new Map(original[name].releases.map(record => [record.id, record.date]));
-    const published = catalog.sections[section].data.releases.flatMap(parent => [parent, ...(parent.history || [])]);
+    const published = catalog.entries.filter(entry => entry.section === section)
+      .flatMap(({ release }) => [release, ...(release.history || [])]);
     assert.equal(published.length, originals.size, section);
     for (const record of published) {
       assert.equal(record.date, originals.get(record.id), record.id);

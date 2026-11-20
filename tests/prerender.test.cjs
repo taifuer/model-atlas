@@ -43,9 +43,11 @@ for (const language of ['zh', 'en']) {
         }
         dates.push(original.date);
       }
-      if (page === 'models') {
-        assert.ok(!articles.some(match => match[1] === 'transformer'));
-        assert.match(html, /href="[^"]*technology\.html#release-transformer"/);
+      if (page === 'models' || page === 'technology') {
+        const year = html.match(/<section class="year-section" id="year-2017"[^>]*>([\s\S]*?)<\/section>/)?.[1];
+        assert.match(year, /<article id="release-transformer"[^>]*data-date="2017-06-12"/);
+        assert.match(html, /class="year-jump" href="[^"]*#year-2017"/);
+        assert.ok(!html.includes('model-origin'));
       }
       assert.deepEqual(dates, [...dates].sort().reverse(), `${page}: latest first`);
       assert.doesNotMatch(html, /请启用 JavaScript|Enable JavaScript to (?:browse|explore)/);

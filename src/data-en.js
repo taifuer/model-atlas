@@ -1435,6 +1435,7 @@ window.ATLAS_TAGS_EN = {
   "机器人动作": "Robot actions"
 };
 window.MODEL_THEMES_EN = {
+  "2017": "Attention and sequence modeling",
   "2018": "Pretraining research",
   "2019": "Scale and transfer learning",
   "2020": "Few-shot learning",

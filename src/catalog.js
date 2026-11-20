@@ -25,7 +25,14 @@
       for (const child of release.history || []) register(child, primary.key);
     }
   }
-  const get = key => byKey.get(key === 'models:transformer' ? 'technology:transformer' : key);
+  // Both timelines list the architecture paper. Explore and search share its original record.
+  const transformer = byKey.get('technology:transformer');
+  const models = sections.models.data;
+  if (transformer && models) {
+    transformer.sections.push('models');
+    sections.models.data = { ...models, releases: [transformer.release, ...models.releases] };
+  }
+  const get = key => key === 'models:transformer' ? transformer : byKey.get(key);
   const language = value => value === 'en' ? 'en' : 'zh';
   const text = (entry, lang) => lang === 'en' ? { ...entry.release, ...(entry.release.en || window.MODEL_ATLAS_EN?.[entry.release.id]) } : entry.release;
   function title(entry, lang) {
@@ -121,7 +128,7 @@
       .map(({ entry }) => entry);
   }
   function searchIndex(section) {
-    return new Map(records().filter(({ entry }) => entry.section === section).map(({ entry, haystack }) => [entry.release.id, haystack]));
+    return new Map(records().filter(({ entry }) => entry.sections.includes(section)).map(({ entry, haystack }) => [entry.release.id, haystack]));
   }
   window.ATLAS_CATALOG = Object.freeze({
     entries, events: entries, sections, get,

@@ -315,13 +315,13 @@
         }
       ],
       "milestone": true,
-      "details": "论文提出基于注意力机制的编码器—解码器架构，使用多头注意力与位置编码，在机器翻译任务中验证效果。这一研究为后来的 GPT、BERT 等预训练模型提供了架构基础。 论文表 3 给出的英德翻译配置分别为 Base 6500 万参数、Big 2.13 亿参数。",
-      "dateNote": "采用 arXiv 第一版于 2017 年 6 月 12 日公开的日期；此节点记录基础架构论文，不是聊天产品或后续大模型的发布。",
+      "details": "论文提出基于注意力机制的编码器—解码器架构，使用多头注意力与位置编码，在机器翻译任务中验证效果。这一研究为后来的 GPT、BERT 等预训练模型提供了架构基础。论文表 3 给出的英德翻译配置分别为 Base 6500 万参数、Big 2.13 亿参数。",
+      "dateNote": "日期采用《Attention Is All You Need》第一版在 arXiv 的提交日。",
       "category": "methods",
       "en": {
         "summary": "Google researchers introduce the Transformer, an attention-based sequence model, in Attention Is All You Need.",
         "details": "The paper presents an encoder–decoder architecture using multi-head attention and positional encoding, evaluated on machine translation. It provided the architectural foundation for later pretrained models including GPT and BERT. Table 3 reports 65M parameters for the Base configuration and 213M for Big on English–German translation.",
-        "dateNote": "Uses the first arXiv submission on June 12, 2017. This entry records the architecture paper, not a chat product or a later language-model release."
+        "dateNote": "The date is the first arXiv submission of Attention Is All You Need."
       }
     },
     {

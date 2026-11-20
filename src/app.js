@@ -1,8 +1,8 @@
 (() => {
   'use strict';
-  const { raw, page, pages, english, language, L, escape, formattedDate, companyName, releaseText, kinds, tag, toast } = window.ATLAS_UI;
+  const { raw, page, english, language, L, escape, formattedDate, companyName, releaseText, kinds, tag, toast } = window.ATLAS_UI;
   const catalog = window.ATLAS_CATALOG;
-  const extended = page === 'hardware' || page === 'technology';
+  const totalNoun = page === 'agents' ? L('个发布节点', 'release entries') : L('个节点', 'entries');
   const allOrganizations = page === 'technology' ? L('全部机构', 'All organizations') : L('全部厂商', 'All organizations');
   const entryNoun = count => count === 1 ? 'entry' : 'entries';
   const { releases, themes, asOf, companyRanking } = raw;
@@ -209,7 +209,8 @@
     const matching = historyCount && (state.query || savedCompany) ? filters.matchingReleases(original, state)
       .filter(item => state.query || state.companies.has(item.company))
       .sort((a, b) => (searchRanks.get(a.id) ?? searchRanks.size) - (searchRanks.get(b.id) ?? searchRanks.size)) : [];
-    const categoryTag = release.category ? `<span class="tag">${escape(categoryName(release.category))}</span>` : '';
+    const category = categoryName(release.category);
+    const categoryTag = category ? `<span class="tag">${escape(category)}</span>` : '';
     const featureTags = !release.category || page === 'models' ? original.tags.filter(value => !['开放权重', '文本', '多模态', '原生多模态'].includes(value)).map(value => `<span class="tag">${escape(tag(value))}</span>`).join('') : '';
     if (state.view === 'compact') {
       const target = matching[0] || original;
@@ -284,7 +285,7 @@
     $('#active-filter-row').hidden = !chips.length;
   }
   function render() {
-    searchRanks = new Map(catalog.search(state.query).filter(entry => entry.section === page).map((entry, index) => [entry.release.id, index]));
+    searchRanks = new Map(catalog.search(state.query).filter(entry => entry.sections.includes(page)).map((entry, index) => [entry.release.id, index]));
     const filtered = filters.select(state).sort((a, b) => (state.sort === 'desc' ? -1 : 1) * a.date.localeCompare(b.date));
     orderedEntries = filtered;
     const availableYears = filters.annualCounts(state).filter(({ count }) => count > 0).map(({ year }) => year);
@@ -319,7 +320,7 @@
     renderActiveFilters();
     const hasFilter = filters.hasFilters(state);
     $('#reset-filters').hidden = !hasFilter;
-    $('#results-count').innerHTML = hasFilter ? L(`找到 <strong>${filtered.length}</strong> / ${releases.length} 个节点`, `<strong>${filtered.length}</strong> of ${releases.length} entries`) : L(`共 <strong>${releases.length}</strong> 个${extended ? '' : '发布'}节点`, `<strong>${releases.length}</strong> ${extended ? '' : 'release '}entries`);
+    $('#results-count').innerHTML = hasFilter ? L(`找到 <strong>${filtered.length}</strong> / ${releases.length} 个节点`, `<strong>${filtered.length}</strong> of ${releases.length} entries`) : `${L('共 ', '')}<strong>${releases.length}</strong> ${totalNoun}`;
     const navigationYears = filters.annualCounts(state).filter(({ count }) => count > 0);
     if (state.sort === 'desc') navigationYears.reverse();
     $('#year-nav').innerHTML = navigationYears.map(({ year, count }) => `<button type="button" class="year-jump" data-chart-year="${year}" data-jump="${year}" aria-pressed="${state.year === year}" aria-label="${escape(L(`${year} 年，${count} 个节点，查看该年节点`, `${year}: ${count} ${entryNoun(count)}. View entries from this year.`))}">${year}<span>${count}</span></button>`).join('');
@@ -456,7 +457,7 @@
   });
   document.addEventListener('atlas:entry-open', event => {
     const record = catalog.get(event.detail);
-    if (record?.section === page) revealEntry(catalog.get(record.parentKey).release.id);
+    if (record?.sections.includes(page)) revealEntry(catalog.get(record.parentKey).release.id);
   });
   window.addEventListener('hashchange', revealYearHash);
   window.addEventListener('beforeprint', () => { visibleLimit = orderedEntries.length; renderTimeline(); });

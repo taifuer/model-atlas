@@ -337,7 +337,6 @@ html { scroll-padding-top: 104px; }
 .filter-panel { padding-top: 12px; border-top: 1px solid var(--line); padding-bottom: 12px; }
 .filter-heading { display: flex; gap: 18px; align-items: center; font-size: 13px; color: var(--body); }
 .subtle-link { color: var(--muted); font-size: 12px; text-decoration: underline; text-underline-offset: 4px; }
-.model-origin { display: inline-block; }
 .timeline-history { margin-top: 8px; font-size: 13px; color: var(--muted); }
 .timeline-history summary { width: fit-content; cursor: pointer; }
 .timeline-history ul { margin: 8px 0 0; padding-inline-start: 1.4em; }
@@ -470,10 +469,6 @@ body.modal-open .back-to-top { display: none; }
   .company-chip { min-height: 40px; }
   .page-intro { gap: 12px; padding: 18px 0 14px; }
   .intro-copy { display: block; }
-  .intro-copy:has(.model-origin) { display: flex; gap: 2px 12px; }
-  .intro-copy:has(.model-origin) h1 { flex-basis: 100%; }
-  .intro-copy:has(.model-origin) .intro-meta { margin: 0; }
-  .model-origin { line-height: 1.5; }
   .page-intro h1 { font-size: 29px; }
   .intro-meta { margin-top: 6px; }
   .activity { width: 100%; max-width: none; }
@@ -713,7 +708,6 @@ body.modal-open .back-to-top { display: none; }
 }
 @media (max-width: 360px) {
   .page-intro { gap: 8px; padding-block: 14px 6px; }
-  .page-intro:has(.model-origin) { padding-top: 10px; row-gap: 6px; }
   .results-actions { width: 100%; }
 }
 

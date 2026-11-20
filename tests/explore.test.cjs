@@ -87,11 +87,11 @@ test('organization names remain bilingual across sections and filters use the sa
   }
   for (const query of ['BERT', 'Transformer', 'Qwen 3.8', '通义千问', 'Google', '谷歌', 'H100', 'gpt-4o-2024-08-06', 'FlashAttention‑4', 'models:transformer', 'technology:flashattention-4', 'flashattention-3 2023-07-17', 'flashattention-3 2024-07-11']) {
     const results = catalog.search(query);
-    for (const [section, raw] of Object.entries(datasets)) {
+    for (const [section, { data: raw }] of Object.entries(catalog.sections)) {
       const filters = globals.ATLAS_FILTERS.create(raw, catalog.searchIndex(section), catalog.get);
       const state = filters.read(new URLSearchParams({ q: query }).toString());
       const selected = Array.from(filters.select(state), entry => entry.id).sort();
-      const expected = [...new Set(results.filter(entry => entry.section === section).map(entry => catalog.get(entry.parentKey).release.id))].sort();
+      const expected = [...new Set(results.filter(entry => entry.sections.includes(section)).map(entry => catalog.get(entry.parentKey).release.id))].sort();
       assert.deepEqual(selected, expected, `${section}: ${query}`);
     }
   }
@@ -165,7 +165,7 @@ test('the chronology contains primary releases and the catalog resolves each his
   assert.equal(catalog.get('transformer'), undefined, 'Bare IDs must not silently choose a timeline');
 });
 
-test('old model Transformer identifiers resolve to the single technology entry', () => {
+test('both timelines list the same Transformer paper and Explore counts it once', () => {
   const model = catalog.get('models:transformer');
   const technology = catalog.get('technology:transformer');
   assert.ok(model && technology);
@@ -174,7 +174,13 @@ test('old model Transformer identifiers resolve to the single technology entry',
   const shared = catalog.events.filter(record => record.release.id === 'transformer');
   assert.equal(shared.length, 1);
   assert.equal(shared[0].key, 'technology:transformer');
-  assert.deepEqual(Array.from(shared[0].sections), ['technology']);
+  assert.deepEqual(Array.from(shared[0].sections), ['technology', 'models']);
+  for (const [section, dataset] of Object.entries(datasets)) {
+    const listed = catalog.sections[section].data.releases;
+    assert.equal(listed.length, dataset.releases.length + (section === 'models' ? 1 : 0));
+    const paper = Array.from(listed).filter(release => release.id === 'transformer');
+    assert.deepEqual(paper, technology.sections.includes(section) ? [technology.release] : []);
+  }
   assert.deepEqual(Array.from(catalog.search('models:transformer')), [technology]);
   assert.deepEqual(catalog.events, catalog.entries);
 });
