@@ -30,9 +30,13 @@ const checkTitleLinks = async page => {
     'https://github.com/centerforaisafety/hle/blob/main/hle-rolling-changes.txt',
     'https://www.lastexam.ai/blog/hle-diamond',
   ]));
+  await expect(page.locator('#benchmark-artificial-analysis .benchmark-version')).toHaveText('Index v5.0.2');
   const terminal = page.locator('#benchmark-terminal-bench');
   await expect(terminal.locator('.benchmark-version')).toHaveText('4.1');
-  await expect(terminal.locator('.benchmark-scope')).toContainText(/v5\.0\.1.*4\.0/);
+  const scope = terminal.locator('.benchmark-scope');
+  await expect(scope).toContainText(/v5\.0\.2/);
+  await expect(scope).toContainText('4.1');
+  await expect(scope).toContainText('66');
   const agent = page.locator('#benchmark-arena-agent');
   await expect(agent.locator('h3 a')).toHaveText('Agent Arena Index');
   await expect(agent.locator('.benchmark-facts')).toContainText(/锚点|anchored/);

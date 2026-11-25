@@ -14,6 +14,7 @@ The November 18 AA fixture adds the two GPT-6.2 Max configurations and the LFM3-
 The November 20 fixtures include Gemini 4 Neon at Xhigh on AA and High on Text Arena. The November 19 Arena publication supplies ratings, intervals and vote counts for 23 configurations. Its dataset omits preliminary status.
 Their `sourceEvidence` fields record source checksums and the pinned Arena dataset revision;
 AA models absent from the current table retain their earlier verification dates.
+The November 25 fixtures use AA Intelligence Index v5.0.2 and the November 22 Arena dataset. Six AA scores come from exact configurations on model pages outside the Current table. Both the current table and the model page identify GLM-5.3-Flash at Max reasoning effort.
 Each file records its source URL, retrieval
 date, source checksum, metric, model configuration, and selected results; no
 original source pages are included.

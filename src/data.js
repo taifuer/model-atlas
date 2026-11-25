@@ -5,6 +5,7 @@
  */
 window.MODEL_ATLAS = (() => {
   const companies = [
+    {"id": "sand-ai", "name": "Sand.ai", "nameEn": "Sand.ai", "aliases": "Sand AI SandAI MAGI", "color": "#947e75"},
     {"id": "meituan", "name": "美团", "nameEn": "Meituan", "aliases": "LongCat 龙猫 美团", "color": "#9d8b52"},
     {"id": "thinking-machines", "name": "Thinking Machines", "nameEn": "Thinking Machines", "aliases": "Thinking Machines Lab Inkling Tinker", "color": "#8b7968"},
     {"id": "krea", "name": "Krea", "nameEn": "Krea", "aliases": "Krea AI 图像编辑", "color": "#727b73"},
@@ -49,11 +50,11 @@ window.MODEL_ATLAS = (() => {
   // Highest listed score per organization in the AA "Current" leaderboard.
   // Entry order preserves the source's order when displayed scores are tied.
   const companyRanking = {
-    "checkedAt": "2026-11-20",
+    "checkedAt": "2026-11-25",
     "source": "https://artificialanalysis.ai/leaderboards/models",
     "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
     "metric": "Artificial Analysis Intelligence Index",
-    "version": "5.0.1",
+    "version": "5.0.2",
     "selection": "highest-listed-score",
     "entries": [
       {
@@ -69,7 +70,7 @@ window.MODEL_ATLAS = (() => {
       {
         "company": "google",
         "model": "Gemini 4 Neon (xhigh)",
-        "score": 61
+        "score": 62
       },
       {
         "company": "meta",
@@ -79,7 +80,7 @@ window.MODEL_ATLAS = (() => {
       {
         "company": "moonshot",
         "model": "Kimi K3.1 Pro",
-        "score": 46
+        "score": 47
       },
       {
         "company": "qwen",
@@ -99,7 +100,7 @@ window.MODEL_ATLAS = (() => {
       {
         "company": "deepseek",
         "model": "DeepSeek V4.1 Flash 1017 (max)",
-        "score": 33
+        "score": 32
       },
       {
         "company": "zhipu",
@@ -169,6 +170,204 @@ window.MODEL_ATLAS = (() => {
     return { id, date, name, company, kind, summary, tags, sources: Array.isArray(sources) ? sources : [sources], milestone, details, dateNote };
   }
   const releases = [
+    {
+      "id": "hy-mt3",
+      "date": "2026-11-24",
+      "name": "Hy-MT3",
+      "company": "tencent",
+      "kind": "weights",
+      "summary": "腾讯混元将翻译模型的覆盖范围从 38 种语言扩展至 102 种，并开放三种规模的权重。",
+      "details": "1.8B 与 7B 采用稠密架构，30B-A3B 为混合专家模型，每个 token 激活约 3B 参数。三款模型都处理文本。腾讯天美《王者荣耀》团队已将其适配到游戏本地化工具，用于处理术语、占位符与多种语言版本。",
+      "dateNote": "技术报告于 11 月 20 日提交至 arXiv，11 月 24 日腾讯公开三种型号的权重。时间线采用权重发布日期。",
+      "tags": [
+        "多语言",
+        "开放权重"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "腾讯混元 · 权重发布与模型说明",
+          "titleEn": "Tencent Hunyuan · Release and model documentation",
+          "url": "https://github.com/Tencent-Hunyuan/Hy-MT3"
+        },
+        {
+          "title": "腾讯天美 · 游戏本地化工具",
+          "titleEn": "Tencent TiMi · Game localization toolkit",
+          "url": "https://github.com/Tencent/TiMiHOKGameTranslator"
+        },
+        {
+          "title": "腾讯混元 · 技术报告",
+          "titleEn": "Tencent Hunyuan · Technical report",
+          "url": "https://arxiv.org/abs/2611.27673"
+        }
+      ],
+      "searchAliases": [
+        "Hy-MT3-1.8B",
+        "Hy-MT3-7B",
+        "Hy-MT3-30B-A3B",
+        "Hunyuan Machine Translation",
+        "混元翻译",
+        "机器翻译"
+      ]
+    },
+    {
+      "id": "magi-2",
+      "date": "2026-11-24",
+      "name": "MAGI-2",
+      "company": "sand-ai",
+      "kind": "release",
+      "summary": "可参考图像、视频和声音，生成最长 30 秒、每秒 25 帧的音画同步视频，输出分辨率可达 1080p。",
+      "details": "MAGI-2 正式版有 480B 参数，每个 token 激活约 28B，支持时间轴控制和视频编辑。11 月 25 日，Artificial Analysis 有声图生视频榜记录了 5,943 票，点估计排名第一，可能名次为第 1 至 3。Sand.ai 公布的 1080p 服务定价为每秒 0.08 美元，定价页注明暂未开放充值。",
+      "dateNote": "Sand.ai 于 11 月 24 日发布正式版，Higgsfield 提供在线使用。8 月发布的 MAGI-2 Preview 使用单独的研究权重。",
+      "tags": [
+        "视频生成",
+        "视频编辑"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Sand.ai · MAGI-2 发布说明",
+          "titleEn": "Sand.ai · MAGI-2 release",
+          "url": "https://sand.ai/blog/magi-2"
+        },
+        {
+          "title": "Higgsfield · 正式版上线",
+          "titleEn": "Higgsfield · Hosted model release",
+          "url": "https://higgsfield.ai/announcing-magi-2"
+        },
+        {
+          "title": "Sand.ai · 1080p 服务定价",
+          "titleEn": "Sand.ai · 1080p service pricing",
+          "url": "https://platform.sand.ai/docs/model-pricing/"
+        },
+        {
+          "title": "Artificial Analysis · 有声图生视频榜",
+          "titleEn": "Artificial Analysis · Image-to-video leaderboard with audio",
+          "url": "https://artificialanalysis.ai/video/leaderboard/image-to-video/"
+        }
+      ],
+      "searchAliases": [
+        "MAGI 2",
+        "MAGI-2 full",
+        "Sand.ai MAGI",
+        "视频生成"
+      ]
+    },
+    {
+      "id": "glm-5-4",
+      "date": "2026-11-23",
+      "name": "GLM-5.4",
+      "company": "zhipu",
+      "kind": "release",
+      "summary": "智谱首次在旗舰模型中采用循环 Transformer，让共享参数的中间层执行两次，用于长程编程任务与视觉理解。",
+      "details": "GLM-5.4 在 GLM-5 系列的基础上复用 28 个中间层。首发入口包括 GLM Coding Plan、ZCode 和 Z.ai Chat。ZCode 文档列出的 Coding Plan 上下文窗口为 100 万 token。智谱另行预告了按量 API，并计划在完成安全加固后开放权重。",
+      "dateNote": "11 月 23 日，智谱发布模型，ZCode 4.0.0 同日向 Coding Plan 用户提供 GLM-5.4。",
+      "tags": [
+        "编程",
+        "视觉理解",
+        "推理"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "智谱 · 模型发布与架构",
+          "titleEn": "Z.ai · Model release and architecture",
+          "url": "https://z.ai/blog/glm-5.4"
+        },
+        {
+          "title": "ZCode · 4.0.0 发布记录",
+          "titleEn": "ZCode · Version 4.0.0 release notes",
+          "url": "https://zcode.z.ai/en/changelog"
+        },
+        {
+          "title": "ZCode · Coding Plan 与上下文窗口",
+          "titleEn": "ZCode · Coding Plan and context window",
+          "url": "https://zcode.z.ai/en/docs/qa"
+        }
+      ],
+      "searchAliases": [
+        "GLM 5.4",
+        "GLM5.4",
+        "Loop Transformer",
+        "智谱 GLM"
+      ]
+    },
+    {
+      "id": "ling-3-2-air",
+      "date": "2026-11-23",
+      "name": "Ling-3.2-air",
+      "company": "inclusionai",
+      "kind": "weights",
+      "summary": "蚂蚁百灵开放多模态混合专家模型，可使用文本、图片与视频完成文档理解和多步任务。",
+      "details": "Ling-3.2-air 有 124B 参数，每个 token 激活 5.5B。模型卡提供 SGLang 和 vLLM 的部署方式，发布权重的上下文配置为 262,144 token，采用 MIT 许可证。",
+      "dateNote": "11 月 23 日公开模型权重，Artificial Analysis 也将该日列为模型发布日期。",
+      "tags": [
+        "多模态",
+        "混合专家",
+        "开放权重"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "蚂蚁百灵 · 模型卡与权重",
+          "titleEn": "InclusionAI · Model card and weights",
+          "url": "https://huggingface.co/inclusionAI/Ling-3.2-air"
+        },
+        {
+          "title": "Artificial Analysis · 评测与发布日期",
+          "titleEn": "Artificial Analysis · Evaluation and release date",
+          "url": "https://artificialanalysis.ai/models/ling-3-2-air"
+        }
+      ],
+      "searchAliases": [
+        "Ling 3.2 Air",
+        "Ling3.2-air",
+        "百灵 3.2 Air"
+      ]
+    },
+    {
+      "id": "inkling-2-mini",
+      "date": "2026-11-20",
+      "name": "Inkling 2 Mini",
+      "company": "thinking-machines",
+      "kind": "weights",
+      "summary": "Thinking Machines 发布可读取图文的轻量模型，将原生量化权重压缩到约 20 GB，同时开放本地权重与 Tinker 推理服务。",
+      "details": "模型共有 26.4B 参数。每个 token 使用 3.4B 个不同的参数，中间层重复运行三次，有效计算量相当于激活 5.4B 参数。权重采用 Apache 2.0 许可，可在 Tinker 微调。11 月 22 日，Arena 将其列入文本、网页编程与智能体榜。",
+      "dateNote": "采用 Thinking Machines 发布模型与权重的 11 月 20 日。",
+      "tags": [
+        "视觉理解",
+        "轻量模型",
+        "开放权重"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Thinking Machines · 模型发布",
+          "titleEn": "Thinking Machines · Release announcement",
+          "url": "https://thinkingmachines.ai/news/inkling-2-mini/"
+        },
+        {
+          "title": "Thinking Machines · 模型卡与权重",
+          "titleEn": "Thinking Machines · Model card and weights",
+          "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini"
+        },
+        {
+          "title": "Tinker · 服务规格与定价",
+          "titleEn": "Tinker · Service limits and pricing",
+          "url": "https://tinker-docs.thinkingmachines.ai/tinker/models/models_and_pricing/"
+        },
+        {
+          "title": "Arena · 上榜记录",
+          "titleEn": "Arena · Leaderboard changelog",
+          "url": "https://arena.ai/company/leaderboard-changelog"
+        }
+      ],
+      "searchAliases": [
+        "Inkling-2-Mini",
+        "Inkling2 Mini",
+        "Tinker Mini"
+      ]
+    },
     {
       "id": "aion-instruct",
       "date": "2026-11-19",
@@ -285,7 +484,7 @@ window.MODEL_ATLAS = (() => {
       "company": "openai",
       "kind": "release",
       "summary": "面向日常编程与工具调用，侧重缩短完成任务的时间、降低推理成本。",
-      "details": "Sol 接受文本和图像，输出文本。模型沿用 GPT-6.1 Sol 的标准 API 单价，发布当天同步接入 ChatGPT Work 和 Codex。",
+      "details": "Sol 支持图文输入与文本输出，11 月 17 日接入 API、ChatGPT Work 和 Codex，标准 API 单价沿用 GPT-6.1 Sol。11 月 23 日，面向日常对话调优的版本开始在 ChatGPT 的 Plus、Pro、Business 和 Enterprise 套餐中推出，企业用户的访问由管理员控制。11 月 24 日，API 的滚动别名 chat-latest 更新到此次对话版本。",
       "dateNote": "采用 OpenAI 同日开放 Sol 和 Astra 的日期。",
       "tags": [
         "编程",
@@ -303,11 +502,23 @@ window.MODEL_ATLAS = (() => {
           "title": "OpenAI · 模型与价格",
           "titleEn": "OpenAI · Model and pricing",
           "url": "https://developers.openai.com/api/docs/models/gpt-6.2-sol"
+        },
+        {
+          "title": "OpenAI · ChatGPT 更新记录",
+          "titleEn": "OpenAI · ChatGPT release notes",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
+        },
+        {
+          "title": "OpenAI · API 更新记录",
+          "titleEn": "OpenAI · API changelog",
+          "url": "https://developers.openai.com/api/docs/changelog"
         }
       ],
       "searchAliases": [
         "GPT 6.2 Sol",
-        "gpt-6.2-sol"
+        "gpt-6.2-sol",
+        "GPT-6.2 Sol Chat",
+        "chat-latest"
       ]
     },
     {
@@ -441,7 +652,7 @@ window.MODEL_ATLAS = (() => {
       "company": "qwen",
       "kind": "release",
       "summary": "千问旗舰正式开放 API，结合原生视觉理解、百万 token 上下文与多步工具执行。",
-      "details": "Qwen4-Max 采用 2.4T 总参数、每 token 激活约 71B 参数的专家混合架构，支持文本、图像与视频输入，输出文本。正式版于 11 月 16 日接入 QwenCloud API、Token Plan、QwenWork 和 Qwen Studio。正式 API 支持按量计费，Token Plan 为订阅入口。",
+      "details": "Qwen4-Max 采用 2.4T 总参数、每 token 激活约 71B 参数的专家混合架构，支持文本、图像与视频输入，输出文本。正式版于 11 月 16 日接入 QwenCloud API、Token Plan、QwenWork 和 Qwen Studio。正式 API 支持按量计费，Token Plan 为订阅入口。11 月 25 日北京时间 10:00 起，Token Plan 的旧预览 ID 也转至该正式版，按正式版标准费率计费。",
       "dateNote": "阿里云于 11 月 11 日向 Token Plan 用户开放 Qwen4-Max-Preview，11 月 16 日发布 Qwen4-Max 正式版。",
       "tags": [
         "推理",
@@ -463,6 +674,11 @@ window.MODEL_ATLAS = (() => {
           "title": "阿里云 · 模型规格",
           "titleEn": "Alibaba Cloud: Model specifications",
           "url": "https://www.alibabacloud.com/help/en/model-studio/qwen4-max"
+        },
+        {
+          "title": "阿里云 · Token Plan 更新记录",
+          "titleEn": "Alibaba Cloud · Token Plan updates",
+          "url": "https://help.aliyun.com/zh/model-studio/token-plan-product-updates"
         }
       ],
       "searchAliases": [
@@ -548,8 +764,8 @@ window.MODEL_ATLAS = (() => {
       "company": "qwen",
       "kind": "preview",
       "summary": "千问新一代旗舰多模态预览，支持图像、视频理解和复杂工具调用。",
-      "details": "Qwen4-Max-Preview 仅通过 Token Plan 提供限期预览，不支持按量计费。预览期为 2026 年 11 月 11 日 10:00 至 11 月 25 日 24:00（北京时间），官方注明预览结束后下线。模型支持 1M token 上下文，思考与回答共享 393,216 token 输出预算，并兼容 Chat Completions、Responses 和 Messages 接口。",
-      "dateNote": "采用阿里云记录的预览开放日期；不等同于后续正式版发布。",
+      "details": "预览版于北京时间 11 月 11 日 10:00 向 Token Plan 用户开放，当时仅支持订阅套餐。上下文为 1M token，思考与回答共享 393,216 token 输出预算。11 月 25 日 10:00 预览结束。原模型 ID 此后自动转至正式版 qwen4-max，按正式版标准费率抵扣 Credits，预览优惠同时结束。",
+      "dateNote": "时间线采用 11 月 11 日的预览开放日期。阿里云 Token Plan 更新记录给出了实际下线时间。",
       "tags": [
         "推理",
         "多模态"
@@ -565,6 +781,16 @@ window.MODEL_ATLAS = (() => {
           "title": "阿里云 · 模型更新记录",
           "titleEn": "Alibaba Cloud: Model changelog",
           "url": "https://help.aliyun.com/zh/model-studio/newly-released-models"
+        },
+        {
+          "title": "阿里云 · Token Plan 更新记录",
+          "titleEn": "Alibaba Cloud · Token Plan updates",
+          "url": "https://help.aliyun.com/zh/model-studio/token-plan-product-updates"
+        },
+        {
+          "title": "阿里云 · Token Plan 英文更新记录",
+          "titleEn": "Alibaba Cloud · Token Plan updates in English",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/token-plan-product-updates"
         }
       ],
       "searchAliases": [
@@ -795,11 +1021,13 @@ window.MODEL_ATLAS = (() => {
       "id": "inkling-2-small",
       "date": "2026-11-05",
       "name": "Inkling 2 Small",
+      "familyName": "Inkling 2",
+      "familyNameEn": "Inkling 2",
       "company": "thinking-machines",
       "kind": "release",
       "milestone": false,
-      "summary": "第二代混合专家模型结合视觉理解、编程与长程任务，支持通过 Tinker 微调。",
-      "details": "模型有 594B 总参数，每个 token 激活 17B 参数，可接受文本与图像并输出文本。模型卡列出的上下文上限为 1M tokens，Tinker 提供 64K 和 256K 两种配置。官方已在 Hugging Face 按 Apache 2.0 许可发布权重。",
+      "summary": "Inkling 2 Small 可读取图文、编写代码并执行长程任务，开发者可以通过 Tinker 微调模型。",
+      "details": "模型有 594B 总参数，每个 token 激活 17B 参数，可接受文本与图像并输出文本。Tinker 两个付费档的推理窗口均为 1M token，微调序列长度分别为 64K 和 256K。官方已在 Hugging Face 按 Apache 2.0 许可发布权重。",
       "dateNote": "11 月 5 日，Tinker 首次提供推理与微调。11 月 12 日，Thinking Machines 开放模型权重。时间线采用首次服务日期。",
       "tags": [
         "多模态",
@@ -1910,9 +2138,11 @@ window.MODEL_ATLAS = (() => {
       "id": "ling-3-1-flash",
       "date": "2026-09-30",
       "name": "Ling-3.1-flash",
+      "familyName": "Ling 3",
+      "familyNameEn": "Ling 3",
       "company": "inclusionai",
       "kind": "release",
-      "summary": "蚂蚁百灵发布混合推理模型，面向编程、工具调用与多步骤智能体任务。",
+      "summary": "Ling-3.1-flash 支持编程、工具调用与多步骤智能体任务，可根据任务切换推理模式。",
       "tags": [
         "推理",
         "智能体"
@@ -2855,7 +3085,7 @@ window.MODEL_ATLAS = (() => {
     },
   ].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
   const coverage = {
-    checkedAt: '2026-11-20',
+    checkedAt: '2026-11-25',
     scope: '主流语言、多模态、图像与视频生成及世界模型，兼顾具有历史影响的架构研究与产品节点。',
     method: '参考公开榜单、公告、论文与权威报道，记录证据和核对日期；推理档位与同日家族型号合并收录。',
     criteria: ['具有前沿表现、明确技术代表性或重要历史影响。', '收录首发、主要代际与实质能力更新；推理档位和平台副本合并记录，版本号大小不决定收录。', '必须有可核验的公开日期与可信来源；厂商知名度或出现在榜单上不自动构成收录理由。'],
@@ -2872,5 +3102,5 @@ window.MODEL_ATLAS = (() => {
       source('Terminal-Bench', 'https://www.tbench.ai/'),
     ],
   };
-  return Object.freeze({ asOf: '2026-11-20', updatedAt: '2026-11-20', companies, companyRanking, kinds, themes, releases, coverage });
+  return Object.freeze({ asOf: '2026-11-25', updatedAt: '2026-11-25', companies, companyRanking, kinds, themes, releases, coverage });
 })();

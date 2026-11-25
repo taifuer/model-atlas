@@ -63,3 +63,27 @@ test('Hy4 retains its original launch and separates checkpoint capabilities from
   assert.equal(release('hunyuan-hy4-preview').date, '2026-08-28');
   assert.equal(release('hunyuan-hy4-flash').date, '2026-11-16');
 });
+
+test('MAGI-2 keeps its video tariff separate from text API token prices', () => {
+  const model = release('magi-2');
+  assert.equal(model.openness.status, 'closed', 'Preview weights belong to a different checkpoint');
+  assert.deepEqual(Array.from(model.tasks), ['video-generation']);
+  assert.equal(prices.entries[model.id], undefined);
+  assert.match(english[model.id].details, /0\.08/);
+  assert.match(english[model.id].details, /1080p/);
+});
+
+test('Inkling 2 keeps paid sampling windows distinct from fine-tuning limits', () => {
+  const small = specs.entries['inkling-2-small'].variants.filter(variant => variant.basis === 'api');
+  assert.deepEqual(Array.from(small, variant => [variant.contextTokens, variant.trainingTokens]), [
+    ['1M', '64K'],
+    ['1M', '256K'],
+  ]);
+  const mini = specs.entries['inkling-2-mini'].variants[0];
+  assert.equal(mini.contextTokens, 1048576);
+  assert.equal(mini.activeParameters, '3.4B');
+  const paid = prices.entries['inkling-2-mini'].variants[0];
+  assert.equal(paid.tiers[0].input, 0.15);
+  assert.equal(paid.tiers[0].output, 0.5);
+  assert.match(paid.noteEn, /free tier has a 64K window/);
+});

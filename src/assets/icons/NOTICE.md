@@ -94,3 +94,7 @@ Official website and profile marks above were retrieved on 2026-10-11 for identi
 ## November 20, 2026 additions
 
 - `sashiko.ico` is the unchanged [Sashiko project favicon](https://sashiko.dev/static/favicon.ico), used to identify the project.
+
+## November 25, 2026 additions
+
+- `sand-ai.svg` identifies Sand.ai and its MAGI-2 model. It is the original vector mark from the [Sand.ai website](https://sand.ai/migrated/assets/svg/favicon.svg).

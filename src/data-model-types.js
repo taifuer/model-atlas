@@ -3,6 +3,57 @@
   const data = {
   "checkedAt": "2026-10-03",
   "entries": {
+    "hy-mt3": {
+      "checkedAt": "2026-11-25",
+      "category": "text",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://github.com/Tencent-Hunyuan/Hy-MT3"
+      ]
+    },
+    "magi-2": {
+      "checkedAt": "2026-11-25",
+      "category": "multimodal",
+      "tasks": [
+        "video-generation"
+      ],
+      "sources": [
+        "https://sand.ai/blog/magi-2"
+      ]
+    },
+    "glm-5-4": {
+      "checkedAt": "2026-11-25",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://zcode.z.ai/en/changelog",
+        "https://z.ai/blog/glm-5.4"
+      ]
+    },
+    "ling-3-2-air": {
+      "checkedAt": "2026-11-25",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://huggingface.co/inclusionAI/Ling-3.2-air"
+      ]
+    },
+    "inkling-2-mini": {
+      "checkedAt": "2026-11-25",
+      "category": "multimodal",
+      "tasks": [
+        "language"
+      ],
+      "sources": [
+        "https://huggingface.co/thinkingmachines/Inkling-2-Mini"
+      ]
+    },
     "aion-instruct": {
       "checkedAt": "2026-11-20",
       "category": "text",

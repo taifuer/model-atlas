@@ -29,28 +29,38 @@ test('published scores exactly match dated public source snapshots and known rel
       if (key === 'arena') assert.ok(record.confidenceInterval > 0 && record.votes > 0);
     }
   }
-  assert.equal(scores.entries['gemini-4-carbon'].arena.preliminary, undefined, 'The November 19 text dataset does not publish a preliminary label');
-  assert.equal(scores.benchmarks.aa.version, '5.0.1');
+  assert.equal(scores.entries['gemini-4-carbon'].arena.preliminary, undefined, 'The November 22 text dataset does not publish a preliminary label');
+  assert.equal(scores.benchmarks.aa.version, '5.0.2');
   assert.equal(scores.entries['qwen-4-max'].aa.score, 43);
   assert.equal(scores.entries['qwen-4-max-preview'], undefined, 'Formal-release scores must not be assigned to the preview');
-  assert.equal(scores.entries['qwen-3-8-max-0902'].aa.checkedAt, '2026-11-14', 'An absent current row retains its historical score date');
-  assert.equal(scores.benchmarks.aa.checkedAt, '2026-11-20');
-  assert.equal(scores.checkedAt, '2026-11-20');
+  for (const id of ['qwen-3-8-max-0902', 'claude-fable-5-1', 'muse-spark-1-3', 'gpt-6-astra', 'gpt-6-1-sol', 'gemini-3-8-flash']) {
+    assert.equal(scores.entries[id].aa.checkedAt, scores.benchmarks.aa.checkedAt, `AA's model page confirms the current score for ${id}`);
+    assert.equal(scores.entries[id].aa.note, undefined, 'A newly verified current result must not be labeled historical');
+  }
+  assert.equal(scores.benchmarks.aa.checkedAt, '2026-11-25');
+  assert.equal(scores.checkedAt, '2026-11-25');
   assert.equal(models.companyRanking.checkedAt, scores.benchmarks.aa.checkedAt);
   assert.equal(scores.entries['gemini-4-neon'].aa.model, 'Gemini 4 Neon (xhigh)');
-  assert.equal(scores.entries['gemini-4-neon'].aa.score, 61);
+  assert.equal(scores.entries['gemini-4-neon'].aa.score, 62);
   assert.equal(scores.entries['gemini-4-neon'].arena.model, 'Gemini 4 Neon (High)');
-  assert.equal(scores.entries['gemini-4-neon'].arena.score, 1513);
+  assert.equal(scores.entries['gemini-4-neon'].arena.score, 1512);
   assert.equal(scores.entries['gpt-6-2-astra'].aa.score, 62);
   assert.equal(scores.entries['gpt-6-2-sol'].aa.score, 57);
-  assert.equal(scores.entries['gpt-6-astra'].aa.checkedAt, '2026-11-16');
+  assert.equal(scores.entries['glm-5-3-flash'].aa.model, 'GLM-5.3-Flash (Max)');
+  assert.equal(scores.entries['glm-5-3-flash'].aa.score, 28);
+  assert.equal(scores.entries['glm-5-3-flash'].arena.model, 'GLM-5.3-Flash', 'Arena does not specify reasoning effort for this result');
+  assert.equal(scores.entries['inkling-2-mini'].aa.score, 20);
+  const mini = scores.entries['inkling-2-mini'].arena;
+  assert.deepEqual([mini.model, mini.score, mini.confidenceInterval, mini.votes], ['Inkling 2 Mini', 1367, 15, 1793]);
+  assert.equal(scores.entries['ling-3-2-air'].aa.score, 23);
+  assert.equal(scores.entries['ling-3-2-air'].arena, undefined);
   assert.equal(scores.entries['gpt-6-2-astra'].arena.model, 'GPT-6.2 Astra (Max)');
   assert.equal(scores.entries['gpt-6-2-sol'].arena.model, 'GPT-6.2 Sol (Max)');
   assert.equal(scores.entries['claude-fable-5-2'].arena.model, 'Claude Fable 5.2 (Max)');
   assert.equal(scores.entries['lfm-3'].aa.model, 'LFM3-1.7B');
   assert.equal(scores.cardScopes['lfm-3'], 'variant');
-  assert.equal(scores.benchmarks.arena.checkedAt, '2026-11-20');
-  assert.equal(scores.benchmarks.arena.publishedAt, '2026-11-19', 'Dataset retrieval date is not the leaderboard publication date');
+  assert.equal(scores.benchmarks.arena.checkedAt, '2026-11-25');
+  assert.equal(scores.benchmarks.arena.publishedAt, '2026-11-22', 'Dataset retrieval date is not the leaderboard publication date');
   assert.equal(scores.entries['muse-wonder'].aa.model, 'Muse Wonder Full (max)');
   assert.equal(scores.cardScopes['muse-wonder'], 'variant');
   assert.equal(scores.entries['muse-wonder'].arena, undefined, 'Do not transfer Wonder results to Full without verified metric scope');
@@ -61,7 +71,7 @@ test('published scores exactly match dated public source snapshots and known rel
   for (const id of ['gpt-6-sol-luna', 'kimi-k3', 'hunyuan-hy3', 'mistral-medium-3-5']) assert.equal(scores.entries[id]?.aa, undefined, 'Do not carry v4 scores into the v5 snapshot');
   assert.equal(scores.entries['gpt-6-sol-luna'].arena.model, 'GPT-6 Sol (Max)');
   assert.equal(scores.entries['deepseek-v4-1-flash'].aa.model, 'DeepSeek V4.1 Flash 1017 (max)');
-  assert.equal(scores.entries['deepseek-v4-1-flash'].aa.score, 33);
+  assert.equal(scores.entries['deepseek-v4-1-flash'].aa.score, 32);
   assert.equal(models.companyRanking.entries.find(entry => entry.company === 'deepseek').model, scores.entries['deepseek-v4-1-flash'].aa.model);
   for (const metric of ['arena']) {
     assert.match(scores.entries['deepseek-v4-1-flash'][metric].note, /不能视为 1017/);

@@ -1,0 +1,340 @@
+{
+  "metric": {
+    "name": "Artificial Analysis Intelligence Index",
+    "version": "5.0.2",
+    "source": "https://artificialanalysis.ai/leaderboards/models",
+    "methodology": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+    "checkedAt": "2026-11-25"
+  },
+  "records": [
+    {
+      "releaseId": "claude-opus-5-5",
+      "model": "Claude Opus 5.5 (max with fallback)",
+      "score": 59,
+      "source": "https://artificialanalysis.ai/models/claude-opus-5-5",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "claude-sonnet-5-5",
+      "model": "Claude Sonnet 5.5 (max with fallback)",
+      "score": 55,
+      "source": "https://artificialanalysis.ai/models/claude-sonnet-5-5",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "claude-fable-5-1",
+      "model": "Claude Fable 5.1 (max with fallback)",
+      "score": 49,
+      "source": "https://artificialanalysis.ai/models/claude-fable-5-1",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "gpt-6-astra",
+      "model": "GPT-6 Astra (max)",
+      "score": 57,
+      "source": "https://artificialanalysis.ai/models/gpt-6-astra",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "gpt-6-1-sol",
+      "model": "GPT-6.1 Sol (max)",
+      "score": 55,
+      "source": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "gemini-4-argon",
+      "model": "Gemini 4 Argon (high)",
+      "score": 51,
+      "source": "https://artificialanalysis.ai/models/gemini-4-argon",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "muse-spark-1-3",
+      "model": "Muse Spark 1.3 (max)",
+      "score": 37,
+      "source": "https://artificialanalysis.ai/models/muse-spark-1-3",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "grok-4-7",
+      "model": "Grok 4.7 (xhigh)",
+      "score": 35,
+      "source": "https://artificialanalysis.ai/models/grok-4-7",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "mimo-v2-6",
+      "model": "MiMo-V2.6-Pro",
+      "score": 30,
+      "source": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "qwen-3-8-max-0902",
+      "model": "Qwen3.8 Max (0902)",
+      "score": 34,
+      "source": "https://artificialanalysis.ai/models/qwen3-8-max",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "glm-5-3",
+      "model": "GLM-5.3 (max)",
+      "score": 32,
+      "source": "https://artificialanalysis.ai/models/glm-5-3",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "step-5-preview",
+      "model": "Step 5 Preview",
+      "score": 29,
+      "source": "https://artificialanalysis.ai/models/step-5-preview",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "glm-5-3-flash",
+      "model": "GLM-5.3-Flash (Max)",
+      "score": 28,
+      "source": "https://artificialanalysis.ai/models/glm-5-3-flash",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "gemini-3-8-flash",
+      "model": "Gemini 3.8 Flash (high)",
+      "score": 31,
+      "source": "https://artificialanalysis.ai/models/gemini-3-8-flash",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "deepseek-v4-1-flash",
+      "model": "DeepSeek V4.1 Flash 1017 (max)",
+      "score": 32,
+      "source": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "deepseek-v4-pro-0813",
+      "model": "DeepSeek V4 Pro 0813 (max)",
+      "score": 23,
+      "source": "https://artificialanalysis.ai/models/deepseek-v4-pro",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "minimax-m3",
+      "model": "MiniMax-M3",
+      "score": 19,
+      "source": "https://artificialanalysis.ai/models/minimax-m3",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "claude-haiku-5-5",
+      "model": "Claude Haiku 5.5 (max)",
+      "score": 37,
+      "source": "https://artificialanalysis.ai/models/claude-haiku-5-5",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "mistral-large-4-preview",
+      "model": "Mistral Large 4 (high)",
+      "score": 26,
+      "source": "https://artificialanalysis.ai/models/mistral-large-4",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "ling-3-1-flash",
+      "model": "Ling 3.1 Flash 1019",
+      "score": 30,
+      "source": "https://artificialanalysis.ai/models/ling-3-1-flash",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "muse-wonder",
+      "model": "Muse Wonder Full (max)",
+      "score": 50,
+      "source": "https://artificialanalysis.ai/models/muse-wonder-full",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "muse-spark-open",
+      "model": "Muse Spark Open (xhigh)",
+      "score": 25,
+      "source": "https://artificialanalysis.ai/models/muse-spark-open",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "reflection-beam-1",
+      "model": "Beam 1.0",
+      "score": 18,
+      "source": "https://artificialanalysis.ai/models/reflection-beam",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "nemotron-3-5-vl-bolt",
+      "model": "Nemotron 3.5 Super VL",
+      "score": 14,
+      "source": "https://artificialanalysis.ai/models/nemotron-3-5-super-vl",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "minimax-m3-1-flash",
+      "model": "MiniMax-M3.1-Flash",
+      "score": 29,
+      "source": "https://artificialanalysis.ai/models/minimax-m3-1-flash",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "kimi-k3-1-pro",
+      "model": "Kimi K3.1 Pro",
+      "score": 47,
+      "source": "https://artificialanalysis.ai/models/kimi-k3-1-pro",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "gpt-6-1-terra",
+      "model": "GPT-6.1 Terra (max)",
+      "score": 51,
+      "source": "https://artificialanalysis.ai/models/gpt-6-1-terra",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "gemini-4-carbon",
+      "model": "Gemini 4 Carbon (high)",
+      "score": 60,
+      "source": "https://artificialanalysis.ai/models/gemini-4-carbon",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "inkling-2-small",
+      "model": "Inkling 2 Small",
+      "score": 31,
+      "source": "https://artificialanalysis.ai/models/inkling-2-small",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "claude-fable-5-2",
+      "model": "Claude Fable 5.2 (max with fallback)",
+      "score": 65,
+      "source": "https://artificialanalysis.ai/models/claude-fable-5-2",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "muse-ember",
+      "model": "Muse Ember (max)",
+      "score": 36,
+      "source": "https://artificialanalysis.ai/models/muse-ember",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "hunyuan-hy4",
+      "model": "Tencent Hy4",
+      "score": 35,
+      "source": "https://artificialanalysis.ai/models/tencent-hy4",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "gemini-4-hydrogen",
+      "model": "Gemini 4 Hydrogen (xhigh)",
+      "score": 54,
+      "source": "https://artificialanalysis.ai/models/gemini-4-hydrogen",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "qwen-4-max",
+      "model": "Qwen4 Max",
+      "score": 43,
+      "source": "https://artificialanalysis.ai/models/qwen4-max",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "gpt-6-2-astra",
+      "model": "GPT-6.2 Astra (max)",
+      "score": 62,
+      "source": "https://artificialanalysis.ai/models/gpt-6-2-astra",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "gpt-6-2-sol",
+      "model": "GPT-6.2 Sol (max)",
+      "score": 57,
+      "source": "https://artificialanalysis.ai/models/gpt-6-2-sol",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "lfm-3",
+      "model": "LFM3-1.7B",
+      "score": 6,
+      "source": "https://artificialanalysis.ai/models/lfm3-1-7b",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "gemini-4-neon",
+      "model": "Gemini 4 Neon (xhigh)",
+      "score": 62,
+      "source": "https://artificialanalysis.ai/models/gemini-4-neon",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "inkling-2-mini",
+      "model": "Inkling 2 Mini",
+      "score": 20,
+      "source": "https://artificialanalysis.ai/models/inkling-2-mini",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "ling-3-2-air",
+      "model": "Ling-3.2-air",
+      "score": 23,
+      "source": "https://artificialanalysis.ai/models/ling-3-2-air",
+      "checkedAt": "2026-11-25"
+    }
+  ],
+  "sourceEvidence": [
+    {
+      "url": "https://artificialanalysis.ai/leaderboards/models",
+      "sha256": "b72031724c8333f01a72266d68df8ebeeab06d93fc18f30c2aa14f0b2a250c14",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "claude-fable-5-1",
+      "url": "https://artificialanalysis.ai/models/claude-fable-5-1",
+      "sha256": "7bb9f315c4c394c4eaa53e929672df250cae4ad5f7ffa99682581789b167346d",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "gpt-6-astra",
+      "url": "https://artificialanalysis.ai/models/gpt-6-astra",
+      "sha256": "30d42888b5abde20095038ba6be8789574c5c2108b1e35efb0f98507e2747927",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "gpt-6-1-sol",
+      "url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+      "sha256": "ac554767727f464ce927b0bf9eab3f7afee73c7fc4a85881c67d440a47db543c",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "muse-spark-1-3",
+      "url": "https://artificialanalysis.ai/models/muse-spark-1-3",
+      "sha256": "d76a92e3218e8552ee9d673bf445826968ba1044e7fbd5404e4e8effacbab61d",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "qwen-3-8-max-0902",
+      "url": "https://artificialanalysis.ai/models/qwen3-8-max",
+      "sha256": "9f6c1c540a0c68eecb14aa4067b19245668f902bcf902ee164fbed20c474f15c",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "glm-5-3-flash",
+      "url": "https://artificialanalysis.ai/models/glm-5-3-flash",
+      "sha256": "c88b3c4168e3b9eb23fdd133e12ce5708ac2a6e43a53ae5af60b12bc0bc1dbd6",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "releaseId": "gemini-3-8-flash",
+      "url": "https://artificialanalysis.ai/models/gemini-3-8-flash",
+      "sha256": "d2e5af0dfa0c4574a5e64d885210fae2f5681b18adcd5570aeddf653ad6ab6a3",
+      "checkedAt": "2026-11-25"
+    }
+  ]
+}

@@ -40,3 +40,14 @@ test('desktop availability, Azure preview, and llama.cpp v1.0 stay with their or
   assert.equal(llama.release.date, '2023-03-10');
   assert.match(llama.release.en.details, /November 13, 2026.*v1\.0\.0.*libllama and libggml/);
 });
+
+test('Claude Ship distinguishes its beta launch from the availability of Code Review', async () => {
+  const { ATLAS_CATALOG } = await catalog;
+  const { release } = ATLAS_CATALOG.get('agents:claude-ship');
+  assert.equal(release.date, '2026-11-23');
+  assert.equal(release.kind, 'preview');
+  assert.equal(release.openness.status, 'closed');
+  assert.match(release.en.details, /Code Review was already generally available/);
+  assert.match(release.en.details, /PR Steward/);
+  assert.match(release.en.details, /Claude Approvals/);
+});

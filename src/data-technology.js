@@ -1,8 +1,8 @@
 // Primary-source history of AI methods, computing frameworks, and deployment.
 (() => {
   const data = {
-  "asOf": "2026-11-20",
-  "updatedAt": "2026-11-20",
+  "asOf": "2026-11-25",
+  "updatedAt": "2026-11-25",
   "accessFilter": false,
   "companies": [
     {
@@ -2134,7 +2134,7 @@
       "category": "deployment",
       "kind": "announcement",
       "summary": "面向多 GPU 推理的开源框架，协调分布式模型服务。",
-      "details": "NVIDIA 随 Blackwell Ultra 公布 Dynamo，将大规模推理的调度与资源协调组织为软件框架。此节点记录首次公告。",
+      "details": "NVIDIA 随 Blackwell Ultra 公布 Dynamo，用于调度大规模推理服务。2026 年 11 月 24 日发布的 1.7.0 版可按负载在多个推理资源池之间分配请求。在 Kubernetes 多节点部署中，推理引擎故障时，Dynamo 会把正在处理的请求转移到其他工作节点，Sidecar 会自动重启并重新注册。",
       "dateNote": "",
       "tags": [],
       "milestone": false,
@@ -2142,11 +2142,16 @@
         {
           "title": "原始资料",
           "url": "https://nvidianews.nvidia.com/news/nvidia-blackwell-ultra-ai-factory-platform-paves-way-for-age-of-ai-reasoning"
+        },
+        {
+          "title": "Dynamo · 1.7.0 版本说明",
+          "titleEn": "Dynamo · Version 1.7.0 release notes",
+          "url": "https://github.com/ai-dynamo/dynamo/releases/tag/v1.7.0"
         }
       ],
       "en": {
         "summary": "An open-source framework coordinates distributed model serving across GPUs.",
-        "details": "NVIDIA announces Dynamo alongside Blackwell Ultra, providing a software framework for scheduling and resource coordination in large-scale inference. This entry records the announcement.",
+        "details": "NVIDIA announced Dynamo alongside Blackwell Ultra to coordinate large-scale inference. Version 1.7.0, released on November 24, 2026, can route requests across pools by load. In multinode Kubernetes deployments, Dynamo moves in-flight requests to another worker if an inference engine fails. The sidecar automatically restarts and registers again.",
         "dateNote": ""
       }
     },
@@ -2949,7 +2954,7 @@
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-20",
+    "checkedAt": "2026-11-25",
     "scope": "算法、计算框架、推理部署与容器沙箱中具有经典性、代表性或影响力的公开节点。",
     "method": "以原始论文、项目公告与发布记录核对日期，区分预览、正式可用和后续更新；不逐条收录常规软件版本。",
     "references": []

@@ -29,6 +29,14 @@ test('every event has valid metadata and a primary source; supporting reports ar
   // These additional official/project/author pages were reviewed for the named event.
   // Keep community-hosted articles and personal author archives URL-specific.
   const reviewedPrimarySources = new Map([
+    ['https://sand.ai/blog/magi-2', 'magi-2'],
+    ['https://higgsfield.ai/announcing-magi-2', 'magi-2'],
+    ['https://platform.sand.ai/docs/model-pricing/', 'magi-2'],
+    ['https://zcode.z.ai/en/changelog', 'glm-5-4'],
+    ['https://zcode.z.ai/en/docs/qa', 'glm-5-4'],
+    ['https://thinkingmachines.ai/news/inkling-2-mini/', 'inkling-2-mini'],
+    ['https://arena.ai/company/leaderboard-changelog', 'inkling-2-mini'],
+    ['https://help.aliyun.com/zh/model-studio/token-plan-product-updates', ['qwen-4-max', 'qwen-4-max-preview']],
     ['https://aistudio.google.com/docs/pricing#genie-4', 'genie-4'],
     ['https://console.volcengine.com/ark/region%3Acn-beijing/docs/seedance-2-5', 'seedance-2-5'],
     ['https://blogs.windows.com/msedgedev/2026/11/19/hybrid-intelligence-on-the-web-introducing-aion-instruct-and-prompt-api-in-microsoft-edge/', 'aion-instruct'],
@@ -49,7 +57,7 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['https://research.nvidia.com/labs/gear/gr00t-2/', 'groot-2'],
     ['https://thinkingmachines.ai/news/inkling-2-small/', 'inkling-2-small'],
     ['https://thinkingmachines.ai/model-card/inkling-2-small/', 'inkling-2-small'],
-    ['https://tinker-docs.thinkingmachines.ai/tinker/models/models_and_pricing/', 'inkling-2-small'],
+    ['https://tinker-docs.thinkingmachines.ai/tinker/models/models_and_pricing/', ['inkling-2-small', 'inkling-2-mini']],
     ['https://www.krea.ai/press', 'krea-3'],
     ['https://www.krea.ai/blog/introducing-krea-3', 'krea-3'],
     ['https://www.krea.ai/blog/krea-3-technical-report', 'krea-3'],
@@ -85,6 +93,8 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['https://platform.stepfun.ai/docs/en/guides/models/step-5-preview', 'step-5-preview'],
   ]);
   const reviewedHuggingFacePaths = new Map([
+    ['/thinkingmachines/Inkling-2-Mini', 'inkling-2-mini'],
+    ['/inclusionAI/Ling-3.2-air', 'ling-3-2-air'],
     ['/microsoft/Aion-1.0-Instruct-2.3B', 'aion-instruct'],
     ['/meituan-longcat/LongCat-2.5', 'longcat-2-5'],
     ['/MiniMaxAI/MiniMax-H3-Image', 'minimax-h3-image'],
@@ -128,7 +138,10 @@ test('every event has valid metadata and a primary source; supporting reports ar
     ['/zai-org/GLM-4.5', 'glm-4-5'],
     ['/stepfun-ai/Step-3.5-Flash', 'step-3-5-flash'],
   ]);
-  const reviewedRepositories = new Map([["/Tencent-Hunyuan/Hy4", "hunyuan-hy4"], ["/Tencent-Hunyuan/Hy4-flash", "hunyuan-hy4-flash"], ["/MiniMax-AI/MiniMax-H3-Image/blob/main/LICENSE", "minimax-h3-image"], ["/openai/DALL-E", "dall-e"], ["/openai/dalle-2-preview/blob/main/system-card.md", "dall-e-2"], ["/CompVis/stable-diffusion", "stable-diffusion-1"], ["/Stability-AI/generative-models", "sdxl-1"], ["/QwenLM/Qwen-Image", "qwen-image"]]);
+  const reviewedRepositories = new Map([
+    ["/Tencent-Hunyuan/Hy-MT3", "hy-mt3"],
+    ["/Tencent/TiMiHOKGameTranslator", "hy-mt3"],
+    ["/Tencent-Hunyuan/Hy4", "hunyuan-hy4"], ["/Tencent-Hunyuan/Hy4-flash", "hunyuan-hy4-flash"], ["/MiniMax-AI/MiniMax-H3-Image/blob/main/LICENSE", "minimax-h3-image"], ["/openai/DALL-E", "dall-e"], ["/openai/dalle-2-preview/blob/main/system-card.md", "dall-e-2"], ["/CompVis/stable-diffusion", "stable-diffusion-1"], ["/Stability-AI/generative-models", "sdxl-1"], ["/QwenLM/Qwen-Image", "qwen-image"]]);
   const isPrimary = source => primaryHosts.has(new URL(source.url).hostname) || reviewedPrimarySources.has(source.url);
   const supportingReports = new Map([
     ['https://www.ithome.com/1/004/705.htm', 'step-5-preview'],
@@ -148,7 +161,8 @@ test('every event has valid metadata and a primary source; supporting reports ar
       const url = new URL(source.url);
       assert.equal(url.protocol, 'https:');
       if (reviewedPrimarySources.has(source.url)) {
-        assert.equal(release.id, reviewedPrimarySources.get(source.url), `Source does not identify this event: ${source.url}`);
+        const events = [reviewedPrimarySources.get(source.url)].flat();
+        assert.ok(events.includes(release.id), `Source does not identify this event: ${source.url}`);
         if (url.hostname === 'shital.com') assert.match(source.title, /Phi.*作者/);
       }
       if (!isPrimary(source)) {
@@ -237,7 +251,10 @@ test('organization ranking records a dated, comparable AA snapshot without score
   assert.equal(find('tencent').model, 'Tencent Hy4');
   for (const company of ['amazon', 'bytedance', 'microsoft']) assert.equal(find(company), undefined, 'Earlier-version scores cannot fill missing v5 results');
   assert.equal(find('google').model, 'Gemini 4 Neon (xhigh)');
-  assert.equal(find('google').score, 61);
+  assert.equal(find('google').score, 62);
+  assert.equal(find('moonshot').score, 47);
+  assert.equal(find('deepseek').score, 32);
+  assert.ok(ranking.entries.indexOf(find('openai')) < ranking.entries.indexOf(find('google')), 'Preserve the Current leaderboard order when displayed scores tie');
 });
 
 test('English content covers every model and retains date clarifications', () => {
@@ -256,7 +273,7 @@ test('English content covers every model and retains date clarifications', () =>
 test('agent entries have distinct categories, bilingual descriptions, and primary sources with explicit corroboration', () => {
   vm.runInNewContext(fs.readFileSync(require('node:path').join(__dirname, '../src/data-agents.js'), 'utf8'), context);
   const agents = context.window.AGENT_ATLAS;
-  const hosts = new Set(['lkml.rescloud.iu.edu', 'cloud.google.com', 'jules.google', 'docs.replit.com', 'x.ai', 'devin.ai', 'docs.devin.ai', 'registry.npmjs.org', 'developer.cloud.tencent.com', 'docs.factory.com', 'open-vsx.org', 'blog.jetbrains.com', 'blog.kilo.ai', 'www.augmentcode.com', 'zed.dev', 'ampcode.com', 'factory.com', 'earendil.com', 'about.fb.com', 'www.microsoft.com', 'www.langchain.com', 'cognition.com', 'arxiv.org', 'replit.com', 'windsurf.com', 'cursor.com', 'www.anthropic.com', 'openai.com', 'github.blog', 'blog.google', 'antigravity.google', 'claude.com', 'support.claude.com', 'mariozechner.at', 'openclaw.ai', 'nousresearch.com', 'hermes-agent.nousresearch.com', 'www.deepseek.com', 'www.codebuddy.cn', 'cloud.tencent.com', 'qoder.com', 'qwenlm.github.io', 'kiro.dev', 'www.trae.ai', 'aider.chat', 'github.com', 'opencode.ai', 'manus.im', 'huggingface.co', 'goose-docs.ai', 'developers.googleblog.com', 'aws.amazon.com', 'blog.crewai.com', 'www.warp.dev']);
+  const hosts = new Set(['zcode.z.ai', 'lkml.rescloud.iu.edu', 'cloud.google.com', 'jules.google', 'docs.replit.com', 'x.ai', 'devin.ai', 'docs.devin.ai', 'registry.npmjs.org', 'developer.cloud.tencent.com', 'docs.factory.com', 'open-vsx.org', 'blog.jetbrains.com', 'blog.kilo.ai', 'www.augmentcode.com', 'zed.dev', 'ampcode.com', 'factory.com', 'earendil.com', 'about.fb.com', 'www.microsoft.com', 'www.langchain.com', 'cognition.com', 'arxiv.org', 'replit.com', 'windsurf.com', 'cursor.com', 'www.anthropic.com', 'openai.com', 'github.blog', 'blog.google', 'antigravity.google', 'claude.com', 'support.claude.com', 'mariozechner.at', 'openclaw.ai', 'nousresearch.com', 'hermes-agent.nousresearch.com', 'www.deepseek.com', 'www.codebuddy.cn', 'cloud.tencent.com', 'qoder.com', 'qwenlm.github.io', 'kiro.dev', 'www.trae.ai', 'aider.chat', 'github.com', 'opencode.ai', 'manus.im', 'huggingface.co', 'goose-docs.ai', 'developers.googleblog.com', 'aws.amazon.com', 'blog.crewai.com', 'www.warp.dev']);
   const supportingReports = new Map([['https://www.ithome.com/1/005/046.htm', 'zcode-open-source']]);
   const ids = new Set();
   let previous = '';

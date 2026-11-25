@@ -1,7 +1,7 @@
 /* Curated hardware history. Event dates and configurations retain explicit source scope. */
 window.HARDWARE_ATLAS = {
-  "asOf": "2026-11-20",
-  "updatedAt": "2026-11-20",
+  "asOf": "2026-11-25",
+  "updatedAt": "2026-11-25",
   "accessFilter": false,
   "companies": [
     {
@@ -2357,7 +2357,7 @@ window.HARDWARE_ATLAS = {
       "category": "accelerator",
       "kind": "availability",
       "summary": "第三代 Trainium 通过 Trn3 UltraServer 正式供应，支持训练与模型服务。",
-      "details": "Trainium3 使用 3 nm 工艺。此处保留单芯片的内存与带宽，避免与 144 芯片系统的聚合规格混淆。",
+      "details": "Trainium3 使用 3 nm 工艺，所列内存与带宽为单芯片规格。2026 年 11 月 23 日，AWS 披露 Runway 与 Annapurna Labs 在 Trainium3 上优化了 Praxis-1 及其计算内核，并用该模型实时控制机器人。此次实测中，机器人等待下一组动作指令的空闲时间为 104 毫秒。",
       "dateNote": "日期为该产品或云服务的正式供应公告日。",
       "tags": [
         "AI 加速器"
@@ -2367,11 +2367,16 @@ window.HARDWARE_ATLAS = {
         {
           "title": "官方发布资料",
           "url": "https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-ec2-trn3-ultraservers/"
+        },
+        {
+          "title": "AWS · Runway 在 Trainium3 上运行 Praxis-1",
+          "titleEn": "AWS · Runway runs Praxis-1 on Trainium3",
+          "url": "https://www.aboutamazon.com/new/aws/what-is-physical-ai-aws-trainium-robots"
         }
       ],
       "en": {
         "summary": "Third-generation Trainium becomes available through Trn3 UltraServers for training and serving.",
-        "details": "Trainium3 uses a 3 nm process. Memory and bandwidth are listed per chip, distinct from the aggregate specifications of a 144-chip system.",
+        "details": "Trainium3 uses a 3 nm process. Memory and bandwidth are listed per chip. On November 23, 2026, AWS described how Runway and Annapurna Labs tuned Praxis-1 and its kernels on Trainium3 to control a robot in real time. In that deployment the robot spent 104 milliseconds idle while waiting for its next chunk of actions.",
         "dateNote": "Dated to the official availability announcement for this product or cloud service."
       },
       "hardware": {
@@ -2891,7 +2896,7 @@ window.HARDWARE_ATLAS = {
       "category": "systems",
       "kind": "showcase",
       "summary": "1024 卡超节点公开展示，以统一内存编址和高速互连扩展算力。",
-      "details": "记录 WAIC 展出的实际系统；不将此前路线图中更大规模的满配设想作为此次展品规格。华为在 9 月 17 日全联接大会上表示，昇腾 950 超节点已规模商用，但未将商用部署限定为这套展品的配置。",
+      "details": "WAIC 展出的是 1024 卡系统。华为在 9 月 17 日全联接大会上表示，昇腾 950 超节点已规模商用。同系列芯片也用于跨境推理服务。11 月 13 日，汕头启用采用昇腾 950DT 的算力集群，由汕头电信提供基础设施、华为提供设备、天亿马投资运营。",
       "sources": [
         {
           "url": "https://www.huawei.com/cn/news/2026/7/atlas-950-superpod",
@@ -2902,6 +2907,12 @@ window.HARDWARE_ATLAS = {
           "url": "https://www.huawei.com/cn/news/2026/9/hc-wang-keynote",
           "title": "华为全联接大会后续进展",
           "titleEn": "Huawei Connect deployment update"
+        },
+        {
+          "url": "https://www.shantou.gov.cn/cnst/ywdt/styw/content/post_2585143.html",
+          "title": "汕头日报 · 昇腾 950DT 集群启用",
+          "titleEn": "Shantou Daily · Ascend 950DT cluster enters service",
+          "type": "reporting"
         }
       ],
       "tags": [],
@@ -2909,7 +2920,7 @@ window.HARDWARE_ATLAS = {
       "dateNote": "采用华为公告正文的 2026-07-17 展示日期，事件性质为真机公开展示。",
       "en": {
         "summary": "A 1,024-card SuperPoD is publicly demonstrated with unified addressing and high-speed links.",
-        "details": "Records the system shown at WAIC; larger roadmap configurations are not attributed to this exhibit. On September 17, Huawei reported commercial deployment of Ascend 950 Supernodes at scale, without specifying that those deployments use this exhibit’s configuration.",
+        "details": "The system shown at WAIC had 1,024 accelerator cards. On September 17, Huawei reported commercial deployment of Ascend 950 Supernodes at scale. On November 13, a cluster using Ascend 950DT chips entered service in Shantou for cross-border model inference. China Telecom’s Shantou branch supplied the infrastructure, Huawei the hardware, and Tianyima the investment and operations.",
         "dateNote": "Uses the 2026-07-17 demonstration date in Huawei’s announcement; this is a public hardware demonstration."
       },
       "hardware": {
@@ -2938,7 +2949,7 @@ window.HARDWARE_ATLAS = {
       "category": "gpu",
       "kind": "announcement",
       "summary": "MI400 GPU 与 Helios 机架系统共同推进大规模 AI 基础设施。",
-      "details": "MI455X 面向 AI，MI430X 面向高精度计算。AMD 于 2026 年 10 月 12 日确认 Helios 正在提升量产规模，首批系统已在 OpenAI、Meta、Microsoft 和 Oracle 安装运行。11 月 12 日新增 MI450X，单卡配备 288 GB HBM4；官方规格列明峰值内存带宽 23.3 TB/s、BF16 稠密矩阵算力 5 PFLOPS。面向科学计算的 MI430X 则配备 432 GB HBM4，并支持原生 FP64；两者规格分别记录。",
+      "details": "2026 年 10 月 12 日，AMD 确认 Helios 正在扩大量产，首批系统已在 OpenAI、Meta、微软和 Oracle 安装运行。11 月 12 日新增的 MI450X 单卡配备 288 GB HBM4，峰值带宽 23.3 TB/s，BF16 稠密矩阵算力 5 PFLOPS。面向科学计算的 MI430X 配备 432 GB HBM4，支持原生 FP64。11 月 23 日，AMD 确认微软研究实验室已在其首台搭载 MI455X 的 Helios 机架上运行验证任务。Azure 计划将其用于云端推理。",
       "dateNote": "采用 Advancing AI 2026 的产品公布日；初始部署不代表所有云平台均已开放使用。",
       "tags": [
         "GPU"
@@ -2964,11 +2975,16 @@ window.HARDWARE_ATLAS = {
           "title": "AMD · MI450X 产品规格",
           "titleEn": "AMD: MI450X specifications",
           "url": "https://www.amd.com/en/products/accelerators/instinct/mi400/mi450x.html"
+        },
+        {
+          "title": "AMD · 微软验证首台 Helios 机架",
+          "titleEn": "AMD · Microsoft's first Helios rack runs validation workloads",
+          "url": "https://newsroom.amd.com/news/microsoft-running-workload-validation-amd-helios-rackscale-solution/"
         }
       ],
       "en": {
         "summary": "MI400 GPUs and Helios rack systems extend AMD large-scale AI infrastructure.",
-        "details": "MI455X targets AI while MI430X targets high-precision computing. On October 12, 2026, AMD reported that Helios was ramping production, with initial systems installed and running at OpenAI, Meta, Microsoft and Oracle. MI450X was added on November 12 with 288 GB of HBM4 per GPU. Its specifications list 23.3 TB/s peak memory bandwidth and 5 PFLOPS of dense BF16 matrix compute. The scientific-computing MI430X instead has 432 GB of HBM4 and native FP64; its specifications are kept separate.",
+        "details": "On October 12, 2026, AMD reported that Helios production was ramping up and that systems were running at OpenAI, Meta, Microsoft and Oracle. The MI450X, added on November 12, has 288 GB of HBM4 per GPU, 23.3 TB/s peak bandwidth and 5 PFLOPS of dense BF16 matrix compute. The MI430X for scientific computing has 432 GB of HBM4 and native FP64. On November 23, AMD confirmed that Microsoft was running early validation workloads on its first MI455X-based Helios rack in a research lab. Azure plans to use Helios for cloud inference.",
         "dateNote": "Dated to the Advancing AI 2026 announcement; initial deployments do not establish general cloud availability."
       },
       "searchAliases": [
@@ -3070,7 +3086,7 @@ window.HARDWARE_ATLAS = {
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-20",
+    "checkedAt": "2026-11-25",
     "scope": "具有代表性的 GPU、专用加速器、算力系统及本地设备；日期优先依据一手资料，辅以署名媒体报道。区分产品公布、公开展示、供应计划与实际部署，规格保留芯片、板卡或系统范围。",
     "scopeEn": "Representative GPUs, custom accelerators, compute systems, and local devices. Dates prioritize primary sources with attributed reporting as needed. Announcements, demonstrations, availability plans, and deployments remain distinct; specifications retain chip, card, or system scope."
   }

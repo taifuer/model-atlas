@@ -1227,10 +1227,10 @@
   },
   "qwen-4-max-preview": {
     "status": "closed",
-    "checkedAt": "2026-11-14",
-    "source": "https://help.aliyun.com/zh/model-studio/qwen4-max-preview",
-    "note": "仅 Token Plan 限期预览，官方安排于 2026 年 11 月 25 日结束后下线。",
-    "noteEn": "Limited-time Token Plan preview, scheduled to retire after November 25, 2026."
+    "checkedAt": "2026-11-25",
+    "source": "https://help.aliyun.com/zh/model-studio/token-plan-product-updates",
+    "note": "限期预览已于 11 月 25 日北京时间 10:00 结束。原 ID 现转至正式版，按正式版标准费率计费。",
+    "noteEn": "The preview ended at 10:00 Beijing time on November 25. The old ID now routes to the full model at its standard rate."
   },
   "minimax-h3-image": {
     "status": "open",
@@ -1308,6 +1308,70 @@
     "noteEn": "Access reflects the official weights available at review time; the API launch date does not establish when weights first became public."
   }
 });
+  Object.assign(models, {
+    "hy-mt3": {
+      "checkedAt": "2026-11-25",
+      "status": "open",
+      "source": "https://github.com/Tencent-Hunyuan/Hy-MT3",
+      "licenses": [
+        {
+          "object": "模型权重",
+          "objectEn": "Model weights",
+          "name": "Apache 2.0",
+          "source": "https://huggingface.co/tencent/Hy-MT3-1.8B/blob/main/LICENSE.txt"
+        }
+      ],
+      "note": "1.8B、7B 与 30B-A3B 三款权重均采用 Apache 2.0 许可。",
+      "noteEn": "The 1.8B, 7B and 30B-A3B weights all use Apache 2.0."
+    },
+    "magi-2": {
+      "checkedAt": "2026-11-25",
+      "status": "closed",
+      "source": "https://sand.ai/blog/magi-2",
+      "note": "Higgsfield 已提供正式版。已公开的权重属于 8 月发布的 MAGI-2 Preview，Sand.ai 计划另行开放正式版权重。",
+      "noteEn": "Higgsfield offers the full model. The public weights belong to the August MAGI-2 Preview. Sand.ai plans a separate weight release for the full model."
+    },
+    "glm-5-4": {
+      "checkedAt": "2026-11-25",
+      "status": "closed",
+      "source": "https://z.ai/blog/glm-5.4",
+      "note": "已接入 GLM Coding Plan、ZCode 和 Z.ai Chat。智谱公告将按量 API 与开放权重列为后续计划。",
+      "noteEn": "Available through GLM Coding Plan, ZCode and Z.ai Chat. Z.ai lists a pay-as-you-go API and public weights as planned releases."
+    },
+    "ling-3-2-air": {
+      "checkedAt": "2026-11-25",
+      "status": "open",
+      "source": "https://huggingface.co/inclusionAI/Ling-3.2-air",
+      "licenses": [
+        {
+          "object": "模型权重",
+          "objectEn": "Model weights",
+          "name": "MIT",
+          "source": "https://huggingface.co/inclusionAI/Ling-3.2-air"
+        }
+      ]
+    },
+    "inkling-2-mini": {
+      "checkedAt": "2026-11-25",
+      "status": "open",
+      "source": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+      "licenses": [
+        {
+          "object": "模型权重",
+          "objectEn": "Model weights",
+          "name": "Apache 2.0",
+          "source": "https://huggingface.co/thinkingmachines/Inkling-2-Mini"
+        }
+      ]
+    }
+  });
+  Object.assign(agents, {
+    "claude-ship": {
+      "checkedAt": "2026-11-25",
+      "status": "closed",
+      "source": "https://claude.com/resources/articles/introducing-claude-ship"
+    }
+  });
   const apply = (dataset, metadata) => Object.freeze({
     ...dataset, opennessCheckedAt: checkedAt, updatedAt: [dataset.updatedAt || dataset.asOf, checkedAt].sort().at(-1),
     releases: dataset.releases.map(release => {

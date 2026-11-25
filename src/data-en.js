@@ -1,5 +1,30 @@
 /* English editorial copy. Original dates and sources remain in data.js. */
 window.MODEL_ATLAS_EN = {
+  "hy-mt3": {
+    "summary": "Tencent expanded its translation model from 38 to 102 languages and released weights in three sizes.",
+    "details": "The 1.8B and 7B models are dense. The 30B-A3B mixture-of-experts model activates about 3B parameters per token. All three translate text. Tencent’s Honor of Kings team integrated Hy-MT3 into its localization toolkit to handle terminology, placeholders and multilingual game text.",
+    "dateNote": "The technical report was submitted to arXiv on November 20. Tencent released all three sets of weights on November 24."
+  },
+  "magi-2": {
+    "summary": "Uses image, video and audio references to generate up to 30 seconds of synchronized audio and video at 25 fps, with output up to 1080p.",
+    "details": "The full model has 480B parameters and activates about 28B per token. It supports timeline controls and video editing. On November 25 it ranked first by point estimate on Artificial Analysis’s image-to-video leaderboard with audio, with 5,943 votes and a possible rank of 1–3. Sand.ai lists 1080p output at $0.08 per second. Its pricing page says account top-ups are not available yet.",
+    "dateNote": "Sand.ai released the full model on November 24, with hosted access through Higgsfield. The August MAGI-2 Preview used a separate set of research weights."
+  },
+  "glm-5-4": {
+    "summary": "Z.ai introduced its first flagship Loop Transformer, running a shared block of middle layers twice for long-running coding tasks and visual understanding.",
+    "details": "GLM-5.4 reuses 28 middle layers of the GLM-5 architecture. It launched through the GLM Coding Plan, ZCode and Z.ai Chat. ZCode documents a one-million-token window on the Coding Plan. Z.ai announced plans for a pay-as-you-go API and for a weight release after further safety work.",
+    "dateNote": "Z.ai announced the model on November 23. ZCode 4.0.0 added it for Coding Plan users the same day."
+  },
+  "ling-3-2-air": {
+    "summary": "Ant’s Ling team released a multimodal mixture-of-experts model that can use text, images and video for document understanding and multi-step tasks.",
+    "details": "Ling-3.2-air has 124B parameters and activates 5.5B per token. The model card documents deployment with SGLang and vLLM. The published checkpoint is configured for 262,144 tokens and carries the MIT license.",
+    "dateNote": "The weights became public on November 23, also the release date recorded by Artificial Analysis."
+  },
+  "inkling-2-mini": {
+    "summary": "Thinking Machines released a text-and-vision model with about 20 GB of natively quantized weights, available for local use and inference on Tinker.",
+    "details": "Of its 26.4B parameters, 3.4B distinct parameters are active per token. Running the middle layers three times brings the effective active count to 5.4B. The Apache 2.0 weights are also available for fine-tuning through Tinker. On November 22, Arena added the model to its Text, Code WebDev and Agent leaderboards.",
+    "dateNote": "Thinking Machines announced the model and released its weights on November 20."
+  },
   "aion-instruct": {
     "summary": "Microsoft made Aion Instruct the built-in language model in Edge for on-device summarization, rewriting and structured text extraction.",
     "details": "Aion-1.0-Instruct-2.3B has about 2.3 billion parameters and a 32,768-token context window. Microsoft released the weights under MIT. The model succeeds Phi-4-mini in Edge, where developers can use the Prompt API origin trial to run it on supported devices.",
@@ -828,7 +853,7 @@ window.MODEL_ATLAS_EN = {
     "dateNote": "Uses Ai2’s initial February 1, 2024 announcement, separate from later checkpoints and OLMo 2."
   },
   "ling-3-1-flash": {
-    "summary": "InclusionAI releases a hybrid reasoning model for coding, tool use, and multi-step agent tasks.",
+    "summary": "Ling-3.1-flash supports coding, tool use and multi-step agent tasks, with a choice of reasoning modes.",
     "details": "Combines hybrid linear attention with MoE, with about 560B total and 25B active parameters per token for extended office, coding and tool-use tasks. Original and later 1019 weights are public under the declared MIT license. The 1019 checkpoint further improves reasoning and agent tasks. Both weight versions support 1M context; the original official API’s 256K limit is recorded separately.",
     "dateNote": "Uses September 30 from Ant Ling’s official news feed. The 1019 weights became public on October 27 and are recorded as a subsequent update. The version label 1019 is not treated as the weight-release date."
   },
@@ -1230,8 +1255,8 @@ window.MODEL_ATLAS_EN = {
     "dateNote": "Uses the November 5 version announcement and general release, recording the substantive changes in 1.2."
   },
   "inkling-2-small": {
-    "summary": "The second-generation mixture-of-experts model combines vision, coding and long-running tasks with fine-tuning through Tinker.",
-    "details": "The model has 594B total parameters with 17B active per token. It takes text and images as input and produces text. The model card lists a 1M-token context window, and Tinker offers 64K and 256K configurations. Thinking Machines released the weights on Hugging Face under Apache 2.0.",
+    "summary": "Inkling 2 Small accepts text and images, writes code and handles long-running tasks. Developers can fine-tune it through Tinker.",
+    "details": "The model has 594B total parameters with 17B active per token. It takes text and images as input and produces text. Both paid Tinker configurations support a 1M-token sampling window. Their training sequence limits are 64K and 256K, respectively. Thinking Machines released the weights on Hugging Face under Apache 2.0.",
     "dateNote": "Tinker launched inference and fine-tuning on November 5. Thinking Machines released the model weights on November 12. The timeline uses the initial service date."
   },
   "gpt-6-cyber": {
@@ -1264,8 +1289,8 @@ window.MODEL_ATLAS_EN = {
   },
   "qwen-4-max-preview": {
     "summary": "A preview of Qwen's next flagship multimodal model, with image and video understanding and tool use.",
-    "details": "Qwen4-Max-Preview is a limited-time preview available only through Token Plan, without pay-as-you-go billing. The preview runs from November 11, 2026 at 10:00 through November 25 at 24:00 Beijing time, after which the endpoint is scheduled to retire. It supports a 1M-token context and a shared 393,216-token budget for thinking and answers, with Chat Completions, Responses and Messages compatibility.",
-    "dateNote": "Uses the preview availability date recorded by Alibaba Cloud, separately from any later general release."
+    "details": "The Token Plan subscription preview opened at 10:00 Beijing time on November 11. It offered a 1M-token context, with thinking and the final answer sharing a 393,216-token output budget. The preview ended at 10:00 Beijing time on November 25. Requests to the old model ID now route to qwen4-max and consume credits at its standard rate. The preview discount ended at that time.",
+    "dateNote": "The timeline uses the November 11 preview launch. Alibaba Cloud’s Token Plan changelog records the actual retirement time."
   },
   "minimax-h3-image": {
     "summary": "Open weights for image generation and editing, with about 16-megapixel output and up to 16 reference images.",
@@ -1279,7 +1304,7 @@ window.MODEL_ATLAS_EN = {
   },
   "qwen-4-max": {
     "summary": "The Qwen flagship enters general API availability with native vision, a million-token context and multi-step tool use.",
-    "details": "Qwen4-Max uses a mixture-of-experts architecture with 2.4T total parameters and approximately 71B active per token. It accepts text, images and video and produces text. The November 16 release is available through QwenCloud API, Token Plan, QwenWork and Qwen Studio. The formal API supports pay-as-you-go billing; Token Plan is a subscription option.",
+    "details": "Qwen4-Max uses a mixture-of-experts architecture with 2.4T total parameters and approximately 71B active per token. It accepts text, images and video and produces text. The November 16 release is available through QwenCloud API, Token Plan, QwenWork and Qwen Studio. The formal API supports pay-as-you-go billing; Token Plan is a subscription option. Since November 25 at 10:00 Beijing time, requests to the old Token Plan preview ID also route to the full model and are charged at its standard rate.",
     "dateNote": "Alibaba Cloud opened Qwen4-Max-Preview to Token Plan subscribers on November 11 and announced general availability for Qwen4-Max on November 16."
   },
   "longcat-2-5": {
@@ -1294,7 +1319,7 @@ window.MODEL_ATLAS_EN = {
   },
   "gpt-6-2-sol": {
     "summary": "Supports everyday coding and tool use with faster task completion and lower inference costs.",
-    "details": "Sol accepts text and images and produces text. It keeps the standard API rates of GPT-6.1 Sol and launched in ChatGPT Work, Codex and the API on the same day.",
+    "details": "Sol accepts text and images and returns text. It launched in the API, ChatGPT Work and Codex on November 17 at the standard API rates of GPT-6.1 Sol. On November 23 a version tuned for everyday conversation began rolling out in ChatGPT to Plus, Pro, Business and Enterprise users, with access controlled by admins in Enterprise. The rolling API alias chat-latest was updated to that chat version on November 24.",
     "dateNote": "OpenAI made Sol and Astra available on November 17."
   },
   "kling-image-4": {

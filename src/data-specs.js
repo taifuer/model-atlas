@@ -5,6 +5,167 @@
 window.MODEL_ATLAS_SPECS = Object.freeze({
   "checkedAt": "2026-10-03",
   "entries": {
+    "hy-mt3": {
+      "checkedAt": "2026-11-25",
+      "variants": [
+        {
+          "name": "Hy-MT3-1.8B",
+          "basis": "weights",
+          "contextTokens": 262144,
+          "parameters": "1.8B",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/tencent/Hy-MT3-1.8B",
+            "https://huggingface.co/tencent/Hy-MT3-1.8B/blob/main/config.json"
+          ]
+        },
+        {
+          "name": "Hy-MT3-7B",
+          "basis": "weights",
+          "contextTokens": 262144,
+          "parameters": "7B",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/tencent/Hy-MT3-7B",
+            "https://huggingface.co/tencent/Hy-MT3-7B/blob/main/config.json"
+          ]
+        },
+        {
+          "name": "Hy-MT3-30B-A3B",
+          "basis": "weights",
+          "contextTokens": 262144,
+          "parameters": "30B",
+          "activeParameters": "3B",
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/tencent/Hy-MT3-30B-A3B",
+            "https://huggingface.co/tencent/Hy-MT3-30B-A3B/blob/main/config.json"
+          ]
+        }
+      ]
+    },
+    "magi-2": {
+      "checkedAt": "2026-11-25",
+      "variants": [
+        {
+          "name": "MAGI-2",
+          "basis": "release",
+          "parameters": "480B",
+          "activeParameters": "≈28B",
+          "video": {
+            "maxDurationSeconds": 30,
+            "upscaledResolutions": [
+              "1080p"
+            ],
+            "frameRates": [
+              25
+            ],
+            "audio": "native"
+          },
+          "note": "音频与视频同步生成，1080p 为升采样输出。每次请求最多可引用 20 个媒体素材。",
+          "noteEn": "Audio and video are generated together. The 1080p output uses upscaling. A native request can reference up to 20 media items.",
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "output": [
+            "video",
+            "audio"
+          ],
+          "sources": [
+            "https://sand.ai/blog/magi-2"
+          ]
+        }
+      ]
+    },
+    "glm-5-4": {
+      "checkedAt": "2026-11-25",
+      "cardScope": "configuration",
+      "variants": [
+        {
+          "name": "GLM-5.4 · ZCode / Coding Plan",
+          "basis": "service",
+          "contextTokens": 1000000,
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://zcode.z.ai/en/docs/qa",
+            "https://zcode.z.ai/en/changelog"
+          ]
+        }
+      ]
+    },
+    "ling-3-2-air": {
+      "checkedAt": "2026-11-25",
+      "variants": [
+        {
+          "name": "Ling-3.2-air",
+          "basis": "weights",
+          "contextTokens": 262144,
+          "parameters": "124B",
+          "activeParameters": "5.5B",
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/inclusionAI/Ling-3.2-air",
+            "https://huggingface.co/inclusionAI/Ling-3.2-air/blob/main/config.json"
+          ]
+        }
+      ]
+    },
+    "inkling-2-mini": {
+      "checkedAt": "2026-11-25",
+      "variants": [
+        {
+          "name": "Inkling 2 Mini",
+          "basis": "weights",
+          "contextTokens": 1048576,
+          "parameters": "26.4B",
+          "activeParameters": "3.4B",
+          "note": "3.4B 为每个 token 使用的独立参数量。重复执行共享层后，有效激活量为 5.4B。",
+          "noteEn": "3.4B counts distinct parameters used per token. Repeated passes through shared layers bring effective activations to 5.4B.",
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ],
+          "sources": [
+            "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+            "https://huggingface.co/thinkingmachines/Inkling-2-Mini/blob/main/config.json"
+          ]
+        }
+      ]
+    },
     "aion-instruct": {
       "checkedAt": "2026-11-20",
       "variants": [
@@ -4501,7 +4662,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       ]
     },
     "inkling-2-small": {
-      "checkedAt": "2026-11-09",
+      "checkedAt": "2026-11-25",
       "cardScope": "configuration",
       "variants": [
         {
@@ -4519,9 +4680,7 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           ],
           "contextTokens": "1M",
           "parameters": "594B",
-          "activeParameters": "17B",
-          "note": "模型卡公布的最大窗口，不等于当前 Tinker 服务的限制。",
-          "noteEn": "The model-card maximum is distinct from current Tinker service limits."
+          "activeParameters": "17B"
         },
         {
           "name": "thinkingmachines/Inkling-2-Small · Tinker",
@@ -4536,7 +4695,8 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           "sources": [
             "https://tinker-docs.thinkingmachines.ai/tinker/models/models_and_pricing/"
           ],
-          "contextTokens": "64K"
+          "contextTokens": "1M",
+          "trainingTokens": "64K"
         },
         {
           "name": "thinkingmachines/Inkling-2-Small:peft:262144 · Tinker",
@@ -4551,7 +4711,8 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
           "sources": [
             "https://tinker-docs.thinkingmachines.ai/tinker/models/models_and_pricing/"
           ],
-          "contextTokens": "256K"
+          "contextTokens": "1M",
+          "trainingTokens": "256K"
         }
       ]
     },
@@ -4652,10 +4813,10 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
       "noteEn": "Input, thinking and output share a 1,048,576-token window. The default synchronous output limit is 65,536. Long decode allows longer generation within the remaining window; it does not add another 1M tokens of output capacity."
     },
     "qwen-4-max-preview": {
-      "checkedAt": "2026-11-14",
+      "checkedAt": "2026-11-25",
       "variants": [
         {
-          "name": "qwen4-max-preview · Token Plan",
+          "name": "qwen4-max-preview · Token Plan (2026.11.11–11.25)",
           "basis": "api",
           "contextTokens": "1M",
           "outputTokens": 393216,
@@ -4668,10 +4829,11 @@ window.MODEL_ATLAS_SPECS = Object.freeze({
             "text"
           ],
           "sources": [
-            "https://help.aliyun.com/zh/model-studio/qwen4-max-preview"
+            "https://help.aliyun.com/zh/model-studio/qwen4-max-preview",
+            "https://help.aliyun.com/zh/model-studio/token-plan-product-updates"
           ],
-          "note": "思考和最终回答共享输出预算；预览期至 2026 年 11 月 25 日。",
-          "noteEn": "Thinking and the final answer share the output budget. The preview ends on November 25, 2026."
+          "note": "历史预览配置。思考与最终回答共享输出预算。11 月 25 日北京时间 10:00 起，原 ID 转至 qwen4-max。",
+          "noteEn": "Historical preview configuration. Thinking and the final answer shared the output budget. The old ID has routed to qwen4-max since 10:00 Beijing time on November 25."
         }
       ]
     },

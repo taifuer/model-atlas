@@ -7,6 +7,28 @@ window.MODEL_ATLAS_PRICES = Object.freeze({
   "inputType": "uncached-text",
   "outputType": "text",
   "entries": {
+    "inkling-2-mini": {
+      "checkedAt": "2026-11-25",
+      "variants": [
+        {
+          "name": "Inkling 2 Mini · Tinker (paid)",
+          "currency": "USD",
+          "tiers": [
+            {
+              "input": 0.15,
+              "output": 0.5,
+              "label": "Tinker 推理 · 未缓存输入",
+              "labelEn": "Tinker inference · uncached input"
+            }
+          ],
+          "sources": [
+            "https://tinker-docs.thinkingmachines.ai/tinker/models/models_and_pricing/"
+          ],
+          "note": "付费档每百万 token 的未缓存输入为 0.15 美元、缓存输入为 0.015 美元、输出为 0.50 美元。两档微调长度分别为 64K 和 256K，推理窗口均为 1M。另有 64K 限速免费档，预付账户须保有正余额。",
+          "noteEn": "On the paid tiers, uncached prefill costs $0.15, cached prefill $0.015 and sampling $0.50 per million tokens. The two configurations support 64K and 256K for fine-tuning, respectively, and both support 1M for sampling. A separate, rate-limited free tier has a 64K window and requires a positive balance for prepaid accounts."
+        }
+      ]
+    },
     "gemini-4-neon": {
       "checkedAt": "2026-11-20",
       "variants": [

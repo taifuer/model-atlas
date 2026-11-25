@@ -134,7 +134,7 @@ for (const language of ['zh', 'en']) {
       await page.locator('[data-show-all]').click();
       const haiku = page.locator('#release-claude-haiku-5-5');
       await expect(haiku.locator('[data-detail-section="specs"]')).toContainText('1M');
-      await expect(haiku.locator('[data-detail-section="scores"]')).toContainText('36');
+      await expect(haiku.locator('[data-detail-section="scores"]')).toContainText('37');
       await haiku.locator('[data-detail-section="pricing"]').click();
       await expect(page.locator('.detail-pricing .price-tier')).toHaveCount(2);
       await expect(page.locator('.price-condition').first()).toContainText('≤ 100K');

@@ -1,7 +1,7 @@
 /* Curated tool releases. Announcement, version, and paper dates are explicitly distinguished. */
 window.AGENT_ATLAS = {
-  "asOf": "2026-11-20",
-  "updatedAt": "2026-11-20",
+  "asOf": "2026-11-25",
+  "updatedAt": "2026-11-25",
   "companies": [
     {
       "id": "anthropic",
@@ -344,7 +344,7 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "preview",
       "summary": "在沙盒中使用编辑器、终端和浏览器，规划并执行软件工程任务。",
-      "details": "首发为早期访问阶段，用户可查看进度并参与协作。2026 年 10 月 19 日，Devin Oncall 向所有组织正式开放，可接收 Slack、Teams 与 PagerDuty 的事件，结合代码、遥测和运行手册调查故障并维护事件报告。",
+      "details": "首发为早期访问阶段，用户可查看进度并参与协作。2026 年 10 月 19 日，Devin Oncall 向所有组织正式开放，可接收 Slack、Teams 与 PagerDuty 的事件，结合代码、遥测和运行手册调查故障并维护事件报告。11 月 24 日，Cognition 在 Devin Desktop、Cloud 和 CLI 上推出编程模型 SWE-2.1。",
       "dateNote": "",
       "tags": [
         "编程",
@@ -360,11 +360,16 @@ window.AGENT_ATLAS = {
           "title": "Cognition · Devin 版本日志",
           "titleEn": "Cognition · Devin release notes",
           "url": "https://docs.devin.ai/release-notes/overview#october-19-2026"
+        },
+        {
+          "title": "Cognition · Devin 上线 SWE-2.1",
+          "titleEn": "Cognition · SWE-2.1 in Devin",
+          "url": "https://cognition.com/blog/swe-2-1"
         }
       ],
       "en": {
         "summary": "A sandboxed agent plans engineering tasks using an editor, terminal, and browser.",
-        "details": "The first announcement offered early access, with progress reporting and user collaboration. On October 19, 2026, Devin Oncall became generally available to all organizations, investigating events from Slack, Teams and PagerDuty using code, telemetry and runbooks and maintaining incident reports.",
+        "details": "The first announcement offered early access, with progress reporting and user collaboration. On October 19, 2026, Devin Oncall became generally available to all organizations, investigating events from Slack, Teams and PagerDuty using code, telemetry and runbooks and maintaining incident reports. On November 24, Cognition released its SWE-2.1 coding model in Devin Desktop, Cloud and CLI.",
         "dateNote": ""
       }
     },
@@ -554,7 +559,7 @@ window.AGENT_ATLAS = {
       "category": "framework",
       "kind": "release",
       "summary": "开放连接模型、数据与工具的协议，减少重复集成。",
-      "details": "MCP 让数据和工具通过服务器向兼容客户端提供统一接口，减少每个应用为每个数据源分别编写连接器的工作。首发同时开放规范、SDK 与示例服务器，并在 Claude Desktop 中支持本地连接；MCP 本身负责连接，不执行自主任务循环。",
+      "details": "MCP 为应用访问外部数据和工具提供统一接口。首发时公开了规范、SDK 和示例服务器，Claude Desktop 可连接本地服务器。2026 年 11 月 24 日，Claude 和 Claude Code 向 Pro、Max、Ultra 用户正式开放后台任务（Tasks）和交互式询问（Elicitation），并开始向 Team 和 Enterprise 推送。通过 MCP 分发技能的功能同日进入公测。Google Workspace 也在当天正式开放了 Gmail、云端硬盘、日历等服务的 MCP 服务器。",
       "dateNote": "",
       "tags": [
         "工作流",
@@ -565,11 +570,21 @@ window.AGENT_ATLAS = {
         {
           "title": "官方 · 发布记录",
           "url": "https://www.anthropic.com/news/model-context-protocol"
+        },
+        {
+          "title": "Anthropic · Claude 对 MCP 扩展的支持",
+          "titleEn": "Anthropic · MCP extension support in Claude",
+          "url": "https://claude.com/resources/articles/skills-over-mcp-tasks-and-more"
+        },
+        {
+          "title": "Google · Workspace MCP 服务器正式开放",
+          "titleEn": "Google · General availability of Workspace MCP servers",
+          "url": "https://cloud.google.com/blog/products/identity-security/deploying-agents-safely-in-your-enterprise"
         }
       ],
       "en": {
         "summary": "An open protocol standardizes connections between models, data, and tools.",
-        "details": "MCP exposes data and tools through servers with a shared interface for compatible clients, reducing the need for a separate connector for every application and data source. The launch includes the specification, SDKs, example servers, and local connections in Claude Desktop. MCP provides connections rather than an autonomous task loop.",
+        "details": "MCP gives applications a common interface for external data and tools. The initial release included the specification, SDKs, example servers and local connections in Claude Desktop. On November 24, 2026, Tasks for background work and Elicitation for requesting user input became generally available in Claude and Claude Code on Pro, Max and Ultra plans, with rollout beginning on Team and Enterprise. Skills over MCP entered public beta. Google Workspace also made its MCP servers for Gmail, Drive, Calendar and other services generally available that day.",
         "dateNote": ""
       }
     },
@@ -2104,7 +2119,7 @@ window.AGENT_ATLAS = {
       "category": "coding",
       "kind": "release",
       "summary": "开放 AI 编程工作台源码，覆盖桌面端、浏览器界面和终端 Agent。",
-      "details": "智谱以 Apache-2.0 许可公开客户端、后端、共享界面与 Agent 运行时，围绕代码、终端、Git 和任务工作区组织开发流程。托管模型及订阅服务另计。",
+      "details": "智谱以 Apache-2.0 许可公开客户端、后端、共享界面与 Agent 运行时，围绕代码、终端、Git 和任务工作区组织开发流程。托管模型及订阅服务另计。2026 年 11 月 23 日发布的 4.0.0 版为 Coding Plan 用户预置 GLM-5.4，支持在编程任务中使用图像输入。",
       "dateNote": "记录 9 月 21 日源码开放公告，不是产品首次上线；对应开源提交时间为 9 月 20 日 21:14 UTC，即北京时间 9 月 21 日。",
       "tags": [
         "编程",
@@ -2121,11 +2136,16 @@ window.AGENT_ATLAS = {
           "title": "IT之家 · ZCode 开源公告报道",
           "titleEn": "IT Home · ZCode source-release announcement",
           "url": "https://www.ithome.com/1/005/046.htm"
+        },
+        {
+          "title": "智谱 · ZCode 4.0.0 更新日志",
+          "titleEn": "Z.ai · ZCode 4.0.0 changelog",
+          "url": "https://zcode.z.ai/en/changelog"
         }
       ],
       "en": {
         "summary": "Z.ai opens the source of its coding workspace, covering desktop, browser and terminal-agent interfaces.",
-        "details": "The Apache-2.0 release includes the client, backend, shared UI and agent runtime, organizing development around code, a terminal, Git and task workspaces. Hosted models and subscriptions remain separate services.",
+        "details": "The Apache-2.0 release includes the client, backend, shared UI and agent runtime, organizing development around code, a terminal, Git and task workspaces. Hosted models and subscriptions remain separate services. Version 4.0.0, released on November 23, 2026, preconfigured GLM-5.4 for Coding Plan users and added support for image inputs in coding tasks.",
         "dateNote": "Records the September 21 source-release announcement, not the original product launch. The open-source commit is dated September 20 at 21:14 UTC, September 21 in Beijing."
       }
     },
@@ -2269,10 +2289,43 @@ window.AGENT_ATLAS = {
         "details": "Instructions, TypeScript tools, skills and evals live in one project, with event replay, persistent sessions and subagents. Agents can run on Cursor or on self-hosted infrastructure; Cursor documents its use in Bugbot, Security Review and Rollouts. The SDK has a proprietary Cursor license.",
         "dateNote": "Uses October 20 as printed on the official product announcement. The SDK changelog labels 0.3.0 GA October 23; npm published that package October 25 at 20:04 UTC. These dates describe different records."
       }
+    },
+    {
+      "id": "claude-ship",
+      "date": "2026-11-23",
+      "name": "Claude Ship",
+      "company": "anthropic",
+      "category": "coding",
+      "kind": "preview",
+      "summary": "审查 GitHub 拉取请求，修复未通过的检查，并按团队规则处理审批。",
+      "details": "Claude Team 和 Enterprise 用户可在 GitHub 仓库中启用测试版。Code Review 已正式开放。两项新智能体仍在测试中，PR Steward 处理检查失败、合并冲突和审查意见，Claude Approvals 按仓库规则批准变更或请求人工审批。开发者可在 Claude Code 中用 /ship 发起流程。",
+      "dateNote": "",
+      "tags": [
+        "编程",
+        "工作流"
+      ],
+      "milestone": false,
+      "sources": [
+        {
+          "title": "Anthropic · Claude Ship 发布公告",
+          "titleEn": "Anthropic · Claude Ship announcement",
+          "url": "https://claude.com/resources/articles/introducing-claude-ship"
+        },
+        {
+          "title": "Anthropic · Claude Ship 产品说明",
+          "titleEn": "Anthropic · Claude Ship product overview",
+          "url": "https://claude.com/product/claude-ship"
+        }
+      ],
+      "en": {
+        "summary": "Reviews GitHub pull requests, fixes failing checks and applies the team’s approval policy.",
+        "details": "Claude Ship launched in beta for GitHub repositories on Team and Enterprise plans. Code Review was already generally available. The two new agents launched in beta. PR Steward handles failing checks, merge conflicts and review feedback. Claude Approvals follows repository policy to approve a change or request human sign-off. Developers can start the workflow with /ship in Claude Code.",
+        "dateNote": ""
+      }
     }
   ],
   "coverage": {
-    "checkedAt": "2026-11-20",
+    "checkedAt": "2026-11-25",
     "scope": "编程 Agent、通用 Agent、Harness 及重要框架与协议的主要公开节点。",
     "method": "以原始公告、维护者文章与论文核对日期，区分预览、论文公开、改名和正式发布；按经典性、代表性或影响力筛选，不逐条收录常规版本更新。",
     "references": []

@@ -45,6 +45,8 @@
       'muse-wonder': ['muse-ember'],
       'qwen-4-max': ['qwen-4-max-preview'],
       'gpt-6-2-astra': ['gpt-6-2-sol'],
+      'ling-3-1-flash': ['ling-3-2-air'],
+      'inkling-2-small': ['inkling-2-mini'],
     },
     AGENT_ATLAS: {
       'roo-code-3-2': ['kilo-code'],
